@@ -1,0 +1,1 @@
+@"%LOCALAPPDATA%\GitHubDesktop\GitHubDesktop.exe" %*

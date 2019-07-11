@@ -1,0 +1,13 @@
+# env
+set user_path=;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Acer\abFiles\;C:\Program Files (x86)\Calibre2\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\TortoiseSVN\bin;D:\GreenSoftware\cmake-3.9.0-win64-x64\bin;C:\Program Files\Redis\;C:\Program Files\MySQL\MySQL Utilities 1.6\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\Java\jdk1.8.0_171\bin\;D:\Code\opencv\build\install\x64\vc15\bin\;D:\Code\VS2010\ELL-master\external\OpenBLASLibs.0.2.19.3\build\native\x64\haswell\bin;C:\Users\csy_acer_win8\AppData\Roaming\npm;
+set path=C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\ProgramData\Anaconda3;C:\ProgramData\Anaconda3\Library\mingw-w64\bin;C:\ProgramData\Anaconda3\Library\usr\bin;C:\ProgramData\Anaconda3\Library\bin;C:\ProgramData\Anaconda3\Scripts;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\Java\jdk1.8.0_171\bin\;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0\lib\x64;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0\libnvvp;C:\Program Files\Python36\Scripts\;C:\Program Files\Python36\;D:\GreenSoftware\runpath;C:\Program Files\MATLAB\R2014a\runtime\win64;C:\Program Files\MATLAB\R2014a\bin;C:\Program Files\MATLAB\R2014a\bin\win64;C:\Mingw\bin\;C:\MinGW\include\;C:\MinGW\mingw64\x86_64-w64-mingw32\include\;C:\MSDEV\BIN;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;%dpath%;
+set dpath=C:\Program Files\TortoiseSVN\bin;D:\software\strawberryPerl\c\bin;D:\software\strawberryPerl\perl\site\bin;D:\software\strawberryPerl\perl\bin;D:\GreenSoftware\cmake-3.9.0-win64-x64\bin;C:\Program Files\Redis\;C:\Program Files\MySQL\MySQL Utilities 1.6\;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Calibre2\;C:\Program Files (x86)\Acer\abFiles\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;
+
+### misc
+matlab
+python
+CUDA
+intel
+java
+
+perl,node.svn,redis,mysql,ab,cmake,

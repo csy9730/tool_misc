@@ -1,0 +1,1 @@
+setx path "%path%;E:\Code\opencv\build\x64\vc15\bin;E:\Code\opencv\build\bin"

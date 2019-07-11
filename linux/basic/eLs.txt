@@ -1,0 +1,16 @@
+**Q**: E: Could not open lock file /var/lib/dpkg/lock-frontend - open (13: Permission denied) E: Unable to 
+
+**A**:实这是因为有另外一个程序在运行，导致锁不可用。原因可能是上次运行更新或安装没有正常完成。解决办法是杀死此进程
+sudo rm /var/cache/apt/archives/lock
+sudo rm /var/lib/dpkg/lock
+1,sudo dpkg --configure -a
+2,sudo apt-get update
+
+sudo curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
+
+
+sudo dpkg -l
+sudo dpkg -l | grep -i apache
+sudo apt list --installed | grep -i apache
+sudo apt list --installed | less
+sudo apt list --installed

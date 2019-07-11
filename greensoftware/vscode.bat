@@ -1,0 +1,1 @@
+@"C:\Users\admin\AppData\Local\Programs\Microsoft VS Code\code.exe" %*

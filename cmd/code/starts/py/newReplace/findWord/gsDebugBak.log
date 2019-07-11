@@ -1,0 +1,177 @@
+.LOG
+18:14 2018/6/4
+"${workspace_loc:/inv_lib/Release/inv_lib.lib}"
+
+备份：code，bin，param.txt，param.bin，debugRecord.bin,debugRecord.txt;
+
+# uKi改善电流波形 uKp
+
+
+
+直流偏置：降低rpKP 可以降低直流偏置，降低rpKi 可以略微降低偏移。
+
+inv调试：
+
+
+震荡调节：重复控制产生非限流震荡？
+1. 减小rpKp，rpKi
+2. 限幅rpOut
+3. 提高prKp
+
+PR控制产生震荡？
+1. 限幅pr3Out。
+
+
+thd调节：
+1. 提高prKp
+2. 提高iKp
+3. 提高pr3Kp，pr5Kp，…
+
+波峰因数调节： 提高ioKp。减小虚拟电阻。
+
+并机调节：先调好pfc中点电位，不能太大，导致4bus之间失衡。
+优化pll锁相控制，使逆变驱动重合。
+减小环流。
+
+三相调节：
+
+虚拟电阻大导致pfc的bus震荡？功率因数差？
+
+
+
+
+
+10:09 2018/6/8
+两个pfc平衡参数不同。
+9:32 2018/6/11
+环流
+电压跌落
+bus不平衡
+
+debug:duty = ( iLOut + vMeas ) / vBusMeasP;
+10:09 2018/6/14
+del: 		//k->Out = (k->Out > v->IMin) ? k->Out : v->IMin;
+code：        pCurParam->fControlParams[0][2] = pNewParam->fControlParams[0][2];
+code： 添加无功相位环
+new: #define ZAL_INV_PR_DYNAMIC_LIMIT // PR 控制动态投载限幅
+del         pControl->busdiffKp = invCtrlParamArr[P_CTRL][Kp];//bus补偿点
+new:#define ZAL_INV_URMS_USE	/*rms控制*/
+del:        pControl->dynamicFlag 	= (int) invCtrlParamArr[VOLT_RMS_CTRL][Ki];        // 电压有效值环Ki
+
+10:30 2018/6/19
+del：rpError-=Vdc
+new： Q1+PI
+德不孤重复控制的滤波器去除过零震荡。3khz保留过零震荡，2khz截至频率可以去除震荡。
+rp限幅影响：thd，卸载特性。
+
+
+11:06 2018/6/20
+new： pfc.ctrl.izLoop,
+17:29 2018/6/20
+error:
+debug:打印 
+9:13 2018/6/28  
+  Ts ,Fs, 改变采样频率，影响滤波器系数 ，PLL，电感前馈，TI算法没用锁相环，锁相数据也不做他用。
+9:32 2018/6/28
+del：  #else
+    ZalPointAbc uAbcPhase;
+  zalLine2Phase(Uabc.a,Uabc.b,Uabc.c,&uAbcPhase.a,&uAbcPhase.b,&uAbcPhase.c);
+  m_RunInfo.nPLLLock = zalPfcPllSrfStep(&uAbcPhase,&m_PllSrf);
+
+
+2018/7/4
+new：启用pfc+inv 串联 (pfc+inv)//(pfc+inv)并联，防止过流爆炸。
+new：TI算法恢复使用锁相。
+new：并机，pfc不再有并机震荡。
+error：双PFC存在灌流现象。
+13:47 2018/7/5
+new:RCD载检测，添加计数延迟jnz。模式识别区分R负载，RCD负载，RCD卸载。
+
+14:38 2018/7/6
+edit：修改有功为基波有功
+edit：调整控制频率
+17:41 2018/7/6
+try：vdc，同时去除重复，去除积分量
+18:13 2018/7/9
+edit:修改启动问题，单边使用pfc风扇，导致启动过程不一致。
+edit：去除风扇导致pfc电压波动，纹波太大？
+
+16:53 2018/7/10
+debug：测试非对称pfc参数
+debug：难以还原pfc并联特性
+debug:pfc未全配置成从机，导致同步未成功。
+9:04 2018/7/11
+new: 功率非线性变换 f=@(x) (x<POINT).*((RATIO*x)-POINT2-x)+(POINT2+x);fr=@(x) (x<POINT*RATIO).*((x/RATIO)+POINT2-x)+(x-POINT2);
+note:虚拟电阻导致电压有效值带负载时跌落
+14:17 2018/7/12
+edit：rp控制，过零点（断点）不适合作为限幅界限。
+17:44 2018/7/13
+edit：R载，RCD载，
+try：区分负载特性，阻性，容性，RCD性。
+try：线性双边饱和函数
+error: rcd半载环流过大？
+try： iokp~~ io~~p ，基于负载调节kpio。
+try: pcm添加一键导出数据
+
+
+10:09 2018/7/16
+debug：三相效果差16:55 2018/7/16
+error: rpkp =0.9, 电压跌落小，电流畸变。
+error：rms的并联环流大，并联开启阶段有显著超调。
+new： 添加tree-》modal迭代器？
+8:53 2018/7/17
+17:04 2018/7/17
+error：空载的peakCoef过高。
+new：延时判断peakcoef。
+error：慢变kpio导致电流畸变。
+17:05 2018/7/17
+error：rcd 1k的动态切换不稳定。
+15:58 2018/7/19
+error：rcd 1k的动态切换不稳定,kpio莫名变0。
+2018/7/20
+error：确认分号错误，kpio可以正确切换。
+try：降低轻载rcd的kpio?
+
+9:09 2018/7/23
+try：通过Q控制rad
+18:09 2018/7/26
+error:修改同步信号的硬件接口，干扰太大，导致pfc同步异常
+error：r半载，电流有畸变
+new: 通过p来改变kdio参数
+try: 风扇调速
+try： 加入负载电流正反馈信号和基准电压信号的微分支路，iLref = uOUt + kpIo * io + CC * uRms * 1.41*w *cos(wt)
+
+13:50 2018/7/27
+error:rpkp=0，rpki=0， 半载环流小
+try: 分析 半载并联debug变量
+
+13:59 2018/7/27
+
+11:44 2018/7/30
+try: rp+pr，（1+rp）*pr,
+16:48 2018/8/3
+debug: pfc带30k变压器，busdifKp=4.0
+tools: 添加snapRead.m
+syn：同步pfc&inv代码
+2018/8/7
+debug：优化带变压器的pfc的电压输出。
+9:13 2018/8/8
+debug：pfc的bus平衡，空载会灌流，负载较均衡
+check:三机是否空载平衡？
+
+16:43 2018/8/8
+new:ZAL_PFC_IZO_USE
+new:zalPfcCtrlParam_ti_Init
+debug：pfc的参数异常重置。
+debug:23号机去除输出电容滤波的三相并联完美。
+debug：两机三相并联存在，缓慢（20秒之后）灌流过压现象。重新烧录或上电可以避开过压？
+try：三机单相开机
+8:57 2018/8/9
+debug:1号机A相效果差。
+try：3机C相并联 ,ok
+14:05 2018/8/10
+edit:dcCoef,thd,peakCoef,absCoef;
+17:54 2018/8/10
+debug:三机并联RCD负载波峰因数偏低？
+9:08 2018/8/13
+debug:传输重复控制标志，kpio标志，直流标志，并联计数
