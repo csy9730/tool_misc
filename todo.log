@@ -1,0 +1,12 @@
+.LOG
+
+18:19 2019/4/27
+init
+18:20 2019/4/27
+book£ºw3school JavaScript¡£
+
+0:16 2019/4/28
+todo: editTableHtml, readJson==> data==>table==>data==>writeJson;
+	table.add,table.rm,
+api:readJson writeJson tableDisp
+api: addRow,rmRow,editRow,

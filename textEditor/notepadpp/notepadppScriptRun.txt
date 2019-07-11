@@ -1,0 +1,5 @@
+cmd /k  "python  $(FULL_CURRENT_PATH)  " &ECHO. &PAUSE &EXIT
+
+cmd /k  "python " D:\csy\snap2.py " " &ECHO. &PAUSE &EXIT
+
+cmd /k  "python  D:\csy\snap2.py  "

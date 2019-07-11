@@ -1,0 +1,46 @@
+
+名称
+    Copy-Item
+    
+摘要
+    将项从一个位置复制到命名空间内的另一个位置。
+    
+    -------------------------- 示例 1 --------------------------
+    
+    C:\PS>copy-item C:\Wabash\Logfiles\mar1604.log.txt -destination C:\Presenta
+    tion
+    
+    
+    说明
+    -----------
+    此命令将文件 mar1604.log.txt 复制到 C:\Presentation 目录下。此命令不会删除原始文件。
+    
+    
+    
+    
+    -------------------------- 示例 2 --------------------------
+    
+    C:\PS>copy-item C:\Logfiles -destination C:\Drawings -recurse
+    
+    
+    说明
+    -----------
+    此命令将 Logfiles 目录的完整内容复制到 Drawings 目录中。如果源目录的子目录中包含文件，则会复制这些子目录，并保留其文件树。默认情况
+    下，Container 参数设置为 True。这样将保留目录结构。
+    
+    
+    
+    
+    -------------------------- 示例 3 --------------------------
+    
+    C:\PS>copy-item C:\Logfiles -destination C:\Drawings\Logs -recurse
+    
+    
+    说明
+    -----------
+    此命令将 C:\Logfiles 目录的内容复制到 C:\Drawings\Logs 目录中。如果子目录 \Logs 不存在，则此命令将创建该子目录。
+    
+    
+    
+    
+

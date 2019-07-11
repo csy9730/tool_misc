@@ -1,0 +1,21 @@
+new: #define ZAL_INV_PR_DYNAMIC_LIMIT // PR 控制动态投载限幅
+new:#define ZAL_INV_URMS_USE	/*rms控制*/
+new： Q1+PI
+new： pfc.ctrl.izLoop,
+new：启用pfc+inv 串联 (pfc+inv)//(pfc+inv)并联，防止过流爆炸。
+new：TI算法恢复使用锁相。
+new：并机，pfc不再有并机震荡。
+new:RCD载检测，添加计数延迟jnz。模式识别区分R负载，RCD负载，RCD卸载。
+edit：修改有功为基波有功
+edit：调整控制频率
+edit:修改启动问题，单边使用pfc风扇，导致启动过程不一致。
+edit：去除风扇导致pfc电压波动，纹波太大？
+new: 功率非线性变换 f=@(x) (x<POINT).*((RATIO*x)-POINT2-x)+(POINT2+x);fr=@(x) (x<POINT*RATIO).*((x/RATIO)+POINT2-x)+(x-POINT2);
+edit：rp控制，过零点（断点）不适合作为限幅界限。
+edit：R载，RCD载，
+new： 添加tree-》modal迭代器？
+new：延时判断peakcoef。
+new: 通过p来改变kdio参数
+new:ZAL_PFC_IZO_USE
+new:zalPfcCtrlParam_ti_Init
+edit:dcCoef,thd,peakCoef,absCoef;

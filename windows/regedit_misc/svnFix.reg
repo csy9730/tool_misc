@@ -1,0 +1,23 @@
+Windows Registry Editor Version 5.00
+
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers\1TortoiseNormal]
+@="{C5994560-53D9-4125-87C9-F193FC689CB2}"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers\2TortoiseModified]
+@="{C5994561-53D9-4125-87C9-F193FC689CB2}"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers\3TortoiseConflict]
+@="{C5994562-53D9-4125-87C9-F193FC689CB2}"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers\4TortoiseLocked]
+@="{C5994563-53D9-4125-87C9-F193FC689CB2}"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers\5TortoiseReadOnly]
+@="{C5994564-53D9-4125-87C9-F193FC689CB2}"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers\6TortoiseDeleted]
+@="{C5994565-53D9-4125-87C9-F193FC689CB2}"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers\7TortoiseAdded]
+@="{C5994566-53D9-4125-87C9-F193FC689CB2}"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers\8TortoiseIgnored]
+@="{C5994567-53D9-4125-87C9-F193FC689CB2}"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers\9TortoiseUnversioned]
+@="{C5994568-53D9-4125-87C9-F193FC689CB2}"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers\Offline Files]
+@="{750fdf0e-2a26-11d1-a3ea-080036587f03}"

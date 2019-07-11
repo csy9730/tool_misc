@@ -1,0 +1,1 @@
+call %~dp0..\cmake-3.9.0-win64-x64\bin\cmake.exe %*
