@@ -25,6 +25,6 @@ if __name__== "__main__":
     if len(sys.argv)>1:
         pth = sys.argv[1]
     else:
-        pth = r"D:\Jmgo\Code\pyCode\base"
+        pth = r".."
     print(pth)
     showFileProperties2(pth)

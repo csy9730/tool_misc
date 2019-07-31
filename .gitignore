@@ -1,7 +1,7 @@
 
 # folder
 tmp
-bak
+bak*
 *.qmlc
 *.py[cod]
 ×.mk
