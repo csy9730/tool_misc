@@ -1,0 +1,60 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <meta charset="UTF-8"> 
+    <title></title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.8/vue.min.js"></script>
+</head>
+<body>
+    <div >
+    <table id="box" border="" cellspacing="" cellpadding="">
+            <thead>
+                 <tr>
+                    <th>编号</th>
+                     <th>水果</th>
+                     <th>价格</th>
+                 </tr>
+            </thead>
+        <tr v-for="v in arr">
+            <td>{{v.friut}}</td>
+            <td>{{v.name}}</td>
+            <td>{{v.many}}</td>
+        </tr>
+    </table>
+    <table id="box2" border="" cellspacing="" cellpadding="">
+            <thead>
+                 <tr>
+                    <th>编号</th>
+                     <th>水果</th>
+                     <th>价格</th>
+                 </tr>
+            </thead>
+        <tr v-for="v in arr2">
+            <td>{{v.friut}}</td>
+            <td>{{v.name}}</td>
+            <td>{{v.many}}</td>
+        </tr>
+    </table> 
+    </div> 
+    <script type="text/javascript"> 
+        vv = new Vue({ 
+        el:'#box', 
+        data:{ 
+            arr:[{friut:"编号",name:"水果",many:"价格"},
+                {friut:"1",name:"apple",many:"6"},
+                {friut:"2",name:"banana",many:"7"},
+                {friut:"3",name:"orange",many:"8"}] 
+            } 
+        }) ;
+        v2 = new Vue({ 
+        el:'#box2', 
+        data:{ 
+            arr2:[{friut:"编号",name:"水果",many:"价格"},
+                {friut:"1",name:"watermelon",many:"3"},
+                {friut:"2",name:"pear",many:"4"},
+                {friut:"3",name:"orange",many:"5"}] 
+            } 
+        })
+    </script> 
+    </body>
+</html> 
