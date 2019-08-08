@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Vue 测试实例 - 表格</title>    
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <!--<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.8/vue.min.js"></script>
+</head>
+<body>
+    <div id="table">
+        <h1> qwer</h1>
+        <table border="" cellspacing="" cellpadding="">
+            <h6>h6666</h6>
+            <thead>
+                 <tr>
+                    <th>编号</th>
+                     <th>姓名</th>
+                     <th>年龄</th>
+                     <th>操作</th>
+                 </tr>
+            </thead>
+             <tbody>
+                  <tr v-for="(user,index) in stu">
+                      <td>{{index+1}}</td>
+                      <td>{{user.name}}</td>
+                      <td>{{user.age}}</td>
+                      <td><button @click="remove(index)">移除</button></td>
+                  </tr>
+                  <tr>
+                      <td></td>
+                      <td><input id="name" v-model="user.name"></td>
+                      <td><input id="age" v-model="user.age"></td>
+                      <td><button @click="insert">添加</button></td>
+                  </tr>
+            </tbody>
+        </table>          
+    </div>  
+        <script type="text/javascript">
+            vv = new Vue({
+              el:'#table',
+              data:{
+                 user:{name:'',age:''},
+                 stu:[
+                     {'name': '张三', 'age': 17},
+                     {'name': '里斯', 'age': 18},
+                     {'name': '王五', 'age': 19}
+                 ]
+              },
+             methods:{     
+               insert:function(){
+                  this.stu.push(this.user)
+               },
+               remove:function(index){
+                 this.stu.splice(index,1)
+               }               
+             }
+            })
+         </script>
+    </body>
+</html>
