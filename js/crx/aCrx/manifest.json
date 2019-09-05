@@ -1,0 +1,15 @@
+{
+  "manifest_version": 2,
+  "name": "Chrome抢票脚本",
+  "version": "1.0",
+  "description": "chrome 抢票脚本示例",
+  "browser_action": {
+    "default_icon": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.abc.com/"],
+      "js": ["script.js"]
+    }
+  ]
+}
