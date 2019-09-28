@@ -16,7 +16,7 @@ const puppeteer = require('puppeteer');
   const page = await browser.newPage();
   await page.goto('https://www.jianshu.com/u/40909ea33e50');
   await page.screenshot({
-    path: 'jianshu.png',
+    path: 'scr_jianshu.png',
     type: 'png',
     // quality: 100, 只对jpg有效
     fullPage: true,
