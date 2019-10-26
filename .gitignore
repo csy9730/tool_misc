@@ -6,6 +6,7 @@ bak*
 *.py[cod]
 ×.mk
 *.lnk
+sec_*.*
 
 *.asv
 # C extensions
