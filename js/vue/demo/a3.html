@@ -6,6 +6,7 @@
     <!-- 开发环境版本，包含了有帮助的命令行警告 -->
     <!--<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>-->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.8/vue.min.js"></script>
+    <script type="text/javascript" src="jsClone2.js"></script>
 </head>
 <body>
     <div id="table">
@@ -37,6 +38,9 @@
         </table>          
     </div>  
         <script type="text/javascript">
+
+
+
             vv = new Vue({
               el:'#table',
               data:{
@@ -49,7 +53,10 @@
               },
              methods:{     
                insert:function(){
-                  this.stu.push(this.user)
+                    
+                    this.stu.push(this.user )
+                    console.log( this.user )
+                    console.log( this.user.clone() )
                },
                remove:function(index){
                  this.stu.splice(index,1)
