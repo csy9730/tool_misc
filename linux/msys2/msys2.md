@@ -1,30 +1,42 @@
----
-title: cryptopp
-tags: cryptopp
----
+# msys2
+
+[TOC]
+
+mingw包含C运行库和windows的头文件，以及编译链工具，可以生成windows的32位可执行文件。通过提供对等于windowsSDK的头文件和库文件，可以开发原生的windows应用。
+Mingw-w64是Mingw衍生而来，可以生成32位和64位的windows可执行文件。
+msys是包含Mingw的集成环境，提供了命令行工具。
+msys2是集成环境，从cygwin中fork而来，提供了pacman作为包管理工具。
+cygwin是中间层，在window下模拟实现了unix的类函数。linux下写的代码（支持POSIX API)可以无需修改，移植到windows下环境。 
+msys2是windows下的仿gnu编译环境，
+
+主要核心区别在于：MinGW只支持C/C++标准库，cygwin还支持POSIX API， MinGW生成windows的原生程序，cygwin生成程序非原生，cygwin生成程的运行速度较mingw生成程序的运行速度慢。
+
+主意，以上都是GPL证书。
+
+POSIX API 包括pthreads的线程库
+
+## install
+windows系统下下载msys2-x86_64-20180531.exe（80MB），双击选择安装路径。
+
+安装后258MB
+
+![1573008822107](1573008822107.png)
 
 
-``` bash
-D:\greensoftware\MSYS-20111123\msys
-D:\greensoftware\MSYS-20111123\msys\bin\make.exe
-# use GNUmakefile
-cryptest.exe g
-```
-# mingw32-make.exe，缺乏grep
 
 ### msys2
 
-使用及安装
-C:\msys64\msys2_shell.cmd -msys
-C:\msys64\msys2_shell.cmd -mingw64
-C:\msys64\msys2_shell.cmd -mingw32
+msys2的软件版本分为mingw32,mingw64和msys三种
+
+
 
 #### pacman
-```
+``` bash
 pacman -Sy  # update
 pacman -Syu # update all
 pacman -Ss xxx # search xxx
 pacman -Sy xxx # install xxx
+pacman -Sl # 查看软件清单
 pacman -Sl |grep "gcc"
 
 pacman -S make yasm diffutils pkg-config
@@ -58,7 +70,13 @@ $ pacman -S make yasm diffutils pkg-config
 (3/4) 正在安装 diffutils                           [#####################] 100%
 (4/4) 正在安装 pkg-config                          [#####################] 100%
 ```
-` abc `
+pacman配置颜色
+
+### zsh
+
+### gcc
+
+
 
 ### project
 
@@ -137,3 +155,12 @@ Save private key to file: abc
 Save public key to file: abcPub
 Random Seed: ssdfsdfs
 ```
+
+
+
+## misc
+
+使用及安装
+C:\msys64\msys2_shell.cmd -msys
+C:\msys64\msys2_shell.cmd -mingw64
+C:\msys64\msys2_shell.cmd -mingw32
