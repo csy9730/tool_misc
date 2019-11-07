@@ -50,7 +50,7 @@ yum list installed # 查看所有本机已经安装的软件包
 
 **Q**: E: Could not open lock file /var/lib/dpkg/lock-frontend - open (13: Permission denied) E: Unable to 
 
-**A**:实这是因为有另外一个程序在运行，导致锁不可用。原因可能是上次运行更新或安装没有正常完成。解决办法是杀死此进程
+**A**:实这是因为有另外一个程序在运行，导致锁不可用。原因可能是上次运行更新或安装没有正常完成。解决办法是杀死此进程，清除缓存
 
 ```bash
 sudo rm /var/cache/apt/archives/lock
@@ -62,7 +62,7 @@ sudo dpkg --configure -a
 
 
 **Q**: Ubuntu终端出现Unable to lock the administration directory (/var/lib/dpkg/)
-**A**: ` ps -ef | grep apt-get `命令找到相关进程 然后使用`Kill -9 pid`
+**A**: ` ps -ef | grep apt-get `命令找到相关进程，然后使用`kill -9 pid`
 
 或者使用`ps -e | grep apt`是否有未执行完的apt程序，然后执行`sudo killall apt`
 
@@ -81,15 +81,11 @@ sudo apt-get install nvidia-common
 
 
 
-sudo dpkg -l
-sudo dpkg -l | grep -i apache
-
 ### 装机目录
 
-以下是ubuntu的装机目录
+以下是ubuntu的常用装机目录
 
 ``` bash
-apt install zsh
 apt install zsh
 apt install python2
 apt install python3

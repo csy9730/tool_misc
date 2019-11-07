@@ -60,11 +60,20 @@ exec -a "$0" "$HERE/chrome" "$@" --user-data-dir --no-sandbox
 
 ### UI
 ``` bash
+yum upgrade -y 
+yum groupinstall "X Window System" 　
 yum groupinstall "GNOME Desktop" "Graphical Administration Tools"
 # 切换到图形界面
-$ ln -sf /lib/systemd/system/graphical.target /etc/systemd/system/default.target #切换到命令界面
-$ ln -sf /lib/systemd/system/multi-user.target /etc/systemd/system/default.target #
+ln -sf /lib/systemd/system/graphical.target /etc/systemd/system/default.target #切换到命令界面
+ln -sf /lib/systemd/system/multi-user.target /etc/systemd/system/default.target #
+systemctl set-default graphical.target # ???
+
 ```
+
+**Q**: Transaction check error:   file /boot/efi/EFI/centos from install of fwupdate-efi-12-5.el7.centos.x
+**A**: 如何解决？
+
+
 ### vnc
 
 $ yum install tigervnc-server -y
