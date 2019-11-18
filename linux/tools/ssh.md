@@ -2,10 +2,11 @@
 
 ssh是linux下的远程连接工具，windows安装了mingw环境后也能使用ssh工具。
 scp 是建立在ssh远程连接之上的文件复制工具，。
+
 ## install
 ``` bash
-yum install sshd 
-yum install openssh-server
+yum install sshd 		# 安装
+yum install openssh-server # 或者安装这个
 service sshd start # 开启ssh服务
 service sshd status # 查看服务是否开启
 service sshd stop # 关闭ssh服务
@@ -17,7 +18,7 @@ service sshd stop # 关闭ssh服务
 
  `ssh pi@192.168.1.102 -p 22`
  ` ssh -i C\:/Program\ Files/PuTTY/2/id_rsa.pem  u0_a150@192.168.1.102 -p 8022`
- 
+
 `scp -r  -i C\:/Program\ Files/PuTTY/2/id_rsa.pem -P 8022 u0_a150@192.168.1.100:/data/data/com.termux/files/home/storage/downloads/github/batch_misc/misc/py_misc/web/eFlaskTodo  . `
 
 使用logout或exit登出 
@@ -48,8 +49,23 @@ usage: ssh [-46AaCfGgKkMNnqsTtVvXxYy] [-B bind_interface]
 
 ```
 
-## misc
-其他工具vnc，putty，mstsc.exe，xshell。
-putty也支持SSH登陆。
+## 
+## ssh工具
+
+windows下有winscp，putty，vnc等待界面的ssh工具，也支持SSH登陆。
+
+linux下有：vnc，putty，mstsc.exe，xshell。
+
+### misc
+
 腾讯云平台不支持pem 的 ssh登录，只支持ssh密码登陆。
 termux不支持ssh密码登陆。只支持pem 的 ssh登录
+
+
+
+
+
+
+
+
+
