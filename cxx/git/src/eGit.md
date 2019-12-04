@@ -75,6 +75,7 @@ git add .    #  添加当前路径到索引区、暂存区
 git rm abc #  从索引区版本库移除abc文件
 git rm --cached readme.txt # 从索引区版本库移除但不删除文件
 git add -i   #  互动添加文件到暂存区
+git add -f . #  无视.gitignore文件约束，添加文件
 
 git ls-files # 查看暂存区
 git reset (HEAD ) # 默认使用 --mixed,从暂存区删除所有被修改的文件
@@ -228,7 +229,7 @@ bash命令可以选择文件夹执行命令。
  # 忽略dbg文件和dbg目录
  dbg
  # 忽略*.o和*.a文件
-``` 
+```
 
 #### merge
 单线合并merge，简单移动master指针即可
@@ -404,20 +405,25 @@ git checkout master #回到主分支。
 git pull #拉取最新代码。
 ```
 
-
 git push origin master error: cannot spawn sh: No such file or directory
 与账号邮箱私密有关
 
+**Q**：从所有历史中搜索已经删除的文件
+
+**A**: `git log --all --full-history -- thefile.txt`
 
 **Q**:从所有版本中删除敏感文件
 **A**:
+
 ``` bash
 git filter-branch -f --tree-filter 'rm tools/abc.exe' HEAD 
+git filter-branch --force --index-filter "git rm --cached --ignore-unmatch sensorRecogn/titanic.HDF5" --prune-empty --tag-name-filter cat -- --all
 git push origin --force
 ```
 
 **Q**: 如何查看远程分支的log
 **A**:
+
 ``` bash
 git branch -a
 git log  remotes/origin/HEAD
