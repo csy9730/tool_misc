@@ -6,11 +6,11 @@ Linux的变量种类
 3. bash临时变量，关闭shell时失效
 按变量的生存周期来划分，Linux变量可分为两类： 
 1 永久的：需要修改配置文件，变量永久生效。 
-2 临时的：使用export命令声明即可，变量在关闭shell时失效。
+2 临时的：使用`export`命令声明即可，变量在关闭shell时失效。
 
 ## 配置变量
 以下是变量的创建，读取，更新和删除操作（CRUD)。
-### 设置
+### 新建
 1 在/etc/profile文件中添加变量【对所有用户生效(永久的)】 
 用VI在文件/etc/profile文件中增加变量，该变量将会对Linux下所有用户有效，并且是“永久的”。 
 例如：编辑/etc/profile文件，添加CLASSPATH变量
@@ -30,7 +30,10 @@ vi/home/guok/.bash.profile添加如下内容：
 
 3 直接运行export命令定义变量【只对当前shell(BASH)有效(临时的)】 
 在shell的命令行下直接使用[export 变量名=变量值] 定义变量，该变量只在当前的shell(BASH)或其子shell(BASH)下是有效的，shell关闭了，变量也就失效了，再打开新shell时就没有这个变量，需要使用的话还需要重新定义。
-
+### 修改
+修改环境变量可以直接使用环境变量名进行修改。
+例：`MYNAME="ZZLL"`
+添加`"export PATH=/usr/local/anconda3/bin:$PATH" `到/etc/profile
 ### 环境变量的查看
 1 使用echo命令查看单个环境变量。例如： 
 `echo $PATH `
