@@ -1,5 +1,5 @@
-#Git使用
-###入门
+# Git使用
+### 入门
 官网地址：http://git-scm.com/
 套件
 * git.exe
@@ -9,14 +9,14 @@
 
 gitlab安装，可以安装tortoiGit或git for windows
 
-###初始化帐号
+### 初始化帐号
 git config --global user.name lilei
 git config --global user.email lilei@abc.cn
 git config --global core.autocrlf false
 git config --global core.safecrlf false
 git config --global core.quotepath false
 
-###初始化ssh
+### 初始化ssh
 
 1. ssh-keygen -t rsa -b 4096
 2. 默认在usr/.ssh目录下生成id_rsa.hub公钥 和 id_rsa私钥文件
@@ -25,7 +25,7 @@ git config --global core.quotepath false
 5. 无须输入密码即可配置本地仓库
 
 
-###本地仓库配置
+### 本地仓库配置
 新建本地repo仓库。
 * 本地初始化      git init
 * 拷贝初始化      git clone url 
@@ -62,9 +62,9 @@ git本地配置保存在 %userprofile%\.gitconfig
 移除跟踪但不删除文件
 git rm --cached readme.txt
 
-#####log
+##### log
 git log 使用udfb翻页查看，q退出当前
-#####diff
+##### diff
 1.1 比较工作区与暂存区
 　　git diff 不加参数即默认比较工作区与暂存区
 1.2 比较暂存区与最新本地版本库（本地库中最近一次commit的内容）
@@ -85,7 +85,7 @@ git log 使用udfb翻页查看，q退出当前
 　git diff Testfile > patch//将单个文件做成一个单独的补丁
 拓展：git apply patch 应用补丁，应用补丁之前我们可以先检验一下补丁能否应用，git apply --check patch 如果没有任何输出，那么表示可以顺利接受这个补丁
 　　　　　　　另外可以使用git apply --reject patch将能打的补丁先打上，有冲突的会生成.rej文件，此时可以找到这些文件进行手动打补丁
-#####ignore
+##### ignore
 ```bash
  *.[oa]
 
@@ -101,7 +101,7 @@ git status
 查看track状态。
 git add -i 
 
-###版本操作
+### 版本操作
 代码区分为：
 * 工作区（可编辑状态），    working directory
 * 暂存区（stage changed），        index 
@@ -144,7 +144,7 @@ git fetch
 ### tag
 补录标签
 git tag -a v1.2 9fceb02
-###缓存
+### 缓存
 git stash 
 git stash list
 git stash drop
@@ -170,15 +170,15 @@ branch - checkout 切换分支
 git fetch 获取更新，更新叠加到本地分支
 git prune 剪枝
 
-#####管理员操作
+##### 管理员操作
 初始化项目
 合并merge请求
 
 git merge --abort
 
-###question
+### question
 
-###misc
+### misc
 
 gitk：gui界面
 
@@ -190,14 +190,14 @@ git config --global alias.visual '!gitk'
 git config --global alias.unstage 'reset HEAD --'
 
 
-#####冲突处理
+##### 冲突处理
 cd到文件目录，
 ```
 git add .
 git commit
 ```
 
-###help
+### help
 
 ```bash
 $ git --help
