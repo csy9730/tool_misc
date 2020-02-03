@@ -10,11 +10,12 @@
 
 ``` bash
 git submodule add <仓库地址> <本地路径> # clone 仓库地址作为submodule到本地。
-git submodule add ssh://git@10.2.237.56:23/dennis/sub.git
-# 添加成功后，在父仓库根目录增加了.gitmodule文件
-git add .gitmodules my_proj
+git submodule add ssh://git@10.2.237.56:23/dennis/sub.git lib
+# 添加成功后，在父仓库根目录自动增加了.gitmodule文件。
+# .git/config文件会追加 [submodule "lib"]。内容为 url = ssh://git@10.2.237.56:23/dennis/sub.git
 
-git submodule update --init --recursive 
+git submodule init
+git submodule update 
 
 ```
 
@@ -38,6 +39,7 @@ cd .. & git commit # 更新commit id
 ### update
 
 先改子项目，再更新父项目。
+ git submodule update --init --recursive 
 
 ### clone
 
@@ -49,6 +51,8 @@ git clone --recurse-submodules <main_project_url>  # 获取主项目和所有子
 
 git submodule init
 git submodule update
+git submodule update -- arepos # 可以指定路径更新仓库，空仓库会执行git clone
+
 ```
 
 
@@ -58,9 +62,21 @@ git submodule update
 ``` bash
 
 rm -rf sm_path  # 删除子模块目录及源码
-vi .gitmodules # 删除项目目录下.gitmodules文件中子模块相关条目
-vi .git/config # 删除配置项中子模块相关条目
+vim .gitmodules # 删除项目目录下.gitmodules文件中子模块相关条目
+vim .git/config # 删除配置项中子模块相关条目
 rm .git/module/* # 删除模块下的子模块目录，每个子模块对应一个目录
 git rm --cached 子模块名称 # 清理错误
+```
+``` bash
+SYNOPSIS
+git submodule [--quiet] add [<options>] [--] <repository> [<path>]
+git submodule [--quiet] status [--cached] [--recursive] [--] [<path>…?]
+git submodule [--quiet] init [--] [<path>…?]
+git submodule [--quiet] deinit [-f|--force] (--all|[--] <path>…?)
+git submodule [--quiet] update [<options>] [--] [<path>…?]
+git submodule [--quiet] summary [<options>] [--] [<path>…?]
+git submodule [--quiet] foreach [--recursive] <command>
+git submodule [--quiet] sync [--recursive] [--] [<path>…?]
+git submodule [--quiet] absorbgitdirs [--] [<path>…?]
 ```
 
