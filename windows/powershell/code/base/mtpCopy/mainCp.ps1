@@ -1,6 +1,6 @@
 $des = 'D:\DICM'
 $phone = Get-ChildShellItem | where { $_.name -eq 'MI 8 Lite' }
-Get-ChildShellItem -Path "$($phone.Path)\内部存储设备\Download\code" -Filter '(.*)|(.3gp)$' | foreach {
+Get-ChildShellItem -Path "$($phone.Path)\内部存储设备\DCIM" -Filter '(.*)|(.3gp)$' | foreach {
 	#获取照片创建日期
 	$datestr = $_.Parent.GetDetailsOf($_,3)
 	$datestr = ([datetime]$datestr).ToString('yyyy-MM-dd')
