@@ -399,7 +399,7 @@ commit 本地分支执行变更？
 
 git错误:You are not currently on a branch
 通过git reset和git checkout进行版本回退之后再次git pull抛出以下错误：
-```
+``` bash
 You are not currently on a branch.
 Please specify which branch you want to merge with.
 See git-pull(1) for details.
@@ -413,7 +413,7 @@ See git-pull(1) for details.
     git pull <remote> <branch>
 ```
 意思是当前的版本已经不在master分支了，解决的办法：
-```
+``` bash
 git status #查看所有变化的文件，把有改动的先删除。
 git checkout master #回到主分支。
 git pull #拉取最新代码。

@@ -3,6 +3,12 @@
 如何开启mstsc服务？
 系统管理->服务 里面的RDS服务
 
+## feature
+
+mstsc使用rdp协议，使用本地显卡渲染，与teamviewer的远程差分局部渲染不同。
+
+## misc
+
 **Q**: mstsc无法连接，如何处理？ 
 **A**:
 1. 检查网络连接，主机和客户机相互ping，确保相互能够访问
@@ -11,6 +17,11 @@
 
 **Q**: 如何查看ip地址和账户？
 **A**：通过`ipconfig`查看ip，通过`net user`查看账户
+
+
+**Q**: mstsc发送大文件(大于2GB)容易失败
+**A**：尝试分割文件成小文件。
+
 
 **Q**: 如何开启3389端口？
 **A**：
@@ -32,7 +43,8 @@ wmic RDTOGGLE WHERE ServerName='%COMPUTERNAME%' call SetAllowTSConnections 1
 
 Windows 10 家庭版中取消了远程桌面服务端，想通过远程连接到自己的电脑就很麻烦了，第三方远程桌面速度又不理想(如TeamViewer)。通过以下方法可让系统恢复远程桌面功能
 通过使用rdpwrap，可以启用Win10家庭版中被阉割的远程桌面服务端。
-[rdpwrap](https://github.com/stascorp/rdpwrap/release)
+同时还可以允许通过mstsc实现多用户同时登陆
+[rdpwrap](https://github.com/stascorp/rdpwrap/releases)
 ``` bash
 autoupdate.bat # update
 helper
