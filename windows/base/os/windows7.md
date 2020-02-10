@@ -75,3 +75,24 @@ Windows To Go：允许 Windows 8 从 U 盘或者外置硬盘启动，这里有�
 DirectAccess：远程直接登入，不同的是只要客户机一开机它就会连接上，而不需要初始化。
 分支缓存(BranchCache)：分支缓存使分支办公室中的客户端能够安全地检索缓存在本地的文件，而无需从主办公室服务器检索文件。
 以RemoteFX提供视觉特效：这是远程桌面协议（RDP）功能的增强，使用服务器端的图形显卡来处理然后将高分辨率位图发送到客户端桌面。
+
+## 激活码
+win7激活码64位旗舰版激活码：
+
+MGX79-TPQB9-KQ248-KXR2V-DHRTD
+
+2VCGQ-BRVJ4-2HGJ2-K36X9-J66JG
+
+342DG-6YJR8-X92GV-V7DCV-P4K27
+
+C4M9W-WPRDG-QBB3F-VM9K8-KDQ9Y
+
+win7激活码64位通用版激活码：
+
+TFP9Y-VCY3P-VVH3T-8XXCC-MF4YK
+
+FJHWT-KDGHY-K2384-93CT7-323RC
+
+J783Y-JKQWR-677Q8-KCXTF-BHWGC
+
+87VT2-FY2XW-F7K39-W3T8R-XMFGF
