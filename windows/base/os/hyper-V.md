@@ -24,10 +24,12 @@
 ## 网络连接
 对于xp系统，需要安装vmguest.iso
 
+
+
 **Q**： 如何固定虚拟网卡的ip
 **A**： 需要新建一块固定ip的虚拟网卡。
 VMSwitcherInner 设置
-1. hyper管理器中，新建 VMSwitcherInner，选择内部（内部）
+1. hyper管理器中，新建 VMSwitcherInner，选择内部（内部）.注意，千万避免启用VLan ID。
 2. VMSwitcherInner设置固定IP地址：192.168.X.1 ,(X 可以自己定)
 3. 虚拟机操作系统中设置使用VMSwitcherInner虚拟网卡。
 4. 开启虚拟机系统，网络设置使用固定ip地址，192.168.X.Y ,(Y>1),使用子网掩码255.255.255.0
@@ -46,6 +48,8 @@ VMSwitcherInner 设置
 **A**: 
 1. 使用mstsc远程登陆
 2. 文件夹共享？
+
+xp系统的版本过低，不支持文件复制，需要使用mstsc才能实现文件复制
 
 
 ## commands
