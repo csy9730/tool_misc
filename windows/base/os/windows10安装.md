@@ -42,7 +42,7 @@ Windows 10 各版本区别：
 专业版(Professional)：供小型企业使用 在家庭版基础上增加了域账号加入、bitlocker、企业商店等功能
 企业版(Enterprise)：供中大型企业使用 在专业版基础上增加了DirectAccess，AppLocker等高级企业功能
 教育版(Education)：供学校使用 (学校职员, 管理人员, 老师和学生) 其功能基本和企业版的一样
-LTSB版：无Edge浏览器、小娜，无磁贴，可选是否下载和安装补丁，其它版都不能自选补丁
+LTSB版,长期支持更新分支（Long Time Service Branch）：无Edge浏览器、小娜，无磁贴，可选是否下载和安装补丁，其它版都不能自选补丁
 N版：带“N”的版本相当于阉割版，移除了Windows Media Player，几乎用不到N版。
 Windows 10 企业版（和教育版功能一样，功能最完整版本）
 
@@ -145,9 +145,6 @@ slmgr
 slue.exe
 ```
 
-0xC004F213
-0xC004F069
-0x803f7001
 slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX
 
 ### 激活码
@@ -228,3 +225,20 @@ Win 10 Pro Education Volume:MAK批量授权版
 Win 10 Pro Education N Volume:MAK批量授权版
 [Key]：T9NFD-3RDH8-GF4RT-Q2K6F-KBVYR
 
+
+win10企业版ltsc  (Long-Term Servicing Channel)又被称为win10企业版2019长期服务版本，在win10企业版2016长期服务版本的基础上，做了很多优化。因为功能得到简化，是目前最流畅的系统版本之一。
+win10企业版ltsc激活密钥：
+M7XTQ-FN8P6-TTKYV-9D4CC-J462D
+MBQRK-FNDW8-B7GF4-V9PCW-6MV77
+
+首先 WIN+X 打开”PowerShell 管理员版本”
+逐条输入以下代码：
+``` powershell
+slmgr -ipk M7XTQ-FN8P6-TTKYV-9D4CC-J462D
+# 指定激活服务器
+slmgr -skms kms.03k.org
+slmgr -ato # 查看激活状态
+slmgr -dlv
+slmgr.vbs -xpr # 查看激活时间，180天后过期
+
+```
