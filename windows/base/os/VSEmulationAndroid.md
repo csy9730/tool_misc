@@ -7,4 +7,16 @@
 
 下载vs_emulatorsetup.exe 下载速度还是挺快的。
 
-3.安装好后打开模拟器管理界面，下面是截图
+3.安装好后打开模拟器管理器界面，
+
+`C:\Program Files (x86)\Microsoft Emulator Manager\1.0\emulatormgr.exe`
+下面是截图
+
+
+通过hyperV打开，会出现安卓系统的命令行。
+
+打开模拟器界面
+`C:\Program Files (x86)\Microsoft XDE\10.0.10586.0\XDE.exe`
+
+
+需要安装adb.exe，然后通过拖放文件实现安装程序
