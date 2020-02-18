@@ -3,81 +3,7 @@
 ## introduction
 
 计划任务：指定主机指定时间运行指定的exe程序
-
-
-```
-C:\Users\admin>schtasks /?
-SCHTASKS /parameter [arguments]
-描述:
-    允许管理员创建、删除、查询、更改、运行和中止本地或远程系统上的计划任
-    务。
-参数列表:
-    /Create         创建新计划任务。
-    /Delete         删除计划任务。
-    /Query          显示所有计划任务。
-    /Change         更改计划任务属性。
-    /Run            按需运行计划任务。
-    /End            中止当前正在运行的计划任务。
-    /ShowSid        显示与计划的任务名称相应的安全标识符。
-    /?              显示此帮助消息。
-Examples:
-    SCHTASKS
-    SCHTASKS /?
-    SCHTASKS /Run /?
-    SCHTASKS /End /?
-    SCHTASKS /Create /?
-    SCHTASKS /Delete /?
-    SCHTASKS /Query  /?
-    SCHTASKS /Change /?
-    SCHTASKS /ShowSid /?
-```
-
-
-```
-C:\Users\admin>schtasks /query
-
-文件夹: \
-任务名                                   下次运行时间           模式
-======================================== ====================== ===============
-Adobe Acrobat Update Task                2019/5/16 11:00:00     就绪
-NvBatteryBoostCheckOnLogon_{B2FE1952-018 N/A                    就绪
-NvDriverUpdateCheckDaily_{B2FE1952-0186- 2019/5/16 12:25:44     就绪
-NVIDIA GeForce Experience SelfUpdate_{B2 N/A                    已禁用
-NvNodeLauncher_{B2FE1952-0186-46C3-BAEC- N/A                    就绪
-NvProfileUpdaterDaily_{B2FE1952-0186-46C N/A                    已禁用
-NvProfileUpdaterOnLogon_{B2FE1952-0186-4 N/A                    已禁用
-NvTmMon_{B2FE1952-0186-46C3-BAEC-A80AA35 N/A                    已禁用
-NvTmRepCR1_{B2FE1952-0186-46C3-BAEC-A80A N/A                    已禁用
-NvTmRepCR2_{B2FE1952-0186-46C3-BAEC-A80A N/A                    已禁用
-NvTmRepCR3_{B2FE1952-0186-46C3-BAEC-A80A N/A                    已禁用
-NvTmRep_{B2FE1952-0186-46C3-BAEC-A80AA35 N/A                    已禁用
-OneDrive Standalone Update Task-S-1-5-21 N/A                    已禁用
-User_Feed_Synchronization-{804DA5A5-5BEE N/A                    已禁用
-WpsExternal_admin_20190428132612         2019/5/16 10:12:12     就绪
-WpsUpdateTask_admin                      2019/5/16 9:50:05      就绪
-
-文件夹: \Microsoft
-任务名                                   下次运行时间           模式
-======================================== ====================== ===============
-信息: 目前在你的访问级别上不存在任何可用的计划任务。
-
-文件夹: \Microsoft\VisualStudio
-任务名                                   下次运行时间           模式
-======================================== ====================== ===============
-VSIX Auto Update 14                      2019/5/17 6:30:35      就绪
-
-文件夹: \Microsoft\Windows
-任务名                                   下次运行时间           模式
-======================================== ====================== ===============
-信息: 目前在你的访问级别上不存在任何可用的计划任务。
-```
-
-
-```
-C:\Users\admin>SCHTASKS /ShowSid /TN "\备份\启动备份"
-成功: 已成功计算 SID“S-1-5-87-782916017-575545879-3398072960-2725436614-2063171235”(用户名“备份-启动备份”)。
-```
-
+schtasks.exe与taskschd.msc（任务计划程序）工具功能相似,taskschd.msc有友好的界面
 
 ### CRUD
 
@@ -164,7 +90,7 @@ VSIX Auto Update 14                      2019/5/17 6:30:35      就绪
 ```
 
 详细模式打印
-···
+```
 >>schtasks /query /v
 文件夹: \Microsoft\XblGameSave
 主机名:                             DESKTOP-CTAGE42
@@ -199,3 +125,79 @@ VSIX Auto Update 14                      2019/5/17 6:30:35      就绪
 ### REMOTE RUN
 
 SCHTASKS /Query /S system /U user /P password
+
+
+## misc
+
+``` bash
+C:\Users\admin>schtasks /?
+SCHTASKS /parameter [arguments]
+描述:
+    允许管理员创建、删除、查询、更改、运行和中止本地或远程系统上的计划任
+    务。
+参数列表:
+    /Create         创建新计划任务。
+    /Delete         删除计划任务。
+    /Query          显示所有计划任务。
+    /Change         更改计划任务属性。
+    /Run            按需运行计划任务。
+    /End            中止当前正在运行的计划任务。
+    /ShowSid        显示与计划的任务名称相应的安全标识符。
+    /?              显示此帮助消息。
+Examples:
+    SCHTASKS
+    SCHTASKS /?
+    SCHTASKS /Run /?
+    SCHTASKS /End /?
+    SCHTASKS /Create /?
+    SCHTASKS /Delete /?
+    SCHTASKS /Query  /?
+    SCHTASKS /Change /?
+    SCHTASKS /ShowSid /?
+```
+
+
+```
+C:\Users\admin>schtasks /query
+
+文件夹: \
+任务名                                   下次运行时间           模式
+======================================== ====================== ===============
+Adobe Acrobat Update Task                2019/5/16 11:00:00     就绪
+NvBatteryBoostCheckOnLogon_{B2FE1952-018 N/A                    就绪
+NvDriverUpdateCheckDaily_{B2FE1952-0186- 2019/5/16 12:25:44     就绪
+NVIDIA GeForce Experience SelfUpdate_{B2 N/A                    已禁用
+NvNodeLauncher_{B2FE1952-0186-46C3-BAEC- N/A                    就绪
+NvProfileUpdaterDaily_{B2FE1952-0186-46C N/A                    已禁用
+NvProfileUpdaterOnLogon_{B2FE1952-0186-4 N/A                    已禁用
+NvTmMon_{B2FE1952-0186-46C3-BAEC-A80AA35 N/A                    已禁用
+NvTmRepCR1_{B2FE1952-0186-46C3-BAEC-A80A N/A                    已禁用
+NvTmRepCR2_{B2FE1952-0186-46C3-BAEC-A80A N/A                    已禁用
+NvTmRepCR3_{B2FE1952-0186-46C3-BAEC-A80A N/A                    已禁用
+NvTmRep_{B2FE1952-0186-46C3-BAEC-A80AA35 N/A                    已禁用
+OneDrive Standalone Update Task-S-1-5-21 N/A                    已禁用
+User_Feed_Synchronization-{804DA5A5-5BEE N/A                    已禁用
+WpsExternal_admin_20190428132612         2019/5/16 10:12:12     就绪
+WpsUpdateTask_admin                      2019/5/16 9:50:05      就绪
+
+文件夹: \Microsoft
+任务名                                   下次运行时间           模式
+======================================== ====================== ===============
+信息: 目前在你的访问级别上不存在任何可用的计划任务。
+
+文件夹: \Microsoft\VisualStudio
+任务名                                   下次运行时间           模式
+======================================== ====================== ===============
+VSIX Auto Update 14                      2019/5/17 6:30:35      就绪
+
+文件夹: \Microsoft\Windows
+任务名                                   下次运行时间           模式
+======================================== ====================== ===============
+信息: 目前在你的访问级别上不存在任何可用的计划任务。
+```
+
+
+```
+C:\Users\admin>SCHTASKS /ShowSid /TN "\备份\启动备份"
+成功: 已成功计算 SID“S-1-5-87-782916017-575545879-3398072960-2725436614-2063171235”(用户名“备份-启动备份”)。
+```
