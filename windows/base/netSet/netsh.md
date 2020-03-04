@@ -122,3 +122,8 @@ netsh interface>ipv4 show address
 ``` bash
 netsh interface ip set dns name="本地连接" source=dhcp
 ```
+
+### advfirewall
+``` bash
+ netsh advfirewall firewall show rule name=all dir=in type=dynamic
+ ```
