@@ -20,6 +20,7 @@
   * linux基础-服务管理
   * 磁盘管理
   * linux基础-网络状态netstat
+  * linux基础-firewall
   * linux基础-bash相关
   * kernel
   * 配置备份

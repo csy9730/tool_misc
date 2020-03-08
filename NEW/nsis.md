@@ -2,6 +2,14 @@
 
 ## installPackage
 
+windows下常见的封包格式
+* msi
+* nsis
+* inno
+* WinRar
+* Wise Installation Professional
+
+
 ### Microsoft Windows Installer
 　　如果某个软件是用 Windows Installer 打包的，那你就应该能在文件夹中看到 *.msi 文件。这是最典型的特征，这些文件通常可以使用 /QB 和 /QN 参数进行自动安装。
 　　/qb 会在窗口中显示一个基本的安装进程。
@@ -43,6 +51,8 @@ Wise Installation Professional　制作的安装文件，可用 /silent 参数�
 ### InstallShield with MSI
 InstallShield with MSI 制作的安装文件，请使用类似：setup.exe /s /v "/qb" 来安装。
 
+### WinRAR
+所有WinRAR做的自解压安装包可以使用 /s 参数进行静默安装
 ## misc
 
 无人值守安装光盘最有魅力的地方之一就是在安装过程中可以静默安装好预先设计集成的一些常用软件，安装结束以后软件就已经可以使用
@@ -57,5 +67,21 @@ taskkill.exe /F /IM isobuster.exe
 ECHO.
 ```
 
+**Q**:如何静默安装程序，并且指定安装目录
+**A**:  例如`Setup.exe /S /D=%localappdata%\abc`
+
 **Q**:如何静默安装程序，并且可以绕过UAC限制？
-**A**: 
+**A**: 难以绕过，一般使用管理权权限开启命令行
+
+**Q**:修改软件默认安装路径?
+**A**: 修改注册表：开始→运行→regedit打开注册表：展开`HKEY_LOCAL_MACHINE\software\Microsoft\Windows\Current Version`项。在右侧窗口找到“ProgramFilesDir”值，改成你想要的目录，重新启动电脑后，也可以将默认安装目录安装到之前指定的文件夹中了
+
+
+**Q**: 如何设置逐个安装，而不是并行安装
+**A**: 通过`start wait`实现等待安装结束功能
+`start /wait %systemdrive%installApplicationApplication_nameSetup.exe -s`
+
+
+**Q**:阻止程序安装完成后自动重启动：
+**A**:为了阻止某些程序安装成功后自动重启动（例如Kerio Personal Firewall 4），你可以在 /qn 或者 /qb参数后使用REBOOT=Suppress标记，例
+`setup.msi "/qn REBOOT=Suppress"`
