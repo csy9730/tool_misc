@@ -19,26 +19,16 @@
 * root :
 
 /root  是root 用户的宿主目录。
-
 /bin ,/lib 是本机通用可执行文件，/etc本机通用配置文件
-
 /lib，/usr/lib，/usr/local/lib，/usr/bin，
-
 /sbin，/usr/sbin，/usr/local/sbin：放置系统管理员使用的可执行命令
-
 /boot 和/proc 是内存映射文件
-
 /dev 是外设映射文件,/mnt ,/media 是u盘光盘等挂载映射文件
-
 opt 源码安装程序，或第三方软件放置目录
-
 /lost+fount*, var，tmp，srv，
 
 
-
 单用户模式可以充值root密码，必须磁盘引导进入
-
-
 
 */*：根目录，位于[Linux](http://lib.csdn.net/base/linux)文件系统目录结构的顶层，一般根目录下只存放目录，不要存放文件，/etc、/bin、/dev、/lib、/sbin应该和根目录放置在一个分区中。
 
@@ -76,7 +66,15 @@ opt 源码安装程序，或第三方软件放置目录
 
 */var：* 放置系统执行过程中经常变化的文件，如随时更改的日志文件 /var/log。*/var/log/message*： 所有的登录文件存放目录。*/var/spool/mail*： 邮件存放的目录。 */var/run*: 程序或服务启动后。建议单独分区，设置较大的磁盘空间。
 
-
+**Q**: 环境变量相关如何配置
+**A**:  环境变量排序如下：
+1. /usr/local/sbin
+2. /usr/local/bin
+3. /usr/sbin
+4. /usr/bin
+5. /sbin
+6. /bin
+ local > /usr > /system , sbin>bin
 
 ## 子目录
 

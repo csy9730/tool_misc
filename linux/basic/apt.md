@@ -87,11 +87,16 @@ sudo apt-get install nvidia-common
 
 ``` bash
 apt install zsh
+apt install vim
+apt install git
+apt install wget curl
 apt install python2
 apt install python3
 apt install nodejs
 apt install perl
 apt install sqlite
 apt install docker
+apt install lua
+apt install gcc g++ cmake
+apt install autoconf  automake libtool pkg-config
 ```
-
