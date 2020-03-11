@@ -14,7 +14,7 @@ service sshd stop # 关闭ssh服务
 
 ## demo
 远程连接需要知道目标的IP地址和端口号，ssh的默认端口号是22。
-通过whoami和ifconfig查询IP地址和用户名。
+通过`whoami`查询用户名IP地址和。使用`ip address|grep inet`和`ifconfig`查询ip地址
 
  `ssh pi@192.168.1.102 -p 22`
  ` ssh -i C\:/Program\ Files/PuTTY/2/id_rsa.pem  u0_a150@192.168.1.102 -p 8022`
