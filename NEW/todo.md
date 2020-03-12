@@ -16,3 +16,5 @@ nuget
 1、出现此问题的原因是Device Guard或Credential Guard与Workstation不兼容。
 2、Windows系统的Hyper-V不兼容导致。
 bcdedit /set hypervisorlaunchtype off
+
+ubuntu samba 安装
