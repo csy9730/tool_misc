@@ -1,27 +1,4 @@
-# react
-
-MVVM （Model，view， ViewModel）
-
-* compoent ：React 应用都是构建在组件之上。
-  * props 是组件包含的两个核心概念之一，另一个是 state
-  * 概念类似一个状态机？
-  * 生命周期
-* Virtaul Dom & True Dom 使用差分算法，局部更新
-* JSX
-* Data Flow
-
-
-
-
-
-react只是关注view层，它的核心思想就是UI = f(data)
-
-control 部分通过 事件->action->dispatch->store -> State --> View ，通过操控state。
-
-## 无状态组件
-
-你也可以用纯粹的函数来定义无状态的组件(stateless function)
-
+# MVVM
 ## MVC扩展
 
 
