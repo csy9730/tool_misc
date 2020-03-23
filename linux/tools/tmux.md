@@ -1,0 +1,89 @@
+# tmux
+
+tmux比screen最大的优势就是tmux split后，重新连接session的时候split的pane不变，还有tmux可以以脚本的形式启动并运行一系列复杂的命令
+tmux里的，window,pane
+## session
+``` bash
+tmux # 创建session
+tmux new -s $session_name # 创建并指定session名字
+tmux new-session -s 会话名  
+
+tmux ls # 查看现有的会话
+tmux a # 进入最近的会话
+tmux a -t  会话名 # 进入指定会话
+tumx kill-session -t 会话名 # 干掉指定会话
+tumx kill-server # 干掉所有会话
+tumx detach-client # 临时退出session, [Ctrl+b d]
+```
+
+## window
+
+
+``` bash
+tmux new-window # 创建window [Ctrl+b +c]
+tumx kill-window # 删除window [Ctrl+b &]
+tumx killw
+# 下一个window [Ctrl+b n]
+# 上一个window [Ctrl+b p]
+# 重命名window [Ctrl+b ,]
+# 在多个window里搜索关键字 [Ctrl+b f]
+# 在相邻的两个window里切换 [Ctrl+b l]
+
+```
+
+## pane
+pane在window里，可以有N个pane，并且pane可以在不同的window里移动、合并、拆分
+``` bash
+
+# 创建pane
+tmux split -h # 横切split pane horizontal [Ctrl+b "]
+tmux split # 竖切split pane vertical [Ctrl+b %]
+# 按顺序在pane之间移动 [Ctrl+b o]
+# 上下左右选择pane [Ctrl+b 上/下/左/右]
+
+# 调整pane的大小
+# Ctrl+b :resize-pane -U # 向上
+# Ctrl+b :resize-pane -D # 向下
+# Ctrl+b :resize-pane -L # 向左
+# Ctrl+b :resize-pane -R # 向右
+# 在上下左右的调整里，最后的参数可以加数字 用以控制移动的大小，例如：
+# Ctrl+b :resize-pane -D 50
+
+# 在同一个window里左右移动pane
+# （往左边，往上面） [Ctrl+b { ]
+# （往右边，往下面）[Ctrl+b }] 
+
+tmux killp # 删除pane [Ctrl+b x]
+# 更换pane排版 [Ctrl+b Space]
+# 移动pane至window [Ctrl+b !]
+join-pane -t $window_name # 移动pane合并至某个window [Ctrl+b :]
+tmux display-panes # 显示pane编号 [Ctrl+b q]
+# 按顺序移动pane位置 [Ctrl+b Ctrl+o]
+```
+
+## misc
+
+其他：
+``` bash
+
+# 命令行模式 [Ctrl+b :]
+# 复制模式 [Ctrl+b []
+# 空格标记复制开始，回车结束复制。
+
+# 粘贴最后一个缓冲区内容 [Ctrl+b ]]
+
+# 选择性粘贴缓冲区 [Ctrl+b = ]
+
+# 列出缓冲区目标 [Ctrl+b :list-buffer]
+
+# 查看缓冲区内容 [Ctrl+b :show-buffer]
+
+# vi模式 [Ctrl+b :set mode-keys vi]
+
+# 显示时间 [Ctrl+b t]
+
+# 快捷键帮助 [Ctrl+b ?] 或 [Ctrl+b :list-keys]
+# tmux内置命令帮助 [Ctrl+b :list-commands]
+
+
+```
