@@ -15,7 +15,7 @@ sudo apt-get install zsh
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)" 
 chsh -s /bin/zsh  # 切换sh
-source .zshrc   # 
+source ~/.zshrc   # 切换当前主题
 echo $ZSH_THEME # 查看当前主题
 cat /etc/shells # 查看所有shell
 ```
@@ -23,7 +23,11 @@ cat /etc/shells # 查看所有shell
 在.zshrc文件中找到主题的配置项
 
 Copy
+``` ini
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="ys"
+
+
+```
