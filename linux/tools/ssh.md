@@ -10,6 +10,7 @@ yum install openssh-server # 或者安装这个
 service sshd start # 开启ssh服务
 service sshd status # 查看服务是否开启
 service sshd stop # 关闭ssh服务
+systemctl restart sshd # 重启sshd
 ```
 
 ## demo
@@ -20,6 +21,8 @@ service sshd stop # 关闭ssh服务
  ` ssh -i C\:/Program\ Files/PuTTY/2/id_rsa.pem  u0_a150@192.168.1.102 -p 8022`
 
 `scp -r  -i C\:/Program\ Files/PuTTY/2/id_rsa.pem -P 8022 u0_a150@192.168.1.100:/data/data/com.termux/files/home/storage/downloads/github/batch_misc/misc/py_misc/web/eFlaskTodo  . `
+
+
 
 使用logout或exit登出 
 
@@ -47,9 +50,11 @@ usage: ssh [-46AaCfGgKkMNnqsTtVvXxYy] [-B bind_interface]
            [-Q query_option] [-R address] [-S ctl_path] [-W host:port]
            [-w local_tun[:remote_tun]] destination [command]
 
-```
 
-## 
+
+```
+通过 ssh -v xx.xx.xx.xx 可以查看调试信息
+
 ## ssh工具
 
 windows下有winscp，putty，vnc等待界面的ssh工具，也支持SSH登陆。
@@ -60,12 +65,25 @@ linux下有：vnc，putty，mstsc.exe，xshell。
 
 腾讯云平台不支持pem 的 ssh登录，只支持ssh密码登陆。
 termux不支持ssh密码登陆。只支持pem 的 ssh登录
+由于windows10支持wsl（内嵌unbuntu子系统），所以支持ssh登录
+
+**Q**: 如何实现反向远程？适用于无公网ip地址的情况
+**A**: 通过以下实现
+`ssh -R 11235:localhost:22 -p 22 server_user_name@xxx.xxx.xxx.xxx`
+
+ssh -N -R 9999:localhost:22 user@hostB_address
+**Q**: ssh_exchange_identification: Connection closed by remote host
+**A**: 
+修改/etc/hosts.allow 和/etc/hosts.deny里面的信息,重启SSH服务就可以了.
+```
+[root@localhost Desktop]# vi /etc/hosts.allow
+#########################
+sshd: ALL    ##允许所有ip主机均能连接本机
+```
+有一种情况，就是客户端连接数过多时，也会报这个错误。缺省情况下，SSH终端连接数最大为10个。在这种情况下，需要改SSH的配置文件，
 
 
 
 
 
-
-
-
-
+`System has not been booted with systemd as init system (PID 1). Can't operate.`
