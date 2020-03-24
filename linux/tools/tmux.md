@@ -1,7 +1,11 @@
 # tmux
 
+tmux 是常用的终端复用工具，包括会话session，窗口window，面板pane，会话和窗口的区别是会话可以后台执行，窗口是前端显示。
+tmux的两大作用：
+1. 可以分离会话和窗口，一般用于ssh会话断开重连之后还能记录窗口
+2. 可以把窗口分离出多个面板
 tmux比screen最大的优势就是tmux split后，重新连接session的时候split的pane不变，还有tmux可以以脚本的形式启动并运行一系列复杂的命令
-tmux里的，window,pane
+
 ## session
 ``` bash
 tmux # 创建session
@@ -13,8 +17,10 @@ tmux a # 进入最近的会话
 tmux a -t  会话名 # 进入指定会话
 tumx kill-session -t 会话名 # 干掉指定会话
 tumx kill-server # 干掉所有会话
+tumx detach
 tumx detach-client # 临时退出session, [Ctrl+b d]
 ```
+窗口关闭之后，会话会在后台保留，关机之后会话才会丢失。可以通过插件记录会话，使重启之后也能恢复之前会话
 
 ## window
 
