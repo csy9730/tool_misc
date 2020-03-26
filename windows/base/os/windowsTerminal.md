@@ -35,3 +35,19 @@ vscode： 输入输出缓冲区太小，支持wsl的vim无clipboard时复制黏�
 文件下载/git clone/curl，文件上传/git push/
 file diff ，folder diff，
 打开github项目 ，一边 read/write，一边debug/run/compile
+
+
+
+MobaXterm
+
+Remote SSH
+xming 可以实现windows下通过命令行启动linux程序窗口
+
+
+vscode 插件 Remote-WSL 可以在wsl安装vscode远程服务。
+通过F1 输入 Remote-WSL 可以 远程vscode窗口，左下角有WSL标志。
+体现为，所有路径是以 wsl系统作为基准，
+与vscode直接使用wsl作为终端有何区别？
+
+Remote-SSH
+Remote-Containers
