@@ -5,12 +5,23 @@ scp 是建立在ssh远程连接之上的文件复制工具，。
 
 ## install
 ``` bash
-yum install sshd 		# 安装
-yum install openssh-server # 或者安装这个
+yum install sshd 		# centos安装
+apt-get install openssh-server # ubuntu 安装这个
 service sshd start # 开启ssh服务
 service sshd status # 查看服务是否开启
 service sshd stop # 关闭ssh服务
 systemctl restart sshd # 重启sshd
+
+```
+
+`sudo vim /etc/ssh/sshd_config` 修改 ssh server 配置
+``` ini
+# 为了避免与windows的ssh服务冲突，这里端口务必修改
+Port 2222 
+# Privilege Separation is turned on for security
+UsePrivilegeSeparation no
+# 登陆验证
+PasswordAuthentication yes
 ```
 
 ## demo

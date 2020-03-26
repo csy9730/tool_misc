@@ -19,6 +19,7 @@ tumx kill-session -t 会话名 # 干掉指定会话
 tumx kill-server # 干掉所有会话
 tumx detach
 tumx detach-client # 临时退出session, [Ctrl+b d]
+tmux rename # 重命名session
 ```
 窗口关闭之后，会话会在后台保留，关机之后会话才会丢失。可以通过插件记录会话，使重启之后也能恢复之前会话
 
@@ -29,9 +30,9 @@ tumx detach-client # 临时退出session, [Ctrl+b d]
 tmux new-window # 创建window [Ctrl+b +c]
 tumx kill-window # 删除window [Ctrl+b &]
 tumx killw
-# 下一个window [Ctrl+b n]
-# 上一个window [Ctrl+b p]
-# 重命名window [Ctrl+b ,]
+tmux next # 下一个window [Ctrl+b n]
+tmux prev # 上一个window [Ctrl+b p]
+tmux renamew # 重命名window [Ctrl+b ,]
 # 在多个window里搜索关键字 [Ctrl+b f]
 # 在相邻的两个window里切换 [Ctrl+b l]
 
@@ -65,7 +66,19 @@ tmux killp # 删除pane [Ctrl+b x]
 join-pane -t $window_name # 移动pane合并至某个window [Ctrl+b :]
 tmux display-panes # 显示pane编号 [Ctrl+b q]
 # 按顺序移动pane位置 [Ctrl+b Ctrl+o]
+tmux lastp
+
+
 ```
+## buffer
+``` bash
+
+# 粘贴最后一个缓冲区内容 [Ctrl+b ]]
+# 选择性粘贴缓冲区 [Ctrl+b = ]
+# 列出缓冲区目标 [Ctrl+b :list-buffer]
+# 查看缓冲区内容 [Ctrl+b :show-buffer]
+```
+
 
 ## misc
 
@@ -76,20 +89,10 @@ tmux display-panes # 显示pane编号 [Ctrl+b q]
 # 复制模式 [Ctrl+b []
 # 空格标记复制开始，回车结束复制。
 
-# 粘贴最后一个缓冲区内容 [Ctrl+b ]]
-
-# 选择性粘贴缓冲区 [Ctrl+b = ]
-
-# 列出缓冲区目标 [Ctrl+b :list-buffer]
-
-# 查看缓冲区内容 [Ctrl+b :show-buffer]
-
 # vi模式 [Ctrl+b :set mode-keys vi]
-
 # 显示时间 [Ctrl+b t]
-
 # 快捷键帮助 [Ctrl+b ?] 或 [Ctrl+b :list-keys]
-# tmux内置命令帮助 [Ctrl+b :list-commands]
+tmux list-commands # tmux内置命令帮助 [Ctrl+b :list-commands]
 
 
 ```
