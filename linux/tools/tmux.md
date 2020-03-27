@@ -20,6 +20,8 @@ tumx kill-server # 干掉所有会话
 tumx detach
 tumx detach-client # 临时退出session, [Ctrl+b d]
 tmux rename # 重命名session
+tmux switch -t session-name # 切换会话
+
 ```
 窗口关闭之后，会话会在后台保留，关机之后会话才会丢失。可以通过插件记录会话，使重启之后也能恢复之前会话
 
@@ -45,8 +47,13 @@ pane在window里，可以有N个pane，并且pane可以在不同的window里移�
 # 创建pane
 tmux split -h # 横切split pane horizontal [Ctrl+b "]
 tmux split # 竖切split pane vertical [Ctrl+b %]
+tmux killp # 删除pane [Ctrl+b x]
 # 按顺序在pane之间移动 [Ctrl+b o]
+tmux display-panes # 显示pane编号 [Ctrl+b q]
+tmux lastp # 查看上次 pane
 # 上下左右选择pane [Ctrl+b 上/下/左/右]
+
+# 按Ctrl+B，再按[，就可以用鼠标滑轮/或者上下左右方向键/PageUp,PageDown滚动，按q退出。
 
 # 调整pane的大小
 # Ctrl+b :resize-pane -U # 向上
@@ -55,19 +62,17 @@ tmux split # 竖切split pane vertical [Ctrl+b %]
 # Ctrl+b :resize-pane -R # 向右
 # 在上下左右的调整里，最后的参数可以加数字 用以控制移动的大小，例如：
 # Ctrl+b :resize-pane -D 50
+# 最大化/恢复 [Ctrl+b z]
 
 # 在同一个window里左右移动pane
 # （往左边，往上面） [Ctrl+b { ]
 # （往右边，往下面）[Ctrl+b }] 
-
-tmux killp # 删除pane [Ctrl+b x]
 # 更换pane排版 [Ctrl+b Space]
-# 移动pane至window [Ctrl+b !]
-join-pane -t $window_name # 移动pane合并至某个window [Ctrl+b :]
-tmux display-panes # 显示pane编号 [Ctrl+b q]
-# 按顺序移动pane位置 [Ctrl+b Ctrl+o]
-tmux lastp
 
+# 移动pane至window [Ctrl+b !]
+tmux join-pane -t $window_name # 移动pane合并至某个window
+tmux joinp -t 0 
+# 按顺序移动pane位置 [Ctrl+b Ctrl+o]
 
 ```
 ## buffer
@@ -93,6 +98,11 @@ tmux lastp
 # 显示时间 [Ctrl+b t]
 # 快捷键帮助 [Ctrl+b ?] 或 [Ctrl+b :list-keys]
 tmux list-commands # tmux内置命令帮助 [Ctrl+b :list-commands]
-
-
 ```
+
+
+**Q**: 如何处理pane的内容滚动
+**A**: 
+
+**Q**: 如何处理tmux嵌套，本地使用tmux，通过远程连接服务器，服务器开启了tmux，如何处理
+**A**:  ctrl 在按两次b，可以激活远程的tmux。
