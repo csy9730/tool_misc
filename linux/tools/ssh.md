@@ -66,6 +66,10 @@ usage: ssh [-46AaCfGgKkMNnqsTtVvXxYy] [-B bind_interface]
 ```
 通过 ssh -v xx.xx.xx.xx 可以查看调试信息
 
+ssh -O cmd 可以执行单次命令
+
+
+ssh会话中执行远程文件复制到本地的操作
 ## ssh工具
 
 windows下有winscp，putty，vnc等待界面的ssh工具，也支持SSH登陆。
