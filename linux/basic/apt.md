@@ -68,11 +68,30 @@ sudo dpkg --configure -a
 
 
 
-**Q**: docker安装：
+**Q**: 安装docker：
 
 **A**: `sudo curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun`
 
 
+**Q**: 关闭apt自动更新
+**A**: 
+自动更新程序为`/usr/lib/apt/apt.systemd.daily`
+将“系统设置——软件和更新——更新——自动检查更新”选项值设为“从不
+或者执行以下命令 
+``` bash
+sudo systemctl stop apt-daily.timer
+systemctl status apt-daily.timer
+sudo systemctl disabled apt-daily.timer
+
+sudo systemctl status apt-daily.service
+sudo systemctl disalbed apt-daily.service
+sudo systemctl mask apt-daily.service
+
+sudo systemctl stop apt-daily-upgrade.timer
+sudo systemctl disabled apt-daily-upgrade.timer
+sudo systemctl disabled apt-daily-upgrade.service
+systemctl daemon-reload
+```
 
 英伟达显卡安装？
 
