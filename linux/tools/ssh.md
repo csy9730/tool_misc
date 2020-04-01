@@ -61,13 +61,23 @@ usage: ssh [-46AaCfGgKkMNnqsTtVvXxYy] [-B bind_interface]
            [-Q query_option] [-R address] [-S ctl_path] [-W host:port]
            [-w local_tun[:remote_tun]] destination [command]
 
-
-
+-p <端口>	指定远程服务器上的端口
+-F <配置文件>	指定ssh指令的配置文件，默认的配置文件为“/etc/ssh/ssh_config”
+-b <IP地址>	 使用本机指定的地址作为对位连接的源IP地址
+-l login_name    指定登录远程主机的用户. 可以在配置文件中对每个主机单独设定这个参数.
+-g	允许远程主机连接本机的转发端口？
+-t  "Force pseudo-terminal allocation." 显示启用用户交互(需要 TTY)
+-L port:host:hostport
+    将本地机(客户机)的某个端口转发到远端指定机器的指定端口. 工作原理是这样的, 本地机器上分配了一个 socket 侦听 port 端口, 一旦这个端口上有了连接, 该连接就经过安全通道转发出去, 同时远程主机和 host 的 hostport 端口建立连接. 可以在配置文件中指定端口的转发. 只有 root 才能转发特权端口. IPv6 地址用另一种格式说明: port/host/hostport 
+-R port:host:hostport
+    将远程主机(服务器)的某个端口转发到本地端指定机器的指定端口. 工作原理是这样的, 远程主机上分配了一个 socket 侦听 port 端口, 一旦这个端口上有了连接, 该连接就经过安全通道转向出去, 同时本地主机和 host 的 hostport 端口建立连接. 可以在配置文件中指定端口的转发. 只有用 root 登录远程主机 才能转发特权端口. IPv6 地址用另一种格式说明: port/host/hostport
+-D port
+    指定一个本地机器 ``动态的 应用程序端口转发. 工作原理是这样的, 本地机器上分配了一个 socket 侦听 port 端口, 一旦这个端口上有了连接, 该连接就经过安全通道转发出去, 根据应用程序的协议可以判断出远程主机将和哪里连接. 目前支持 SOCKS4 协议, 将充当 SOCKS4 服务器. 只有 root 才能转发特权端口. 可以在配置文件中指定动态端口的转发.
 ```
 通过 ssh -v xx.xx.xx.xx 可以查看调试信息
 
-ssh -O cmd 可以执行单次命令
-
+`ssh -O cmd `可以执行单次命令
+`ssh nick@xxx.xxx.xxx.xxx "pwd; cat hello.txt"`
 
 ssh会话中执行远程文件复制到本地的操作
 ## ssh工具
@@ -100,5 +110,5 @@ sshd: ALL    ##允许所有ip主机均能连接本机
 
 
 
-
-`System has not been booted with systemd as init system (PID 1). Can't operate.`
+**Q**: wsl报错：`System has not been booted with systemd as init system (PID 1). Can't operate.`
+**A**: 

@@ -1,0 +1,7 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\Directory\shell\GitBash]
+@="GIT_BASH"
+
+[HKEY_CLASSES_ROOT\Directory\shell\GitBash\command]
+@="cmd.exe /k cd /d \"%1\" & set MHERE_INVOKING=1 & D:\\greensoftware\\Git-2.20.1-64-bit\\git-bash.exe"
