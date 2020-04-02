@@ -11,6 +11,7 @@ service sshd start # 开启ssh服务
 service sshd status # 查看服务是否开启
 service sshd stop # 关闭ssh服务
 systemctl restart sshd # 重启sshd
+systemctl status sshd # 重启sshd
 
 ```
 
@@ -86,17 +87,41 @@ windows下有winscp，putty，vnc等待界面的ssh工具，也支持SSH登陆�
 
 linux下有：vnc，putty，mstsc.exe，xshell。
 
+## 端口转发
+**Q**: 如何实现反向远程？适用于一台服务器有公网ip地址，一台客服机无公网ip地址，实现服务器远程控制客服机的情况
+**A**: 通过以下实现
+在客服机上开启sshd：
+``` bash
+/usr/sbin/sshd.exe  -p 9999
+ssh -N -R 10001:localhost:9999 -p 22 server_user_name@123.45.67.89
+# 9999 和10001 端口号可以自行选择，9999为客服机端口号，10001为远程主机接收9999端口并转发出去的端口号
+# 等效于 远程主机开启10001端口的sshd服务
+```
+在服务器机上执行：
+`ssh user@localhost -p 10001 `
+
+
+**Q**: 如何实现跳板远程控制？适用于一台有公网ip地址的服务器，两台无公网ip地址的客服机A和B，实现客服机B远程控制客服机A的情况
+**A**: 参考反向远程方法。
+1. 首先A客服机开启反向远程
+2. 客服机B远程服务器，
+3. 服务器远程客服机A
+最终实现客服机B远程控制客服机A。
+
+
+**Q**：多个 sshd服务是否可以复用同一个端口号？
+**A**： 
+
+
+
 ### misc
 
 腾讯云平台不支持pem 的 ssh登录，只支持ssh密码登陆。
 termux不支持ssh密码登陆。只支持pem 的 ssh登录
+windowsXp支持openssh，所以支持ssh登录，（客户端会显示乱码）
+windows7支持msys2-ssh，所以支持ssh登录
 由于windows10支持wsl（内嵌unbuntu子系统），所以支持ssh登录
 
-**Q**: 如何实现反向远程？适用于无公网ip地址的情况
-**A**: 通过以下实现
-`ssh -R 11235:localhost:22 -p 22 server_user_name@xxx.xxx.xxx.xxx`
-
-ssh -N -R 9999:localhost:22 user@hostB_address
 **Q**: ssh_exchange_identification: Connection closed by remote host
 **A**: 
 修改/etc/hosts.allow 和/etc/hosts.deny里面的信息,重启SSH服务就可以了.
