@@ -83,7 +83,7 @@ tmux joinp -t 0
 # 列出缓冲区目标 [Ctrl+b :list-buffer]
 # 查看缓冲区内容 [Ctrl+b :show-buffer]
 ```
-
+tmux 复制黏贴分为 鼠标模式和按键模式。通过ctrl+b [ 激活复制模式，
 
 ## misc
 
