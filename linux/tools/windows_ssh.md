@@ -20,7 +20,7 @@ windowsXp可以按照openssh。
 **Q**: sshd启动时报错：`Could not load host key: /etc/ssh/ssh_host_rsa_key`
 **A**:  缺乏公钥私钥，执行以下命令生成密钥即可
 ``` bash
-ssh-keygen -t rsa -b 2048 -f /etc/ssh_host_rsa_key
+ssh-keygen -t rsa -b 2048 -f /etc/ssh/ssh_host_rsa_key
 ssh-keygen -t ecdsa -b 256 -f /etc/ssh/ssh_host_ecdsa_key
 ssh-keygen -t ed25519 -b 256 -f /etc/ssh/ssh_host_ed25519_key
 ssh-add /etc/ssh/
