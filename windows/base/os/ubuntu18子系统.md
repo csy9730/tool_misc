@@ -23,6 +23,9 @@ wslconfig /setdefault <DistributionName> # 设置默认运行的linux系统
 wslconfig /unregister <DistributionName> # 卸载linux系统
 wslconfig /unregeister ubuntu # 卸载ubuntu系统
 wslconfig /list # 查看已安装的linux系统
+
+net stop LxssManager #  关闭wsl子系统服务
+net start LxssManager # 开启wsl子系统服务
 ```
 ## 文件访问
 

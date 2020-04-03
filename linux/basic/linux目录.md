@@ -74,7 +74,16 @@ opt 源码安装程序，或第三方软件放置目录
 4. /usr/bin
 5. /sbin
 6. /bin
- local > /usr > /system , sbin>bin
+优先级：local > /usr > /system , sbin>bin
+
+
+**Q**: bin目录如何选择
+**A**: 
+
+/bin目录（binary）是二进制执行文件目录，主要用于具体应用
+/sbin目录（system binary）是系统管理员专用的二进制代码存放目录，主要用于系统管理
+
+/local > /usr > /root , system bin > bin
 
 ## 子目录
 
