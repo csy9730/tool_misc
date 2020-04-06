@@ -1,6 +1,97 @@
 # frp
 
 
-./frps -c ./frps.ini
+## install
+[frp](https://github.com/fatedier/frp/releases)
 
-./frpc -c .frpc.ini
+## demo
+
+### ssh
+
+
+服务器A执行,(ip地址123.45.67.89)
+`./frps -c ./frps.ini`
+
+``` ini
+# frps.ini
+[common]
+bind_port = 7000
+```
+
+无IP的客户端B，充当服务端，用户名abc
+`./frpc -c .frpc.ini`
+``` ini
+# frpc.ini
+[common]
+server_addr = 123.45.67.89
+server_port = 7000
+
+[ssh]
+type = tcp
+local_ip = 127.0.0.1
+local_port = 22
+remote_port = 6000
+```
+
+
+客户端C通过A连接B
+`ssh -p 6000 abc@123.45.67.89`
+客户端C无需运行frp程序
+
+
+服务器A不会运行sshd服务，通过frp转发端口
+ssh 是p2p连接，所以要指定双方的端口号
+网络链接方式是：
+C:ssh =>A:6000=>A:7000=>C:frp=>C:22
+
+### web
+
+``` ini
+# frps.ini
+[common]
+bind_port = 7000
+vhost_http_port = 8080
+```
+
+``` ini
+# frpc.ini
+[common]
+server_addr = 123.45.67.89
+server_port = 7000
+
+[web]
+type = http
+local_port = 80
+custom_domains = www.example.com
+```
+
+hosts文件添加以下内容
+``` ini
+123.45.67.89 www.example.com
+```
+
+C => www.example.com:8080 =>A:8080=>A:7000=>C:frp=>C:80
+
+**Q**: frp完全通过custom_domains区分不同网页？一定需要DNS支持？
+**A**: 
+
+
+### rdp
+``` ini
+[rdp]
+type = tcp
+local_ip = 127.0.0.1
+local_port = 3389
+remote_port = 13389
+```
+## full_ini
+
+``` ini
+[common]
+auto_token=123456
+```
+
+## misc
+其他穿透工具
+https://github.com/ffay/lanproxy
+zerotier 的 moon 自建节点

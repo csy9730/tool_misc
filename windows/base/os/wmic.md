@@ -35,17 +35,6 @@ powershell Get-WmiObject -List
 ```
 ## process
 
-``` ini
-Caption 
-CommandLine                                                                 
-CreationClassName CreationDate 
-CSCreationClassName=Win32_ComputerSystem 
-CSName=DESKTOP-CTAGE42           
-Description                                                         
-ExecutablePath                                                                                                                                 ExecutionState=
-InstallDate=
-Handle  HandleCount    KernelModeTime  MaximumWorkingSetSize  MinimumWorkingSetSize  Name                                                                OSCreationClassName    OSName                                                               OtherOperationCount  OtherTransferCount  PageFaults  PageFileUsage  ParentProcessId  PeakPageFileUsage  PeakVirtualSize  PeakWorkingSetSize  Priority  PrivatePageCount  ProcessId  QuotaNonPagedPoolUsage  QuotaPagedPoolUsage  QuotaPeakNonPagedPoolUsage  QuotaPeakPagedPoolUsage  ReadOperationCount  ReadTransferCount  SessionId  Status  TerminationDate  ThreadCount  UserModeTime   VirtualSize    WindowsVersion  WorkingSetSize  WriteOperationCount  WriteTransferCount  
-```
 
 **Q**: 查询某一个进程的命令行参数
 **A**: 

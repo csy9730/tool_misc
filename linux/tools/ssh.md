@@ -7,11 +7,20 @@ scp 是建立在ssh远程连接之上的文件复制工具，。
 ``` bash
 yum install sshd 		# centos安装
 apt-get install openssh-server # ubuntu 安装这个
-service sshd start # 开启ssh服务
+service sshd start # 开启sshd服务
 service sshd status # 查看服务是否开启
 service sshd stop # 关闭ssh服务
-systemctl restart sshd # 重启sshd
-systemctl status sshd # 重启sshd
+service sshd restart # 重启sshd服务
+# systemctl 和 service 功能相当
+systemctl restart sshd # 重启sshd服务
+systemctl status sshd # sshd状态查看
+
+sudo netstat -atlunp | grep sshd # 查看开启端口是否包括sshd服务
+$ TCP    192.168.1.101:56576    123.45.67.89:ssh      ESTABLISHED
+# 以上说明192.168.1.101地址通过56576端口远程控制 123.45.67.89的ssh的默认端口，已经建立连接成功
+
+logout  # Ctrl + D 退出ssh连接
+exit
 
 ```
 
@@ -88,6 +97,7 @@ windows下有winscp，putty，vnc等待界面的ssh工具，也支持SSH登陆�
 linux下有：vnc，putty，mstsc.exe，xshell。
 
 ## 端口转发
+
 **Q**: 如何实现反向远程？适用于一台服务器有公网ip地址，一台客服机无公网ip地址，实现服务器远程控制客服机的情况
 **A**: 通过以下实现
 在客服机上开启sshd：
@@ -96,9 +106,12 @@ linux下有：vnc，putty，mstsc.exe，xshell。
 ssh -N -R 10001:localhost:9999 -p 22 server_user_name@123.45.67.89
 # 9999 和10001 端口号可以自行选择，9999为客服机端口号，10001为远程主机接收9999端口并转发出去的端口号
 # 等效于 远程主机开启10001端口的sshd服务
+# 每次ssh连接sshd，ssh会使用随机端口号连接sshd的指定端口号
 ```
 在服务器机上执行：
 `ssh user@localhost -p 10001 `
+最终实现： C:10001 ,C:ssh <=> A:9999
+
 
 
 **Q**: 如何实现跳板远程控制？适用于一台有公网ip地址的服务器，两台无公网ip地址的客服机A和B，实现客服机B远程控制客服机A的情况
@@ -107,10 +120,15 @@ ssh -N -R 10001:localhost:9999 -p 22 server_user_name@123.45.67.89
 2. 客服机B远程服务器，
 3. 服务器远程客服机A
 最终实现客服机B远程控制客服机A。
+如果想在本地机B上直接实现远程控制客服机A，需要：
+1. 在客服机A开启远程端口转发，`ssh -fNR 3333:localhost:22 root@123.45.67.89`
+2. 在客服机B开启本地端口转发 `ssh -fNL 4444:localhost:3333 root@123.45.67.89`
+3. 在客服机B控制客服机A：ssh -p 4444 user_A@localhost
 
 
-**Q**：多个 sshd服务是否可以复用同一个端口号？
-**A**： 
+
+**Q**：多个sshd服务是否可以复用同一个端口号？
+**A**：可以使用同一个端口。但是如果某个sshd服务使用了端口转发，需要避免混用同一个端口号。
 
 
 
