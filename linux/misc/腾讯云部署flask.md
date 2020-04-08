@@ -19,3 +19,22 @@ Flask出现Error code 400, message Bad request syntax异常
 
 
 ![1572192301381](C:\Users\csy_acer_win8\AppData\Roaming\Typora\typora-user-images\1572192301381.png)
+
+## misc
+### 腾讯云如何配置安全组
+
+### 云镜软件
+腾讯云默认操作系统被安装的软件
+展开
+1.云镜软件
+/usr/local/qcloud/YunJing/YDEyes/
+/usr/local/qcloud/YunJing/YDEyes/YDService
+/usr/local/qcloud/YunJing/YDEyes/YDLive
+https://cloud.tencent.com/document/product/296/9927
+
+2.云监控
+/usr/local/qcloud/monitor/barad
+/usr/local/qcloud/stargate/sgagent
+https://cloud.tencent.com/document/product/248/2260
+
+bash /usr/local/qcloud/YunJing/uninst.sh
