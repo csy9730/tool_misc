@@ -150,8 +150,14 @@ sshd: ALL    ##允许所有ip主机均能连接本机
 ```
 有一种情况，就是客户端连接数过多时，也会报这个错误。缺省情况下，SSH终端连接数最大为10个。在这种情况下，需要改SSH的配置文件，
 
-
-
+**Q**: 网速不好的情况下，如何避免ssh断开？
+**A**:
+不修改配置文件,在命令参数里ssh -o ServerAliveInterval=60 这样子只会在需要的连接中保持持久连接.
+如果希望永久修改，可以在client端的etc/ssh/ssh_config添加以下
+``` ini
+ServerAliveInterval 60 ＃ client每隔60秒发送一次请求给server，然后server响应，从而保持连接
+ServerAliveCountMax 3  ＃ client发出请求后，服务器端没有响应得次数达到3，就自动断开连接，正常情况下，server不会不响应
+```
 
 **Q**: wsl报错：`System has not been booted with systemd as init system (PID 1). Can't operate.`
 **A**: 
