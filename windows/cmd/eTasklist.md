@@ -4,11 +4,11 @@
 
 tasklist,taskkill,taskmgr
 
-tasklist提供了任务查阅功能
+tasklist提供了任务查阅功能，命令行程序
 
-taskkill可以杀死任务。
+taskkill可以杀死任务，命令行程序。
 
-taskmgr 是常用的任务管理器。
+taskmgr 是常用的任务管理器，带界面。
 
 
 

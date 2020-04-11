@@ -48,3 +48,8 @@ url动态调试：
 
 ### vim
 ### peacock
+
+
+### cn
+**Q**: 如何开启自动区分gbk编码和utf8编码
+**A**: 将setting-Text Editor中的"files.autoGuessEncoding"项的值改为true即可。

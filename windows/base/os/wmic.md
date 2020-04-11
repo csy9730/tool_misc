@@ -1,5 +1,9 @@
 # wmic
 
+先决条件：
+a. 启动Windows Management Instrumentation服务，开放TCP135端口。
+b. 本地安全策略的“网络访问: 本地帐户的共享和安全模式”应设为“经典-本地用户以自己的身份验证”。
+
 ## overview
 
 操作系统 包括
@@ -7,8 +11,7 @@
 硬件驱动管理
 系统管理
 文件系统管理
-
-用户
+用户管理
 安装程序管理
 启动项管理
 进程管理
@@ -42,7 +45,8 @@ powershell Get-WmiObject -List
  wmic process get caption,commandline /value 如果想查询某一个进程的命令行参数，使用下列方式：
  ` wmic process where caption="update.exe" get caption,commandline /value` 其中update.exe可以换成你要查看的
 
-wmic process where caption="mysqld.exe" get caption,commandline /value
+`wmic process where caption="mysqld.exe" get caption,commandline /value` 
+显示：
 C:\Program Files\MySQL\MySQL Server 5.6\bin\mysqld.exe" --defaults-file="C:\ProgramData\MySQL\MySQL Server 5.6\my.ini" MySQL56
 
 

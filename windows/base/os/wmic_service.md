@@ -18,6 +18,32 @@ SERVICE GET [<属性列表>] [<获取开关>]
 SERVICE LIST [<列表格式>] [<列表开关>]
 ```
 
+
+### field
+
+`wmic service list /format:csv>>service.csv`
+
+AcceptPause  
+AcceptStop  
+CaptionCheckPoint  
+CreationClassName  
+DelayedAutoStart  
+DescriptionDesktopInteract  
+DisplayNameErrorControl  
+ExitCode  
+InstallDate  
+Name  
+PathName  
+ProcessId  
+ServiceSpecificExitCode  
+ServiceTypeStarted  
+StartMode  
+StartNameStateStatus   
+SystemCreationClassName  
+SystemName   
+TagId  
+WaitHint 
+
 ### call
 ``` 
 
