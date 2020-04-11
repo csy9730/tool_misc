@@ -28,7 +28,7 @@
 
 ``` bash
 # wmic process
-
+wmic process get name,CommandLine,ProcessId /format:csv
 wmic process list brief >>process.txt  //获取进程摘要信息
 wmic process where name="maxthon.exe" list full
 

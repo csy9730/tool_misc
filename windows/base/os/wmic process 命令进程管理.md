@@ -1,4 +1,4 @@
-wmic process 命令进程管理 【转】
+## wmic process 命令进程管理
 netstat -an -b -o    //获取进程名称 端口 pid
 wmic process list brief >> d:\process.txt  //获取进程摘要信息
 
@@ -79,11 +79,11 @@ wmic computersystem get domain
 wmic computersystem where "name='abc'" call rename 123
 ::更改工作组google为MyGroup
 wmic computersystem where "name='google'" call joindomainorworkgroup "","","MyGroup",1
-
+## CPU
 CPU - CPU 管理
 ::查看cpu型号
 wmic cpu get name
-
+## DATAFILE
 DATAFILE - DataFile 管理
 ::查找e盘下test目录(不包括子目录)下的cc.cmd文件
 wmic datafile where "drive='e:' and path='\\test\\' and FileName='cc' and Extension='cmd'" list
@@ -107,7 +107,7 @@ wmic DESKTOPMONITOR where Status='ok' get ScreenHeight,ScreenWidth
 DISKDRIVE - 物理磁盘驱动器管理
 ::获取物理磁盘型号大小等
 wmic DISKDRIVE get Caption,size,InterfaceType
-
+## ENVIRONMENT
 ENVIRONMENT - 系统环境设置管理
 ::获取temp环境变量
 wmic ENVIRONMENT where "name='temp'" get UserName,VariableValue
@@ -117,7 +117,7 @@ wmic ENVIRONMENT where "name='path' and username='<system>'" set VariableValue="
 wmic ENVIRONMENT create name="home",username="<system>",VariableValue="%HOMEDRIVE%%HOMEPATH%"
 ::删除home环境变量
 wmic ENVIRONMENT where "name='home'" delete
-
+## FSDIR
 FSDIR - 文件目录系统项目管理
 ::查找e盘下名为test的目录
 wmic FSDIR where "drive='e:' and filename='test'" list
@@ -145,6 +145,7 @@ wmic PAGEFILESET set InitialSize="512",MaximumSize="512"
 wmic pagefileset create name='d:\pagefile.sys',initialsize=512,maximumsize=1024
 wmic pagefileset where"name='c:\\pagefile.sys'" delete
 
+## PROCESS
 PROCESS - 进程管理
 ::列出进程的核心信息,类似任务管理器
 wmic process list brief
@@ -152,7 +153,7 @@ wmic process list brief
 wmic process where "name='svchost.exe' and ExecutablePath<>'C:\\WINDOWS\\system32\\svchost.exe'" call Terminate
 ::新建notepad进程
 wmic process call create notepad
-
+## PRODUCT
 PRODUCT - 安装包任务管理
 ::安装包在C:\WINDOWS\Installer目录下
 ::卸载.msi安装包
@@ -160,6 +161,7 @@ wmic PRODUCT where "name='Microsoft .NET Framework 1.1' and Version='1.1.4322'" 
 ::修复.msi安装包
 wmic PRODUCT where "name='Microsoft .NET Framework 1.1' and Version='1.1.4322'" call Reinstall
 
+## SERVICE
 SERVICE - 服务程序管理
 ::运行spooler服务
 wmic SERVICE where name="Spooler" call startservice
@@ -181,6 +183,7 @@ WMIC SHARE CALL Create "","test","3","TestShareName","","c:\test",0
 SOUNDDEV - 声音设备管理
 wmic SOUNDDEV list
 
+## STARTUP
 STARTUP - 用户登录到计算机系统时自动运行命令的管理
 ::查看msconfig中的启动选项
 wmic STARTUP list
@@ -188,10 +191,9 @@ wmic STARTUP list
 SYSDRIVER - 基本服务的系统驱动程序管理
 wmic SYSDRIVER list
 
+## USERACCOUNT
 USERACCOUNT - 用户帐户管理
 ::更改用户administrator全名为admin
 wmic USERACCOUNT where name="Administrator" set FullName="admin"
 ::更改用户名admin为admin00
 wmic useraccount where "name='admin" call Rename admin00
-
-没有这么多结果。简简单单，走好每一步路----belie8

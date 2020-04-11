@@ -1,8 +1,18 @@
 # todo
 
 
+- [ ] windows to open ftp
+- [x] windows telnet
+- [ ] cali
+- [x] frp
+- [ ] nginx
+- [ ] file sync
+- [ ] vue + flask
+- [x] ssh -R
+- [ ] 设计常用软件，添加快捷方式和快捷bat
 
 
+## main
 
 * 单机
   * 快速装系统
@@ -25,13 +35,13 @@
 
 ### 服务器
 - [x] pypi-server
-- [ ] http.server服务器
+- [x] http.server服务器
 - [ ] ftp服务器
 - [ ] ftpd服务器
 - [ ] nginx
 - [ ] gitlab服务器
 - [ ] wordpress
-- [ ] ‌‌内网穿透 rdp frp
+- [x] ‌‌内网穿透 rdp frp
 - [ ] nas 家庭服务器
 - [ ] ‌minecraft服务器
 
@@ -116,6 +126,13 @@ fix: notepad ++崩溃
 Dalvikvm
 context 打包相关变量(类似环境变量)，在结构间传递，像足球运动员传球一样传递变量。
 不同语言，不同进程协程线程，不同场景，的概念颗粒度都有区别，
+
+
+[Anti-Anti-Spider](https://github.com/luyishisi/Anti-Anti-Spider)
+[captcha-dataset](https://github.com/skdjfla/captcha-dataset)
+[captcha_trainer](https://github.com/kerlomz/captcha_trainer)
+
+
 
 ## windows
 命令行参数传递  最大长度 windows7:8192

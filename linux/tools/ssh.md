@@ -155,3 +155,8 @@ sshd: ALL    ##允许所有ip主机均能连接本机
 
 **Q**: wsl报错：`System has not been booted with systemd as init system (PID 1). Can't operate.`
 **A**: 
+
+**Q**:How to Find All Failed SSH login Attempts in Linux
+**A**: 
+grep "Failed password" /var/log/auth.log
+cat /var/log/auth.log | grep "Failed password"

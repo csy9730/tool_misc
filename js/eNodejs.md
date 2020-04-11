@@ -1,6 +1,6 @@
 # Node.js
 
-```
+``` bash
 apt install nodejs npm
 node -v
 npm -v
