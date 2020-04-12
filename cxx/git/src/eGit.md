@@ -108,8 +108,7 @@ git revert -n  # 通过反做创建一个新的版本，这个版本的内容与
 ##### 版本号
 版本号表达方式：
 * HEAD  （大写）
-* HEAD~
-* HEAD^2
+* HEAD^ ,  HEAD~2
 * 0123 t
 * branchName
 * tagN
