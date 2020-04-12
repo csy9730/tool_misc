@@ -84,6 +84,10 @@ local_ip = 127.0.0.1
 local_port = 3389
 remote_port = 13389
 ```
+### kcp
+
+### xtcp
+
 ## full_ini
 
 ``` ini
