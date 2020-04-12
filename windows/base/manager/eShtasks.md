@@ -1,5 +1,7 @@
 # schtasks
 
+任务计划管理的命令行工具是`C:\Windows\System32\schtasks.exe`
+对应的界面工具是`C:\Windows\System32\taskschd.msc`
 ## introduction
 
 计划任务：指定主机指定时间运行指定的exe程序
@@ -52,10 +54,9 @@ C:\Users\admin>schtasks /delete /tn  WpsUpdateTask_admin
 
                       所有 XML 任务定义的串联。
 
-···
+```
 
 schtasks /query /v >temp.txt
-
 
 ```
 文件夹: \
@@ -121,7 +122,7 @@ VSIX Auto Update 14                      2019/5/17 6:30:35      就绪
 重复: 截止: 时间:                   N/A
 重复: 截止: 持续时间:               N/A
 重复: 如果还在运行，停止:           N/A
-···
+```
 ### REMOTE RUN
 
 SCHTASKS /Query /S system /U user /P password
@@ -200,4 +201,12 @@ VSIX Auto Update 14                      2019/5/17 6:30:35      就绪
 ```
 C:\Users\admin>SCHTASKS /ShowSid /TN "\备份\启动备份"
 成功: 已成功计算 SID“S-1-5-87-782916017-575545879-3398072960-2725436614-2063171235”(用户名“备份-启动备份”)。
+```
+## at
+
+```
+at 9:09 C:\Users\admin\Desktop\abc.bat
+at 9:12 cmd /c C:\Users\admin\Desktop\abc.bat
+rem 默认执行路径 C:\windows\system32
+schtasks /create /tn "myApp2" /tr C:\Users\admin\Desktop\abc.bat /sc once /sd  2018/07/24 /st 09:23
 ```

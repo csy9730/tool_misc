@@ -166,3 +166,19 @@ ServerAliveCountMax 3  ＃ client发出请求后，服务器端没有响应得�
 **A**: 
 grep "Failed password" /var/log/auth.log
 cat /var/log/auth.log | grep "Failed password"
+cat /var/log/auth.log | grep "Failed password"
+cat /var/log/auth.log | grep "Failed password"
+
+**Q**: 如何防止被密码暴力攻击？
+**A**: 
+``` bash
+last # 查看正常登录
+# 通过以下查看centos 密码登录错误次数
+grep "Failed password for root" /var/log/secure | awk '{print $11}' | wc -l
+grep "Failed password for root" /var/log/secure | awk '{print $11}' | sort | uniq -c | sort -nr | more
+# 通过以下查看Ubuntu 密码登录错误次数
+grep "Failed password for root" /var/log/auth.log | awk '{print $11}' | sort | uniq -c | sort -nr | more
+```
+
+1. 修改默认端口22为自定义端口号
+2. 修改

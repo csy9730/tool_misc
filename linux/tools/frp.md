@@ -103,12 +103,3 @@ auto_token=123456
 **Q**: frp报错“http: proxy error: no such domain”
 **A**: 
 
-
-
-其他穿透工具
-https://github.com/ffay/lanproxy
-zerotier 的 moon 自建节点
-
-ngrok内网穿透
-请看《自搭Ngrok实现树莓派内网穿透》。
-n2n内网穿透
