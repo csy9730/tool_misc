@@ -21,3 +21,11 @@ install(TARGETS  hello  DESTINATION  ${PROJECT_BINARY_DIR}/Bin)
 install(DIRECTORY    ${PROJECT_SOURCE_DIR}/res/ DESTINATION  ${PROJECT_BINARY_DIR}/Bin/res)
 ```
 
+
+``` bash
+git clone https://www.github.com/abc/def
+cd def_build
+cmake ../def
+
+
+```

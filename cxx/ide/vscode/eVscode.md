@@ -1,4 +1,6 @@
 # vscode
+
+Vscode是一款开源的跨平台编辑器
 ## base
 
 ${workspaceRoot} VS Code当前打开的文件夹
@@ -51,5 +53,18 @@ url动态调试：
 
 
 ### cn
-**Q**: 如何开启自动区分gbk编码和utf8编码
-**A**: 将setting-Text Editor中的"files.autoGuessEncoding"项的值改为true即可。
+**Q**: VS Code 中文显示乱码怎么办？
+**A**: 开启自动区分gbk编码和utf8编码:
+将setting-Text Editor中的"files.autoGuessEncoding"项的值改为true即可。
+
+
+将设置中的"files.autoGuessEncoding"项的值改为true即可。
+
+
+
+**Q**: vscode使用的语言为英文(us)，如何将其显示语言修改成中文了？
+**A**: 
+1）打开vscode工具；
+2）使用快捷键组合【Ctrl+Shift+p】，在搜索框中输入“configure display language”，点击确定后；
+3）修改locale.json文件下的属性“locale”为“zh-CN”;
+4）重启vscode工具；

@@ -130,6 +130,11 @@ sc query type= driver group= NDIS     - 枚举所有 NDIS 驱动程序
  DisplayName= <显示名称>
  password= <密码>
 ```
+
+```
+sc create OpenSshAgent binpath= "C:\Windows\System32\OpenSSH\ssh-agent.exe" type= share start= auto displayname= "OpenSshAgent Services"
+sc start ssh-agent
+
 sc create MingwSsh binpath= "C:\Program Files\Git\usr\bin\sshd.exe" type= share start= auto displayname= "Sshd Services"
 sc create MingwSsh2 binpath= "C:\Windows\system32\svchost.exe -k  'C:\Program Files\Git\usr\bin\sshd.exe'" type= share start= auto displayname= "Sshd Services2"
 sc description MingwSsh "提供SSHD服务。如果此服务被禁用，任何依赖它的服务将无法启动。"
@@ -138,6 +143,7 @@ sc description MingwSsh "提供SSHD服务。如果此服务被禁用，任何依
 sc create MyPolicyAgent binpath= "C:\WINDOWS\system32\lsass.exe" type= share start= auto displayname= "IPSEC Services" depend= RPCSS/Tcpip/IPSec 
 修改描述： 
 sc description MyPolicyAgent "提供 TCP/IP 网络上客户端和服务器之间端对端的安全。如果此服务被停用，网络上客户端和服务器之间的 TCP/IP 安全将不稳定。如果此服务被禁用，任何依赖它的服务将无法启动。" 
+```
 
 ## exe
 
