@@ -1,5 +1,12 @@
 # todo
 
+20200413
+- [ ] ss: docker
+- [ ] debug: frp & go
+- [ ] add: openssh or startup mingw_sshd
+- [ ] add: 
+- [ ] ss: fabric
+
 
 - [ ] windows to open ftp
 - [x] windows telnet

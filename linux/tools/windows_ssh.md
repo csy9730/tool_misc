@@ -32,7 +32,12 @@ ssh-add /etc/ssh/
 
 
 ### windows10
-自带openssh和wsl子系统，可以很方便的通过ssh连接
+自带openssh和wsl子系统，openssh可以很方便的通过ssh连接
+
+wsl
+``` 
+sudo service ssh restart
+```
 ### xp
 
 
@@ -45,7 +50,7 @@ ssh-add /etc/ssh/
 7) Start the sshd service: ‘net start “OpenSSH Server”‘
 
 ``` bash
-cd "C:Program FilesOpenSSH\bin"
+cd "C:\Program Files\OpenSSH\bin"
 mkgroup -l >> ..etcgroup
 mkpasswd -l >> ..etcpasswd
 net start opensshd
