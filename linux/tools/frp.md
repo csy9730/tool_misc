@@ -96,6 +96,7 @@ auto_token=123456
 ```
 
 ## misc
+frp 支持 虚拟主机、多路复用、负载均衡、点对点内网穿透
 
 **Q**: new proxy [ssh] error: proxy name [ssh] is alread│ y in use
 **A**: 这是因为frpc.ini文件使用相同的节，只需要把"ssh"改成"ssh_2"即可
@@ -103,3 +104,16 @@ auto_token=123456
 **Q**: frp报错“http: proxy error: no such domain”
 **A**: 
 
+**Q**: windows把frpc.exe 设为启动项？
+**A**：
+``` bash
+echo set ws=WScript.CreateObject("WScript.Shell")>>"frpc.vbs"
+echo ws.Run "cmd /c %~dp0frpc.exe -c  %~dp0frpc2.ini",vbhide >>"frpc.vbs"
+copy frpc.vbs  "%programdata%\Microsoft\Windows\Start Menu\Programs\Startup"
+```
+
+把frpc.vbs复制到启动目录
+``` vbs
+Set ws = CreateObject("Wscript.Shell")
+ws.run "cmd /c c:\frps\frps.exe -c c:\frps\frps.ini",vbhide
+```
