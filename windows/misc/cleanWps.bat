@@ -1,5 +1,5 @@
 @echo off
-echo "开始清楚流氓软件"
+echo "开始清除流氓软件"
 
 sc stop AlibabaProtect
 sc delete AlibabaProtect  
@@ -32,13 +32,14 @@ echo "dy_service已经终止"
 
 
 sc stop wpscloudsvr
-sc delete wpscloudsvr
+sc disable wpscloudsvr
 taskkill /IM   wps.exe /IM wpscenter.exe  /IM wpscloudlaunch.exe /F
 schtasks /delete /f /TN "WpsUpdatetask_%username%" 
 rem schtasks /delete /f /tn WpsExternal_admin_20190428132612 
 schtasks|findstr "WpsExternal_%username%">"%TEMP%\sch_wps.txt"
 for /f "delims= " %%i in ("%TEMP%\sch_wps.txt") do schtasks /delete /TN %%i
 del "%TEMP%\sch_wps.txt"
+
 echo "wps已经终止"
 
 schtasks /delete /f /tn "\OneDrive Standalone Update Task-S-1-5-21-900106002-500817109-700077563-1004"
