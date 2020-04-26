@@ -4,8 +4,8 @@
 ## 用户管理
 
 ``` bash
-net user admin lovechina /add
-net user admin lovechina /DELETE
+net user admin my_password /add
+net user admin my_password /DELETE
 net user username [/TIMES:{times | ALL}]
 net localgroup Administrators admin /add
 

@@ -46,6 +46,34 @@ C:\Windows\system32>cacls /?
     ID - 已继承。
          ACE 从父目录的 ACL 继承。
 
-C:\Windows\system32>
+
+``` 
+H:\project\GitHubs BUILTIN\Administrators:F
+                   BUILTIN\Administrators:(OI)(CI)(IO)F
+                   NT AUTHORITY\SYSTEM:F
+                   NT AUTHORITY\SYSTEM:(OI)(CI)(IO)F
+                   NT AUTHORITY\Authenticated Users:C
+                   NT AUTHORITY\Authenticated Users:(OI)(CI)(IO)C
+                   BUILTIN\Users:R
+                   BUILTIN\Users:(OI)(CI)(IO)(:)
+                                             GENERIC_READ
+                                             GENERIC_EXECUTE
+```
+
+输出	ACE 的适用于
+OI	此文件夹和文件
+CI	此文件夹和子文件夹
+IO	ACE 不适用于当前文件/目录。
+没有输出消息	仅此文件夹
+(IO)(CI)	此文件夹、子文件夹和文件
+(OI)(CI)(IO)	仅子文件夹和文件
+(CI)(IO)	仅子文件夹
+(OI)(IO)	仅文件
+
+
 
 ## Icacls
+
+
+## 用户/组合内置安全体
+
