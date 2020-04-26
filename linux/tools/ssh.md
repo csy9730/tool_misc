@@ -196,11 +196,14 @@ ServerAliveCountMax 3  ＃ client发出请求后，服务器端没有响应得�
 **A**: 
 
 **Q**:How to Find All Failed SSH login Attempts in Linux
-**A**: 
+**A**: 本人尚未解决？
 grep "Failed password" /var/log/auth.log
 cat /var/log/auth.log | grep "Failed password"
 cat /var/log/auth.log | grep "Failed password"
 cat /var/log/auth.log | grep "Failed password"
+
+
+
 
 **Q**: 如何防止被密码暴力攻击？
 **A**: 
@@ -215,3 +218,18 @@ grep "Failed password for root" /var/log/auth.log | awk '{print $11}' | sort | u
 
 1. 修改默认端口22为自定义端口号
 2. 修改
+
+
+
+**Q**: 因为需要经常远程登录到Linux 服务器，每次都得输入一遍密码，比较麻烦！所以，想找找有没有什么方法，可以在调用ssh的时候就指定好密码
+
+**A**: 
+方案一：通过ssh-keygen生成RSA，然后采用公钥登陆的。
+方案二 (仅适用于*unix系统) ：用Python的expect来发送密码验证，验证通过后，把控制权返还给终端。 Linux下一般使用sshpass(C language) ，还有 python 实现的 sshpass
+方案三：采用putty.exe
+
+~/.ssh/known_hosts 文件保存了所有已知的主机的指纹
+```
+123.45.67.89 ecdsa-sha2-nistp256 IzIWQPPjUWvbJ8KlENX1lu0=AAABLXNoYTItbmOjIGRi9PTtlzdHAyNAIbAE4G+cqk8Al9Ttpa2y3AAE2VjZHNhAyNTmlzdHBBOAcdN+Eaw8AepBnXeK1qsKUZAyDTYAAYAADanrPL86
+```
+
