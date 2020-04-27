@@ -65,3 +65,34 @@ cat /workspace/denyhost.txt<</usr/share/denyhosts/denyhosts.cfg
 #启动服务
 
 ```
+
+### conf
+
+``` ini
+SECURE_LOG = /var/log/secure
+#sshd日志文件，它是根据这个文件来判断的，不同的操作系统，文件名稍有不同。
+
+HOSTS_DENY = /etc/hosts.deny
+#控制用户登陆的文件
+
+PURGE_DENY = 5m
+DAEMON_PURGE = 5m
+#过多久后清除已经禁止的IP，如5m（5分钟）、5h（5小时）、5d（5天）、5w（5周）、1y（一年）
+
+BLOCK_SERVICE  = sshd
+#禁止的服务名，可以只限制不允许访问ssh服务，也可以选择ALL
+
+DENY_THRESHOLD_INVALID = 5
+#允许无效用户失败的次数
+
+DENY_THRESHOLD_VALID = 10
+#允许普通用户登陆失败的次数
+
+DENY_THRESHOLD_ROOT = 5
+#允许root登陆失败的次数
+
+HOSTNAME_LOOKUP=NO
+#是否做域名反解
+
+DAEMON_LOG = /var/log/denyhosts
+```

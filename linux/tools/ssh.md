@@ -216,8 +216,35 @@ grep "Failed password for root" /var/log/secure | awk '{print $11}' | sort | uni
 grep "Failed password for root" /var/log/auth.log | awk '{print $11}' | sort | uniq -c | sort -nr | more
 ```
 
-1. 修改默认端口22为自定义端口号
-2. 修改
+1. 修改默认端口22为自定义端口号（例如2222）
+2. 增加密码长度到14位以上，包含符号数字字母的组合。
+3. 禁止密码登录，只能私钥登录
+4. 添加hosts.deny
+5. 使用denyhosts脚本
+   
+
+本地使用ssh-keygen生成公钥，将公钥放在/root/.ssh/authorized_keys中
+``` ini
+    AuthorizedKeysFile   .ssh/authorized_keys   # 公钥公钥认证文件
+    PubkeyAuthentication yes   # 可以使用公钥登录
+    PasswordAuthentication no  # 不允许使用密码登录
+```
+
+
+``` bash
+#! /bin/bash
+ 
+cat /var/log/auth.log | awk '/Failed/ {print $(NF-3)}' | uniq -d > /var/black
+for IP in `cat /var/black`
+do
+  grep $IP /etc/hosts.deny > /dev/null
+  if [ $? -gt 0 ]; then
+    echo "$IP 正在试图暴力登录你的服务器，其IP已被屏蔽，请尽
+快登录服务器处理!" | mail -s '服务器攻击预警'  '123456789@qq.com'
+    echo "sshd:$IP:deny" >> /etc/hosts.deny
+  fi
+done
+```
 
 
 
@@ -233,3 +260,5 @@ grep "Failed password for root" /var/log/auth.log | awk '{print $11}' | sort | u
 123.45.67.89 ecdsa-sha2-nistp256 IzIWQPPjUWvbJ8KlENX1lu0=AAABLXNoYTItbmOjIGRi9PTtlzdHAyNAIbAE4G+cqk8Al9Ttpa2y3AAE2VjZHNhAyNTmlzdHBBOAcdN+Eaw8AepBnXeK1qsKUZAyDTYAAYAADanrPL86
 ```
 
+**Q** ：Permission denied (publickey,keyboard-interactive).
+**A**： 这种情况是 ~/.ssh/authorized_keys的密码没有通过
