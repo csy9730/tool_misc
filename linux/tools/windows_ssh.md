@@ -24,6 +24,9 @@ ssh-keygen -t rsa -b 2048 -f /etc/ssh/ssh_host_rsa_key
 ssh-keygen -t ecdsa -b 256 -f /etc/ssh/ssh_host_ecdsa_key
 ssh-keygen -t ed25519 -b 256 -f /etc/ssh/ssh_host_ed25519_key
 ssh-add /etc/ssh/
+
+cat /etc/ssh/ssh_host_rsa_key.pub>>$USERPROFILE/.ssh/authorized_keys # 添加信任的密钥
+# type f:\download\PortableGit\etc\ssh\ssh_host_rsa_key.pub>>%HOME%\.ssh\authorized_keys
 ```
 如果报错`sshd windows permission deny`，需要使用管理员权限打开命令行，在执行命令
 

@@ -24,7 +24,10 @@
 * list ： 按照列表格式显示，显示 HandleCount，Name，Priority  ProcessId  ThreadCount  WorkingSetSize 属性 
 * 默认按照table格式显示
 * list full 按照list格式显示所有属性，除了CreationDate/CreationClassName
-* 
+
+BRIEF                     - ThreadCount, HandleCount, Name, Priority, ProcessId, WorkingSetSize
+FULL                      - CommandLine, CSName, Description, ExecutablePath, ExecutionState, Handle, HandleCount, InstallDate, KernelModeTime, MaximumWorkingSetSize, MinimumWorkingSetSize, Name, OSName, OtherOperationCount, OtherTransferCount, PageFaults, PageFileUsage, ParentProcessId, PeakPageFileUsage, PeakVirtualSize, PeakWorkingSetSize, Priority, PrivatePageCount, ProcessId, QuotaNonPagedPoolUsage, QuotaPagedPoolUsage, QuotaPeakNonPagedPoolUsage, QuotaPeakPagedPoolUsage, ReadOperationCount, ReadTransferCount, SessionId, Status, TerminationDate, ThreadCount, UserModeTime, VirtualSize, WindowsVersion, WorkingSetSize, WriteOperationCount, WriteTransferCount
+
 
 ``` bash
 # wmic process
