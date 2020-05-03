@@ -1,0 +1,65 @@
+#　刷机
+
+
+
+[安卓手机](https://www.baidu.com/s?wd=%E5%AE%89%E5%8D%93%E6%89%8B%E6%9C%BA&tn=SE_PcZhidaonwhc_ngpagmjz&rsv_dl=gh_pc_zhidao)的密码百图案一般有几种:[九宫格](https://www.baidu.com/s?wd=%E4%B9%9D%E5%AE%AB%E6%A0%BC&tn=SE_PcZhidaonwhc_ngpagmjz&rsv_dl=gh_pc_zhidao)图案解锁形式、开机数字密码、[指纹识别](https://www.baidu.com/s?wd=%E6%8C%87%E7%BA%B9%E8%AF%86%E5%88%AB&tn=SE_PcZhidaonwhc_ngpagmjz&rsv_dl=gh_pc_zhidao)密码等等。
+解锁原理:
+就是回复手机[出厂设置](https://www.baidu.com/s?wd=%E5%87%BA%E5%8E%82%E8%AE%BE%E7%BD%AE&tn=SE_PcZhidaonwhc_ngpagmjz&rsv_dl=gh_pc_zhidao),即清除手机设置的密码,其方式一般有[格机](https://www.baidu.com/s?wd=%E6%A0%BC%E6%9C%BA&tn=SE_PcZhidaonwhc_ngpagmjz&rsv_dl=gh_pc_zhidao)度,刷机,ADB解锁用仪器解锁等。
+第一种[格机](https://www.baidu.com/s?wd=%E6%A0%BC%E6%9C%BA&tn=SE_PcZhidaonwhc_ngpagmjz&rsv_dl=gh_pc_zhidao):原理:就是通过手机上进手机的恢复模式(也叫刷机模式-recovery),然后选择恢复[出厂设置](https://www.baidu.com/s?wd=%E5%87%BA%E5%8E%82%E8%AE%BE%E7%BD%AE&tn=SE_PcZhidaonwhc_ngpagmjz&rsv_dl=gh_pc_zhidao)(wipe)。一般手机都是:先把手机关机,确定完全关机后,同时按住手机音量键下键和开机键直到出现recovey模式,(按键功能提示:用“音量加”“音量减”可以内上下选,“开机键”是确定),选择wipe data/factory reset进入子菜单选YES 确定然后返回选第一项rboot system now,重启手机就可以了;
+第二种刷机:下载对应刷机工具,驱动,然后进行刷机,这个操作起来较麻烦,需专业人士操作,以免出故障。具体方法可以百度很多教程,资料。
+
+
+
+清除锁屏密码
+
+
+
+
+
+ADB，FASTBOOT，TWRP三大件，够了
+
+刷机包，LineageOS，AEX够了，我刷机的原因是不想用国产ROM
+
+谷歌应用，OpenGAPPS
+
+没有需要刷机精灵的地方
+
+
+
+基础版
+
+BootLoader锁，system锁，recovery ，TWRP
+
+卡刷，线刷，miflash
+
+进阶版
+
+supersu，magisk，xposed，内核，基带
+
+
+**Q**: 获取root 权限 
+**A**: 
+1. SuperSU,但是这个已经不支持安卓8.0或者更高的版本了，如果针对8.0以下的机型，推荐这个，这个更稳定。你可以去supersu的官网（直接搜索SuperSu）找卡刷包（可能需要科学上网），然后在rec里面刷入然后开机，就获取到了root限权。
+2. magisk，这个功能要比supersu更多一些，他不仅提供了root限权，还能通过一些模块来做更高级的事情。方法也是一样的，在XDA论坛（需要科学上网）里面下载magisk卡刷包，然后就在rec里面刷入然后开机就可以了。
+
+Android8.0后，手机root需要修改boot.img。ADB似乎管不到boot.img，所以别想了。
+
+手机能链接usb调试但是不知道锁屏密码也是人才。
+会用adb常见命令，你直接进fb然后/fastboot w双清吧。
+但是安卓版本太多，最稳妥的方式还是rec双清，然后国产热门机型rec不支持清楚锁屏密码的，只能强刷系统了。
+
+
+
+精通magisk，xposed，busybox，MT管理器RE管理器。希望吧主给个吧务，我会尽心尽责管理，打击违法犯罪！
+
+**Q**: 什么是清除，双清，三清 
+**A**: 
+清楚就是恢复出厂设置，
+双清就是清除cache分区加恢复出厂设置，相当于手机还原成心手机的状态，对于想要的信息，只能把数据备份到其他设备，
+三清：清楚用户数据，清除缓存，清除其他数据
+四清： 清除电池数据。
+
+wipe data/factory reset
+wipe cache partition
+wipe Dalvik cache
+wipe battery status
