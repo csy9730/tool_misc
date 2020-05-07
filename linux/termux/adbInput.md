@@ -184,6 +184,25 @@ adb shell am start -a android.intent.action.CALL tel:10086
 2. adb shell input keyevent 22  焦点去到发送按键
 3. adb shell input keyevent 66  回车，就是按下发送键
 
+
+
+**Q**: android 的短信数据库的读取
+**A**: 
+android短信的数据库的Uri是不公开的, 读取起来时灰常不方便的, 这里做了下总结. 
+用adb指令将mmssms.db从/data/data/com.android.providers.telephony/databases中pull出来
+经常使用到的表有
+canonical_addresses, sms, threads三个表格
+sms是存储着所有的短信, 主要的列有_id, thread_id, address, person, date, read, type, body 
+关于的sms的Uri有
+发件箱 content://sms/outbox
+收件箱 content://sms/inbox
+草稿箱 content://sms/draft
+conversations content://sms/conversations
+threads表存储着每一个短信对话的线程. 主要列有_id, date, message_count, recipient_ids, snippet, read
+recipient_ids 存放的是参与此次对话的person的id, 然而这个id不是通讯录里面的id, 而是canonical_addresses 的id. 这就是canonical_addresses 表格的作用
+threads 表 uri: content://mms-sms/conversations?simple=true
+canonical_addresses 表 uri content://mms-sms/canonical-addresses
+
 ## file transfer
 
 ``` bash
@@ -212,5 +231,6 @@ file transfer:
 如果需要导出到电脑：adb pull /sdcard/filename.mp4
 
 挂载、查看连接过的 WiFi 密码、开启/关闭 WiFi、设置系统日期和时间都需要root权限，不做多说。
+
 
 
