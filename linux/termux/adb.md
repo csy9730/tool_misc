@@ -32,7 +32,17 @@ Server端, 作为一个后台进程运行在开发机器中, 即你的开发PC�
 
 ADB Server是运行在主机上的一个后台进程。它的作用在于检测USB端口感知设备的连接和拔除，以及模拟器实例的启动或停止，ADB Server还需要将adb client的请求通过usb或者tcp的方式发送到对应的adbd上
 
+[adb](https://developer.android.google.cn/studio/command-line/adb)
+**Q**: adb可以实现：
+**A**:
 
+* `adb install` 实现软件批量安装/卸载
+* `adb push` 实现文件备份和管理 
+* `adb input` 执行简单的固定的按键脚本,例如 通过上下滑动实现刷抖音
+* `adb screen` 获得截屏
+* 管理进程
+* appium执行按键脚本，添加屏幕截图判断。
+* 设置端口转发
 
 ## quickstart
 
@@ -46,11 +56,14 @@ adb devices # 查询已连接设备/模拟器
 offline —— 表示设备未连接成功或无响应；
 device —— 设备已连接；
 no device —— 没有设备/模拟器连接；
+unauthorized —— 设备没有授权，需要用户在手机上点击授权按钮
+
 List of devices attached 设备/模拟器未连接到 adb 或无响应
 
 
 
-获取管理员权限：　　 adb root
+adb root , adb remount, 只针对类似小米开发版的手机有用，可以直接已这两个命令获取管理员(root)权限，并挂载系统文件系统为可读写状态
+
 
 ## connect
 
@@ -118,7 +131,10 @@ adb connect ip_address
 adb connect 192.168.1.4:5555 # 例如连接 指定地址
 ```
 
-
+#### forward
+`adb forward `将 宿主机上的某个端口重定向到设备的某个端口
+adb forward tcp:1314 tcp :8888
+执行该命令后所有发往宿主机 1314 端口的消息、数据都会转发到 Android 设备的 8888 端口上，因此可以通过远程的方式控制 Android 设备。
 
 ###  misc
 
@@ -168,6 +184,36 @@ adb shell pm clear com.taobao.taobao # 表示清除 手机淘宝数据和缓存�
 
 
 ## shell
+Android 提供了大多数常见的 Unix 命令行工具。如需查看可用工具的列表，请使用以下命令：
+`adb shell ls /system/bin`
+许多 shell 命令由 toybox
+
+### am
+调起 Activity命令格式：adb shell am start [options]
+调起 Service命令格式：adb shell am startservice [options]
+例如：adb shell am startservice -n
+com.tencent.mm/.plugin.accountsync.model.AccountAuthenticatorService 表示调起微信的某 Service。
+
+``` bash 
+adb shell am startservice -n com.tencent.mm/.plugin.accountsync.model.AccountAuthenticatorService # 表示调起微信的某 Service。
+adb shell am start -n com.android.camera/.Camera # 启动相机
+
+adb shell am force-stop packagename # 强制停止应用
+adb shell am force-stop com.taobao.taobao # 强制停止淘宝
+```
+
+### process
+
+查看前台 Activity命令：adb shell dumpsys activity activities | grep mFocusedActivity
+查看正在运行的 Services命令：adb shell dumpsys activity services “packagename” 其中参数不是必须的，指定 “packagename” 表示查看与某个包名相关的 Services，不指定表示查看所有 Services。
+查看应用详细信息命令：adb shell dumpsys package “packagename”
+
+
+
+查看进程：adb shell ps
+查看实时资源占用情况：adb shell top
+查看进程 UID：adb shell dumpsys package | grep userId=
+
 
 ### pm
 
@@ -225,26 +271,30 @@ adb shell am start -a android.intent.action.CALL tel:10086
 1. adb shell am start -a android.intent.action.SENDTO -d sms:10086 --es sms_body  hello  打开了短信应用程序，当前焦点在文本框
 2. adb shell input keyevent 22  焦点去到发送按键
 3. adb shell input keyevent 66  回车，就是按下发送键
+4. 
+#### uiautomator
+uiautomator
+执行 UI automation tests ， 获取当前界面的控件信息
 
-### process
+runtest：executes UI automation tests RunTestCommand.java
 
-查看前台 Activity命令：adb shell dumpsys activity activities | grep mFocusedActivity
-查看正在运行的 Services命令：adb shell dumpsys activity services “packagename” 其中参数不是必须的，指定 “packagename” 表示查看与某个包名相关的 Services，不指定表示查看所有 Services。
-查看应用详细信息命令：adb shell dumpsys package “packagename”
-调起 Activity命令格式：adb shell am start [options]
+dump：获取控件信息，DumpCommand.java
 
-调起 Service命令格式：adb shell am startservice [options]
-例如：adb shell am startservice -n
-com.tencent.mm/.plugin.accountsync.model.AccountAuthenticatorService 表示调起微信的某 Service。
-强制停止应用命令：adb shell am force-stop “packagename”
-例如强制停止淘宝：adb shell am force-stop com.taobao.taobao
+[admin:~]$ adb shell uiautomator dump   
+UI hierchary dumped to: /storage/emulated/legacy/window_dump.xml
 
+#### ime
+ime
+输入法，Ime.java
 
+[admin:~]$ adb shell ime list -s                           
+com.google.android.inputmethod.pinyin/.PinyinIME
+com.baidu.input_mi/.ImeService
+列出设备上的输入法
 
-查看进程：adb shell ps
-查看实时资源占用情况：adb shell top
-查看进程 UID：adb shell dumpsys package | grep userId=
-
+[admin:~]$ adb shell ime set com.baidu.input_mi/.ImeService
+Input method com.baidu.input_mi/.ImeService selected    
+选择输入法
 
 
 ### dumpsys
@@ -600,27 +650,9 @@ schemas
 
 
 
-android 的短信数据库的读取
-android短信的数据库的Uri是不公开的, 读取起来时灰常不方便的, 这里做了下总结. 
-用adb指令将mmssms.db从/data/data/com.android.providers.telephony/databases中pull出来
-经常使用到的表有
-canonical_addresses, sms, threads三个表格
-sms是存储着所有的短信, 主要的列有_id, thread_id, address, person, date, read, type, body 
-关于的sms的Uri有
-发件箱 content://sms/outbox
-收件箱 content://sms/inbox
-草稿箱 content://sms/draft
-conversations content://sms/conversations
-threads表存储着每一个短信对话的线程. 主要列有_id, date, message_count, recipient_ids, snippet, read
-recipient_ids 存放的是参与此次对话的person的id, 然而这个id不是通讯录里面的id, 而是canonical_addresses 的id. 这就是canonical_addresses 表格的作用
-threads 表 uri: content://mms-sms/conversations?simple=true
-canonical_addresses 表 uri content://mms-sms/canonical-addresses
-
-
-
+**Q**: 一台台式电脑可以控制多少台手机？
+**A**: 
 ADB是服务通过扫描奇数端口5555 至5585查找  Android模拟器或设备。而且每个设备占用2个端口，偶数端口Android设备控制台，奇数端口Android与ADB的连接。如下：
-
-
 
  Note that each emulator/device instance acquires a pair of sequential ports — an even-numbered port for console connections and an odd-numbered port for adb connections. For example:
 
@@ -655,17 +687,3 @@ ethernet_on=2 表示以太网共享打开。设置中的Ethernet 处于打开状
 ethernet_on=3 表示以太网共享打开。设置中的Ethernet 处于关闭状态，便携式热点的Ethernet tethering 处于打开状态，此时上行4G或Wi-Fi可以通过以太网给其它的终端供网。
 
 adb shell settings put global ethernet_on 2
-
-
-adb 执行简单的固定的按键脚本
-
-appium执行按键脚本，添加屏幕截图判断。
-
-文件备份和管理 
-
-软件批量安装/卸载
-
-自动刷抖音。
-
-
-

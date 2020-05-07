@@ -117,3 +117,50 @@ copy frpc.vbs  "%programdata%\Microsoft\Windows\Start Menu\Programs\Startup"
 Set ws = CreateObject("Wscript.Shell")
 ws.run "cmd /c c:\frps\frps.exe -c c:\frps\frps.ini",vbhide
 ```
+
+
+**Q**: linux把frpc设为启动项？
+**A**：
+
+添加systemd配置文件：
+vim /usr/lib/systemd/system/frp.service
+文件内容如下：
+``` ini
+[Unit]
+Description=The nginx HTTP and reverse proxy server
+After=network.target remote-fs.target nss-lookup.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/frp/frps -c /usr/local/frp/frps.ini
+KillSignal=SIGQUIT
+TimeoutStopSec=25
+TimeoutStartSec=30
+KillMode=process
+PrivateTmp=true
+StandardOutput=syslog
+StandardError=inherit
+
+[Install]
+WantedBy=multi-user.target
+```
+
+ExecStart的内容请根据自己frp安装目录修改。
+``` bash
+# 设置开机启动
+systemctl daemon-reload
+systemctl enable frp
+# 启动 frp
+systemctl start frp
+# 查看frp是否启动
+ps aux | grep frp
+```
+
+
+centos7 查看启动服务项
+
+使用 systemctl list-unit-files 可以查看启动项 
+
+左边是服务名称，右边是状态，enabled是开机启动，disabled是开机不启动
+
+可以使用 systemctl status xxx.service查看服务状态
