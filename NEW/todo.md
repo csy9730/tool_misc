@@ -1,5 +1,14 @@
 # todo
 
+20200508
+- [ ] ss: RISC-V
+- [ ] QEMU 
+- [ ] KVM
+- [ ] openwrt
+- [ ] Sencha是由Ext JS、jQTouch 以及 Raphael 三个项目合并而成的一个开源项目。 [sencha](https://www.sencha.com/)
+- [ ] extjs
+- [ ] netstat SYN_RECV tcp 安全 
+
 20200413
 - [ ] ss: docker
 - [ ] debug: frp & go
@@ -17,6 +26,13 @@
 - [ ] vue + flask
 - [x] ssh -R
 - [ ] 设计常用软件，添加快捷方式和快捷bat
+
+- [ ] ss: wsl System has not been booted with systemd as init system (PID 1). Can't operate
+- [ ] ss: windows XP上实现python2.7.5和python3.4.3
+- [x] everythin cmd 
+- [ ] ss:auto keras
+- [ ] Win10自带的Openssh怎么安装 如何启动SSH服务
+
 
 
 ## main
