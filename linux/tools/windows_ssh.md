@@ -1,9 +1,9 @@
 # windows ssh
 
 ## install
-window10自带openssh和wsl，无需按照，
-windows7可以按照openssh或者git-bash套件
-windowsXp可以按照openssh。
+window10自带openssh和wsl，无需安装，
+windows7可以安装openssh或者git-bash套件
+windowsXp可以安装openssh。
 
 [git-scm](https://git-scm.com/download/win)
 [openssh](http://sshwindows.sourceforge.net/)
@@ -18,11 +18,13 @@ windowsXp可以按照openssh。
 
 
 **Q**: sshd启动时报错：`Could not load host key: /etc/ssh/ssh_host_rsa_key`
-**A**:  缺乏公钥私钥，执行以下命令生成密钥即可
+**A**:  在第一次启动sshd时，会要求生成id_ecdsa，id_rsa，id_ed25519这三个文件，充当已经授权的默认公钥文件。
+执行以下命令生成密钥即可
 ``` bash
 ssh-keygen -t rsa -b 2048 -f /etc/ssh/ssh_host_rsa_key
 ssh-keygen -t ecdsa -b 256 -f /etc/ssh/ssh_host_ecdsa_key
 ssh-keygen -t ed25519 -b 256 -f /etc/ssh/ssh_host_ed25519_key
+
 ssh-add /etc/ssh/
 
 cat /etc/ssh/ssh_host_rsa_key.pub>>$USERPROFILE/.ssh/authorized_keys # 添加信任的密钥

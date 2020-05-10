@@ -196,12 +196,18 @@ ServerAliveCountMax 3  ＃ client发出请求后，服务器端没有响应得�
 **A**: 
 
 **Q**:How to Find All Failed SSH login Attempts in Linux
-**A**: 本人尚未解决？
+**A**: 
+redhat/centos的登录记录在/var/log/secure，
+debian/ubuntu的登录记录在/var/log/auth.log
+``` bash
 grep "Failed password" /var/log/auth.log
 cat /var/log/auth.log | grep "Failed password"
 cat /var/log/auth.log | grep "Failed password"
 cat /var/log/auth.log | grep "Failed password"
+```
 
+**Q**:How to Find All Failed SSH login Attempts in windows
+**A**:  尚未解决
 
 
 
@@ -262,3 +268,8 @@ done
 
 **Q** ：Permission denied (publickey,keyboard-interactive).
 **A**： 这种情况是 ~/.ssh/authorized_keys的密码没有通过
+
+
+**Q**: What does “Normal Shutdown, Thank you for playing [preauth]” In SSH logs mean?
+
+**A**: ?
