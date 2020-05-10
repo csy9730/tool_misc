@@ -7,7 +7,28 @@
 - [ ] openwrt
 - [ ] Sencha是由Ext JS、jQTouch 以及 Raphael 三个项目合并而成的一个开源项目。 [sencha](https://www.sencha.com/)
 - [ ] extjs
-- [ ] netstat SYN_RECV tcp 安全 
+- [ ] netstat SYN_RECV tcp 安全
+- [ ] ss: mqtt
+- [ ] ss: coap 
+- [ ] ss: IoT
+- [ ] ss: PCB板子设计
+- [ ] gitolite [gitolite](https://github.com/sitaramc/gitolite)
+
+
+互联网的思路是实现万物互联
+
+20200501
+- [x] add: suikang code
+- [x] add:adb
+- [x] ss: adb
+- [ ] ss: idb
+- [ ] ss: 域名部署
+- [ ] ss: 路由器
+- [ ] ss: android remote
+- [ ] ss: tplink
+- [ ] ss: github.io
+
+[natapp](https://natapp.cn/)
 
 20200413
 - [ ] ss: docker
