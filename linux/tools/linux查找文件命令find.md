@@ -1,6 +1,67 @@
-linux查找文件命令find
-原创ydfok 最后发布于2007-01-18 11:14:00 阅读数 671302  收藏
-展开
+# linux查找文件命令find
+
+
+``` bash
+# 递归搜索 全名文件 httpd.conf 
+find / -name httpd.conf 
+find /etc -name '*srm*'
+find / -name access_log 2>/dev/null
+
+
+find / -name *profile* 2>/dev/null
+
+　　find / -amin -10 # 查找在系统中最后10分钟访问的文件
+　　find / -atime -2 # 查找在系统中最后48小时访问的文件
+　　find / -empty # 查找在系统中为空的文件或者文件夹
+　　find / -group cat # 查找在系统中属于 groupcat的文件
+　　find / -mmin -5 # 查找在系统中最后5分钟里修改过的文件
+　　find / -mtime -1 #查找在系统中最后24小时里修改过的文件
+　　find / -nouser #查找在系统中属于作废用户的文件
+　　find / -user fred #查找在系统中属于FRED这个用户的文件
+
+```
+## help
+
+``` 
+> find --help
+Usage: find [-H] [-L] [-P] [-Olevel] [-D help|tree|search|stat|rates|opt|exec] [path...] [expression]
+
+default path is the current directory; default expression is -print
+expression may consist of: operators, options, tests, and actions:
+
+operators (decreasing precedence; -and is implicit where no others are given):
+      ( EXPR )   ! EXPR   -not EXPR   EXPR1 -a EXPR2   EXPR1 -and EXPR2
+      EXPR1 -o EXPR2   EXPR1 -or EXPR2   EXPR1 , EXPR2
+
+positional options (always true): -daystart -follow -regextype
+
+normal options (always true, specified before other expressions):
+      -depth --help -maxdepth LEVELS -mindepth LEVELS -mount -noleaf
+      --version -xautofs -xdev -ignore_readdir_race -noignore_readdir_race
+
+tests (N can be +N or -N or N): -amin N -anewer FILE -atime N -cmin N
+      -cnewer FILE -ctime N -empty -false -fstype TYPE -gid N -group NAME
+      -ilname PATTERN -iname PATTERN -inum N -iwholename PATTERN -iregex PATTERN
+      -links N -lname PATTERN -mmin N -mtime N -name PATTERN -newer FILE
+      -nouser -nogroup -path PATTERN -perm [-/]MODE -regex PATTERN
+      -readable -writable -executable
+      -wholename PATTERN -size N[bcwkMG] -true -type [bcdpflsD] -uid N
+      -used N -user NAME -xtype [bcdpfls]
+      -context CONTEXT
+
+
+actions: -delete -print0 -printf FORMAT -fprintf FILE FORMAT -print
+      -fprint0 FILE -fprint FILE -ls -fls FILE -prune -quit
+      -exec COMMAND ; -exec COMMAND {} + -ok COMMAND ;
+      -execdir COMMAND ; -execdir COMMAND {} + -okdir COMMAND ;
+
+Report (and track progress on fixing) bugs via the findutils bug-reporting
+page at http://savannah.gnu.org/ or, if you have no web access, by sending
+email to <bug-findutils@gnu.org>.
+
+```
+## misc
+
 　　每一种操作系统都是由成千上万个不同种类的文件所组成的。其中有系统本身自带的文件，用户自己的文件，还有共享文件等等。我们有时候经常忘记某份文件放在硬盘中的哪个地方。在微软的WINDOWS操作系统中要查找一份文件是相当简单的事情，只要在桌面上点击“开始”－“搜索”中就能按照各种方式在本地硬盘上，局域网络，甚至在INTERNET上查找各种文件，文档。
 
 　　可是使用Linux的用户就没有那么幸运了，在Linux上查找某个文件确实是一件比较麻烦的事情。毕竟在Linux中需要我们使用专用的“查找”命令来寻找在硬盘上的文件。Linux下的文件表达格式非常复杂，不象WINDOWS,DOS下都是统一的AAAAAAA.BBB格式那么方便查找，在WINDOWS中，只要知道要查找的文件的文件名或者后缀就非常容易查找到。Linux中查找文件的命令通常为“find”命令，“find”命令能帮助我们在使用,管理Linux的日常事务中方便的查找出我们需要的文件。对于Linux新手来说，“find”命令也是了解和学习Linux文件特点的方法。因为Linux发行版本繁多，版本升级很快，在Linux书籍上往往写明某个配置文件的所在位置，往往Linux新手按图索骥还是不能找到。比如说REDHAT Linux 7.O和REDHAT Linux 7.1中有些重要的配置文件所在的硬盘位置和文件目录就有了很大的改变，如果不学会使用“find”命令，那么在成千上万的Linux文件中要找到其中的一个配置文件是相当困难的，笔者在没有精通“find”命令之前就吃过这样的苦头。好，下面就详细为大家介绍强大的“find”命令的全部使用方法和用途。
