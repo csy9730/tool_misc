@@ -112,6 +112,7 @@ anonymous_enable=NO
 
 # 禁止切换根目录 101 行 删除#
 chroot_local_user=YES 
+
 ```
 
 编辑完成后保存配置，重新启动 FTP 服务
@@ -206,27 +207,58 @@ usermod -d /data/ftp ftpuser
 
 ``` bash
 配置：
+
 anonymous_enable=YES    #设置是否允许匿名用户登录 
 local_enable=YES        #设置是否允许本地用户登录 
 local_root=/home        #设置本地用户的根目录 
 write_enable=YES        #是否允许用户有写权限 
 local_umask=022        #设置本地用户创建文件时的umask值 
+
 anon_upload_enable=YES    #设置是否允许匿名用户上传文件 
 anon_other_write_enable=YES    #设置匿名用户是否有修改的权限 
 anon_world_readable_only=YES    #当为YES时，文件的其他人必须有读的权限才允许匿名用户下载，单单所有人为ftp且有读权限是无法下载的，必须其他人也有读权限，才允许下载 
 download_enbale=YES    #是否允许下载 
 chown_upload=YES        #设置匿名用户上传文件后修改文件的所有者 
 chown_username=ftpuser    #与上面选项连用，表示修改后的所有者为ftpuser 
+
 ascii_upload_enable=YES    #设置是否允许使用ASCII模式上传文件 
 ascii_download_enable=YES    #设置是否允许用ASCII模式下载文件 
+
+
 
 chroot_local_user=YES   # 是否限定用户在其主目录下（NO 表示允许切换到上级目录）
 #chroot_list_enable=YES # 是否启用限制用户的名单（注释掉为禁用）
 chroot_list_file=/etc/vsftpd/chroot_list # 用户列表文件（一行一个用户）
-allow_writeable_chroot=YES # 如果启用了限定用户在其主目录下需要添加这个配置，解决报错 500 OOPS: vsftpd: refusing to run with writable root inside chroot()
+
+# 如果chroot_local_user=YES，chroot_list_enable=NO，则表示所有的用户都不能切换到上级目录；
+# 如果chroot_local_user=YES，chroot_list_enable=YES，表示chroot_list文件中的用户能切换上级目录，文件之外的用户不能切换上级目录
+# 如果chroot_local_user=NO，chroot_list_enable=YES， 表示只有chroot_list这个文件列表中的用户不能切换到上级目录，其他这个文件列表之外的可以切换
+
 xferlog_enable=YES     # 启用上传和下载的日志功能，默认开启。
+#xferlog_file=/var/log/xferlog
+xferlog_std_format=YES # 设定日志使用标准的记录格式。
+
+idle_session_timeout=600        # 空闲连接超时
+data_connection_timeout=120
+
+
 use_localtime=YES     # 是否使用本地时(自行添加)
 userlist_enable=YES 
+
+# This option specifies the location of the RSA certificate to use for SSL
+# encrypted connections.
+rsa_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem
+rsa_private_key_file=/etc/ssl/private/ssl-cert-snakeoil.key
+ssl_enable=NO
+
+connect_from_port_20=YES # 设定端口20进行数据连接。
+listen_port=21        # 监听端口
+pasv_enable=YES  # enable PASV
+pasv_min_port=50000 # min
+pasv_max_port=60000
+pasv_promiscuous=YES # YES to close safe check
+
+
 ```
 
 ### 主动模式与被动模式
@@ -276,6 +308,8 @@ ls
 [WinSCP](https://winscp.net/eng/docs/lang:chs)- Windows 下的 FTP 和 SFTP 连接客户端
 [FileZilla](https://filezilla-project.org/) - 跨平台的 FTP 客户端，支持 Windows 和 Mac
 
+
+
 ## misc
 
 
@@ -290,6 +324,16 @@ vim /etc/vsftpd/vsftpd.conf
 
 重启vsftpd #service vsftpd restart
 
+
+
+500 OOPS: vsftpd: both local and anonymous access disabled!
+出现这个错，需要修改配置：local_enable=YES
+
+
+**Q**:响应:	500 OOPS: vsftpd: refusing to run with writable root inside chroot()
+错误:	严重错误: 无法连接到服务器
+**A**: 
+出现这个错，需要修改配置：allow_writeable_chroot=YES
 
 
 **Q**: ftp vsftpd 530 login incorrect 解决办法汇总
@@ -324,7 +368,7 @@ vim /etc/pam.d/vsftpd
 
 
 还需要注意的是：
-可以上传到制定的文件夹（例如Downloads），赋予这个文件夹读写权限（这次为了方面chmod  777 Downloads）
+可以上传到制定的文件夹（例如Downloads），赋予这个文件夹读写权限
 
 **Q**: ftp使用那些端口？
 **A**: 服务端如果是主动模式，使用21和20端口，如果是被动模式，可以自行定义多个端口使用。
@@ -334,3 +378,4 @@ ftp 最常见的ftp，不够安全
 sftp，使用22端口，特别安全，速度较慢
 ftps和ftpes ： ttp over tls，较安全，速度中等。
 scp :不是文件传输协议，只是单次文件复制
+
