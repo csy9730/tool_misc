@@ -45,3 +45,19 @@
 
 
 app: new  run test, auto,gui, service,
+
+## 常见平台工具
+software：
+* windows exe
+* linux exe
+* android apk
+* ios app
+* mac app
+
+* browser
+    * vscode 插件
+    * chrome 插件
+    * firefox 插件
+* web 网页
+* python
+* nodejs
