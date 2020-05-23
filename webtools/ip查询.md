@@ -34,13 +34,19 @@ liuzhizhi@lzz-rmbp|logs # curl http://members.3322.org/dyndns/getip
 ```
 
 几个网址也非常好记忆
-ip.cn
+
 ipinfo.io
 cip.cc
 ifconfig.me
 myip.ipip.net
 
-```
+``` bash
+# 可用，默认查询本机ip地址
+curl myip.ipip.net 
+curl cip.cc
+# 不可用
+ip.cn 
+
 curl -s http://ip.taobao.com/service/getIpInfo.php?ip=223.5.5.5
 
 https://www.ipip.net/ip.html
