@@ -1,5 +1,84 @@
 # todo
 
+
+20200528
+
+查看adb命令帮助：adb help
+列出fastboot设备：fastboot devices
+查看fastboot命令帮助：fastboot help
+
+holer，shadowsocks，frp
+shadowsocks
+Privoxy
+假设有一台 Shadowsocks 服务器，攻击者通过嗅探或其它方式抓到了这个 Shadowsocks 服务器返回的一个包。
+为了知道明文内容，攻击者要么暴力破解密码（几乎不可行），要么想办法利用这台 Shadowsocks 服务器帮忙解密。
+作者选择了后者，即想办法把这个包变成客户端发的包，让服务器解密后代理到自己指定的服务器，这被称为重定向攻击。
+
+RuntimeBroker是什么进程，
+RuntimeBroker.exe进程win10或者win10.1系统中才会出现的进程，是一个重要的系统核心进程，是win10或者win10.1用来进行Metro App权限管理的一个进程。该程序正常情况下位于C：\windows\system32目录下，大小一般为32.7KB
+
+```
+#!/usr/bin/expect
+set timeout 30
+spawn ssh -l username 192.168.1.1
+expect "password:"
+send "ispass\r"
+interact
+```
+
+github.io 和 github.com 有什么区别？
+关注问题
+
+如果使用相同的域名，是可以在此域名下任意地“读”和“写”cookie，
+这是很危险的，
+比如“cookie劫持”或者“cookie注入攻击”。
+
+以前没有http://github.io的时候，
+代码仓库和pages服务都在http://github.com域名下，
+而pages是可以由用户自由编写的。
+
+只需要简单地几行js代码，
+就可以通过pages进行与cookie有关的攻击，
+而且由于域名相同，
+这可以影响到仓库下的内容，
+造成用户代码／数据的损失。
+
+有了http://github.io之后，
+pages服务则独立地运行在http://github.io域名下，
+cookie有关的攻击被限制在http://github.io域名下，
+这就变得安全了很多。
+
+nginx+ gitlab/workwpress
+ftp,nas,pypi,http-server
+
+- [ ] ss: powerdns 
+- [ ] ss: DDNS（Dynamic Domain Name Server，动态域名服务）是将用户的动态IP地址映射到一个固定的域名解析服务上，用户每次连接网络的时候客户端程序就会通过信息传递把该主机的动态IP地址传送给位于服务商主机上的服务器程序，服务器程序负责提供DNS服务并实现动态域名解析。
+- [ ] ss: [feeder](https://feeder.co/)
+- [ ] [nextcloud](https://github.com/nextcloud/news)
+- [ ] gitlite
+- [ ]  ss: Gitblit  下载Gitblit.下载地址：[gitblit](http://www.gitblit.com/), 系统：Windows ,JDK1.7,gitblit1.8.0(类似软件gitlab这个好像功能更多，svn)
+- [ ]  adb kindle  https://www.zhihu.com/question/22210090
+- [ ]  https://github.com/sitaramc/gitolite
+
+- [ ]  ss:GitPHP
+- [ ]  ss:Git-Lighttp
+- [ ]  git 
+- [ ]  ffmpeg
+- [ ]  git-lfs/git-lfs 
+- [ ]  WordPress
+- [ ]  Discuz 
+- [ ]  用watchdog来监视新文件，当新文件来时候，调用相应的解析脚本，进行解析入库。
+- [ ]  http://irreader.fatecore.com/
+
+Ansible
+NTLM验证关系
+OpenSSH + PowerShell 
+Total Commande
+
+CVS 编辑
+CVS是一个C/S系统，是一个常用的代码版本控制软件。主要在开源软件管理中使用。与它相类似的代码版本控制软件有subversion。多个开发人员通过一个中心版本控制系统来记录文件版本，从而达到保证文件同步的目的。CVS版本控制系统是一种GNU软件包，主要用于在多人开发环境下的源码的维护。但是由于之前CVS编码的问题，大多数软件开发公司都使用SVN替代了CVS。
+
+
 20200508
 - [ ] ss: RISC-V
 - [ ] QEMU 
@@ -54,7 +133,10 @@
 - [ ] ss:auto keras
 - [ ] Win10自带的Openssh怎么安装 如何启动SSH服务
 
-
+ss: openstack
+ss: log4qt,log4j
+ss: log.level
+ss 区块连
 
 ## main
 
