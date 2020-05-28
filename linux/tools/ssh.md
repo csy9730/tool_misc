@@ -220,6 +220,11 @@ grep "Failed password for root" /var/log/secure | awk '{print $11}' | wc -l
 grep "Failed password for root" /var/log/secure | awk '{print $11}' | sort | uniq -c | sort -nr | more
 # 通过以下查看Ubuntu 密码登录错误次数
 grep "Failed password for root" /var/log/auth.log | awk '{print $11}' | sort | uniq -c | sort -nr | more
+
+lastb # 查看 登录失败记录，/var/log/btmp
+
+# 读取位于/var/log/wtmp的文件，并把该给文件的内容记录的登录系统的用户名单全部显示出来。
+last # 查看登录成功记录
 ```
 
 1. 修改默认端口22为自定义端口号（例如2222）

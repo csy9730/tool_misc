@@ -12,6 +12,7 @@ wget http://sourceforge.net/projects/denyhosts/files/denyhosts/2.6/DenyHosts-2.6
 tar -zxvf DenyHosts-2.6.tar.gz
 cd DenyHosts-2.6
 
+pip2 install ipaddr 
 python2 setup.py install  --record denyhostsInstall.log
 ## 卸载的时候使用日志文件logName
 cat denyhostsInstall.log | xargs rm -rf

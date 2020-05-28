@@ -1,7 +1,7 @@
-Kali Linux 使用nmap进行局域网扫描
+# Kali Linux 使用nmap进行局域网扫描
 
-Mr_zhang_p_j 2017-07-21 11:52:58  9284  收藏 3
-展开
+
+## ping扫描
 ping扫描：扫描192.168.0.0/24网段上有哪些主机是存活的；
  
 [root@laolinux ~]# nmap -sP 192.168.0.0/24
@@ -47,7 +47,10 @@ Host 192.168.0.221 appears to be up.
 MAC Address: 00:09:6B:50:71:26 (IBM)
 Nmap finished: 256 IP addresses (20 hosts up) scanned in 3.818 seconds
  
-2、端口扫描：扫描192.168.0.3这台主机开放了哪些端口；
+## 端口扫描
+
+### TCP
+端口扫描：扫描192.168.0.3这台主机开放了哪些端口；
  
 [root@laolinux ~]# nmap -sT 192.168.0.3
 Starting Nmap 4.11 ( http://www.insecure.org/nmap/ ) at 2009-04-25 07:02 CST
@@ -68,21 +71,10 @@ PORT      STATE SERVICE
 3306/tcp  open  mysql
 10000/tcp open  snet-sensor-mgmt
 Nmap finished: 1 IP address (1 host up) scanned in 4.755 seconds
-3、隐藏扫描，只在目标主机上留下很少的日志信息：隐藏扫描192.168.0.220
- 
-[root@laolinux ~]# nmap -sS 192.168.0.127
-Starting Nmap 4.11 ( http://www.insecure.org/nmap/ ) at 2009-04-25 07:08 CST
-Interesting ports on 192.168.0.127:
-Not shown: 1675 closed ports
-PORT    STATE SERVICE
-21/tcp  open  ftp
-135/tcp open  msrpc
-139/tcp open  netbios-ssn
-445/tcp open  microsoft-ds
-912/tcp open  unknown
-MAC Address: 00:11:1A:35:38:62 (Motorola BCS)
-Nmap finished: 1 IP address (1 host up) scanned in 3.121 seconds
-4、UDP端口扫描：扫描192.168.0.127开放了哪些UDP端口；
+
+
+### UDP端口扫描
+UDP端口扫描：扫描192.168.0.127开放了哪些UDP端口；
  
 [root@laolinux ~]# nmap -sU 192.168.0.127
 Starting Nmap 4.11 ( http://www.insecure.org/nmap/ ) at 2009-04-25 07:08 CST
@@ -98,7 +90,26 @@ PORT     STATE         SERVICE
 4500/udp open|filtered sae-urn
 MAC Address: 00:11:1A:35:38:62 (Motorola BCS)
 Nmap finished: 1 IP address (1 host up) scanned in 2.947 seconds
-5、操作系统识别：
+
+## 隐藏扫描
+隐藏扫描，只在目标主机上留下很少的日志信息：隐藏扫描192.168.0.220
+ 
+[root@laolinux ~]# nmap -sS 192.168.0.127
+Starting Nmap 4.11 ( http://www.insecure.org/nmap/ ) at 2009-04-25 07:08 CST
+Interesting ports on 192.168.0.127:
+Not shown: 1675 closed ports
+PORT    STATE SERVICE
+21/tcp  open  ftp
+135/tcp open  msrpc
+139/tcp open  netbios-ssn
+445/tcp open  microsoft-ds
+912/tcp open  unknown
+MAC Address: 00:11:1A:35:38:62 (Motorola BCS)
+Nmap finished: 1 IP address (1 host up) scanned in 3.121 seconds
+
+
+### 操作系统识别
+操作系统识别
  
 [root@laolinux ~]# nmap -sS -O  192.168.0.127
 Starting Nmap 4.11 ( http://www.insecure.org/nmap/ ) at 2009-04-25 07:09 CST
@@ -115,8 +126,90 @@ Device type: general purpose
 Running: Microsoft Windows 2003/.NET|NT/2K/XP
 OS details: Microsoft Windows 2003 Server or XP SP2
 Nmap finished: 1 IP address (1 host up) scanned in 5.687 seconds
-****************************************************
-**    by ：     laolinux
-**    my blog： http://laolinux.cublog.cn
-****************************************************
-目标来源--------------------》博客
+
+
+### 全部扫描
+
+-A: Enable OS detection, version detection, script scanning, and traceroute
+
+``` 
+pi@raspberrypi:~ $ sudo nmap -sS  -A  192.168.1.100
+
+Starting Nmap 7.40 ( https://nmap.org ) at 2020-05-25 22:29 CST
+Nmap scan report for 192.168.1.103
+Host is up (0.0063s latency).
+Not shown: 985 closed ports
+PORT      STATE SERVICE            VERSION
+135/tcp   open  msrpc              Microsoft Windows RPC
+139/tcp   open  netbios-ssn        Microsoft Windows netbios-ssn
+445/tcp   open  microsoft-ds       Windows 8.1 China 9600 microsoft-ds (workgroup: WORKGROUP)
+902/tcp   open  ssl/vmware-auth    VMware Authentication Daemon 1.10 (Uses VNC, SOAP)
+912/tcp   open  vmware-auth        VMware Authentication Daemon 1.0 (Uses VNC, SOAP)
+2869/tcp  open  http               Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+|_http-server-header: Microsoft-HTTPAPI/2.0
+|_http-title: Service Unavailable
+3306/tcp  open  mysql              MySQL (unauthorized)
+3389/tcp  open  ssl/ms-wbt-server?
+| ssl-cert: Subject: commonName=abc-acer
+| Not valid before: 2020-01-21T02:45:05
+|_Not valid after:  2020-07-22T02:45:05
+6000/tcp  open  X11?
+|_x11-access: ERROR: Script execution failed (use -d to debug)
+49152/tcp open  msrpc              Microsoft Windows RPC
+49153/tcp open  msrpc              Microsoft Windows RPC
+49154/tcp open  msrpc              Microsoft Windows RPC
+49155/tcp open  msrpc              Microsoft Windows RPC
+49156/tcp open  msrpc              Microsoft Windows RPC
+49165/tcp open  unknown
+| fingerprint-strings:
+|   FourOhFourRequest, GetRequest, HTTPOptions:
+|     HTTP/1.1 200 OK
+|     Cache-Control: no-cache
+|     Content-Type: application/json
+|     Content-Length: 46
+|_    {"success":false,"msg":"Verification failure"}
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port49165-TCP:V=7.40%I=7%D=5/25%Time=5ECBD68D%P=arm-unknown-linux-gnuea
+SF:bihf%r(GetRequest,8E,"HTTP/1\.1\x20200\x20OK\r\nCache-Control:\x20no-ca
+SF:che\r\nContent-Type:\x20application/json\r\nContent-Length:\x2046\r\n\r
+SF:\n{\"success\":false,\"msg\":\"Verification\x20failure\"}")%r(HTTPOptio
+SF:ns,8E,"HTTP/1\.1\x20200\x20OK\r\nCache-Control:\x20no-cache\r\nContent-
+SF:Type:\x20application/json\r\nContent-Length:\x2046\r\n\r\n{\"success\":
+SF:false,\"msg\":\"Verification\x20failure\"}")%r(FourOhFourRequest,8E,"HT
+SF:TP/1\.1\x20200\x20OK\r\nCache-Control:\x20no-cache\r\nContent-Type:\x20
+SF:application/json\r\nContent-Length:\x2046\r\n\r\n{\"success\":false,\"m
+SF:sg\":\"Verification\x20failure\"}");
+MAC Address: 30:32:51:52:CB:D9 (Liteon Technology)
+Device type: general purpose
+Running: Microsoft Windows Vista|7|8.1
+OS CPE: cpe:/o:microsoft:windows_vista cpe:/o:microsoft:windows_7::sp1 cpe:/o:microsoft:windows_8.1
+OS details: Microsoft Windows Vista, Windows 7 SP1, or Windows 8.1 Update 1
+Network Distance: 1 hop
+Service Info: Host: ABC-ACER; OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+|_clock-skew: mean: -1s, deviation: 0s, median: -1s
+|_nbstat: NetBIOS name: ABC-ACER, NetBIOS user: <unknown>, NetBIOS MAC: 30:52:cb:51:31:d9 (Liteon Technology)
+| smb-os-discovery:
+|   OS: Windows 8.1 China 9600 (Windows 8.1 China 6.3)
+|   OS CPE: cpe:/o:microsoft:windows_8.1::-
+|   NetBIOS computer name: ABC-ACER\x00
+|   Workgroup: WORKGROUP\x00
+|_  System time: 2020-05-25T22:32:24+08:00
+| smb-security-mode:
+|   account_used: <blank>
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled (dangerous, but default)
+|_smbv2-enabled: Server supports SMBv2 protocol
+
+TRACEROUTE
+HOP RTT     ADDRESS
+1   6.33 ms 192.168.1.103
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 224.48 seconds
+
+```
+
+## help
