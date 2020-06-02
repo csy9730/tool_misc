@@ -132,7 +132,7 @@ useradd ftpuser
 为用户 ftpuser 设置密码
 
 ```javascript
-echo "javen205" | passwd ftpuser --stdin
+echo "123456" | passwd ftpuser --stdin
 ```
 
 
@@ -181,7 +181,7 @@ usermod -d /data/ftp ftpuser
 useradd ftpuser
 
 # 为用户 ftpuser 设置密码
-echo "javen205" | passwd ftpuser --stdin
+echo "123456" | passwd ftpuser --stdin
 
 # 限制用户 `ftpuser`只能通过 FTP 访问服务器，而不能直接登录服务器：
 usermod -s /sbin/nologin ftpuser
@@ -195,13 +195,41 @@ touch  /data/ftp/welcome.txt
 echo "Welcome to use FTP service." > /data/ftp/welcome.txt
 
 # 设置访问权限 sudo chmod a-w /data/ftp
-sudo chmod 755 /data/ftp && sudo chmod 777 -R /data/ftp/pub
+
 # 设置为用户的主目录：
 usermod -d /data/ftp ftpuser
 
 # 更改文件夹所有权
-# chown -R ftpuser:ftpuser /data/ftp/pub
+chown -R ftpuser:ftpuser /data/ftp/pub
 ```
+#### 简单的目录结构
+``` bash
+mkdir -p /data/ftp/pub
+touch  /data/ftp/welcome.txt
+echo "Welcome to use FTP service." > /data/ftp/welcome.txt
+mkdir -p /data/ftp/private
+sudo chmod 755 /data/ftp 
+sudo chmod 700 -R /data/ftp/private 
+sudo chmod 777 -R /data/ftp/pub
+
+
+useradd ftpadmin
+echo "123456" | passwd ftpadmin --stdin
+usermod -s /sbin/nologin ftpadmin
+usermod -d /data/ftp ftpadmin
+chown -R ftpadmin:ftpadmin /data/ftp
+
+useradd ftpuser
+echo "123456" | passwd ftpuser --stdin
+usermod -s /sbin/nologin ftpuser
+usermod -d /data/ftp ftpuser
+chown -R ftpuser:ftpuser /data/ftp/pub
+
+usermod -d /data ftpadmin
+```
+
+
+
 
 ### 其他配置
 
@@ -326,7 +354,8 @@ vim /etc/vsftpd/vsftpd.conf
 
 
 
-500 OOPS: vsftpd: both local and anonymous access disabled!
+**Q**:响应:500 OOPS: vsftpd: both local and anonymous access disabled!
+**A**: 
 出现这个错，需要修改配置：local_enable=YES
 
 
@@ -334,6 +363,10 @@ vim /etc/vsftpd/vsftpd.conf
 错误:	严重错误: 无法连接到服务器
 **A**: 
 出现这个错，需要修改配置：allow_writeable_chroot=YES
+或者修改用户根路径：
+`usermod -d /data/ftp ftpuser`
+避免用户对跟路径有完整的修改权限。
+
 
 
 **Q**: ftp vsftpd 530 login incorrect 解决办法汇总
@@ -378,4 +411,3 @@ ftp 最常见的ftp，不够安全
 sftp，使用22端口，特别安全，速度较慢
 ftps和ftpes ： ttp over tls，较安全，速度中等。
 scp :不是文件传输协议，只是单次文件复制
-
