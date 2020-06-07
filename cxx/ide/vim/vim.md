@@ -134,6 +134,7 @@ qa# 将之后的所有键盘操作录制下来，直到再次在命令模式按
 :wq # 保存文件并退出
 :q! # 强制退出不保存
 :e abc.txt # 打开文件abc.txt
+:e! # 手动重加载文件
 :f abc.txt # 同上
 :new abc.txt # 新建abc.txt
 :w [filename] # 另存为filename
@@ -182,6 +183,8 @@ ctrl+w+_ # 尽可能放大窗格
 :Sexplore #水平分割窗口打开
 i # 切换文件视图
 ```
+
+
 
 
 #### 会话管理
