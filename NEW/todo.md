@@ -1,22 +1,48 @@
 # todo
 
+### 202006
+20200606
+- [ ] cron pam_unix cron:session closed for user root
+- [ ] Android 修改 host文件
+- [ ] 如何保护ssh转发，防止ssh暴力破解
+- [ ] drawio demo run
+- [ ] cloudreve restful api
+- [x] rsshub demo run
+- [ ] rsshub route parser 
+- [ ] rsshub deploy
+- [ ] fail2ban
+- [ ] CDN
+- [ ] 宝塔面板
+- [ ] phpstudy
+- [ ] dns
+- [ ] dns 绑定
+- [ ] 内网dns 绑定
+- [ ] openwrt 树莓派
+- [ ] 洋葱路由（The Onion Router）网络，常用缩写为 Tor
+- [ ] vs emulator for android
+- [ ] rtsp 流媒体协议
+- [ ] 
 
 20200528
 
+- [ ] adb
 查看adb命令帮助：adb help
 列出fastboot设备：fastboot devices
 查看fastboot命令帮助：fastboot help
 
-holer，shadowsocks，frp
-shadowsocks
-Privoxy
+- [ ] holer，shadowsocks，frp
+- [ ] shadowsocks
+- [ ] Privoxy
+
+* 重定向攻击
 假设有一台 Shadowsocks 服务器，攻击者通过嗅探或其它方式抓到了这个 Shadowsocks 服务器返回的一个包。
 为了知道明文内容，攻击者要么暴力破解密码（几乎不可行），要么想办法利用这台 Shadowsocks 服务器帮忙解密。
 作者选择了后者，即想办法把这个包变成客户端发的包，让服务器解密后代理到自己指定的服务器，这被称为重定向攻击。
 
-RuntimeBroker是什么进程，
+* RuntimeBroker是什么进程，
 RuntimeBroker.exe进程win10或者win10.1系统中才会出现的进程，是一个重要的系统核心进程，是win10或者win10.1用来进行Metro App权限管理的一个进程。该程序正常情况下位于C：\windows\system32目录下，大小一般为32.7KB
 
+* expect
 ```
 #!/usr/bin/expect
 set timeout 30
@@ -26,27 +52,6 @@ send "ispass\r"
 interact
 ```
 
-github.io 和 github.com 有什么区别？
-关注问题
-
-如果使用相同的域名，是可以在此域名下任意地“读”和“写”cookie，
-这是很危险的，
-比如“cookie劫持”或者“cookie注入攻击”。
-
-以前没有http://github.io的时候，
-代码仓库和pages服务都在http://github.com域名下，
-而pages是可以由用户自由编写的。
-
-只需要简单地几行js代码，
-就可以通过pages进行与cookie有关的攻击，
-而且由于域名相同，
-这可以影响到仓库下的内容，
-造成用户代码／数据的损失。
-
-有了http://github.io之后，
-pages服务则独立地运行在http://github.io域名下，
-cookie有关的攻击被限制在http://github.io域名下，
-这就变得安全了很多。
 
 nginx+ gitlab/workwpress
 ftp,nas,pypi,http-server
