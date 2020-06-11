@@ -229,9 +229,11 @@ last # 查看登录成功记录
 
 1. 修改默认端口22为自定义端口号（例如2222）
 2. 增加密码长度到14位以上，包含符号数字字母的组合。
-3. 禁止密码登录，只能私钥登录
-4. 添加hosts.deny
-5. 使用denyhosts脚本
+3. 禁止root用户登录，创建一个普通帐号，修改ID为0，成为超级管理权限
+4. 禁止密码登录，只能私钥登录
+5. 添加hosts.deny
+6. 使用denyhosts脚本，或fail2ban
+7. 敲门守护进程 knockd
    
 
 本地使用ssh-keygen生成公钥，将公钥放在/root/.ssh/authorized_keys中

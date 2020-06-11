@@ -15,13 +15,14 @@
 - [ ] 宝塔面板
 - [ ] phpstudy
 - [ ] dns
-- [ ] dns 绑定
+- [ ] dns 绑定 !
 - [ ] 内网dns 绑定
 - [ ] openwrt 树莓派
 - [ ] 洋葱路由（The Onion Router）网络，常用缩写为 Tor
 - [ ] vs emulator for android
 - [ ] rtsp 流媒体协议
-- [ ] 
+- [ ] 如何防止ssh端口转发被ssh密码暴力破解
+- [ ] 如何防止ssh端口被代理服务器密码暴力破解
 
 20200528
 
