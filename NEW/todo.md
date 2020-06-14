@@ -1,11 +1,43 @@
 # todo
 
+
 ### 202006
+
+#### 20200615
+drawio
+Zotero 文献管理软件
+http://nginx.org/en/download.html
+http://www.phoenixos.com/download_x86
+虚拟机镜像 (Virtual Mechines)
+tiny core linux
+https://www.ctfile.com/p/register
+MountainDuck
+RailDrive 
+http-dav
+https://www.raidrive.com/download
+Tiny Core Linux
+AnyDesk 
+skydrive ==>onedrive
+凤凰系统
+Vysor、AirDroid  mobizen
+https://quiterss.org/en/download
+FeedDemon
+newsflow
+mount 网盘
+Vimium 和 Vimperator 就是两款参考了 Vim 按键操作方式和理念而来的浏览器插件
+Splashtop2
+Android-x86
+powershadow 
+http://www.shadowdefender.com/
+https://www.box.com/pricing
+nginx 或 lighttpd 都能装好webdav服务。
+
+#### 20200606
 20200606
 - [ ] cron pam_unix cron:session closed for user root
 - [ ] Android 修改 host文件
 - [ ] 如何保护ssh转发，防止ssh暴力破解
-- [ ] drawio demo run
+- [X] drawio demo run
 - [ ] cloudreve restful api
 - [x] rsshub demo run
 - [ ] rsshub route parser 
