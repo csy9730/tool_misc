@@ -3,6 +3,9 @@
 
 ### Remix OS
 【Remix OS】已收购Android x86，可双系统，分辨率不能调，对AMD支持不行，无法手动切换声卡输出线路。
+基德科技和Remix OS的公司已经于2019年倒闭，不再更新。
+### phoenixos
+http://www.phoenixos.com/download_x86
 
 ### bluestacks
 [bluestacks](https://www.bluestacks.com/)
