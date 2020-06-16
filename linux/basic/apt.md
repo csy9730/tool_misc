@@ -67,6 +67,10 @@ sudo dpkg --configure -a
 或者使用`ps -e | grep apt`是否有未执行完的apt程序，然后执行`sudo killall apt`
 
 
+**Q**: 如何修改apt 源
+**A**: 
+apt源就是一个文件(Linux下一切都是文件)，位置是/etc/apt/sources.list，打开就可以看到你本机的apt源
+
 
 **Q**: 安装docker：
 

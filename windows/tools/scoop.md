@@ -5,11 +5,11 @@
 
 在 PowerShell 中输入下面内容，保证允许本地脚本的执行：
 
-set-executionpolicy remotesigned -scope currentuser
+`set-executionpolicy remotesigned -scope currentuser`
 
 然后执行下面语句进行安装：
 
-iex (new-object net.webclient).downloadstring('https://get.scoop.sh')
+`iex (new-object net.webclient).downloadstring('https://get.scoop.sh')`
 
 即可安装scoop。
 

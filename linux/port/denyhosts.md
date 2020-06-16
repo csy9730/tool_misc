@@ -19,7 +19,7 @@ cat denyhostsInstall.log | xargs rm -rf
 ```
 
 ### start
-程序的安装目录是`/usr/lib/python2.7/site-packages/DenyHosts
+程序的安装目录是`/usr/lib/python2.7/site-packages/DenyHosts`
 共享文档目录 `/usr/share/denyhosts`
 程序入口文件是 `python /usr/bin/denyhosts.py`
 服务入口是`/usr/bin/daemon-control-dist`
@@ -41,6 +41,9 @@ daemon-control start
 SECURE_LOG = /var/log/secure
 
 ```
+ubuntu使用/var/log/auth.log 文件
+centos使用/var/log/secure文件
+
 
 ### daemon
 
@@ -97,3 +100,14 @@ HOSTNAME_LOOKUP=NO
 
 DAEMON_LOG = /var/log/denyhosts
 ```
+
+## 解除denyhosts
+
+1. 暂停rsyslog
+2. 暂停denyhosts
+3. 删除记录
+4. 重新启动denyhosts
+5. 重新启动sshd和rsyslog
+
+从/var/log/secure文件中指定IP的移除失败的登录事件
+从/etc/hosts.deny移除指定IP
