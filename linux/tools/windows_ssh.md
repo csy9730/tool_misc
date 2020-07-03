@@ -95,6 +95,13 @@ Host 123.123.123.123
 `SCHTASKS.EXE /create /sc once /tn WeChat /tr "C:\Program Files\Tencent\WeChat\WeChat.exe" /st %time:~0,8%`
 
 
+**Q**: 通过vbs设置启动项，没有一闪而过的窗口。
+**A**: 
+``` bash
+echo set ws=WScript.CreateObject("WScript.Shell")>"startSshd.vbs"
+echo ws.Run "cmd /c /usr/bin/sshd ",vbhide >>"startSshd.vbs"
+copy startSshd.vbs  "%programdata%\Microsoft\Windows\Start Menu\Programs\Startup" /y
+```
 
 
 ## misc
