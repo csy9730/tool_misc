@@ -1,12 +1,1 @@
-Function fCopyStr
-	Dim str
-	str="ÎÒÊÇcsy/qq"
-	REM set str="ÕâÀïÊÇÄãÒª¸´ÖÆµ½¼ôÌù°åµÄ×Ö·û´®"
-	Set ws = wscript.createobject("wscript.shell")
-	ws.run "mshta vbscript:clipboardData.SetData("+""""+"text"+""""+","+""""&str&""""+")(close)",0,true
-	Set objShell = CreateObject("Wscript.Shell")
-	objShell.Run "notepad"
-	WScript.Sleep 3000
-	objShell.SendKeys "^v"
-	objShell.SendKeys "%s"
-end function
+<attachment contenteditable="false" data-atts="%5B%5D" data-aid=".atts-d342aa3b-f318-48c7-a513-ec1b30f422ae"></attachment><p>Function fCopyStr Dim str str="ï¿½ï¿½ï¿½ï¿½csy/qq" REM set str="ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½" Set ws = wscript.createobject("wscript.shell") ws.run "mshta vbscript:clipboardData.SetData("+""""+"text"+""""+","+""""&amp;str&amp;""""+")(close)",0,true Set objShell = CreateObject("Wscript.Shell") objShell.Run "notepad" WScript.Sleep 3000 objShell.SendKeys "^v" objShell.SendKeys "%s" end function</p><p><br></p>
