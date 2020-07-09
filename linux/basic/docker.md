@@ -24,13 +24,33 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io
 ## 运行
 
 ``` bash
-sudo docker pull helloworld
+docker version
+docker pull hello-world
+docker images 
+docker ps # 查看
 sudo docker run hello-world
 
 sudo systemctl start docker
 sudo systemctl enable docker # 启动并加入开机启动
-```
 
+docker pull ubuntu:latest
+docker run -it ubuntu bash
+```
+### run help
+docker run 支持以下配置项 
+-d: 意思为后台运行容器，并返回容器ID。
+--name="nginx-lb": 为容器指定一个名称。
+-v 绑定一个卷,主机的目录映射到容器的目录
+-a stdin: 指定标准输入输出内容类型，可选 STDIN/STDOUT/STDERR 三项；
+-t: 为容器重新分配一个伪输入终端，通常与 -i 同时使用；
+-e username="ritchie": 设置环境变量；
+-m :设置容器使用内存最大值；
+--link=[]: 添加链接到另一个容器
+-P 标记时，Docker 会随机映射一个 49000~49900 的端口到内部容器开放的网络端口
+使用 docker ps 可以看到，本地主机的 49155 被映射到了容器的 5000 端口。此时访问本机的 49155 端口即可访问容器内 web 应用提供的界面。
+-p（小写）则可以指定要映射的IP和端口，但是在一个指定端口上只可以绑定一个容器。支持的格式有 hostPort:containerPort、ip:hostPort:containerPort、 ip::containerPort。
+
+使用 docker port 来查看当前映射的端口配置，也可以查看到绑定的地址
 
 
 ## misc
