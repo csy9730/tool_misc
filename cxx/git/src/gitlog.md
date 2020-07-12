@@ -1,5 +1,6 @@
 # 用git统计代码提交行数
 
+``` bash
 # 某个时间范围内代码提交文件数目
 git log --since ==2017-04-10 --until=2017-07-10 | wc -l
 # 统计某人的代码提交量，包括增加，删除：
@@ -16,6 +17,7 @@ git log --oneline | wc -l
 # 添加或修改的代码行数：
 git log --stat|perl -ne 'END { print $c } $c += $1 if /(\d+) insertions/;'
 
+```
 
 
 git log 参数说明：

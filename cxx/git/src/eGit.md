@@ -68,7 +68,7 @@ git init  # 初始化操作，新建空仓库
 |  | add |edit|add|edit&add|commit|
 |rm|checkout|   reset  | checkout |reset --soft| |
 
-```
+``` bash
 git status # 查看track状态。
 git add abc  # 添加abc文件到索引区、暂存区
 git add .    #  添加当前路径到索引区、暂存区
@@ -158,22 +158,29 @@ git stash pop # apply+drop
 
 ```
 #### 分支操作
-```
+``` bash
 git branch -a   # 查看分支
 git branch - create #创建分支
 git branch -d # 删除分支
 git branch - checkout # 切换分支
-git branch  new_branch #创建new_branch分支
-git checkout -b new_branch #创建并切换new_branch分支
+git branch  new_branch # 创建new_branch分支
+git checkout -b new_branch # 创建并切换new_branch分支
 # 效果：并且直接把分支的改变应用or覆盖到repo的所有文件上。
 git fetch # 获取更新，更新叠加到本地分支
 git prune # 剪枝
 ```
 
 #### remote
-```
+
+
+``` bash
 git remote -v  #查看所有远程仓库
 git remote add shortname url # 绑定添加远程仓库
+git remote remove origin # 删除远程仓库
+```
+
+
+```
 git pull  # 可以下载别的版本更新
 git fetch # 获取更新
 # git pull = git fetch + git merge
@@ -183,7 +190,7 @@ git push origin master # 将本地分支推送到与之存在追踪关系的远�
 git push shortname master # 推送本地分支
 git push origin master：refs/for/master # 即是将本地的master分支推送到远程主机origin上的对应master分支， origin 是远程主机名，第一个master是本地分支名，第二个master是远程分支名。
 
- git fetch origin master # 从远程的origin仓库的master分支下载代码到本地的origin master
+git fetch origin master # 从远程的origin仓库的master分支下载代码到本地的origin master
 
 ```
 
@@ -301,7 +308,7 @@ git am =git apply  +git add+git commit
 ```
 ##### bundle
 
-```
+``` bash
 # 创建GIT打包文件
 git bundle create repo.bundle HEAD master
 git  bundle verify repo.bundle
@@ -313,6 +320,19 @@ git clone repo2.bundle  repoDIr
 cd repoDir
 git log --oneline
 ```
+
+从bundle克隆，并且设置远程同步源
+``` bash
+git clone abc.bundle
+cd abc
+git branch -b master
+git remote remove origin
+# 绑定添加远程仓库
+git remote add origin url https://github.com/my/abc.git
+
+git push --set-upstream origin master
+```
+
 
 ##### alias
 ```
@@ -383,7 +403,7 @@ concept guides. See 'git help <command>' or 'git help <concept>'
 to read about a specific subcommand or concept.
 ```
 
-####
+#### misc
 git基础概念：blob,tree, commit,tag
 
 
@@ -441,3 +461,21 @@ git push origin --force
 git branch -a
 git log  remotes/origin/HEAD
 ```
+
+git clone 如何拉取部分版本，部分文件？
+适合用 git clone --depth=1 的场景：你只是想clone最新版本来使用或学习，而不是参与整个项目的开发工作
+```
+--depth <depth>
+Create a shallow clone with a history truncated to the specified number of commits. Implies --single-branch 
+depth选项默认使用单分支。
+
+通过 ` git clone --depth=1 --branch a_br ` 可以只复制一个分支快照，没有git历史。
+```
+
+
+**Q**: git还有什么拓展使用方法？
+
+**A**: 
+通过markdown编辑器，作为笔记管理仓库。
+作为静态文件仓库，使用github域名作为静态网页。
+通过添加lfs（大文件支持），作为二进制软件的管理仓库。
