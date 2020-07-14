@@ -104,6 +104,7 @@ git commit -m "abc" # 提交
 git commit --amend # 提交，与上次的提交合并
 git reset --hard ver  # 将版本回退到ver版本，只影响tracked文件
 git revert -n  # 通过反做创建一个新的版本，这个版本的内容与我们要回退到的目标版本一样，但是HEAD指针是指向这个新生成的版本，而不是目标版本
+
 ```
 ##### 版本号
 版本号表达方式：
@@ -118,6 +119,12 @@ HEAD 是指针，可以指向任意commit节点
 提交后 HEAD 随着分支一起向前移动
 master指针，指向master主线节点
 
+``` bash
+# 获取完整commit id（如：14123c8877e6ebdc220e205d92fc70feaf06dab1）
+git rev-parse HEAD
+# 获取short commit id（如：14123c8）
+git rev-parse --short HEAD
+```
 
 ##### log
 
@@ -305,7 +312,12 @@ git format-patch HEAD^^  #生成最近的2次commit的patch
 git apply --check 0001-limit-log-function.patch   　　　  # 检查patch是否能够打上，如果没有任何输出，则说明无冲突，可以打上
 git apply *.patch # 批量打多个补丁
 git am =git apply  +git add+git commit 
+
+git am =git apply  +git add+git commit 
+git am --abort # 放弃上次的am冲突。
 ```
+多个补丁，补丁顺序是从小到大。
+
 ##### bundle
 
 ``` bash
