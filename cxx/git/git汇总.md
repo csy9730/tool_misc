@@ -51,7 +51,13 @@ git rebase
 ```
 
 tag管理
-
+``` bash
+git tag  # 查看标签
+git tag -a v1.2 9fceb02 # 补录标签
+git tag v1.2 HEAD # 补录标签
+git tag -d v1.00  # 删除标签
+git push origin --tags   # 推送tag
+```
 
 同步管理
 push/pull/fetch/merge
