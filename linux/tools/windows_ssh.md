@@ -58,8 +58,10 @@ sudo service ssh restart
 cd "C:\Program Files\OpenSSH\bin"
 mkgroup -l >> ..etcgroup
 mkpasswd -l >> ..etcpasswd
-net start opensshd
+net start opensshd #  开启服务
 netstat -an |findstr 22
+
+net stop opensshd #  关闭服务
 ```
 
 
@@ -88,6 +90,18 @@ Host 123.123.123.123
     KexAlgorithms +diffie-hellman-group1-sha1
 ```
 或者使用旧版的putty连接。
+
+**Q**: Bad owner or permissions on C:\\Users\\gd_cs/.ssh/config
+
+**A**: 修改.ssh/config的权限
+``` 
+sudo chmod 600 .ssh/config 
+sudo chown $USER .ssh/config
+```
+方法2： 
+右击config,属性→安全→高级→禁止继承→删除所有继承(忘了全称了，大概这个意思)→确定
+如果系统是英文：
+Properties -> Security -> Advanced -> Disable Inheritance -> Remove all inherited permissions from this object
 
 
 **Q**: cmd远程启动程序，任务管理器里有，但是前台没有界面，即使是有UI界面的程序；

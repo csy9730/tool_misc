@@ -28,6 +28,8 @@ nircmd.exe savescreenshot "shot.png"
 # 延迟2秒截图
 nircmd.exe cmdwait 2000 savescreenshot "shot.png" 
 nircmd.exe loop 10 60000 savescreenshot c:\temp\scr~$currdate.MM_dd_yyyy$-~$currtime.HH_mm_ss$.png
+nircmd savescreenshot F:\\tmp_50_50_100_100.png 50 50 100 100
+
 
 nircmd exitwin reboot
 nircmd.exe exitwin poweroff 
