@@ -62,7 +62,11 @@ cmake,ctest,cpack,cdash
 ### gitlab-runer
 
 ### travis CI
-
+Travis CI是在线托管的CI服务，用Travis来进行持续集成，不需要自己搭服务器，使用方便，对开源项目是免费的，支持多数主流语言。
 ### jenkins
-
+，用Jenkins来进行持续集成。
 ### Appveyor
+
+### Azure Pipelines
+
+### TeamCity
