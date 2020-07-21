@@ -25,11 +25,11 @@ shutdown -h,这条指令让计算机休眠，也就是完全断电，但是会�
 输入指令nircmd standby即可实现睡眠(也就是待机状态)
 
 启用屏幕保护
-cmd下输入rundll32.exe user32.dll LockWorkStation，可以启动屏幕保护功能，这样要再次使用电脑的时候要输入密码。可以在短时间离开的时候，防止别人动你电脑。
+cmd下输入`rundll32.exe user32.dll LockWorkStation`，可以启动屏幕保护功能，这样要再次使用电脑的时候要输入密码。可以在短时间离开的时候，防止别人动你电脑。
 
 显示shutdown命令语法
 遇到命令不懂的时候，一般会去网上搜索，但是我发现网上的资料都介绍的都全，其实，最应该做的应该是直接在cmd中查看，官方的介绍文档。
-输入shutdown -help显示shutdown指令的用法
+输入`shutdown -help`显示shutdown指令的用法
 
 用法: shutdown [/i | /l | /s | /sg | /r | /g | /a | /p | /h | /e | /o] [/hybrid] [/soft] [/fw] [/f]
     [/m \\computer][/t xxx][/d [p|u:]xx:yy [/c "comment"]]
