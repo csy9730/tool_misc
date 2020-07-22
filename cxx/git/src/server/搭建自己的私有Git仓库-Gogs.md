@@ -21,7 +21,7 @@ chmod 600 ~/.ssh/authorize_keys
 
 ### 2.下载
 
-为了方便，我们选择二进制安装方法，先去下载对应版本的二进制包。[下载地址](https://link.zhihu.com/?target=https%3A//gogs.io/docs/installation/install_from_binary.html)
+为了方便，我们选择二进制安装方法，先去下载对应版本的二进制包。[下载地址](https://gogs.io/docs/installation/install_from_binary.html)
 
 ### 3.其他所需环境
 
