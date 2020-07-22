@@ -12,11 +12,11 @@
         * win mobile
     * manager
         * install
-        * power on
+        * power on/off
         * upgrade
-        * remote
 * inner 
     * 操作系统管理
+    * session /remote
     * tasklist 进程管理
     * schtasks 计划任务
     * services 服务管理
@@ -29,17 +29,21 @@
     * 网络管理
     * 防火墙管理
     * 端口管理
-* functional
-    * cmd
-        * wmic
-    * powershell
-    * regedit
-    * desktop
-      * windows start menu
+    * desktop/gui
 * extension
+    * manager tools
+        * cmd
+        * jscript/wscript
+        * wmic
+        * powershell
+        * regedit
+        * windows start menu
+        * windows高级常用工具
     * tools
         * notepad
         * picture
         * calc
-    * windows高级常用工具
+* 3rd extension
+    * ...
+    
 

@@ -1,5 +1,34 @@
 # git 知识点
 
+
+* base
+    * git 简介
+    * git 安装/卸载
+* inner
+    * repo
+    * branch
+    * commit
+    * index
+    * cache
+    * stash
+    * blob
+    * user/config
+    * tag
+    * hash
+* demo/tutorial/
+    * 
+* outer
+    * lfs
+    * submodule
+    * hook
+* extension
+    * web remote repo services
+    * client
+        * github desktop
+        * git-bash
+        * gitk
+
+
 git 原理
 
 git 使用方法

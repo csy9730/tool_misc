@@ -18,6 +18,9 @@ windowsXp可以安装openssh。
 
 
 **Q**: sshd启动时报错：`Could not load host key: /etc/ssh/ssh_host_rsa_key`
+或者报错： `sshd: no hostkeys available — exiting`
+或者报错： `Privilege separation user sshd does not exist `
+
 **A**:  在第一次启动sshd时，会要求生成id_ecdsa，id_rsa，id_ed25519这三个文件，充当已经授权的默认公钥文件。
 执行以下命令生成密钥即可
 ``` bash
