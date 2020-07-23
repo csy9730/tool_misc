@@ -21,6 +21,7 @@ git log --stat|perl -ne 'END { print $c } $c += $1 if /(\d+) insertions/;'
 
 
 git log 参数说明：
+```
 --author   指定作者
 --stat   显示每次更新的文件修改统计信息，会列出具体文件列表
 --shortstat    统计每个commit 的文件修改行数，包括增加，删除，但不列出文件列表：  
@@ -63,8 +64,16 @@ git log 参数说明：
        --until, --before 仅显示指定时间之前的提交。                  
        --author 仅显示指定作者相关的提交。                
        --committer 仅显示指定提交者相关的提交。
- 
-    一些例子： git log --until=1.minute.ago // 一分钟之前的所有 log git log --since=1.day.ago //一天之内的log git log --since=1.hour.ago //一个小时之内的 log git log --since=`.month.ago --until=2.weeks.ago //一个月之前到半个月之前的log git
-log --since ==2013-08.01 --until=2013-09-07 //某个时间段的 log   git blame
-看看某一个文件的相关历史记录
-       例如：git blame index.html --date short
+ ```
+
+    一些例子： 
+``` bash
+git log --until=1.minute.ago # 一分钟之前的所有 
+log git log --since=1.day.ago # 一天之内的log 
+git log --since=1.hour.ago # 一个小时之内的 log 
+git log --since=`.month.ago --until=2.weeks.ago # 一个月之前到半个月之前的log 
+git log --since ==2013-08.01 --until=2013-09-07 # 某个时间段的 log   
+git blame
+```
+看看某一个文件的相关历史记录,例如：
+`git blame index.html --date short`
