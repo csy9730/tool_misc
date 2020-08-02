@@ -1,5 +1,34 @@
 # Git Config
 
+## main
+### domain
+> When reading, the values are read from the system, global and repository local configuration files by default, and options --system, --global, --local, --worktree and --file <filename> can be used to tell the command to read from only that location (see FILES).
+
+分为global，local，system
+
+> --global
+For writing options: write to global ~/.gitconfig file rather than the repository .git/config, write to $XDG_CONFIG_HOME/git/config file if this file exists and the ~/.gitconfig file doesn’t.
+For reading options: read only from global ~/.gitconfig and from $XDG_CONFIG_HOME/git/config rather than from all available files.
+See also FILES.
+
+> --system
+For writing options: write to system-wide $(prefix)/etc/gitconfig rather than the repository .git/config.
+For reading options: read only from system-wide $(prefix)/etc/gitconfig rather than from all available files.
+See also FILES.
+
+> --local
+For writing options: write to the repository .git/config file. This is the default behavior.
+For reading options: read only from the repository .git/config rather than from all available files.
+See also FILES.
+
+> --worktree
+Similar to --local except that .git/config.worktree is read from or written to if extensions.worktreeConfig is present. If not it’s the same as --local.
+
+> -f config-file
+> --file config-file
+Use the given config file instead of the one specified by GIT_CONFIG.
+
+
 ## misc
 不少开发者可能遇到过这个问题：从git上拉取服务端代码，然后只修改了一处地方，准备提交时，用diff软件查看，却发现整个文件都被修改了。这是git自动转换换行符导致的问题。
 
