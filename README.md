@@ -39,11 +39,6 @@
 * 科学工程运算，数据模型仿真
 
 
-
-
-
-
-
 app: new  run test, auto,gui, service,
 
 ## 常见平台工具
@@ -64,16 +59,21 @@ software：
 
 ## doc
 
-batch
-windows
-linux/bash
+- [ ] batch
+- [ ] windows
+- [ ] linux/bash
 
-nodejs
-python
-lua
-cpp
-program/coding
-
-dnn
-
-matlab
+- [x] nodejs
+- [x] python
+- [ ] lua
+- [ ] c
+- [ ] cpp
+- [ ] program/coding
+- [x] dnn
+- [ ] matlab
+- [x] qt
+- [ ] boost
+- [ ] html/css
+  
+- [ ] git
+- [ ] chrome
