@@ -1,0 +1,59 @@
+{
+    "columns": [
+        "SepalLength",
+        "SepalWidth",
+        "PetalLength",
+        "PetalWidth",
+        "Name"
+    ],
+    "feather_cfg": {
+        "Name": {
+            "ftype": "category",
+            "index": 4,
+            "is_input": false,
+            "is_output": true,
+            "name": "Name",
+            "preprocess": [
+                {
+                    "func": "add_dummy"
+                }
+            ]
+        },
+        "PetalLength": {
+            "ftype": "numerical",
+            "index": 2,
+            "is_input": true,
+            "is_output": false,
+            "name": "PetalLength",
+            "preprocess": [
+            ]
+        },
+        "PetalWidth": {
+            "ftype": "numerical",
+            "index": 3,
+            "is_input": true,
+            "is_output": false,
+            "name": "PetalWidth",
+            "preprocess": [
+            ]
+        },
+        "SepalLength": {
+            "ftype": "numerical",
+            "index": 0,
+            "is_input": true,
+            "is_output": false,
+            "name": "SepalLength",
+            "preprocess": [
+            ]
+        },
+        "SepalWidth": {
+            "ftype": "numerical",
+            "index": 1,
+            "is_input": true,
+            "is_output": false,
+            "name": "SepalWidth",
+            "preprocess": [
+            ]
+        }
+    }
+}
