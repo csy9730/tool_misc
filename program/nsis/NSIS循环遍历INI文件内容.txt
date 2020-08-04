@@ -1,0 +1,56 @@
+NSIS循环遍历INI文件内容
+原创FoxBryant 最后发布于2012-04-30 20:33:21 阅读数 4171  收藏
+展开
+INI文件格式如：
+
+[Logon]
+0CmdLine=hello.exe
+0Parameters=123
+1CmdLine=hello.exe
+1Parameters=123
+
+....
+
+ 
+
+ 
+
+NSIS代码：
+
+!include "LogicLib.nsh"
+
+ 
+
+Function UpdateScriptIni
+   strcpy $Var_IniFile "$INSTDIR\test.ini"
+
+   StrCpy $R1 0
+   StrCpy $R2 "CmdLine"
+   StrCpy $R3 "Parameters"
+   ${Do}
+      StrCpy $R5 $R1$R2      ;command line
+      StrCpy $R6 $R1$R3       ;parameters
+
+      StrCpy $0 ""
+      StrCpy $1 ""
+
+      ReadINIStr $0 $Var_IniFile "Logon" $R5
+      ReadINIStr $1 $Var_IniFile "Logon" $R6
+
+      StrCmp $0 "" 0 Continue
+      StrCmp $1 "" 0 Continue
+
+      ;当前序号的命令行及参数为空跳出循环执行写入
+      ${ExitDo}
+
+Continue:
+      IntOp $R1 $R1 + 1
+
+    ${Loop}  
+
+WriteINI:
+    WriteINIStr $Var_IniFile "Logon" $R5 "hello.exe"
+    WriteINIStr $Var_IniFile "Logon" $R6 "123"
+
+    Abort
+FunctionEnd

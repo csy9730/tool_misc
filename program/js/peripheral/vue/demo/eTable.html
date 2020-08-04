@@ -1,0 +1,39 @@
+<!-- component template -->
+<script type="text/x-template" id="grid-template">
+    <table>
+      <thead>
+        <tr>
+          <th v-for="key in columns" 
+            @click="sortBy(key)" 
+            :class="{active: sortKey == key}">
+            {{key | capitalize}}
+            <span class="arrow"
+              :class="sortOrders[key] > 0 ? 'asc' : 'dsc'">
+            </span>
+          </th> <!-- 将表格的标题输出，点击将触发sortBy方法来改变排序方式 -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="
+          entry in data
+          | filterBy filterKey
+          | orderBy sortKey sortOrders[sortKey]">
+          <td v-for="key in columns">
+            {{entry[key]}}
+          </td>
+        </tr><!-- 此处进行过滤与排序，使用“|”来完成 -->
+      </tbody>
+    </table>
+  </script>
+  
+  <!-- demo root element -->
+  <div id="demo">
+    <form id="search">
+      Search <input name="query" v-model="searchQuery">
+    </form>
+    <demo-grid
+      :data="gridData"
+      :columns="gridColumns"
+      :filter-key="searchQuery">
+    </demo-grid><!-- 使用子组件，并将值传递给子组件 -->
+  </div>
