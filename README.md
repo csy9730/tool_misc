@@ -60,14 +60,16 @@ software：
 ## doc
 
 - [ ] batch
-- [ ] windows
-- [ ] linux/bash
+- [x] windows
+      - [ ] batch
+- [x] linux
+      - [x] bash
 
 - [x] nodejs
 - [x] python
 - [ ] lua
 - [ ] c
-- [ ] cpp
+- [x] cpp
 - [ ] program/coding
 - [x] dnn
 - [ ] matlab
@@ -75,5 +77,30 @@ software：
 - [ ] boost
 - [ ] html/css
   
-- [ ] git
-- [ ] chrome
+- [x] git
+- [ ] browser/chrome
+- [ ] server
+  
+* server
+  * inner
+    * client
+      * browser
+      * os
+    * function
+      * CRM(blog)/
+    * protocol
+      * ftp/ssh/http/dns/route/webdav/
+    * frontend
+    * backend
+  * base
+    * dns
+    * ip/tcp
+    * http
+    * os
+    * device
+    * 
+  * extension
+    * 
+
+
+
