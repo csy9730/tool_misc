@@ -17,3 +17,9 @@ pacman-key --init
 pacman-key --populate msys2
 pacman-key --refresh-keys
 ```
+
+
+解决了，具体方法是
+打开msys2的/etc/pacman.conf，在文件的中上部分找到一个叫“SigLevel”的选项（不是在下面[core]那里的）在=号的后面修改为 Never 保存，例如：
+SigLevel = Never
+就搞定了。

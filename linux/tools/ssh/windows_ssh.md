@@ -1,18 +1,49 @@
 # windows ssh
 
-## install
+## manager
+### install
 window10自带openssh和wsl，无需安装，
 windows7可以安装openssh或者git-bash套件
 windowsXp可以安装openssh。
 
-[git-scm](https://git-scm.com/download/win)
+[git for windows](https://git-scm.com/download/win)
+
 [openssh](http://sshwindows.sourceforge.net/)
 [openssh371.zip](https://sourceforge.net/projects/sshwindows/files/OldFiles/setupssh371-20031015.zip/download)
+
+[open-ssh](https://github.com/PowerShell/Win32-OpenSSH/releases)
+
+[msys2 ssh]()
+
+
+客户端：
 [putty](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
+
+
+### xp使用OpenSSH
+
+
+1) Run sshwindows installer and click OK and OK…
+2) Run cmd.exe:
+3) cd C:Program FilesOpenSSHbin (it depends on the sshd’s install location)
+4) ‘mkgroup -l >> ..etcgroup’
+5) ‘mkpasswd -l >> ..etcpasswd’
+6) Configuration the firewall and let it allow the sshd service listening on port 22
+7) Start the sshd service: ‘net start “OpenSSH Server”‘
+
+``` bash
+cd "C:\Program Files\OpenSSH\bin"
+mkgroup -l >> ..etcgroup
+mkpasswd -l >> ..etcpasswd
+net start opensshd #  开启服务
+netstat -an |findstr 22
+
+net stop opensshd #  关闭服务
+```
 
 ## main
 
-以下适用于git-scm的sshd
+以下适用于git for windows的sshd
 **Q**: 命令行中直接执行，报错：`sshd re-exec requires execution with an absolute path`
 **A**: 执行`"/c/Program Files/Git/usr/bin/sshd.exe"`
 
@@ -36,7 +67,8 @@ cat /etc/ssh/ssh_host_rsa_key.pub>>$USERPROFILE/.ssh/authorized_keys # 添加信
 如果报错`sshd windows permission deny`，需要使用管理员权限打开命令行，在执行命令
 
 **Q**: 装到服务器后不能SSH，解决的方法是，打开配置文件，修改运行ROOT登录，具体方法如下：
-**A**: 进入/etc/ssh后找到sshd_config,然后vi sshd_config，找到PermitRootLogin，将no改为yes，即可。
+
+**A**: 进入/etc/ssh后找到sshd_config,然后用记事本打开sshd_config，找到PermitRootLogin，将no改为yes，即可。
 
 
 ### windows10
@@ -46,29 +78,11 @@ wsl
 ``` 
 sudo service ssh restart
 ```
-### xp
+
+## misc
 
 
-1) Run sshwindows installer and click OK and OK…
-2) Run cmd.exe:
-3) cd C:Program FilesOpenSSHbin (it depends on the sshd’s install location)
-4) ‘mkgroup -l >> ..etcgroup’
-5) ‘mkpasswd -l >> ..etcpasswd’
-6) Configuration the firewall and let it allow the sshd service listening on port 22
-7) Start the sshd service: ‘net start “OpenSSH Server”‘
-
-``` bash
-cd "C:\Program Files\OpenSSH\bin"
-mkgroup -l >> ..etcgroup
-mkpasswd -l >> ..etcpasswd
-net start opensshd #  开启服务
-netstat -an |findstr 22
-
-net stop opensshd #  关闭服务
-```
-
-
-git-bash不支持使用openssh连接
+高版本git-bash不支持使用低版本openssh连接
 ``` bash
 $ /C/Windows/System32/OpenSSH/ssh.exe abc@192.168.137.1
 Pseudo-terminal will not be allocated because stdin is not a terminal.
@@ -93,6 +107,7 @@ Host 123.123.123.123
     KexAlgorithms +diffie-hellman-group1-sha1
 ```
 或者使用旧版的putty连接。
+
 
 **Q**: Bad owner or permissions on C:\\Users\\gd_cs/.ssh/config
 
@@ -120,6 +135,27 @@ echo ws.Run "cmd /c /usr/bin/sshd ",vbhide >>"startSshd.vbs"
 copy startSshd.vbs  "%programdata%\Microsoft\Windows\Start Menu\Programs\Startup" /y
 ```
 
+``` 
+ssh admin@192.168.2.123
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ECDSA key sent by the remote host is
+SHA256:DVPHN/qpBNWX32PzGV5V1pSgCSv8rHQvpIpObl2DyKs.
+Please contact your system administrator.
+Add correct host key in /home/ZAL/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in /home/ZAL/.ssh/known_hosts:1
+ECDSA host key for 192.168.2.123 has changed and you have requested strict checking.
+Host key verification failed.
+
+CDSA host key for has changed and you have requested strict checking.
+Host key verification failed.
+```
+
+`ssh-keygen -R host`
 
 ## misc
 [Windows上安装配置SSH教程](https://www.cnblogs.com/feipeng8848/p/8568018.html)
