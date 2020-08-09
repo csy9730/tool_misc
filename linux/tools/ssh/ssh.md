@@ -55,7 +55,7 @@ PasswordAuthentication yes
 4. 客户端连接主机端
 
 生成pem私钥和公钥：`ssh-keygen -t rsa -f my.pem -C "your@email.com"`
-参数说明：-t type密钥类型（rsa、dsa...），-f生成文件名，-C备注
+参数说明：-t type密钥类型（rsa、dsa...），-f生成文件名，-C随便写的备注
 公钥发送到主机端可以使用任意方法发送，
 添加公钥到授权键：把公钥复制到`~/.ssh/authorized_keys` 文件。
 
@@ -111,7 +111,7 @@ usage: ssh [-46AaCfGgKkMNnqsTtVvXxYy] [-B bind_interface]
 ssh会话中执行远程文件复制到本地的操作
 ## ssh工具
 
-windows下有winscp，putty，vnc等待界面的ssh工具，也支持SSH登陆。
+windows下有winscp，putty，vnc等带界面的ssh工具，也支持SSH登陆。
 
 linux下有：vnc，putty，mstsc.exe，xshell。
 
@@ -182,6 +182,7 @@ windows7支持msys2-ssh，所以支持ssh登录
 sshd: ALL    ##允许所有ip主机均能连接本机
 ```
 有一种情况，就是客户端连接数过多时，也会报这个错误。缺省情况下，SSH终端连接数最大为10个。在这种情况下，需要改SSH的配置文件，
+
 
 **Q**: 网速不好的情况下，如何避免ssh断开？
 **A**:

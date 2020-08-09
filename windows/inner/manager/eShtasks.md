@@ -7,6 +7,19 @@
 计划任务：指定主机指定时间运行指定的exe程序
 schtasks.exe与taskschd.msc（任务计划程序）工具功能相似,taskschd.msc有友好的界面
 
+
+```
+
+schtasks /create /TN shutdown_t /ST 02:00 /sc once /TR "shutdown /s"
+
+# 定时进入睡眠模式 一次
+schtasks /create /TN standby_t /ST 02:00 /sc once /TR "nircmd standby"
+# 定时关屏幕
+schtasks /create /TN monitor_off_t /ST 01:35 /sc once /TR "nircmd.exe monitor off"
+
+```
+
+## manager
 ### CRUD
 
    SCHTASKS /Create /?

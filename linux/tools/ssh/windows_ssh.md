@@ -2,22 +2,31 @@
 
 ## manager
 ### install
-window10自带openssh和wsl，无需安装，
-windows7可以安装openssh或者git-bash套件
-windowsXp可以安装openssh。
 
+bash-like的ssh，都是在windows系统上模拟linux环境，可以提供ssh执行依赖和环境，有以下几种： 
 [git for windows](https://git-scm.com/download/win)
-
-[openssh](http://sshwindows.sourceforge.net/)
-[openssh371.zip](https://sourceforge.net/projects/sshwindows/files/OldFiles/setupssh371-20031015.zip/download)
-
-[open-ssh](https://github.com/PowerShell/Win32-OpenSSH/releases)
 
 [msys2 ssh]()
 
+[cygwin-ssh]()
+
+其他ssh是windows-pty风格，有以下类型：
+
+[openssh](https://www.openssh.com/)
+[openssh](http://sshwindows.sourceforge.net/) ，[openssh371.zip](https://sourceforge.net/projects/sshwindows/files/OldFiles/setupssh371-20031015.zip/download)
+
+[powershell-Win32-OpenSSH](https://github.com/PowerShell/Win32-OpenSSH/releases)
+
+[OpenSSH-Portable source code](https://github.com/PowerShell/OpenSSH-Portable)
+
+openssh371.zip的版本很旧，发布于2003年，powershell-Win32-OpenSSH较新。
 
 客户端：
 [putty](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
+
+window10自带openssh的客户端，还需要安装服务端sshd；此外也可以使用wsl。
+windows7可以安装openssh或者git-bash套件
+windowsXp可以安装openssh。
 
 
 ### xp使用OpenSSH
@@ -40,35 +49,51 @@ netstat -an |findstr 22
 
 net stop opensshd #  关闭服务
 ```
+### powershell openssh
 
-## main
+从[powershell-Win32-OpenSSH](https://github.com/PowerShell/Win32-OpenSSH/releases)下载openssh，解压，然后执行以下程序开始安装：
+`powershell install-sshd.ps1`
 
-以下适用于git for windows的sshd
-**Q**: 命令行中直接执行，报错：`sshd re-exec requires execution with an absolute path`
-**A**: 执行`"/c/Program Files/Git/usr/bin/sshd.exe"`
+### powershell openssh for win10 
+OpenSSH 客户端和 OpenSSH 服务器是在 Windows Server 2019 和 Windows 10 1809之后才有的组件。
+以管理员用户打开powershell
+运行命令：
+``` powershell
+PS C:\Windows\system32> Get-WindowsCapability -Online | ? Name -like 'OpenSSH*'
 
 
-**Q**: sshd启动时报错：`Could not load host key: /etc/ssh/ssh_host_rsa_key`
-或者报错： `sshd: no hostkeys available — exiting`
-或者报错： `Privilege separation user sshd does not exist `
+Name  : OpenSSH.Client~~~~0.0.1.0
+State : NotPresent
 
-**A**:  在第一次启动sshd时，会要求生成id_ecdsa，id_rsa，id_ed25519这三个文件，充当已经授权的默认公钥文件。
-执行以下命令生成密钥即可
-``` bash
-ssh-keygen -t rsa -b 2048 -f /etc/ssh/ssh_host_rsa_key
-ssh-keygen -t ecdsa -b 256 -f /etc/ssh/ssh_host_ecdsa_key
-ssh-keygen -t ed25519 -b 256 -f /etc/ssh/ssh_host_ed25519_key
+Name  : OpenSSH.Server~~~~0.0.1.0
+State : NotPresent
 
-ssh-add /etc/ssh/
+# 安装OpenSSH：
 
-cat /etc/ssh/ssh_host_rsa_key.pub>>$USERPROFILE/.ssh/authorized_keys # 添加信任的密钥
-# type f:\download\PortableGit\etc\ssh\ssh_host_rsa_key.pub>>%HOME%\.ssh\authorized_keys
+PS C:\Windows\system32> Add-WindowsCapability -Online -Name OpenSSH.Client~~~~0.0.1.0
+
+
+Path          :
+Online        : True
+RestartNeeded : False
+
+
+# Uninstall the OpenSSH Client
+Remove-WindowsCapability -Online -Name OpenSSH.Client~~~~0.0.1.0
+
+# Uninstall the OpenSSH Server
+Remove-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
+
+
+Start-Service sshd
+# OPTIONAL but recommended:
+Set-Service -Name sshd -StartupType 'Automatic'
+# Confirm the Firewall rule is configured. It should be created automatically by setup.
+Get-NetFirewallRule -Name *ssh*
+# There should be a firewall rule named "OpenSSH-Server-In-TCP", which should be enabled
+# If the firewall does not exist, create one
+New-NetFirewallRule -Name sshd -DisplayName 'OpenSSH Server (sshd)' -Enabled True -Direction Inbound -Protocol TCP -Action Allow -LocalPort 22
 ```
-如果报错`sshd windows permission deny`，需要使用管理员权限打开命令行，在执行命令
-
-**Q**: 装到服务器后不能SSH，解决的方法是，打开配置文件，修改运行ROOT登录，具体方法如下：
-
-**A**: 进入/etc/ssh后找到sshd_config,然后用记事本打开sshd_config，找到PermitRootLogin，将no改为yes，即可。
 
 
 ### windows10
@@ -80,6 +105,17 @@ sudo service ssh restart
 ```
 
 ## misc
+
+以下适用于git for windows的sshd
+**Q**: 命令行中直接执行，报错：`sshd re-exec requires execution with an absolute path`
+**A**: 执行`"/c/Program Files/Git/usr/bin/sshd.exe"`
+
+
+
+**Q**: 装到服务器后不能SSH，解决的方法是，打开配置文件，修改运行ROOT登录，具体方法如下：
+
+**A**: 进入/etc/ssh后找到sshd_config,然后用记事本打开sshd_config，找到PermitRootLogin，将no改为yes，即可。
+
 
 
 高版本git-bash不支持使用低版本openssh连接
@@ -109,23 +145,12 @@ Host 123.123.123.123
 或者使用旧版的putty连接。
 
 
-**Q**: Bad owner or permissions on C:\\Users\\gd_cs/.ssh/config
-
-**A**: 修改.ssh/config的权限
-``` 
-sudo chmod 600 .ssh/config 
-sudo chown $USER .ssh/config
-```
-方法2： 
-右击config,属性→安全→高级→禁止继承→删除所有继承(忘了全称了，大概这个意思)→确定
-如果系统是英文：
-Properties -> Security -> Advanced -> Disable Inheritance -> Remove all inherited permissions from this object
 
 
 **Q**: cmd远程启动程序，任务管理器里有，但是前台没有界面，即使是有UI界面的程序；
 **A**: 尝试通过计划任务，尝试按键脚本执行。
 `SCHTASKS.EXE /create /sc once /tn WeChat /tr "C:\Program Files\Tencent\WeChat\WeChat.exe" /st %time:~0,8%`
-
+也可能是权限不足？
 
 **Q**: 通过vbs设置启动项，没有一闪而过的窗口。
 **A**: 
@@ -135,27 +160,8 @@ echo ws.Run "cmd /c /usr/bin/sshd ",vbhide >>"startSshd.vbs"
 copy startSshd.vbs  "%programdata%\Microsoft\Windows\Start Menu\Programs\Startup" /y
 ```
 
-``` 
-ssh admin@192.168.2.123
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
-Someone could be eavesdropping on you right now (man-in-the-middle attack)!
-It is also possible that a host key has just been changed.
-The fingerprint for the ECDSA key sent by the remote host is
-SHA256:DVPHN/qpBNWX32PzGV5V1pSgCSv8rHQvpIpObl2DyKs.
-Please contact your system administrator.
-Add correct host key in /home/ZAL/.ssh/known_hosts to get rid of this message.
-Offending ECDSA key in /home/ZAL/.ssh/known_hosts:1
-ECDSA host key for 192.168.2.123 has changed and you have requested strict checking.
-Host key verification failed.
-
-CDSA host key for has changed and you have requested strict checking.
-Host key verification failed.
-```
-
-`ssh-keygen -R host`
 
 ## misc
 [Windows上安装配置SSH教程](https://www.cnblogs.com/feipeng8848/p/8568018.html)
+
+[openssh_install_firstuse](https://docs.microsoft.com/zh-cn/windows-server/administration/openssh/openssh_install_firstuse)
