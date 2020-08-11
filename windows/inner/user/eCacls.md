@@ -1,7 +1,24 @@
 # cacls
 
+## base
+Cacls：显示或修改文件的访问控制列表（ACL)
+
+ICACLS:显示或修改自由访问控制表(Dacl) 上指定的文件，并指定目录中的文件应用于存储的 Dacl。
+
+总结:显示或修改文件访问控制权限
+
+相关术语：
+
+一个DACL(Discretionary Access Control List),其指出了允许和拒绝某用户或用户组的存取控制列表，当一个进程需要访问安全对象，系统就会检查DACL来决定进程的访问权。如果一个对象没有DACL,则说明任何人对这个对象都可以拥有完全的访问权限。
+
+一个SACL(System Acess Control List),其指出了在该对象上的一组存取方式（如：读，谢，运行等）的存取控制权限细节的列表
+
+DACL和SACL构成了整个存取控制列表Access Control List,简称ACL,ACL中的每一项我们叫做ACE(Acess Control Entry)
+
+以上是对DACL，SACL,ACL,ACE等相关术语的简要介绍。
 
 ## help
+```
 C:\Windows\system32>cacls /?
 
  注意: 不推荐使用 Cacls，请使用 Icacls。
@@ -45,6 +62,7 @@ C:\Windows\system32>cacls /?
          ACE 不适用于当前文件/目录。
     ID - 已继承。
          ACE 从父目录的 ACL 继承。
+```
 
 
 ``` 
@@ -61,9 +79,11 @@ H:\project\GitHubs BUILTIN\Administrators:F
 ```
 
 输出	ACE 的适用于
-OI	此文件夹和文件
-CI	此文件夹和子文件夹
-IO	ACE 不适用于当前文件/目录。
+OI	对象继承,适用于此文件夹和文件
+CI	(容器继承),适用于此文件夹和子文件夹
+IO	仅继承, ACE不适用于当前文件/目录。
+** (NP) ** -不传播继承
+
 没有输出消息	仅此文件夹
 (IO)(CI)	此文件夹、子文件夹和文件
 (OI)(CI)(IO)	仅子文件夹和文件
@@ -72,8 +92,47 @@ IO	ACE 不适用于当前文件/目录。
 
 
 
+
+
 ## Icacls
 
 
+每行末尾的字母表示控制权限，例如
+* "F"表示完全控制
+* "C"表示更改
+* "W"表示写入
+* "R"表示读取
+* M 修改访问权限
+* RX -读取和执行访问
+
+* D -Delete
+* X -执行/遍历
+* RC -读取控制
+* GR -通用读取
+* GW -泛型写入
+
+### demo
+若要将 C：\Windows 目录及其子目录中所有文件的 Dacl 保存到 ACLFile 文件，请键入：
+`icacls c:\windows\* /save aclfile /t`
+
+若要授予用户 User1 删除和写入名为 Test1 的文件的 DAC 权限，请键入：
+`icacls test1 /grant User1:(d,wdac)`
+
+若要向用户授予 SID S-1-1-0 删除和写入 DAC 权限的用户，请在名为 Test2 的文件中键入：
+`icacls test2 /grant *S-1-1-0:(d,wdac)`
+
 ## 用户/组合内置安全体
+```
+  BUILTIN\Administrators:(I)(F)
+  BUILTIN\Administrators:(I)(OI)(CI)(IO)(F)
+  NT AUTHORITY\SYSTEM:(I)(F)
+  NT AUTHORITY\SYSTEM:(I)(OI)(CI)(IO)(F)
+  NT AUTHORITY\Authenticated Users:(I)(M)
+  NT AUTHORITY\Authenticated Users:(I)(OI)(CI)(IO)(M)
+  BUILTIN\Users:(I)(RX)
+  BUILTIN\Users:(I)(OI)(CI)(IO)(GR,GE)
+
+  guest
+  administrator 
+```
 

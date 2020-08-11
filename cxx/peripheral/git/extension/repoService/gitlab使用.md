@@ -10,11 +10,13 @@
 gitlab安装，可以安装tortoiGit或git for windows
 
 ### 初始化帐号
+```
 git config --global user.name lilei
 git config --global user.email lilei@abc.cn
 git config --global core.autocrlf false
 git config --global core.safecrlf false
 git config --global core.quotepath false
+```
 
 ### 初始化ssh
 

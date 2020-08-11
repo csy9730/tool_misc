@@ -89,5 +89,5 @@ B-->>C: tmp2=>222
 然后使用localhost:2121即可访问otheripaddr的ftp服务，间接通过root@host的服务器。
 
 对于代理服务，使用
-ssh -CNf -D 127.0.0.1:1080 root@host -P 22
+`ssh -CNf -D 127.0.0.1:1080 root@host -P 22`
 这样使用localhost:1080就可以通过root@host访问任意流量。

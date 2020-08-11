@@ -1,5 +1,6 @@
 # msys2
 
+## pacman-key
 ```
 Suddenly pacman no longer trusts:
 
@@ -23,3 +24,29 @@ pacman-key --refresh-keys
 打开msys2的/etc/pacman.conf，在文件的中上部分找到一个叫“SigLevel”的选项（不是在下面[core]那里的）在=号的后面修改为 Never 保存，例如：
 SigLevel = Never
 就搞定了。
+
+## pacman source
+
+利用Windows资源管理器，打开D:\msys64\etc\pacman.d。在这个路径下有3个配置文件，分别为：mirrorlist.mingw32、mirrorlist.mingw64和mirrorlist.msys。
+
+更新源
+修改mirrorlist.msys
+利用UltraEdit或者类似工具打开这mirrorlist.msys文件。在最上面，注意是最上面增加
+```
+Server = https://mirrors.tuna.tsinghua.edu.cn/msys2/msys/$arch
+```
+修改mirrorlist.mingw32
+在最上面增加
+```
+Server = https://mirrors.tuna.tsinghua.edu.cn/msys2/mingw/i686
+```
+修改mirrorlist.mingw64
+在最上面增加
+```
+Server = https://mirrors.tuna.tsinghua.edu.cn/msys2/mingw/x86_64
+```
+应用更新
+重新运行D:\msys64\msys2.exe。然后再运行好的环境中输入下列命令，更新即可。现在真的是速度飞快。
+```
+pacman -Syu
+```
