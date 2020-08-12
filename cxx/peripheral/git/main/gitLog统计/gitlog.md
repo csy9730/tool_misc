@@ -1,25 +1,7 @@
-# 用git统计代码提交行数
-
-``` bash
-# 某个时间范围内代码提交文件数目
-git log --since ==2017-04-10 --until=2017-07-10 | wc -l
-# 统计某人的代码提交量，包括增加，删除：
-git log --author="$(git config --get user.name)" --pretty=tformat: --numstat | gawk '{ add += $1 ; subs += $2 ; loc += $1 - $2 } END { printf "added lines: %s removed lines : %s total lines: %s\n",add,subs,loc }' -
-
-# 仓库提交者排名前 5（如果看全部，去掉 head 管道即可）：
-git log --pretty='%aN' | sort | uniq -c | sort -k1 -n -r | head -n 5
-# 仓库提交者（基于邮箱）排名前 5
-git log --pretty=format:%ae | gawk -- '{ ++c[$0]; } END { for(cc in c) printf "%5d %s\n",c[cc],cc; }' | sort -u -n -r | head -n 5
-# 贡献者统计：
-git log --pretty='%aN' | sort -u | wc -l
-# 提交数统计：
-git log --oneline | wc -l
-# 添加或修改的代码行数：
-git log --stat|perl -ne 'END { print $c } $c += $1 if /(\d+) insertions/;'
-
-```
+# git log 统计
 
 
+## git log help
 git log 参数说明：
 ```
 --author   指定作者
@@ -66,14 +48,80 @@ git log 参数说明：
        --committer 仅显示指定提交者相关的提交。
  ```
 
-    一些例子： 
+一些例子： 
 ``` bash
 git log --until=1.minute.ago # 一分钟之前的所有 
-log git log --since=1.day.ago # 一天之内的log 
+git log --since=1.day.ago # 一天之内的log 
 git log --since=1.hour.ago # 一个小时之内的 log 
 git log --since=`.month.ago --until=2.weeks.ago # 一个月之前到半个月之前的log 
 git log --since ==2013-08.01 --until=2013-09-07 # 某个时间段的 log   
-git blame
+
 ```
+
+
+## git blame
+
+```
+D:\projects>git blame -h
+usage: git blame [<options>] [<rev-opts>] [<rev>] [--] <file>
+
+    <rev-opts> are documented in git-rev-list(1)
+
+    --incremental         Show blame entries as we find them, incrementally
+    -b                    Show blank SHA-1 for boundary commits (Default: off)
+    --root                Do not treat root commits as boundaries (Default: off)
+    --show-stats          Show work cost statistics
+    --progress            Force progress reporting
+    --score-debug         Show output score for blame entries
+    -f, --show-name       Show original filename (Default: auto)
+    -n, --show-number     Show original linenumber (Default: off)
+    -p, --porcelain       Show in a format designed for machine consumption
+    --line-porcelain      Show porcelain format with per-line commit information
+    -c                    Use the same output mode as git-annotate (Default: off)
+    -t                    Show raw timestamp (Default: off)
+    -l                    Show long commit SHA1 (Default: off)
+    -s                    Suppress author name and timestamp (Default: off)
+    -e, --show-email      Show author email instead of name (Default: off)
+    -w                    Ignore whitespace differences
+    --color-lines         color redundant metadata from previous line differently
+    --color-by-age        color lines by age
+    --indent-heuristic    Use an experimental heuristic to improve diffs
+    --minimal             Spend extra cycles to find better match
+    -S <file>             Use revisions from <file> instead of calling git-rev-list
+    --contents <file>     Use <file>'s contents as the final image
+    -C[<score>]           Find line copies within and across files
+    -M[<score>]           Find line movements within and across files
+    -L <n,m>              Process only line range n,m, counting from 1
+    --abbrev[=<n>]        use <n> digits to display SHA-1s
+
+```
+
 看看某一个文件的相关历史记录,例如：
 `git blame index.html --date short`
+
+
+## 用git统计代码提交行数
+
+``` bash
+# 某个时间范围内代码提交文件数目
+git log --since ==2017-04-10 --until=2017-07-10 | wc -l
+
+# 统计某人的代码提交量，包括增加，删除：
+git log --author="$(git config --get user.name)" --pretty=tformat: --numstat | gawk '{ add += $1 ; subs += $2 ; loc += $1 - $2 } END { printf "added lines: %s removed lines : %s total lines: %s\n",add,subs,loc }' -
+
+# 仓库提交者排名前 5（如果看全部，去掉 head 管道即可）：
+git log --pretty='%aN' | sort | uniq -c | sort -k1 -n -r | head -n 5
+
+# 仓库提交者（基于邮箱）排名前 5
+git log --pretty=format:%ae | gawk -- '{ ++c[$0]; } END { for(cc in c) printf "%5d %s\n",c[cc],cc; }' | sort -u -n -r | head -n 5
+
+# 贡献者统计：
+git log --pretty='%aN' | sort -u | wc -l
+
+# 提交数统计：
+git log --oneline | wc -l
+
+# 添加或修改的代码行数：
+git log --stat|perl -ne 'END { print $c } $c += $1 if /(\d+) insertions/;'
+
+```

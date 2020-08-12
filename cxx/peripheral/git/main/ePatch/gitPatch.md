@@ -1,10 +1,10 @@
-###patch
+# patch
 
 blob,tree, commit
 git format-patch COMMIT起点..COMMIT终点
 默认终点 head
 等价于 git diff >abc.patch
-#####commit描述
+##### commit描述
 * head
 * head^
 * head~2
@@ -18,10 +18,11 @@ git format-patch COMMIT起点..COMMIT终点
 * branchA~2
 
 
-非法版本组合：
+以下是无效的版本组合：
 head~
 head^2
-###操作
+
+## 管理
 
 生成master
 ```bash
@@ -68,12 +69,12 @@ echo F >> file ; git commit -mF file;git tag vF
 
 冲突处理
 ```bash
- git am --skip
- git am --abort
- git am -3 PATCH/*
+git am --skip
+git am --abort
+git am -3 PATCH/*
 pause & vi file
- git add file
- git am -3 --resolved
+git add file
+git am -3 --resolved
  
 
 ```

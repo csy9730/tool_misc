@@ -51,8 +51,11 @@ Chrome+ SwitchyOmega 插件
 Firefox + Autoproxy插件
 
 chrome浏览器通过命令行启动Socks5代理：
+```
 "C:\Users\admin\AppData\Local\Google\Chrome\Application\chrome.exe" --show-app-list  --proxy-server="SOCKS5://localhost:7070"
+```
 
+curl启动Socks5代理：
 `curl www.google.com --socks5 localhost:1080`
 
 **Q** : curl: (7) Failed to receive SOCKS5 connect request ack.
@@ -60,17 +63,24 @@ chrome浏览器通过命令行启动Socks5代理：
 
 curl: (56) Recv failure: Connection was reset
 
+w3m 如何使用proxy？
 
-在linux让普通命令行程序使用这个 Socket 代理，可以使用 proxychains。
+
+在linux让普通命令行程序使用这个 Socket 代理，可以使用 proxychains。proxychains 命令行代理神器.
+[proxychains-ng](https://github.com/rofl0r/proxychains-ng) 是proxychains的下一代。
 
 
 [Danted Socks5](https://github.com/Lozy/danted)
 
 
-w3m 如何使用proxy？
 MyEnTunnel
 
 SocksCap是一个通过Socks代理连接网络的代理服务器第三方支持软件，拥有功能强大的Socks调度，所有Windows应用（如IE、Firefox、QQ、FTP等）都可以使用这个Socks代理工具通过Socks代理服务器上网，即使不支持Socks代理的应用也可以用Socks代理上网。
+
 除了SocksCap之外，也可以使用功能和界面几乎完全相同的另一款软件FreeCap来代替
-proxfier代理
+
+[Privoxy](https://www.privoxy.org/)
+
+[proxfier](https://www.proxifier.com/) 带UI的客户端程序，可以提供全局代理，收费软件
+
 ## misc
