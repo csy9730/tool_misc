@@ -6,9 +6,10 @@
 [github/shadowsocks](https://github.com/shadowsocks)
 
 ## server
-
+下载地址[servers](http://shadowsocks.org/en/download/servers.html)
 推荐在linux的ubuntu下安装ss服务端，不推荐在windows下使用ss服务端。
 
+原版服务端是基于python，新版服务端基于go,是[go-shadowsocks2](https://github.com/shadowsocks/go-shadowsocks2)
 ### install
 
 限定是python2
@@ -25,7 +26,7 @@ pip install shadowsocks
 ### run
 ``` bash
 
-# To run 
+# To run with password，encrypt method，
 
 ssserver -p 443 -k password -m aes-256-cfb
 
@@ -49,6 +50,7 @@ ssserver -c /etc/shadowsocks.json
 
 ## client
 
+[clients](http://shadowsocks.org/en/download/clients.html)
 客户端包括：
 windows，linux，mac
 android，ios
@@ -63,3 +65,4 @@ haproxy
 /path/to/to/Chrome.exe --proxy-server="socks5://127.0.0.1:1080" --host-resolver-rules="MAP * 0.0.0.0 , EXCLUDE localhost"
 
 chrome://net-internals/#sockets
+

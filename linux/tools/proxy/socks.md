@@ -74,6 +74,7 @@ w3m 如何使用proxy？
 
 
 MyEnTunnel
+MyEnTunnel（ssh客户端工具）是plink的GUI前端，因其可以避免记忆复杂的命令行，还可以安全的保存密码，很多人用MyEnTunnel做为windows下的ssh客户端，可以和PortaPuTTY同时工作，也兼容Wine。运行时占用极少量的CPU和系统资源，在访问某些网站查阅技术资料时常常会用到。
 
 SocksCap是一个通过Socks代理连接网络的代理服务器第三方支持软件，拥有功能强大的Socks调度，所有Windows应用（如IE、Firefox、QQ、FTP等）都可以使用这个Socks代理工具通过Socks代理服务器上网，即使不支持Socks代理的应用也可以用Socks代理上网。
 
