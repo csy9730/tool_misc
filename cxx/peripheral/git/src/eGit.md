@@ -465,6 +465,8 @@ git filter-branch -f --tree-filter 'rm tools/abc.exe' HEAD
 git filter-branch --force --index-filter "git rm --cached --ignore-unmatch sensorRecogn/titanic.HDF5" --prune-empty --tag-name-filter cat -- --all
 git push origin --force
 ```
+注意： 每个仓库都要执行这条过滤指令。这样不同仓库合并时，不会合并错误。
+
 
 **Q**: 如何查看远程分支的log
 **A**:
