@@ -17,9 +17,16 @@ Termux（一个Android App,仅支持Android 5.0及以上版本 ，可以在Googl
 pkg update # (检查更新
 pkg upgrade # 更新
 
-pkg install nmap hydra sslscan curl tsu vim wget git unzip unrar sl clang nodejs php cmatrix tree toilet figlet cowsay w3m htop screenfetch aria2 tmux proot nginx nyancat openssh moon-buggy lua -y
-
+# common
+pkg install tmux vim curl wget openssh git unzip unrar w3m aria2 nginx -y
+# script
+pkg install clang nodejs php lua -y
 pkg install python python-dev python2 python2-dev -y
+
+pkg install nmap hydra sslscan  tsu tree toilet figlet   htop screenfetch   proot  nyancat  moon-buggy  
+
+pkg install  sl cmatrix cowsay -y
+
 
 apt install libxml2 libxml2-dev libxslt libxslt-dev openssl libffi libffi-dev openssl-tool openssl-dev fftw fftw-dev libzmq libzmq-dev freetype freetype-dev libpng libpng-dev pkg-config scrypt -y
 pkg install libcrypt libcrypt-dev ccrypt libgcrypt libgcrypt-dev -y
