@@ -1,6 +1,7 @@
 
 # misc
 
+
 使用nssm(稳定版本)工具将.EXE文件注册为Windows服务
 winsw 下载地址: https://github.com/kohsuke/winsw/releases
 安装denyhosts 攻击预防
