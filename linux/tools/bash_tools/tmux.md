@@ -91,7 +91,7 @@ tmux 复制黏贴分为 鼠标模式和按键模式。通过ctrl+b [ 激活复�
 ``` bash
 
 # 命令行模式 [Ctrl+b :]
-# 复制模式 [Ctrl+b []
+# 复制模式 [Ctrl+b [  ]
 # 空格标记复制开始，回车结束复制。
 
 # vi模式 [Ctrl+b :set mode-keys vi]

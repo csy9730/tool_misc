@@ -15,8 +15,10 @@ ssh-agent是一种控制用来保存公钥身份验证所使用的私钥的程�
 
 ### 配置
 设置邮箱用户
-    $ git config --global user.name "humingx"
-    $ git config --global user.email "humingx@yeah.net"
+```
+git config --global user.name "humingx"
+git config --global user.email "humingx@yeah.net"
+```
 
 ### 生成公钥私钥
 生成rsa公钥私钥
@@ -24,6 +26,7 @@ ssh-agent是一种控制用来保存公钥身份验证所使用的私钥的程�
 ssh-keygen -t rsa -C "邮箱地址"
 ```
 
+```
 ssh-keygen -t ed25519 -C "XXX" (XXX为标记,随便起个名称)
 (回车,返回结果)
 Generating public/private ed25519 key pair.
@@ -49,6 +52,8 @@ The key's randomart image is:(返回的随即生成图形)
 |                 |
 |                 |
 +----[SHA256]-----+
+
+```
 
 ### 添加公钥到授权
 

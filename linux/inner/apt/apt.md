@@ -20,6 +20,7 @@ pacman  是arch linux的包管理器
 |FreeBSD|Ports, .txz|	make, pkg |
 |Arch |   .|	pacman |
 
+## apt
 常用命令
 
 ``` bash
@@ -29,6 +30,22 @@ apt install openssl # 安装openssl软件
 
 ```
 
+```
+apt install
+-h  This help text.
+
+-d  Download only - do NOT install or unpack archives
+
+-f  Attempt to continue if the integrity check fails
+
+-s  No-act. Perform ordering simulation
+
+-y  Assume Yes to all queries and do not prompt
+
+-u  Show a list of upgraded packages as well
+```
+
+
 其他命令
 
 ``` bash
@@ -37,8 +54,16 @@ apt list --installed # 查看所有本机已经安装的软件包
 apt list --installed | less
 apt list --installed | grep -i apache
 
+# 下载包
+apt-get install dependpackname –reinstall -d
+
+
 yum list installed # 查看所有本机已经安装的软件包
+
+
 ```
+
+
 
 ## 下载器
 
@@ -98,10 +123,10 @@ systemctl daemon-reload
 ```
 
 英伟达显卡安装？
-
+```
 sudo apt-get purge nvidia-common
 sudo apt-get install nvidia-common
-
+```
 
 
 ### 装机目录

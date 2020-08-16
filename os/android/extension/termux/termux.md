@@ -17,17 +17,36 @@ Termux（一个Android App,仅支持Android 5.0及以上版本 ，可以在Googl
 pkg update # (检查更新
 pkg upgrade # 更新
 
-# common
+#  common software
 pkg install tmux vim curl wget openssh git unzip unrar w3m aria2 nginx -y
 # script
 pkg install clang nodejs php lua -y
 pkg install python python-dev python2 python2-dev -y
 
-pkg install nmap hydra sslscan  tsu tree toilet figlet   htop screenfetch   proot  nyancat  moon-buggy  
+# tsu         
+pkg install  sl cmatrix cowsay toilet fortune  figlet nyancat moon-buggy  -y
 
-pkg install  sl cmatrix cowsay -y
+pkg install htop tree screenfetch proot
+pkg install nmap hydra sslscan -y
+```
+ 
+ ##### bash 
+``` bash
+apt install zsh
 
 
+sh -c "$(curl -fsSL https://github.com/Cabbagec/termux-ohmyzsh/raw/master/install.sh)"
+
+curl -L https://its-pointless.github.io/setup-pointless-repo.sh | sh
+
+# 20200811
+wget https://github.com/ohmyzsh/ohmyzsh/tree/master/tools/install.sh
+sh install.sh
+```
+
+#### python
+
+```
 apt install libxml2 libxml2-dev libxslt libxslt-dev openssl libffi libffi-dev openssl-tool openssl-dev fftw fftw-dev libzmq libzmq-dev freetype freetype-dev libpng libpng-dev pkg-config scrypt -y
 pkg install libcrypt libcrypt-dev ccrypt libgcrypt libgcrypt-dev -y
 
@@ -40,17 +59,6 @@ LDFLAGS=" -lm -lcompiler_rt" pip install numpy==1.12.1 &LDFLAGS=" -lm -lcompiler
 
 pip install BeautifulSoup4 requests &pip install lxml &pip install scrapy &pip install demjson tushare colorama &pip install pillow &pip install future &pip install paramiko
 ```
- 
- ##### bash 
-``` bash
-
-sh -c "$(curl -fsSL https://github.com/Cabbagec/termux-ohmyzsh/raw/master/install.sh)"
-curl -L https://its-pointless.github.io/setup-pointless-repo.sh | sh
-
-```
-
-#### python
-
 ###### scrapy
 ``` bash
 #1.1 下载安装后要首先更新包，命令行输入以下命令
@@ -167,3 +175,22 @@ termux-telephony-call  10086  # 拨打电话
 **Q**: 如何访问本地目录？
 **A**: 
 执行 `ternux-setup-storage`，会在home下生产storage目录，那个就是你的手机别的应用的目录。你可以cp到storage/share/目录下。
+
+
+### source
+
+``` bash
+sed -i 's@^\(deb.*stable main\)$@#\1\ndeb https://mirrors.tuna.tsinghua.edu.cn/termux/termux-packages-24 stable main@' $PREFIX/etc/apt/sources.list
+sed -i 's@^\(deb.*games stable\)$@#\1\ndeb https://mirrors.tuna.tsinghua.edu.cn/termux/game-packages-24 games stable@' $PREFIX/etc/apt/sources.list.d/game.list
+sed -i 's@^\(deb.*science stable\)$@#\1\ndeb https://mirrors.tuna.tsinghua.edu.cn/termux/science-packages-24 science stable@' $PREFIX/etc/apt/sources.list.d/science.list
+apt update && apt upgrade
+```
+
+### arch
+
+``` bash
+/data/data/com.termux/files/home # ~
+/data/data/com.termux/files/usr/etc
+/data/data/com.termux/files/home/storage/download
+/data/data/com.termux/files/home/storage/DCIM
+```
