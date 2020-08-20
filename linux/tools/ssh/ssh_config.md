@@ -216,7 +216,7 @@ ssh配置文件在：
 /etc/ssh/sshd_config
 可以打开查看相应配置，默认情况下只开放了几个选项，其余全部#屏蔽掉了。
 
-英文手册参考:http://www.openbsd.org/cgi-bin/man.cgi?query=sshd_config
+英文手册参考:[http://www.openbsd.org/cgi-bin/man.cgi?query=sshd_config](http://www.openbsd.org/cgi-bin/man.cgi?query=sshd_config)
 
 国内有人已经翻译了：（直接贴过来了）
 
@@ -749,3 +749,5 @@ DenyGroups test
 # 5. 关于 SFTP 服务的设定项目!
 
 Subsystem sftp /usr/lib/ssh/sftp-server
+```
+
