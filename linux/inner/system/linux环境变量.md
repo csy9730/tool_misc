@@ -22,21 +22,23 @@ Linux的变量种类
 # vi /etc/profile 
 export CLASSPATH=./JAVA_HOME/lib;$JAVA_HOME/jre/lib
 ```
-注：修改文件后要想马上生效还要运行# source /etc/profile不然只能在下次重进此用户时生效。
+注：修改文件后要想马上生效还要运行` source /etc/profile`, 不然只能在下次重进此用户时生效。
 
 2 在用户目录下的.bash_profile文件中增加变量【对单一用户生效(永久的)】 
 用VI在用户目录下的.bash_profile文件中增加变量，改变量仅会对当前用户有效，并且是“永久的”。 
 例如：编辑guok用户目录(/home/guok)下的.bash_profile 
 vi/home/guok/.bash.profile添加如下内容：
 `export CLASSPATH=./JAVAHOME/lib;JAVA_HOME/jre/lib`
-注：修改文件后要想马上生效还要运行$ source /home/guok/.bash_profile不然只能在下次重进此用户时生效。
+注：修改文件后要想马上生效还要运行`source /home/guok/.bash_profile`, 不然只能在下次重进此用户时生效。
 
 3 直接运行export命令定义变量【只对当前shell(BASH)有效(临时的)】 
 在shell的命令行下直接使用[export 变量名=变量值] 定义变量，该变量只在当前的shell(BASH)或其子shell(BASH)下是有效的，shell关闭了，变量也就失效了，再打开新shell时就没有这个变量，需要使用的话还需要重新定义。
+
 ### 修改
 修改环境变量可以直接使用环境变量名进行修改。
 例：`MYNAME="ZZLL"`
 添加`"export PATH=/usr/local/anconda3/bin:$PATH" `到/etc/profile
+
 ### 环境变量的查看
 1 使用echo命令查看单个环境变量。例如： 
 `echo $PATH `
@@ -79,3 +81,22 @@ Ubuntu Linux系统环境变量配置文件：
 /etc/bashrc : 为每一个运行bash shell的用户执行此文件.当bash shell被打开时,该文件被读取.
 
 ~/.bashrc : 该文件包含专用于你的bash shell的bash信息,当登录时以及每次打开新的shell时,该该文件被读取。
+
+总结： 
+`/etc/`下的文件是系统文件，例如/etc/profile，/etc/environment，/etc/bashrc 
+`~/`下的文件是用户文件，例如/.bashrc ，~/.profile
+
+bashrc与profile都用于保存用户的环境信息，bashrc用于交互式non-loginshell，而profile用于交互式login shell。
+profile的内容只在用户登录时执行一次。bashrc的内容在用户每次创建bash时都执行生效。
+
+~/.profile可以设定本用户专有的路径，环境变量，等，它只能登入的时候执行一次
+~/.bashrc也是某用户专有设定文档，可以设定路径，命令别名，每次shell script的执行都会使用它一次
+
+## 系统sh脚本调用顺序
+
+当登入系统时候获得一个shell进程时，其读取环境设定档有三步
+1. 首先读入的是全局环境变量设定档/etc/profile，然后根据其内容读取额外的设定的文档，如/etc/profile.d和/etc/inputrc
+2. 然后根据不同使用者帐号，去其家目录读取~/.bash_profile，如果这读取不了就读取~/.bash_login，这个也读取不了才会读取~/.profile，这三个文档设定基本上是一样的，读取有优先关系
+3. 然后在根据用户帐号读取~/.bashr
+   
+
