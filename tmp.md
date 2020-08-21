@@ -18,20 +18,6 @@ sudo wmic ENVIRONMENT where "name='path' and username='<system>'" set VariableVa
 
 
 # server
-### device
-zlg::windows7:vm:ubuntu
-zlg::windows10:wsl:ubuntu
-zlg::windows10:hperv:ubuntu
-njgh::windows10:hperv:ubuntu
-njgh::windows10:hperv:cali
-njgh::windows10:hperv:xp
-njgh::windows10:hperv:win10
-xiaomi8lite:termux
-redmi3:termux
-raspberry
-tencent::centos
-平板/Android
-acer/wm/ubuntu
 
 
 
@@ -388,3 +374,191 @@ ssh -oConnectTimeout=60 -oServerAliveInterval=120 ...
 
 
 上例设置在请求发起60秒钟后未收到响应则超时，120秒内无数据通过则发送一个请求避免断开，这样设置之后此类错误提示就会有大幅减少。
+
+# misc
+
+ barad_agent进程是干啥用的？
+ 监控agent有2个进程，只有两个进程正常安装才上报数据。
+stargate进程负责监控barad_agent进程，barad_agent负责采集和上报。
+
+```
+Set ws = CreateObject("Wscript.Shell")   
+ws.run "cmd /c 批处理的完整路径",vbhide
+
+“%programdata%\Microsoft\Windows\Start Menu\Programs\Startup\frps.vbs”
+ws.Run "d:\frpc.exe -c d:\frpc_net.ini",0
+
+echo "ws.Run '%~dp0\frpc.exe' -c  '%~dp0\frpc2.ini' ,0"
+
+echo "wer"
+echo wer ert^,
+echo we^"r ert^, 4545 678
+echo "wer""ert^,""4545 678"
+
+echo ^"^"这是一个 参数^"^"
+
+set ws=WScript.CreateObject('WScript.Shell')
+ws.Run 'H:\greensoftware\misc\frp_0.32.0_windows_amd64\frpc.exe' -c  'H:\greensoftware\misc\frp_0.32.0_windows_amd64\frpc2.ini' ,0 
+```
+命令行  转义 双引号
+
+
+
+系统启动时间:     2020/3/27, 20:39:57
+
+
+qt 5.11 :-1: error: Unknown module(s) in QT: webenginewidgets
+scons 
+
+由于 win10 的 linux 子系统无法原生支持使用图形界面，
+
+
+https://github.com/mygit03/DoJS
+https://github.com/lgxZJ/Miscellaneous/tree/master/Qt/QtScript
+https://www.cnblogs.com/lgxZJ/archive/2017/12/31/8158132.html
+
+
+如何 可以在虚拟机 无权限打包使用 
+
+
+该编码方式和一般采用的 application/x-www-form-urlencoded MIME 
+base64,utf-8 
+& = 
+
+https://help.aliyun.com/document_detail/67818.html?spm=a2c4g.11186623.2.11.47a179bbtNStMh
+
+
+手机文件同步，权限管理：DCIM，tencent/download/，生成snap，计算更新量。
+
+
+自动化就是如此的简单。不需要Ansiable、也不需要Salt stack，一个MobaXterm足够了。
+Window下有很多强大的工具，比如office，按键精灵等，可以支持强大的宏功能，把一些需要重复性的操作，录制为脚本，以后就可以重复执行了，减轻手的负担。
+
+一个节点对应一个简单分类器/拟合器（线性分类器/区间方波/relu），如何判断 一个SISO无状态的数据拟合，需要多少个节点，在区间内需要多少密度的数据点？
+ctrl+b PageUp/PageDown
+
+
+
+
+
+任务管理器在详情页展示列表的标题栏上右键，选择“选择列”，在弹出的列表中勾选“平台”，即可展示软件位数
+
+整个软件集成脚本、模型、数据、python环境和二进制文件，打包过于巨大，发布和部署存在体积过大的问题
+
+
+
+DOS的时间基准是1980年1月1日，
+Unix的时间基准是1970年1月1日上午12 点，
+Linux的时间基准是1970年1月1日凌晨0点。
+Windows的时间基准是1601年1月1日。
+
+Chrome的时间基准是1601年1月1日。
+``` python
+	datetime.datetime(1601, 1, 1) + datetime.timedelta(microseconds=13220383158057917)
+```
+
+``` bash
+# 环境部署太难了，尤其是现在网络不好，最好集成环境，但集成环境太大了。
+conda config --add channels https://repo.continuum.io/pkgs/free/win-64/
+conda config --add channels https://repo.continuum.io/pkgs/main/win-64/
+```
+
+``` c++
+	QFileInfo fi(st);                  
+	if (!fi.isFile()) {
+        qWarning() << st<<" not found";
+		return -1;
+	}
+```
+qt 绑定 objectName
+``` c++
+QLabel *macLabel = new QLabel(this);
+macLabel->setObjectName("mac");
+ 
+//查找这个控件的时候
+QLabel *macLabel = yourWidget->findChild<QLabel*>("mac");
+qDebug() << macLabel->text();
+```
+总结：ObjectName主要是用于外界来访问内部的控件成员的，如果外界不需要访问这个成员，则理论上无需设置它的ObjectName。
+
+
+数组 
+字典
+分隔符
+``` ini
+lst=3,4,5,6
+lst=[3,4,5,"6"]
+
+lst_1 =3
+lst_2 =4
+lst_3 =5
+lst_4 =6
+
+sensor.fit
+sensor_fit
+sensor:fit
+
+[modules]
+key_1=sensor_classify
+key_1=sensor_fit
+key_1=sensor_fit
+key_1=sensor_fi
+```
+相对路径没用对，注意INCLUDEPATH  和 LIBS后接的相对路径是不一样的。
+include后接的相对路径./代表是源代码文件目录
+libs 后接的相对路径./代表的是执行文件exe所在目录
+可以用这个$$PWD当前目录，这样不会混淆。
+
+手机权限 管理 流氓
+appops破解版
+
+ss: G 大文件 传输方法
+
+手机 清除  通讯录 安卓 
+**Q**: 20200301 百度网盘（PC版）锁定后打不开
+**A**: 重新下载百度网盘，设置中关闭自动锁定
+
+c:\windows\System32\drivers\etc\hosts
+
+Windows下caffe安装详解
+
+https://github.com/BVLC/caffe
+
+https://www.cnblogs.com/hhh5460/p/6681363.html
+
+
+
+## C++程序分类
+您在开发C++程序呀？
+
+哪个系统啊？Win、Linux……
+
+谁家编译器啊？VC、GCC、MinGW、clang++……
+
+啥语言版本啊？98、03、11、14、17、20……
+
+目标平台呢？x86、x64、arm64、cross……
+
+目标文件咧？exe、lib、dll、c、asm……
+
+开优化/分析不？Debug、Release、O123、-g、-pg……
+
+函数调用方式？cdecl、stdcall、fastcall……
+
+数据存储方式？auto、static、const、constexpr、extern、mutable、volatile、register、thread_local……
+
+要线程不？ML/MT/MD……
+
+异常模型用的啥？SJLJ、SEH、DW2……
+
+字符集涅？MBCS、Unicode……
+
+char带符号不？
+
+wchar_t是2字节还是4字节？
+
+用了模板？传说有module、export、import呢
+
+客户还要兼容XP啊？v141_xp + WinSDK7考虑一下……
+
+困难？还行吧，小时候指针还分near、far、huge呢
