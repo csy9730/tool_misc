@@ -30,9 +30,18 @@ ssh-keygen -t ecdsa -b 256 -f /etc/ssh/ssh_host_ecdsa_key
 ssh-keygen -t ed25519 -b 256 -f /etc/ssh/ssh_host_ed25519_key
 
 ssh-add /etc/ssh/
+# 添加信任的密钥
+cat /etc/ssh/ssh_host_rsa_key.pub>>$HOME/.ssh/authorized_keys 
 
-cat /etc/ssh/ssh_host_rsa_key.pub>>$USERPROFILE/.ssh/authorized_keys # 添加信任的密钥
-# type f:\download\PortableGit\etc\ssh\ssh_host_rsa_key.pub>>%HOME%\.ssh\authorized_keys
+```
+
+```
+ssh-keygen -t rsa -b 2048 -f C:\ProgramData\ssh\ssh_host_rsa_key
+ssh-keygen -t ecdsa -b 256 -f C:\ProgramData\ssh\ssh_host_ecdsa_key
+ssh-keygen -t ed25519 -b 256 -f C:\ProgramData\ssh\ssh_host_ed25519_key
+
+# 添加信任的密钥
+type C:\ProgramData\ssh\ssh_host_rsa_key.pub>>%USERPROFILE%\.ssh\authorized_keys
 ```
 
 

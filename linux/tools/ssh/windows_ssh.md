@@ -76,8 +76,9 @@ PS C:\Windows\system32> Add-WindowsCapability -Online -Name OpenSSH.Client~~~~0.
 Path          :
 Online        : True
 RestartNeeded : False
+```
 
-
+``` powershell
 # Uninstall the OpenSSH Client
 Remove-WindowsCapability -Online -Name OpenSSH.Client~~~~0.0.1.0
 
@@ -86,6 +87,7 @@ Remove-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
 
 
 Start-Service sshd
+Stop-Service sshd
 # OPTIONAL but recommended:
 Set-Service -Name sshd -StartupType 'Automatic'
 # Confirm the Firewall rule is configured. It should be created automatically by setup.
