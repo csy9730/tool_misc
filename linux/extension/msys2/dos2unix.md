@@ -54,9 +54,18 @@ Usage: dos2unix [options] [file ...] [-n infile outfile ...]
 
 
 下面列出怎么对整个目录中的文件做dos2unix操作:
+` find . -type f -exec dos2unix {} \;`
+
+
+``` bash
+# 批量替换java文件
+find . -name "*.java" -exec dos2unix {} \;
+
+find . -name "*.java" -exec unix2dos {} \;
+
 ```
-$ find . -type f -exec dos2unix {} \;
-```
+
+
 其中具体命令的解释如下：
 ```
 find .
@@ -69,19 +78,17 @@ find .
 = and execute dos2unix on each file found
 ```
 
-批量替换java文件
-`find . -name "*.java" -exec dos2unix {} \;`
 
 ## sed
 
-用sed进行转换
-
+sed可以实现批量的文本替换，用sed进行转换的方法如下：
 以下 sed 调用将把 DOS/Windows 格式的文本------->>可信赖的 UNIX 格式：  
+``` bash
+sed -i 's/^M$//g' # 即寻找以 ^M 结尾的行，string^M\n----》string\n.
 
-sed -i 's/^M$//g' 即寻找以 ^M 结尾的行，string^M\n----》string\n.
-
-sed -i 's/\r$//g'    #这个命令也可以。
+sed -i 's/\r$//g'   # 这个命令也可以。
 
 
-反过来，也可以把UNIX---->DOS.    \n----->\r\n.
-sed -i 's/$/\r\n/'      #在该脚本中，'$' 规则表达式将与行的末尾匹配，而 '\r' 告诉 sed 在其之前插入一个回车。在换行之前插入回车，立即，每一行就以 CR/LF 结束。
+# 反过来，也可以把UNIX---->DOS.    \n----->\r\n.
+sed -i 's/$/\r\n/'      # 在该脚本中，'$' 规则表达式将与行的末尾匹配，而 '\r' 告诉 sed 在其之前插入一个回车。在换行之前插入回车，立即，每一行就以 CR/LF 结束。
+```

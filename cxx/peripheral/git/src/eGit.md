@@ -268,11 +268,18 @@ git commit  # 执行
 
 
 **Q**: git出现Your branch and 'origin/master' have diverged解决方法
+"git pull”如何强制覆盖本地文件？
 **A**: 如果不需要保留本地的修改，只要执行下面两步：
 ``` bash
 git fetch origin
+# git fetch --all
 git reset --hard origin/master
 ```
+git fetch从远程下载最新的，而不尝试合并或rebase任何东西。
+
+
+
+
 当我们在本地提交到远程仓库的时候，如果遇到上述问题，我们可以首先使用如下命令：
 ``` bash
 git rebase origin/master

@@ -63,10 +63,11 @@ cmake,ctest,cpack,cdash
 
 ### travis CI
 Travis CI是在线托管的CI服务，用Travis来进行持续集成，不需要自己搭服务器，使用方便，对开源项目是免费的，支持多数主流语言。
+Travis只支持Ubuntu和Mac OS X环境。 
 ### jenkins
 ，用Jenkins来进行持续集成。
 ### Appveyor
-
+支持windows系统服务器，一般与travis CI搭配使用，实现在windows/linux系统上持续集成。
 ### Azure Pipelines
 
 ### TeamCity
