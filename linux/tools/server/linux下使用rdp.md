@@ -21,3 +21,9 @@ rdesktop -f -r disk:MyDisk=/home/comet/temp ip
 
 ## xrdp
 
+```
+apt install xrdp
+sudo systemctl restart xrdp
+
+sudo ufw allow 3389/tcp
+```

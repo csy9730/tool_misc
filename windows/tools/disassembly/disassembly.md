@@ -10,6 +10,8 @@
 
 反汇编可以通过反汇编的一些软件实现，比如DEBUG就能实现反汇编，当DEBUG文件位置设置为-u时，即可实现反汇编。 而使用OD实现反汇编时，杀毒软件可能会报告有病毒与木马产生，此时排除即可，且使用OD需要有扎实的基础才能看懂。
 
+ollyDbg是动态分析
+IDA pro 是静态分析
 
 
 基础工具：file， pe tools，peID，nm，ldd，objdump，otool，dumpbin， cfilt，strings，
