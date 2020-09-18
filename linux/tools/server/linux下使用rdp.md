@@ -27,3 +27,12 @@ sudo systemctl restart xrdp
 
 sudo ufw allow 3389/tcp
 ```
+
+
+
+xorg
+x11rdp
+xvnc
+console
+vnc-any
+sesman-anyneutrinordp-any

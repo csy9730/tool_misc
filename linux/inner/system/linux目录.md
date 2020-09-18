@@ -83,7 +83,20 @@ opt 源码安装程序，或第三方软件放置目录
 /bin目录（binary）是二进制执行文件目录，主要用于具体应用
 /sbin目录（system binary）是系统管理员专用的二进制代码存放目录，主要用于系统管理
 
-/local > /usr > /root , system bin > bin
+/local 放置第三方软件程序
+/usr/bin: 
+/bin: 放置普通命令，一般是系统自带的。
+
+/bin：   存放所有用户皆可用的系统程序，即普通的基本命令，如：touch ls等。
+/sbin：  存放超级用户才能使用的系统程序，即基本的系统命令，如：sreboot等。
+
+/usr/bin：   存放所有用户都可用的应用程序，一般是已安装软件的运行脚本，如：free、make、wget等。
+/usr/sbin：  存放超级用户才能使用的应用程序 ，一般是与服务器软件程序命令相关的，如：dhcpd、 httpd、samba等。
+
+/usr/local/bin：    存放所有用户都可用的第三方软件程序,如mysql
+/usr/local/sbin：   存放超级用户才能使用的第三方软件,如nginx
+
+此外，应该还有用户私有可执行目录: `~/bin`
 
 ## 子目录
 

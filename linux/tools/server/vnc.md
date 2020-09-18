@@ -1,5 +1,18 @@
 # vnc
 
+VNC(Virtual Network Computing)是使用RFB(Remote Frame Buffer protocol)协议的图形桌面共享系统，可以达到远程控制桌面的效果。VNC是server-client架构：
+
+server，称VNC server，常见的有：
+
+    x11vnc
+    vnc4server
+    tightvncserver
+
+client，称VNC viewer，常见的有：
+
+    Remmina(Linux)
+    RealVNC(Windows MacOS)
+
 
 
 [vnc](https://www.realvnc.com/en/connect/download/viewer/)
