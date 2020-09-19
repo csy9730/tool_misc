@@ -233,7 +233,7 @@ git status
 
 git reset HEAD^之后
 
-# 总结
+## 总结
 
 ### reset 的本质：移动 HEAD 以及它所指向的 branch
 
@@ -279,6 +279,6 @@ git reset --hard branch2
 
 ##### 参考文章：
 
-https://dotblogs.com.tw/wasichris/2016/04/29/225157
-https://www.domon.cn/2018/09/06/Git-reset-used-in-coding/
-https://juejin.im/book/5a124b29f265da431d3c472e/section/5a14529bf265da43310d7351(掘金小册)
+[225157](https://dotblogs.com.tw/wasichris/2016/04/29/225157)
+[Git-reset-used-in-coding](https://www.domon.cn/2018/09/06/Git-reset-used-in-coding)
+[掘金小册](https://juejin.im/book/5a124b29f265da431d3c472e/section/5a14529bf265da43310d7351)

@@ -7,11 +7,28 @@ Welcome to git's documentation!
 ===============================
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+   :maxdepth: 1
+   :caption: SSH:
+   :numbered:
 
-   git汇总.md
-   src/eGit.md
+   ssh/ssh.rst
+
+
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Git:
+   :numbered:
+
+   git/index.rst
+
+
+.. toctree::
+   :maxdepth: 1
+   :caption: chrome:
+   :numbered:
+
+   chrome/chrome.rst
 
 
 Indices and tables

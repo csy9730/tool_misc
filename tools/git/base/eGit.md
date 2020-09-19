@@ -205,16 +205,8 @@ local merge ？
 网页端发起合并merge请求
 master管理员处理合并请求
 
-![gitPush.jpg](./img/gitPush.jpg "")
+![gitPush.jpg](../img/gitPush.jpg)
 
-
-##### github权限
-1. Guest
-2. Reporter
-3. Developer
-4. Master
-
-初始化项目
 
 
 
@@ -250,12 +242,12 @@ bash命令可以选择文件夹执行命令。
 合并冲突，需要人工处理冲突，
 
 处理合并merge请求
-git merge --abort # 
+`git merge --abort `
 
 以下情况可以自动merge
-1\. 多成员修改不同文件
- 2\. 多成员修改相同文件不同区域
- 3\. 同时修改文件名和文件内容
+* 多成员修改不同文件
+* 多成员修改相同文件不同区域
+* 同时修改文件名和文件内容
 
 
 
@@ -267,26 +259,6 @@ git commit  # 执行
 ```
 
 
-**Q**: git出现Your branch and 'origin/master' have diverged解决方法
-"git pull”如何强制覆盖本地文件？
-**A**: 如果不需要保留本地的修改，只要执行下面两步：
-``` bash
-git fetch origin
-# git fetch --all
-git reset --hard origin/master
-```
-git fetch从远程下载最新的，而不尝试合并或rebase任何东西。
-
-
-
-
-当我们在本地提交到远程仓库的时候，如果遇到上述问题，我们可以首先使用如下命令：
-``` bash
-git rebase origin/master
-git pull --rebase
-git push origin master
-```
-把内容提交到远程仓库上。
 
 ##### 使用强制push的方法
 
@@ -464,15 +436,7 @@ git push origin master error: cannot spawn sh: No such file or directory
 
 **A**: `git log --all --full-history -- thefile.txt`
 
-**Q**:从所有版本中删除敏感文件
-**A**:
 
-``` bash
-git filter-branch -f --tree-filter 'rm tools/abc.exe' HEAD 
-git filter-branch --force --index-filter "git rm --cached --ignore-unmatch sensorRecogn/titanic.HDF5" --prune-empty --tag-name-filter cat -- --all
-git push origin --force
-```
-注意： 每个仓库都要执行这条过滤指令。这样不同仓库合并时，不会合并错误。
 
 
 **Q**: 如何查看远程分支的log
@@ -483,15 +447,6 @@ git branch -a
 git log  remotes/origin/HEAD
 ```
 
-git clone 如何拉取部分版本，部分文件？
-适合用 git clone --depth=1 的场景：你只是想clone最新版本来使用或学习，而不是参与整个项目的开发工作
-```
---depth <depth>
-Create a shallow clone with a history truncated to the specified number of commits. Implies --single-branch 
-depth选项默认使用单分支。
-
-通过 ` git clone --depth=1 --branch a_br ` 可以只复制一个分支快照，没有git历史。
-```
 
 
 **Q**: git还有什么拓展使用方法？

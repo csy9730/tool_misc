@@ -10,7 +10,7 @@
 
 
 
-## 0x01 需求分析
+## 需求分析
 
 我为什么会有如本文标题所述这样的需求呢？这是因为我之前把所有为 [Blessing Skin](https://github.com/printempw/blessing-skin-server) 这个程序编写的插件源码都放在一个 [git repo](https://github.com/printempw/blessing-skin-plugins) 中了，每个子文件夹中都是一个独立的插件（因为嫌麻烦所以一股脑给塞进一个仓库里了），并且对每个子文件夹中的代码的修改最后都是在这个统一仓库中提交的。该仓库差不多长这样：
 
@@ -43,7 +43,7 @@ $ tree
 
 **将现有 git repo 中的子目录独立为新 repo，并保留其相关的提交历史。**
 
-## 0x02 文章描述约定
+## 文章描述约定
 
 为了方便描述后续操作，这里稍微约定一下文章中各占位符的含义。
 
@@ -55,7 +55,7 @@ $ tree
 
 差不多就是这样。(・_ゝ・)
 
-## 0x03 最简单的方法，使用 git subtree
+## 最简单的方法，使用 git subtree
 
 看来上述需求还是比较普遍的，自从 1.8 版本之后 git 就添加了 subtree 子命令，使用这个新命令我们可以很简单高效地解决这个问题。
 
@@ -82,7 +82,7 @@ git pull </path/to/big-repo> <name-of-new-branch>
 
 好了，完成。现在看看你的新仓库，是不是已经包含了原子文件夹中的所有文件和你之前在原仓库中的所有提交历史呢？
 
-## 0x04 麻烦点的方法，使用 git filter-branch
+## 麻烦点的方法，使用 git filter-branch
 
 除了使用新添加的 `subtree` 命令，你也可以使用 git 传统的所谓核弹级大杀器命令 —— `filter-branch` 解决上述问题。
 
@@ -118,7 +118,7 @@ git gc --aggressive --prune=now
 
 这样，虽然麻烦点，我们也得到了和使用 0x03 方法后一样的新仓库。
 
-## 0x05 清理原仓库
+## 清理原仓库
 
 既然所指定的子文件夹已经被分离为一个单独的 git repo 了，我们就可以放心地在原仓库中删除它了：
 
@@ -135,7 +135,7 @@ git branch -D <name-of-new-branch>
 
 关于这个的具体操作我这里就不提了，网上一搜一大把。不过需要注意的是，这种做法并不值得提倡，请在你完全清楚自己在做什么的前提下使用此方法改写提交历史。
 
-## 0x06 关联原仓库与新仓库
+## 关联原仓库与新仓库
 
 这一步是可选的。
 
@@ -145,7 +145,7 @@ git branch -D <name-of-new-branch>
 
 当然，你也可以分离之后直接使用 npm、composer 之类的包管理器将新仓库作为一个依赖库引入进来，这也是完全没有问题的。
 
-## 0x07 参考链接
+## 参考链接
 
 - [Detach (move) subdirectory into separate Git repository](https://stackoverflow.com/questions/359424/detach-move-subdirectory-into-separate-git-repository)
 - [Create a submodule repository from a folder and keep its git commit history](https://stackoverflow.com/questions/17413493/create-a-submodule-repository-from-a-folder-and-keep-its-git-commit-history)

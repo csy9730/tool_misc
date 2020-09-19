@@ -1,10 +1,10 @@
 # patch
 
 blob,tree, commit
-git format-patch COMMITÆğµã..COMMITÖÕµã
-Ä¬ÈÏÖÕµã head
-µÈ¼ÛÓÚ git diff >abc.patch
-##### commitÃèÊö
+git format-patch COMMITèµ·ç‚¹..COMMITç»ˆç‚¹
+é»˜è®¤ç»ˆç‚¹ head
+ç­‰ä»·äº git diff >abc.patch
+##### commitæè¿°
 * head
 * head^
 * head~2
@@ -18,13 +18,13 @@ git format-patch COMMITÆğµã..COMMITÖÕµã
 * branchA~2
 
 
-ÒÔÏÂÊÇÎŞĞ§µÄ°æ±¾×éºÏ£º
+ä»¥ä¸‹æ˜¯æ— æ•ˆçš„ç‰ˆæœ¬ç»„åˆï¼š
 head~
 head^2
 
-## ¹ÜÀí
+## ç®¡ç†
 
-Éú³Émaster
+ç”Ÿæˆmaster
 ```bash
 
 git init
@@ -42,7 +42,7 @@ git format-patch -3
 git format-patch master~3..master
 ```
 
-Éú³Ébranch
+ç”Ÿæˆbranch
 ```bash
 git checkout vB
 git branch  alt
@@ -55,7 +55,7 @@ git log --graph --pretty=oneline --abbrev-commit --all
 ```
 
 
-³åÍ»´¦Àí
+å†²çªå¤„ç†
 ```bash
 git checkout master
 git merge alt
@@ -67,7 +67,7 @@ git commit -m 'all lines'
 echo F >> file ; git commit -mF file;git tag vF
 ```
 
-³åÍ»´¦Àí
+å†²çªå¤„ç†
 ```bash
 git am --skip
 git am --abort
@@ -82,4 +82,4 @@ git am -3 --resolved
 
 
 
-ÒÔÉÏ²Ù×÷²»Ö§³Ö·ÖÖ§£¬Ö»Ö§³ÖÏßĞÔÌá½»¡£µÈ¼ÛÓÚrebase²Ù×÷£¿
+ä»¥ä¸Šæ“ä½œä¸æ”¯æŒåˆ†æ”¯ï¼Œåªæ”¯æŒçº¿æ€§æäº¤ã€‚ç­‰ä»·äºrebaseæ“ä½œï¼Ÿ
