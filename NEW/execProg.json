@@ -1,0 +1,70 @@
+{
+    "commands": {
+        "prog": "python.exe",
+        "args": [
+            "-O",
+            "abc.py",
+            "train",
+            "--input",
+            "def.csv"
+        ],
+        "args_parse": [
+            {
+                "prog": "-O"
+            },
+            {
+                "prog": "abc.py",
+                "args": [
+                    "train",
+                    "--input",
+                    "def.csv",
+                    "--output",
+                    "ghi.csv"
+                ],
+                "args_parse": [
+                    {
+                        "prog": "train",
+                        "args": [
+                            "--input",
+                            "def.csv",
+                            "--output",
+                            "ghi.csv"
+                        ],
+                        "parse": [
+                            {
+                                "dest": "input",
+                                "value": "def.csv",
+                                "option_string": [
+                                    "--input",
+                                    "-i"
+                                ],
+                                "default": "tmp_zalAI.log"
+                            },
+                            {
+                                "value": "ghi.csv",
+                                "dest": "input",
+                                "value": "def.csv",
+                                "option_string": [
+                                    "--output",
+                                    "-o"
+                                ]
+                            }
+                        ],
+                        "args_parse": [
+                            {
+                                "dest": "input",
+                                "value": "def.csv",
+                            },
+                            {
+                                "value": "ghi.csv",
+                                "dest": "input",
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "workdir": "",
+        "env": []
+    }
+}

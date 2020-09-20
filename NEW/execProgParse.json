@@ -1,0 +1,78 @@
+{
+    "prog": "python.exe",
+    "args": [
+        "-O",
+        "abc.py",
+        "train",
+        "--input",
+        "def.csv",
+        "--output",
+        "ghi.csv"
+    ],
+    "args_parse": {
+        "optimize": true,
+        "file": {
+            "prog": "abc.py",
+            "args": [
+                "gpu-on",
+                "train",
+                "--input",
+                "def.csv",
+                "--output",
+                "ghi.csv"
+            ],
+            "parse": [
+                {
+                    "dest": "gpu_on",
+                    "option_string": [
+                        "--gpu-on"
+                    ],
+                    "default": false
+                },
+                {
+                    "dest": "gpu_on",
+                    "option_string": [],
+                    "default": false,
+                    "subcommand": {
+                        "train": [
+                            {
+                                "dest": "input",
+                                "option_string": [
+                                    "--input",
+                                    "-i"
+                                ],
+                                "default": "tmp_zalAI.log"
+                            },
+                            {
+                                "dest": "input",
+                                "option_string": [
+                                    "--output",
+                                    "-o"
+                                ]
+                            }
+                        ],
+                        "predict": [
+                            {
+                                "dest": "input",
+                                "option_string": [
+                                    "--input",
+                                    "-i"
+                                ],
+                                "default": "tmp_zalAI.log"
+                            },
+                            {
+                                "dest": "input",
+                                "option_string": [
+                                    "--output",
+                                    "-o"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+    "workdir": "",
+    "env": []
+}

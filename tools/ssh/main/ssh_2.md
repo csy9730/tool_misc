@@ -137,6 +137,3 @@ Host ssttest2
 $ ssh sshtest
 ```
 
-# 环境
-
-## 1. Ubuntu

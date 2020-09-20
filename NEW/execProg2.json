@@ -1,0 +1,65 @@
+{
+    "prog": "python.exe",
+    "args": [
+        "-O",
+        "abc.py",
+        "train",
+        "--input",
+        "def.csv",
+        "--output",
+        "ghi.csv"
+    ],
+    "args_parse": {
+        "optimize": true,
+        "file": {
+            "prog": "abc.py",
+            "args": [
+                "gpu-on",
+                "train",
+                "--input",
+                "def.csv",
+                "--output",
+                "ghi.csv"
+            ],
+            "args_parse": {
+                "gpu_on": true,
+                "subcommand": {
+                    "prog": "train",
+                    "args": [
+                        "--input",
+                        "def.csv",
+                        "--output",
+                        "ghi.csv"
+                    ],
+                    "args_parse": {
+                        "input": "def.csv",
+                        "output": "ghi.csv"
+                    },
+                    "parse": [
+                        {
+                            "dest": "input",
+                            "value": "def.csv",
+                            "option_string": [
+                                "--input",
+                                "-i"
+                            ],
+                            "default": "tmp_zalAI.log"
+                        },
+                        {
+                            "value": "ghi.csv",
+                            "dest": "input",
+                            "value": "def.csv",
+                            "option_string": [
+                                "--output",
+                                "-o"
+                            ]
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "workdir": "",
+    "env": []
+}
+
