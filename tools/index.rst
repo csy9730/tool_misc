@@ -30,6 +30,13 @@ Welcome to git's documentation!
 
    chrome/chrome.rst
 
+.. toctree::
+   :maxdepth: 1
+   :caption: batch:
+   :numbered:
+
+   batch/batch.rst
+
 
 Indices and tables
 ==================

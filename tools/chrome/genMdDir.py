@@ -58,6 +58,9 @@ Welcome to git's documentation!
 
 
 
+
+
+
 Indices and tables
 ==================
 
@@ -66,36 +69,51 @@ Indices and tables
 * :ref:`search`
 """
 
-pth = "."
-lst =[]
 
-for r,d,f in os.walk(pth):
-    for k in f:
-        if os.path.splitext(k)[-1] in [".md",".rst"]:
-            lst.append(os.path.join(r,k))
-            # print(i,j,k)
+def gen(pth):
+    lst =[]
 
-for f in lst:
-    print(f)
-
-"""
-
-readme
-install
-overview
-tutorial
-example
-frequent Q&A
-
-
+    for r, d, f in os.walk(pth):
+        for k in f:
+            if os.path.splitext(k)[-1] in [".md", ".rst"]:
+                p = os.path.join(r, k)
+                p = p.replace('\\', '/')
+                p=p.lstrip('./')
+                lst.append(p)
+                # print(i,j,k)
+    return lst 
 
 """
-
+    [
+        {"title":"foo",
+        "text":["foo.md","boo.rst"]}
+    ]
 """
-make htmlview
-make html
-make epub
-make latex
-make pdf
+def ren(lst):
+    from jinja2 import Template
+    template = """
+.. toctree::
+   :maxdepth: 1
+   :caption: 扩展:
+   :numbered:
 
+   {% for txt in txt_list -%}
+    {{ txt }}
+   {% endfor %}
 """
+    tp = Template(template)
+    dct = {"txt_list": lst}
+    txt = tp.render(**dct)
+    print(txt)
+
+
+def main():
+    pth = "."
+    lst = gen(pth)    
+    # for f in lst:
+        # print(f)  
+    ren(lst)
+
+
+if __name__ == "__main__":
+    main()
