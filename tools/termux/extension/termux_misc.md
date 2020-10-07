@@ -30,5 +30,5 @@ E: Sub-process /data/data/com.termux/files/usr/bin/dpkg returned an error code (
 ```
 
 
-sudo dpkg -i --force-overwrite /var/cache/apt/archives/python-problem-report_2.0.1-0ubuntu9_all.deb
-然后再使用sudo apt-get -f install 即可修复
+`sudo dpkg -i --force-overwrite /var/cache/apt/archives/python-problem-report_2.0.1-0ubuntu9_all.deb`
+然后再使用`sudo apt-get -f install` 即可修复

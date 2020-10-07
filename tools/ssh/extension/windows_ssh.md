@@ -110,6 +110,7 @@ sudo service ssh restart
 
 以下适用于git for windows的sshd
 **Q**: 命令行中直接执行，报错：`sshd re-exec requires execution with an absolute path`
+
 **A**: 执行`"/c/Program Files/Git/usr/bin/sshd.exe"`
 
 
@@ -135,11 +136,13 @@ ssh_askpass: posix_spawn: Unknown error
 abc@192.168.137.1: Permission denied (publickey,password,keyboard-interactive).
 ```
 
+**Q**: Unable to negotiate with 192.168.137.1 port 22: no matching key exchange method found. Their offer: diffie-hellman-group-exchange-sha1,diffie-hellman-group1-sha1
 
-**Q**:Unable to negotiate with 192.168.137.1 port 22: no matching key exchange method found. Their offer: diffie-hellman-group-exchange-sha1,diffie-hellman-group1-sha1
-**A**: 这是由于sha1加密算法安全性不足已经废弃，需要显式启用该加密算法
+**A**:  这是由于sha1加密算法安全性不足已经废弃，需要显式启用该加密算法
 `ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 123.123.123.123`
+
 或者在客户端的 ~/.ssh/config添加以下
+
 ``` ini
 Host 123.123.123.123
     KexAlgorithms +diffie-hellman-group1-sha1
@@ -148,22 +151,37 @@ Host 123.123.123.123
 
 
 
-
 **Q**: cmd远程启动程序，任务管理器里有，但是前台没有界面，即使是有UI界面的程序；
+
 **A**: 尝试通过计划任务，尝试按键脚本执行。
 `SCHTASKS.EXE /create /sc once /tn WeChat /tr "C:\Program Files\Tencent\WeChat\WeChat.exe" /st %time:~0,8%`
 也可能是权限不足？
 
+
+
 **Q**: 通过vbs设置启动项，没有一闪而过的窗口。
-**A**: 
+
+**A**:  执行以下命令：
+
 ``` bash
 echo set ws=WScript.CreateObject("WScript.Shell")>"startSshd.vbs"
-echo ws.Run "cmd /c /usr/bin/sshd ",vbhide >>"startSshd.vbs"
+echo ws.Run "cmd /c C:\Program Files\Git\usr\bin\sshd.exe -p 22 ",vbhide >>"startSshd.vbs"
 copy startSshd.vbs  "%programdata%\Microsoft\Windows\Start Menu\Programs\Startup" /y
 ```
 
 
+
+将会在启动目录生成startSshd.vbs，每次开机启动sshd
+
+``` bash
+set ws=WScript.CreateObject("WScript.Shell")
+ws.Run "cmd /c C:\Program Files\Git\usr\bin\sshd.exe -p 22 ",vbhide 
+```
+
+
+
 ## misc
+
 [Windows上安装配置SSH教程](https://www.cnblogs.com/feipeng8848/p/8568018.html)
 
 [openssh_install_firstuse](https://docs.microsoft.com/zh-cn/windows-server/administration/openssh/openssh_install_firstuse)

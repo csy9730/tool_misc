@@ -12,21 +12,21 @@ BusyBox 是标准 Linux 工具的一个单个可执行实现。BusyBox 包含了
 
 准备：
 
-\0. 先要把手机给Root了，具体教程这里就不提供了，网上有很多。
+0. 先要把手机给Root了，具体教程这里就不提供了，网上有很多。
 
-\1. 下载BusyBox的binary，打开这个地址 http://www.busybox.net/downloads/binaries ，选择最新版本，然后下载对应你的设备架构的版本，这里我下载了busybox-armv6l，下面将以这个文件名为示例。
+1. 下载BusyBox的binary，打开这个地址 [busybox](http://www.busybox.net/downloads/binaries) ，选择最新版本，然后下载对应你的设备架构的版本，这里我下载了busybox-armv6l，下面将以这个文件名为示例。
 
 ![img](https://pic002.cnblogs.com/images/2011/231332/2011031215274263.png)
 
-\2. 需要有一个命令行的环境，在电脑上使用adb或在手机上使用terminal emulator。
+2. 需要有一个命令行的环境，在电脑上使用adb或在手机上使用terminal emulator。
 
-\3. 连接手机和电脑，手机的USB Mode设置成None（仅充电），并且开启USB调试模式。
+3. 连接手机和电脑，手机的USB Mode设置成None（仅充电），并且开启USB调试模式。
 
 安装：
 
-\1. 将busybox-armv6l重命名为busybox
+1. 将busybox-armv6l重命名为busybox
 
-\2. 将busybox传入手机的SD卡，可以使用下面的命令或自己想其他办法。
+2. 将busybox传入手机的SD卡，可以使用下面的命令或自己想其他办法。
 
 打开terminal（Linux，Mac）或cmd（Windows）
 
@@ -36,7 +36,7 @@ adb ``push` `~/Desktop/busybox /mnt/sdcard
 
 其中的~/Desktop请根据自己的情况替换成正确的路径
 
-\3. 输入以下命令，为了在/system目录写入文件
+3. 输入以下命令，为了在/system目录写入文件
 
 ```
 adb shell``su``mount -o remount,rw -t yaffs2 /dev/block/mtdblock3 /``system
@@ -44,13 +44,13 @@ adb shell``su``mount -o remount,rw -t yaffs2 /dev/block/mtdblock3 /``system
 
 使用 ls 检查一下 /system 里是否有 xbin 目录，没有的话输入 mkdir xbin 创建，因为本示例是要把busybox安装到 /system/xbin 。
 
-\4. 复制 busybox 文件到 /system/xbin，并为其分配“可执行”的权限
+4. 复制 busybox 文件到 /system/xbin，并为其分配“可执行”的权限
 
 ```
 cp /mnt/sdcard/busybox /``system``/xbin``chmod` `755 busybox
 ```
 
-\5. 这时就可以使用 busybox 的命令了，例如以前没有清屏的clear命令，现在只需输入 busybox clear 就可以实现清屏功能，使用完整版的 ls 只需输入 busybox ls 。
+5. 这时就可以使用 busybox 的命令了，例如以前没有清屏的clear命令，现在只需输入 busybox clear 就可以实现清屏功能，使用完整版的 ls 只需输入 busybox ls 。
 
 但是每次前面都加上个busybox太麻烦了，所以我们还要继续完成安装。
 

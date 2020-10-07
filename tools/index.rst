@@ -38,6 +38,14 @@ Welcome to git's documentation!
    batch/batch.rst
 
 
+.. toctree::
+   :maxdepth: 1
+   :caption: termux:
+   :numbered:
+
+   termux/termux.rst
+
+
 Indices and tables
 ==================
 
