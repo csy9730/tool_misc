@@ -126,5 +126,6 @@ gvim
 
 viewdiff
 
-![cebaad1cced413d7e61369ea85b0a267.png](en-resource://database/7039:1)
-![7cd866e532f63459ecba360a8b1afedc.png](en-resource://database/7041:1)
+![cebaad1cced413d7e61369ea85b0a267.png](./img/164031gfo0n2ksfpzpnfck.png)
+![7cd866e532f63459ecba360a8b1afedc.png](./img/morden1.png)
+
