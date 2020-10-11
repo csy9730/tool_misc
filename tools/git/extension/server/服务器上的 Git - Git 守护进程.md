@@ -1,5 +1,60 @@
 # 服务器上的 Git - Git 守护进程
 
+git-daemon可以提供一个git内置的，轻量的，简单服务器，可以提供仓库级免密钥访问，可以重定向仓库地址。
+
+## demo
+
+linux系统可以执行：
+
+``` bash
+git daemon --reuseaddr --base-path=/home/git/foo /home/git/foo
+touch frp/.git/git-daemon-export-ok
+cd .. & mkdir tmp & cd tmp
+git clone git://192.168.0.108/frp.git
+
+```
+
+注意服务器默认使用 `DEFAULT_GIT_PORT` 9418 端口。
+
+
+windows下执行以下命令
+``` bash
+
+git daemon --reuseaddr --base-path=/h/project/Githubs /h/project/Githubs
+touch frp.git/git-daemon-export-ok
+cd .. & mkdir tmp & cd tmp
+git clone git://127.0.0.1/frp
+```
+
+会报以下错误
+```
+$ git daemon  --base-path=/h/project/Githubs /h/project/Githubs
+[1060] unable to set SO_KEEPALIVE on socket: No such file or directory
+
+```
+
+
+## service
+git daemon提供几种服务：upload-pack（clone？），默认打开开放，上传(receive-pack)，默认关闭.
+git daemon没有密钥机制，所以是任意人都能访问，所以该服务器只能简单地搭建在局域网中。
+
+> upload-pack
+> This serves git fetch-pack and git ls-remote clients. It is enabled by default, but a repository can disable it by setting daemon.uploadpack configuration item to false.
+> upload-archive
+> This serves git archive --remote. It is disabled by default, but a repository can enable it by setting daemon.uploadarch configuration item to true.
+> receive-pack
+
+接下来，你需要告诉 Git 哪些仓库允许基于服务器的无授权访问。 你可以在每个仓库下创建一个名为 `git-daemon-export-ok` 的文件来实现。
+
+## public
+``` bash
+$ cd /path/to/project.git
+$ touch git-daemon-export-ok
+```
+
+该文件将允许 Git 提供无需授权的项目访问服务。
+
+
 ## Git 守护进程
 
 接下来我们将通过 “Git” 协议建立一个基于守护进程的仓库。 对于快速且无需授权的 Git 数据访问，这是一个理想之选。 请注意，因为其不包含授权服务，任何通过该协议管理的内容将在其网络上公开。
@@ -18,7 +73,7 @@ $ git daemon --reuseaddr --base-path=/srv/git/ /srv/git/
 
 由于在现代的 Linux 发行版中，`systemd` 是最常见的初始化系统，因此你可以用它来达到此目的。 只要在 `/etc/systemd/system/git-daemon.service` 中放一个文件即可，其内容如下：
 
-```console
+``` ini
 [Unit]
 Description=Start Git Daemon
 
@@ -45,11 +100,3 @@ WantedBy=multi-user.target
 
 在其他系统中，你可以使用 `sysvinit` 系统中的 `xinetd` 脚本，或者另外的方式来实现——只要你能够将其命令守护进程化并实现监控。
 
-接下来，你需要告诉 Git 哪些仓库允许基于服务器的无授权访问。 你可以在每个仓库下创建一个名为 `git-daemon-export-ok` 的文件来实现。
-
-```console
-$ cd /path/to/project.git
-$ touch git-daemon-export-ok
-```
-
-该文件将允许 Git 提供无需授权的项目访问服务。

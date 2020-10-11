@@ -1,21 +1,27 @@
 # Git server
 
-在Git服务管理工具这个领域，主要有三种流行的方案，它们分别是 
+在Git服务管理工具这个领域，主要有几种流行的方案，它们分别是 
 
+* git + ssh
+* git daemon
 * Gogs
 * gitosis 
 * Gitolite
-* gitlab
-* gitblit： 基于java的git服务器
+* gitlab 
+* gitblit
 * git-lfs/git-lfs
 
+git + ssh ，最原始的方案，非常粗糙，通过linux提供的账户，ssh提供访问git仓库的方法。
+git daemon 可以提供指定仓库开放public访问权限
 Gitosis - 轻量级， 开源项目，使用SSH公钥认证，只能做到库级的权限控制。目前项目已经于2012年停止开发，不再维护。管理公钥, [gitosis](https://github.com/res0nat0r/gitosis)
-Gitolite - 轻量级，开源项目，使用SSH公钥认证，能做到分支级的权限控制。
+Gitolite - 轻量级，开源项目，使用SSH公钥认证，能做到分支级的权限控制。似乎是Gitosis个衍生版本。
 Git + Repo + Gerrit - 超级重量级，集版本控制，库管理和代码审核为一身。可管理大型及超大型项目。
 gitlab也能布置到自己服务器上，但是对服务器要求4G的内存着实有些太高
+gitblit： 基于java的git服务器
 
+It verifies that the directory has the magic file "git-daemon-export-ok", and it will refuse to export any Git directory that hasn’t explicitly been marked for export this way (unless the --export-all parameter is specified). If you pass some directory paths as git daemon arguments, you can further restrict the offers to a whitelist comprising of those.
 
-## git core
+## git + ssh
 ### user/account
 首先来看一个典型的克隆仓库的命令
 ``` bash
@@ -103,7 +109,10 @@ url = https://github.com/abc/a_repo.git
 url = git@github.com:abc/a_repo.git
 ```
 
+## git daemon
+git daemon提供了匿名读取仓库的方法。
 
 ## gitosis
 
-gitosis 是Git下的权限管理工具，通过一个特殊的仓库（gitosis-admin.git）对Git权限进行管理。
+[gitosis](https://github.com/res0nat0r/gitosis) 是Git下的权限管理工具，通过一个特殊的仓库（gitosis-admin.git）对Git权限进行管理。
+通过一个特殊的仓库（gitosis-admin.git）对Git权限进行管理
