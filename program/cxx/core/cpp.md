@@ -69,7 +69,7 @@ test2 = test1;
 * 用一个已存在的对象去覆盖另一个已存在的对象,就是赋值运算.
 * 拷贝构造函数从一个已经存在的变量来初始化一个新声明的变量，不需要清除现有的值（因为是新创建，所以没有现有值）
 * 拷贝构造函数没有返回值。
-* 赋值运算符return *this.（This is necessary to allow multiple assignment, eg x = y = z;）
+* 赋值运算符`return *this.（This is necessary to allow multiple assignment, eg x = y = z;）`
 
 
 
