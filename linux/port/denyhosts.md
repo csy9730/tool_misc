@@ -1,9 +1,106 @@
 # denyhosts
 
 [https://github.com/denyhosts/denyhosts](https://github.com/denyhosts/denyhosts)
+
+denyhosts是基于python2的包，可以检查失败登录的log的内容，添加ip到denyhost文件中。
 ## quickstart
-### install
-下载软件
+### install & run
+下载软件，安装，自启动一键脚本
+
+``` bash
+wget https://github.com/denyhosts/denyhosts/archive/v3.1.tar.gz 
+tar -zxvf v3.1.tar.gz 
+cd denyhosts-3.1
+pip2 install ipaddr 
+python2 setup.py install  --record denyhostsInstall.log
+
+# 查看是否安装成功
+pip2 list |grep DenyHosts
+
+# 修改服务文件
+sed -i 's/usr\/bin\/denyhosts/usr\/bin\/denyhosts.py/g'  /usr/bin/daemon-control-dist
+# 如果是centos系统， 修改配置 
+# sed -i 's/var\/log\/auth.log/var\/log\/secure/g'  /etc/denyhosts.conf
+
+
+chown root /usr/bin/daemon-control-dist
+chmod 700 /usr/bin/daemon-control-dist
+
+# 手动启动服务
+/usr/bin/daemon-control-dist start
+
+# 手动查看服务状态
+/usr/bin/daemon-control-dist status
+
+ln -s /usr/bin/daemon-control-dist /etc/init.d/denyhosts
+# 创建启动服务连接
+chkconfig denyhosts on
+# 添加启动项
+
+```
+
+
+## misc
+#### 解除denyhosts
+
+1. 暂停rsyslog `service rsyslog stop`
+2. 暂停denyhosts `service denyhosts stop`
+3. 删除记录
+4. 重新启动denyhosts  `service denyhosts restart`
+5. 重新启动sshd和rsyslog `service rsyslog restart`
+6. 顺便可以重新启动sshd和 iptables
+
+从/var/log/secure文件中指定IP的移除失败的登录事件
+从/etc/hosts.deny移除指定IP
+
+此外还有其他denyhosts的记录文件，位于`/var/lib/denyhosts `或`/usr/share/denyhosts/data`
+文件如下
+/var/lib/denyhosts/hosts
+/var/lib/denyhosts/hosts-restricted
+/var/lib/denyhosts/hosts-root
+/var/lib/denyhosts/hosts-valid
+/var/lib/denyhosts/offset
+/var/lib/denyhosts/suspicious-logins
+/var/lib/denyhosts/users-hosts
+/var/lib/denyhosts/users-invalid
+/var/lib/denyhosts/users-valid
+
+
+
+#### demo
+可以用sudo sed -i '/ip/d' /var/log/secure 来直接修改，并使用sudo grep "ip" /var/log/secure来查看是否修改成功（已编写脚本）
+如果不在乎上面的记录文件, 推荐清空上面几个Linux系统日志然后重新开启DennyHosts. 
+清空上面几个Linux系统日志很简单, 在SSH中敲入下面的命令:`cat /dev/null > /var/log/secure`
+
+不过我不想清空系统日志，所以做了一个简单的ip地址替换。
+以下脚本可以一键替换被禁止的ip地址，附带系统服务停止和重启，适用于centos7.
+``` bash
+systemctl stop rsyslog
+daemon-control stop  
+
+sed -i 's/123.34.56.78/123.34.56.79/g'  /var/log/secure
+sed -i 's/123.34.56.78/123.34.56.79/g'  /etc/hosts.deny
+
+sed -i 's/123.34.56.78/123.34.56.79/g'  /var/lib/denyhosts/hosts
+sed -i 's/123.34.56.78/123.34.56.79/g'  /var/lib/denyhosts/hosts-restricted
+sed -i 's/123.34.56.78/123.34.56.79/g'  /var/lib/denyhosts/hosts-root
+sed -i 's/123.34.56.78/123.34.56.79/g'  /var/lib/denyhosts/hosts-valid
+sed -i 's/123.34.56.78/123.34.56.79/g'  /var/lib/denyhosts/offset
+sed -i 's/123.34.56.78/123.34.56.79/g'  /var/lib/denyhosts/suspicious-logins
+sed -i 's/123.34.56.78/123.34.56.79/g'  /var/lib/denyhosts/users-hosts
+sed -i 's/123.34.56.78/123.34.56.79/g'  /var/lib/denyhosts/users-invalid
+sed -i 's/123.34.56.78/123.34.56.79/g'  /var/lib/denyhosts/users-valid
+
+systemctl restart rsyslog
+daemon-control start 
+systemctl restart sshd
+systemctl restart firewalld
+ 
+```
+
+
+### start
+
 ``` bash
 #!/bin/bash
 # wget https://github.com/denyhosts/denyhosts/archive/v3.1.tar.gz 
@@ -13,17 +110,35 @@ tar -zxvf DenyHosts-2.6.tar.gz
 cd DenyHosts-2.6
 
 pip2 install ipaddr 
-python2 setup.py install  --record denyhostsInstall.log
-## 卸载的时候使用日志文件logName
-cat denyhostsInstall.log | xargs rm -rf
+$ python2 setup.py install  --record denyhostsInstall.log
+
+running install_scripts
+copying build/scripts-2.7/denyhosts.py -> /usr/bin
+copying build/scripts-2.7/daemon-control-dist -> /usr/bin
+changing mode of /usr/bin/denyhosts.py to 755
+changing mode of /usr/bin/daemon-control-dist to 755
+running install_data
+copying denyhosts.conf -> /etc
+copying denyhosts.8 -> /usr/share/man/man8
+running install_egg_info
+Writing /usr/lib/python2.7/site-packages/DenyHosts-3.0-py2.7.egg-info
+writing list of installed files to 'denyhostsInstall.log'
+
+
+# 卸载的时候使用日志文件logName
+# cat denyhostsInstall.log | xargs rm -rf
 ```
 
-### start
-程序的安装目录是`/usr/lib/python2.7/site-packages/DenyHosts`
-共享文档目录 `/usr/share/denyhosts`
-程序入口文件是 `python /usr/bin/denyhosts.py`
+
+程序入口文件是 `/usr/bin/denyhosts.py` ,需要配合程序解释器使用
+程序解释器：`/usr/bin/env python`
+配置文件时`/etc/denyhosts.conf`，入口文件会自动读取该配置文件
+
 服务入口是`/usr/bin/daemon-control-dist`
-配置文件时`/etc/denyhosts.conf`
+服务入口文件自动调用程序解释器，入口文件，和配置文件执行。
+
+程序的安装目录是：`/usr/lib/python2.7/site-packages/DenyHosts`，提供程序后台，被入口文件调用。
+共享文档目录 `/usr/share/denyhosts`  ，完全不影响程序使用。
 
 ``` bash
 # /usr/bin/daemon-control-dist
@@ -46,32 +161,12 @@ ubuntu使用/var/log/auth.log 文件
 centos使用/var/log/secure文件
 
 
-### daemon
-
-```
-
-chown root daemon-control
-chmod 700 daemon-control
-#提高安全级别，修改权限
-
-ln -s /usr/share/denyhosts/daemon-control /etc/init.d/denyhosts
-#创建启动服务连接
-
-chkconfig denyhosts on
-#添加启动项
-
-cp denyhosts.cfg denyhosts.cfg.bak
-#备份配置文件，为修改配置做准备
-
-cat /workspace/denyhost.txt<</usr/share/denyhosts/denyhosts.cfg
-#将配置文件内容导入配置文件（我的配置文件安装之前已经配置好了！）
-
-/etc/init.d/denyhosts start
-#启动服务
-
-```
 
 ### conf
+
+* SECURE_LOG
+* BLOCK_SERVICE
+
 
 ``` ini
 SECURE_LOG = /var/log/secure
@@ -102,59 +197,216 @@ HOSTNAME_LOOKUP=NO
 DAEMON_LOG = /var/log/denyhosts
 ```
 
-## 解除denyhosts
+### daemon-control-dist
+``` python
+#!/usr/bin/python2
+# denyhosts     Bring up/down the DenyHosts daemon
+#
+# chkconfig: 2345 98 02
+# description: Activates/Deactivates the
+#    DenyHosts daemon to block ssh attempts
+#
+###############################################
 
-1. 暂停rsyslog `service rsyslog stop`
-2. 暂停denyhosts `service denyhosts stop`
-3. 删除记录
-4. 重新启动denyhosts  `service denyhosts restart`
-5. 重新启动sshd和rsyslog `service rsyslog restart`
-6. 顺便可以重新启动sshd和 iptables
+###############################################
+#### Edit these to suit your configuration ####
+###############################################
 
-从/var/log/secure文件中指定IP的移除失败的登录事件
-从/etc/hosts.deny移除指定IP
+DENYHOSTS_BIN   = "/usr/bin/denyhosts.py"
+DENYHOSTS_LOCK  = "/run/denyhosts.pid"
+DENYHOSTS_CFG   = "/etc/denyhosts.conf"
 
-此外还有其他denyhosts的记录文件，位于`/var/lib/denyhosts `或`/usr/share/denyhosts/data`
-文件如下
-/var/lib/denyhosts/hosts
-/var/lib/denyhosts/hosts-restricted
-/var/lib/denyhosts/hosts-root
-/var/lib/denyhosts/hosts-valid
-/var/lib/denyhosts/offset
-/var/lib/denyhosts/suspicious-logins
-/var/lib/denyhosts/users-hosts
-/var/lib/denyhosts/users-invalid
-/var/lib/denyhosts/users-valid
+PYTHON_BIN      = "/usr/bin/env python"
+
+###############################################
+####         Do not edit below             ####
+###############################################
+
+DENYHOSTS_BIN = "%s %s" % (PYTHON_BIN, DENYHOSTS_BIN)
+
+import os, sys, signal, time
+
+# make sure 'ps' command is accessible (which should be
+# in either /usr/bin or /bin.  Modify the PATH so
+# popen can find it
+env = os.environ.get('PATH', "")
+os.environ['PATH'] = "/usr/bin:/bin:%s" % env
+
+STATE_NOT_RUNNING = -1
+STATE_LOCK_EXISTS = -2
+
+def usage():
+    print "Usage: %s {start [args...] | stop | restart [args...] | status | debug | condrestart [args...] }" % sys.argv[0]
+    print
+    print "For a list of valid 'args' refer to:"
+    print "$ denyhosts.py --help"
+    print
+    sys.exit(0)
 
 
+def getpid():
+    try:
+        fp = open(DENYHOSTS_LOCK, "r")
+        pid = int(fp.readline().rstrip())
+        fp.close()
+    except Exception, e:
+        return STATE_NOT_RUNNING
 
-### demo
-可以用sudo sed -i '/ip/d' /var/log/secure 来直接修改，并使用sudo grep "ip" /var/log/secure来查看是否修改成功（已编写脚本）
-如果不在乎上面的记录文件, 推荐清空上面几个Linux系统日志然后重新开启DennyHosts. 
-清空上面几个Linux系统日志很简单, 在SSH中敲入下面的命令:`cat /dev/null > /var/log/secure`
 
-不过我不想清空系统日志，所以做了一个简单的ip地址替换。
-以下脚本可以一键替换被禁止的ip地址，附带系统服务停止和重启，适用于centos7.
-``` bash
-systemctl stop rsyslog
-daemon-control stop  
+    if not sys.platform.startswith('freebsd') and os.access("/proc", os.F_OK):
+        # proc filesystem exists, look for pid
+        if os.access(os.path.join("/proc", str(pid)), os.F_OK):
+            return pid
+        else:
+            return STATE_LOCK_EXISTS
+    else:
+        # proc filesystem doesn't exist (or it doesn't contain PIDs), use 'ps'
+        p = os.popen("ps -p %d" % pid, "r")
+        p.readline() # get the header line
+        pid_running = p.readline()
+        # pid_running will be '' if no process is found
+        if pid_running:
+            return pid
+        else:
+            return STATE_LOCK_EXISTS
 
-sed -i 's/123.34.56.78/123.34.56.79/g'  /var/log/secure
-sed -i 's/123.34.56.78/123.34.56.79/g'  /etc/hosts.deny
 
-sed -i 's/123.34.56.78/123.34.56.79/g'  /var/lib/denyhosts/hosts
-sed -i 's/123.34.56.78/123.34.56.79/g'  /var/lib/denyhosts/hosts-restricted
-sed -i 's/123.34.56.78/123.34.56.79/g'  /var/lib/denyhosts/hosts-root
-sed -i 's/123.34.56.78/123.34.56.79/g'  /var/lib/denyhosts/hosts-valid
-sed -i 's/123.34.56.78/123.34.56.79/g'  /var/lib/denyhosts/offset
-sed -i 's/123.34.56.78/123.34.56.79/g'  /var/lib/denyhosts/suspicious-logins
-sed -i 's/123.34.56.78/123.34.56.79/g'  /var/lib/denyhosts/users-hosts
-sed -i 's/123.34.56.78/123.34.56.79/g'  /var/lib/denyhosts/users-invalid
-sed -i 's/123.34.56.78/123.34.56.79/g'  /var/lib/denyhosts/users-valid
+def start(*args):
+    cmd = "%s --daemon " % DENYHOSTS_BIN
+    if args: cmd += ' '.join(args)
 
-systemctl restart rsyslog
-daemon-control start 
-systemctl restart sshd
-systemctl restart firewalld
- 
+    print "starting DenyHosts:   ", cmd
+
+    os.system(cmd)
+
+
+def stop():
+    pid = getpid()
+    if pid >= 0:
+        os.kill(pid, signal.SIGTERM)
+        print "sent DenyHosts SIGTERM"
+    else:
+        print "DenyHosts is not running"
+
+def debug():
+    pid = getpid()
+    if pid >= 0:
+        os.kill(pid, signal.SIGUSR1)
+        print "sent DenyHosts SIGUSR1"
+    else:
+        print "DenyHosts is not running"
+
+def status():
+    pid = getpid()
+    if pid == STATE_LOCK_EXISTS:
+        print "%s exists but DenyHosts is not running" % DENYHOSTS_LOCK
+    elif pid == STATE_NOT_RUNNING:
+        print "Denyhosts is not running"
+    else:
+        print "DenyHosts is running with pid = %d" % pid
+
+
+def condrestart(*args):
+    pid = getpid()
+    if pid >= 0:
+        restart(*args)
+
+
+def restart(*args):
+    stop()
+    time.sleep(1)
+    start(*args)
+
+
+if __name__ == '__main__':
+    cases = {'start':       start,
+             'stop':        stop,
+             'debug':       debug,
+             'status':      status,
+             'condrestart': condrestart,
+             'restart':     restart}
+
+    try:
+        args = sys.argv[2:]
+    except Exception:
+        args = []
+
+    try:
+        # arg 1 should contain one of the cases above
+        option = sys.argv[1]
+    except Exception:
+        # try to infer context (from an /etc/init.d/ script, perhaps)
+        procname = os.path.basename(sys.argv[0])
+        infer_dict = {'K': 'stop',
+                      'S': 'start'}
+        option = infer_dict.get(procname[0])
+        if not option:
+            usage()
+
+    try:
+        if option in ('start', 'restart', 'condrestart'):
+            anystartswith = lambda prefix, xs: any(map(lambda x: x.startswith(prefix), xs))
+            if not anystartswith('--config', args) and '-c' not in args:
+                args.append("--config=%s" % DENYHOSTS_CFG)
+
+        cmd = cases[option]
+        apply(cmd, args)
+    except Exception:
+        usage()
+
+```
+
+### daemon
+```
+chown root daemon-control
+chmod 700 daemon-control
+#提高安全级别，修改权限
+
+ln -s /usr/share/denyhosts/daemon-control /etc/init.d/denyhosts
+#创建启动服务连接
+
+chkconfig denyhosts on
+#添加启动项
+
+cp denyhosts.cfg denyhosts.cfg.bak
+#备份配置文件，为修改配置做准备
+
+cat /workspace/denyhost.txt<</usr/share/denyhosts/denyhosts.cfg
+#将配置文件内容导入配置文件（我的配置文件安装之前已经配置好了！）
+
+/etc/init.d/denyhosts start
+#启动服务
+
+```
+
+### /var/log/denyhosts
+```
+2020-10-27 14:33:31,588 - prefs       : INFO        PLUGIN_PURGE: [None]
+2020-10-27 14:33:31,588 - prefs       : INFO        PURGE_DENY: [None]
+2020-10-27 14:33:31,588 - prefs       : INFO        PURGE_THRESHOLD: [0]
+2020-10-27 14:33:31,588 - prefs       : INFO        RESET_ON_SUCCESS: [no]
+2020-10-27 14:33:31,588 - prefs       : INFO        SECURE_LOG: [/var/log/secure]
+2020-10-27 14:33:31,588 - prefs       : INFO        SMTP_DATE_FORMAT: [%a, %d %b %Y %H:%M:%S %z]
+2020-10-27 14:33:31,588 - prefs       : INFO        SMTP_FROM: [DenyHosts <nobody@localhost>]
+2020-10-27 14:33:31,588 - prefs       : INFO        SMTP_HOST: [localhost]
+2020-10-27 14:33:31,588 - prefs       : INFO        SMTP_PASSWORD: [None]
+2020-10-27 14:33:31,588 - prefs       : INFO        SMTP_PORT: [25]
+2020-10-27 14:33:31,588 - prefs       : INFO        SMTP_SUBJECT: [DenyHosts Report]
+2020-10-27 14:33:31,588 - prefs       : INFO        SMTP_USERNAME: [None]
+2020-10-27 14:33:31,589 - prefs       : INFO        SSHD_FORMAT_REGEX: [None]
+2020-10-27 14:33:31,589 - prefs       : INFO        SUCCESSFUL_ENTRY_REGEX: [None]
+2020-10-27 14:33:31,589 - prefs       : INFO        SUSPICIOUS_LOGIN_REPORT_ALLOWED_HOSTS: [YES]
+2020-10-27 14:33:31,589 - prefs       : INFO        SYNC_DOWNLOAD: [no]
+2020-10-27 14:33:31,589 - prefs       : INFO        SYNC_DOWNLOAD_RESILIENCY: [18000]
+2020-10-27 14:33:31,589 - prefs       : INFO        SYNC_DOWNLOAD_THRESHOLD: [3]
+2020-10-27 14:33:31,589 - prefs       : INFO        SYNC_INTERVAL: [3600]
+2020-10-27 14:33:31,589 - prefs       : INFO        SYNC_SERVER: [None]
+2020-10-27 14:33:31,589 - prefs       : INFO        SYNC_UPLOAD: [no]
+2020-10-27 14:33:31,589 - prefs       : INFO        SYSLOG_REPORT: [no]
+2020-10-27 14:33:31,589 - prefs       : INFO        WORK_DIR: [/var/lib/denyhosts]
+2020-10-27 14:35:38,801 - denyhosts   : INFO     Creating new firewall rule /sbin/iptables -I INPUT -s 114.218.57.215 -j DROP
+2020-10-27 14:35:38,804 - denyhosts   : INFO     new denied hosts: ['114.218.57.215']
+2020-10-27 14:38:08,957 - denyhosts   : INFO     Creating new firewall rule /sbin/iptables -I INPUT -s 208.109.11.147 -j DROP
+2020-10-27 14:38:08,960 - denyhosts   : INFO     new denied hosts: ['208.109.11.147']
+
 ```
