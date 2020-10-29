@@ -117,3 +117,13 @@ git stash pop
 echo 继续工作
 
 ```
+
+## misc
+
+常见的flow策略：
+* git flow
+* github flow
+* gitlab flow
+
+git flow策略最复杂， github flow策略简洁很多。gitlab flow侧重于master分支。
+不过以上策略只侧重于branch，没有使用submodule和subtree。

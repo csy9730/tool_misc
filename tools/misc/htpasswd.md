@@ -68,3 +68,46 @@ echo 123>htpasswd -c boo.passwd foo -i
 cat boo.passwd
 # 直接设置密码，适合脚本使用。
 ```
+
+## core
+
+``` bash
+$ htpasswd -b -c boo.passwd foo 123456
+Adding password for user foo
+
+$ cat boo.passwd
+
+foo:$apr1$Nro/9dGI$GmSJ.IEMbg5pyA1C8uCyr.
+
+# 在重复一次
+
+$ htpasswd -b -c boo2.passwd foo 123456
+Adding password for user foo
+
+$ cat boo2.passwd
+foo:$apr1$Nro/9dGI$GmSJ.IEMbg5pyA1C8uCyr.
+```
+
+可以发现两次生成文件的内容不一样，这是因为用了加盐hash，通过$分隔：apr1代表hash算法，Nro/9dGI代表随机加盐部分，GmSJ.IEMbg5pyA1C8uCyr是hash值。
+所以每次生成的文件不一样。
+
+**Q**: 如何验证两次的密码是同一个？
+**A**: 因为随机加盐，所以不能验证。只有知道密码才能验证两次是同一个密码。
+
+``` bash
+username="something"
+htpasswd -c /usr/local/apache/passwd/passwords $username
+****Enter password:****
+
+salt=$($(cat passwords | cut -d$ -f3)
+password=$(openssl passwd -apr1 -salt $salt)
+****Enter password:****
+
+grep -q $username:$password passwords 
+if [ $? -eq 0 ]
+ then echo "password is valid"
+else 
+ echo "password is invalid"
+fi
+
+```
