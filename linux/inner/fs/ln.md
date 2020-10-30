@@ -38,3 +38,15 @@ ln命令用于将一个文件创建链接,链接分为软链接(类似于windows
 
 软链接：不可以删除源文件，删除源文件导致链接文件找不到，出现文件红色闪烁
 硬链接：可以删除源文件，链接文件可以正常打开
+
+## misc
+
+今天弄了个conda，放在了user下的某个文件夹下，想把执行程序conda做个链接到/usr/sbin目录下。于是使用命令：
+```
+ln -s ./conda /usr/sbin
+```
+ 
+可是当执行conda的时候提示“Too many levels of symbolic links”这个错误，百思不得其解，最后ln一下/usr/sbin/conda一下，发现问题：
+
+原来/usr/sbin目录下的conda指向的是./conda，因此，在做ln的时候只要将文件的完整目录写上去即可：
+`ln -s /usr/local/conda/conda /usr/sbin/conda`

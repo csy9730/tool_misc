@@ -83,3 +83,34 @@ home/project
 home/picture
 home/public
 
+## project结构
+
+### flasky
+
+
+* flask.py
+* config.py
+* app
+    * api
+        * users.py
+    * main
+        * view.py
+    * static
+    * template
+    * auth
+    * model.py
+* migrations
+* tests
+* requirements
+
+
+### yolov3
+
+* train.py
+* test.py
+* utils
+* data
+* cfg
+    * yolov3.cfg
+* weights
+    * download_yolov3_weights.sh
