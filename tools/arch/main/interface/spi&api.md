@@ -56,11 +56,9 @@ SPI 和 API 也不一定是接口，我这里都是指狭义的具体的接口�
 
 ## Java类库中的实例
 
-```
+``` java
 Class.forName("com.mysql.jdbc.Driver");
-Connection conn = DriverManager.getConnection(
-
-              "jdbc:mysql://localhost:3306/test", "root", "123456");
+Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", "123456");
 Statement stmt = conn.createStatement();
 
 ResultSet rs = stmt.executeQuery("select * from Users");12345678

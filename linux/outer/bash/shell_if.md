@@ -93,12 +93,14 @@ fi
 
 **Note:**
 if语句进行判断是否为空
- [ "$name” = "" ] 
-等同于
+ `[ "$name” = "" ] ` 等同于`[ ! "$name" ]` , `[ -z "$name" ] ` 
 
-```
-[ ! "$name" ]
-[ -z "$name" ]    
+``` bash
+if [ "$name"= "" ];then 
+    echo is Null
+fi
+
+
 ```
 
 **Note:**
@@ -107,7 +109,7 @@ if语句进行判断是否为空
 
 example：表述数字范围的时候 可以使用if可以是使用case
 
-```
+``` bash
 if [ $x -gt 90 -o $x -lt 100 ]
 case $x in
 100)
@@ -174,7 +176,7 @@ F: <60
 
 [![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
-```
+``` bash
 #/bin/bash
 #Verson:0.1
 #Auther:lovelace
@@ -209,10 +211,10 @@ fi
 
 [![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
-```
+``` bash
 [root@lovelace if]# ./grade.sh
     Please input your grade:
-    You don't input your grade....
+    You dont input your grade....
 [root@lovelace if]# ./grade.sh
     Please input your grade:53
     Right,Your grade is F.
@@ -224,3 +226,14 @@ fi
 [![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
 总结：条件判断在shell语句中经常用到，需要熟练掌握，在此基础上才能练就一手很好的脚本编写能力。祝各位每天都能获得很大的进步.....
+
+## misc
+
+``` bash
+isCentos=$(lsb_release -a |grep -i Centos)
+if [ "$isCentos" != ""  ] ;then
+    echo "Your system is Centos"
+else
+    echo "Your system is ubuntu"
+fi
+```

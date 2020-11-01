@@ -5,7 +5,7 @@
 denyhosts是基于python2的包，可以检查失败登录的log的内容，添加ip到denyhost文件中。
 ## quickstart
 ### install & run
-下载软件，安装，自启动一键脚本
+下载软件，安装，自启动一键脚本,适用于centos7脚本。
 
 ``` bash
 wget https://github.com/denyhosts/denyhosts/archive/v3.1.tar.gz 
@@ -18,10 +18,17 @@ python2 setup.py install  --record denyhostsInstall.log
 pip2 list |grep DenyHosts
 
 # 修改服务文件
-sed -i 's/usr\/bin\/denyhosts/usr\/bin\/denyhosts.py/g'  /usr/bin/daemon-control-dist
-# 如果是centos系统， 修改配置 
-# sed -i 's/var\/log\/auth.log/var\/log\/secure/g'  /etc/denyhosts.conf
+sed -i 's/usr\/sbin\/denyhosts/usr\/bin\/denyhosts.py/g'  /usr/bin/daemon-control-dist
 
+
+# 如果是centos系统， 修改配置 
+isCentos=$(lsb_release -a |grep -i Centos)
+if [ "$isCentos" != ""  ] ;then
+    echo "Your system is Centos"
+    sed -i 's/var\/log\/auth.log/var\/log\/secure/g'  /etc/denyhosts.conf
+else
+    echo "Your system is ubuntu"
+fi
 
 chown root /usr/bin/daemon-control-dist
 chmod 700 /usr/bin/daemon-control-dist
@@ -37,6 +44,10 @@ ln -s /usr/bin/daemon-control-dist /etc/init.d/denyhosts
 chkconfig denyhosts on
 # 添加启动项
 
+systemctl start  denyhosts
+systemctl status denyhosts
+
+# cat /var/log/denyhosts
 ```
 
 

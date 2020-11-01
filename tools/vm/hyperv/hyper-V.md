@@ -63,4 +63,18 @@ xp系统的版本过低，不支持文件复制，需要使用mstsc才能实现�
 ``` bash
 Start-VM -VMName "虚拟机的名字1","虚拟机的名字2","虚拟机的名字n" # 管理员权限的powershell 中可以直接启动虚拟机，
 
+"C:\Windows\System32\vmconnect.exe" DESKTOP-PGE4321 vm10
+"C:\Program Files\Hyper-V\6.3\vmconnect6.3.exe" DESKTOP-PGE4321 vm3
+
+```
+
+
+```
+H:\project\record\todo>where vm*.exe
+C:\Windows\System32\vmcompute.exe
+C:\Windows\System32\vmconnect.exe
+C:\Windows\System32\vmms.exe
+C:\Windows\System32\vmplatformca.exe
+C:\Windows\System32\vmsp.exe
+C:\Windows\System32\vmwp.exe
 ```
