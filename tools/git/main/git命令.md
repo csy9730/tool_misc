@@ -1,5 +1,6 @@
 # Git 命令速查表
 
+
 ## **1、常用的Git命令**
 
 命令简要说明
@@ -349,4 +350,39 @@ git-parse-remote包含于其他脚本中，提供操作远程版本库的函数
 
 git-sh-setup包含于其他脚本中，提供shell编程的函数库
 
+```
+## git help
+
+git 命令
+```
+语法：
+　　git [--version] [--help] [-C <path>] [-c <name>=<value>]
+    　　[--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+    　　[-p|--paginate|--no-pager] [--no-replace-objects] [--bare]
+    　　[--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
+    　　[--super-prefix=<path>]
+    　　<command> [<args>]
+
+选项：
+    --version               # 打印git程序的版本号
+    --help                  # 打印概要和最常用命令的列表
+    -C <path>               # 在<path>而不是当前的工作目录中运行git
+    -c <name>=<value>       # 将配置参数传递给命令, 给定的值将覆盖配置文件中的值
+    --exec-path[=<path>]    # 安装核心Git程序的路径, 可以通过设置GIT_EXEC_PATH环境变量来控制, 如无路径, git将打印当前设置并退出
+    --html-path             # 打印Git的HTML文档安装并退出的路径, 不带斜杠
+    --man-path              # 打印man(1)此版本Git的手册页的manpath, 并退出
+    --info-path             # 打印记录此版本Git的Info文件的安装路径并退出
+    -p, --paginate          # 如果标准输出是终端, 则将所有输出管道更少（或如果设置为$ PAGER）, 这将覆盖pager.<cmd> 配置选项
+    --no-pager              # 不要将Git输出管道传输到寻呼机
+    --no-replace-objects    # 不要使用替换参考来替换Git对象
+    --bare                  # 将存储库视为裸存储库, 如果未设置GIT_DIR环境, 则将其设置为当前工作目录
+    --git-dir=<path>        # 设置存储库的路径, 可以通过设置GIT_DIR环境变量来控制, 可以是当前工作目录的绝对或相对路径
+    --work-tree=<path>      # 设置工作树的路径, 可以通过设置GIT_WORK_TREE环境变量和core.worktree配置变量来控制, 相对于当前工作目录的绝对或相对路径
+    --namespace=<path>      # 设置Git命名空间, 相当于设置GIT_NAMESPACE环境变量
+    --super-prefix=<path>   # 目前仅供内部使用, 设置一个前缀, 该前缀从存储库到根的路径, 一个用途是给调用它的超级项目的子模块上下文
+    --literal-pathspecs     # 字面上处理pathspecs, 相当于设置GIT_LITERAL_PATHSPECS为1
+    --glob-pathspecs        # 添加"glob"到所有pathspec, 相当于设置GIT_GLOB_PATHSPECS为1
+    --noglob-pathspecs      # 添加"文字"到所有pathspec, 相当于设置GIT_NOGLOB_PATHSPECS为1
+    --icase-pathspecs       # 添加"icase"到所有pathspec, 相当于设置GIT_ICASE_PATHSPECS为1
+    --no-optional-locks     # 不要执行需要锁定的可选操作, 相当于设置GIT_OPTIONAL_LOCKS为0
 ```

@@ -3,6 +3,7 @@ echo "开始清除流氓软件"
 
 sc stop AlibabaProtect
 sc delete AlibabaProtect  
+rmdir /s /q   "c:\Program Files (x86)\AlibabaProtect"
 rm -r  "/mnt/c/Program Files (x86)/AlibabaProtect"
 echo "AlibabaProtect已经终止"
 

@@ -55,6 +55,8 @@ Welcome to git's documentation!
    extension/subtree/分离git仓库中的子目录并保留历史.md
    extension/server/服务器上的 Git - Git 守护进程
    extension/git_hook/Cron 设置git自动提交脚本.md
+   extension/python/git_python.md
+   extension/python/用python操作Git.md
 
 
 Indices and tables
