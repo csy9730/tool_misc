@@ -4,10 +4,13 @@
 ## 结构
 database 
 table
+column
+row
 
 ## 常见操作
 
-filter ,(find,search)
+index/(find,search)
+filter ,
 sorter: top/head/tail
 processor: map
 column processor ,  count,sum,mean,
