@@ -1,5 +1,17 @@
 # htpasswd
 
+什么是 htpasswd ?
+htpasswd 是开源 http 服务器 apache httpd 的一个命令工具，用于生成 http 基本认证的密码文件。
+
+加密方式有什么区别？
+MD5:使用MD5加密密码。在Windows, Netware 和TPF上，这是默认的加密方式。
+
+crypt:使用crypt()加密密码。在除了Windows, Netware和TPF的平台上，这是默认的。 虽然它在所有平台上可以为htpasswd所支持， 但是在Windows, Netware和TPF上不能为httpd服务器所支持。
+
+SHA:使用SHA加密密码。 它是为了方便转入或移植到使用LDAP Directory Interchange Format (ldif)的Netscape而设计的。
+
+plain:不加密，使用纯文本的密码。虽然在所有平台上 htpasswd 都可以建立这样的密码， 但是httpd后台只在Windows, Netware和TPF上支持纯文本的密码。
+
 ## install
 ``` bash
 # ubuntu
