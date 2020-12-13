@@ -62,6 +62,7 @@ sshd -p 9000 # 指定端口号启动sshd服务
 # putty-gen 把.pem密钥文件转成ppk文件，此时可以使用空密码
 # putty的connection->SSH->auth菜单，选择刚刚保存的ppk
 
+# adb pull /sdcard/Download/id_rsa # 
 ssh u0_a198@192.168.1.101 -p 8022
 ssh -i ~/.ssh/sshkey developer@192.168.1.237 -p 23
 

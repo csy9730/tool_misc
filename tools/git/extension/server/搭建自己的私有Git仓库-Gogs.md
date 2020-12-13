@@ -47,7 +47,7 @@ gogs中已经有了初始化数据库文件
 
 执行下述代码，完成服务器用户gogs的创建
 
-```text
+``` bash
 mysql -u root -p < scripts/mysql.sql
 mysql -u root -p
     >create user 'gogs'@'localhost' identified by 'keyword';

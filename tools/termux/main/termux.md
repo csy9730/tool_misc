@@ -174,7 +174,7 @@ termux-telephony-call  10086  # 拨打电话
 
 **Q**: 如何访问本地目录？
 **A**: 
-执行 `ternux-setup-storage`，会在home下生产storage目录，那个就是你的手机别的应用的目录。你可以cp到storage/share/目录下。
+执行 `termux-setup-storage`，会在home下生产storage目录，那个就是你的手机别的应用的目录。你可以cp到storage/share/目录下。
 
 
 ### source
