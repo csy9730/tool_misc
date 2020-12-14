@@ -120,6 +120,19 @@ Total size:         2156274695 bytes / 2213515450 bytes (97.4%)
 
 可以看到打包成功
 
+
+			
+				
+nsis检测x64-or-x86问题, 根据检测结果分支执行？
+
+...
+
+
+
+强制指定压缩算法(Force compressor)：       				
+
+`makensis.exe /X"SetCompressor /FINAL lzma" myscript.nsi`
+
 ## misc
 
 ```
