@@ -276,26 +276,47 @@ git push -u origin master
 
 #### patch
 
-使用git diff打补丁
-```
-git diff > abc.patch # 生成补丁
-git apply abc.patch  # 打上补丁
-git apply --check abc.patch # 如果没有任何输出，那么表示可以顺利接受这个补丁
-git diff --cached> abc.patch # 是将暂存区与版本库的差异做成补丁
-git diff --HEAD >abc.patch # 是将工作区与版本库的差异做成补丁
-git diff Testfile > abc.patch # 将单个文件做成一个单独的补丁
-git apply --reject abc.patch #可以使用将能打的补丁先打上，有冲突的会生成.rej文件，此时可以找到这些文件进行手动打补丁
+打补丁
+1. 生成补丁
+   * 使用`git diff`生成补丁
+   * 使用`git format-patch`生成补丁
+2. 打补丁, 使用`git apply`
+3. 处理冲突
+4. 执行变更
 
-git format-patch HEAD^  #生成最近的1次commit的patch
-git format-patch HEAD^^  #生成最近的2次commit的patch
+
+``` bash
+git format-patch HEAD^  # 生成最近的1次commit的patch
+git format-patch HEAD^^  # 生成最近的2次commit的patch
+
 git apply --check 0001-limit-log-function.patch   　　　  # 检查patch是否能够打上，如果没有任何输出，则说明无冲突，可以打上
-git apply *.patch # 批量打多个补丁
-git am =git apply  +git add+git commit 
+git apply 0001-limit-log-function.patch # 打补丁
 
-git am =git apply  +git add+git commit 
-git am --abort # 放弃上次的am冲突。
+git apply *.patch # 批量打多个补丁
+# 多个补丁，补丁顺序是从小到大。
 ```
-多个补丁，补丁顺序是从小到大。
+
+
+``` bash
+git diff > abc.patch # 生成补丁
+
+git apply --check abc.patch # 如果没有任何输出，那么表示可以顺利接受这个补丁
+git apply abc.patch  # 打上补丁
+
+
+git diff --cached> abc.patch # 是将暂存区与版本库的差异做成补丁
+git diff >abc.patch # 是将工作区与版本库的差异做成补丁
+git diff Testfile > abc.patch # 将单个文件做成一个单独的补丁
+
+git apply --reject abc.patch # 可以使用将能打的补丁先打上，有冲突的会生成.rej文件，此时可以找到这些文件进行手动打补丁
+
+git am = git apply + git add + git commit 
+
+# git am = git apply  +git add + git commit 
+git am --abort # 放弃上次的am冲突。
+
+```
+
 
 ##### bundle
 
