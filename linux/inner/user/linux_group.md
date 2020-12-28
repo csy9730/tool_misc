@@ -129,7 +129,7 @@ drwxr-xr-x    3 root root  4096  8月 11 23:16 .kde
 
 比如Fedora 的 /etc/logins.defs 文件内容；
 
- 
+```
 # *REQUIRED* # Directory where mailboxes reside, _or_ name of file, relative to the # home directory. If you _do_ define both, MAIL_DIR takes precedence.
 # QMAIL_DIR is for Qmail
 # #QMAIL_DIR Maildir MAIL_DIR /var/spool/mail 注：创建用户时，要在目录/var/spool/mail中创建一个用户mail文件； #MAIL_FILE .mail
@@ -153,7 +153,8 @@ PASS_WARN_AGE 7 注： #
  # On RH systems, we do. This option is ORed with the -m flag on
  # useradd command line
 . # CREATE_HOME yes 注：是否创用户家目录，要求创建；
- 
+```
+
 5、/etc/default/useradd 文件；
 通过useradd 添加用户时的规则文件；
 # useradd defaults file
