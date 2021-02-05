@@ -100,3 +100,13 @@ ethernet_on=3 表示以太网共享打开。设置中的Ethernet 处于关闭状
 
 
 
+### adb unstable
+```
+lsusb
+
+cd /etc/udev/rules.d/
+
+sudo vim 51-android.rules
+
+# SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", MODE="0666"
+```
