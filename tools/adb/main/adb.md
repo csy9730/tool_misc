@@ -16,16 +16,11 @@ ADB是一个C/S架构的应用程序，由三部分组成：
 * 运行在pc端的adb server
 * 运行在设备端的常驻进程adb demon (adbd)
 
-
-
 Client端, 运行在开发机器中, 即你的开发PC机. 用来发送adb命令.
 
 Deamon守护进程, 运行在调试设备中, 即的调试手机或模拟器.
 
 Server端, 作为一个后台进程运行在开发机器中, 即你的开发PC机. 用来管理PC中的Client端和手机的Deamon之间的通信.
-
-
-
 
 
 首先，adb程序尝试定位主机上的ADB Server，如果找不到ADB Server，“adb”程序自动启动一个ADB Server。接下来，当设备的adbd和pc端的adb server建立连接后，adb client就可以向ADB servcer发送服务请求；
@@ -60,8 +55,6 @@ unauthorized —— 设备没有授权，需要用户在手机上点击授权按
 
 List of devices attached 设备/模拟器未连接到 adb 或无响应
 
-
-
 adb root , adb remount, 只针对类似小米开发版的手机有用，可以直接已这两个命令获取管理员(root)权限，并挂载系统文件系统为可读写状态
 
 
@@ -69,80 +62,24 @@ adb root , adb remount, 只针对类似小米开发版的手机有用，可以�
 
 ### USB 连接
 
+**Q**: USB连接
 
-
-**Q**:
-**A**: USB连接：
+**A**: 
 在手机“设置”-“关于手机”连续点击“版本号”7 次，可以进入到开发者模式；然后可以到“设置”-“开发者选项”-“调试”里打开USB调试以及允许ADB的一些权限；连接时手机会弹出“允许HiSuite通过HDB连接设备”点击允许/接受即可；
 驱动也是必须安装的，可以用豌豆荚，或者是手机商家提供的手机助手，点进去驱动器安装即可（部分电脑双击无法直接进入到驱动器里，可以使用右键找到进入点击即可）
 
+通过usb线连接安卓设备和电脑后，设备还没授权pc访问，这时执行 `adb devices`，会显示`xxxxxxxx unauthorized`.
+需要在安卓设备上手动授权，才会显示`xxxxxxxx device`。
 
 
 ### wifi
 
 也可以通过wifi进行无线连接
 
-#### 手机端配置tcp方式连接
-
-需先连上usb模式, 开启远程调试模式，然后打开监听5555端口
- $ adb tcpip 5555
-
-$ adb shell ip addr 
-
-
-
-#### 手机端su wifi
-
-利用IP地址进行的无线连接是官方文档里介绍的方法，需要借助于 USB 数据线来实现无线连接。root 账户可以完成真正意义上的无线连接
-
-1. 在 Android 设备上安装一个终端模拟器。
-
-   已经安装过的设备可以跳过此步。终端模拟器下载地址是：[Terminal Emulator for Android Downloads](https://jackpal.github.io/Android-Terminal-Emulator/)
-
-2. 将 Android 设备与要运行 adb 的电脑连接到同一个局域网，比如连到同一个 WiFi。
-
-3. 打开 Android 设备上的终端模拟器，在里面依次运行命令：
-
-   ```
-   su
-   setprop service.adb.tcp.port 5555
-   1. stop adbd
-   2. start adbd
-   ```
-
-4. 找到 Android 设备的 IP 地址。
-
-   同上
-
-5. 在电脑上通过 adb 和 IP 地址连接 Android 设备。
-
-   ```
-   adb connect <device-ip-address> # 看到 connected to <device-ip-address>:5555 这样的输出则表示连接成功
-   ```
-
-
-
-
-
-####  电脑端使用adb远程连接
-
-``` bash
-adb connect ip_address 
-adb connect 192.168.1.4:5555 # 例如连接 指定地址
-```
-
-#### forward
+#### port forward
 `adb forward `将 宿主机上的某个端口重定向到设备的某个端口
 adb forward tcp:1314 tcp :8888
 执行该命令后所有发往宿主机 1314 端口的消息、数据都会转发到 Android 设备的 8888 端口上，因此可以通过远程的方式控制 Android 设备。
-
-###  misc
-
-
-
-通过wifi进行远程连接手机进行调试的.
- [https://developer.android.com/studio/command-line/adb.html#wireless](https://link.jianshu.com?t=https://developer.android.com/studio/command-line/adb.html#wireless)
-
 
 
 ### install
@@ -167,21 +104,16 @@ adb install -l /data/local/tmp/taobao.apk # 示例安装淘宝apk
 
 ``` bash
 
-
 adb uninstall -k “packagename”
 “packagename”：表示应用的包名，以下相同；
 -k 参数可选，表示卸载应用但保留数据和缓存目录。
 示例卸载 手机淘宝：adb uninstall com.taobao.taobao
 
-
 adb shell pm clear “packagename” # 清除应用数据与缓存命令
 # 相当于在设置里的应用信息界面点击「清除缓存」和「清除数据」。
 adb shell pm clear com.taobao.taobao # 表示清除 手机淘宝数据和缓存。
 
-
 ```
-
-
 
 ## shell
 Android 提供了大多数常见的 Unix 命令行工具。如需查看可用工具的列表，请使用以下命令：
@@ -224,9 +156,6 @@ adb shell pm list packages # 查看所有应用列表
 adb shell pm list packages -s # 查看系统应用列表
 adb shell pm list packages -3： # 查看第三方应用列表
 ```
-
-
-
 
 
 ### input
@@ -327,19 +256,11 @@ deferred=false layoutNeeded=false
 # 其中 mDisplayId 为 显示屏编号，init 是初始分辨率和屏幕密度，app 的高度比 init 里的要小，表示屏幕底部有虚拟按键，高度为 1920 - 1794 = 126px 合 42dp。
 ```
 
-
-
 ### hardware
-
-
-
-
 
 查看设备情况：
 
 ``` bash
-
-
 adb shell getprop ro.product.model # 查看设备信息型号命令
 
 adb shell wm size # 屏幕分辨率命令
@@ -394,8 +315,6 @@ adb shell cat /proc/meminfo # 查看内存信息命令
 
 设置熄屏时间为30分钟settings put system screen_off_timeout 180000;
 
-
-
 ##  output
 
 实用功能：
@@ -409,8 +328,6 @@ adb shell cat /proc/meminfo # 查看内存信息命令
 如果需要导出到电脑：adb pull /sdcard/filename.mp4
 
 挂载、查看连接过的 WiFi 密码、开启/关闭 WiFi、设置系统日期和时间都需要root权限，不做多说。
-
-
 
 
 ## debugging
@@ -493,197 +410,7 @@ rm -r /data/ # 用户数据都在这里面，能删的都删掉，不同平台�
 
 
 
-## help
-
-
-``` bash
-Android Debug Bridge version 1.0.40
-Version 28.0.2-5303910
-Installed as C:\Users\win8\AppData\Local\Android\Sdk\platform-tools\adb.exe
-
-global options:
- -a         listen on all network interfaces, not just localhost
- -d         use USB device (error if multiple devices connected)
- -e         use TCP/IP device (error if multiple TCP/IP devices available)
- -s SERIAL  use device with given serial (overrides $ANDROID_SERIAL)
- -t ID      use device with given transport id
- -H         name of adb server host [default=localhost]
- -P         port of adb server [default=5037]
- -L SOCKET  listen on given socket for adb server [default=tcp:localhost:5037]
-
-general commands:
- devices [-l]             list connected devices (-l for long output)
- help                     show this help message
- version                  show version num
-
-networking:
- connect HOST[:PORT]      connect to a device via TCP/IP [default port=5555]
- disconnect [HOST[:PORT]]
-     disconnect from given TCP/IP device [default port=5555], or all
- forward --list           list all forward socket connections
- forward [--no-rebind] LOCAL REMOTE
-     forward socket connection using:
-       tcp:<port> (<local> may be "tcp:0" to pick any open port)
-       localabstract:<unix domain socket name>
-       localreserved:<unix domain socket name>
-       localfilesystem:<unix domain socket name>
-       dev:<character device name>
-       jdwp:<process pid> (remote only)
- forward --remove LOCAL   remove specific forward socket connection
- forward --remove-all     remove all forward socket connections
- ppp TTY [PARAMETER...]   run PPP over USB
- reverse --list           list all reverse socket connections from device
- reverse [--no-rebind] REMOTE LOCAL
-     reverse socket connection using:
-       tcp:<port> (<remote> may be "tcp:0" to pick any open port)
-       localabstract:<unix domain socket name>
-       localreserved:<unix domain socket name>
-       localfilesystem:<unix domain socket name>
- reverse --remove REMOTE  remove specific reverse socket connection
- reverse --remove-all     remove all reverse socket connections from device
-
-file transfer:
- push [--sync] LOCAL... REMOTE
-     copy local files/directories to device
-     --sync: only push files that are newer on the host than the device
- pull [-a] REMOTE... LOCAL
-     copy files/dirs from device
-     -a: preserve file timestamp and mode
- sync [all|data|odm|oem|product_services|product|system|vendor]
-     sync a local build from $ANDROID_PRODUCT_OUT to the device (default all)
-     -l: list but don't copy
-
-shell:
- shell [-e ESCAPE] [-n] [-Tt] [-x] [COMMAND...]
-     run remote shell command (interactive shell if no command given)
-     -e: choose escape character, or "none"; default '~'
-     -n: don't read from stdin
-     -T: disable PTY allocation
-     -t: force PTY allocation
-     -x: disable remote exit codes and stdout/stderr separation
- emu COMMAND              run emulator console command
-
-app installation (see also `adb shell cmd package help`):
- install [-lrtsdg] [--instant] PACKAGE
-     push a single package to the device and install it
- install-multiple [-lrtsdpg] [--instant] PACKAGE...
-     push multiple APKs to the device for a single package and install them
- install-multi-package [-lrtsdpg] [--instant] PACKAGE...
-     push one or more packages to the device and install them atomically
-     -r: replace existing application
-     -t: allow test packages
-     -d: allow version code downgrade (debuggable packages only)
-     -p: partial application install (install-multiple only)
-     -g: grant all runtime permissions
-     --instant: cause the app to be installed as an ephemeral install app
-     --no-streaming: always push APK to device and invoke Package Manager as separate steps
-     --streaming: force streaming APK directly into Package Manager
-     --fastdeploy: use fast deploy
-     --no-fastdeploy: prevent use of fast deploy
-     --force-agent: force update of deployment agent when using fast deploy
-     --date-check-agent: update deployment agent when local version is newer and using fast deploy
-     --version-check-agent: update deployment agent when local version has different version code and using fast deploy
- uninstall [-k] PACKAGE
-     remove this app package from the device
-     '-k': keep the data and cache directories
-
-backup/restore:
-   to show usage run "adb shell bu help"
-
-debugging:
- bugreport [PATH]
-     write bugreport to given PATH [default=bugreport.zip];
-     if PATH is a directory, the bug report is saved in that directory.
-     devices that don't support zipped bug reports output to stdout.
- jdwp                     list pids of processes hosting a JDWP transport
- logcat                   show device log (logcat --help for more)
-
-security:
- disable-verity           disable dm-verity checking on userdebug builds
- enable-verity            re-enable dm-verity checking on userdebug builds
- keygen FILE
-     generate adb public/private key; private key stored in FILE,
-
-scripting:
- wait-for[-TRANSPORT]-STATE
-     wait for device to be in the given state
-     State: device, recovery, sideload, or bootloader
-     Transport: usb, local, or any [default=any]
- get-state                print offline | bootloader | device
- get-serialno             print <serial-number>
- get-devpath              print <device-path>
- remount [-R]
-      remount partitions read-write. if a reboot is required, -R will
-      will automatically reboot the device.
- reboot [bootloader|recovery|sideload|sideload-auto-reboot]
-     reboot the device; defaults to booting system image but
-     supports bootloader and recovery too. sideload reboots
-     into recovery and automatically starts sideload mode,
-     sideload-auto-reboot is the same but reboots after sideloading.
- sideload OTAPACKAGE      sideload the given full OTA package
- root                     restart adbd with root permissions
- unroot                   restart adbd without root permissions
- usb                      restart adbd listening on USB
- tcpip PORT               restart adbd listening on TCP on PORT
-
-internal debugging:
- start-server             ensure that there is a server running
- kill-server              kill the server if it is running
- reconnect                kick connection from host side to force reconnect
- reconnect device         kick connection from device side to force reconnect
- reconnect offline        reset offline/unauthorized devices to force reconnect
-
-environment variables:
- $ADB_TRACE
-     comma-separated list of debug info to log:
-     all,adb,sockets,packets,rwx,usb,sync,sysdeps,transport,jdwp
- $ADB_VENDOR_KEYS         colon-separated list of keys (files or directories)
- $ANDROID_SERIAL          serial number to connect to (see -s)
- $ANDROID_LOG_TAGS        tags to be used by logcat (see logcat --help)
-```
-
-
-
 ## misc
 
 schemas
 
-
-
-**Q**: 一台台式电脑可以控制多少台手机？
-**A**: 
-ADB是服务通过扫描奇数端口5555 至5585查找  Android模拟器或设备。而且每个设备占用2个端口，偶数端口Android设备控制台，奇数端口Android与ADB的连接。如下：
-
- Note that each emulator/device instance acquires a pair of sequential ports — an even-numbered port for console connections and an odd-numbered port for adb connections. For example:
-
-Emulator 1, console: 5554
-Emulator 1, adb: 5555
-Emulator 2, console: 5556
-Emulator 2, adb: 5557 ...
-
-那就是说，一个PC端的ADB最多同时连接 15台 Android设备（包括模拟器），超过15台的Android设备将不连接。
-
-
-
-一、以太网共享有两个方向的理解：
-
-1、通过以太网给android设备供网，对应设置中的Ethernet选项
-
-2、android设备通过以太网给其它终端供网，对应设置中的便携式热点以太网共享-ethernet tethering
-
-二、实现方法
-
-通过adb shell settings list global 来获取设置项，
-
-
-通过adb shell settings list global 来获取设置项，
-
-ethernet_on就是以太网共享的设值，总共包括以下三个值
-
-ethernet_on=1 表示关闭以太网共享。设置中的Ethernet 处于关闭状态，便携式热点的Ethernet tethering 处于关闭状态。此时既不能通过以太网给自己供网，也不能通过以太网给其它终端供网。
-
-ethernet_on=2 表示以太网共享打开。设置中的Ethernet 处于打开状态，便携式热点的Ethernet tethering 处于关闭状态，此时android设备可以通过以太网上网
-
-ethernet_on=3 表示以太网共享打开。设置中的Ethernet 处于关闭状态，便携式热点的Ethernet tethering 处于打开状态，此时上行4G或Wi-Fi可以通过以太网给其它的终端供网。
-
-adb shell settings put global ethernet_on 2
