@@ -11,15 +11,15 @@
 * notty
 
 
-Linux下TTY（TeleType）的概念就是控制台终端的意思，TTY最初就是指那种老式的打字机。
+Linux下**TTY**（TeleType）的概念就是控制台终端的意思，TTY最初就是指那种老式的打字机。
 
 如果你在vmware中安装ubuntu之后，你会发现有6个tty控制台可以用，通过Ctrl+Alt+F1--F6来进行切换，这样可以让我们同时干多件事情。tty登录表示你是在通过物理连接的方式，直接连上Linux系统的。
 
-pts表示伪终端，如果你通过telnet或者ssh等连上Linux系统，系统显示出来的就是pts。
+**pts** (pseudo-terminal slave)表示伪终端从属端，如果你通过telnet或者ssh等连上Linux系统，系统显示出来的就是pts。
 
-有的时候还能看到pty（pseudo-tty），跟pts一样。pts(pseudo-terminal slave)是pty的实现方法，与ptmx(pseudo-terminal master)配合使用实现pty。用pts登录，就不能用Ctrl+Alt+F1--F6来回切换，但是可以同一个账号多次登录，实现一样的效果。
+有的时候还能看到**pty**（pseudo-tty），跟pts一样。pts(pseudo-terminal slave)是pty的实现方法，与ptmx(pseudo-terminal master)配合使用实现pty。用pts登录，就不能用Ctrl+Alt+F1--F6来回切换，但是可以同一个账号多次登录，实现一样的效果。
 
-notty 对应没有终端，一般用于`scp`这种命令
+**notty** 对应没有终端，一般用于`scp`这种命令
 
 基本概念：
 1> tty(终端设备的统称):

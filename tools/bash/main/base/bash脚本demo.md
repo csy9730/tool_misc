@@ -9,7 +9,7 @@ Linux中我们安装软件或者一些常用操作，都会接触很多命令，
  文件后缀.sh 
 第一行代码需要指定路径来执行程序
 
-\#!/bin/sh 或#!/bin/bash
+`\#!/bin/sh` 或`#!/bin/bash`
 
 建议由后者，参见[shell脚本头,#!/bin/sh与#!/bin/bash的区别.](https://www.cnblogs.com/jonnyan/p/8798364.html)
 
@@ -17,19 +17,19 @@ Linux中我们安装软件或者一些常用操作，都会接触很多命令，
 
 [![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
-```
- 1 #提示“请输入姓名”并等待30秒，把用户的输入保存入变量name中
- 2 read -t 30 -p "请输入用户名称:" name
- 3 echo -e "\n"
- 4 echo "用户名为:$name"
- 5 #提示“请输入密码”并等待30秒，把用户的输入保存入变量age中，输入内容隐藏
- 6 read -t 30 -s -p "请输入用户密码:" age
- 7 echo -e "\n"
- 8 echo "用户密码为:$age"
- 9 #提示“请输入性别”并等待30秒，把用户的输入保存入变量sex中，只接受一个字符输入
-10 read -t 30 -n 1 -p "请输入用户性别:" sex
-11 echo -e "\n"
-12 echo "性别为$sex"
+``` bash
+#提示“请输入姓名”并等待30秒，把用户的输入保存入变量name中
+read -t 30 -p "请输入用户名称:" name
+echo -e "\n"
+echo "用户名为:$name"
+#提示“请输入密码”并等待30秒，把用户的输入保存入变量age中，输入内容隐藏
+read -t 30 -s -p "请输入用户密码:" age
+echo -e "\n"
+echo "用户密码为:$age"
+#提示“请输入性别”并等待30秒，把用户的输入保存入变量sex中，只接受一个字符输入
+read -t 30 -n 1 -p "请输入用户性别:" sex
+echo -e "\n"
+echo "性别为$sex"
 ```
 
 [![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
