@@ -1,0 +1,29 @@
+# batch
+[TOC]
+## introduction
+批处理定义：顾名思义，批处理文件是将一系列命令按一定的顺序集合为一个可执行的文本文件，其扩展名为BAT或者CMD。这些命令统称批处理命令。
+在计算机科学中，Shell俗称壳（用来区别于核），是指“提供使用者使用界面”的软件（命令解析器）。它类似于DOS下的command和后来的cmd.exe。它接收用户命令，然后调用相应的应用程序。
+批处理运行方式：有命令行和脚本两种方式。
+
+* 命令行方式：输入window+R打开运行窗口，窗口填入cmd并确定，打开cmd界面，在command界面下输入命令。
+* 脚本形式：编辑txt文件保存成bat或cmd文件并双击执行。
+
+
+##### 常用命令
+
+* 脚本相关：CALL EXIT START CMD
+* IO缓冲区/管道相关：ECHO PAUSE CLS, 重定向<<,>>,<,>,|
+* 脚本环境相关配置: DATETIME TITLE COLOR VER HELP PATH SETLOCAL CHCP MODE
+* 编程相关：
+    * 结构控制：FOR GOTO IF SET BREAK REM
+    * 文本相关：TYPE FIND FINDSTRCOMP FC
+* 系统相关
+    * 文件系统
+      * 文件夹编辑: TREE CD CHDIR RMDIR RD MKDIR DIR
+      * 文件编辑: COPY DEL ERASE MOVE XCOPY RENAME REPLACE ATTRIB ftype ASSOC
+      * Net：net user （account）,sc query ,ipconfig,ping,netstat,arp,getmac,ftp,netsh,netcfg,nbtstat ，ftp,tracert,telnet。
+      * Other Program：explorer，SYSTEMINFO， SHUTDOWN ， logoff，tasklist,taskmgr,taskkill SCHTASKS
+      * 硬盘(Disk)命令: CHKDSK CHKNTFS COMPACT CONVERT DISKPART FORMAT LABEL
+      * 内置工具：notepad debug,magnify,osk calc
+      * 系统工具：control (panel),regedit,gpedit.msc(组策略), AT(任务计划)
+

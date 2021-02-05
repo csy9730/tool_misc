@@ -20,21 +20,21 @@ Welcome to batch's documentation!
    :caption: 主要内容:
 
 
-   core/命令行杂类.md
-   core/基础.md
-   core/符号.md
-   core/管道操作.md
-   core/process/env.md
-   core/process/脚本调用相关.md
-   core/program/dos控制语句.md
-   core/program/eFor.md
-   core/program/for循环.md
-   core/program/if分支.md
-   core/program/子程序调用.md
-   core/variant/变量.md
-   core/variant/变量增强.md
-   core/variant/变量嵌套.md
-   core/variant/自定义变量set.md
+   main/base/命令行杂类.md
+   main/base/基础.md
+   main/base/符号.md
+   main/base/管道操作.md
+   main/process/env.md
+   main/process/脚本调用相关.md
+   main/program/dos控制语句.md
+   main/program/eFor.md
+   main/program/for循环.md
+   main/program/if分支.md
+   main/program/子程序调用.md
+   main/variant/变量.md
+   main/variant/变量增强.md
+   main/variant/变量嵌套.md
+   main/variant/自定义变量set.md
 
 
 .. toctree::
@@ -43,9 +43,9 @@ Welcome to batch's documentation!
    
 
    extension/text/Windows——cmd findstr 字符串查找增强使用说明.md
-   extension/扩展工具/misc.md
-   extension/扩展工具/windows黑客相关.md
-   extension/扩展工具/黑客基础之DOS.md
+   misc/misc.md
+   misc/windows黑客相关.md
+   misc/黑客基础之DOS.md
 
    coding/demo/eLink.md
    coding/demo/tools.md
