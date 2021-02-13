@@ -36,7 +36,17 @@ sudo systemctl enable docker # 启动并加入开机启动
 docker pull ubuntu:latest
 docker run -it ubuntu bash
 ```
-### run help
+### config
+### docker run help
+
+核心配置项：
+
+后台运行，
+目录绑定
+端口绑定。
+
+
+```
 docker run 支持以下配置项 
 -d: 意思为后台运行容器，并返回容器ID。
 --name="nginx-lb": 为容器指定一个名称。
@@ -51,7 +61,7 @@ docker run 支持以下配置项
 -p（小写）则可以指定要映射的IP和端口，但是在一个指定端口上只可以绑定一个容器。支持的格式有 hostPort:containerPort、ip:hostPort:containerPort、 ip::containerPort。
 
 使用 docker port 来查看当前映射的端口配置，也可以查看到绑定的地址
-
+```
 
 ## misc
 
@@ -63,6 +73,7 @@ r daemon running?
 **A**:  开启docker服务即可。
 
 ``` bash
+# centOs 下可用
 systemctl daemon-reload
 sudo service docker restart
 sudo service docker status # (should see active (running))
