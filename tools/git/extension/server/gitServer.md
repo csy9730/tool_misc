@@ -21,6 +21,10 @@ gitblit： 基于java的git服务器
 
 It verifies that the directory has the magic file "git-daemon-export-ok", and it will refuse to export any Git directory that hasn’t explicitly been marked for export this way (unless the --export-all parameter is specified). If you pass some directory paths as git daemon arguments, you can further restrict the offers to a whitelist comprising of those.
 
+Gogs 的目标是打造一个最简单、最快速和最轻松的方式搭建自助 Git 服务。使用 Go 语言开发使得 Gogs 能够通过独立的二进制分发，并且支持 Go 语言支持的所有平台，包括 Linux、Mac OS X、Windows 以及 ARM 平台。
+Gitea是在 Gogs 的基础上新开一个发行分支。Gitea发起的主要目的是绕过Gogs“单一维护者”管理模式，由社区决定哪些新的特性应该被加入。
+
+
 ## git + ssh
 ### user/account
 首先来看一个典型的克隆仓库的命令
