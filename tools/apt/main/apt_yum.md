@@ -1,9 +1,17 @@
-# deb
+# apt_yum
+
+大多数现代的类 Unix 操作系统都提供了一种中心化的机制用来搜索和安装软件。软件通常都是存放在存储库中，并通过包的形式进行分发。处理包的工作被称为包管理。包提供了操作系统的基本组件，以及共享的库、应用程序、服务和文档。
+
+* pacman
+* dpkg （package manager for Debian) debian系统的包管理工具, 包格式是 .deb
+* apt/apt-get/aptitude  apt是建立在dpkg之上的软件管理工具。
+* yum（全称为 Yellow dog Updater, Modified）是一个在Fedora和RedHat的Shell前端软件包管理器, 可以自动处理依赖关系
+* rpm  Redhat和Fedora的软件安装命令
+* dnf  在最近的 Fedora 版本中，yum 已经被 dnf 取代，dnf 是它的一个现代化的分支，它保留了大部分 yum 的接口。
+* pkg  FreeBSD 的二进制包系统由 pkg 命令管理
 
 
 ## dpkg
-
-
  dpkg - package manager for Debian  （debian系统的包管理工具）。
 
 dpkg is a tool to install, build, remove and manage Debian packages，dpkg是Debian的一个底层包管理工具，主要用于对已下载到本地和已安装的软件包进行管理。
@@ -48,4 +56,6 @@ sl_3.03-17build2_amd64.deb
 2、dpkg是用来安装.deb文件,但不会解决模块的依赖关系,且不会关心ubuntu的软件仓库内的软件,可以用于安装本地的deb文件。
 
 3、apt会解决和安装模块的依赖问题,并会咨询软件仓库, 但不会安装本地的deb文件, apt是建立在dpkg之上的软件管理工具。
+
+
 
