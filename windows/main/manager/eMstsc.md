@@ -28,9 +28,36 @@ mstsc使用rdp协议，使用本地显卡渲染，与teamviewer的远程差分�
 
 修改注册表：
 `REG ADD HKLM\SYSTEM\CurrentControlSet\Control\Terminal" "Server /v fDenyTSConnections /t REG_DWORD /d 00000000 /f`
+
+关闭3389端口
+`REG ADD HKLM\SYSTEM\CurrentControlSet\Control\Terminal" "Server /v fDenyTSConnections /t REG_DWORD /d 11111111 /f`
+
+
+或者
+``` bat
+echo Windows Registry Editor Version 5.00>3389.reg
+echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server]>>3389.reg
+echo "fDenyTSConnections"=dword:00000000>>3389.reg
+echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\Wds\rdpwd\Tds\tcp]>>3389.reg
+echo "PortNumber"=dword:00000d3d>>3389.reg
+echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp]>>3389.reg
+echo "PortNumber"=dword:00000d3d>>3389.reg
+regedit /s 3389.reg
+del 3389.reg
+```
+
+对应的服务程序是:
+`c:\WINDOWS\System32\svchost.exe -k NetworkService -s TermService`
+
+
 **Q**: 如何修改3389端口？
 **A**：
-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\ Wds\rdpwd\Tds\tcp ，修改PortNamber值，默认值是3389
+`HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\ Wds\rdpwd\Tds\tcp` ，修改PortNamber值，默认值是3389
+
+
+**Q**: How to Fix Remote Desktop Error Code 0x104?
+
+**A**: .
 
 ## misc
 
