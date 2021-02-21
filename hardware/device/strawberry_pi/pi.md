@@ -68,16 +68,19 @@ Release:        9.8
 Codename:       stretch
 ```
 
-sudo vim /etc/apt/sources.list
+`sudo vim /etc/apt/sources.list`
+
+``` ini
 deb http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ stretch main contrib non-free rpi
 deb-src http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ stretch main contrib non-free rpi
-
+```
 
 pi@raspberrypi:~ $ sudo leafpad /etc/apt/sources.list.d/raspi.list
 使用 # 注释掉原文件内容，使用以下内容取代。
-
+``` ini
 deb http://mirror.tuna.tsinghua.edu.cn/raspberrypi/ stretch main ui
 deb-src http://mirror.tuna.tsinghua.edu.cn/raspberrypi/ stretch main ui
+```
 #### misc
 
 定时关机
