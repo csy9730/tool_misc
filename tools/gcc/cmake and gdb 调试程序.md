@@ -1,7 +1,7 @@
 # [cmake and gdb 调试程序](https://www.cnblogs.com/welen/articles/4286266.html)
 
 ## cmake支持gdb的实现
-首先在CMakeLists.txt下加入
+在CMakeLists.txt下加入
 
 在下面加入：
 
