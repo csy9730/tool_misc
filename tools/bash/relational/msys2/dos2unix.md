@@ -1,10 +1,20 @@
 
 # dos2unix
 
+在linux 用git管理文件，有时候会出现^M 符号（对应ASCIId的13, 0x0D），这不是我们期望的变更，我们希望能够移除^M符号，可以通过dos2unix实现。
+
  下载的开源代码换行符通常都是 Linux 风格(LF), 如果在 Windows 平台(CRLF)进行二次开发，同时需要用到 git 作为版本控制工具时。由于不希望 两种风格混用，通常 core.safecrlf 设置为 true ，这时就会遇到无法提交的情况，必须统一所有文件的换行符才行。
+
 dos2unix可以把转换dos文本格式转换成unix文本格式，即把行尾的CRLF换成LF.
 unix2dos可以把转换unix文本格式转换成dos文本格式，即把行尾的LF换成CRLF.
-unix2dos 只能对单文件使用。
+
+|名称|编码|功能|
+|---|---|---|
+|CR Carriage Return|13, 0x0D|表示回车, 对应转义字符\r ,vim中显示成^M|
+|LF (NL line feed, new line)|10,0x0A|换行键 对应转义字符\n, linux系统下默认使用这个换行|
+|CRLF Carriage Return & Linefeed|13 10, 0x0D0A|表示回车并换行, 对应转义字符\r\n, windows系统下默认使用这个换行|
+
+
 ## help
 ```
 $ dos2unix --help
