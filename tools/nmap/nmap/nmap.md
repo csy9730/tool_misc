@@ -1,7 +1,9 @@
 # Kali Linux 使用nmap进行局域网扫描
 
 
+
 ## ping扫描
+### sP
 ping扫描：扫描192.168.0.0/24网段上有哪些主机是存活的；
  
 [root@laolinux ~]# nmap -sP 192.168.0.0/24
@@ -46,7 +48,17 @@ MAC Address: 00:40:45:20:8C:93 (Twinhead)
 Host 192.168.0.221 appears to be up.
 MAC Address: 00:09:6B:50:71:26 (IBM)
 Nmap finished: 256 IP addresses (20 hosts up) scanned in 3.818 seconds
- 
+### sn
+-sn: Ping Scan - disable port scan
+
+### Pn
+ -Pn: Treat all hosts as online -- skip host discovery
+
+
+nmap 执行（至少）两步操作，一个是主机发现（Ping），另一个是主机扫描。
+
+默认两步是都做的，-P0/-Pn 关闭主机发现，-sP/-sn 关闭主机扫描。两个一起用就是啥也不干，
+
 ## 端口扫描
 
 ### TCP
