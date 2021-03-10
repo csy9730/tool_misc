@@ -19,8 +19,11 @@ sudo apt-get install vnc4server
 sudo apt-get install xfce4
 
 # yum install tigervnc-server
-vncserver
-vncpasswd # 修改
+
+vncserver # 启动 vncserver
+
+# 首次启动，需要设置vnc登录密码
+vncpasswd # 修改 密码
 ```
 
 

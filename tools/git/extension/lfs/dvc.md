@@ -67,10 +67,12 @@ dvc文件夹有多个文件数据库，可以管理远程数据，dvc 不保存�
 ## remote
 
 
-* ssh
+* ssh/SFTP
 * http
 * S3
 * google storage
+* git/dvc repo
+* HDFS
 
 
 ### local
