@@ -9,17 +9,27 @@ cd "cd C:\Program Files (x86)\Jenkins"
 jenkins.exe stop;
 # 重启Jenkins服务：
 jenkins.exe start;
+
 ```
+
+程序开启之后，本地开启8108端口：`http://localhost:8108/`
+
+首次登陆需要查询本地生成的密码文件
+```
+C:\WINDOWS\system32>cat C:\WINDOWS\system32\config\systemprofile\AppData\Local\Jenkins\.jenkins\secrets\initialAdminPassword
+```
+
 ## arch
 Jenkins
 
-* jenkins.exe
-* Jenkins.war
-* jenkins.exe.config
-* jenkins.xml
-* jenkins.out.log
-* jenkins.err.log
-* jenkins.wrapper.log
+`E:\Program Files\Jenkins`
+
+* Jenkins.war  服务的java核心实现  
+* jenkins.exe  服务的exe入口
+* jenkins.exe.config  jenkins.xml.backup  jenkins.xml 配置文件
+* jenkins.out.log  jenkins.err.log    jenkins.wrapper.log  log文件
+
+
 
 ### xml
 ``` xml
