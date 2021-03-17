@@ -7,11 +7,12 @@
 
 
 ``` bash
-# 使用AEAD_AES_128_GCM加密， 8488端口 ，指定密码
+# server 使用AEAD_AES_128_GCM加密， 8488端口 ，指定密码
 go-shadowsocks2 -cipher AEAD_AES_128_GCM  -s 0.0.0.0:8488 -password yourpassword -verbose
 
 go-shadowsocks2 -s 'ss://AEAD_CHACHA20_POLY1305:your-password@:8488' -verbose
 
+# client side
 go-shadowsocks2 -c 'ss://AEAD_CHACHA20_POLY1305:your-password@[server_address]:8488' \
     -verbose -socks :1080 -u -udptun :8053=8.8.8.8:53,:8054=8.8.4.4:53 \
                              -tcptun :8053=8.8.8.8:53,:8054=8.8.4.4:53
