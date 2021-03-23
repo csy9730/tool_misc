@@ -17,6 +17,10 @@ clip < README.TXT
 # 将一个空行放入 Windows 剪贴板，即清空 Windows 剪贴板
 echo | clip 
 ```
+
+明显，clip只支持剪切板的文本. 如果 使用重定向，`dir > clip`会变成重定向到 clip文件。
+
+
 ## Linux下
 使用 xsel 命令。示例：
 ``` bash
