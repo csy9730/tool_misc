@@ -56,3 +56,4 @@ venv
 .*~
 *.un~
 *.class
+*.prefs
