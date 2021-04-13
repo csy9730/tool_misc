@@ -1,6 +1,6 @@
 # git proxy
 
-### 设置
+### `git config`
 
 git下载不动, 可以设置http代理：
 ``` bash
@@ -22,6 +22,8 @@ git bash 中配置socks5
 git config --global http.proxy 'socks5://127.0.0.1:1080'
 git config --global https.proxy 'socks5://127.0.0.1:1080'
  
+# 显示所有代理 
+$ git config  -l |grep http
 
 # 取消代理
 
@@ -39,7 +41,7 @@ git config --global --unset http.https://github.com.proxy
 ```
 
 
-### 通过设置环境变量
+### `bash`设置环境变量
 
 linux命令行代理：
 `export http_proxy=192.168.8.25:1080`
@@ -59,7 +61,7 @@ alias unsetproxy="unset ALL_PROXY"
 
 curl 支持 socks5，wget(v1.20 mingw32) 不支持 socks5.
 
-
+### `cmd`设置环境变量
 windows命令行代理：
 `set http_proxy=http://127.0.0.1:1080`
 
