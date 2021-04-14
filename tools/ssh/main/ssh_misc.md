@@ -1,5 +1,10 @@
 # misc
 
+ssh pem 包括 密钥文件，公钥文件，授权文件(authorized_keys), 访问记录文件(known_hosts)， 配置文件config
+
+1. 密钥文件生成
+2. 密钥文件管理
+
 
 ## 密钥文件
 
@@ -12,8 +17,9 @@
 > Contains the private key for authentication.  These files contain sensitive data and should be readable by the user but not accessible by others (read/write/execute).  ssh will simply ignore a private key file if it is accessible by others.  It is possible to specify a passphrase when generating the key which will be used to encrypt the sensitive part of this file using 3DES.
 
 以上文件的区别是：
-identity文件ssh V1使用的，现在都使用ssh V2，按照加密性比较 dsa=rsa <ecdsa < ed25519 ，dsa逐渐被淘汰。
-ECDSA （椭圆曲线签名算法）
+identity文件ssh V1使用的，现在都使用ssh V2，按照加密性比较 dsa=rsa < ecdsa < ed25519 ，dsa逐渐被淘汰。ECDSA （椭圆曲线签名算法）
+
+### 生成密钥文件
 在第一次启动sshd时，会要求生成id_ecdsa，id_rsa，id_ed25519这三个文件，充当已经授权的默认公钥文件。
 
 
@@ -35,6 +41,7 @@ cat /etc/ssh/ssh_host_rsa_key.pub>>$HOME/.ssh/authorized_keys
 
 ```
 
+### windows下生成密钥文件
 ```
 ssh-keygen -t rsa -b 2048 -f C:\ProgramData\ssh\ssh_host_rsa_key
 ssh-keygen -t ecdsa -b 256 -f C:\ProgramData\ssh\ssh_host_ecdsa_key
@@ -49,9 +56,31 @@ type C:\ProgramData\ssh\ssh_host_rsa_key.pub>>%USERPROFILE%\.ssh\authorized_keys
 如果报错`sshd windows permission deny`，需要使用管理员权限打开命令行，在执行命令
 
 使用openssh for windows，在`%programdata%\ssh`目录下生成id_rsa文件
+而如果使用 git bash， 这在 `/etc/ssh` 对应 `C:\Program Files\Git\etc\ssh`目录下生成 id_rsa文件
 
+## 密钥管理
+## config
 
-**Q**: Bad owner or permissions on C:\\Users\\gd_cs/.ssh/config
+config 文件用于管理：本地的私钥来访问远程设备。
+根据远程的域名 在config的 HostName 搜索同名域名，根据搜索结果使用对应的私钥或账号密码。
+```
+Host abc
+  HostName 192.168.2.134
+  User admin
+  Port 18222
+
+Host abc_ubuntu
+  HostName 192.168.2.134
+  User abc
+  Port 22
+
+Host github.com
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/rsa_github
+```
+
+**Q**: Bad owner or permissions on C:\\Users\\admin/.ssh/config
 
 **A**: 修改.ssh/config的权限
 方法1： 
@@ -65,8 +94,7 @@ sudo chown $USER .ssh/config
 如果系统是英文：
 Properties -> Security -> Advanced -> Disable Inheritance -> Remove all inherited permissions from this object
 
-## 公钥
-
+### authorized_keys
 
 **Q**: authorized_keys 文件是什么功能？
 **A**: ~/.ssh/authorized_keys 文件，保存了本机的公钥，持有了对应私钥的客户端可以通过ssh控制本机。
@@ -77,7 +105,7 @@ ssh-rsa AABAQDAfX1sjT6AkKvAAAAB3NzaC1yc2EAAAADAQABA abc@DESKTOP-123456
 ```
 一个主机里面的authorized_keys可以存放多个公钥，一台主机可以持有多个authorized_keys，
 
-
+### known_hosts
 **Q**: 什么是 known_hosts文件？
 **A**:位置在 ~/.ssh/konwn_hosts中
 文件内容如下，包括了本机访问过的域名/ip地址 ，端口，公钥的加密级别，公钥指纹。
