@@ -34,7 +34,17 @@ sudo systemctl start docker
 sudo systemctl enable docker # 启动并加入开机启动
 
 docker pull ubuntu:latest
+
+# 启动镜像
 docker run -it ubuntu bash
+
+# 查看运行的镜像
+docker ps
+
+# 终止镜像
+docker stop ubuntu # kill/pause/restart 
+
+
 ```
 ### config
 ### docker run help
@@ -63,6 +73,13 @@ docker run 支持以下配置项
 使用 docker port 来查看当前映射的端口配置，也可以查看到绑定的地址
 ```
 
+``` bash
+# 构建镜像
+docker build --label linux-insides --tag linux-insides-book:latest  .
+
+# 运行镜像
+docker run   -p 0.0.0.0:4000:4000 --name linux-insides-book  linux-insides-book
+```
 ## misc
 
 
