@@ -32,7 +32,7 @@ func main() {
 这种定义方式，与js语言类似又不同，类型后置，名称前置。
 
 复合类型：
-```
+``` go
 var a *int
 var a []int
 var a map[string] int
@@ -160,3 +160,9 @@ type struct_variable_type struct {
 
 ## misc
 #### iota
+#### chan
+#### Select
+
+我们上面介绍的都是只有一个channel的情况，那么如果存在多个channel的时候，我们该如何操作呢，Go里面提供了一个关键字select，通过select可以监听channel上的数据流动。
+
+select默认是阻塞的，只有当监听的channel中有发送或接收可以进行时才会运行，当多个channel都准备好的时候，select是随机的选择一个执行的。

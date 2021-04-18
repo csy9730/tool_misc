@@ -2,21 +2,55 @@
 
 ## install
 
+[https://golang.org/dl/](https://golang.org/dl/)
 
+### windows
+Windows 系统下安装
+Windows 下可以使用 .msi 后缀(在下载列表中可以找到该文件，如go1.4.2.windows-amd64.msi)的安装包来安装。
 
+默认情况下 .msi 文件会安装在 c:\Go 目录下。你可以将 c:\Go\bin 目录添加到 Path 环境变量中。添加后你需要重启命令窗口才能生效。
+### run test
+
+```
+$ H:\project>go version
+go version go1.15.3 windows/amd64
+```
+### 环境变量配置
+
+``` bash
+GOPATH=~\go
+export GOPROXY=https://goproxy.io # 也可以设置为 https://goproxy.cn 或者其他
+export GOPRIVATE=git.xxx.com
+```
 ## arch
 
 ### directory
 
+C:\programdata\Go 目录下
 ```
-bin
+bin/
     - go.exe
     - gofmt.exe
-
-
+src/  标准库
+    - os/
+        - dir.go
+api/
+lib/
+pkg/
+doc/
+test/
 ```
 
+## demo
+``` go
+package main
 
+import "fmt"
+
+func main() {
+   fmt.Println("Hello, World!")
+}
+```
 
 ## help
 
