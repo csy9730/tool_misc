@@ -18,14 +18,14 @@ Reactor模型实例：libevent，Redis、ACE
 Proactor模型： 
 1 向事件分发器注册事件回调 
 2 事件发生 
-3 操作系统读取数据，并放入应用缓冲区，然后通知事件分发器 
+3 **操作系统读取数据**，并放入应用缓冲区，然后通知事件分发器 
 4 事件分发器调用之前注册的函数 
 5 在回调函数中对数据进行后续处理 
 Preactor模型实例：ASIO
 
  
 
-reactor和proactor的主要区别：
+reactor和proactor的主要区别：proactor插入了操作系统搬运数据的步骤。
 
 ### 主动和被动
 

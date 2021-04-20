@@ -7,9 +7,21 @@
     * linux
     * windows
     * android
+    * mac
 * program
-* framework
-* tools/app
+    * asm
+    * c/cpp
+    * java
+    * csharp
+    * php
+    * js
+    * python
+    * go
+    * lua
+* tools/app/framework
+* arith
+* arch
+* business
 
 
 ## misc
