@@ -14,6 +14,7 @@ sqlite> .exit
 `sqlite3 data.sqlite .dump  > foo.sql`
 
 dump 包括导出 schema 和 data 两种语句。
+
 ### dump schema
 
 只导出schema到sql脚本中
@@ -25,6 +26,7 @@ CREATE TABLE alembic_version (
         CONSTRAINT alembic_version_pkc PRIMARY KEY (version_num)
 );
 ```
+
 ### dump data
 
 只导出数据到sql脚本中

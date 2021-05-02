@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Datetimepicker demo</title>
+
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"
+        rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment-with-locales.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+
+</head>
+
+<div class="row">
+    <div class='col-sm-6'>
+        <div class="form-group">
+            <label>选择日期：</label>
+            <!--指定 date标记-->
+            <div class='input-group date' id='datetimepicker1'>
+                <input type='text' id="TimeInput" class="form-control" />
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class='col-sm-6'>
+        <div class="form-group">
+            <label>选择日期+时间：</label>
+            <!--指定 date标记-->
+            <div class='input-group date' id='datetimepicker2'>
+                <input type='text' class="form-control" />
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+    $(function () {
+        $('#datetimepicker1').datetimepicker({
+            format: 'YYYY-MM-DD',
+            locale: moment.locale('zh-cn'),
+            defaultDate: "1990-01-01"
+        });
+        $('#datetimepicker2').datetimepicker({
+            format: 'YYYY-MM-DD hh:mm',
+            locale: moment.locale('zh-cn')
+        });
+
+    });
+
+    function showDate(){
+        var d = $("#datetimepicker1").find("input").val();
+        var d2 = $("#datetimepicker2").find("input").val();
+        console.log(d, d2);
+    }
+
+    /*4.17版本一些可能用得到的方法参数*/
+    /*
+            
+            
+            showClose:true	//是否显示关闭 按钮
+            /*viewMode: 'days',//天数模块展示，months则为以月展示
+            daysOfWeekDisabled: false,//星期几 禁止选择,参数 [num],多个逗号隔开
+            calendarWeeks: false,	//显示 周 是 今年第几周
+            toolbarPlacement:'default', //工具摆放的位置，top 则为上，默认为底
+            showTodayButton:false,	//是否工具栏 显示 直达今天天数的 按钮，默认false
+            showClear:false, //是否 工具栏显示  清空 输入框  的按钮。默认false
+    */
+</script>
+
+</html>

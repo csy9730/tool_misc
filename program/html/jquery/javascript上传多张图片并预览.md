@@ -7,11 +7,11 @@
 html代码
 
 ```
-            <div>
-                <label>封面</label>
-                <input type="file" id="cover" name="cover">
-                <img id="smallCover" width=200px height=200px>
-            </div>
+<div>
+    <label>封面</label>
+    <input type="file" id="cover" name="cover">
+    <img id="smallCover" width=200px height=200px>
+</div>
 ```
 
 js代码
