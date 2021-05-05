@@ -1,5 +1,7 @@
 # docker
 
+
+docker 核心概念：镜像image，容器container。
 ## install
 
 
@@ -18,7 +20,6 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io
 
 
 ```
-
 
 
 ## 运行

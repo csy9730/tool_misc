@@ -1,18 +1,44 @@
 # misc
 
-ssh pem 包括 密钥文件，公钥文件，授权文件(authorized_keys), 访问记录文件(known_hosts)， 配置文件config
+ssh 密钥包括生成和管理。
 
 1. 密钥文件生成
 2. 密钥文件管理
 
 
+管理密钥的配置文件：
+- ~/.ssh/authorized_keys 管理授权的公钥文件
+- ~/.ssh/konwn_hosts   记录ssh访问记录
+- ~/.ssh/config       管理ssh访问的域名端口密钥配置。
+
+密钥文件，公钥文件
+
+ssh-keygen 程序可以生成 公钥/私钥文件。
+
+
 ## 密钥文件
 
-~/.ssh/identity
-~/.ssh/id_dsa
-~/.ssh/id_ecdsa
-~/.ssh/id_ed25519
-~/.ssh/id_rsa
+- ~/.ssh/identity
+- ~/.ssh/id_dsa
+- ~/.ssh/id_ecdsa
+- ~/.ssh/id_ed25519
+- ~/.ssh/id_rsa
+
+
+- /etc/ssh/ssh_config  
+- /etc/ssh/sshd_config  
+- /etc/ssh/ssh_host_dsa_key  
+- /etc/ssh/ssh_host_dsa_key.pub  
+- /etc/ssh/ssh_host_ecdsa_key  
+- /etc/ssh/ssh_host_ecdsa_key.pub  
+- /etc/ssh/ssh_host_ed25519_key  
+- /etc/ssh/ssh_host_ed25519_key.pub  
+- /etc/ssh/ssh_host_rsa_key  
+- /etc/ssh/ssh_host_rsa_key.pub
+- /etc/ssh/moduli         - 系统模数文件
+- /etc/ssh/ssh_import_id
+
+
 
 > Contains the private key for authentication.  These files contain sensitive data and should be readable by the user but not accessible by others (read/write/execute).  ssh will simply ignore a private key file if it is accessible by others.  It is possible to specify a passphrase when generating the key which will be used to encrypt the sensitive part of this file using 3DES.
 
@@ -59,7 +85,7 @@ type C:\ProgramData\ssh\ssh_host_rsa_key.pub>>%USERPROFILE%\.ssh\authorized_keys
 而如果使用 git bash， 这在 `/etc/ssh` 对应 `C:\Program Files\Git\etc\ssh`目录下生成 id_rsa文件
 
 ## 密钥管理
-## config
+### config
 
 config 文件用于管理：本地的私钥来访问远程设备。
 根据远程的域名 在config的 HostName 搜索同名域名，根据搜索结果使用对应的私钥或账号密码。

@@ -1,5 +1,6 @@
 # docker help
 
+
 ## help
 
 ```
@@ -183,8 +184,9 @@ Run 'docker container COMMAND --help' for more information on a command.
 #### docker ps/port
 
 #### docker start/stop/kill/pause/restart
-
-
+```
+docker start container_id
+```
 
 ### filesystem
 #### attach

@@ -8,22 +8,18 @@ Welcome to ssh's documentation!
 
 .. toctree::
    :maxdepth: 1
-   :caption: 基础:
-   :numbered:
-
-   base/ssh.md
-   base/scp.md
-
-
-.. toctree::
-   :maxdepth: 1
    :caption: 主要内容:
    :numbered:
 
-   main/ssh_2.md
-   main/ssh_config.md
-   main/ssh_misc.md
-   main/ssh端口转发.md
+   main/ssh.md
+   main/ssh_help.md
+   main/config/config.md 
+   main/config/ssh_config.md
+   main/config/ssh_config2.md
+   main/config/ssh_misc.md
+   main/port/ssh端口转发.md
+   main/pem/ssh_pem.md
+   main/pem/ssh_safe.md
 
 
 .. toctree::
@@ -31,13 +27,12 @@ Welcome to ssh's documentation!
    :caption: 扩展:
    :numbered:
 
-   extension/fabric.md
-   extension/mosh.md
-   extension/rsh.md
-   extension/windows_bash配置.md
    extension/windows_ssh.md
-   extension/vnc.md
-   extension/linux下使用rdp.md
+   extension/fabric.md
+   extension/remote/mosh.md
+   extension/remote/rsh.md
+   extension/remote/vnc.md
+   extension/scp/scp.md
 
 
 Indices and tables
