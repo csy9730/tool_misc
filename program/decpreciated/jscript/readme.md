@@ -1,0 +1,6 @@
+# JScript
+
+ECMAscript是javascript和Jscript的标准，javascript是面向所有浏览器的，Jscript只是面向微软的IE，两者差不多，但是有自己的扩展，但是都是按照ECMAscript的标准来自定的
+
+
+ 微软已经放弃VBScript和JScript了.

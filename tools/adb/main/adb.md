@@ -33,7 +33,7 @@ ADB Server是运行在主机上的一个后台进程。它的作用在于检测U
 
 * `adb install` 实现软件批量安装/卸载
 * `adb push` 实现文件备份和管理 
-* `adb input` 执行简单的固定的按键脚本,例如 通过上下滑动实现刷抖音
+* `adb shell input` 执行简单的固定的按键脚本,例如 通过上下滑动实现刷抖音
 * `adb screen` 获得截屏
 * 管理进程
 * appium执行按键脚本，添加屏幕截图判断。
@@ -78,7 +78,7 @@ adb root , adb remount, 只针对类似小米开发版的手机有用，可以�
 
 #### port forward
 `adb forward `将 宿主机上的某个端口重定向到设备的某个端口
-adb forward tcp:1314 tcp :8888
+`adb forward tcp:1314 tcp :8888`
 执行该命令后所有发往宿主机 1314 端口的消息、数据都会转发到 Android 设备的 8888 端口上，因此可以通过远程的方式控制 Android 设备。
 
 
@@ -118,13 +118,12 @@ adb shell pm clear com.taobao.taobao # 表示清除 手机淘宝数据和缓存�
 ## shell
 Android 提供了大多数常见的 Unix 命令行工具。如需查看可用工具的列表，请使用以下命令：
 `adb shell ls /system/bin`
-许多 shell 命令由 toybox
+许多 shell 命令由 toybox/busybox 提供
 
 ### am
 调起 Activity命令格式：adb shell am start [options]
 调起 Service命令格式：adb shell am startservice [options]
-例如：adb shell am startservice -n
-com.tencent.mm/.plugin.accountsync.model.AccountAuthenticatorService 表示调起微信的某 Service。
+例如：`adb shell am startservice -n com.tencent.mm/.plugin.accountsync.model.AccountAuthenticatorService` 表示调起微信的某 Service。
 
 ``` bash 
 adb shell am startservice -n com.tencent.mm/.plugin.accountsync.model.AccountAuthenticatorService # 表示调起微信的某 Service。
@@ -136,22 +135,22 @@ adb shell am force-stop com.taobao.taobao # 强制停止淘宝
 
 ### process
 
-查看前台 Activity命令：adb shell dumpsys activity activities | grep mFocusedActivity
-查看正在运行的 Services命令：adb shell dumpsys activity services “packagename” 其中参数不是必须的，指定 “packagename” 表示查看与某个包名相关的 Services，不指定表示查看所有 Services。
-查看应用详细信息命令：adb shell dumpsys package “packagename”
+查看前台 Activity命令：`adb shell dumpsys activity activities | grep mFocusedActivity`
+查看正在运行的 Services命令：`adb shell dumpsys activity services “packagename”` 其中参数不是必须的，指定 “packagename” 表示查看与某个包名相关的 Services，不指定表示查看所有 Services。
+查看应用详细信息命令：`adb shell dumpsys package “packagename”`
 
 
 
-查看进程：adb shell ps
-查看实时资源占用情况：adb shell top
-查看进程 UID：adb shell dumpsys package | grep userId=
+查看进程：`adb shell ps`
+查看实时资源占用情况：`adb shell top`
+查看进程 UID：`adb shell dumpsys package | grep userId=`
 
 
 ### pm
 
 查看应用列表：
 
-```bash
+``` bash
 adb shell pm list packages # 查看所有应用列表
 adb shell pm list packages -s # 查看系统应用列表
 adb shell pm list packages -3： # 查看第三方应用列表
@@ -177,14 +176,14 @@ adb shell pm list packages -3： # 查看第三方应用列表
 
 滑动解锁：如果锁屏没有密码，是通过滑动手势解锁，那么可以通过 input swipe 来解锁。
 命令:
-adb shell input swipe 300 1000 300 500
+`adb shell input swipe 300 1000 300 500`
 (其中参数 300 1000 300 500 分别表示起始点x坐标 起始点y坐标 结束点x坐标 结束点y坐标。)
 输入文本:在焦点处于某文本框时，可以通过 input 命令来输入文本。
 命令：adb shell input text *** (***即为输入内容)
 
 #### 点击
 
-adb shell input tap x y
+`adb shell input tap x y`
 
 使用 Monkey 进行压力测试：Monkey 可以生成伪随机用户事件来模拟单击、触摸、手势等操作，可以对正在开发中的程序进行随机压力测试。
 简单用法：adb shell monkey -p < packagename > -v 500 表示向 指定的应用程序发送 500 个伪随机事件。
@@ -197,9 +196,9 @@ adb shell am start -a android.intent.action.CALL tel:10086
 
 **Q**: 发送短信
 **A**: 
-1. adb shell am start -a android.intent.action.SENDTO -d sms:10086 --es sms_body  hello  打开了短信应用程序，当前焦点在文本框
-2. adb shell input keyevent 22  焦点去到发送按键
-3. adb shell input keyevent 66  回车，就是按下发送键
+1. `adb shell am start -a android.intent.action.SENDTO -d sms:10086 --es sms_body  hello`  打开了短信应用程序，当前焦点在文本框
+2. `adb shell input keyevent 22`  焦点去到发送按键
+3. `adb shell input keyevent 66`  回车，就是按下发送键
 4. 
 #### uiautomator
 uiautomator
@@ -304,28 +303,28 @@ adb shell cat /proc/meminfo # 查看内存信息命令
 
 ### setting
 
-修改设置之后，运行恢复命令有可能显示仍然不太正常，可以运行 adb reboot 重启设备，或手动重启。
+修改设置之后，运行恢复命令有可能显示仍然不太正常，可以运行 `adb reboot` 重启设备，或手动重启。
 修改设置的原理主要是通过 settings 命令修改 /data/data/com.android.providers.settings/databases/settings.db 里存放的设置值。
-修改分辨率命令：adb shell wm size 480x1024 恢复原分辨率命令：adb shell wm size reset
-修改屏幕密度命令：adb shell wm density 160 表示将屏幕密度修改为 160dpi；恢复原屏幕密度命令：adb shell wm density reset
-修改显示区域命令：adb shell wm overscan 0,0,0,200 四个数字分别表示距离左、上、右、下边缘的留白像素，以上命令表示将屏幕底部 200px 留白。恢复原显示区域命令：adb shell wm overscan reset
-关闭 USB 调试模式命令：adb shell settings put global adb_enabled 0 需要手动恢复：「设置」-「开发者选项」-「Android 调试」
+修改分辨率命令：`adb shell wm size 480x1024` 恢复原分辨率命令：adb shell wm size reset
+修改屏幕密度命令：`adb shell wm density 160` 表示将屏幕密度修改为 160dpi；恢复原屏幕密度命令：adb shell wm density reset
+修改显示区域命令：`adb shell wm overscan 0,0,0,200` 四个数字分别表示距离左、上、右、下边缘的留白像素，以上命令表示将屏幕底部 200px 留白。恢复原显示区域命令：adb shell wm overscan reset
+关闭 USB 调试模式命令：`adb shell settings put global adb_enabled 0` 需要手动恢复：「设置」-「开发者选项」-「Android 调试」
 
-**恢复正常模式**：adb shell settings put global policy_control null
+**恢复正常模式**：`adb shell settings put global policy_control null`
 
-设置熄屏时间为30分钟settings put system screen_off_timeout 180000;
+设置熄屏时间为30分钟`adb shell settings put system screen_off_timeout 180000`;
 
 ##  output
 
 实用功能：
 截图保存到电脑：adb exec-out screencap -p > sc.png
-然后将 png 文件导出到电脑：adb pull /sdcard/sc.png
+然后将 png 文件导出到电脑：`adb pull /sdcard/sc.png`
 录制屏幕：录制屏幕以 mp4 格式保存到 /sdcard：
 
 `adb shell screenrecord /sdcard/filename.mp4`
 
  需要停止时按 Ctrl-C，默认录制时间和最长录制时间都是 180 秒。
-如果需要导出到电脑：adb pull /sdcard/filename.mp4
+如果需要导出到电脑：`adb pull /sdcard/filename.mp4`
 
 挂载、查看连接过的 WiFi 密码、开启/关闭 WiFi、设置系统日期和时间都需要root权限，不做多说。
 
