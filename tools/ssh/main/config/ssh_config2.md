@@ -58,7 +58,7 @@ AllowUsers
 这里只允许使用用户的名字而不允许使用UID。相关的 allow/deny 指令按照下列顺序处理：
 DenyUsers, AllowUsers, DenyGroups, AllowGroups
 
-AuthorizedKeysFile
+**AuthorizedKeysFile**
 存放该用户可以用来登录的 RSA/DSA 公钥。
 该指令中可以使用下列根据连接时的实际情况进行展开的符号：
 %% 表示'%'、%h 表示用户的主目录、%u 表示该用户的用户名。
@@ -214,7 +214,7 @@ MaxStartups
 最大允许保持多少个未认证的连接。默认值是 10 。
 到达限制后，将不再接受新连接，除非先前的连接认证成功或超出 LoginGraceTime 的限制。
 
-PasswordAuthentication
+**PasswordAuthentication**
 是否允许使用基于密码的认证。默认为"yes"。
 
 PermitEmptyPasswords
@@ -228,7 +228,7 @@ PermitOpen IPv4_addr:port
 PermitOpen [IPv6_addr]:port
 "any"可以用于移除所有限制并允许一切转发请求。
 
-PermitRootLogin
+**PermitRootLogin**
 是否允许 root 登录。可用值如下：
 "yes"(默认) 表示允许。"no"表示禁止。
 "without-password"表示禁止使用密码认证登录。
@@ -247,7 +247,7 @@ PermitUserEnvironment
 PidFile
 指定在哪个文件中存放SSH守护进程的进程号，默认为 /var/run/sshd.pid 文件。
 
-Port
+**Port**
 指定 sshd(8) 守护进程监听的端口号，默认为 22 。可以使用多条指令监听多个端口。
 默认将在本机的所有网络接口上监听，但是可以通过 ListenAddress 指定只在某个特定的接口上监听。
 
@@ -261,7 +261,7 @@ Protocol
 指定 sshd(8) 支持的SSH协议的版本号。
 '1'和'2'表示仅仅支持SSH-1和SSH-2协议。"2,1"表示同时支持SSH-1和SSH-2协议。
 
-PubkeyAuthentication
+**PubkeyAuthentication**
 是否允许公钥认证。仅可以用于SSH-2。默认值为"yes"。
 
 RhostsRSAAuthentication

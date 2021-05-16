@@ -197,11 +197,11 @@ docker start container_id
 通俗解释：将终端依附到容器上（其实就是进入容器）
 
 
-```
+``` bash
+# 创建一个容器
 docker run -i -t ubuntu /bin/bash
-```
 
-```
+# 进入一个容器
 docker attach c600c4519fc8
 ```
 
