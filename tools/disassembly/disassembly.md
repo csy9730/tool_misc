@@ -3,7 +3,15 @@
 反汇编(Disassembly)：把目标代码转为[汇编](https://baike.baidu.com/item/汇编/627224)代码的过程，也可以说是把机器语言转换为汇编语言代码、低级转高级的意思，常用于软件破解（例如找到它是如何注册的，从而解出它的注册码或者编写注册机）、外挂技术、病毒分析、逆向工程、软件汉化等领域。学习和理解反汇编语言对软件调试、漏洞分析、OS的内核原理及理解高级语言代码都有相当大的帮助，在此过程中我们可以领悟到软件作者的编程思想。总之一句话：软件一切神秘的运行机制全在反汇编代码里面。
 
 
+### 命令行工具
+基础工具：file，strings，nm，ldd，objdump，otool，dumpbin， cfilt，pe tools，peID
 
+strings: gnu工具，可以提取字符串。
+file: gnu工具, 可以根据文件首部的幻数猜测文件类型
+ldd: gnu工具
+
+
+### 界面工具
 用的静态分析工具是[W32DASM](https://baike.baidu.com/item/W32DASM)、[PEiD](https://baike.baidu.com/item/PEiD)、FileInfo、 [Hex Rays Ida](https://baike.baidu.com/item/Hex Rays Ida)和HIEW等。
 
 反汇编工具如：[OD](https://baike.baidu.com/item/OD)、[IDA Pro](https://baike.baidu.com/item/IDA Pro)、radare2、[DEBUG](https://baike.baidu.com/item/DEBUG)、C32等。
@@ -12,13 +20,6 @@
 
 ollyDbg是动态分析
 IDA pro 是静态分析
-
-
-基础工具：file， pe tools，peID，nm，ldd，objdump，otool，dumpbin， cfilt，strings，
-
-
-
-
 ## misc
 可执行文件分析工具，比如PEID啥的，可以分析出EXE文件的内部情况，入口点，数据段，是否加壳等等。
 去壳工具。简单的壳官方会提供去壳工具，复杂一点的要手动跟踪去除。
@@ -31,3 +32,12 @@ IDA pro 是静态分析
 
 W32Dasm，它是一个静态反汇编工具，也是破解人常用的工具之一。
 Dcwa
+
+
+binary 到 汇编 到 高级语言。
+
+binary到汇编的过程称为反汇编。
+
+汇编到高级语言的过程称为反编译器。
+
+反编译出来的高级语言是没有符号的，后端种种优化过的。
