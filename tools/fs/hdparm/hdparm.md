@@ -1,5 +1,9 @@
 # hdparm
 
+
+- 查询是否休眠 hdparm -C /dev/sda
+
+
 ## help
 ```
  hdparm
