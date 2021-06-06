@@ -1,6 +1,5 @@
 # IO多路复用的三种机制Select，Poll，Epoll
 
-[![img](https://upload.jianshu.io/users/upload_avatars/11224747/595ff503-0e4f-4752-816b-220ef73ba80d.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96/format/webp)](https://www.jianshu.com/u/c2f0d7b9f96b)
 
 [似水牛年](https://www.jianshu.com/u/c2f0d7b9f96b)关注
 
