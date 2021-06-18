@@ -10,5 +10,6 @@
 > released on 1 June 2021.
 > (Details of recent changes can be found in the NEWS file.)
 
-https://www.gnu.org/software/gsl/
+[gsl](https://www.gnu.org/software/gsl/)
+## install
 [https://mirrors.ustc.edu.cn/gnu/gsl/](https://mirrors.ustc.edu.cn/gnu/gsl/)

@@ -39,6 +39,8 @@ nircmd speak text "Please visit the Web site of NirSoft at http://www.nirsoft.ne
 
 ```
 
+更多命令查看[http://www.nirsoft.net/utils/nircmd.html](http://www.nirsoft.net/utils/nircmd.html)
 
+## install
 [nirsoft/laucher](https://launcher.nirsoft.net/downloads/index.html)
 解压密码是：nirsoft9876$ 
