@@ -32,22 +32,19 @@ userdel auser # 删除了/etc/passwd、/etc/shadow、/etc/group/、/etc/gshadow�
 whoami # 查看当前登录用户名
 
 usermod -s /sbin/nologin username # 禁止用户登录
+
+# 创建abc用户，并加群 admin
 usermod abc -g admin
+
+# 修改abc用户，添加到群 admin
+usermod -g admin abc
+
 passwd testuser # 修改用户密码
 
 ```
 
 
-
-``` bash
-groups # 查看当前登录用户的组内成员
-groups gliethttp # 查看gliethttp用户所在的组,以及组内成员
-groupadd groupname  # 新建 group
-```
-
-
-
-## help
+### help
 ``` bash
 pi@raspberrypi:/ $ useradd --help
 Usage: useradd [options] LOGIN
@@ -88,9 +85,8 @@ Options:
 ```
 
 
-## 查看所有用户
 
-### passwd
+### /etc/passwd
 /etc/passwd是一个文本文件，其中包含了登录 Linux 系统所必需的每个用户的信息。它保存用户的有用信息，如用户名、密码、用户 ID、群组 ID、用户 ID 信息、用户的家目录和 Shell 。
 
 * 用户名
@@ -138,8 +134,25 @@ named:x:25:25:Named:/var/named:/sbin/nologin
 mageshm:x:506:507:2g Admin - Magesh M:/home/mageshm:/bin/bash
 ```
 
+
+## group
+### groups
+
+``` bash
+groups # 查看当前登录用户的组内成员
+groups gliethttp # 查看gliethttp用户所在的组,以及组内成员
+
+groupadd groupname  # 新建 group
+
+
+
+```
+
 ### /etc/group
 /etc/group文件包含所有组
 `cat /etc/group` 查看用户组
 
-### /etc/group
+
+
+## misc
+wsl下ubuntu的初次用户设计

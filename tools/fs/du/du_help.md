@@ -1,5 +1,29 @@
 # du help
 
+
+``` bash
+du  # 递归显示所有子目录的大小
+
+du -h 
+du -a # 显示文件的大小
+
+du -s #　只显示总和
+du -c # 末尾显示综合
+du -d  # 递归深度
+du --time # 显示最后修改时间
+du -t # 限制文件尺寸
+
+
+```
+
+``` bash
+du linux --time=atime --exclude=tools --exclude=proj*
+
+# 过滤文件夹, 必须全名匹配，支持通配符 *和?
+# 支持多次使用
+
+```
+## help
 ``` 
 $ du --help
 Usage: du [OPTION]... [FILE]...
