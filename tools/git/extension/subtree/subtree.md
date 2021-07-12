@@ -55,6 +55,11 @@
 '' git subtree add --prefix=<S项目的相对路径> <S项目git地址> <分支> --squash
 
 > 解释：--squash意思是把subtree的改动合并成一次commit，这样就不用拉取子项目完整的历史记录。--prefix之后的=等号也可以用空格。
+```
+mkdir foo & cd foo & git init
+git subtree add --prefix=yolov3 https://github.com/ultralytics/yolov3 master --squash
+```
+
 
 **2. 更新代码**
 P1、P2项目里各种提交commit，其中有些commit会涉及到S目录的更改，但是没关系

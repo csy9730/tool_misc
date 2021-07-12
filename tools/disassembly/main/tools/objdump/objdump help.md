@@ -91,3 +91,109 @@ objdump：支持的体系结构： i386 i386:x86-64 i386:x64-32 i8086 i386:intel
 将 bug 报告到 <http://www.sourceware.org/bugzilla/>。
 ```
 
+
+## demo
+
+
+```
+DESKTOP-CTAGE42# objdump -t zal_obfs
+
+zal_obfs:     file format elf64-x86-64
+
+SYMBOL TABLE:
+0000000000000238 l    d  .interp        0000000000000000              .interp
+0000000000000254 l    d  .note.ABI-tag  0000000000000000              .note.ABI-tag
+0000000000000274 l    d  .note.gnu.build-id     0000000000000000              .note.gnu.build-id
+0000000000000298 l    d  .gnu.hash      0000000000000000              .gnu.hash
+0000000000000300 l    d  .dynsym        0000000000000000              .dynsym
+0000000000000648 l    d  .dynstr        0000000000000000              .dynstr
+00000000000007b0 l    d  .gnu.version   0000000000000000              .gnu.version
+00000000000007f8 l    d  .gnu.version_r 0000000000000000              .gnu.version_r
+0000000000000828 l    d  .rela.dyn      0000000000000000              .rela.dyn
+00000000000008e8 l    d  .rela.plt      0000000000000000              .rela.plt
+0000000000000a38 l    d  .init  0000000000000000              .init
+0000000000000a50 l    d  .plt   0000000000000000              .plt
+0000000000000b40 l    d  .plt.got       0000000000000000              .plt.got
+0000000000000b50 l    d  .text  0000000000000000              .text
+0000000000002894 l    d  .fini  0000000000000000              .fini
+00000000000028a0 l    d  .rodata        0000000000000000              .rodata
+0000000000002960 l    d  .eh_frame_hdr  0000000000000000              .eh_frame_hdr
+00000000000029b8 l    d  .eh_frame      0000000000000000              .eh_frame
+0000000000202d50 l    d  .init_array    0000000000000000              .init_array
+0000000000202d58 l    d  .fini_array    0000000000000000              .fini_array
+0000000000202d60 l    d  .dynamic       0000000000000000              .dynamic
+0000000000202f50 l    d  .got   0000000000000000              .got
+0000000000203000 l    d  .data  0000000000000000              .data
+0000000000203010 l    d  .bss   0000000000000000              .bss
+0000000000000000 l    d  .comment       0000000000000000              .comment
+0000000000000000 l    df *ABS*  0000000000000000              crtstuff.c
+0000000000000b80 l     F .text  0000000000000000              deregister_tm_clones
+0000000000000bc0 l     F .text  0000000000000000              register_tm_clones
+0000000000000c10 l     F .text  0000000000000000              __do_global_dtors_aux
+0000000000203010 l     O .bss   0000000000000001              completed.7698
+0000000000202d58 l     O .fini_array    0000000000000000              __do_global_dtors_aux_fini_array_entry
+0000000000000c50 l     F .text  0000000000000000              frame_dummy
+0000000000202d50 l     O .init_array    0000000000000000              __frame_dummy_init_array_entry
+0000000000000000 l    df *ABS*  0000000000000000              zal_obfs_file.c
+0000000000000000 l    df *ABS*  0000000000000000              zal_obfs.c
+0000000000000000 l    df *ABS*  0000000000000000              crtstuff.c
+0000000000002b24 l     O .eh_frame      0000000000000000              __FRAME_END__
+0000000000000000 l    df *ABS*  0000000000000000              
+0000000000202d58 l       .init_array    0000000000000000              __init_array_end
+0000000000203008 l     O .data  0000000000000000              __dso_handle
+0000000000202d60 l     O .dynamic       0000000000000000              _DYNAMIC
+0000000000202d50 l       .init_array    0000000000000000              __init_array_start
+0000000000002960 l       .eh_frame_hdr  0000000000000000              __GNU_EH_FRAME_HDR
+0000000000203010 l     O .data  0000000000000000              __TMC_END__
+0000000000202f50 l     O .got   0000000000000000              _GLOBAL_OFFSET_TABLE_
+0000000000002890 g     F .text  0000000000000002              __libc_csu_fini
+0000000000000000       F *UND*  0000000000000000              free@@GLIBC_2.2.5
+0000000000000000  w      *UND*  0000000000000000              _ITM_deregisterTMCloneTable
+0000000000203000  w      .data  0000000000000000              data_start
+0000000000001bb1 g     F .text  0000000000000c6f              zal_deobfs_model
+0000000000000000       F *UND*  0000000000000000              puts@@GLIBC_2.2.5
+0000000000000000       F *UND*  0000000000000000              fread@@GLIBC_2.2.5
+0000000000203010 g       .data  0000000000000000              _edata
+0000000000000000       F *UND*  0000000000000000              fclose@@GLIBC_2.2.5
+0000000000002894 g     F .fini  0000000000000000              _fini
+0000000000000000       F *UND*  0000000000000000              __stack_chk_fail@@GLIBC_2.4
+0000000000000000       F *UND*  0000000000000000              printf@@GLIBC_2.2.5
+0000000000000000       F *UND*  0000000000000000              __libc_start_main@@GLIBC_2.2.5
+0000000000000000       F *UND*  0000000000000000              srand@@GLIBC_2.2.5
+0000000000203000 g       .data  0000000000000000              __data_start
+0000000000000000       F *UND*  0000000000000000              ftell@@GLIBC_2.2.5
+0000000000000000  w      *UND*  0000000000000000              __gmon_start__
+00000000000028a0 g     O .rodata        0000000000000004              _IO_stdin_used
+0000000000000000       F *UND*  0000000000000000              time@@GLIBC_2.2.5
+0000000000002820 g     F .text  0000000000000065              __libc_csu_init
+0000000000000000       F *UND*  0000000000000000              malloc@@GLIBC_2.2.5
+0000000000203018 g       .bss   0000000000000000              _end
+0000000000000e6b g     F .text  0000000000000d19              zal_obfskey_model
+0000000000000b50 g     F .text  000000000000002b              _start
+0000000000000000       F *UND*  0000000000000000              fseek@@GLIBC_2.2.5
+0000000000203010 g       .bss   0000000000000000              __bss_start
+0000000000000c5a g     F .text  0000000000000211              main
+0000000000000000       F *UND*  0000000000000000              fopen@@GLIBC_2.2.5
+0000000000001b84 g     F .text  000000000000002d              zal_obfs_model
+0000000000000000       F *UND*  0000000000000000              fwrite@@GLIBC_2.2.5
+0000000000000000  w      *UND*  0000000000000000              _ITM_registerTMCloneTable
+0000000000000000  w    F *UND*  0000000000000000              __cxa_finalize@@GLIBC_2.2.5
+0000000000000a38 g     F .init  0000000000000000              _init
+0000000000000000       F *UND*  0000000000000000              rand@@GLIBC_2.2.5
+```
+
+```
+DESKTOP-CTAGE42# objdump -t zal_obfs|grep text
+0000000000000b50 l    d  .text  0000000000000000              .text
+0000000000000b80 l     F .text  0000000000000000              deregister_tm_clones
+0000000000000bc0 l     F .text  0000000000000000              register_tm_clones
+0000000000000c10 l     F .text  0000000000000000              __do_global_dtors_aux
+0000000000000c50 l     F .text  0000000000000000              frame_dummy
+0000000000002890 g     F .text  0000000000000002              __libc_csu_fini
+0000000000001bb1 g     F .text  0000000000000c6f              zal_deobfs_model
+0000000000002820 g     F .text  0000000000000065              __libc_csu_init
+0000000000000e6b g     F .text  0000000000000d19              zal_obfskey_model
+0000000000000b50 g     F .text  000000000000002b              _start
+0000000000000c5a g     F .text  0000000000000211              main
+0000000000001b84 g     F .text  000000000000002d              zal_obfs_model
+```

@@ -15,6 +15,9 @@ if ERRORLEVEL 1 goto :nocmake
 cmake --build . --config %debugFlag%
 if ERRORLEVEL 1 goto :builderror
 echo build finished
+
+cmake --install .
+echo install finished
 popd
 popd
 pause
