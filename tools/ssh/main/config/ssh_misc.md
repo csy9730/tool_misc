@@ -46,7 +46,7 @@ ssh-keygen 程序可以生成 公钥/私钥文件。
 identity文件ssh V1使用的，现在都使用ssh V2，按照加密性比较 dsa=rsa < ecdsa < ed25519 ，dsa逐渐被淘汰。ECDSA （椭圆曲线签名算法）
 
 ### 生成密钥文件
-在第一次启动sshd时，会要求生成id_ecdsa，id_rsa，id_ed25519这三个文件，充当已经授权的默认公钥文件。
+在第一次启动sshd时，会要求生成id_ecdsa，id_rsa，id_ed25519这三个文件，充当已经授权的默认指纹（公钥文件）。
 
 
 **Q**: sshd启动时报错：`Could not load host key: /etc/ssh/ssh_host_rsa_key`
@@ -54,11 +54,13 @@ identity文件ssh V1使用的，现在都使用ssh V2，按照加密性比较 ds
 或者报错： `Privilege separation user sshd does not exist `
 
 
-**A**:  在第一次启动sshd时，会要求生成id_ecdsa，id_rsa，id_ed25519这三个文件，充当已经授权的默认公钥文件。
+**A**:  在第一次启动sshd时，会要求生成id_ecdsa，id_rsa，id_ed25519这三个文件，充当已经授权的默认公钥指纹文件。
 执行以下命令生成密钥即可
 ``` bash
 ssh-keygen -t rsa -b 2048 -f /etc/ssh/ssh_host_rsa_key
 ssh-keygen -t ecdsa -b 256 -f /etc/ssh/ssh_host_ecdsa_key
+
+# 实际只需要 ed25519 指纹，rsa指纹和ecdsa可以不需要
 ssh-keygen -t ed25519 -b 256 -f /etc/ssh/ssh_host_ed25519_key
 
 ssh-add /etc/ssh/
@@ -66,8 +68,41 @@ ssh-add /etc/ssh/
 cat /etc/ssh/ssh_host_rsa_key.pub>>$HOME/.ssh/authorized_keys 
 
 ```
+#### 公钥
+服务端公开公钥， 客户端可以随意获取公钥
+```
+$ ssh-keyscan -t ECDSA -p 9122 127.0.0.1
+# 127.0.0.1:9122 SSH-2.0-OpenSSH_7.9
+[127.0.0.1]:9122 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYABJ94BSTmafnjxEJRcriCxDDY3ahJObI6j/w6yWFxgOR6VWbXSfwjE=
+```
+
+双方连接之后，可以把对方加到本机的通讯录中
+```
+cat ~/.ssh/known_hosts
+```
+
+可以看到这个公钥与写入known_hosts文件是一致的。
+
+#### 公钥指纹
+```
+(base) ➜  ~ ssh  12.123.116.53
+The authenticity of host '12.123.116.53 (12.123.116.53)' can't be established.
+ECDSA key fingerprint is SHA256:eg25KePhm+GpyZ81HoyOXIPgDYKCHLQnNz9DAKcrzPM.
+Are you sure you want to continue connecting (yes/no)? ^C
+(base) ➜  ~
+```
+
+```
+ssh-keygen -E sha256 -lf /etc/ssh/ssh_host_ecdsa_key.pub
+256 SHA256:eg25KePhm+GpyZ8XIPgCHLQ1Ho9DAyODYKnNzKcrzPM root@iZwz9aygpm6zy07z4dd7fjZ (ECDSA)
+```
+
+其他指纹，md5指纹：
+`ssh-keygen -E md5 -lf /etc/ssh/ssh_host_ecdsa_key.pub`
 
 ### windows下生成密钥文件
+
+openssh的默认签名目录在 C:\ProgramData\ssh\
 ```
 ssh-keygen -t rsa -b 2048 -f C:\ProgramData\ssh\ssh_host_rsa_key
 ssh-keygen -t ecdsa -b 256 -f C:\ProgramData\ssh\ssh_host_ecdsa_key

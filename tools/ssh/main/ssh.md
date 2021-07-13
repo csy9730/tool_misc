@@ -7,54 +7,86 @@ scp 是建立在ssh远程连接之上的文件复制工具，。
 ``` bash
 yum install sshd 		# centos安装
 apt-get install openssh-server # ubuntu 安装这个
-service sshd start # 开启sshd服务
-service sshd status # 查看服务是否开启
-service sshd stop # 关闭ssh服务
-service sshd restart # 重启sshd服务
-# systemctl 和 service 功能相当
-systemctl restart sshd # 重启sshd服务
-systemctl status sshd # sshd状态查看
-
-sudo netstat -atlunp | grep sshd # 查看开启端口是否包括sshd服务
-$ TCP    192.168.1.101:56576    123.45.67.89:ssh      ESTABLISHED
-# 以上说明192.168.1.101地址通过56576端口远程控制 123.45.67.89的ssh的默认端口，已经建立连接成功
-
-logout  # Ctrl + D 退出ssh连接
-exit
-
-```
-
-`sudo vim /etc/ssh/sshd_config` 修改 ssh server 配置
-``` ini
-# 为了避免与windows的ssh服务冲突，这里端口务必修改
-Port 2222 
-# Privilege Separation is turned on for security
-UsePrivilegeSeparation no
-# 登陆验证
-PasswordAuthentication yes
 ```
 
 ## demo
+
+### server
+
+执行 `/usr/bin/sshd`, (必须使用绝对路径，不能使用相对路径)，就可以启动sshd服务。
+
+在第一次启动sshd时，会要求生成id_ecdsa，id_rsa，id_ed25519这三个文件，充当已经授权的默认公钥指纹文件。实际只需要 ed25519 指纹，rsa指纹和ecdsa可以不需要
+执行以下命令生成密钥即可
+``` bash
+ssh-keygen -t rsa -b 2048 -f /etc/ssh/ssh_host_rsa_key
+ssh-keygen -t ecdsa -b 256 -f /etc/ssh/ssh_host_ecdsa_key
+ssh-keygen -t ed25519 -b 256 -f /etc/ssh/ssh_host_ed25519_key
+```
+
+查看sshd是否开启
+```
+sudo netstat -atlunp | grep sshd # 查看开启端口是否包括sshd服务
+$ TCP    192.168.1.101:56576    123.45.67.89:ssh      ESTABLISHED
+
+```
+以上说明192.168.1.101地址通过56576端口远程控制 123.45.67.89的ssh的默认端口，已经建立连接成功
+
+
+
+### client
 远程连接需要知道目标的IP地址和端口号，ssh的默认端口号是22。
 通过`whoami`查询用户名IP地址和。使用`ip address|grep inet`和`ifconfig`查询ip地址
 
  `ssh pi@192.168.1.102 -p 22`
  ` ssh -i ~/document/.ssh/id_rsa.pem  u0_a150@192.168.1.102 -p 8022`
 
+使用logout ( Ctrl + D) 或exit退出ssh连接
+
+
+## full useage
+### service
+为了避免每次开机都要手动开启sshd，可以在系统中设置成启动服务项。
+
+``` bash
+service sshd start # 开启sshd服务
+service sshd status # 查看服务是否开启
+service sshd stop # 关闭ssh服务
+service sshd restart # 重启sshd服务
+
+# systemctl 和 service 功能相当
+systemctl restart sshd # 重启sshd服务
+systemctl status sshd # sshd状态查看
+```
+
+### 公钥私钥
+ssh 支持公钥私钥验证体系
+
+```
+ssh-add /etc/ssh/
+# 添加信任的密钥
+cat /etc/ssh/ssh_host_rsa_key.pub>>$HOME/.ssh/authorized_keys 
+```
+
+### ssh config
+
+
+## extension
+### ssh工具
+
+#### scp
+scp 可以 客户端和服务端之间拷贝文件。
+
 `scp -r  -i ~/document/.ssh/id_rsa.pem -P 8022 u0_a150@192.168.1.100:~/storage/downloads/github/batch_misc/misc/py_misc/web/eFlaskTodo  . `
 
+#### sftp
 
-
-使用logout或exit登出 
-
-
-## ssh工具
+#### gui
 
 windows下有winscp，putty，vnc等带界面的ssh工具，也支持SSH登陆。
 
-linux下有：vnc，putty，mstsc.exe，xshell。
+linux下有：vnc，putty。
 
-## 端口转发
+### 端口转发
 
 **Q**: 如何实现反向远程？适用于一台服务器有公网ip地址，一台客服机无公网ip地址，实现服务器远程控制客服机的情况
 **A**: 通过以下实现

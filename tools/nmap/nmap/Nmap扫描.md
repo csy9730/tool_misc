@@ -113,7 +113,7 @@ Nmap done: 10 IP addresses (5 hosts up) scanned in 0.26 seconds
 
 **探测开放端口(SYN):** 探测目标主机开放的端口,可指定一个以逗号分隔的端口列表(如-PS22,443,80).
 
-```BASH
+``` bash
 [root@localhost ~]# nmap -PS22,80,443 192.168.1.7
 
 Starting Nmap 6.40 ( http://nmap.org ) at 2019-03-19 22:15 EDT
@@ -145,7 +145,7 @@ Nmap done: 1 IP address (1 host up) scanned in 0.06 seconds
 
 **SYN扫描:** 使用SYN半开放扫描
 
-```BASH
+``` BASH
 [root@localhost ~]# nmap -sS 192.168.1.7
 
 Starting Nmap 6.40 ( http://nmap.org ) at 2019-03-19 22:01 EDT
@@ -160,7 +160,7 @@ Nmap done: 1 IP address (1 host up) scanned in 0.06 seconds
 
 **TCP扫描:** 扫描开放了TCP端口的设备.
 
-```BASH
+``` BASH
 [root@localhost ~]# nmap -sT 192.168.1.7
 
 Starting Nmap 6.40 ( http://nmap.org ) at 2019-03-19 22:01 EDT
@@ -175,7 +175,7 @@ Nmap done: 1 IP address (1 host up) scanned in 0.10 seconds
 
 **UDP扫描:** 扫描开放了UDP端口的设备.
 
-```BASH
+``` BASH
 [root@localhost ~]# nmap -sU 192.168.1.7
 
 Starting Nmap 6.40 ( http://nmap.org ) at 2019-03-19 22:02 EDT
@@ -190,7 +190,7 @@ Nmap done: 1 IP address (1 host up) scanned in 1.52 seconds
 
 **协议探测:** 探测目标主机支持哪些IP协议
 
-```BASH
+``` BASH
 [root@localhost ~]# nmap -sO 192.168.1.7
 
 Starting Nmap 6.40 ( http://nmap.org ) at 2019-03-19 22:04 EDT
@@ -211,7 +211,7 @@ Nmap done: 1 IP address (1 host up) scanned in 1.37 seconds
 
 **探测目标系统:** 扫描探测目标主机操作系统,这里结果仅供参考.
 
-```BASH
+``` BASH
 [root@localhost ~]# nmap -O 192.168.1.7
 
 Starting Nmap 6.40 ( http://nmap.org ) at 2019-03-19 22:06 EDT
@@ -234,7 +234,7 @@ Nmap done: 1 IP address (1 host up) scanned in 1.82 seconds
 
 **探测服务版本:** 用于扫描目标主机服务版本号.
 
-```BASH
+``` BASH
 [root@localhost ~]# nmap -sV 192.168.1.7
 
 Starting Nmap 6.40 ( http://nmap.org ) at 2019-03-19 22:08 EDT

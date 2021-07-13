@@ -61,17 +61,20 @@ cmake --install . --config release
 
 
 ```
-`
 ## help
 
 
 常用命令：
-- --build
-- --install
--  defalt (generate makefile)
+- cmake --build <dir>
+- cmake --install <dir>
+- cmake (generate makefile)
     - -G <generator-name>
     - -D <var>:<type>=<value>, -D <var>=<value> 设置变量
     - --toolchain <path-to-file>
+- cmake misc
+    - cmake --open <dir> 使用IDE打开项目
+    - cmake --system-information [file]  导出所有输出信息到文件/stdout
+
 
 ```
 Generate a Project Buildsystem
@@ -100,6 +103,9 @@ Run the Find-Package Tool
 View Help
  cmake --help[-<topic>]
 ```
+
+
+
 
 ### help
 ```
@@ -236,6 +242,58 @@ The following generators are available on this platform:
 
 ```
 
+### cmake command
+```
+
+H:\Project\Github\opencv_build>cmake -E
+CMake Error: cmake version 3.20.0
+Usage: cmake -E <command> [arguments...]
+Available commands:
+  capabilities              - Report capabilities built into cmake in JSON format
+  cat <files>...            - concat the files and print them to the standard output
+  chdir dir cmd [args...]   - run command in a given directory
+  compare_files [--ignore-eol] file1 file2
+                              - check if file1 is same as file2
+  copy <file>... destination  - copy files to destination (either file or directory)
+  copy_directory <dir>... destination   - copy content of <dir>... directories to 'destination' directory
+  copy_if_different <file>... destination  - copy files if it has changed
+  echo [<string>...]        - displays arguments as text
+  echo_append [<string>...] - displays arguments as text but no new line
+  env [--unset=NAME]... [NAME=VALUE]... COMMAND [ARG]...
+                            - run command in a modified environment
+  environment               - display the current environment
+  make_directory <dir>...   - create parent and <dir> directories
+  md5sum <file>...          - create MD5 checksum of files
+  sha1sum <file>...         - create SHA1 checksum of files
+  sha224sum <file>...       - create SHA224 checksum of files
+  sha256sum <file>...       - create SHA256 checksum of files
+  sha384sum <file>...       - create SHA384 checksum of files
+  sha512sum <file>...       - create SHA512 checksum of files
+  remove [-f] <file>...     - remove the file(s), use -f to force it (deprecated: use rm instead)
+  remove_directory <dir>... - remove directories and their contents (deprecated: use rm instead)
+  rename oldname newname    - rename a file or directory (on one volume)
+  rm [-rRf] <file/dir>...    - remove files or directories, use -f to force it, r or R to remove directories and t
+ontents recursively
+  sleep <number>...         - sleep for given number of seconds
+  tar [cxt][vf][zjJ] file.tar [file/dir1 file/dir2 ...]
+                            - create or extract a tar or zip archive
+  time command [args...]    - run command and display elapsed time
+  touch <file>...           - touch a <file>.
+  touch_nocreate <file>...  - touch a <file> but do not create it.
+  create_symlink old new    - create a symbolic link new -> old
+  create_hardlink old new   - create a hard link new -> old
+  true                      - do nothing with an exit code of 0
+  false                     - do nothing with an exit code of 1
+Available on Windows only:
+  delete_regv key           - delete registry value
+  env_vs8_wince sdkname     - displays a batch file which sets the environment for the provided Windows CE SDK ins
+ in VS2005
+  env_vs9_wince sdkname     - displays a batch file which sets the environment for the provided Windows CE SDK ins
+ in VS2008
+  write_regv key value      - write registry value
+
+```
+
 ## misc
 
 
@@ -248,3 +306,12 @@ The following generators are available on this platform:
 requests linking to directory "H:/Project/Github/opencv_build/install".  Targets may link only to libraries.  CMake is dropping the item.
 
 可能是连接错误，例如 x86工程尝试连接x64的lib，导致出错。
+
+
+#### cmake无法使用amd/cl 作为编译器
+cmake 版本3.20，只能使用x862amd64/cl.exe
+
+
+
+cmake -G "Visual Studio 14 2015 Win64"  ..
+

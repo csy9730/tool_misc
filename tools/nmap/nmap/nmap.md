@@ -1,11 +1,19 @@
 # Kali Linux 使用nmap进行局域网扫描
 
 
+nmap 执行（至少）两步操作，一个是主机发现（Ping），另一个是主机扫描(扫描端口)。
+
+默认两步是都做的. 
+-P0/-Pn 关闭主机发现，
+-sP/-sn 关闭主机扫描。
+-P0 -sP 两个一起用就是啥也不干，
 
 ## ping扫描
+
 ### sP
 ping扫描：扫描192.168.0.0/24网段上有哪些主机是存活的；
  
+```
 [root@laolinux ~]# nmap -sP 192.168.0.0/24
 Starting Nmap 4.11 ( http://www.insecure.org/nmap/ ) at 2009-04-25 06:59 CST
 Host laolinux (192.168.0.3) appears to be up.
@@ -48,6 +56,8 @@ MAC Address: 00:40:45:20:8C:93 (Twinhead)
 Host 192.168.0.221 appears to be up.
 MAC Address: 00:09:6B:50:71:26 (IBM)
 Nmap finished: 256 IP addresses (20 hosts up) scanned in 3.818 seconds
+```
+
 ### sn
 -sn: Ping Scan - disable port scan
 
@@ -55,15 +65,12 @@ Nmap finished: 256 IP addresses (20 hosts up) scanned in 3.818 seconds
  -Pn: Treat all hosts as online -- skip host discovery
 
 
-nmap 执行（至少）两步操作，一个是主机发现（Ping），另一个是主机扫描。
-
-默认两步是都做的，-P0/-Pn 关闭主机发现，-sP/-sn 关闭主机扫描。两个一起用就是啥也不干，
-
 ## 端口扫描
 
 ### TCP
 端口扫描：扫描192.168.0.3这台主机开放了哪些端口；
- 
+
+```
 [root@laolinux ~]# nmap -sT 192.168.0.3
 Starting Nmap 4.11 ( http://www.insecure.org/nmap/ ) at 2009-04-25 07:02 CST
 Interesting ports on laolinux (192.168.0.3):
@@ -83,11 +90,29 @@ PORT      STATE SERVICE
 3306/tcp  open  mysql
 10000/tcp open  snet-sensor-mgmt
 Nmap finished: 1 IP address (1 host up) scanned in 4.755 seconds
+```
+
+
+```
+# nmap -sT localhost -p 22,3389
+Starting Nmap 7.80 ( https://nmap.org ) at 2021-07-13 13:06 ?D1ú±ê×?ê±??
+Nmap scan report for localhost (127.0.0.1)
+Host is up (0.0010s latency).
+Other addresses for localhost (not scanned): ::1
+rDNS record for 127.0.0.1: csy.com
+
+PORT     STATE    SERVICE
+22/tcp   filtered ssh
+3389/tcp open     ms-wbt-server
+
+Nmap done: 1 IP address (1 host up) scanned in 2.44 seconds
+```
 
 
 ### UDP端口扫描
 UDP端口扫描：扫描192.168.0.127开放了哪些UDP端口；
- 
+
+```
 [root@laolinux ~]# nmap -sU 192.168.0.127
 Starting Nmap 4.11 ( http://www.insecure.org/nmap/ ) at 2009-04-25 07:08 CST
 Interesting ports on 192.168.0.127:
@@ -102,10 +127,12 @@ PORT     STATE         SERVICE
 4500/udp open|filtered sae-urn
 MAC Address: 00:11:1A:35:38:62 (Motorola BCS)
 Nmap finished: 1 IP address (1 host up) scanned in 2.947 seconds
+```
 
 ## 隐藏扫描
 隐藏扫描，只在目标主机上留下很少的日志信息：隐藏扫描192.168.0.220
- 
+
+```
 [root@laolinux ~]# nmap -sS 192.168.0.127
 Starting Nmap 4.11 ( http://www.insecure.org/nmap/ ) at 2009-04-25 07:08 CST
 Interesting ports on 192.168.0.127:
@@ -118,11 +145,12 @@ PORT    STATE SERVICE
 912/tcp open  unknown
 MAC Address: 00:11:1A:35:38:62 (Motorola BCS)
 Nmap finished: 1 IP address (1 host up) scanned in 3.121 seconds
-
+```
 
 ### 操作系统识别
 操作系统识别
- 
+
+```
 [root@laolinux ~]# nmap -sS -O  192.168.0.127
 Starting Nmap 4.11 ( http://www.insecure.org/nmap/ ) at 2009-04-25 07:09 CST
 Interesting ports on 192.168.0.127:
@@ -138,7 +166,7 @@ Device type: general purpose
 Running: Microsoft Windows 2003/.NET|NT/2K/XP
 OS details: Microsoft Windows 2003 Server or XP SP2
 Nmap finished: 1 IP address (1 host up) scanned in 5.687 seconds
-
+```
 
 ### 全部扫描
 
