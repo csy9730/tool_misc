@@ -23,6 +23,14 @@ du linux --time=atime --exclude=tools --exclude=proj*
 # 支持多次使用
 
 ```
+
+``` bash
+du linux --time=atime --exclude=tools --exclude=proj*
+
+# 过滤文件夹, 必须全名匹配，支持通配符 *和?
+# 支持多次使用
+
+```
 ## help
 ``` 
 $ du --help

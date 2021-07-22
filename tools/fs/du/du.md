@@ -195,7 +195,7 @@ du -s
 du -h test
 
 **输出：**
-
+```
 [root@localhost soft]# du -h test
 
 608K    test/test6
@@ -223,7 +223,7 @@ du -h test
 1.3M    test
 
 [root@localhost soft]#
-
+```
 
 
 **说明：**

@@ -302,16 +302,21 @@ Available on Windows only:
 
 
 
-
 requests linking to directory "H:/Project/Github/opencv_build/install".  Targets may link only to libraries.  CMake is dropping the item.
 
-可能是连接错误，例如 x86工程尝试连接x64的lib，导致出错。
+可能是链接错误，例如 x86工程尝试连接x64的lib，导致出错。
 
 
 #### cmake无法使用amd/cl 作为编译器
-cmake 版本3.20，只能使用x862amd64/cl.exe
 
+msvc针对不同版本有不同的cl.exe
+32/64 位系统编译在32位系统上运行 => x86/cl
+32 系统上编译64位系统上运行 => x86_amd64/cl
+64 系统上编译在64位系统上运行 => amd64/cl
 
+cmake 版本3.20，只能使用 `x86_amd64/cl.exe`, 不能直接使用`amd64/cl.exe`
 
-cmake -G "Visual Studio 14 2015 Win64"  ..
+执行以下命令：
+`cmake -G "Visual Studio 14 2015 Win64"  ..`
 
+调用 `x86_amd64/cl.exe`
