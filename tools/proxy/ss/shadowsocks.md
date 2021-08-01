@@ -1,15 +1,13 @@
 # shadowsocks
 
-
-* ShadowsocksR
-
-
+Shadowsocks 分为服务端和客户端，服务端有以下四种。
 目前有4个衍生版本的Shadowsocks:
 
 * Shadowsocks-go: 二进制编译, 轻量, 快速
-* Shadowsocks-python: 无功无过，也是最原始的版本，近年来更新速度略慢
+* Shadowsocks-python: 是最原始的版本，近年来更新速度略慢
 * Shadowsocks-libev: 一直处于更新之中，最大的特点是支持obfs混淆
 * ShadowsocksR: 从作者到产品都极负争议性, obfs混淆模式开创者.
+
 
 ## client
 
@@ -19,6 +17,7 @@
 windows，linux，mac
 android，ios
 openWRT
+
 ### shadowsocks-windows
 https://github.com/shadowsocks/shadowsocks-windows/releases
 ### electron-ssr

@@ -1,5 +1,9 @@
 # socks
 
+socks是代理协议，根据版本分为socks4和socks5，通常使用socks5协议。
+
+openssh，putty支持转发socks服务。
+
 ## server
 
 ### SSH tunnel
@@ -58,6 +62,7 @@ chrome浏览器通过命令行启动Socks5代理：
 
 
 chrome://net-internals/#sockets
+
 ### curl
 curl启动Socks5代理：
 `curl www.google.com --socks5 localhost:1080`
@@ -71,10 +76,12 @@ curl: (56) Recv failure: Connection was reset
 
 #### bash
 直接在bash中启用 socks5代理：
-```
+
+``` bash
 export http_proxy="socks5://127.0.0.1:41080"
 export https_proxy="socks5://127.0.0.1:41080"
 ```
+
 #### proxychains
 w3m 如何使用proxy？
 
@@ -103,6 +110,7 @@ SocksCap64 已经停止开发，并关闭下载。
 
 #### FreeCap
 除了SocksCap之外，也可以使用功能和界面几乎完全相同的另一款软件FreeCap来代替
+
 ### Privoxy
 [Privoxy](https://www.privoxy.org/)
 开源，支持windows/linux等多平台。
