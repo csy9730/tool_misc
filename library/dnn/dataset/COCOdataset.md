@@ -49,6 +49,14 @@ train2017：[http://images.cocodataset.org/zips/train2017.zip](https://links.jia
  val2014：[http://images.cocodataset.org/zips/val2014.zip](https://links.jianshu.com/go?to=http%3A%2F%2Fimages.cocodataset.org%2Fzips%2Fval2014.zip)
 
 
+
+``` bash
+wget -c http://images.cocodataset.org/annotations/annotations_trainval2017.zip -P $ANNOTATIONS_FOLDER
+wget -c http://images.cocodataset.org/annotations/image_info_test2017.zip -P $ANNOTATIONS_FOLDER
+wget -c http://images.cocodataset.org/zips/train2017.zip -P $IMAGES_FOLDER
+wget -c http://images.cocodataset.org/zips/val2017.zip -P $IMAGES_FOLDER
+```
+
 ### 2017
 
 #### images
