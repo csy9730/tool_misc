@@ -4,40 +4,6 @@
 
 该文档适用于 bash，也适用于git bash_windows，msys，wsl。
 
-
-
-bashrc
-
-``` bash
-HISTSIZE=2000
-HISTFILESIZE=10000
-
-# 显示时间
-export HISTTIMEFORMAT='%F %T '
-
-# 命令过滤器
-export HISTIGNORE="ls:dir"
-
-```
-
-
-
-```bash
-sed -i 's/HISTSIZE=1000/HISTSIZE=10000/g' /etc/profile
-echo $HISTSIZE
-
-echo "PROMPT_COMMAND='history -a'" >> ~/.bash_profi
-echo "PROMPT_COMMAND='history -a'" >> ~/.bashrc
-```
-
-
-
-
-
-
-
-
-
 ## 关键文件
 
 - .bash_history bash历史记录文件
@@ -45,19 +11,10 @@ echo "PROMPT_COMMAND='history -a'" >> ~/.bashrc
 
 
 
-
-
-C:\Program Files\Git\etc\bash.bashrc
-~/.bashrc 
-D:\greensoftware\Git-2.20.1-64-bit\etc\bash.bashrc
-E:\msys64\etc\bash.bashrc
-E:\msys64\home\admin\.bashrc
-
-alias gs="git status"
-alias gcm="git commit -m"
-
-
-
+- C:\Program Files\Git\etc\bash.bashrc
+- ~/.bashrc 
+- E:\msys64\etc\bash.bashrc
+- E:\msys64\home\admin\.bashrc
 
 
 ### my bashrc
@@ -78,3 +35,20 @@ export HISTTIMEFORMAT='%F %T '
 export HISTIGNORE="ls:dir"
 ```
 
+
+``` bash
+alias gs="git status"
+alias gcm="git commit -m"
+```
+
+#### install bashrc config
+``` bash
+echo "PROMPT_COMMAND='history -a'" >> ~/.bashrc
+echo "export HISTTIMEFORMAT='%F %T '" >> ~/.bashrc
+echo "HISTFILESIZE=10000" >> ~/.bashrc
+echo "HISTSIZE=1000" >> ~/.bashrc
+echo "export HISTIGNORE='ls:dir'" >> ~/.bashrc
+
+# sed -i 's/HISTSIZE=1000/HISTSIZE=10000/g' /etc/profile
+# echo "PROMPT_COMMAND='history -a'" >> ~/.bash_profi
+```
