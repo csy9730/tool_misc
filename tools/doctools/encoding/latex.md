@@ -29,6 +29,12 @@ $$
 - \newpage
 
 
+### 单边大括号
+
+$$
+\begin{cases} 选项1\\ 选项2 \\ \cdots \\ 选项n \end{cases} 
+$$
+
 
 ## demo
 
