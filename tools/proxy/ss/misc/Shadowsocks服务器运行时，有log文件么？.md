@@ -1,4 +1,4 @@
-# Shadowsocks服务器运行时，有log文件么？ #1836
+# Shadowsocks服务器运行时，有log文件么？
 
 
 
