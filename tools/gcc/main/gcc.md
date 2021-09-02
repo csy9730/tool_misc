@@ -4,12 +4,6 @@
 
 gcc 是linux平台默认的c/c++编译器。
 
-编译流程为：
-1. 预处理 Preprocess ，生成后缀为.i 的文件
-2. 编译 compile,生成.s汇编源文件
-3. 汇编 assemble ,生成 .o文件
-4. 链接  link, 生成可执行文件
-
 ## 简介
 
 ### demo
@@ -126,6 +120,12 @@ main:
 
 ```
 
+### 编译流程
+编译流程为：
+1. 预处理 Preprocess ，生成后缀为.i 的文件
+2. 编译 compile,生成.s汇编源文件
+3. 汇编 assemble ,生成 .o文件
+4. 链接  link, 生成可执行文件
 
 
 ### 命令
@@ -139,30 +139,54 @@ gcc -o output_filename    # 确定输出文件的名称为output_filename。默�
 gcc -O # 优化编译、链接
 gcc -O2 #比-O 更好的优化编译、链接。如处理器指令调度等。编译链接过程更慢。
 gcc -O3  # 除了完成所有-O2级别的优化之外，还包括循环展开和其他一些与处理器特性相关的优化工作。
+
 gcc -Idirname # 将 dirname 所指出的目录加入到程序头文件目录列表中
-gcc -Ldirname #将dirname所指出的目录加入到程序函数库文件的目录列表中
-gcc -lname #链接时装载名为 libname.a 的函数库。该函数库位于系统默认的目录或者由 -L 选项确定的目录下。例如，-lm 表示链接名为 libm.a 的数学函数库。
+gcc -Ldirname # 将dirname所指出的目录加入到程序函数库文件的目录列表中
+gcc -lname # 链接时装载名为 libname.a 的函数库。该函数库位于系统默认的目录或者由 -L 选项确定的目录下。例如，-lm 表示链接名为 libm.a 的数学函数库。
 gcc -static # 强制使用静态链接库。
-gcc -shared # 
+gcc -shared # 强制使用共享链接库。
 gcc -fPIC # 作用于编译阶段，告诉编译器产生与位置无关代码（Position-Independent Code）；这样一来，产生的代码中就没有绝对地址了，全部使用相对地址，所以代码可以被加载器加载到内存的任意位置，都可以正确的执行。这正是共享库所要求的，共享库被加载时，在内存的位置不是固定的。
 gcc -g2   默认的级别是2（-g2），此时产生的调试信息包括：扩展的符号表、行号、局部或外部变量信息。
 gcc -pipe # 避免使用临时文件，但编译时却需要消耗更多的内存,可以加快编译速度。
-gcc -Wall #在发生警报时取消编译操作，即将警报看作是错误
+
+gcc -Wall # 在发生警报时取消编译操作，即将警报看作是错误
 gcc -w #禁止所有的报警
-gcc -DABC	# 使用宏定义ABCABC
+
+gcc -DABC	# 使用宏定义ABC
 ```
+
+
+#### 重要命令
+
+|命令 | 帮助|
+| ---------------------- | ------------------------------------------------------------ |
+| -Wa,<options>          | Pass comma-separated <options> on to the assembler           |
+| -Wp,<options>          | Pass comma-separated <options> on to the preprocessor        |
+| -Wl,<options>          | Pass comma-separated <options> on to the linker              |
+| -Xassembler <arg>      | Pass <arg> on to the assembler                               |
+| -Xpreprocessor <arg> | Pass <arg> on to the preprocessor                            |
+| -Xlinker <arg>         | Pass <arg> on to the linker                                  |
+| -E                     | 只做预处理，不做编译，汇编和链接     |
+| -S                     | 只做编译，不做汇编和链接  |
+| -c                     | 只做汇编，不做链接 |
+| -o \<file\>              | Place the output into \<file\>                                 |
+| -pie                   | Create a position independent executable                     |
+| -shared                | Create a shared library                                      |
+| -static                | 强制使用静态链接库。                                         |
+| gcc -fPIC              | 作用于编译阶段，告诉编译器产生与位置无关代码（Position-Independent Code）；这样一来，产生的代码中就没有绝对地址了，全部使用相对地址，所以代码可以被加载器加载到内存的任意位置，都可以正确的执行。这正是共享库所要求的，共享库被加载时，在内存的位置不是固定的。 |
+| gcc -O | 优化编译、链接 |
+| gcc -O2 | 比-O 更好的优化编译、链接。如处理器指令调度等。编译链接过程更慢 |
+| gcc -O3 | 除了完成所有-O2级别的优化之外，还包括循环展开和其他一些与处理器特性相关的优化工作。 |
+
 
 #### 显示类命令
 
-
-
-| --help                   	Display this information |                                                              |
+| --help                   |        	Display this information  |
 | ----------------------------------------------------- | ------------------------------------------------------------ |
 | --target-help                                         | Display target specific command line options                 |
 | --help={common \|optimizers                           | Display specific types of command line options(Use '-v --help' to display command line options of sub-processes) |
 | -v                                                    | 显示编译器调用的程序。                                       |
 | -###                                                  | Like -v but options quoted and commands not executed         |
-| -V                                                    |                                                              |
 | --version                                             | Display compiler version information                         |
 | -dumpspecs                                            | Display all of the built in spec strings                     |
 | -dumpversion                                          | Display the version of the compiler                          |
@@ -174,30 +198,6 @@ gcc -DABC	# 使用宏定义ABCABC
 | -print-multiarch                                      | Display the target's normalized GNU triplet, used as         |
 
 
-
-#### 重要命令
-
-|命令 | 帮助|
-| ---------------------- | ------------------------------------------------------------ |
-| -Wa,<options>          | Pass comma-separated <options> on to the assembler           |
-| -Wp,<options>          | Pass comma-separated <options> on to the preprocessor        |
-| -Wl,<options>          | Pass comma-separated <options> on to the linker              |
-| -Xassembler <arg>      | Pass <arg> on to the assembler                               |
-| -Xpreprocessor <arg>   | Pass <arg> on to the preprocessor                            |
-| -Xlinker <arg>         | Pass <arg> on to the linker                                  |
-| -E                     | Preprocess only; do not compile, assemble or link            |
-| -S                     | Compile only; do not assemble or link                        |
-| -c                     | Compile and assemble, but do not link                        |
-| -o <file>              | Place the output into <file>                                 |
-| -pie                   | Create a position independent executable                     |
-| -shared                | Create a shared library                                      |
-| -static                | 强制使用静态链接库。                                         |
-| gcc -fPIC              | 作用于编译阶段，告诉编译器产生与位置无关代码（Position-Independent Code）；这样一来，产生的代码中就没有绝对地址了，全部使用相对地址，所以代码可以被加载器加载到内存的任意位置，都可以正确的执行。这正是共享库所要求的，共享库被加载时，在内存的位置不是固定的。 |
-| gcc -O | # 优化编译、链接 |
-| gcc -O2 | #比-O 更好的优化编译、链接。如处理器指令调度等。编译链接过程更慢 |
-| gcc -O3 | # 除了完成所有-O2级别的优化之外，还包括循环展开和其他一些与处理器特性相关的优化工作。 |
-|  |  |
-|  |  |
 #### 其他命令
 
 |命令 | 帮助|
@@ -205,18 +205,12 @@ gcc -DABC	# 使用宏定义ABCABC
 | -save-temps            | Do not delete intermediate files                             |
 | -save-temps=<arg>      | Do not delete intermediate files                             |
 | -no-canonical-prefixes | Do not canonicalize paths when building relative prefixes to other gcc components |
-|                        |                                                              |
 | -pipe                  | Use pipes rather than intermediate files                     |
 | -time                  | Time the execution of each subprocess                        |
 | -specs=<file>          | Override built-in specs with the contents of <file>          |
 | -std=<standard>        | Assume that the input sources are for <standard>             |
 | --sysroot=<directory>  | Use <directory> as the root directory for headers and libraries |
-|                        |                                                              |
 | -B <directory>         | Add <directory> to the compiler's search paths               |
-|                        |                                                              |
-|                        |                                                              |
-
-
 
 #### 完整帮助信息
 
@@ -345,7 +339,35 @@ $ g++ --help
 报告程序缺陷的步骤请参见：
 <https://gcc.gnu.org/bugs/>.
 
-admin@DESKTOP-CTAGE42 MSYS /d/AlBrowserDownloads/cryptopp600a
+```
+
+#### mingw32 gcc -v
+```
+D:\Projects\mylib\tool_misc>gcc -v
+Using built-in specs.
+COLLECT_GCC=gcc
+COLLECT_LTO_WRAPPER=D:/greensoftware/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/8.1.0/lto-wrapper.exe
+Target: x86_64-w64-mingw32
+Configured with: ../../../src/gcc-8.1.0/configure --host=x86_64-w64-mingw32 --build=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/mingw64 --with-sysroot=/c/mingw810/x86_64-810-posix-sjlj-rt_v6-rev0/mingw64 --enable-shared --enable-static --enable-targets=all --enable-multilib --enable-languages=c,c++,fortran,lto --enable-libstdcxx-time=yes --enable-threads=posix --enable-libgomp --enable-libatomic --enable-lto --enable-graphite --enable-checking=release --enable-fully-dynamic-string --enable-version-specific-runtime-libs --enable-sjlj-exceptions --disable-libstdcxx-pch --disable-libstdcxx-debug --enable-bootstrap --disable-rpath --disable-win32-registry --disable-nls --disable-werror --disable-symvers --with-gnu-as --with-gnu-ld --with-arch-32=i686 --with-arch-64=nocona --with-tune-32=generic --with-tune-64=core2 --with-libiconv --with-system-zlib --with-gmp=/c/mingw810/prerequisites/x86_64-w64-mingw32-static --with-mpfr=/c/mingw810/prerequisites/x86_64-w64-mingw32-static --with-mpc=/c/mingw810/prerequisites/x86_64-w64-mingw32-static --with-isl=/c/mingw810/prerequisites/x86_64-w64-mingw32-static -with-pkgversion='x86_64-posix-sjlj-rev0, Built by MinGW-W64 project' --with-bugurl=https://sourceforge.net/projects/mingw-w64 CFLAGS='-O2 -pipe -fno-ident -I/c/mingw810/x86_64-810-posix-sjlj-rt_v6-rev0/mingw64/opt/include -I/c/mingw810/prerequisites/x86_64-zlib-static/include -I/c/mingw810/prerequisites/x86_64-w64-mingw32-static/include' CXXFLAGS='-O2 -pipe -fno-ident -I/c/mingw810/x86_64-810-posix-sjlj-rt_v6-rev0/mingw64/opt/include -I/c/mingw810/prerequisites/x86_64-zlib-static/include -I/c/mingw810/prerequisites/x86_64-w64-mingw32-static/include' CPPFLAGS=' -I/c/mingw810/x86_64-810-posix-sjlj-rt_v6-rev0/mingw64/opt/include -I/c/mingw810/prerequisites/x86_64-zlib-static/include -I/c/mingw810/prerequisites/x86_64-w64-mingw32-static/include' LDFLAGS='-pipe -fno-ident -L/c/mingw810/x86_64-810-posix-sjlj-rt_v6-rev0/mingw64/opt/lib -L/c/mingw810/prerequisites/x86_64-zlib-static/lib -L/c/mingw810/prerequisites/x86_64-w64-mingw32-static/lib '
+Thread model: posix
+gcc version 8.1.0 (x86_64-posix-sjlj-rev0, Built by MinGW-W64 project)
+```
+
+可以查看gcc版本号，target，Configured
+
+
+#### Ubuntu gcc -v
+```
+(base) ➜  ~ gcc -v
+Using built-in specs.
+COLLECT_GCC=gcc
+COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper
+OFFLOAD_TARGET_NAMES=nvptx-none
+OFFLOAD_TARGET_DEFAULT=1
+Target: x86_64-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Ubuntu 7.5.0-3ubuntu1~18.04' --with-bugurl=file:///usr/share/doc/gcc-7/README.Bugs --enable-languages=c,ada,c++,go,brig,d,fortran,objc,obj-c++ --prefix=/usr --with-gcc-major-version-only --program-suffix=-7 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-libmpx --enable-plugin --enable-default-pie --with-system-zlib --with-target-system-zlib --enable-objc-gc=auto --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu
+Thread model: posix
+gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04)
 ```
 
   ## misc
