@@ -18,7 +18,7 @@ windows系统：使用的时候只需要在vcpkg的安装目录下运行terminal
 
 
 另外，vcpkg默认安装32位的包，为了让它安装64位的包，可以添加系统环境变量：
-`VCPKG_DEFAULT_TRIPLET=x64-windows`
+`set VCPKG_DEFAULT_TRIPLET=x64-windows`，默认是x86架构：`set VCPKG_DEFAULT_TRIPLET=x86-windows`
 
 ### VS
 
@@ -34,6 +34,137 @@ windows系统：使用的时候只需要在vcpkg的安装目录下运行terminal
 ```cmd
 > cmake -B [build directory] -S . -DCMAKE_TOOLCHAIN_FILE=[path to vcpkg]/scripts/buildsystems/vcpkg.cmake
 > cmake --build [build directory]
+```
+## arch
+
+### files
+```
+buildtrees/
+    protobuf/
+        x86-windows-rel/
+        x86-windows-dbg/
+        x64-windows-rel/
+        x64-windows-dbg/
+docs/
+downloads/
+installed/
+    vcpkg/
+    x64-windows/
+        bin/*.dll
+        include/
+        debug/
+        lib/
+        tools/
+    x86-windows/
+scripts/
+toolsrc/
+packages/
+    7zip_x86-windows/
+        bin/
+        include/
+        debug/
+        lib/
+        tools/
+ports/ 
+    protobuf/ 
+        portfile.cmake
+triplets/
+    community/*.cmake
+    x64-windows.cmake
+    x86-windows.cmake
+    x64-linux.cmake
+bootstrap-vcpkg.bat
+bootstrap-vcpkg.sh
+README.md
+README_es.md
+README_fr.md
+README_zh_CN.md
+CHANGELOG.md
+CONTRIBUTING.md
+
+vcpkg.exe
+LICENSE.txt
+NOTICE.txt
+```
+
+- ports 包含上千个库的描述信息。
+- buildtrees 本地的编译文件？
+- packages 包含包文件夹，和installed文件夹有什么区别？
+- installed 包含包文件夹
+
+## demo
+
+### vcpkg search 
+```
+H:\Project\tmp\vcpkg>vcpkg  search 7zip
+7zip                 19.00#2          Library for archiving file with a high compression ratio.
+
+If your library is not listed, please open an issue at and/or consider making a pull request:
+    https://github.com/Microsoft/vcpkg/issues
+```
+
+### vcpkg install
+```
+H:\Project\tmp\vcpkg>vcpkg install 7zip
+Your feedback is important to improve Vcpkg! Please take 3 minutes to complete our survey by running: vcpkg contact --su
+rvey
+Computing installation plan...
+The following packages will be built and installed:
+    7zip[core]:x86-windows
+Detecting compiler hash for triplet x86-windows...
+A suitable version of git was not found (required v2.26.2). Downloading portable git v2.26.2...
+Downloading git...
+  https://github.com/git-for-windows/git/releases/download/v2.26.2.windows.1/PortableGit-2.26.2-32-bit.7z.exe -> H:\Proj
+ect\tmp\vcpkg\downloads\PortableGit-2.26.2-32-bit.7z.exe
+Extracting git...
+A suitable version of 7zip was not found (required v18.1.0). Downloading portable 7zip v18.1.0...
+Extracting 7zip...
+A suitable version of nuget was not found (required v5.5.1). Downloading portable nuget v5.5.1...
+Downloading nuget...
+  https://dist.nuget.org/win-x86-commandline/v5.5.1/nuget.exe -> H:\Project\tmp\vcpkg\downloads\22ea847d-nuget.exe
+A suitable version of powershell-core was not found (required v7.0.3). Downloading portable powershell-core v7.0.3...
+Downloading powershell-core...
+  https://github.com/PowerShell/PowerShell/releases/download/v7.0.3/PowerShell-7.0.3-win-x86.zip -> H:\Project\tmp\vcpkg
+\downloads\PowerShell-7.0.3-win-x86.zip
+Extracting powershell-core...
+Starting package 1/1: 7zip:x86-windows
+Building package 7zip[core]:x86-windows...
+Could not locate cached archive: C:\Users\admin\AppData\Local\vcpkg\archives\5d\5dc2397d7a28d0f7a4d6666bf3352d03eab45630
+.zip
+-- Downloading https://www.7-zip.org/a/7z1900-src.7z...
+-- Extracting source H:/Project/tmp/vcpkg/downloads/7z1900-src.7z
+-- Using source at H:/Project/tmp/vcpkg/buildtrees/7zip/src/19.00-d6071f9706.clean
+-- Configuring x86-windows
+-- Building x86-windows-dbg
+-- Building x86-windows-rel
+-- Warning: Could not find a matching pdb file for:
+    H:/Project/tmp/vcpkg/packages/7zip_x86-windows/bin/7zip.dll
+    H:/Project/tmp/vcpkg/packages/7zip_x86-windows/debug/bin/7zip.dll
+
+-- Installing: H:/Project/tmp/vcpkg/packages/7zip_x86-windows/share/7zip/copyright
+-- Performing post-build validation
+-- Performing post-build validation done
+Stored binary cache: C:\Users\admin\AppData\Local\vcpkg\archives\5d\5dc2397d7a28d0f7a4d6666bf3352d03eab45630.zip
+Building package 7zip[core]:x86-windows... done
+Installing package 7zip[core]:x86-windows...
+Installing package 7zip[core]:x86-windows... done
+Elapsed time for package 7zip:x86-windows: 1.24 min
+
+Total elapsed time: 2.526 min
+
+The package 7zip:x86-windows provides CMake targets:
+
+    find_package(7zip CONFIG REQUIRED)
+    target_link_libraries(main PRIVATE 7zip::7zip)
+
+```
+
+### vcpkg list
+```
+
+H:\Project\tmp\vcpkg>
+H:\Project\tmp\vcpkg>vcpkg list
+7zip:x86-windows                                   19.00#2          Library for archiving file with a high compressi...
 ```
 
 ## help
