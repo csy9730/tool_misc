@@ -6,19 +6,11 @@
 
 一款强大的音视频处理开源库。
 
-#### 相关概念
+### 相关概念
 
-- 音/视频流
-
-  在音视频领域，一路音/视频成为一路流。
-
-- 容器
-
-  一般把mp4、flv、mov等文件格式称之为容器。在这些常用格式文件中可以存放多路音视频文件。以mp4为例，可以存放一路视频流，多路音频流，多路字幕流。
-
-- channel
-
-  channel是音频中的概念，称之为声道，在一路音频流中可以有单声道、双声道和立体声。
+- 音/视频流 在音视频领域，一路音/视频成为一路流。
+- 容器  一般把mp4、flv、mov等文件格式称之为容器。在这些常用格式文件中可以存放多路音视频文件。以mp4为例，可以存放一路视频流，多路音频流，多路字幕流。
+- channel  channel是音频中的概念，称之为声道，在一路音频流中可以有单声道、双声道和立体声。
 
 #### ffmpeg命令
 
@@ -35,16 +27,14 @@ ffmpeg -list_devices true -f dshow -i dummy
 ```
 
 #### 音视频录制
-
-- screen-capture-recorder
-
-```
-下载地址https://github.com/rdp/screen-capture-recorder-to-video-windows-free/releases
+##### screen-capture-recorder
+下载地址[https://github.com/rdp/screen-capture-recorder-to-video-windows-free/releases](https://github.com/rdp/screen-capture-recorder-to-video-windows-free/releases)
 桌面采集工具，可以用来录制桌面
 自带虚拟音频捕获器，录制桌面的音频
-需要安装javajre
+需要安装java jre
 它还包括一个免费的、通用的、开源的DirectShow桌面/屏幕源捕获过滤器。
 配合ffmpeg录屏
+```
 ffmpeg -f dshow  -i video="screen-capture-recorder"  -r 20 -t 10 screen-capture.mp4 
 # -t 10 for 10 seconds recording
 ```

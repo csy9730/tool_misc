@@ -16,17 +16,14 @@ MPP是瑞芯微提供的媒体处理软件平台，适用于瑞芯微芯片系�
 
 **2、系统架构**
 
-**![img](https://img2018.cnblogs.com/blog/1279278/201812/1279278-20181209103406454-531110161.png)**
+![img](https://img2018.cnblogs.com/blog/1279278/201812/1279278-20181209103406454-531110161.png)
 
-Hardware：硬件层，视频编解码硬件加速模块；
 
-Kernel driver：内核驱动层，Linux内核的编码器硬件驱动设备；
-
-MPP层：MPP层屏蔽了不同操作系统和不同芯片平台的差异，为使用者提供统一的MPI接口，包括MPI模块，OSAL模块，NAL模块以及编解码模块（video decoder、video encoder）、视频处理模块（video process）；
-
-操作系统层：MPP的运行平台；
-
-应用层：MPP层通过MPI对接各种中间件软件，如ffmpeg、gstreamer；
+- Hardware：硬件层，视频编解码硬件加速模块；
+- Kernel driver：内核驱动层，Linux内核的编码器硬件驱动设备；
+- MPP层：MPP层屏蔽了不同操作系统和不同芯片平台的差异，为使用者提供统一的MPI接口，包括MPI模块，OSAL模块，NAL模块以及编解码模块（video decoder、video encoder）、视频处理模块（video process）；
+- 操作系统层：MPP的运行平台；
+- 应用层：MPP层通过MPI对接各种中间件软件，如ffmpeg、gstreamer；
 
 **3、编译安装**
 
