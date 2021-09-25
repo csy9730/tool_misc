@@ -10,7 +10,7 @@ nmap 执行（至少）两步操作，一个是主机发现（Ping），另一�
 
 ## ping扫描
 
-### sP
+### -sP
 ping扫描：扫描192.168.0.0/24网段上有哪些主机是存活的；
  
 ```
@@ -58,10 +58,10 @@ MAC Address: 00:09:6B:50:71:26 (IBM)
 Nmap finished: 256 IP addresses (20 hosts up) scanned in 3.818 seconds
 ```
 
-### sn
+### -sn
 -sn: Ping Scan - disable port scan
 
-### Pn
+### -Pn
  -Pn: Treat all hosts as online -- skip host discovery
 
 

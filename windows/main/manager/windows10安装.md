@@ -7,44 +7,45 @@
   * Professional
   * Enterprise
   * Education
-  * 其他功能
-    * IoT
-    * mobile
-    * workstations
+* 其他功能
+  * 正常版本
+  * IoT 嵌入式设备版？
+  * mobile 移动设备版？
+  * workstations 工作站版？
 * 批量区分：
-  * consumer
-  * business
+  * consumer 零售版
+  * business 批量版
 * 32位和64位区分
   * x86
   * x64
 * 语言区分
   * en
   * cn
+  * 其他语言
 
 
 * windows 10 business editions
 * windows 10 Home editions      
 * windows 10 Professional editions 
 * windows 10 education editions  
+  
 * windows 10 mobile editions    
 * windows 10 IoT editions 
 * windows 10 Pro for workstations   
 
 ### 功能划分
-Home editions  是入门级版本，细分多种语言版本（如英文版/ 中文版）。
-专业版，比家庭版有更多功能。
-企业版，比专业版更多功能。
-教育版：功能相当于企业版，但是多了屏幕水印？
-☆LTSB版：相当于官方精简版。
+
+- ☆LTSA版：相当于官方精简版。LTSA的下一个版本是LTSB，LTSB的下一个版本是LTSC。
 
 Windows 10 各版本区别：
-家庭版(Home)：供家庭用户使用，无法加入Active Directory和Azure AD，不允许远程链接
-专业版(Professional)：供小型企业使用 在家庭版基础上增加了域账号加入、bitlocker、企业商店等功能
-企业版(Enterprise)：供中大型企业使用 在专业版基础上增加了DirectAccess，AppLocker等高级企业功能
-教育版(Education)：供学校使用 (学校职员, 管理人员, 老师和学生) 其功能基本和企业版的一样
-LTSB版,长期支持更新分支（Long Time Service Branch）：无Edge浏览器、小娜，无磁贴，可选是否下载和安装补丁，其它版都不能自选补丁
-N版：带“N”的版本相当于阉割版，移除了Windows Media Player，几乎用不到N版。
-Windows 10 企业版（和教育版功能一样，功能最完整版本）
+- 家庭版(Home)：是入门级版本，细分多种语言版本（如英文版/ 中文版）。供家庭用户使用，无法加入Active Directory和Azure AD，不允许远程链接  
+- 专业版(Professional)：供小型企业使用 在家庭版基础上增加了域账号加入、bitlocker、企业商店等功能
+- 企业版(Enterprise)：供中大型企业使用 在专业版基础上增加了DirectAccess，AppLocker等高级企业功能
+- 教育版(Education)：供学校使用 (学校职员, 管理人员, 老师和学生) 其功能基本和企业版的一样，但是显示屏多了屏幕水印？
+- LTSB版,长期支持更新分支（Long Time Service Branch）：无Edge浏览器、小娜，无磁贴，可选是否下载和安装补丁，其它版都不能自选补丁
+  
+- N版：带“N”的版本相当于阉割版，移除了Windows Media Player，几乎用不到N版。
+
 
 一、核心功能
 ①熟悉，更好用：自定义开始菜单，Windows Defender 与Windows防火墙，Hiberboot与InstantGo，系统启动更快速，TPM支持，节电模式，Windows更新
@@ -59,18 +60,18 @@ Windows 10 企业版（和教育版功能一样，功能最完整版本）
 ③安全：Microsoft Passport登录，企业数据保护，凭据保护，设备保护
 ④Windows即服务：Windows更新，Windows Update for Business，Current Branch for Business（用于企业的当前更新分支）
 
-Windows 10 教育版
+##### Windows 10 教育版
 
 与企业板功能一致，授权方式不同，可轻松从家庭版升级到教育版，（经过测试专业版也可以通过输入教育版key升级到教育版）
 
-Windows 10 专业版
+##### Windows 10 专业版
 
 与企业版对比【无】以下功能：
 ①基础功能：Direct Access（直接访问），Windows To Go创建工具，Applocker（应用程序锁定），BranchCache（分支缓存），可通过组策略控制的开始屏幕，
 ②管理部署功能：粒度UX控制
 ③安全：凭据保护，设备保护
 
-Windows 10 家庭版
+##### Windows 10 家庭版
 与专业版对比【无】以下功能：
 ①基础功能：加入域功能，组策略管理器，Bitlocker加密，企业模式Internet Explorer浏览器（EMIE），Assigned Access 8.1（访问分配），远程桌面，Direct Access（直接访问），Windows To Go创建工具，Applocker（应用程序锁定），BranchCache（分支缓存），可通过组策略控制的开始屏幕，
 
@@ -80,17 +81,20 @@ Windows 10 家庭版
 
 ④Windows即服务：Windows Update for Business，Current Branch for Business（用于企业的当前更新分支）
 
+##### Windows 10 LTSB
 Windows 10 企业版长期服务分支2015 LTSB
 
 与企业版功能一致，可手动设置更新服务，无Edge浏览器，无商店
+##### Windows 10 LTSC
+win10企业版ltsc  (Long-Term Servicing Channel)又被称为win10企业版2019长期服务版本，在win10企业版2016长期服务版本的基础上，做了很多优化。因为功能得到简化，是目前最流畅的系统版本之一。
 
-
-#### consumer&business
+#### consumer editions & business editions
 
 vol是 volume licensing for organizations 的简称，中文即“团体批量许可证”。根据这个许可，当企业或者政府需要大量购买一软件时可以获得优惠。这种产品的光盘的卷标都带有"vol"字样，就取"volume"前3个字母，以表明是批量。
 consumer editions是 零售版本，business editions是 VOL 版本。
-Consumer editions包括：家庭版、教育版、专业版；
-Business editions包括：企业版、教育版、专业版
+
+- Consumer editions包括：家庭版、教育版、专业版；
+- Business editions包括：企业版、教育版、专业版
 零售版系统中包含了：Home,Education,Pro（家庭版、专业版、家庭单语言、教育版、专业工作站版、专业教育版），其实就是就是之前家庭版专业版的合集
 VOL版系统中包含了：Education ,Enterprise,Pro（专业版、企业版、教育版、专业工作站版、专业教育版）
 
@@ -120,32 +124,9 @@ VOL可以用MAK用激活或者KMS激活（180天循环一次）。。。
 ## 激活
 
 首先用用户管理员权限打开cmd工具或powershell工具
-``` bash
-# 激活系统提示非核心版本的计算机上解决方法
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform]
-"SkipRearm"=dword:00000001
-# 重置计算机授权状态
-SLMGR -REARM 
 
-# 家庭版
-slmgr.vbs -ipk PVMJN-6DFY6-9CCP6-7BKTT-D3WVR
-# 安装Win10专业版激活码
-slmgr.vbs -ipk NKJFK-GPHP7-G8C3J-P6JXR-HQRJR 
-# 安装Win10企业版激活码
-slmgr.vbs -ipk PBHCJ-Q2NYD-2PX34-T2TD6-233P  
-# 激活产品密钥
-slmgr.vbs -ato
-# 显示许可证截止日期
-slmgr /xpr
-# 清空原有密钥
-slmgr -upk  
-# 查看slmgr帮助信息
-slmgr
-# 打开激活码输入对话框
-slue.exe
-```
 
-slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX
+
 
 ### 激活码
 win10系统永久激活码：
@@ -226,13 +207,13 @@ Win 10 Pro Education N Volume:MAK批量授权版
 [Key]：T9NFD-3RDH8-GF4RT-Q2K6F-KBVYR
 
 
-win10企业版ltsc  (Long-Term Servicing Channel)又被称为win10企业版2019长期服务版本，在win10企业版2016长期服务版本的基础上，做了很多优化。因为功能得到简化，是目前最流畅的系统版本之一。
 win10企业版ltsc激活密钥：
 M7XTQ-FN8P6-TTKYV-9D4CC-J462D
 MBQRK-FNDW8-B7GF4-V9PCW-6MV77
 
 首先 WIN+X 打开”PowerShell 管理员版本”
 逐条输入以下代码：
+
 ``` powershell
 slmgr -ipk M7XTQ-FN8P6-TTKYV-9D4CC-J462D
 # 指定激活服务器
@@ -241,6 +222,42 @@ slmgr -ato # 查看激活状态
 slmgr -dlv
 slmgr.vbs -xpr # 查看激活时间，180天后过期
 
+```
+
+### slmgr.vbs
+
+``` bash
+
+
+# 重置计算机授权状态
+SLMGR -REARM 
+
+# 安装Win10家庭版激活码
+slmgr.vbs -ipk PVMJN-6DFY6-9CCP6-7BKTT-D3WVR
+# 安装Win10专业版激活码
+slmgr.vbs -ipk NKJFK-GPHP7-G8C3J-P6JXR-HQRJR 
+# 安装Win10企业版激活码
+slmgr.vbs -ipk PBHCJ-Q2NYD-2PX34-T2TD6-233P 
+
+slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX
+
+# 激活产品密钥
+slmgr.vbs -ato
+# 显示许可证截止日期
+slmgr /xpr
+# 清空原有密钥
+slmgr -upk  
+# 查看slmgr帮助信息
+slmgr
+# 打开激活码输入对话框
+slue.exe
+```
+
+#### misc
+激活系统提示非核心版本的计算机上解决方法
+``` ini
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform]
+"SkipRearm"=dword:00000001
 ```
 
 ## misc

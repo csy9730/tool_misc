@@ -1,0 +1,5 @@
+# Denyhosts vs fail2ban vs iptables- best way to prevent brute force logons
+
+> IIRC, DenyHosts will only watch your SSH service. If you need it to protect other services as well, Fail2ban is definitely a better choice. It is configurable to watch nearly any service if you are willing to tweak its configuration, but that shouldn't be necessary as the newer versions of Fail2ban include rulesets which are suitable for many popular server daemons. Using fail2ban over a simple iptables rate limit has the advantage of completely blocking an attacker for a specified amount of time, instead of simply reducing how quickly he can hammer your server. I've used fail2ban with great results on a number of production servers and have never seen one of those servers breached by a brute force attack since I've started using it.
+
+fail2ban使用iptables，而DenyHosts使用hosts.deny
