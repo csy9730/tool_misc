@@ -3,7 +3,16 @@
 命令描述：
 ethtool 是用于查询及设置网卡参数的命令。
 
+## install
+`apt install ethtool`
+
+
+## 使用概要
+
+
+
 使用概要：
+
 ethtool ethx       //查询ethx网口基本设置，其中 x 是对应网卡的编号，如eth0、eth1等等
 ethtool –h        //显示ethtool的命令帮助(help)
 ethtool –i ethX    //查询ethX网口的相关信息 
@@ -23,6 +32,36 @@ ethtool eth0 –s  speed 1000 duplex full autoneg on
 
 ethtool -s eth1 autoneg off speed 100 duplex full
 ethtool -s eth0 speed 1000 duplex full autoneg on
+```
+### 查询网卡
+```
+
+(base) ➜  ~ ethtool eno1
+Settings for eno1:
+        Supported ports: [ TP ]
+        Supported link modes:   10baseT/Half 10baseT/Full
+                                100baseT/Half 100baseT/Full
+                                1000baseT/Full
+        Supported pause frame use: No
+        Supports auto-negotiation: Yes
+        Supported FEC modes: Not reported
+        Advertised link modes:  10baseT/Half 10baseT/Full
+                                100baseT/Half 100baseT/Full
+                                1000baseT/Full
+        Advertised pause frame use: No
+        Advertised auto-negotiation: Yes
+        Advertised FEC modes: Not reported
+        Speed: Unknown!
+        Duplex: Unknown! (255)
+        Port: Twisted Pair
+        PHYAD: 2
+        Transceiver: internal
+        Auto-negotiation: on
+        MDI-X: Unknown (auto)
+Cannot get wake-on-lan settings: Operation not permitted
+        Current message level: 0x00000007 (7)
+                               drv probe link
+        Link detected: no
 ```
 
 
