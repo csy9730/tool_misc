@@ -51,7 +51,7 @@ gdbserver 支持串口/网口和pc相连，这里推荐网线连接。直接把p
     inet6 fe80::214:97ff:fe30:72db/64 scope link
        valid_lft forever preferred_lft forever
 ```
-可以看到ip地址是 `192.168.1.136`
+可以看到有线网卡是`eth0`，对应的ip地址是 `192.168.1.136`
 
 在开发板上，可以通过 `ifconfig eth0 X.X.X.X netmask 255.255.255.0` 命令修改ip地址为目标地址 X.X.X.X 。
 
