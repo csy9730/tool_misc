@@ -8,12 +8,12 @@ cnblogs原创
 
 下面几种bash重定向各表示什么意思？
 
-```
-1 find / -name passwd > /dev/null
-2 find / -name passwd > /dev/null 2>&1
-3 find / -name passwd 2> /dev/null
-4 find / -name passwd &> /dev/null
-5 find / -name passwd >& /dev/null
+``` bash
+find / -name passwd > /dev/null
+find / -name passwd > /dev/null 2>&1
+find / -name passwd 2> /dev/null
+find / -name passwd &> /dev/null
+find / -name passwd >& /dev/null
 ```
 
 上面有5种重定向，分别表示：
