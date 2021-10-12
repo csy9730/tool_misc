@@ -1,5 +1,7 @@
 # nm
 
+nm 支持obj文件和可执行文件，可以从静态库和动态库中获取到函数名称。均可以获得其中的函数，全局变量。
+
 ```
 nm --help
 用法：nm [选项] [文件]
@@ -50,7 +52,7 @@ nm：支持的目标： elf64-x86-64 elf32-i386 elf32-iamcu elf32-x86-64 a.out-i
 
 ## demo
 
-
+### nm
 ```
 DESKTOP-CTAGE42# nm librknn_obfs.a 
 
@@ -64,7 +66,7 @@ rknn_decryption.cpp.o:
                  U zal_deobfs_model
 ```
 
-
+### nm -D
 ```
 DESKTOP-CTAGE42# nm -D zal_obfs       
 00000000000028a0 R _IO_stdin_used
@@ -102,7 +104,7 @@ DESKTOP-CTAGE42# nm -D zal_obfs
 0000000000001b84 T zal_obfs_model
 0000000000000e6b T zal_obfskey_model
 ```
-
+### nm -X
 ```
 DESKTOP-CTAGE42# nm -X 32_64  zal_obfs
 0000000000202d60 d _DYNAMIC
@@ -158,8 +160,8 @@ DESKTOP-CTAGE42# nm -X 32_64  zal_obfs
 
 ## misc
 
-1. 命令 nm -D，如下所示：
-2. 命令 objdump -tT，如下所示：
+1. 命令 `nm -D`，如下所示：
+2. 命令 `objdump -tT`，如下所示：
 
 ``` bash
 nm -D liblistdevs.so > listdevs.txt　　# 列出 liblistdevs.so 的函数 输出到 listdevs.txt 文本文件里面
