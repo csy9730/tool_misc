@@ -1,19 +1,40 @@
 # pandoc
 
-## install
+[Pandoc](https://pandoc.org/)可以将文档在 Markdown、LaTeX、reStructuredText、HTML、Word docx 等多种标记格式之间相互转换，并支持输出 PDF、EPUB、HTML 幻灯片等多种格式。该程序被称为格式转换界的 “瑞士军刀”。
 
+Pandoc 的作者是 John MacFarlane，他是加州大学伯克利分校的哲学系教授。Pandoc 使用 Haskell 语言编写，被作者用来生成讲义、课件和网站等。该程序开源免费，目前以 GPL 协议托管在 Github 网站上。
+
+## install
+### apt-get
+sudo apt-get install pandoc
+### Anaconda
+如果你已经安装了 Anaconda，那么你可以直接使用 Pandoc 了。该程序已经被集成到 Anaconda 中。
 ## demo
 
 
+``` bash
+# markdwon to html
 pandoc sphinx.md -f markdown -t html -s -o sphinx.html
+
+# html to markdown
 pandoc sphinx.html -f html -t markdown -s -o sphinx.md
 
+pandoc sphinx.md -f markdown -t pdf -s -o sphinx.pdf --pdf-engine "E:\Program Files\MiKTeX\miktex\bin\x64\pdflatex.exe"
+
+
+```
 
 
 
 ```
-[frank@LAPTOP-0OCJTGJR pandoc]$ pandoc test1.md -f markdown -t html -s -o test1.html[frank@LAPTOP-0OCJTGJR pandoc]$ lltotal 4-rw-rw-r-- 1 frank frank 629 Feb  4 22:06 test1.html-rw-rw-r-- 1 frank frank  81 Feb  4 22:05 test1.md
+[frank@LAPTOP-0OCJTGJR pandoc]$ pandoc test1.md -f markdown -t html -s -o test1.html
+
+[frank@LAPTOP-0OCJTGJR pandoc]$ ll
+total 4
+-rw-rw-r-- 1 frank frank 629 Feb  4 22:06 test1.html
+-rw-rw-r-- 1 frank frank  81 Feb  4 22:05 test1.md
 ```
+
 ## help
 ```
 
@@ -113,3 +134,21 @@ pandoc [OPTIONS] [FILES]
   -v                    --version
   -h                    --help
 ```
+
+## misc
+
+### pdflatex not found
+```
+pdflatex not found. Please select a different --pdf-engine or install pdflatex
+
+```
+
+首先需要安装latex软件，这里选择[MiKTeX](https://miktex.org/)
+
+安装完成之后，通过pdf-engine指定目标程序。
+```
+pandoc sphinx.md -f markdown -t pdf -s -o sphinx.pdf --pdf-engine "E:\Program Files\MiKTeX\miktex\bin\x64\pdflatex.exe"
+```
+
+
+> pdf-engine must be one of wkhtmltopdf, weasyprint, prince, pdflatex, lualatex, xelatex, latexmk, tectonic, pdfroff, context

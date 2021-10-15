@@ -1,5 +1,7 @@
 # sphinx
 
+sphinx 适用于book的生成。
+
 支持以下格式
 * htmlview
 * html
@@ -11,12 +13,15 @@
 
 * sphinx-apidoc.exe
 * sphinx-autogen.exe
-* sphinx-build.exe
-* sphinx-quickstart.exe
+* sphinx-build.exe 核心命令
+* sphinx-quickstart.exe 生成项目，包括conf.bat，makefile
 
 ```
 sphinx-build.exe . build -a  -b
+
 ```
+
+
 ### make.bat
 #### format
 
@@ -43,6 +48,8 @@ frequent Q&A
 
 ## help
 ### sphinx_quickstart
+
+sphinx_quickstart 可以通过交互方式生成makefile和命令行。
 
 ```
 (jupt) D:\projects\docs>sphinx-quickstart.exe --help
@@ -111,6 +118,7 @@ For more information, visit <http://sphinx-doc.org/>.
 ```
 
 ### sphinx_build
+可以基于源目录生成目标在目标目录。
 ```
 
 (jupt) D:\projects\>sphinx-build  --help
