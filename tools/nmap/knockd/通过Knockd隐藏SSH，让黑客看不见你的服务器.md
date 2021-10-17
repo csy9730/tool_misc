@@ -42,26 +42,26 @@ apt-get install knockd -y
 
 配置解释：
 
-```text
+``` ini
 [options]
-UseSyslog //用来定义日志输出位置以及文件名
+UseSyslog # 用来定义日志输出位置以及文件名
 
 [openSSH]
-sequence = 7000,8000,9000 //设置（开门）敲门顺序，可以自定义
-seq_timeout = 5 //设置超时时间
-command = /sbin/iptables ‐A INPUT ‐s %IP% ‐p tcp ‐‐dport 22 ‐j ACCEPT //开门成功后添加防火墙规则命令（打开SSH端口）
+sequence = 7000,8000,9000 # 设置（开门）敲门顺序，可以自定义
+seq_timeout = 5 # 设置超时时间
+command = /sbin/iptables ‐A INPUT ‐s %IP% ‐p tcp ‐‐dport 22 ‐j ACCEPT # 开门成功后添加防火墙规则命令（打开SSH端口）
 tcpflags = syn
 
 [closeSSH]
-sequence = 9000,8000,7000 //设置（关门）敲门顺序，与开门顺序相反
-seq_timeout = 5 //设置超时时间
-command = /sbin/iptables ‐D INPUT ‐s %IP% ‐p tcp ‐‐dport 22 ‐j ACCEPT //关门成功后删除之前添加的防火墙规则（关闭SSH端口）
+sequence = 9000,8000,7000 # 设置（关门）敲门顺序，与开门顺序相反
+seq_timeout = 5 # 设置超时时间
+command = /sbin/iptables ‐D INPUT ‐s %IP% ‐p tcp ‐‐dport 22 ‐j ACCEPT # 关门成功后删除之前添加的防火墙规则（关闭SSH端口）
 tcpflags = syn
 ```
 
 接下来对/etc/knockd.conf进行配置
 
-```text
+``` ini
 [options]
 #UseSyslog
 LogFile = /knock.log #配置日志路径
@@ -69,7 +69,7 @@ LogFile = /knock.log #配置日志路径
 [openSSH]
 sequence = 7000,8000,9000
 seq_timeout = 5
-command = /sbin/iptables ‐I INPUT ‐s 192.168.61.130 ‐p tcp ‐‐dport 22 ‐j ACCEPT //这里把A改成I,让knockd插入的规则能够优先生效
+command = /sbin/iptables ‐I INPUT ‐s 192.168.61.130 ‐p tcp ‐‐dport 22 ‐j ACCEPT # 这里把A改成I,让knockd插入的规则能够优先生效
 tcpflags = syn
 
 [closeSSH]
@@ -85,13 +85,13 @@ tcpflags = syn
 
 然后重启下knockd服务
 
-service knock restart
+`service knock restart`
 
 ![img](https://pic3.zhimg.com/80/v2-e59ad74f3e241f5dffbdc4296a3df652_1440w.png)
 
 然后我们在Ubuntu的防火墙上添加几条规则
 
-```text
+``` bash
 iptables ‐A INPUT ‐s 192.168.61.1 ‐j ACCEPT //允许宿主机连接，方便实验的时候可以用SSH进行连接
 iptables ‐A INPUT ‐s 127.0.0.0/8 ‐j ACCEPT //允许本机的连接
 iptables ‐A INPUT ‐j DROP //拒绝其他所有IP的连接
@@ -101,7 +101,7 @@ iptables ‐A INPUT ‐j DROP //拒绝其他所有IP的连接
 
 我们在Kali上用nmap对Ubuntu的22端进行探测，可以看到22端口的状态是被过滤了
 
-```text
+``` bash
 nmap ‐sC ‐Pn ‐sV ‐p 22 ‐A 192.168.61.135
 ```
 
@@ -109,7 +109,7 @@ nmap ‐sC ‐Pn ‐sV ‐p 22 ‐A 192.168.61.135
 
 接下来我们用nmap进行敲门
 
-```text
+``` bash
 for x in 7000 8000 9000;do nmap ‐Pn ‐‐max‐retries 0 ‐p $x 192.168.61.135;done
 ```
 

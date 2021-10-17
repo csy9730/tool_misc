@@ -1,8 +1,6 @@
 # openstack
 
-
-IaaS，PaaS，SaaS三层架构
-openstack 属于 Iaas层。
+云服务$IaaS，PaaS，SaaS三层架构，openstack 属于 Iaas层。
 
 
 

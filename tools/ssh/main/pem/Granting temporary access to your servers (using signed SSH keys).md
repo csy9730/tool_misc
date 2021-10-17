@@ -188,6 +188,8 @@ Make sure that file permissions are set correctly. The easiest way to have stric
 Permissions 0644 for '.ssh/id_ed25519-cert.pub' are too open. It is required that your private key files are NOT accessible by others. This private key will be ignored.
 ```
 
+`sudo chmod 700 *`
+
 ### Conclusion
 
 The configuration and options of SSH are very powerful. This gem is not commonly used, but very powerful to restrict access. It might be a great option to provide temporary access during holidays, or when an external party needs access for just one day. In upcoming blog posts we will dive deeper into the other options.

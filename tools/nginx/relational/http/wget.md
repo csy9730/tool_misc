@@ -1,5 +1,12 @@
 # wget
 
+
+## demo
+```
+wget xxx
+wget -c xxx
+
+```
 ## help
 ```
 

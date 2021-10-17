@@ -45,7 +45,7 @@ sudo snap install shadowsocks-libev --edge
 
 下面是我们推荐的Shadowsocks-libev服务器配置：
 
-```txt
+``` json
 {
     "server":["::0","0.0.0.0"],
     "server_port":8388,

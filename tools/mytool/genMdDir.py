@@ -1,4 +1,6 @@
 import os
+import sys
+from jinja2 import Template
 
 
 template = """.. git documentation master file, created by
@@ -56,11 +58,6 @@ Welcome to git's documentation!
    extension/subtree/subtree.md
    extension/subtree/分离git仓库中的子目录并保留历史.md
 
-
-
-
-
-
 Indices and tables
 ==================
 
@@ -69,8 +66,26 @@ Indices and tables
 * :ref:`search`
 """
 
+rstTemplate = """
+.. toctree::
+   :maxdepth: 1
+   :caption: 扩展:
+   :numbered:
 
-def gen(pth):
+   {% for txt in txt_list -%}
+    {{ txt.path }}
+   {% endfor %}
+"""
+
+mdTemplate = """
+# readme
+
+{% for txt in txt_list -%}
+- [{{ txt.name }}]({{txt.path}})
+{% endfor %}
+"""
+
+def genMdfiles(pth):
     lst =[]
 
     for r, d, f in os.walk(pth):
@@ -79,40 +94,45 @@ def gen(pth):
                 p = os.path.join(r, k)
                 p = p.replace('\\', '/')
                 p=p.lstrip('./')
-                lst.append(p)
+                dct = {}
+                dct["path"] = p.replace(' ', '%20')
+                dct["name"] = os.path.basename(p)
+                lst.append(dct)
                 # print(i,j,k)
     return lst 
 
-"""
-    [
-        {"title":"foo",
-        "text":["foo.md","boo.rst"]}
-    ]
-"""
-def ren(lst):
-    from jinja2 import Template
-    template = """
-.. toctree::
-   :maxdepth: 1
-   :caption: 扩展:
-   :numbered:
 
-   {% for txt in txt_list -%}
-    {{ txt }}
-   {% endfor %}
-"""
+def genContent(lst, template):
     tp = Template(template)
     dct = {"txt_list": lst}
     txt = tp.render(**dct)
-    print(txt)
+    return txt
 
 
-def main():
-    pth = "."
-    lst = gen(pth)    
-    # for f in lst:
-        # print(f)  
-    ren(lst)
+def parse_args(cmds=None):
+    import argparse
+    parser = argparse.ArgumentParser(description="your script description")
+    parser.add_argument('path', default='.', help='path file')
+    parser.add_argument('--verbose', '-v', action='store_true', help='verbose mode')
+    parser.add_argument('--output', '-o', help='output file') 
+    parser.add_argument('--output-type', '-ot', choices=['rst', 'md'], default='md', help='output file type') 
+
+    args = parser.parse_args(cmds) 
+    return args
+
+def main(cmds=None):
+    args = parse_args(cmds)
+    lst = genMdfiles(args.path)  
+    if args.output_type == "md":
+        temp = mdTemplate
+    else:
+        temp = rstTemplate
+    txt = genContent(lst, temp)
+    if args.output:
+        with open(args.output, 'w') as fp:
+            fp.write(txt)
+    else:
+        print(txt)
 
 
 if __name__ == "__main__":

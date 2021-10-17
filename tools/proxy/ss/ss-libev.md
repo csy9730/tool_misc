@@ -5,16 +5,39 @@
 
 
 ``` bash
+# ubuntu 
 sudo apt-get update
 sudo apt-get install shadowsocks-libev
+
+# centos not found 
 ```
+
+## run
+
+
+### ss-local
+```
+root@DESKTOP-PGE4ABC:/mnt# ls /usr/bin/ss-*
+/usr/bin/ss-local  /usr/bin/ss-manager  /usr/bin/ss-nat  /usr/bin/ss-redir  /usr/bin/ss-server  /usr/bin/ss-tunnel
+```
+
+
+* ss-local 是将本地作为客户端，需要连接一个ss服务器，可以向本地提供socks5服务。
+* ss-server 是将本地作为服务端，向外部提供ss代理服务
+* ss-redir  实现透明代理
+* ss-nat
+* ss-tunnel 提供的**本地端口转发**工具，通常用于解决 dns 污染问题。
+* ss-manager
 
 ### start
 
+启动服务端: 
 ```
 /usr/bin/ss-server -c /etc/shadowsocks-libev/config.json
 
 ```
+
+
 #### daemon 
 ``` bash
 # Start
@@ -32,6 +55,24 @@ ls  /lib/systemd/system/shadowsocks-libev*
 shadowsocks-libev-local@.service   shadowsocks-libev-server@.service  shadowsocks-libev.service
 shadowsocks-libev-redir@.service   shadowsocks-libev-tunnel@.service
 ```
+## source
+
+#### config
+
+`/etc/shadowsocks-libev/config.json`
+
+
+``` json
+{
+    "server":"192.168.0.112",
+    "server_port":18188,
+    "local_port":1080,
+    "password":"123456",
+    "timeout":60,
+    "method":"aes-256-gcm"
+}
+```
+
 
 #### /etc/default/shadowsocks-libev
 ``` ini
@@ -180,34 +221,11 @@ WantedBy=multi-user.target
 
 以上脚本，本质是调用`/usr/bin/ss-local -c /etc/shadowsocks-libev/%i.json`
 
-#### config
 
-`/etc/shadowsocks-libev/config.json`
-
-
-``` json
-{
-    "server":"192.168.0.112",
-    "server_port":18188,
-    "local_port":1080,
-    "password":"123456",
-    "timeout":60,
-    "method":"aes-256-gcm"
-}
-```
 
 
 ## help
 
-
-```
-root@DESKTOP-PGE4ABC:/mnt# ls /usr/bin/ss-*
-/usr/bin/ss-local  /usr/bin/ss-manager  /usr/bin/ss-nat  /usr/bin/ss-redir  /usr/bin/ss-server  /usr/bin/ss-tunnel
-```
-
-* ssserver 是将本地作为服务端，向外部提供ss代理服务
-* sslocal 是将本地作为客户端，需要连接一个ss服务器，可以向本地提供socks5服务。
-* 
 
 ### ss-server
 ```

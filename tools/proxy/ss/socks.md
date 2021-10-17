@@ -65,22 +65,78 @@ chrome://net-internals/#sockets
 
 ### curl
 curl启动Socks5代理：
-`curl www.google.com --socks5 localhost:1080`
+`curl www.google.com -x socks5h://localhost:1080 `
 
 **Q** : curl: (7) Failed to receive SOCKS5 connect request ack.
 **A**: 
 
 curl: (56) Recv failure: Connection was reset
 
+
+``` bash
+# In curl >= 7.21.7, you can use 
+curl -x socks5h://localhost:1080 http://www.google.com/
+
+# In curl >= 7.18.0, you can use 
+curl --socks5-hostname localhost:1080 http://www.google.com/
+
+#  depreciated
+curl www.google.com --socks5 localhost:1080
+```
+
+
+```
+unset all_proxy; unset ALL_PROXY
+```
+### curl +  https_proxy
+直接在bash中启用 socks5代理：
+
+
+depreciated?
+``` bash
+export http_proxy="socks5://127.0.0.1:1080"
+export https_proxy="socks5://127.0.0.1:1080"
+
+curl www.google.com # fail
+```
+
+
+``` bash
+export http_proxy="socks5h://127.0.0.1:1080"
+export HTTPS_PROXY="socks5h://127.0.0.1:1080"
+
+curl www.google.com # success
+```
+
+
+
+
+### wget
+curl 支持 http、https、socks4、socks5
+
+wget 支持 http、https
+
+
+```
+wget www.google.com
+Error parsing proxy URL socks5://127.0.0.1:1080: Unsupported scheme ‘socks5’.
+```
+
+
 ### linux
 
 #### bash
-直接在bash中启用 socks5代理：
 
 ``` bash
-export http_proxy="socks5://127.0.0.1:41080"
-export https_proxy="socks5://127.0.0.1:41080"
+export http_proxy="socks5h://127.0.0.1:1080"
+export HTTPS_PROXY="socks5h://127.0.0.1:1080"
 ```
+
+```
+env http_proxy=socks5h://localhost:1080 HTTPS_PROXY=socks5h://localhost:1080 ALL_PROXY=socks5h://localhost:1080 PROG
+env ALL_PROXY=socks5h://localhost:1080  curl www.google.com
+```
+
 
 #### proxychains
 w3m 如何使用proxy？

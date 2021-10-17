@@ -23,23 +23,39 @@ fsh/zsh +tmux+ ssh
 
 ### other Terminal
 windows下可以使用的终端软件：
-cmd：不支持窗口最大，啥也不支持。。。
-powershell：不能完全支持tmux
-mintty： 支持tmux，支持窗口最大化，不支持python的标准输出，不能完全支持wsl，背景颜色丰富
-windows terminal：系统版本支持困难，
-wsl：复制黏贴需要鼠标右键， wsl的跨vim复制黏贴困难
-cmder： 使用ConEmu 核心	，支持migw的bash，不支持mingw的bash的tmux，支持wsl，支持wsl的tmux
+- cmd：不支持窗口最大，啥也不支持。。。
+- powershell：不能完全支持tmux
+- mintty： 支持tmux，支持窗口最大化，不支持python的标准输出，不能完全支持wsl，背景颜色丰富
+    - git bash
+- windows terminal：要求windows10系统版本较高，不支持低版本
+- cmder： 使用ConEmu 核心	，支持mingw的bash，不支持mingw的bash的tmux，支持wsl，支持wsl的tmux
 
-vscode： 输入输出缓冲区太小，支持wsl的跨vim复制黏贴
+
+- putty，Windows/Linux系统可用的ssh客户端软件，早期的开源的ssh终端，也支持串口。
+- MobaXterm，Windows系统可用的ssh客户端软件，一个个人免费的终端软件，功能完善，支持ssh/rdp/sftp多种协议
+- xshell：Windows系统可用的ssh客户端软件， 个人免费，商用收费的终端，支持ssh/sftp连接。
+- SecureCRT Windows/Linux系统可用的ssh客户端软件
+- SmarTTY ssh客户端软件
+- Terminals (Windows)ssh客户端软件
+- Remmina (Linux)ssh客户端软件
+-  [Termius](https://termius.com/)：支持全平台的ssh客户端软件， 个人限时免费，商用收费的终端。
+- JuiceSSH - SSH Client - Apps on Google Play
+
+
+
+- wsl：复制黏贴需要鼠标右键， wsl的跨vim复制黏贴困难
+
+
+- vscode： 输入输出缓冲区太小，支持wsl的跨vim复制黏贴
+  
+
 vscode 插件 Remote-WSL 可以在wsl安装vscode远程服务。
 通过F1 输入 Remote-WSL 可以 远程vscode窗口，左下角有WSL标志。
 体现为，所有路径是以 wsl系统作为基准，
 与vscode直接使用wsl作为终端有何区别？
 Remote-SSH,Remote-WSL,Remote-Containers
 
-MobaXterm，一个个人免费的终端软件，功能完善，支持ssh/rdp/sftp多种协议
-putty，早期的开源的ssh终端，也支持串口。
-xshell： 个人免费，商用收费的终端，支持ssh/sftp连接。
+
 
 xming可以实现windows下通过命令行启动linux程序，在windows下显示窗口
 
@@ -48,7 +64,7 @@ xming可以实现windows下通过命令行启动linux程序，在windows下显�
 
 Windows 的 cmd.exe（所使用的终端）很难用、对 Unicode 支持不佳、复制粘贴十分不便、支持的色彩和功能少、不能随意改变大小。
 
-Linux 的终端有很多很多，比如文本界面的虚拟终端、图形界面下的各种终端模拟器，还有运行于终端里的终端如 tmux、screen、fbterm、zhcon 等。它们通常都比较现代，菜单、键盘快捷键什么的一应俱全，字体渲染也比较好（当然不算文本界面和太古老的那些），有些还有很强的定制性（比如xterm、urxvt
+Linux 的终端有很多很多，比如文本界面的虚拟终端、图形界面下的各种终端模拟器，还有运行于终端里的终端如 tmux、screen、fbterm、zhcon 等。它们通常都比较现代，菜单、键盘快捷键什么的一应俱全，字体渲染也比较好（当然不算文本界面和太古老的那些），有些还有很强的定制性（比如xterm、urxvt）
 
 ### 多面版任务
 
