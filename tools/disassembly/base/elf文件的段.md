@@ -1,7 +1,7 @@
 # ELF
 
 
-### 
+### segment
 bss
 idata
 pdata
