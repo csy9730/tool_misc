@@ -1,16 +1,19 @@
 # Git Config
 
+git工具的配置，对应.gitconfig文件。
+
 ## main
 ### domain
 
 配置文件分成几种级别：global，local，system，file，worktree。
-global 是用户级配置
-system是系统级配置，对当前设备都适用？
-local是局部仓库级，只在当前仓库有效。这是默认优先级。
-worktree和local相似,属于仓库的分支配置？
-file是临时配置文件，提供单次的高优先级配置能力。
 
-按照使用范围划分：system> global > local > worktree > file
+- system是系统级配置，对当前设备都适用？ 对应 /etc/gitconfig
+- global 是用户级配置， 对应 ~/.gitconfig
+- local是局部仓库级，只在当前仓库有效。这是默认优先级。对应.git/config
+- worktree和local相似, 属于仓库的分支配置，对应.git/config.worktree
+- file是命令行临时指定的配置文件，提供单次的高优先级配置能力。
+
+按照使用范围划分：system > global > local > worktree > file
 优先级： system< global <  local< worktree <  file
 
 
@@ -22,6 +25,9 @@ file是临时配置文件，提供单次的高优先级配置能力。
 For writing options: write to global ~/.gitconfig file rather than the repository .git/config, write to $XDG_CONFIG_HOME/git/config file if this file exists and the ~/.gitconfig file doesn’t.
 For reading options: read only from global ~/.gitconfig and from $XDG_CONFIG_HOME/git/config rather than from all available files.
 See also FILES.
+
+对应 ~/.gitconfig
+
 
 > --system
 For writing options: write to system-wide $(prefix)/etc/gitconfig rather than the repository .git/config.
@@ -42,6 +48,45 @@ Use the given config file instead of the one specified by GIT_CONFIG.
 
 
 ### manager
+
+#### ~/.gitconfig
+
+``` ini
+[color]
+	ui = true
+[user]
+	email = foo@abc.com
+	name = foo
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[diff]
+	tool = bc2
+[difftool]
+	prompt = true
+[difftool "bc2"]
+	path = D:\\GreenSoftware\\runpath\\BC2.bat
+[difftool "bc3"]
+	path = D:\\GreenSoftware\\runpath\\BC2.bat
+[core]
+	autocrlf = true
+	filemode = true
+	safecrlf = true
+	quotepath = false
+	commitGraph = true
+	longpaths = true
+[receive]
+	advertisePushOptions = true
+[gc]
+	writeCommitGraph = true
+[http]
+	proxy = socks5://127.0.0.1:1080
+[https]
+	proxy = socks5://127.0.0.1:1080
+```
+
 #### list
 
 ```
@@ -152,3 +197,15 @@ export GIT_TRACE_PACKET=1
 export GIT_TRACE=1
 export GIT_CURL_VERBOSE=1
 ```
+
+
+### git commit如何修改默认编辑器为vim
+答:修改~/.gitconfig(修改这个文件将全局有效)或项目目录中的.git/config(修改此文件只是使当前项目默认使用vim)中增加以下内容：
+```
+[core]
+    editor=vim
+```
+
+或者执行以下命令:
+
+`git config --global core.editor "vim"`
