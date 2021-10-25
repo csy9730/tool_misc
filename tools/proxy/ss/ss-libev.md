@@ -57,7 +57,28 @@ shadowsocks-libev-redir@.service   shadowsocks-libev-tunnel@.service
 ```
 ## source
 
-#### config
+以下是ubuntu下的shadowsocks相关文件：
+
+- /etc/shadowsocks-libev/config.json 配置了服务器地址核端口，加密方式，json格式。
+- /etc/default/shadowsocks-libev， 默认配置。
+- /etc/init.d/shadowsocks-libev       bash脚本格式
+- /lib/systemd/system/shadowsocks-libev.service systemd的接口，ini格式。
+
+- /etc/systemd/system/multi-user.target.wants/shadowsocks-libev.service
+- /etc/rc0.d/K01shadowsocks-libev
+- /etc/rc5.d/S01shadowsocks-libev
+- /etc/rc4.d/S01shadowsocks-libev
+- /etc/rc1.d/K01shadowsocks-libev
+- /etc/rc3.d/S01shadowsocks-libev
+- /etc/rc2.d/S01shadowsocks-libev
+- /etc/rc6.d/K01shadowsocks-libev
+- /lib/systemd/system/shadowsocks-libev-server@.service 
+- /lib/systemd/system/shadowsocks-libev-local@.service
+- /lib/systemd/system/shadowsocks-libev-tunnel@.service
+- /lib/systemd/system/shadowsocks-libev-redir@.service
+- 
+
+#### config.json
 
 `/etc/shadowsocks-libev/config.json`
 
@@ -175,7 +196,7 @@ do_stop()
 }
 ```
 
-#### shadowsocks-libev.service
+#### /lib/systemd/system/shadowsocks-libev.service
 /lib/systemd/system/shadowsocks-libev.service
 ``` ini
 
@@ -197,6 +218,9 @@ WantedBy=multi-user.target
 
 ```
 
+可以改成：`ExecStart=/usr/bin/ss-local -c /etc/shadowsocks-libev/%i.json`
+
+以上脚本，本质是封装命令行，便于启动服务调用`/usr/bin/ss-local -c /etc/shadowsocks-libev/%i.json`
 
 #### /lib/systemd/system/shadowsocks-libev-server@.service
 
@@ -217,11 +241,8 @@ WantedBy=multi-user.target
 ```
 
 
-`ExecStart=/usr/bin/ss-local -c /etc/shadowsocks-libev/%i.json`
-
-以上脚本，本质是调用`/usr/bin/ss-local -c /etc/shadowsocks-libev/%i.json`
-
-
+#### /lib/systemd/system/shadowsocks-libev-server@.service
+内容和/lib/systemd/system/shadowsocks-libev-server@.service类似
 
 
 ## help

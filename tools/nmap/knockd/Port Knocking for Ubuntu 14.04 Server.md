@@ -159,6 +159,23 @@ nmap -p 7000
 ssh root@knockd_server_ip # 不能登录
 ```
 
+#### log
+```
+021-10-21 23:21] starting up, listening on eno1                                                                                            
+[2021-10-21 23:26] 192.168.0.103: openSSH: Stage 1                                                                                           
+[2021-10-21 23:26] 192.168.0.103: openSSH: Stage 2                                                                           
+[2021-10-21 23:26] 192.168.0.103: openSSH: Stage 3                                                                    
+[2021-10-21 23:26] 192.168.0.103: openSSH: OPEN SESAME                                                                                              │
+[2021-10-21 23:26] openSSH: running command: /sbin/iptables -I INPUT -s 192.168.0.103 -p tcp --dport 5222 -j ACCEPT     
+
+```
+
+openSSH: Stage 1   对应握手第一次握手。
+
+## misc
+
+本机`knock  127.0.0.1 7000 8000 9000 `是不会生效的。因为走了环回网卡，不走以太网卡，所以无法激活knockd。
+
 
 
 分类: [Linux](https://www.cnblogs.com/wsjhk/category/680112.html)

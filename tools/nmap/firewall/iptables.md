@@ -32,6 +32,10 @@ ipatbles命令仅支持ipv4，如果使用的IP协议是ipv6则需要使用专�
 | -o<网络接口> | 指定数据包离开本机做使用的网络接口                     |
 | -c<包计数>   | 在执行插入、追加和替换操作时初始化包计数器和字节计数器 |
 
+### rule
+iptables 是个包含多个规则的有序列表，单个规则可以描述 ip地址端口 是否放行。
+多个规则可能相互冲突，~~排在前面的规则优先适用?~~
+
 
 ## demo
 ``` bash
@@ -52,6 +56,17 @@ iptables -I INPUT -p tcp --dport 8080 -j ACCEPT
 iptables -D INPUT -p tcp --dport 22 -j DROP
 ```
 
+
+### 端口配置
+ 1、连续端口配置
+
+`iptables -A INPUT -p tcp –dport 21:25 -j DROP`
+
+注：这里是英文状态下的冒号。
+
+2、使用multiport参数配置不连续端口
+
+`iptables -A INPUT -p tcp -m multiport –dport 21:25,135:139 -j DROP`
 
 
 ## help

@@ -61,7 +61,7 @@ The implication of this is that changes in major version number do not have any 
 ### /usr/bin/qemu*
 ```
 
-(base) csy@csy-MS-7C67:~/Documents/Mylib/tool_misc$ ls /usr/bin |grep qemu
+(base) foo@foo-MS-7C67:~/Documents/Mylib/tool_misc$ ls /usr/bin |grep qemu
 qemu-aarch64
 qemu-alpha
 qemu-arm

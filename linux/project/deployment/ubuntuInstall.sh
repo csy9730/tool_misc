@@ -26,7 +26,9 @@ installDocker(){
 
 }
 
-installHosts(){
+installEtcHosts(){
+    sudo  bash -c 'echo "12.34.56.78 foo foo.com">> /etc/hosts'
+    
 
 }
 

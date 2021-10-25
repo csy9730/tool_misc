@@ -1,19 +1,14 @@
-
-## Ubuntu 16.04设置rc.local开机启动命令/脚本的方法（通过update-rc.d管理Ubuntu开机启动程序/服务）--debian与ubuntu类似
+# Ubuntu 16.04设置rc.local开机启动命令/脚本的方法（通过update-rc.d管理Ubuntu开机启动程序/服务）--debian与ubuntu类似
 
 **注意：rc.local脚本里面启动的用户默认为root权限。**
 
-**一、rc.local脚本**
+## **一、rc.local脚本**
 
 rc.local脚本是一个Ubuntu开机后会自动执行的脚本，我们可以在该脚本内添加命令行指令。该脚本位于/etc/路径下，需要root权限才能修改。
 
 该脚本具体格式如下：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
-
-![复制代码](https://common.cnblogs.com/images/copycode.gif)
-
-```
+``` bash
 #!/bin/sh -e
 #
 # rc.local
@@ -30,21 +25,14 @@ rc.local脚本是一个Ubuntu开机后会自动执行的脚本，我们可以在
 exit 0
 ```
 
-![复制代码](https://common.cnblogs.com/images/copycode.gif)
-
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
-
 **注意:** 一定要将命令添加在exit 0之前。里面可以直接写命令或者执行Shell脚本文件sh。
 
-**二、关于放在rc.local里面时不启动的问题：**
+## **二、关于放在rc.local里面时不启动的问题：**
 
 1、可以先增加日志输出功能，来查看最终为什么这个脚本不启动的原因，这个是Memcached启动时的样例文件：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
-![复制代码](https://common.cnblogs.com/images/copycode.gif)
-
-```
+``` bash
 #!/bin/sh -e
 #
 # rc.local
@@ -69,21 +57,18 @@ set -x                     # tell sh to display commands before execution
 exit 0
 ```
 
-![复制代码](https://common.cnblogs.com/images/copycode.gif)
-
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
 2、rc.local文件头部/bin/sh修改为/bin/bash
 
 3、如果是执行sh文件，那么要赋予执行权限sudo chmod +x xxx.sh，然后启动时加上sudo sh xxx.sh
 
-**三、 update-rc.d增加开机启动服务**
+## **三、 update-rc.d增加开机启动服务**
 
 **给Ubuntu添加一个开机启动脚本，操作如下：**
 
 **1、新建个脚本文件new_service.sh**
 
-```
+``` bash
 #!/bin/bash
 # command content
   
@@ -92,7 +77,7 @@ exit 0
 
 **2、设置权限**
 
-```
+``` bash
 sudo chmod 755 new_service.sh
 #或者
 sudo chmod +x new_service.sh
@@ -100,7 +85,7 @@ sudo chmod +x new_service.sh
 
 **3、把脚本放置到启动目录下**
 
-```
+``` bash
 sudo mv new_service.sh /etc/init.d/
 ```
 
@@ -108,20 +93,20 @@ sudo mv new_service.sh /etc/init.d/
 
 执行如下指令，在这里90表明一个优先级，越高表示执行的越晚
 
-```
+``` bash
 cd /etc/init.d/
 sudo update-rc.d new_service.sh defaults 90
 ```
 
 **5、移除Ubuntu开机脚本**
 
-```
+``` bash
 sudo update-rc.d -f new_service.sh remove
 ```
 
 **6、通过sysv-rc-conf来管理上面启动服务的启动级别等，还是开机不启动**
 
-```
+``` bash
 sudo sysv-rc-conf 
 ```
 
@@ -189,7 +174,7 @@ update-rc.d -f mysql remove
 
 **8、服务的启动停止状态**
 
-```
+``` bash
 #通过service，比如
 sudo service xxx status
 sudo service xxx start

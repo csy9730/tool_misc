@@ -1,28 +1,22 @@
 # linux工具
 
-适合Linux系统环境的WEB网站浏览器工具，常用的有w3m、Links、Lynx三个工具
+### autotool
+
+``` bash
+apt­-get install autoconf  automake libtool # autotools
+```
+
+
+### w3m
+Linux系统环境的WEB网站浏览器工具，常用的有w3m、Links、Lynx三个工具
 ``` bash
 apt­-get install w3m
 apt­-get install links
 apt­-get install lynx 
-apt­-get install autoconf  automake libtool # autotools
-
-apt install sl cmatrix # 
-sudo apt install screenfetch # 命令行形式输出linux的平台信息
-apt-get install fortune fortune-zh cowsay # 输出名人名言、古诗词
-fortune | cowsay -f stegosaurus 
 ```
 
-ntpd linux时间同步
 
-
-jobs
-ps aux
-
-apache+php+mysql
-kcp
-xtcp
-
+### 后台运行
 **Q**：我们想要退出当前终端，但又想让程序在后台运行？
 **A** ： 
 
@@ -32,3 +26,22 @@ xtcp
 需要使用exit正常退出当前账户，这样才能保证命令一直在后台运行，避免意外退出导致nohup失效。
 
 
+### misc
+```
+apt install sl cmatrix #  显示休闲命令
+
+sudo apt install screenfetch # 命令行形式输出linux的平台信息
+apt-get install fortune fortune-zh cowsay # 输出名人名言、古诗词
+fortune | cowsay -f stegosaurus 
+```
+
+### misc
+ntpd linux时间同步
+
+
+jobs
+
+
+apache+php+mysql
+kcp
+xtcp
