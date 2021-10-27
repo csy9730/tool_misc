@@ -5,44 +5,47 @@ whbk101 2019-09-30 16:52:00  21504  收藏 27
 版权
 最近在用flutter打包的时候，遇到了包打不出来的情况，后面查了半天原因，发现是没有配置arm导致的，配了之后就打出来了，乘着这个契机，重头来学习了一下abi
 
-开始之前
+## 开始之前
 开始之前先需要知道lib、libs等知识
-一. lib和libs
+### 一. lib和libs
 放在lib中的是被reference的，放在libs中的是被include的。
 放在libs中的文件会自动被编辑器所include。所以不要把API放到libs里去。
 lib的内容是不会被打包到APK中，libs中的内容是会被打包进APK中
 
-二. .so库
+### 二. .so库
 NDK编译出来的动态链接库。
 一些重要的加密算法或者核心协议一般都用c写然后给java调用。这样可以避免反编译后查看到应用的源码。
 
-三. .so库该如何存放
+### 三. .so库该如何存放
 放置 .so 文件的正确姿势其实就两句话：
-• 为了减小 apk 体积，只保留 armeabi 和 armeabi-v7a 两个文件夹，并保证这两个文件夹中 .so 数量一致
-• 对只提供 armeabi 版本的第三方 .so，原样复制一份到 armeabi-v7a 文件夹
+
+- 为了减小 apk 体积，只保留 armeabi 和 armeabi-v7a 两个文件夹，并保证这两个文件夹中 .so 数量一致
+- 对只提供 armeabi 版本的第三方 .so，原样复制一份到 armeabi-v7a 文件夹
+
 存放so的规则：
 你应该尽可能的提供专为每个ABI优化过的.so文件，但要么全部支持，要么都不支持：你不应该混合着使用。你应该为每个ABI目录提供对应的.so文件。
 关于存放的问题，可以看看这篇
-四. libs下armeabi等的作用是什么
+
+### 四. libs下armeabi等的作用是什么
 存放.so库，主要针对不同的设备兼容，也可以说是专门针对不同Android手机下CPU架构的兼容。
 下面就来扯一下安卓cpu
 Android 设备的CPU类型(通常称为”ABIs”)
 
-架构介绍
+## 架构介绍
 早期的Android系统几乎只支持ARMv5的CPU架构，后面发展到支持七种不同的CPU架构：ARMv5，ARMv7 (从2010年起)，x86 (从2011年起)，MIPS (从2012年起)，ARMv8，MIPS64和x86_64 (从2014年起)，每一种都关联着一个相应的ABI。
 应用程序二进制接口（Application Binary Interface）定义了二进制文件（尤其是.so文件）如何运行在相应的系统平台上，从使用的指令集，内存对齐到可用的系统函数库。在Android 系统上，每一个CPU架构对应一个ABI：armeabi，armeabi-v7a，x86，mips，arm64- v8a，mips64，x86_64。
 但是最新的谷歌官方文档已经把mips和armv5移除了，如图所示：
 
 各版本分析如下：
-• mips / mips64: 极少用于手机可以忽略（谷歌最新的文档已经不支持了）
-• x86 / x86_64: x86 架构的手机都会包含由 Intel 提供的称为 Houdini 的指令集动态转码工具，实现 对 arm .so 的兼容，再考虑 x86 1% 以下的市场占有率，x86 相关的两个 .so 也是可以忽略的
-• armeabi: ARM v5 这是相当老旧的一个版本，缺少对浮点数计算的硬件支持，在需要大量计算时有性能瓶颈
-• armeabi-v7a: ARM v7
-• arm64-v8a: 64位支持，目前主流的版本，虽然网上很多博客都说v7是主流版本，但是我亲自试验了很多手机，都是arm64-v8a的架构，测试机型包括小米5-小米9，华为P30，华为mate10，魅蓝2等均是v8架构
+- mips / mips64: 极少用于手机可以忽略（谷歌最新的文档已经不支持了）
+- x86 / x86_64: x86 架构的手机都会包含由 Intel 提供的称为 Houdini 的指令集动态转码工具，实现 对 arm .so 的兼容，再考虑 x86 1% 以下的市场占有率，x86 相关的两个 .so 也是可以忽略的
+- armeabi: ARM v5 这是相当老旧的一个版本，缺少对浮点数计算的硬件支持，在需要大量计算时有性能瓶颈
+- armeabi-v7a: ARM v7
+- arm64-v8a: 64位支持，目前主流的版本，虽然网上很多博客都说v7是主流版本，但是我亲自试验了很多手机，都是arm64-v8a的架构，测试机型包括小米5-小米9，华为P30，华为mate10，魅蓝2等均是v8架构
 查询手机cpu命令行：
-
+```
 adb shell getprop ro.product.cpu.abi
-1
+```
 无图无真相：
 
 只有一款不知名的oppo手机，android系统4.3，用的是v7的架构
@@ -120,7 +123,7 @@ ARM64位处理器和电脑的64位处理器是两个截然不容的概念，他�
 打包配置
 split分包
 这个命令可以按照各种规则去分包，比如按照abi,屏幕密度（即ldpi,hdpi等）分包
-
+``
 splits {
         abi {
             enable true
@@ -130,15 +133,8 @@ splits {
             universalApk true
         }
     }
-1
-2
-3
-4
-5
-6
-7
-8
-9
+```
+
 include就是包括，exclude就是不包括。包括的配置每一个项都会生成一个apk包。
 
 但是这样配置，会生成两个包，一个只包含x86的so库，一个只包含armabi的so库。，显然不符合需求
@@ -147,15 +143,12 @@ ndk{abiFilters:}过滤
 这个指令可以配置只打包你配置的so库，没有配置的就不打包，很灵活。
 
 第三方aar文件，如果这个sdk对abi的支持比较全，可能会包含armeabi、armeabi-v7a、x86、arm64-v8a、x86_64五种abi，而你应用的其它so只支持armeabi、armeabi-v7a、x86三种，直接引用sdk的aar，会自动编译出支持5种abi的包。但是应用的其它so缺少对其它两种abi的支持，那么如果应用运行于arm64-v8a、x86_64为首选abi的设备上时，就会crash了，所以我们需要在我们的app中配置 abiFilter 配置，来避免一些未知的错误
-
+```
 //过滤x86的so库
 ndk {
     abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a'
 }
-1
-2
-3
-4
+```
 这样配置会将armeabi，armeabi-v71,arm64-v8a这3个包下的so库都打包到一个apk,而不像splits会每一个包打一个apk.
 
 参考：
