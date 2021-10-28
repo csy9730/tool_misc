@@ -128,7 +128,7 @@ HLS 和 HSV 比较类似，这里一起介绍。HLS 也有三个分量，hue（�
 
 
 
-HLS 和 HSV 的区别就是最后一个分量不同，HLS 的是 light(亮度)，HSV 的是 value(明度)。可以到这个 [网页](https://link.zhihu.com/?target=https%3A//www.w3schools.com/colors/colors_hsl.asp) 尝试一下。
+HLS 和 HSV 的区别就是最后一个分量不同，HLS 的是 light(亮度)，HSV 的是 value(明度)。可以到这个 [网页](https://www.w3schools.com/colors/colors_hsl.asp) 尝试一下。
 
 
 
@@ -197,7 +197,7 @@ white_mask = cv2.bitwise_and(img, img, mask=mask)
 
 为了识别特定颜色的物体，获取到颜色所对应的HSV值很重要，这里说一下获取步骤：
 
-1、[在线取色器](https://link.zhihu.com/?target=http%3A//www.jiniannet.com/Page/allcolor) 或 [传图识色](https://link.zhihu.com/?target=https%3A//www.sojson.com/web/img.html)，可以在这里上传特定颜色的图片，获取这些颜色对应的RGB值。
+1、[在线取色器](https://link.zhihu.com/?target=http%3A//www.jiniannet.com/Page/allcolor) 或 [传图识色](https://www.sojson.com/web/img.html)，可以在这里上传特定颜色的图片，获取这些颜色对应的RGB值。
 
 2、假设获取到的是这样的数据：`#869C90,#899F92,#8A9E92,#8A9F8E`，下面将其进行转换得到HSV各通道的数值范围：
 
@@ -356,15 +356,15 @@ cv2.imshow('otsu', im_bw)
 
 ## 参考
 
-[RGB Color Codes Chart](https://link.zhihu.com/?target=https%3A//www.rapidtables.com/web/color/RGB_Color.html)
+[RGB Color Codes Chart](https://www.rapidtables.com/web/color/RGB_Color.html)
 
-[Changing Colorspaces](https://link.zhihu.com/?target=https%3A//docs.opencv.org/master/df/d9d/tutorial_py_colorspaces.html)
+[Changing Colorspaces](https://docs.opencv.org/master/df/d9d/tutorial_py_colorspaces.html)
 
-[RGB颜色空间和HSV颜色空间详解](https://link.zhihu.com/?target=https%3A//blog.csdn.net/bjbz_cxy/article/details/79701006)
+[RGB颜色空间和HSV颜色空间详解](https://blog.csdn.net/bjbz_cxy/article/details/79701006)
 
-[OpenCV Python single blob tracking?](https://link.zhihu.com/?target=https%3A//stackoverflow.com/questions/12943410/opencv-python-single-rather-than-multiple-blob-tracking)
+[OpenCV Python single blob tracking?](https://stackoverflow.com/questions/12943410/opencv-python-single-rather-than-multiple-blob-tracking)
 
-[Image Segmentation Using Color Spaces](https://link.zhihu.com/?target=https%3A//realpython.com/python-opencv-color-spaces/)
+[Image Segmentation Using Color Spaces](https://realpython.com/python-opencv-color-spaces/)
 
 
 

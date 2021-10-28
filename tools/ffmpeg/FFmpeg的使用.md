@@ -4,12 +4,12 @@
 
 ## 1.什么是ffmpeg
 
-引用[wiki百科](https://link.jianshu.com/?t=http://zh.wikipedia.org/wiki/FFmpeg)的解析.
+引用[wiki百科](http://zh.wikipedia.org/wiki/FFmpeg)的解析.
 
-> FFmpeg是一个自由软件，可以运行音频和视频多种格式的录影、转换、流功能[1](https://link.jianshu.com/?t=http://ffmpeg.org/ffmpeg.html)，包含了libavcodec ─这是一个用于多个项目中音频和视频的解码器库，以及libavformat——一个音频与视频格式转换库。
+> FFmpeg是一个自由软件，可以运行音频和视频多种格式的录影、转换、流功能[1](http://ffmpeg.org/ffmpeg.html)，包含了libavcodec ─这是一个用于多个项目中音频和视频的解码器库，以及libavformat——一个音频与视频格式转换库。
 
-- `ffmpeg`的官网地址是:[https://www.ffmpeg.org/](https://link.jianshu.com/?t=https://www.ffmpeg.org/)
-- `ffmpeg`的Github项目地址是:[https://github.com/FFmpeg/FFmpeg](https://link.jianshu.com/?t=https://github.com/FFmpeg/FFmpeg)
+- `ffmpeg`的官网地址是:[https://www.ffmpeg.org/](https://www.ffmpeg.org/)
+- `ffmpeg`的Github项目地址是:[https://github.com/FFmpeg/FFmpeg](https://github.com/FFmpeg/FFmpeg)
 
 ### 1.1 组件
 
@@ -65,8 +65,8 @@
 ffmpeg -i input.avi -b:v 640k output.ts  
 ```
 
-具体用法参考: [ffmpeg参数中文详细解释](https://link.jianshu.com/?t=http://blog.csdn.net/leixiaohua1020/article/details/12751349)
-详细的使用说明（英文）：[http://ffmpeg.org/ffmpeg.html](https://link.jianshu.com/?t=http://ffmpeg.org/ffmpeg.html)
+具体用法参考: [ffmpeg参数中文详细解释](http://blog.csdn.net/leixiaohua1020/article/details/12751349)
+详细的使用说明（英文）：[http://ffmpeg.org/ffmpeg.html](http://ffmpeg.org/ffmpeg.html)
 
 #### 3.12 `ffplay.exe`
 
@@ -78,13 +78,13 @@ ffmpeg -i input.avi -b:v 640k output.ts
 ffplay test.avi  
 ```
 
-具体的使用方法可以参考：[ffplay的快捷键以及选项](https://link.jianshu.com/?t=http://blog.csdn.net/leixiaohua1020/article/details/15186441)
-详细的使用说明（英文）：[http://ffmpeg.org/ffplay.html](https://link.jianshu.com/?t=http://ffmpeg.org/ffplay.html)
+具体的使用方法可以参考：[ffplay的快捷键以及选项](http://blog.csdn.net/leixiaohua1020/article/details/15186441)
+详细的使用说明（英文）：[http://ffmpeg.org/ffplay.html](http://ffmpeg.org/ffplay.html)
 
 #### 3.13 `ffprobe.exe`
 
 ffprobe是用于查看文件格式的应用程序。
-详细的使用说明（英文）：[http://ffmpeg.org/ffprobe.html](https://link.jianshu.com/?t=http://ffmpeg.org/ffprobe.html)
+详细的使用说明（英文）：[http://ffmpeg.org/ffprobe.html](http://ffmpeg.org/ffprobe.html)
 
 ### 3.2 使用ffmpeg库进行开发
 
@@ -92,11 +92,11 @@ ffprobe是用于查看文件格式的应用程序。
 
 **参考资料** :
 
-- [FFMPEG视音频编解码零基础学习方法](https://link.jianshu.com/?t=http://blog.csdn.net/leixiaohua1020/article/details/15811977)
-- [FFmpeg使用小记](https://link.jianshu.com/?t=http://yuanhuan.blog.51cto.com/3367116/1246370)
-- [FFmpeg官方文档](https://link.jianshu.com/?t=http://ffmpeg.org/documentation.html)
-- [如何在Windows上安装FFmpeg程序](https://link.jianshu.com/?t=http://zh.wikihow.com/在Windows上安装FFmpeg程序)
-- [ffmpeg教程 (一) 基本安装](https://link.jianshu.com/?t=http://alleni123.iteye.com/blog/2028433)
+- [FFMPEG视音频编解码零基础学习方法](http://blog.csdn.net/leixiaohua1020/article/details/15811977)
+- [FFmpeg使用小记](http://yuanhuan.blog.51cto.com/3367116/1246370)
+- [FFmpeg官方文档](http://ffmpeg.org/documentation.html)
+- [如何在Windows上安装FFmpeg程序](http://zh.wikihow.com/在Windows上安装FFmpeg程序)
+- [ffmpeg教程 (一) 基本安装](http://alleni123.iteye.com/blog/2028433)
 
 
 

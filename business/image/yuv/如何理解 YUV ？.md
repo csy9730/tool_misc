@@ -12,7 +12,7 @@
 
 ### **前言**
 
-[YUV](https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/YUV) 是一种彩色编码系统，主要用在视频、图形处理流水线中(pipeline)。相对于 RGB 颜色空间，设计 YUV 的目的就是为了编码、传输的方便，减少带宽占用和信息出错。
+[YUV](https://en.wikipedia.org/wiki/YUV) 是一种彩色编码系统，主要用在视频、图形处理流水线中(pipeline)。相对于 RGB 颜色空间，设计 YUV 的目的就是为了编码、传输的方便，减少带宽占用和信息出错。
 
 人眼的视觉特点是对亮度更铭感，对位置、色彩相对来说不铭感。在视频编码系统中为了降低带宽，可以保存更多的亮度信息(luma)，保存较少的色差信息(chroma)。
 
@@ -26,7 +26,7 @@ Y’UV 不是 Absolute Color Space，只是一种 RGB 的信息编码，实际�
 
 ### **subsamping**
 
-人眼的视觉特点是对亮度更铭感，对位置、色彩相对来说不铭感。在视频编码系统中为了降低带宽，可以保存更多的亮度信息(luma)，保存较少的色差信息(chroma)。这叫做 [chrominance subsamping](https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Chroma_subsampling), 色度二次采样。原则：在数字图像中，(1) 每一个图形像素都要包含 luma（亮度）值；（2）几个图形像素共用一个 Cb + Cr 值，一般是 2、4、8 个像素。
+人眼的视觉特点是对亮度更铭感，对位置、色彩相对来说不铭感。在视频编码系统中为了降低带宽，可以保存更多的亮度信息(luma)，保存较少的色差信息(chroma)。这叫做 [chrominance subsamping](https://en.wikipedia.org/wiki/Chroma_subsampling), 色度二次采样。原则：在数字图像中，(1) 每一个图形像素都要包含 luma（亮度）值；（2）几个图形像素共用一个 Cb + Cr 值，一般是 2、4、8 个像素。
 
 要想理解本节内容，需要理解一个前提假设就是：对于一个 w 宽、h 高的像素图，在水平方向，一行有 w 个像素；在垂直方向，一列有 h 个像素，整个图形有 w * h 个像素。我们把这个像素叫做**图形像素**。
 
@@ -60,7 +60,7 @@ Y’UV 不是 Absolute Color Space，只是一种 RGB 的信息编码，实际�
 
 ### **平面格式（Planar formats）**
 
-[平面格式](https://link.zhihu.com/?target=https%3A//wiki.videolan.org/YUV)是指用三个不同的数组来表示 YCbCr 的三个 Component，每一个 Component 都是通过不同的平面表示。为此，每一个 Component 会对应一个 plane。
+[平面格式](https://wiki.videolan.org/YUV)是指用三个不同的数组来表示 YCbCr 的三个 Component，每一个 Component 都是通过不同的平面表示。为此，每一个 Component 会对应一个 plane。
 
 yuv420p 也叫 i420 就是 yuv420 planar 表示。yuv420p 一共有三个平面分别是 Y，U，V，每一个平面都是用 8 bit 二进制数字表示，我们把 8 bit 称作位深度。
 
@@ -76,7 +76,7 @@ yuv420p 也叫 i420 就是 yuv420 planar 表示。yuv420p 一共有三个平面�
 
 现在我们找一个 jpeg 图片，通过 ffmpeg 转成 yuv，生成图形的分辨率是 1280 *720 ，具体命令如下：
 
-```text
+``` bash
 ffmpeg -i yuv_to_jpeg_0.jpeg -s 1280x720 -pix_fmt yuv420p test-yuv420p.yuv
 ```
 
@@ -94,105 +94,103 @@ ffmpeg -i yuv_to_jpeg_0.jpeg -s 1280x720 -pix_fmt yuv420p test-yuv420p.yuv
 
 yuv420p 的格式描述在 libavutil/pixdesc.c 的 173 行。
 
-```text
- 173 static const AVPixFmtDescriptor av_pix_fmt_descriptors[AV_PIX_FMT_NB] = {
- 174     [AV_PIX_FMT_YUV420P] = {
- 175         .name = "yuv420p", // 像素格式名称
- 176         .nb_components = 3, // 表示有三个 component ，也是三个 plane
- 177         .log2_chroma_w = 1, // 表示色度(chroma) 像素和图形像素的水平比例关系 
- 178         .log2_chroma_h = 1, // 表示色度(chroma) 像素和图形像素的垂直比例关系
- 179         .comp = {
- 180             { 0, 1, 0, 0, 8, 0, 7, 1 },        /* Y 平面，step 是 1， 位深度是8 bit */
- 181             { 1, 1, 0, 0, 8, 0, 7, 1 },        /* U 平面，step 是 1， 位深度是8 bit */
- 182             { 2, 1, 0, 0, 8, 0, 7, 1 },        /* V 平面，step 是 1， 位深度是8 bit */
- 183         },
- 184         .flags = AV_PIX_FMT_FLAG_PLANAR,
- 185     },
+```cpp
+static const AVPixFmtDescriptor av_pix_fmt_descriptors[AV_PIX_FMT_NB] = {
+    [AV_PIX_FMT_YUV420P] = {
+        .name = "yuv420p", // 像素格式名称
+        .nb_components = 3, // 表示有三个 component ，也是三个 plane
+        .log2_chroma_w = 1, // 表示色度(chroma) 像素和图形像素的水平比例关系 
+        .log2_chroma_h = 1, // 表示色度(chroma) 像素和图形像素的垂直比例关系
+        .comp = {
+            { 0, 1, 0, 0, 8, 0, 7, 1 },        /* Y 平面，step 是 1， 位深度是8 bit */
+            { 1, 1, 0, 0, 8, 0, 7, 1 },        /* U 平面，step 是 1， 位深度是8 bit */
+            { 2, 1, 0, 0, 8, 0, 7, 1 },        /* V 平面，step 是 1， 位深度是8 bit */
+        },
+        .flags = AV_PIX_FMT_FLAG_PLANAR,
+    },
 ```
 
 所有的 YUV 像素格式表示都在 av_pix_fmt_descriptors 表中完成，我可以把这叫做像素格式描述表。
 
 yuv420p 像素格式在水平方向(行)大小计算在 libavutil/imgutils.c 的 54 行。
 
-```text
-53 static inline
- 54 int image_get_linesize(int width, int plane,
- 55                        int max_step, int max_step_comp,
- 56                        const AVPixFmtDescriptor *desc)
- 57 {
- 58     int s, shifted_w, linesize;
- 59
- 60     if (!desc)
- 61         return AVERROR(EINVAL);
- 62
- 63     if (width < 0)
- 64         return AVERROR(EINVAL);
+``` cpp
+static inline
+int image_get_linesize(int width, int plane,
+                       int max_step, int max_step_comp,
+                       const AVPixFmtDescriptor *desc)
+{
+    int s, shifted_w, linesize;
+    if (!desc)
+        return AVERROR(EINVAL);
+    if (width < 0)
+        return AVERROR(EINVAL);
         // max_step_comp 的取值： 0：y，1：u，2：v。对于 y 平面，每一个图形像素需要一个亮度值，
         // 所以这里比例因子是 0；对于 u、v 平面来说，色度像素和图形像素在水平和垂直方向都是 2/1 的关系，
         // 所以计算行的时候，比例因子取像素格式描述表中的 log2_chroma_w。对于 yuv420p 来说，取值是 1 ，
         // 因为是通过移位运算完成的，右移 1 位，相当于是除以 2。
- 65     s = (max_step_comp == 1 || max_step_comp == 2) ? desc->log2_chroma_w : 0;
- 66     shifted_w = ((width + (1 << s) - 1)) >> s;
- 67     if (shifted_w && max_step > INT_MAX / shifted_w)
- 68         return AVERROR(EINVAL);
- 69     linesize = max_step * shifted_w;
- 70
-        // 如果像素描述表中的单位是 bit，那么这里转换成 bytes，右移 3 位，就是除以 8。
- 71     if (desc->flags & AV_PIX_FMT_FLAG_BITSTREAM)
- 72         linesize = (linesize + 7) >> 3;
- 73     return linesize;
- 74 }
+      s = (max_step_comp == 1 || max_step_comp == 2) ? desc->log2_chroma_w : 0;
+      shifted_w = ((width + (1 << s) - 1)) >> s;
+      if (shifted_w && max_step > INT_MAX / shifted_w)
+          return AVERROR(EINVAL);
+      linesize = max_step * shifted_w;
+ 
+      // 如果像素描述表中的单位是 bit，那么这里转换成 bytes，右移 3 位，就是除以 8。
+      if (desc->flags & AV_PIX_FMT_FLAG_BITSTREAM)
+          linesize = (linesize + 7) >> 3;
+      return linesize;
+  }
 ```
 
 yuv420p 像素格式在垂直方向(列)大小计算在 libavutil/imgutils.c 的 111 行。
 
-```text
-111 int av_image_fill_pointers(uint8_t *data[4], enum AVPixelFormat pix_fmt, int height,
-112                            uint8_t *ptr, const int linesizes[4])
-113 {
-114     int i, total_size, size[4] = { 0 }, has_plane[4] = { 0 };
-115
-116     const AVPixFmtDescriptor *desc = av_pix_fmt_desc_get(pix_fmt);
-117     memset(data     , 0, sizeof(data[0])*4);
-118
-119     if (!desc || desc->flags & AV_PIX_FMT_FLAG_HWACCEL)
-120         return AVERROR(EINVAL);
-121
-122     data[0] = ptr;
-123     if (linesizes[0] > (INT_MAX - 1024) / height)
-124         return AVERROR(EINVAL);
-125     size[0] = linesizes[0] * height;
-126
-127     if (desc->flags & AV_PIX_FMT_FLAG_PAL ||
-128         desc->flags & FF_PSEUDOPAL) {
-129         data[1] = ptr + size[0]; /* palette is stored here as 256 32 bits words */
-130         return size[0] + 256 * 4;
-131     }
-132
-133     for (i = 0; i < 4; i++)
-134         has_plane[desc->comp[i].plane] = 1;
-135
-136     total_size = size[0];
-137     for (i = 1; i < 4 && has_plane[i]; i++) {
-            // i 的取值： 0：y，1：u，2：v。对于 y 平面，每一个图形像素需要一个亮度值，
-            // 所以这里比例因子是 0；对于 u、v 平面来说，色度像素和图形像素在水平和垂直方向都是 2/1 的关系，
-            // 所以计算列的时候，比例因子取像素格式描述表中的 log2_chroma_h。对于 yuv420p 来说，取值是 1 ，
-            // 因为是通过移位运算完成的，右移 1 位，相当于是除以 2。
-138         int h, s = (i == 1 || i == 2) ? desc->log2_chroma_h : 0;
-139         data[i] = data[i-1] + size[i-1];
-140         h = (height + (1 << s) - 1) >> s;
-141         if (linesizes[i] > INT_MAX / h)
-142             return AVERROR(EINVAL);
-            // 每一平面的行和列做乘法，就是像素总数。
-143         size[i] = h * linesizes[i];
-144         if (total_size > INT_MAX - size[i])
-145             return AVERROR(EINVAL);
-            // 每一个平面的像素数相加，就是图片占用的像素总数。
-146         total_size += size[i];
-147     }
-148
-149     return total_size;
-150 }
+``` cpp
+int av_image_fill_pointers(uint8_t *data[4], enum AVPixelFormat pix_fmt, int height,
+                           uint8_t *ptr, const int linesizes[4])
+{
+    int i, total_size, size[4] = { 0 }, has_plane[4] = { 0 };
+
+    const AVPixFmtDescriptor *desc = av_pix_fmt_desc_get(pix_fmt);
+    memset(data     , 0, sizeof(data[0])*4);
+
+    if (!desc || desc->flags & AV_PIX_FMT_FLAG_HWACCEL)
+        return AVERROR(EINVAL);
+
+    data[0] = ptr;
+    if (linesizes[0] > (INT_MAX - 1024) / height)
+        return AVERROR(EINVAL);
+    size[0] = linesizes[0] * height;
+
+    if (desc->flags & AV_PIX_FMT_FLAG_PAL ||
+        desc->flags & FF_PSEUDOPAL) {
+        data[1] = ptr + size[0]; /* palette is stored here as 256 32 bits words */
+        return size[0] + 256 * 4;
+    }
+
+    for (i = 0; i < 4; i++)
+        has_plane[desc->comp[i].plane] = 1;
+
+    total_size = size[0];
+    for (i = 1; i < 4 && has_plane[i]; i++) {
+        // i 的取值： 0：y，1：u，2：v。对于 y 平面，每一个图形像素需要一个亮度值，
+        // 所以这里比例因子是 0；对于 u、v 平面来说，色度像素和图形像素在水平和垂直方向都是 2/1 的关系，
+        // 所以计算列的时候，比例因子取像素格式描述表中的 log2_chroma_h。对于 yuv420p 来说，取值是 1 ，
+        // 因为是通过移位运算完成的，右移 1 位，相当于是除以 2。
+        int h, s = (i == 1 || i == 2) ? desc->log2_chroma_h : 0;
+        data[i] = data[i-1] + size[i-1];
+        h = (height + (1 << s) - 1) >> s;
+        if (linesizes[i] > INT_MAX / h)
+            return AVERROR(EINVAL);
+        // 每一平面的行和列做乘法，就是像素总数。
+        size[i] = h * linesizes[i];
+        if (total_size > INT_MAX - size[i])
+            return AVERROR(EINVAL);
+        // 每一个平面的像素数相加，就是图片占用的像素总数。
+        total_size += size[i];
+    }
+
+    return total_size;
+}
 ```
 
 ### **后记**
@@ -201,10 +199,10 @@ yuv420p 像素格式在垂直方向(列)大小计算在 libavutil/imgutils.c 的
 
 ### **参考**
 
-[1]: https://en.wikipedia.org/wiki/YUV(https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/YUV)	"YUV"
-[2]: https://wiki.videolan.org/YUV(https://link.zhihu.com/?target=https%3A//wiki.videolan.org/YUV)	"YUV"
-[3]: https://en.wikipedia.org/wiki/Chroma_subsampling(https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Chroma_subsampling)	"Chroma_subsampling"
-[4]: http://dougkerr.net/Pumpkin/articles/Subsampling.pdf(https://link.zhihu.com/?target=http%3A//dougkerr.net/Pumpkin/articles/Subsampling.pdf)	"Subsampling"
+[1]: [https://en.wikipedia.org/wiki/YUV](https://en.wikipedia.org/wiki/YUV)	"YUV"
+[2]: [https://wiki.videolan.org/YUV](https://wiki.videolan.org/YUV)	"YUV"
+[3]: [https://en.wikipedia.org/wiki/Chroma_subsampling](https://en.wikipedia.org/wiki/Chroma_subsampling)	"Chroma_subsampling"
+[4]: [http://dougkerr.net/Pumpkin/articles/Subsampling.pdf](https://dougkerr.net/Pumpkin/articles/Subsampling.pdf)	"Subsampling"
 
 
 

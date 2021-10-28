@@ -129,7 +129,7 @@ Exchange分发消息时根据类型的不同分发策略有区别，目前共四
 
 # RabbitMQ 安装
 
-一般来说安装 RabbitMQ 之前要安装 Erlang ，可以去[Erlang官网](https://link.jianshu.com/?t=http://www.erlang.org/downloads)下载。接着去[RabbitMQ官网](https://link.jianshu.com/?t=https://www.rabbitmq.com/download.html)下载安装包，之后解压缩即可。根据操作系统不同官网提供了相应的安装说明：[Windows](https://link.jianshu.com/?t=http://www.rabbitmq.com/install-windows.html)、[Debian / Ubuntu](https://link.jianshu.com/?t=http://www.rabbitmq.com/install-debian.html)、[RPM-based Linux](https://link.jianshu.com/?t=http://www.rabbitmq.com/install-rpm.html)、[Mac](https://link.jianshu.com/?t=http://www.rabbitmq.com/install-standalone-mac.html)
+一般来说安装 RabbitMQ 之前要安装 Erlang ，可以去[Erlang官网](http://www.erlang.org/downloads)下载。接着去[RabbitMQ官网](https://www.rabbitmq.com/download.html)下载安装包，之后解压缩即可。根据操作系统不同官网提供了相应的安装说明：[Windows](http://www.rabbitmq.com/install-windows.html)、[Debian / Ubuntu](http://www.rabbitmq.com/install-debian.html)、[RPM-based Linux](http://www.rabbitmq.com/install-rpm.html)、[Mac](http://www.rabbitmq.com/install-standalone-mac.html)
 
 如果是Mac 用户，个人推荐使用 HomeBrew 来安装，安装前要先更新 brew：
 
@@ -193,7 +193,7 @@ brew install rabbitmq
 ./sbin/rabbitmqctl -n rabbit@server.example.com stop 
 ```
 
--n node 默认 node 名称是 rabbit@server ，如果你的主机名是 [server.example.com](https://link.jianshu.com/?t=http://server.example.com) ，那么 node 名称就是 [rabbit@server.example.com](https://link.jianshu.com/?t=mailto:rabbit@server.example.com) 。
+-n node 默认 node 名称是 rabbit@server ，如果你的主机名是 [server.example.com](http://server.example.com) ，那么 node 名称就是 [rabbit@server.example.com](mailto:rabbit@server.example.com) 。
 
 1. 关闭 RabbitMQ 应用程序
    如果只想关闭应用程序，同时保持 Erlang 节点运行则可以用 stop_app：

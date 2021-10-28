@@ -14,7 +14,7 @@ PHP 是最流行的 Web 服务端编程语言，并且在2019年仍然很火。�
 
 ## PHP 是什么？
 
-[PHP](https://link.zhihu.com/?target=https%3A//www.excellentwebworld.com/php-development/) 代表超文本预处理器（Hypertext Pre-processor）。早期的 PHP 被用于个人主页，然后才升级更新为超文本预处理器。PHP 是一种服务器端脚本语言，用于开发静态或动态网站和 Web 应用程序。
+[PHP](https://www.excellentwebworld.com/php-development/) 代表超文本预处理器（Hypertext Pre-processor）。早期的 PHP 被用于个人主页，然后才升级更新为超文本预处理器。PHP 是一种服务器端脚本语言，用于开发静态或动态网站和 Web 应用程序。
 
 为什么要使用 PHP 进行服务器端编程？
 
@@ -43,7 +43,7 @@ Web 项目中 PHP 框架使用情况饼图：
 
 
 
-资料来源： [Fullstack Geek](https://link.zhihu.com/?target=https%3A//fullstackgeek.blogspot.com/2019/05/best-php-frameworks.html)
+资料来源： [Fullstack Geek](https://fullstackgeek.blogspot.com/2019/05/best-php-frameworks.html)
 
 现在您了解了 PHP 及其框架，我们可以继续探讨 2019 年最好的 PHP 框架。
 
@@ -53,7 +53,7 @@ Web 项目中 PHP 框架使用情况饼图：
 
 ### 1. Laravel
 
-[Laravel](https://link.zhihu.com/?target=https%3A//laravel.com/) 框架可能是 Web 开发人员中最受欢迎的框架。Laravel 是一个免费的开源 PHP 框架，适用于 Web 应用程序开发，且适用于移动应用程序场景。Laravel 提供了几个特定的软件包，使 Web 开发成为一项功能强大的任务。例如：
+[Laravel](https://laravel.com/) 框架可能是 Web 开发人员中最受欢迎的框架。Laravel 是一个免费的开源 PHP 框架，适用于 Web 应用程序开发，且适用于移动应用程序场景。Laravel 提供了几个特定的软件包，使 Web 开发成为一项功能强大的任务。例如：
 
 - 单元测试（Unit Testing）
 - 对象关系映射 (ORM)
@@ -79,7 +79,7 @@ Laravel 的使用统计：
 
 ### 2. CakePHP
 
-[CakePHP](https://link.zhihu.com/?target=https%3A//www.excellentwebworld.com/cakephp-development/) 框架对个人完全免费，并提供付费的商业用途。它将帮助您开发功能丰富且视觉上令人印象深刻的网站。早在本世纪初，CakePHP 就是最好的 PHP 框架。经过这么长时间，它仍然是您可以使用的最好的 PHP 框架之一。CakePHP 起初是一个简单而优雅的工具包，在过去的 15 年里它变得更加强大。由于它的 CRUD（创建、读取、更新和删除）框架，CakePHP 是最容易学习的框架。使用 CakePHP 部署 Web 网站是“小菜一碟”，您只需要一个 Web 服务器和 CakePHP 框架的副本。由于以下增强的安全功能，CakePHP 非常适合商业应用：
+[CakePHP](https://www.excellentwebworld.com/cakephp-development/) 框架对个人完全免费，并提供付费的商业用途。它将帮助您开发功能丰富且视觉上令人印象深刻的网站。早在本世纪初，CakePHP 就是最好的 PHP 框架。经过这么长时间，它仍然是您可以使用的最好的 PHP 框架之一。CakePHP 起初是一个简单而优雅的工具包，在过去的 15 年里它变得更加强大。由于它的 CRUD（创建、读取、更新和删除）框架，CakePHP 是最容易学习的框架。使用 CakePHP 部署 Web 网站是“小菜一碟”，您只需要一个 Web 服务器和 CakePHP 框架的副本。由于以下增强的安全功能，CakePHP 非常适合商业应用：
 
 - SQL 注入预防
 - 跨域请求（CSRF）保护
@@ -100,7 +100,7 @@ Laravel 的使用统计：
 
 ### 3. CodeIgniter
 
-[CodeIgniter](https://link.zhihu.com/?target=https%3A//www.excellentwebworld.com/codeigniter-development/) 可能是最适合开发动态网站的 PHP 框架。它是一个非常简单的轻量级 PHP 框架。它的大小只有 2 MB 左右（包括文档）。因此，CodeIgniter 本身具有最小的占用空间，它允许 Web 开发人员添加第三方插件来开发更复杂的功能。CodeIgniter 还提供了几个预构建的模块，用于为 Web 开发创建健壮的、可重用的组件。由于设置过程简单，这个 PHP 框架非常适合初学者。
+[CodeIgniter](https://www.excellentwebworld.com/codeigniter-development/) 可能是最适合开发动态网站的 PHP 框架。它是一个非常简单的轻量级 PHP 框架。它的大小只有 2 MB 左右（包括文档）。因此，CodeIgniter 本身具有最小的占用空间，它允许 Web 开发人员添加第三方插件来开发更复杂的功能。CodeIgniter 还提供了几个预构建的模块，用于为 Web 开发创建健壮的、可重用的组件。由于设置过程简单，这个 PHP 框架非常适合初学者。
 
 如果您希望避免 PHP 版本冲突，CodeIgniter 是您的正确选择。它几乎可以在所有托管平台（共享和专用）上无缝运行。虽然 CodeIgniter 被认为是 PHP MVC 框架，但它并不完全基于 MVC 架构，因为 Model 和 Views 类是 CodeIgniter 的可选类，而 Controller 是强制性的。
 
@@ -115,7 +115,7 @@ Laravel 的使用统计：
 
 ### 4. Zend
 
-[Zend](https://link.zhihu.com/?target=https%3A//www.zend.com/) 框架是一个完整的面向对象的 PHP 框架。这个 PHP 框架是可定制的，对于需要添加项目特定功能的开发人员来说，这是一个好处。Zend 构建于敏捷方法之上，可帮助开发人员为大型客户创建、高质量的 Web 应用程序的框架。它非常适合复杂的企业级项目，Zend 主要关注安全性、性能和可扩展性。 Zend 框架主要受大型 IT 企业和银行等金融机构的青睐。
+[Zend](https://www.zend.com/) 框架是一个完整的面向对象的 PHP 框架。这个 PHP 框架是可定制的，对于需要添加项目特定功能的开发人员来说，这是一个好处。Zend 构建于敏捷方法之上，可帮助开发人员为大型客户创建、高质量的 Web 应用程序的框架。它非常适合复杂的企业级项目，Zend 主要关注安全性、性能和可扩展性。 Zend 框架主要受大型 IT 企业和银行等金融机构的青睐。
 
 Zend 框架功能：
 
@@ -140,7 +140,7 @@ Zend Framework 可以与外部库无缝集成，因此开发人员可以选择�
 
 ### 5. Symfony
 
-[Symfony](https://link.zhihu.com/?target=https%3A//symfony.com/) 于 2005 年推出，这个 PHP 框架的存在时间比列表中的任何其他框架都要长。该框架是一个广泛的 PHP MVC 框架，目前 Symfony 已经成为一个可靠和成熟的平台框架。Symfony 非常稳定、文档齐全、性能卓越。这些特点使 Symfony 成为开发大型企业项目的完美选择。
+[Symfony](https://symfony.com/) 于 2005 年推出，这个 PHP 框架的存在时间比列表中的任何其他框架都要长。该框架是一个广泛的 PHP MVC 框架，目前 Symfony 已经成为一个可靠和成熟的平台框架。Symfony 非常稳定、文档齐全、性能卓越。这些特点使 Symfony 成为开发大型企业项目的完美选择。
 
 使 Symfony 成为 PHP 框架中独一无二的特性之一是它的可重用 PHP 组件。使用可重用组件，开发时间减少了许多模块，如表单创建、对象配置、模板等。可以直接从旧组件构建，节约了大量成本。Symfony 易于在大多数平台上安装和配置，并且可以独立于数据库引擎。它具有高度的灵活性，可以与 Drupal 等大型项目集成。
 
@@ -153,7 +153,7 @@ Zend Framework 可以与外部库无缝集成，因此开发人员可以选择�
 
 ### 6. Yii2
 
-[Yii2](https://link.zhihu.com/?target=https%3A//www.yiiframework.com/) 是一个神奇的存在，您希望从 PHP 框架中获得的所有特性，它基本上都能为您提供。它是 Yii 框架的修订版和高级版，一个基于组件的高性能 PHP 框架。Yii2 因其安全功能而受到网站开发人员的欢迎，这使其适用于电子商务、CMS、门户网站、论坛等项目。使用 Yii2，您可以将数据库建模为对象，从而避免编写重复的复杂性 SQL 语句。
+[Yii2](https://www.yiiframework.com/) 是一个神奇的存在，您希望从 PHP 框架中获得的所有特性，它基本上都能为您提供。它是 Yii 框架的修订版和高级版，一个基于组件的高性能 PHP 框架。Yii2 因其安全功能而受到网站开发人员的欢迎，这使其适用于电子商务、CMS、门户网站、论坛等项目。使用 Yii2，您可以将数据库建模为对象，从而避免编写重复的复杂性 SQL 语句。
 
 Yii2 具有极好的可扩展性，可以自定义几乎每个核心代码。当程序员需要确保可扩展性并开发高效、易于维护的 Web 应用程序时，它是首选。这个功能强大且易于使用的框架适用于各种 Web 应用。
 
@@ -167,7 +167,7 @@ Yii2 具有极好的可扩展性，可以自定义几乎每个核心代码。当
 
 ### 7. Phalcon
 
-[Phalcon](https://link.zhihu.com/?target=https%3A//phalcon.io/zh/) 是用 C 和 C ++ 编写的，但这并不意味着您必须学习 C 语言才能使用 Phalcon 框架。拥有一个底层是 C 语言扩展的 PHP 框架，这可能听起来很奇怪，但 Phalcon 是最快的 PHP 框架。Phalcon 非常易于安装，非常适合创建高度可定制的 Web 解决方案。该框架的亮点之一在于 Phalcon 在安装框架后几乎没有文件，您只需添加需要使用的模块和库，这使得开发过程非常整洁。
+[Phalcon](https://phalcon.io/zh/) 是用 C 和 C ++ 编写的，但这并不意味着您必须学习 C 语言才能使用 Phalcon 框架。拥有一个底层是 C 语言扩展的 PHP 框架，这可能听起来很奇怪，但 Phalcon 是最快的 PHP 框架。Phalcon 非常易于安装，非常适合创建高度可定制的 Web 解决方案。该框架的亮点之一在于 Phalcon 在安装框架后几乎没有文件，您只需添加需要使用的模块和库，这使得开发过程非常整洁。
 
 PHP Phalcon 框架创建符合企业开发指南的网站和 Web 应用程序。与其他框架相比，Phalcon（在最流行的 PHP 框架中）使用的资源非常少，从而可以快速处理 HTTP 请求。
 

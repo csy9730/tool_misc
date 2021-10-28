@@ -8,7 +8,7 @@
 
 42 人赞同了该文章
 
-## 来源：[https://blog.csdn.net/CSDN_Yoa/article/details/81384924](https://link.zhihu.com/?target=https%3A//blog.csdn.net/CSDN_Yoa/article/details/81384924)
+## 来源：[https://blog.csdn.net/CSDN_Yoa/article/details/81384924](https://blog.csdn.net/CSDN_Yoa/article/details/81384924)
 
 ## 1 CAN协议简介
 

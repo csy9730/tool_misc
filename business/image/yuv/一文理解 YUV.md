@@ -185,15 +185,15 @@ YUV 与 RGB 之间的转换，就是将 图像所有像素点的 R、G、B 分�
 
 ## **参考**
 
-[https://zh.wikipedia.org/wiki/YUV](https://link.zhihu.com/?target=https%3A//zh.wikipedia.org/wiki/YUV)
+[https://zh.wikipedia.org/wiki/YUV](https://zh.wikipedia.org/wiki/YUV)
 
-[https://glumes.com/post/ffmpeg/understand-yuv-format/](https://link.zhihu.com/?target=https%3A//glumes.com/post/ffmpeg/understand-yuv-format/)
+[https://glumes.com/post/ffmpeg/understand-yuv-format/](https://glumes.com/post/ffmpeg/understand-yuv-format/)
 
-[https://blog.csdn.net/MrJonathan/article/details/17718761](https://link.zhihu.com/?target=https%3A//blog.csdn.net/MrJonathan/article/details/17718761)
+[https://blog.csdn.net/MrJonathan/article/details/17718761](https://blog.csdn.net/MrJonathan/article/details/17718761)
 
 [http://www.fourcc.org/pixel-format/yuv-i420/](https://link.zhihu.com/?target=http%3A//www.fourcc.org/pixel-format/yuv-i420/)
 
-[https://msdn.microsoft.com/zh-cn/library/ms867704.aspx](https://link.zhihu.com/?target=https%3A//msdn.microsoft.com/zh-cn/library/ms867704.aspx)
+[https://msdn.microsoft.com/zh-cn/library/ms867704.aspx](https://msdn.microsoft.com/zh-cn/library/ms867704.aspx)
 
 编辑于 2020-11-19
 

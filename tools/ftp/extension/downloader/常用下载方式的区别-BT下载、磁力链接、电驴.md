@@ -107,7 +107,7 @@ ftp://4:4@dx.dl1234.com:8006/阿甘正传BD双语双字[电影天堂www.dy2018.c
 （3）`做种`：分为两种，第一是你作为首位发布者发布，供给别人下载，这叫**原始种子**）第二种就是在你完成了 BT 下载任务后不关闭BT client,提供上传供别人下载。
 
 ```
-注：关于如何自己制作种子文件，看这里的介绍： https:``//jingyan.baidu.com/article/b24f6c82e06df186bfe5dad6.html
+注：关于如何自己制作种子文件，看这里的介绍： https://jingyan.baidu.com/article/b24f6c82e06df186bfe5dad6.html
 ```
 
 # 三、磁力链接 —— BT 下载新形式

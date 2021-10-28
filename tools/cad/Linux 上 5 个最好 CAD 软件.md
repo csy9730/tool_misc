@@ -15,7 +15,7 @@
 > 计算机辅助设计 (CAD) 是很多工程流程的必不可少的部分。CAD 用于建筑、汽车零部件设计、航天飞机研究、航空、桥梁施工、室内设计，甚至服装和珠宝设计等专业领域。
 > -- Aquil Roshan（作者）
 
-[计算机辅助设计 (CAD)](https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Computer-aided_design) 是很多工程流程的必不可少的部分。CAD 用于建筑、汽车零部件设计、航天飞机研究、航空、桥梁施工、室内设计，甚至服装和珠宝设计等专业领域。
+[计算机辅助设计 (CAD)](https://en.wikipedia.org/wiki/Computer-aided_design) 是很多工程流程的必不可少的部分。CAD 用于建筑、汽车零部件设计、航天飞机研究、航空、桥梁施工、室内设计，甚至服装和珠宝设计等专业领域。
 
 在 Linux 上并不原生支持一些专业级 CAD 软件，如 SolidWorks 和 Autodesk AutoCAD。因此，今天，我们将看看排名靠前的 Linux 上可用的 CAD 软件。预知详情，请看下文。
 
@@ -39,7 +39,7 @@
 
 尽管 FreeCAD 已经是很多 Linux 用户的选择，应该注意到，FreeCAD 仍然是 0.17 版本，因此，不适用于重要的部署。但是最近开发加速了。
 
-- [FreeCAD](https://link.zhihu.com/?target=https%3A//www.freecadweb.org/)
+- [FreeCAD](https://www.freecadweb.org/)
 
 FreeCAD 并不专注于 direct-2D 绘图和真实形状的动画，但是它对机械工程相关的设计极好。FreeCAD 的 0.15 版本在 Ubuntu 存储库中可用。你可以通过运行下面的命令安装。
 
@@ -67,7 +67,7 @@ LibreCAD 是一个自由开源的、2D CAD 解决方案。一般来说，CAD 是
 
 作为一个 2D 工具，LibreCAD 是好的，但是它不能在 3D 模型和渲染上工作。它有时可能不稳定，但是，它有一个可靠的自动保存，它不会让你的工作浪费。
 
-- [LibreCAD](https://link.zhihu.com/?target=https%3A//librecad.org/)
+- [LibreCAD](https://librecad.org/)
 
 你可以通过运行下面的命令安装 LibreCAD。
 
@@ -105,7 +105,7 @@ BRL-CAD 是最老的 CAD 工具之一。它也深受 Linux/UNIX 用户喜爱，�
 
 BRL-CAD 始于 1979 年，并且，它仍然在积极开发。现在，BRL-CAD 不是 AutoCAD，但是对于像热穿透和弹道穿透等等的运输研究仍然是一个极好的选择。BRL-CAD 构成 CSG 的基础，而不是边界表示。在选择 BRL-CAD 时，你可能需要记住这一点。你可以从它的官方网站下载 BRL-CAD 。
 
-- [BRL-CAD](https://link.zhihu.com/?target=https%3A//brlcad.org/)
+- [BRL-CAD](https://brlcad.org/)
 
 ## `5、DraftSight (非开源)`
 
@@ -119,16 +119,16 @@ DraftSight 是一个在 Linux 上可用的极好的 CAD 工具。它有相当类
 
 
 
-尽管 DrafSight 是一款起价 149 美元的商业软件。在 [DraftSight 网站](https://link.zhihu.com/?target=https%3A//www.draftsight2018.com/)上可获得一个免费版本。你可以下载 .deb 软件包，并在基于 Ubuntu 的发行版上安装它。为了开始使用 DraftSight ，你需要使用你的电子邮件 ID 来注册你的免费版本。
+尽管 DrafSight 是一款起价 149 美元的商业软件。在 [DraftSight 网站](https://www.draftsight2018.com/)上可获得一个免费版本。你可以下载 .deb 软件包，并在基于 Ubuntu 的发行版上安装它。为了开始使用 DraftSight ，你需要使用你的电子邮件 ID 来注册你的免费版本。
 
-- [DraftSight](https://link.zhihu.com/?target=https%3A//www.draftsight2018.com/)
+- [DraftSight](https://www.draftsight2018.com/)
 
 ## `荣誉提名`
 
-- 随着云计算技术的巨大发展，像 [OnShape](https://link.zhihu.com/?target=https%3A//www.onshape.com/) 的云 CAD 解决方案已经变得日渐流行。
+- 随着云计算技术的巨大发展，像 [OnShape](https://www.onshape.com/) 的云 CAD 解决方案已经变得日渐流行。
 - [SolveSpace](https://link.zhihu.com/?target=http%3A//solvespace.com/index.pl) 是另一个值得一提的开源软件项目。它支持 3D 模型。
 - 西门子 NX 是一个在 Windows、Mac OS 及 Linux 上可用的工业级 CAD 解决方案，但是它贵得离谱，所以，在这个列表中被忽略。
-- 接下来，你有 [LeoCAD](https://link.zhihu.com/?target=https%3A//www.leocad.org/)，它是一个 CAD 软件，在软件中你使用乐高积木来构建东西。你使用这些信息做些什么取决于你。
+- 接下来，你有 [LeoCAD](https://www.leocad.org/)，它是一个 CAD 软件，在软件中你使用乐高积木来构建东西。你使用这些信息做些什么取决于你。
 
 ## **我对 Linux 上的 CAD 的看法**
 
@@ -144,11 +144,11 @@ DraftSight 是一个在 Linux 上可用的极好的 CAD 工具。它有相当类
 
 ------
 
-via: [https://itsfoss.com/cad-software-linux/](https://link.zhihu.com/?target=https%3A//itsfoss.com/cad-software-linux/)
+via: [https://itsfoss.com/cad-software-linux/](https://itsfoss.com/cad-software-linux/)
 
-作者：[Aquil Roshan](https://link.zhihu.com/?target=https%3A//itsfoss.com/author/aquil/) 选题：[lujun9972](https://link.zhihu.com/?target=https%3A//github.com/lujun9972) 译者：[robsean](https://link.zhihu.com/?target=https%3A//github.com/robsean) 校对：[wxy](https://link.zhihu.com/?target=https%3A//github.com/wxy)
+作者：[Aquil Roshan](https://itsfoss.com/author/aquil/) 选题：[lujun9972](https://github.com/lujun9972) 译者：[robsean](https://github.com/robsean) 校对：[wxy](https://github.com/wxy)
 
-本文由 [LCTT](https://link.zhihu.com/?target=https%3A//github.com/LCTT/TranslateProject) 原创编译，[Linux中国](https://link.zhihu.com/?target=https%3A//linux.cn/) 荣誉推出
+本文由 [LCTT](https://github.com/LCTT/TranslateProject) 原创编译，[Linux中国](https://linux.cn/) 荣誉推出
 
 发布于 2019-09-08
 

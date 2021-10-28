@@ -49,7 +49,7 @@ Unified Extensible Firmware Interface，架设在系统固件之上的软件接�
 3. EFI驱动程序
 4. 兼容性支持模块（CSM）
 5. EFI高层应用
-6. [GUID磁盘分区表](https://link.zhihu.com/?target=https%3A//zh.wikipedia.org/wiki/%E5%85%A8%E5%B1%80%E5%94%AF%E4%B8%80%E6%A8%99%E8%AD%98%E5%88%86%E5%8D%80%E8%A1%A8)（GPT）
+6. [GUID磁盘分区表](https://zh.wikipedia.org/wiki/%E5%85%A8%E5%B1%80%E5%94%AF%E4%B8%80%E6%A8%99%E8%AD%98%E5%88%86%E5%8D%80%E8%A1%A8)（GPT）
 
 通常初始化模块和DXE被集成在一个ROM中；EFI驱动程序一般在设备的ROM中，或者ESP中；EFI高层应用一般在ESP中。CSM用于给不具备UEFI引导能力的操作系统提供类似于传统BIOS的系统服务。
 
@@ -68,7 +68,7 @@ Unified Extensible Firmware Interface，架设在系统固件之上的软件接�
 3. 1. 检查MBR的结束标志位是否等于55AAH，若不等于则转去尝试其他启动设备，如果没有启动设备满足要求则显示"NO ROM BASIC"然后死机。
    2. 当检测到有启动设备满足要求后，BIOS将控制权交给相应启动设备的MBR。
 
-4. 根据MBR中的引导代码启动[引导程序](https://link.zhihu.com/?target=https%3A//zh.wikipedia.org/wiki/%E5%BC%95%E5%AF%BC%E7%A8%8B%E5%BA%8F%22%20%5Co%20%22%E5%BC%95%E5%AF%BC%E7%A8%8B%E5%BA%8F)。
+4. 根据MBR中的引导代码启动[引导程序](https://zh.wikipedia.org/wiki/%E5%BC%95%E5%AF%BC%E7%A8%8B%E5%BA%8F%22%20%5Co%20%22%E5%BC%95%E5%AF%BC%E7%A8%8B%E5%BA%8F)。
 
 
 
@@ -118,7 +118,7 @@ GUID Partition Table，是EFI标准的一部分，用于替代MBR分区表，相
 
 分区可以是文件系统，启动kernel image，bootloader裸程序，或者参数等各种数据。
 
-MBR Partition ID（分区类型）：[https://en.wikipedia.org/wiki/Partition_type](https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Partition_type)
+MBR Partition ID（分区类型）：[https://en.wikipedia.org/wiki/Partition_type](https://en.wikipedia.org/wiki/Partition_type)
 
 
 
@@ -144,7 +144,7 @@ Linux也可以直接将编译出的Kernel及initrd（打开EFI Stub编译选项�
 
 也可以在PC的系统设置中添加启动项。
 
-维基百科的ESP条目：[https://en.wikipedia.org/wiki/EFI_system_partition](https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/EFI_system_partition)
+维基百科的ESP条目：[https://en.wikipedia.org/wiki/EFI_system_partition](https://en.wikipedia.org/wiki/EFI_system_partition)
 
 
 
@@ -178,15 +178,15 @@ GNU的开源引导程序，可以用于引导Linux等操作系统，或者用于
 
 - Windows Boot Manager
 
-是从[Windows Vista](https://link.zhihu.com/?target=https%3A//zh.wikipedia.org/wiki/Windows_Vista)开始引进的新一代开机管理程序，用以取代[NTLDR](https://link.zhihu.com/?target=https%3A//zh.wikipedia.org/wiki/NTLDR)。
+是从[Windows Vista](https://zh.wikipedia.org/wiki/Windows_Vista)开始引进的新一代开机管理程序，用以取代[NTLDR](https://zh.wikipedia.org/wiki/NTLDR)。
 
-当电脑运行完开机自检后，传统型[BIOS](https://link.zhihu.com/?target=https%3A//zh.wikipedia.org/wiki/BIOS)会根据[引导扇区](https://link.zhihu.com/?target=https%3A//zh.wikipedia.org/wiki/%E5%95%9F%E5%8B%95%E7%A3%81%E5%8D%80)查找开机硬盘中标记"引导"分区下的BOOTMGR文件；若是[UEFI](https://link.zhihu.com/?target=https%3A//zh.wikipedia.org/wiki/UEFI)则是Bootmgfw.efi文件和Bootmgr.efi文件，接着管理程序会读取开机配置数据库（BCD, Boot Configuration Database）下的引导数据，接着根据其中的数据加载与默认或用户所选择的[操作系统](https://link.zhihu.com/?target=https%3A//zh.wikipedia.org/wiki/%E4%BD%9C%E6%A5%AD%E7%B3%BB%E7%B5%B1)。
+当电脑运行完开机自检后，传统型[BIOS](https://zh.wikipedia.org/wiki/BIOS)会根据[引导扇区](https://zh.wikipedia.org/wiki/%E5%95%9F%E5%8B%95%E7%A3%81%E5%8D%80)查找开机硬盘中标记"引导"分区下的BOOTMGR文件；若是[UEFI](https://zh.wikipedia.org/wiki/UEFI)则是Bootmgfw.efi文件和Bootmgr.efi文件，接着管理程序会读取开机配置数据库（BCD, Boot Configuration Database）下的引导数据，接着根据其中的数据加载与默认或用户所选择的[操作系统](https://zh.wikipedia.org/wiki/%E4%BD%9C%E6%A5%AD%E7%B3%BB%E7%B5%B1)。
 
 
 
 - NTLDR
 
-是[微软](https://link.zhihu.com/?target=https%3A//zh.wikipedia.org/wiki/%E5%BE%AE%E8%BD%AF)的[Windows NT](https://link.zhihu.com/?target=https%3A//zh.wikipedia.org/wiki/Windows_NT)系列[操作系统](https://link.zhihu.com/?target=https%3A//zh.wikipedia.org/wiki/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F)（包括[Windows XP](https://link.zhihu.com/?target=https%3A//zh.wikipedia.org/wiki/Windows_XP)和[Windows Server 2003](https://link.zhihu.com/?target=https%3A//zh.wikipedia.org/wiki/Windows_Server_2003)）的引导程序。NTLDR可以从[硬盘](https://link.zhihu.com/?target=https%3A//zh.wikipedia.org/wiki/%E7%A1%AC%E7%9B%98)以及[CD-ROM](https://link.zhihu.com/?target=https%3A//zh.wikipedia.org/wiki/CD-ROM)、[U盘](https://link.zhihu.com/?target=https%3A//zh.wikipedia.org/wiki/U%E7%9B%98)等移动存储器运行并引导Windows NT系统的启动。如果要用NTLDR启动其他操作系统，则需要将该操作系统所使用的[启动扇区](https://link.zhihu.com/?target=https%3A//zh.wikipedia.org/w/index.php%3Ftitle%3D%E5%90%AF%E5%8A%A8%E6%89%87%E5%8C%BA%26action%3Dedit%26redlink%3D1)代码保存为一个文件，NTLDR可以从这个文件加载其它[引导程序](https://link.zhihu.com/?target=https%3A//zh.wikipedia.org/wiki/%E5%BC%95%E5%AF%BC%E7%A8%8B%E5%BA%8F)。
+是[微软](https://zh.wikipedia.org/wiki/%E5%BE%AE%E8%BD%AF)的[Windows NT](https://zh.wikipedia.org/wiki/Windows_NT)系列[操作系统](https://zh.wikipedia.org/wiki/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F)（包括[Windows XP](https://zh.wikipedia.org/wiki/Windows_XP)和[Windows Server 2003](https://zh.wikipedia.org/wiki/Windows_Server_2003)）的引导程序。NTLDR可以从[硬盘](https://zh.wikipedia.org/wiki/%E7%A1%AC%E7%9B%98)以及[CD-ROM](https://zh.wikipedia.org/wiki/CD-ROM)、[U盘](https://zh.wikipedia.org/wiki/U%E7%9B%98)等移动存储器运行并引导Windows NT系统的启动。如果要用NTLDR启动其他操作系统，则需要将该操作系统所使用的[启动扇区](https://zh.wikipedia.org/w/index.php%3Ftitle%3D%E5%90%AF%E5%8A%A8%E6%89%87%E5%8C%BA%26action%3Dedit%26redlink%3D1)代码保存为一个文件，NTLDR可以从这个文件加载其它[引导程序](https://zh.wikipedia.org/wiki/%E5%BC%95%E5%AF%BC%E7%A8%8B%E5%BA%8F)。
 
 NTLDR主要由两个文件组成，这两个文件必须放在系统分区（大多数情况下都是C盘）：
 

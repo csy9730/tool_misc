@@ -36,16 +36,16 @@ metal是苹果针对自家产品设计的一套API，相对来说，初学者还
 
 对于入门最好的方式就是找一些资料和测试案例来入手，然后根据需要做一些修改，来实现入门的目的。当然最好选择见到易懂的小项目，这里主要列举几个本人用过的测试案例，也还算是比较简单易懂的。
 
-1、安卓端和OpenGLES：测试案例可以选择[https://github.com/learnopengles/Learn-OpenGLES-Tutorials](https://link.zhihu.com/?target=https%3A//github.com/learnopengles/Learn-OpenGLES-Tutorials)，[https://github.com/ARM-software/opengl-es-sdk-for-android](https://link.zhihu.com/?target=https%3A//github.com/ARM-software/opengl-es-sdk-for-android)
+1、安卓端和OpenGLES：测试案例可以选择[https://github.com/learnopengles/Learn-OpenGLES-Tutorials](https://github.com/learnopengles/Learn-OpenGLES-Tutorials)，[https://github.com/ARM-software/opengl-es-sdk-for-android](https://github.com/ARM-software/opengl-es-sdk-for-android)
 
 2、安卓端和OpenCL：OpenCL相对来说资料会少一些，目前一些卷积神经网络推理框架也选择OpenCL，但是总体较为复杂，所以我推荐下载高通的Adreno GPU SDK，内置有几个opencl的测试案例。不过需要先注册账号，然后选择下载Adreno GPU SDK
 
-3、vulkan：[https://github.com/LunarG/VulkanSamples](https://link.zhihu.com/?target=https%3A//github.com/LunarG/VulkanSamples)，这个支持的平台还比较多，不过为了测试方便，建议直接用ubuntu算是比较方便的了
+3、vulkan：[https://github.com/LunarG/VulkanSamples](https://github.com/LunarG/VulkanSamples)，这个支持的平台还比较多，不过为了测试方便，建议直接用ubuntu算是比较方便的了
 
 一些基础的话也可以查看相关的官方资料，特别的OpenGLES可以找一本叫做OpenGLES中文指南的文档，对入门也很有帮助：
 
-OpenGLES,[https://www.khronos.org/opengles/resources](https://link.zhihu.com/?target=https%3A//www.khronos.org/opengles/resources)
+OpenGLES,[https://www.khronos.org/opengles/resources](https://www.khronos.org/opengles/resources)
 
-OpenCL,[https://www.khronos.org/opencl/resources](https://link.zhihu.com/?target=https%3A//www.khronos.org/opencl/resources)
+OpenCL,[https://www.khronos.org/opencl/resources](https://www.khronos.org/opencl/resources)
 
-Vulkan,[https://www.khronos.org/vulkan/](https://link.zhihu.com/?target=https%3A//www.khronos.org/vulkan/)
+Vulkan,[https://www.khronos.org/vulkan/](https://www.khronos.org/vulkan/)

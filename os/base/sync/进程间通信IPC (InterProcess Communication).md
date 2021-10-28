@@ -56,7 +56,7 @@
 > （3）**无名管道阻塞问题：**无名管道无需显示打开，创建时直接返回文件描述符，在读写时需要确定对方的存在，否则将退出。如果当前进程向无名管道的一端写数据，必须确定另一端有某一进程。如果写入无名管道的数据超过其最大值，写操作将阻塞，如果管道中没有数据，读操作将阻塞，如果管道发现另一端断开，将自动退出。
 > （4）**有名管道阻塞问题：**有名管道在打开时需要确实对方的存在，否则将阻塞。即以读方式打开某管道，在此之前必须一个进程以写方式打开管道，否则阻塞。此外，可以以读写（O_RDWR）模式打开有名管道，即当前进程读，当前进程写，不会阻塞。
 
-[延伸阅读：该博客有匿名管道和有名管道的C语言实践](https://link.jianshu.com/?t=http://blog.chinaunix.net/uid-26833883-id-3227144.html)
+[延伸阅读：该博客有匿名管道和有名管道的C语言实践](http://blog.chinaunix.net/uid-26833883-id-3227144.html)
 
 **3. 信号(Signal)**
 
@@ -96,7 +96,7 @@
 
 - 消息队列是存放在内核中的消息链表，每个消息队列由消息队列标识符表示。
 - 与管道（无名管道：只存在于内存中的文件；命名管道：存在于实际的磁盘介质或者文件系统）不同的是消息队列存放在内核中，只有在内核重启(即，操作系统重启)或者显示地删除一个消息队列时，该消息队列才会被真正的删除。
-- 另外与管道不同的是，消息队列在某个进程往一个队列写入消息之前，并不需要另外某个进程在该队列上等待消息的到达。[延伸阅读：消息队列C语言的实践](https://link.jianshu.com/?t=http://blog.csdn.net/yang_yulei/article/details/19772649)
+- 另外与管道不同的是，消息队列在某个进程往一个队列写入消息之前，并不需要另外某个进程在该队列上等待消息的到达。[延伸阅读：消息队列C语言的实践](http://blog.csdn.net/yang_yulei/article/details/19772649)
 
 > **消息队列特点总结：**
 > （1）消息队列是消息的链表,具有特定的格式,存放在内存中并由消息队列标识符标识.
@@ -127,7 +127,7 @@
 （2）**等待一个信号量**：该操作会测试这个信号量的值，如果小于0，就阻塞。也称为P操作。
 （3）**挂出一个信号量**：该操作将信号量的值加1，也称为V操作。
 
-为了正确地实现信号量，信号量值的测试及减1操作应当是原子操作。为此，信号量通常是在内核中实现的。Linux环境中，有三种类型：**Posix（[可移植性操作系统接口](https://link.jianshu.com/?t=http://baike.baidu.com/link?url=hYEo6ngm9MlqsQHT3h28baIDxEooeSPX6wr_FdGF-F8mf7wDp2xJWIDtQWGEDxthtPNiJtlsw460g1_N0txJYa)）有名信号量（使用Posix IPC名字标识）**、**Posix基于内存的信号量（存放在共享内存区中）**、**System V信号量（在内核中维护）**。这三种信号量都可用于进程间或线程间的同步。
+为了正确地实现信号量，信号量值的测试及减1操作应当是原子操作。为此，信号量通常是在内核中实现的。Linux环境中，有三种类型：**Posix（[可移植性操作系统接口](http://baike.baidu.com/link?url=hYEo6ngm9MlqsQHT3h28baIDxEooeSPX6wr_FdGF-F8mf7wDp2xJWIDtQWGEDxthtPNiJtlsw460g1_N0txJYa)）有名信号量（使用Posix IPC名字标识）**、**Posix基于内存的信号量（存放在共享内存区中）**、**System V信号量（在内核中维护）**。这三种信号量都可用于进程间或线程间的同步。
 
 ![img](https://upload-images.jianshu.io/upload_images/1281379-376528c40d03717e.png?imageMogr2/auto-orient/strip|imageView2/2/w/635/format/webp)
 
@@ -201,12 +201,12 @@ Socket通信基本流程
 **客户端**
 （1）客户应用程序首先调用socket来创建一个未命名的套接字，然后将服务器的命名套接字作为一个地址来调用connect与服务器建立连接。
 （2）一旦连接建立，我们就可以像使用底层的文件描述符那样用套接字来实现双向数据的通信（通过流进行数据传输）。
-[延伸阅读 ：Java socket编程](https://link.jianshu.com/?t=http://developer.51cto.com/art/201509/490775.htm)
+[延伸阅读 ：Java socket编程](http://developer.51cto.com/art/201509/490775.htm)
 
 #### 三、参考引用
 
-[1. 进程间通信--管道](https://link.jianshu.com/?t=http://blog.chinaunix.net/uid-26833883-id-3227144.html)
-[2. Linux进程间通信——使用共享内存](https://link.jianshu.com/?t=http://blog.csdn.net/ljianhui/article/details/10253345)
-[3. 进程间通信---共享内存](https://link.jianshu.com/?t=http://blog.chinaunix.net/uid-26833883-id-3230564.html)
-[4. 信号量与互斥锁](https://link.jianshu.com/?t=http://www.cnblogs.com/diyingyun/archive/2011/12/04/2275229.html)
-[5. 信号量](https://link.jianshu.com/?t=http://blog.chinaunix.net/uid-23193900-id-3194924.html)
+[1. 进程间通信--管道](http://blog.chinaunix.net/uid-26833883-id-3227144.html)
+[2. Linux进程间通信——使用共享内存](http://blog.csdn.net/ljianhui/article/details/10253345)
+[3. 进程间通信---共享内存](http://blog.chinaunix.net/uid-26833883-id-3230564.html)
+[4. 信号量与互斥锁](http://www.cnblogs.com/diyingyun/archive/2011/12/04/2275229.html)
+[5. 信号量](http://blog.chinaunix.net/uid-23193900-id-3194924.html)

@@ -22,17 +22,14 @@
 
 它也是一个开源项目，该开源项目的介绍，大家可以看官网介绍，在github和gitee都有：
 
-github网址：
+github网址：[https://github.com/xia-chu/ZLMediaKit](https://github.com/xia-chu/ZLMediaKit)
 
-```text
-https://github.com/xia-chu/ZLMediaKit
-```
 
-gitee网址：
+gitee网址：[https://gitee.com/xia-chu/ZLMediaKit](https://gitee.com/xia-chu/ZLMediaKit)
 
-```text
-https://gitee.com/xia-chu/ZLMediaKit
-```
+
+
+
 
 官网上有介绍该项目的特点：
 
@@ -50,17 +47,14 @@ https://gitee.com/xia-chu/ZLMediaKit
 
 ![img](https://pic1.zhimg.com/80/v2-892ce4fca9645cbd853d0ce33c24133c_720w.jpg)
 
-如果你想了解更多关于这个服务器的功能和代码，可以去官网查看，这里我就不多说了，下面开始基于此搭建这个服务器；首先说明的是，我这里使用的环境是ubuntu16.04，其实也可以用其它的环境搭建，在官网的wiki教程中有详细的介绍：
+如果你想了解更多关于这个服务器的功能和代码，可以去官网查看，这里我就不多说了，下面开始基于此搭建这个服务器；首先说明的是，我这里使用的环境是ubuntu16.04，其实也可以用其它的环境搭建，在官网的wiki教程中有详细的介绍：[https://github.com/xia-chu/ZLMediaKit/wiki/%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B](https://github.com/xia-chu/ZLMediaKit/wiki/%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B)
 
-```text
-https://github.com/xia-chu/ZLMediaKit/wiki/%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B
-```
 
 ### **1、获取代码：**
 
 国内⽤户推荐从同步镜像⽹站gitee下载：
 
-```text
+``` bash
 git clone --depth 1 https://gitee.com/xia-chu/ZLMediaKit
 
 root@txp-virtual-machine:/home/txp/share# mkdir rtsp
@@ -80,7 +74,7 @@ Checking connectivity... done.
 
 然后切换到ZLMediaKit目录下，记得执行下面这条语句：
 
-```text
+``` bash
 root@txp-virtual-machine:/home/txp/share/rtsp# cd ZLMediaKit/
 root@txp-virtual-machine:/home/txp/share/rtsp/ZLMediaKit# ls
 3rdpart  AUTHORS                 build_for_linux.sh  CMakeLists.txt  docker   postman       server  www
@@ -130,7 +124,7 @@ zlmediakit可以通过fork ffmpeg进程的方式实现多种协议的拉流，�
 
 这3个库供ZLMediaKit的test_player测试程序使用，你通常不需要安装这3个库。
 
-```text
+``` bash
 #除了openssl,其他其实都可以不安装
 sudo apt-get install libssl-dev
 sudo apt-get install libsdl-dev
@@ -143,14 +137,14 @@ sudo apt-get install ffmpeg
 
 - 先建立一个build目录，然后切换到该目录下去：
 
-```text
+``` bash
 root@txp-virtual-machine:/home/txp/share/rtsp/ZLMediaKit# mkdir build
 root@txp-virtual-machine:/home/txp/share/rtsp/ZLMediaKit# cd build
 ```
 
 - cmake ..
 
-```text
+```
 -- The C compiler identification is GNU 5.4.0
 -- The CXX compiler identification is GNU 5.4.0
 -- Check for working C compiler: /usr/bin/cc
@@ -186,7 +180,7 @@ MediaServer进程：
 
 这是ZLMediaKit作为服务器的主进程，该进程可以在免去开发的情况下直接作为测试流媒体服务器使用，如果你需要更复杂的业务逻辑，可以通过Web HOOK和RESTful API实现,同时你可以通过配置文件控制其参数。
 
-```text
+``` bash
 root@txp-virtual-machine:/home/txp/share/rtsp/ZLMediaKit/release# cd linux/Debug/
 root@txp-virtual-machine:/home/txp/share/rtsp/ZLMediaKit/release/linux/Debug# ls
 api_tester_pusher     libflv.a      libmpeg.a        tab               test_httpApi     test_rtcp    test_wsClient
@@ -197,7 +191,7 @@ bom                   libmov.a      MediaServer      test_bench_push   test_push
 
 我们可以通过./MediaServer -h了解启动参数：
 
-```text
+``` bash
 root@txp-virtual-machine:/home/txp/share/rtsp/ZLMediaKit/release/linux/Debug# ./MediaServer -h
   -h  --help     无参  默认:null                                                            选填  打印此信息
   -d  --daemon   无参  默认:null                                                            选填  是否以Daemon方式启动
@@ -211,7 +205,7 @@ root@txp-virtual-machine:/home/txp/share/rtsp/ZLMediaKit/release/linux/Debug# ./
 
 开始运行：
 
-```text
+``` bash
 root@txp-virtual-machine:/home/txp/share/rtsp/ZLMediaKit/release/linux/Debug# ./MediaServer -d &
 
 
@@ -246,7 +240,7 @@ root@txp-virtual-machine:/home/txp/share/rtsp/ZLMediaKit/release/linux/Debug# 20
 
 开始使用ffmpeg进行推流：
 
-```text
+``` bash
 ffmpeg -re -i test.mp4 -vcodec h264 -acodec aac -f rtsp -rtsp_transport tcp rtsp://192.168.32.128/live/test
 ```
 
@@ -256,7 +250,7 @@ ffmpeg -re -i test.mp4 -vcodec h264 -acodec aac -f rtsp -rtsp_transport tcp rtsp
 
 现在我来开始拉流播放，这里使用ffplay进行拉流播放：
 
-```text
+``` bash
 ffplay -rtsp_transport tcp rtsp://192.168.32.128/live/test
 ```
 
@@ -266,7 +260,7 @@ ffplay -rtsp_transport tcp rtsp://192.168.32.128/live/test
 
 上面是基于rtsp协议进行拉流的，我们也可以用rtmp来进行拉流播放;
 
-```text
+``` bash
 ffplay rtmp:://192.168.32.128/live/test
 ```
 
@@ -274,7 +268,7 @@ ffplay rtmp:://192.168.32.128/live/test
 
 接着我们使用udp的方式来进行拉流，你会发现速度非常快：
 
-```text
+``` bash
 ffplay -rtsp_transport udp rtsp://192.168.32.128/live/test
 ```
 
@@ -282,7 +276,7 @@ ffplay -rtsp_transport udp rtsp://192.168.32.128/live/test
 
 更多测试实验也可以参考官方手册：
 
-```text
+``` bash
 https://github.com/xia-chu/ZLMediaKit/wiki/ZLMediaKit%E6%8E%A8%E6%B5%81%E6%B5%8B%E8%AF%95
 ```
 

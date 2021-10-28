@@ -109,7 +109,7 @@ Git 会遍历步骤2中所有的commit，从中找出针对S目录的更改，�
 
 ## 参考
 
-- [用 Git Subtree 在多个 Git 项目间双向同步子项目](https://link.jianshu.com/?t=https://segmentfault.com/a/1190000003969060)
-- [Git Subtree 的介绍及使用](https://link.jianshu.com/?t=http://blog.csdn.net/bingshushu/article/details/51244480)
-- [使用Git Subtree集成项目到子项目](https://link.jianshu.com/?t=http://aoxuis.me/post/2013-08-06-git-subtree)
-- [使用git的subtree将已有项目的某个目录分离成独立项目](https://link.jianshu.com/?t=https://www.queyang.com/blog/archives/519)
+- [用 Git Subtree 在多个 Git 项目间双向同步子项目](https://segmentfault.com/a/1190000003969060)
+- [Git Subtree 的介绍及使用](http://blog.csdn.net/bingshushu/article/details/51244480)
+- [使用Git Subtree集成项目到子项目](http://aoxuis.me/post/2013-08-06-git-subtree)
+- [使用git的subtree将已有项目的某个目录分离成独立项目](https://www.queyang.com/blog/archives/519)

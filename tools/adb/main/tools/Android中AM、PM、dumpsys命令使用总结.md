@@ -54,7 +54,7 @@ am [command] [options]
 | am hang                           | 系统卡住                  | hang                       |
 | am monitor                        | 监控                      | MyActivityController.run   |
 
-**原理分析：am命令实的实现方式在Am.java，最终几乎都是调用ActivityManagerService相应的方法来完成的，am monitor除外。比如前面概述中介绍的命令am start -a android.intent.action.VIEW -d [https://amberweather.com](https://link.jianshu.com/?t=https://amberweather.com)， 启动Acitivty最终调用的是ActivityManagerService类的startActivityAsUser()方法来完成的。再比如am kill-all命令，最终的实现工作是由ActivityManagerService的killBackgroundProcesses()方法完成的。**
+**原理分析：am命令实的实现方式在Am.java，最终几乎都是调用ActivityManagerService相应的方法来完成的，am monitor除外。比如前面概述中介绍的命令am start -a android.intent.action.VIEW -d [https://amberweather.com](https://amberweather.com)， 启动Acitivty最终调用的是ActivityManagerService类的startActivityAsUser()方法来完成的。再比如am kill-all命令，最终的实现工作是由ActivityManagerService的killBackgroundProcesses()方法完成的。**
 
 下面说一下[options]和 <INTENT>参数的意义以及如何正确取值。
 

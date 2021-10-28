@@ -64,7 +64,7 @@ $$
 
 标准差（Standard Deviation）又常称均方差
 
-**极差**又称范围误差或[全距](https://link.zhihu.com/?target=https%3A//baike.baidu.com/item/%E5%85%A8%E8%B7%9D/10424210)(Range)，以R表示，是用来表示统计资料中的[变异量数](https://link.zhihu.com/?target=https%3A//baike.baidu.com/item/%E5%8F%98%E5%BC%82%E9%87%8F%E6%95%B0/10840782)(measures of variation)，其[最大值](https://link.zhihu.com/?target=https%3A//baike.baidu.com/item/%E6%9C%80%E5%A4%A7%E5%80%BC/774514)与最小值之间的[差距](https://link.zhihu.com/?target=https%3A//baike.baidu.com/item/%E5%B7%AE%E8%B7%9D/1855729)，即最大值减最小值后所得之数据。
+**极差**又称范围误差或[全距](https://baike.baidu.com/item/%E5%85%A8%E8%B7%9D/10424210)(Range)，以R表示，是用来表示统计资料中的[变异量数](https://baike.baidu.com/item/%E5%8F%98%E5%BC%82%E9%87%8F%E6%95%B0/10840782)(measures of variation)，其[最大值](https://baike.baidu.com/item/%E6%9C%80%E5%A4%A7%E5%80%BC/774514)与最小值之间的[差距](https://baike.baidu.com/item/%E5%B7%AE%E8%B7%9D/1855729)，即最大值减最小值后所得之数据。
 $$
 var(x)=\frac{\sum{(x_i-\bar{x})^2}}{n}
 $$

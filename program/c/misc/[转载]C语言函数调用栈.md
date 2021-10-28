@@ -5,8 +5,8 @@
 0.8792017.05.27 00:03:58字数 11,214阅读 3,643
 
 原文地址：
-[C语言函数调用栈(一)](https://link.jianshu.com/?t=http://www.cnblogs.com/clover-toeic/p/3755401.html)
-[C语言函数调用栈(二)](https://link.jianshu.com/?t=http://www.cnblogs.com/clover-toeic/p/3756668.html)
+[C语言函数调用栈(一)](http://www.cnblogs.com/clover-toeic/p/3755401.html)
+[C语言函数调用栈(二)](http://www.cnblogs.com/clover-toeic/p/3756668.html)
 
 ## 0 引言
 

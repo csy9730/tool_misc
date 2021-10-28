@@ -22,7 +22,7 @@
 
 > **同步方法**
 
-1. **登录[坚果云](https://link.jianshu.com/?t=https://www.jianguoyun.com/)，在左上角创建个人同步文件夹，文件夹名称最好容易记，等会还要用**
+1. **登录[坚果云](https://www.jianguoyun.com/)，在左上角创建个人同步文件夹，文件夹名称最好容易记，等会还要用**
 
    ![img](https://upload-images.jianshu.io/upload_images/8571330-2d69eb088274a618.png?imageMogr2/auto-orient/strip|imageView2/2/w/977/format/webp)
 

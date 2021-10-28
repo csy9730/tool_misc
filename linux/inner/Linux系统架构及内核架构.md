@@ -22,7 +22,7 @@ linux系统架构由硬件、kernel、系统调用、shell、c库、应用程序
 
 ![img](https://upload-images.jianshu.io/upload_images/6120676-efbcea90ac75e3cb.png?imageMogr2/auto-orient/strip|imageView2/2/w/823/format/webp)
 
-什么叫linux？ Linux是一种自由和开放[源码](https://link.jianshu.com/?t=http://www.2cto.com/ym/)的类Unix操作系统，遵循GPL协定，内核是操作系统的核心，具有很多最基本功能，它负责管理系统的进程、[内存](https://link.jianshu.com/?t=http://product.yesky.com/catalog/219/)、设备[驱动](https://link.jianshu.com/?t=http://drivers.yesky.com/)程序、文件和[网络](https://link.jianshu.com/?t=http://product.yesky.com/net/)系统，决定着系统的性能和稳定性。由Linus Torvalds 负责更新和维护。
+什么叫linux？ Linux是一种自由和开放[源码](http://www.2cto.com/ym/)的类Unix操作系统，遵循GPL协定，内核是操作系统的核心，具有很多最基本功能，它负责管理系统的进程、[内存](http://product.yesky.com/catalog/219/)、设备[驱动](http://drivers.yesky.com/)程序、文件和[网络](http://product.yesky.com/net/)系统，决定着系统的性能和稳定性。由Linus Torvalds 负责更新和维护。
 
 Linux 内核组成：内存管理、进程管理、设备驱动程序、文件系统和网络管理等，各个组成部分的关系如图：
 

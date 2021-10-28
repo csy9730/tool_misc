@@ -44,9 +44,9 @@ Windows环境下使用iOS指令
 
  
 
-1. [PonyDebugger](https://link.jianshu.com/?t=https://github.com/square/PonyDebugger)大家有耳熟能详，功能丰富，但其繁琐的配置过程，也提升了一定的Debug成本。
-2. [Alpha](https://link.jianshu.com/?t=https://github.com/Legoless/Alpha)作为FLEX的后继者更具有灵活性，调用可以灵活定制需要接入的Debug功能，且DEBUG内容也更加丰富。
-3. [FLEX](https://link.jianshu.com/?t=https://github.com/Flipboard/FLEX)Flipboard公司出品的iOS调试工具。
+1. [PonyDebugger](https://github.com/square/PonyDebugger)大家有耳熟能详，功能丰富，但其繁琐的配置过程，也提升了一定的Debug成本。
+2. [Alpha](https://github.com/Legoless/Alpha)作为FLEX的后继者更具有灵活性，调用可以灵活定制需要接入的Debug功能，且DEBUG内容也更加丰富。
+3. [FLEX](https://github.com/Flipboard/FLEX)Flipboard公司出品的iOS调试工具。
 
 
 

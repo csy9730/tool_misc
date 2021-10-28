@@ -28,7 +28,7 @@
 
 ![img](https://pic4.zhimg.com/80/v2-383ca798c1e0c5da3f9f2f3eab5adedf_720w.jpg)
 
-Proxmox VE 安装后启动，你可以登陆进去，ProxmoxVE 基于 Debian 9 ，进去可以用 apt-get 进行版本升级。接着按提示打开网页：[https://your-ip:8006/](https://link.zhihu.com/?target=https%3A//your-ip-address%3A8006/) 用系统 root 密码登陆：
+Proxmox VE 安装后启动，你可以登陆进去，ProxmoxVE 基于 Debian 9 ，进去可以用 apt-get 进行版本升级。接着按提示打开网页：[https://your-ip:8006/](https://your-ip-address%3A8006/) 用系统 root 密码登陆：
 
 ![img](https://pic4.zhimg.com/80/v2-1352df5e675035ffe26ceee8337851fb_720w.jpg)
 

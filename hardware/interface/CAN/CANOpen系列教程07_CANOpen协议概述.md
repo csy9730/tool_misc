@@ -9,7 +9,7 @@
 
 本文原创作者『**strongerHuang**』
 
-首发于微信公众号『**嵌入式专栏**』，同时也更新在我的个人网站：[EmbeddedDevelop](https://link.zhihu.com/?target=https%3A//www.strongerhuang.com/)
+首发于微信公众号『**嵌入式专栏**』，同时也更新在我的个人网站：[EmbeddedDevelop](https://www.strongerhuang.com/)
 
 **标签：**CAN、 CANOpen、 CanFestival
 
@@ -51,37 +51,37 @@ CANOpen协议从大方向的划分，就如上图所示三大块。但是，这�
 
 CANopen协议中常用的通信对象包含如下几点：
 
-## 1） 网络管理对象(NMT)
+### 1） 网络管理对象(NMT)
 
 网络管理对象包括 Boot-up 消息， Heartbeat 协议及 NMT 消息，基于主从通信模式， NMT 用于管理和监控网络中的各个节点，主要实现三种功能：节点状态控制、错误控制和节点启动。
 
-## 2） 服务数据对象 (SDO)
+### 2） 服务数据对象 (SDO)
 
-**·**包括接收 SDO(R-SDO) 和发送 SDO(T-SDO)。
+包括接收 SDO(R-SDO) 和发送 SDO(T-SDO)。
 
-**·**通过使用索引和子索引， SDO 使客户机能够访问设备对象字典中的项。
+通过使用索引和子索引， SDO 使客户机能够访问设备对象字典中的项。
 
-**·**SDO 通过 CAL 中多元域的 CMS 对象来实现，允许传送任何长度的数据，当数据超过 4 个字节时分拆成几个报文。
+SDO 通过 CAL 中多元域的 CMS 对象来实现，允许传送任何长度的数据，当数据超过 4 个字节时分拆成几个报文。
 
-**·**协议是确认服务类型，为每个消息生成一个应答。 SDO 请求和应答报文总是包含 8 个字节。
+协议是确认服务类型，为每个消息生成一个应答。 SDO 请求和应答报文总是包含 8 个字节。
 
-## 3） 过程数据对象(PDO)
+### 3） 过程数据对象(PDO)
 
-**·**包括接收 PDO(RPDO) 和发送 PDO(TPDO)。
+包括接收 PDO(RPDO) 和发送 PDO(TPDO)。
 
-**·**用来传输实时数据，数据从一个创建者传到一个或多个接收者。数据传送限制在 1 到 8 个字节。
+*用来传输实时数据，数据从一个创建者传到一个或多个接收者。数据传送限制在 1 到 8 个字节。
 
-**·**每个 CANopen 设备包含 8 个缺省的 PDO 通道， 4 个发送 PDO 通道和 4 个接收 PDO 通道。
+每个 CANopen 设备包含 8 个缺省的 PDO 通道， 4 个发送 PDO 通道和 4 个接收 PDO 通道。
 
-**·**PDO 包含同步和异步两种传输方式，由该 PDO 对应的通信参数决定。
+PDO 包含同步和异步两种传输方式，由该 PDO 对应的通信参数决定。
 
-**·**PDO 消息的内容是预定义的，由该 PDO 对应的映射参数决定。
+PDO 消息的内容是预定义的，由该 PDO 对应的映射参数决定。
 
-## 4） 同步对象 (SYNC)
+### 4） 同步对象 (SYNC)
 
 同步对象是由 CANopen 主站周期性地广播到 CAN 总线的报文，用来实现基本的网络时钟信号，每个设备可以根据自己的配置，决定是否使用该事件来跟其它网络设备进行同步通信。
 
-## 5） 紧急报文 (EMCY)
+### 5） 紧急报文 (EMCY)
 
 设备内部通信故障或者应用故障错误时发送的报文。
 
@@ -121,9 +121,9 @@ CANOpen 协议对象字典主索引如下图，这只是一个主要的索引。
 
 ## **七、最后**
 
-我的博客：[http://www.strongerhuang.com](https://link.zhihu.com/?target=http%3A//www.strongerhuang.com)
+我的博客：[http://www.strongerhuang.com](https://www.strongerhuang.com)
 
-我的GitHub：[https://github.com/EmbeddedDevelop](https://link.zhihu.com/?target=https%3A//github.com/EmbeddedDevelop)
+我的GitHub：[https://github.com/EmbeddedDevelop](https://github.com/EmbeddedDevelop)
 
 我的微信公众号（ID：strongerHuang）还在分享STM8、STM32、Keil、IAR、FreeRTOS、UCOS、RT-Thread、CANOpen、Modbus...等更多精彩内容，如果想查看更多内容，可以关注我的微信公众号『**strongerHuang**』。
 

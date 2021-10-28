@@ -5,11 +5,11 @@
 
 72 人赞同了该文章
 
-半导体厂商开发的硬件再怎么厉害，也需要软件工具的加持，重复制造轮子不是一个好主意，为了充分挖掘处理器的性能，各个厂家都发布了各种软件框架和工具，比如Intel的[OpenVINO](https://link.zhihu.com/?target=https%3A//software.intel.com/en-us/openvino-toolkit)，Nvidia的TensorRT等等。
+半导体厂商开发的硬件再怎么厉害，也需要软件工具的加持，重复制造轮子不是一个好主意，为了充分挖掘处理器的性能，各个厂家都发布了各种软件框架和工具，比如Intel的[OpenVINO](https://software.intel.com/en-us/openvino-toolkit)，Nvidia的TensorRT等等。
 
-这里重点介绍英特尔发布的针对AI工作负载的一款部署神器--[OpenVINO](https://link.zhihu.com/?target=https%3A//software.intel.com/en-us/openvino-toolkit)。
+这里重点介绍英特尔发布的针对AI工作负载的一款部署神器--[OpenVINO](//oftware.intel.com/en-us/openvino-toolkit)。
 
-[OpenVINO](https://link.zhihu.com/?target=https%3A//software.intel.com/en-us/openvino-toolkit)是英特尔推出的一款全面的工具套件，用于快速部署应用和解决方案，支持计算机视觉的CNN网络结构超过150余种。
+[OpenVINO](https://software.intel.com/en-us/openvino-toolkit)是英特尔推出的一款全面的工具套件，用于快速部署应用和解决方案，支持计算机视觉的CNN网络结构超过150余种。
 
 我们有了各种开源框架，比如tensorflow，pytorch，mxnet，caffe2等，为什么还要推荐OpenVINO来作为部署工具呢？
 

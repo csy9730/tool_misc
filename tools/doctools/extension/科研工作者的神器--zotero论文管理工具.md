@@ -9,7 +9,7 @@
 
 **Zotero作为一款协助科研工作者收集、管理以及引用研究资源的免费软件，如今已被广泛使用。此篇使用说明主要分享引用研究资源功能，其中研究资源可以包括期刊、书籍等各类文献和网页、图片等。欢迎所有共同学习使用的朋友提供批评意见或补充使用经验。**
 
-## 下载地址：[https://www.zotero.org/download/](https://link.zhihu.com/?target=https%3A//www.zotero.org/download/)
+## 下载地址：[https://www.zotero.org/download/](https://www.zotero.org/download/)
 
 ubuntu下安装zotero：
 
@@ -118,7 +118,7 @@ zotero只给了300m的空间，大概只能放80来篇文献的全文文件，�
 
 **注意：使用同步功能要先注册zotero账号**。
 
-解决方法：使用坚果云：[坚果云官网 - 坚果云 - 云盘|网盘|企业网盘|同步|备份|无限空间|免费网络硬盘|企业云盘](https://link.zhihu.com/?target=https%3A//www.jianguoyun.com/)，注意关闭手机验证，设置如图：
+解决方法：使用坚果云：[坚果云官网 - 坚果云 - 云盘|网盘|企业网盘|同步|备份|无限空间|免费网络硬盘|企业云盘](https://www.jianguoyun.com/)，注意关闭手机验证，设置如图：
 
 ![img](https://pic1.zhimg.com/80/v2-fc97b4b019c9926be6fc8d373727a204_720w.jpg)
 

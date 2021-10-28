@@ -30,7 +30,7 @@ Kali：192.168.61.130
 
 接下来在Ubuntu上安装Knockd
 
-```text
+``` bash
 apt-get install update
 apt-get install build-essential -y
 apt-get install knockd -y

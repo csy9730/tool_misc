@@ -29,7 +29,7 @@
 
 **2、下载CUDA和cuDNN**
 
-CUDA下载页面：[https://developer.nvidia.com/cuda-downloads](https://link.zhihu.com/?target=https%3A//developer.nvidia.com/cuda-downloads)
+CUDA下载页面：[https://developer.nvidia.com/cuda-downloads](https://developer.nvidia.com/cuda-downloads)
 
 ![img](https://pic1.zhimg.com/80/v2-24fb4e6fa1c10c806ad06e4dd1e28040_720w.jpg)
 
@@ -39,7 +39,7 @@ CUDA下载页面：[https://developer.nvidia.com/cuda-downloads](https://link.zh
 
 实测，阿里云、腾讯云下载CUDA的速度在40MB/s左右
 
-cuDNN下载页面：[https://developer.nvidia.com/rdp/cudnn-download](https://link.zhihu.com/?target=https%3A//developer.nvidia.com/rdp/cudnn-download)
+cuDNN下载页面：[https://developer.nvidia.com/rdp/cudnn-download](https://developer.nvidia.com/rdp/cudnn-download)
 
 下载cuDNN是需要登录英伟达开发者账户的，注册一个并填写问卷就行了，很简单。
 

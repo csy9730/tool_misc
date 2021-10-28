@@ -62,7 +62,7 @@ mysql -u root -p
 
 ## 四、配置
 
-配置文件位于Gogs目录的custom/conf/app.ini，详细参数参考[配置手册](https://link.zhihu.com/?target=https%3A//gogs.io/docs/advanced/configuration_cheat_sheet.html) 部分参数如下：
+配置文件位于Gogs目录的custom/conf/app.ini，详细参数参考[配置手册](https://gogs.io/docs/advanced/configuration_cheat_sheet.html) 部分参数如下：
 
 ```text
 APP_NAME = 网站名称

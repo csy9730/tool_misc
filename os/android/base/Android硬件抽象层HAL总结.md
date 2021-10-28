@@ -26,7 +26,7 @@ Android HAL将各类硬件设备抽象为硬件模块，HAL使用**hw_module_t**
 每一类硬件抽象模块又包含多个独立的硬件设备，HAL使用**hw_device_t**结构体描述硬件模块中的独立硬件设备。
 因此，hw_module_t和hw_device_t是HAL中的核心数据结构，这2个结构体代表了HAL对硬件设备的抽象逻辑。我们第一步先来分析下这2个核心数据结构。
 
-**hw_module_t**定义在/[hardware](https://link.jianshu.com/?t=http://androidxref.com/6.0.0_r1/xref/hardware/)/[libhardware](https://link.jianshu.com/?t=http://androidxref.com/6.0.0_r1/xref/hardware/libhardware/)/[include](https://link.jianshu.com/?t=http://androidxref.com/6.0.0_r1/xref/hardware/libhardware/include/)/[hardware](https://link.jianshu.com/?t=http://androidxref.com/6.0.0_r1/xref/hardware/libhardware/include/hardware/)/[hardware.h](https://link.jianshu.com/?t=http://androidxref.com/6.0.0_r1/xref/hardware/libhardware/include/hardware/hardware.h)文件中：
+**hw_module_t**定义在/[hardware](http://androidxref.com/6.0.0_r1/xref/hardware/)/[libhardware](http://androidxref.com/6.0.0_r1/xref/hardware/libhardware/)/[include](http://androidxref.com/6.0.0_r1/xref/hardware/libhardware/include/)/[hardware](http://androidxref.com/6.0.0_r1/xref/hardware/libhardware/include/hardware/)/[hardware.h](http://androidxref.com/6.0.0_r1/xref/hardware/libhardware/include/hardware/hardware.h)文件中：
 
 ```dart
 /**
@@ -220,7 +220,7 @@ typedef struct hw_device_t {
 - ro.board.platform
 - ro.arch
 
-硬件抽象模块的动态链接库文件名命名规范定义在：/[hardware](https://link.jianshu.com/?t=http://androidxref.com/6.0.0_r1/xref/hardware/)/[libhardware](https://link.jianshu.com/?t=http://androidxref.com/6.0.0_r1/xref/hardware/libhardware/)/[hardware.c](https://link.jianshu.com/?t=http://androidxref.com/6.0.0_r1/xref/hardware/libhardware/hardware.c)：
+硬件抽象模块的动态链接库文件名命名规范定义在：/[hardware](http://androidxref.com/6.0.0_r1/xref/hardware/)/[libhardware](http://androidxref.com/6.0.0_r1/xref/hardware/libhardware/)/[hardware.c](http://androidxref.com/6.0.0_r1/xref/hardware/libhardware/hardware.c)：
 
 ```dart
 /**
@@ -248,7 +248,7 @@ static const int HAL_VARIANT_KEYS_COUNT =
 
 HAL会按照variant_keys[]定义的属性名称的顺序逐一来读取属性值，若值存在，则作为variant的值加载对应的动态链接库。如果没有读取到任何属性值，则使用`<MODULE_ID>.default.so` 作为默认的动态链接库文件名来加载硬件模块。
 
-有了模块的文件名字规范，那么共享库的存放路径也是有规范的。HAL规定了2个硬件模块动态共享库的存放路径，定义在/[hardware](https://link.jianshu.com/?t=http://androidxref.com/6.0.0_r1/xref/hardware/)/[libhardware](https://link.jianshu.com/?t=http://androidxref.com/6.0.0_r1/xref/hardware/libhardware/)/[hardware.c](https://link.jianshu.com/?t=http://androidxref.com/6.0.0_r1/xref/hardware/libhardware/hardware.c)：
+有了模块的文件名字规范，那么共享库的存放路径也是有规范的。HAL规定了2个硬件模块动态共享库的存放路径，定义在/[hardware](http://androidxref.com/6.0.0_r1/xref/hardware/)/[libhardware](http://androidxref.com/6.0.0_r1/xref/hardware/libhardware/)/[hardware.c](http://androidxref.com/6.0.0_r1/xref/hardware/libhardware/hardware.c)：
 
 ```cpp
 /** Base path of the hal modules */
@@ -261,7 +261,7 @@ HAL会按照variant_keys[]定义的属性名称的顺序逐一来读取属性值
 #endif
 ```
 
-也就是说硬件模块的共享库必须放在*/system/lib/hw 或者 /vendor/lib/hw* 这2个路径下的其中一个。HAL在加载所需的共享库的时候，会先检查HAL_LIBRARY_PATH2路径下面是否存在目标库；如果没有，继续检查HAL_LIBRARY_PATH1路径下面是否存在。具体实现在函数**hw_module_exists**, /[hardware](https://link.jianshu.com/?t=http://androidxref.com/6.0.0_r1/xref/hardware/)/[libhardware](https://link.jianshu.com/?t=http://androidxref.com/6.0.0_r1/xref/hardware/libhardware/)/[hardware.c](https://link.jianshu.com/?t=http://androidxref.com/6.0.0_r1/xref/hardware/libhardware/hardware.c):
+也就是说硬件模块的共享库必须放在*/system/lib/hw 或者 /vendor/lib/hw* 这2个路径下的其中一个。HAL在加载所需的共享库的时候，会先检查HAL_LIBRARY_PATH2路径下面是否存在目标库；如果没有，继续检查HAL_LIBRARY_PATH1路径下面是否存在。具体实现在函数**hw_module_exists**, /[hardware](http://androidxref.com/6.0.0_r1/xref/hardware/)/[libhardware](http://androidxref.com/6.0.0_r1/xref/hardware/libhardware/)/[hardware.c](http://androidxref.com/6.0.0_r1/xref/hardware/libhardware/hardware.c):
 
 ```cpp
 /*
@@ -293,7 +293,7 @@ static int hw_module_exists(char *path, size_t path_len, const char *name,
 
 ------
 
-上传framework和应用打开HAL库的入口函数为**hw_get_module**,定义如下[hardware](https://link.jianshu.com/?t=http://androidxref.com/6.0.0_r1/xref/hardware/)/[libhardware](https://link.jianshu.com/?t=http://androidxref.com/6.0.0_r1/xref/hardware/libhardware/)/[include](https://link.jianshu.com/?t=http://androidxref.com/6.0.0_r1/xref/hardware/libhardware/include/)/[hardware](https://link.jianshu.com/?t=http://androidxref.com/6.0.0_r1/xref/hardware/libhardware/include/hardware/)/[hardware.h](https://link.jianshu.com/?t=http://androidxref.com/6.0.0_r1/xref/hardware/libhardware/include/hardware/hardware.h)：
+上传framework和应用打开HAL库的入口函数为**hw_get_module**,定义如下[hardware](http://androidxref.com/6.0.0_r1/xref/hardware/)/[libhardware](http://androidxref.com/6.0.0_r1/xref/hardware/libhardware/)/[include](http://androidxref.com/6.0.0_r1/xref/hardware/libhardware/include/)/[hardware](http://androidxref.com/6.0.0_r1/xref/hardware/libhardware/include/hardware/)/[hardware.h](http://androidxref.com/6.0.0_r1/xref/hardware/libhardware/include/hardware/hardware.h)：
 
 ```cpp
 /**
@@ -306,7 +306,7 @@ int hw_get_module(const char *id, const struct hw_module_t **module);
 
 - 传入目标模块的唯一id，得到表示该模块的hw_module_t结构体指针
 
-具体实现在文件[hardware](https://link.jianshu.com/?t=http://androidxref.com/6.0.0_r1/xref/hardware/)/[libhardware](https://link.jianshu.com/?t=http://androidxref.com/6.0.0_r1/xref/hardware/libhardware/)/[hardware.c](https://link.jianshu.com/?t=http://androidxref.com/6.0.0_r1/xref/hardware/libhardware/hardware.c)，下面我们具体来分析。
+具体实现在文件[hardware](http://androidxref.com/6.0.0_r1/xref/hardware/)/[libhardware](http://androidxref.com/6.0.0_r1/xref/hardware/libhardware/)/[hardware.c](http://androidxref.com/6.0.0_r1/xref/hardware/libhardware/hardware.c)，下面我们具体来分析。
 
 ```cpp
 int hw_get_module(const char *id, const struct hw_module_t **module)
@@ -463,7 +463,7 @@ static int load(const char *id,
 ------
 
 前面分析完了HAL的框架和机制，以GPS HAL的加载过程为例把上面的知识串起来。我们从framework层的hw_get_module函数作为入口点，初步拆解分析。
-加载GPS HAL的入口函数定义在[frameworks](https://link.jianshu.com/?t=http://androidxref.com/6.0.0_r1/xref/frameworks/)/[base](https://link.jianshu.com/?t=http://androidxref.com/6.0.0_r1/xref/frameworks/base/)/[services](https://link.jianshu.com/?t=http://androidxref.com/6.0.0_r1/xref/frameworks/base/services/)/[core](https://link.jianshu.com/?t=http://androidxref.com/6.0.0_r1/xref/frameworks/base/services/core/)/[jni](https://link.jianshu.com/?t=http://androidxref.com/6.0.0_r1/xref/frameworks/base/services/core/jni/)/[com_android_server_location_GpsLocationProvider.cpp](https://link.jianshu.com/?t=http://androidxref.com/6.0.0_r1/xref/frameworks/base/services/core/jni/com_android_server_location_GpsLocationProvider.cpp)：
+加载GPS HAL的入口函数定义在[frameworks](http://androidxref.com/6.0.0_r1/xref/frameworks/)/[base](http://androidxref.com/6.0.0_r1/xref/frameworks/base/)/[services](http://androidxref.com/6.0.0_r1/xref/frameworks/base/services/)/[core](http://androidxref.com/6.0.0_r1/xref/frameworks/base/services/core/)/[jni](http://androidxref.com/6.0.0_r1/xref/frameworks/base/services/core/jni/)/[com_android_server_location_GpsLocationProvider.cpp](http://androidxref.com/6.0.0_r1/xref/frameworks/base/services/core/jni/com_android_server_location_GpsLocationProvider.cpp)：
 
 ```cpp
 static void android_location_GpsLocationProvider_class_init_native(JNIEnv* env, jclass clazz) {

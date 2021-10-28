@@ -70,18 +70,18 @@ Market-1501中 Query 和 gallery 集可能来自相同的摄像头视角，但�
 
 由上面可以看出，在 multi-gallery-shot 情形下，CMC评估具有缺陷。因此，也使用 mAP（mean average precsion）作为评估指标。mAP可认为是PR曲线下的面积，即平均的查准率。
 
-- [Market-1501 Evaluation Code](https://link.zhihu.com/?target=https%3A//github.com/HejaBVB09/Market1501Evaluation)
+- [Market-1501 Evaluation Code](https://github.com/HejaBVB09/Market1501Evaluation)
 
 ## 下载地址
 
-1. [Google Drive](https://link.zhihu.com/?target=https%3A//drive.google.com/file/d/0B8-rUzbwVRk0c054eEozWG9COHM/view%3Fusp%3Dsharing)
-2. [Baidu Disk](https://link.zhihu.com/?target=https%3A//pan.baidu.com/s/1ntIi2Op)
+1. [Google Drive](https://drive.google.com/file/d/0B8-rUzbwVRk0c054eEozWG9COHM/view%3Fusp%3Dsharing)
+2. [Baidu Disk](https://pan.baidu.com/s/1ntIi2Op)
 
 ## State of the art
 
 - [State of the art on the Market-1501 dataset](https://link.zhihu.com/?target=http%3A//www.liangzheng.org/Project/state_of_the_art_market1501.html)
 
-## [行人重识别(ReID) --数据集描述 Market-1501](https://link.zhihu.com/?target=https%3A//blog.csdn.net/ctwy291314/article/details/83544088)
+## [行人重识别(ReID) --数据集描述 Market-1501](https://blog.csdn.net/ctwy291314/article/details/83544088)
 
 发布于 2020-12-30
 

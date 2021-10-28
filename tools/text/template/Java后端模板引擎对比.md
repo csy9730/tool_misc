@@ -38,7 +38,7 @@ FreeMarker：功能与Velocity差不多，但是语法更加强大，使用方�
 
 ### 1、Velocity 模板文件
 
-```text
+``` xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="${mapperName}">
@@ -61,7 +61,7 @@ FreeMarker：功能与Velocity差不多，但是语法更加强大，使用方�
 
 ### 2、Velocity java执行代码
 
-```text
+``` java
 public class VelocityTest {
 
     public static void main(String[] args) {
@@ -103,7 +103,7 @@ public class VelocityTest {
 
 ### 3、FreeMarker 模板文件
 
-```text
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="${mapperName}">
@@ -124,7 +124,7 @@ public class VelocityTest {
 
 ### 4、FreeMarker 执行代码
 
-```text
+```java
 public class FreeMTest {
 
     public static Template getDefinedTemplate(String templateName) throws Exception{
@@ -171,11 +171,11 @@ public class FreeMTest {
 
 ## 五、参考：
 
-[https://www.runoob.com/jsp/jsp-tutorial.html](https://link.zhihu.com/?target=https%3A//www.runoob.com/jsp/jsp-tutorial.html)
-[https://www.thymeleaf.org/](https://link.zhihu.com/?target=https%3A//www.thymeleaf.org/)
-[https://blog.csdn.net/xiang__liu/article/details/81160766](https://link.zhihu.com/?target=https%3A//blog.csdn.net/xiang__liu/article/details/81160766)
+[https://www.runoob.com/jsp/jsp-tutorial.html](https://www.runoob.com/jsp/jsp-tutorial.html)
+[https://www.thymeleaf.org/](https://www.thymeleaf.org/)
+[https://blog.csdn.net/xiang__liu/article/details/81160766](https://blog.csdn.net/xiang__liu/article/details/81160766)
 [http://freemarker.foofun.cn/](https://link.zhihu.com/?target=http%3A//freemarker.foofun.cn/)
-[https://www.iteye.com/blog/lishumingwm163-com-933365](https://link.zhihu.com/?target=https%3A//www.iteye.com/blog/lishumingwm163-com-933365)
+[https://www.iteye.com/blog/lishumingwm163-com-933365](https://www.iteye.com/blog/lishumingwm163-com-933365)
 
 博客链接：
 

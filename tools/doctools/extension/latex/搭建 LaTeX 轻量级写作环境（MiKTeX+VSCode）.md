@@ -22,7 +22,7 @@
 
 对于 LaTeX 的常见版本，个人推荐 MiKTeX，即最小安装版本，其 Windows 安装包约 200 多 MB，MacOS 安装包 50 多 MB。相比于很多人推荐的 TeXLive （3.7 G）和 MacTeX（4.0 G）轻便了一个量级。其官方下载地址如下。
 
-[MiKTeXmiktex.org/download](https://link.zhihu.com/?target=https%3A//miktex.org/download)
+[MiKTeXmiktex.org/download](https://miktex.org/download)
 
 ### 自动安装
 
@@ -231,7 +231,7 @@ LaTeX 的用户里，不少人都是使用它进行英文写作的，这时就�
 
 这里推荐文档格式领域的瑞士军刀 Pandoc。可以去官网手动下载
 
-[https://pandoc.org/pandoc.org/](https://link.zhihu.com/?target=https%3A//pandoc.org/)
+[https://pandoc.org/pandoc.org/](https://pandoc.org/)
 
 也可以使用包管理器自动下载。
 

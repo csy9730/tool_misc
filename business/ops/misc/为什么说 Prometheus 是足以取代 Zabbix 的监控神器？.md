@@ -8,8 +8,8 @@
 95 人赞同了该文章
 
 > 作者：陈晓宇
-> 来源：[dbaplus 社群](https://link.zhihu.com/?target=https%3A//mp.weixin.qq.com/s/PrGM0kO9oyM2sJ3F7g0qNA)
-> 校对：[Bot](https://link.zhihu.com/?target=https%3A//mp.weixin.qq.com/s/rugFY_j0fojDfJ9fnqjDCQ)（才云）、[星空下的文仔](https://link.zhihu.com/?target=https%3A//mp.weixin.qq.com/s/rugFY_j0fojDfJ9fnqjDCQ)（才云）
+> 来源：[dbaplus 社群](https://mp.weixin.qq.com/s/PrGM0kO9oyM2sJ3F7g0qNA)
+> 校对：[Bot](https://mp.weixin.qq.com/s/rugFY_j0fojDfJ9fnqjDCQ)（才云）、[星空下的文仔](https://mp.weixin.qq.com/s/rugFY_j0fojDfJ9fnqjDCQ)（才云）
 
 Kubernetes 自从 2012年开源以来便以不可阻挡之势成为容器领域调度和编排的领头羊。Kubernetes 是 Google Borg 系统的开源实现，于此对应，Prometheus 则是 Google BorgMon 的开源实现。
 

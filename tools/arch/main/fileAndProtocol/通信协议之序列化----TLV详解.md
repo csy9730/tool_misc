@@ -207,7 +207,7 @@ Genjava.exe sample.idl 输出 sample.java
 二进制协议优势就是性能和安全性。但是调试麻烦。
 两者各有千秋，按需选择。(stevenrao)
 
-转发：[http://blog.chinaunix.net/uid-27105712-id-3266286.html](https://link.jianshu.com/?t=http://blog.chinaunix.net/uid-27105712-id-3266286.html)
+转发：[http://blog.chinaunix.net/uid-27105712-id-3266286.html](http://blog.chinaunix.net/uid-27105712-id-3266286.html)
 
 
 

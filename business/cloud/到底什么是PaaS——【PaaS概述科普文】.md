@@ -139,7 +139,7 @@ PaaS是云计算服务的三个主要类别之一。 另外两个是软件即服
 
 **原文链接**
 
-■ [Platform as a service (PaaS)](https://link.zhihu.com/?target=https%3A//searchcloudcomputing.techtarget.com/definition/Platform-as-a-Service-PaaS)
+■ [Platform as a service (PaaS)](https://searchcloudcomputing.techtarget.com/definition/Platform-as-a-Service-PaaS)
 
 发布于 2020-05-12
 

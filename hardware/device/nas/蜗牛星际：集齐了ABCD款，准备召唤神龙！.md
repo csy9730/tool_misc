@@ -31,7 +31,7 @@
 
 文章开头，先附上本人收集的全部软件：
 
-[链接：](https://link.zhihu.com/?target=https%3A//pan.baidu.com/s/1CVbHS34ZGDdBsdr97hJf0Q)提取码：xo19
+[链接：](https://pan.baidu.com/s/1CVbHS34ZGDdBsdr97hJf0Q)提取码：xo19
 
 学习能力强的值友，可以直接利用上这些软件，随后的教程，会对软件进行讲解。
 
@@ -51,7 +51,7 @@
 
 1、在很早很早之前，我在张大妈这里分享过一篇将不到500元的电脑安装黑群晖NAS，就是这个链接：
 
-**[不到500元的闲置电脑，更换55元的机箱——组建家用黑群晖NAS](https://link.zhihu.com/?target=https%3A//post.smzdm.com/p/471388)**
+**[不到500元的闲置电脑，更换55元的机箱——组建家用黑群晖NAS](https://post.smzdm.com/p/471388)**
 
 2、那时候我的ID还没改名，叫**狼物语**，不知道还有没有认识俺的？
 
@@ -76,22 +76,22 @@
 
 4、对了，文章链接如下：
 
-**[由黑转白：群晖1515+ NAS 深度体验 5盘位组raid10 iSCSI UPS DSM6.1等](https://link.zhihu.com/?target=https%3A//post.smzdm.com/p/561915)**
+**[由黑转白：群晖1515+ NAS 深度体验 5盘位组raid10 iSCSI UPS DSM6.1等](https://post.smzdm.com/p/561915)**
 
-5、除了NAS，还有[路由器](https://link.zhihu.com/?target=https%3A//www.smzdm.com/fenlei/luyouqi/)也是必不可少的，这篇俺写的路由器合集文章，里面也有关于NAS外网访问的干货，大家有兴趣可以看看：
+5、除了NAS，还有[路由器](https://www.smzdm.com/fenlei/luyouqi/)也是必不可少的，这篇俺写的路由器合集文章，里面也有关于NAS外网访问的干货，大家有兴趣可以看看：
 
-**[#晒单大赛#华硕AC68U/AC66U/B1/网件R7000路由器 信号对比测评+刷梅林+访问公网等设置](https://link.zhihu.com/?target=https%3A//post.smzdm.com/p/623311)**
+**[#晒单大赛#华硕AC68U/AC66U/B1/网件R7000路由器 信号对比测评+刷梅林+访问公网等设置](https://post.smzdm.com/p/623311)**
 
 
 
-6、其实除了 **路由器，[服务器](https://link.zhihu.com/?target=https%3A//www.smzdm.com/fenlei/fuwuqi/)，电脑，DIY各种**，俺还比较喜欢**摄影，摄像，外设，耳机，游戏**等。
+6、其实除了 **路由器，[服务器](https://www.smzdm.com/fenlei/fuwuqi/)，电脑，DIY各种**，俺还比较喜欢**摄影，摄像，外设，耳机，游戏**等。
 
 
 最近大半年，为了学习摄像技术，沉迷了B站，天天看大神的视频进行学习。
 
 导致经常忘记上张大妈来看看（省了不少钱），原创也是很少写了（惭愧）。
 
-也就是前一阵子，无意间在[张大妈原创](https://link.zhihu.com/?target=https%3A//search.smzdm.com/%3Fc%3Dpost%26s%3D%E8%9C%97%E7%89%9B%E6%98%9F%E9%99%85)里，看到了关于矿渣，蜗牛星际的文章。
+也就是前一阵子，无意间在[张大妈原创](https://search.smzdm.com/%3Fc%3Dpost%26s%3D%E8%9C%97%E7%89%9B%E6%98%9F%E9%99%85)里，看到了关于矿渣，蜗牛星际的文章。
 
 
 7、然后俺忍不住了，就出手了：
@@ -165,9 +165,9 @@ D单，小巧，漂亮，俺直接拿来刷**黑群晖**。
 
 13、所需的物品：
 
-最少1个U盘，如果有多个蜗牛星际建议用3个U盘；十字螺丝刀一个；网线一条；[显示器](https://link.zhihu.com/?target=https%3A//www.smzdm.com/fenlei/xianshiqi/)一个；键盘鼠标一套。
+最少1个U盘，如果有多个蜗牛星际建议用3个U盘；十字螺丝刀一个；网线一条；[显示器](https://www.smzdm.com/fenlei/xianshiqi/)一个；键盘鼠标一套。
 
-所需软件[链接：](https://link.zhihu.com/?target=https%3A//pan.baidu.com/s/1CVbHS34ZGDdBsdr97hJf0Q)提取码：xo19
+所需软件[链接：](https://pan.baidu.com/s/1CVbHS34ZGDdBsdr97hJf0Q)提取码：xo19
 
 引子结束，开始挨个介绍了，久等了。
 
@@ -175,7 +175,7 @@ D单，小巧，漂亮，俺直接拿来刷**黑群晖**。
 
 ## 一、A款机箱介绍：
 
-A款单网口，我当HTPC使用，更换电源风扇，成本70元，更换[固态硬盘](https://link.zhihu.com/?target=https%3A//www.smzdm.com/fenlei/gutaiyingpan/)，成本110元。
+A款单网口，我当HTPC使用，更换电源风扇，成本70元，更换[固态硬盘](https://www.smzdm.com/fenlei/gutaiyingpan/)，成本110元。
 
 安装的Win10系统，挂载了FTP，SMB，文件共享；软件使用plex，emby，kodi，向日葵远控。
 
@@ -209,7 +209,7 @@ A款单网口，我当HTPC使用，更换电源风扇，成本70元，更换[固
 
 
 
-４、背后面板如下，[散热风扇](https://link.zhihu.com/?target=https%3A//www.smzdm.com/fenlei/jixiangfengshan/)是８ｍｍ，声音比其它几款要小，要求不高的也可以不用换风扇：
+４、背后面板如下，[散热风扇](https://www.smzdm.com/fenlei/jixiangfengshan/)是８ｍｍ，声音比其它几款要小，要求不高的也可以不用换风扇：
 
 
 
@@ -339,7 +339,7 @@ A款单网口，我当HTPC使用，更换电源风扇，成本70元，更换[固
 
 安装过程：大概说下，u盘做老毛桃，进pe，win10安装，完成！
 
-[https://www.laomaotao.net/](https://link.zhihu.com/?target=https%3A//www.laomaotao.net/)
+[https://www.laomaotao.net/](https://www.laomaotao.net/)
 
 
 
@@ -352,11 +352,11 @@ A款单网口，我当HTPC使用，更换电源风扇，成本70元，更换[固
 
 教程：
 
-**[蜗牛星际组建HTPC之二：系统选择及软件设置](https://link.zhihu.com/?target=https%3A//post.smzdm.com/p/az596dxp)**
+**[蜗牛星际组建HTPC之二：系统选择及软件设置](https://post.smzdm.com/p/az596dxp)**
 
 FTP教程：
 
-**[高清大片即点即来自组家用NAS经历分享之二 —进阶篇](https://link.zhihu.com/?target=https%3A//post.smzdm.com/p/aek8m9ez)**
+**[高清大片即点即来自组家用NAS经历分享之二 —进阶篇](https://post.smzdm.com/p/aek8m9ez)**
 
 [SMB教程](https://www.zhihu.com/question/51578219)。
 
@@ -549,15 +549,15 @@ B款机箱，我买的是双千兆接口的，简称B双！一开始只有百兆
 
 一、安装PVE虚拟机教程：
 
-**[蜗牛矿渣装机教程 篇一：搞定PVE虚拟机](https://link.zhihu.com/?target=https%3A//post.smzdm.com/p/ag89qdw6)**
+**[蜗牛矿渣装机教程 篇一：搞定PVE虚拟机](https://post.smzdm.com/p/ag89qdw6)**
 
 二、虚拟机里安装软路由教程：
 
-**[蜗牛矿渣装机教程 篇二：搞定LEDE软路由](https://link.zhihu.com/?target=https%3A//post.smzdm.com/p/adwl903x)**
+**[蜗牛矿渣装机教程 篇二：搞定LEDE软路由](https://post.smzdm.com/p/adwl903x)**
 
 三、虚拟机里安装黑群晖教程：
 
-**[蜗牛矿渣装机教程 篇三：搞定黑群晖NAS](https://link.zhihu.com/?target=https%3A//post.smzdm.com/p/a6lnp6wg)**
+**[蜗牛矿渣装机教程 篇三：搞定黑群晖NAS](https://post.smzdm.com/p/a6lnp6wg)**
 
 16、俺直接说下俺的体验。
 
@@ -708,7 +708,7 @@ C款机箱最结实，非常的扎实，整体重量有3.0多kg，俺换了主�
 
 所以直接考虑换主板，最开始考虑换J3455主板，目前最给力的低功耗NAS主板，反正就是好就行啦。但是，突然发现了这个原创
 
-**[家用存储娱乐服务器 篇二：硬件实战篇](https://link.zhihu.com/?target=https%3A//post.smzdm.com/p/aqndq29x)**
+**[家用存储娱乐服务器 篇二：硬件实战篇](https://post.smzdm.com/p/aqndq29x)**
 
 就买了这套：
 
@@ -890,7 +890,7 @@ D机箱，只换了风扇电源，成本60-70元，其它没有动。
 
 9、说一下软件部分，首先是安装黑群晖拉，这个教程太多了，说一个简单的，用俺分享资料中的二合一，直接将文件拷贝到做了PE的U盘里，在PE里将群晖引导文件，写入到自带的16GB硬盘中，即可直接使用，非常方便：
 
-下载[链接：](https://link.zhihu.com/?target=https%3A//pan.baidu.com/s/1CVbHS34ZGDdBsdr97hJf0Q)提取码：xo19
+下载[链接：](https://pan.baidu.com/s/1CVbHS34ZGDdBsdr97hJf0Q)提取码：xo19
 
 里面都有图文教程，俺就不重复了，大家下载看看就能学会。
 
@@ -985,11 +985,11 @@ D机箱介绍完毕了，只用群晖最基础的功能，基本上没啥好讲�
 
 
 
-by：[阿文菌](https://link.zhihu.com/?target=https%3A//zhiyou.smzdm.com/member/6902738986/)
+by：[阿文菌](https://zhiyou.smzdm.com/member/6902738986/)
 
 **本内容来源于@什么值得买[http://SMZDM.COM](https://link.zhihu.com/?target=http%3A//SMZDM.COM)**
 
-**原文链接：**[蜗牛星际：我集齐了ABCD款，折腾矿渣一个月的全记录！__什么值得买](https://link.zhihu.com/?target=https%3A//post.smzdm.com/p/a25r4ddq/)
+**原文链接：**[蜗牛星际：我集齐了ABCD款，折腾矿渣一个月的全记录！__什么值得买](https://post.smzdm.com/p/a25r4ddq/)
 
 ![img](https://pic1.zhimg.com/80/v2-e007fe27b453ba81cdf0d05a644d2410_1440w.jpg)
 

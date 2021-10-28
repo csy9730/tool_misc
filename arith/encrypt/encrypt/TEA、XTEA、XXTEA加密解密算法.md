@@ -4,7 +4,7 @@
 
 0.1272017.02.19 22:02:36字数 293阅读 10,350
 
-在密码学中，微型加密[算法](https://link.jianshu.com/?t=http://lib.csdn.net/base/datastructure)（Tiny Encryption Algorithm，TEA）是一种易于描述和执行的块密码，通常只需要很少的代码就可实现。其设计者是剑桥大学计算机实验室的大卫·惠勒与罗杰·尼达姆。这项技术最初于1994年提交给鲁汶的快速软件加密的研讨会上，并在该研讨会上演讲中首次发表。
+在密码学中，微型加密[算法](http://lib.csdn.net/base/datastructure)（Tiny Encryption Algorithm，TEA）是一种易于描述和执行的块密码，通常只需要很少的代码就可实现。其设计者是剑桥大学计算机实验室的大卫·惠勒与罗杰·尼达姆。这项技术最初于1994年提交给鲁汶的快速软件加密的研讨会上，并在该研讨会上演讲中首次发表。
 
 在给出的代码中：加密使用的数据为2个32位无符号整数，密钥为4个32位无符号整数即密钥长度为128位
 
@@ -19,7 +19,7 @@ img
 算法实现：
 
 示例代码：
-[C语言](https://link.jianshu.com/?t=http://lib.csdn.net/base/c)代码（需支持C99）
+[C语言](http://lib.csdn.net/base/c)代码（需支持C99）
 
 ```c
 #include <stdio.h>  
@@ -286,4 +286,4 @@ Process returned 0 (0x0)   execution time : 0.369 s
 Press any key to continue.  
 ```
 
-转：[http://blog.csdn.net/gsls200808/article/details/48243019](https://link.jianshu.com/?t=http://blog.csdn.net/gsls200808/article/details/48243019)
+转：[http://blog.csdn.net/gsls200808/article/details/48243019](http://blog.csdn.net/gsls200808/article/details/48243019)

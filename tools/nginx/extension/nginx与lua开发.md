@@ -56,15 +56,15 @@ if-else判断语句　　
 
 2、ngx_devel_kit和lua-nginx-module　　
 
-```
-`cd /opt/download``wget https:``//github.com/simpl/ngx_devel_kit/archive/v0.3.0.tar.gz``wget https:``//github.com/openresty/lua-nginx-module/archive/v0.10.9rc7.tar.gz``分别解压,等待被添加安装`
+``` bash
+cd /opt/download
+wget https://github.com/simpl/ngx_devel_kit/archive/v0.3.0.tar.gz
+wget https://github.com/openresty/lua-nginx-module/archive/v0.10.9rc7.tar.gz
+# 分别解压,等待被添加安装
 ```
 
 3、重新编译Nginx　　
 
-
-
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
 ```
 下载nginx的源码包

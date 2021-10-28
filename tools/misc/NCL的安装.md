@@ -15,7 +15,7 @@ Hello大家好~刚刚整理电脑里的东西，发现前些阵子写毕业论�
 
 > NCL (NCAR Command Language) 是一款专为大气科学设计的数据分析和可视化程序设计语言。
 >
-> 官方网站： [http://www.ncl.ucar.edu](https://link.jianshu.com/?t=http://www.ncl.ucar.edu)
+> 官方网站： [http://www.ncl.ucar.edu](http://www.ncl.ucar.edu)
 
 好的嘛，以上是很官方的解释。个人理解：NCL = 画图软件
 
@@ -95,7 +95,7 @@ Fig.4.NCL Batch模式
 
   > 一般来说OS X系统安装盘里自带了X11软件，但是根据度娘的说法，从10.8版本以后都不在安装盘提供了。所以，不是所有人都要手动安装XQuartz。
 
-  XQuartz安装文件下载地址: [www.xquartz.org](https://link.jianshu.com/?t=https://www.xquartz.org/)
+  XQuartz安装文件下载地址: [www.xquartz.org](https://www.xquartz.org/)
 
   .dmg文件，如果告诉我不会安装你就去面壁吧！安装好了就可以把安装包删了呦~
 
@@ -139,7 +139,7 @@ Fig.5.已安装GCC/GFortran
 - 如何安装？
 
   什么？？你都要开始用NCL了我不信你没用过gcc和gfortran！
-  gcc和gfortran下载地址：[http://hpc.sourceforge.net/](https://link.jianshu.com/?t=http://hpc.sourceforge.net/)
+  gcc和gfortran下载地址：[http://hpc.sourceforge.net/](http://hpc.sourceforge.net/)
 
 ## 3.下载和安装NCL
 
@@ -168,9 +168,9 @@ Fig.6.查看所需版本
 
 意味着你需要下载: `ncl_ncarg-6.4.0.MacOS_10.11_64bit_gnu540.tar.gz`
 
-所有的NCL二进制源文件都在 Earth System Grid [https://www.earthsystemgrid.org/dataset/ncl.html](https://link.jianshu.com/?t=https://www.earthsystemgrid.org/dataset/ncl.html)中列出。
+所有的NCL二进制源文件都在 Earth System Grid [https://www.earthsystemgrid.org/dataset/ncl.html](https://www.earthsystemgrid.org/dataset/ncl.html)中列出。
 
-目前最新的版本是 [NCL 6.4.0 binaries](https://link.jianshu.com/?t=https://www.earthsystemgrid.org/dataset/ncl.640.html)
+目前最新的版本是 [NCL 6.4.0 binaries](https://www.earthsystemgrid.org/dataset/ncl.640.html)
 
 找到你需要的版本，下载吧~
 

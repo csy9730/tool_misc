@@ -23,7 +23,7 @@
 
 ## **Gparted 是什么**
 
-[GParted](https://link.zhihu.com/?target=https%3A//gparted.org/) 是一个自由的分区管理器，它使你能够缩放、复制和移动分区，而不丢失数据。通过使用 GParted 的 Live 可启动镜像，我们可以使用 GParted 应用程序的所有功能。GParted Live 可以使你能够在 GNU/Linux 以及其它的操作系统上使用 GParted，例如，Windows 或 Mac OS X 。
+[GParted](https://gparted.org/) 是一个自由的分区管理器，它使你能够缩放、复制和移动分区，而不丢失数据。通过使用 GParted 的 Live 可启动镜像，我们可以使用 GParted 应用程序的所有功能。GParted Live 可以使你能够在 GNU/Linux 以及其它的操作系统上使用 GParted，例如，Windows 或 Mac OS X 。
 
 ## `1) 使用 df 命令检查磁盘空间利用率`
 
@@ -238,11 +238,11 @@ Number  Start   End     Size    Type     File system  Flags
 
 ------
 
-via: [https://www.2daygeek.com/how-to-resize-active-primary-root-partition-in-linux-using-gparted-utility/](https://link.zhihu.com/?target=https%3A//www.2daygeek.com/how-to-resize-active-primary-root-partition-in-linux-using-gparted-utility/)
+via: [https://www.2daygeek.com/how-to-resize-active-primary-root-partition-in-linux-using-gparted-utility/](https://www.2daygeek.com/how-to-resize-active-primary-root-partition-in-linux-using-gparted-utility/)
 
-作者：[Magesh Maruthamuthu](https://link.zhihu.com/?target=https%3A//www.2daygeek.com/author/magesh/) 译者：[robsean](https://link.zhihu.com/?target=https%3A//github.com/robsean) 校对：[wxy](https://link.zhihu.com/?target=https%3A//github.com/wxy) 选题：[lujun9972](https://link.zhihu.com/?target=https%3A//github.com/lujun9972)
+作者：[Magesh Maruthamuthu](https://www.2daygeek.com/author/magesh/) 译者：[robsean](https://github.com/robsean) 校对：[wxy](https://github.com/wxy) 选题：[lujun9972](https://github.com/lujun9972)
 
-本文由 [LCTT](https://link.zhihu.com/?target=https%3A//github.com/LCTT/TranslateProject) 原创编译，[Linux中国](https://link.zhihu.com/?target=https%3A//linux.cn/) 荣誉推出
+本文由 [LCTT](https://github.com/LCTT/TranslateProject) 原创编译，[Linux中国](https://linux.cn/) 荣誉推出
 
 发布于 2019-06-15
 

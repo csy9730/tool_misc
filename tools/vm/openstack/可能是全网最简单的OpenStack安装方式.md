@@ -6,7 +6,7 @@ OpenStack 因为架构复杂，配置较多，一向以安装部署过程困难�
 
 > 不想看文字的可以直接看视频
 
-[使用Kolla快速部署OpenStack，可能是全网最简单的OpenStack安装教程_哔哩哔哩 (゜-゜)つロ 干杯~-bilibiliwww.bilibili.com![图标](https://pic4.zhimg.com/v2-81b2df22b082721d564d1baac74bc81f_180x120.jpg)](https://link.zhihu.com/?target=https%3A//www.bilibili.com/video/av78684627/)
+[使用Kolla快速部署OpenStack，可能是全网最简单的OpenStack安装教程_哔哩哔哩 (゜-゜)つロ 干杯~-bilibiliwww.bilibili.com![图标](https://pic4.zhimg.com/v2-81b2df22b082721d564d1baac74bc81f_180x120.jpg)](https://www.bilibili.com/video/av78684627/)
 
 ## 安装 OpenStack 可能有多麻烦
 
@@ -227,8 +227,8 @@ $ sudo -s
 
 ### 开始体验
 
-安装过程还有疑问的可以在 [Bilibili](https://link.zhihu.com/?target=https%3A//www.bilibili.com/video/av78684627) 观看视频操作。
+安装过程还有疑问的可以在 [Bilibili](https://www.bilibili.com/video/av78684627) 观看视频操作。
 
 如果觉得文章不错，别忘了点赞和关注公众号，谢谢！
 
-> **PS. 后面还有相关实验会用到 [阿里云](https://link.zhihu.com/?target=https%3A//www.aliyun.com/%3Fsource%3D5176.11533457%26userCode%3Dsyyh0qx4)，年底大促[新用户首购优惠](https://link.zhihu.com/?target=https%3A//www.aliyun.com/minisite/goods%3FuserCode%3Dsyyh0qx4)幅度挺大，有需要的同学不妨考虑搞一台。**
+> **PS. 后面还有相关实验会用到 [阿里云](https://www.aliyun.com/%3Fsource%3D5176.11533457%26userCode%3Dsyyh0qx4)，年底大促[新用户首购优惠](https://www.aliyun.com/minisite/goods%3FuserCode%3Dsyyh0qx4)幅度挺大，有需要的同学不妨考虑搞一台。**

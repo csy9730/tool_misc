@@ -37,15 +37,15 @@ CMSIS 标准中最主要的为**CMSIS-Core（M）层**，它包括了：
 
 基于每个组件的详细应用以及示例程序可参考以下链接。
 
-[Overviewarm-software.github.io/CMSIS_5/Core/html/index.html](https://link.zhihu.com/?target=https%3A//arm-software.github.io/CMSIS_5/Core/html/index.html)
+[Overviewarm-software.github.io/CMSIS_5/Core/html/index.html](https://arm-software.github.io/CMSIS_5/Core/html/index.html)
 
 参考资料：
 
-[https://developer.arm.com/tools-and-software/embedded/cmsis](https://link.zhihu.com/?target=https%3A//developer.arm.com/tools-and-software/embedded/cmsis)
+[https://developer.arm.com/tools-and-software/embedded/cmsis](https://developer.arm.com/tools-and-software/embedded/cmsis)
 
-[https://github.com/ARM-software/CMSIS_5](https://link.zhihu.com/?target=https%3A//github.com/ARM-software/CMSIS_5)
+[https://github.com/ARM-software/CMSIS_5](https://github.com/ARM-software/CMSIS_5)
 
-[https://arm-software.github.io/CMSIS_5/General/html/index.html](https://link.zhihu.com/?target=https%3A//arm-software.github.io/CMSIS_5/General/html/index.html)
+[https://arm-software.github.io/CMSIS_5/General/html/index.html](https://arm-software.github.io/CMSIS_5/General/html/index.html)
 
 编辑于 2019-10-07
 

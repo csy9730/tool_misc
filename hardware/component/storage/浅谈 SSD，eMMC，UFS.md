@@ -112,7 +112,7 @@ MMC前面加了个embedded，主要就是为了突出现在这个设备是embedd
 
 \----------------------------------------------------
 
-[1] [UFS is here, and it’s very fast!](https://link.zhihu.com/?target=https%3A//www.micron.com/about/blogs/2016/november/ufs-is-here-and-its-very-fast)
+[1] [UFS is here, and it’s very fast!](https://www.micron.com/about/blogs/2016/november/ufs-is-here-and-its-very-fast)
 
 [2] JEDEC-JESD84-B51
 

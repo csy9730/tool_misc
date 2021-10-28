@@ -34,7 +34,7 @@ image.png
 
 4、dmesg | grep eth0
 dmesg’命令设备故障的诊断是非常重要的。在‘dmesg’命令的帮助下进行硬件的连接或断开连接操作时,我们可以看到硬件的检测或者断开连接的信息。
-对dmesg命令感兴趣的小伙伴，可参考：[https://www.cnblogs.com/zhaoxuguang/p/7810651.html](https://link.jianshu.com/?t=https%3A%2F%2Fwww.cnblogs.com%2Fzhaoxuguang%2Fp%2F7810651.html)
+对dmesg命令感兴趣的小伙伴，可参考：[https://www.cnblogs.com/zhaoxuguang/p/7810651.html](https%3A%2F%2Fwww.cnblogs.com%2Fzhaoxuguang%2Fp%2F7810651.html)
 
 ![img](https://upload-images.jianshu.io/upload_images/2787869-6f96e026403a0f7c.png?imageMogr2/auto-orient/strip|imageView2/2/w/1077/format/webp)
 

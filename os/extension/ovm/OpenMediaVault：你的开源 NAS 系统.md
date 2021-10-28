@@ -14,7 +14,7 @@ Nas 系统方案有很多：标准 Linux，黑群晖，FreeNas，ClearOS，OpenM
 
 ClearOS 是相对比较完善的系统，但是免费版本功能太少，好用的模块都要付费，FreeNas 有 zfs，但是是 FreeBSD 系统，连 Docker 都跑不起来，再多插件也没用。
 
-所以推荐今天的主角，基于 Debian 的免费开源的 [OpenMediaVault](https://link.zhihu.com/?target=https%3A//www.openmediavault.org/) 下面简称 OMV：
+所以推荐今天的主角，基于 Debian 的免费开源的 [OpenMediaVault](https://www.openmediavault.org/) 下面简称 OMV：
 
 ![img](https://pic3.zhimg.com/80/v2-1eebdc9732e171adeb06314d99bbc2a2_1440w.jpg)
 

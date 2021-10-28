@@ -119,7 +119,7 @@ R_yaw是旋转后z不变的阵，R_pitch是旋转后y不变的阵，R_roll是旋
 
 四元数用于旋转
 
-参考 [彻底搞懂四元数 - 前路漫漫的博客 - CSDN博客](https://link.zhihu.com/?target=https%3A//blog.csdn.net/shenshen211/article/details/78492055)
+参考 [彻底搞懂四元数 - 前路漫漫的博客 - CSDN博客](https://blog.csdn.net/shenshen211/article/details/78492055)
 
 四元数有x,y,z,w这4个分量。错误的理解是：x,y,z表示旋转轴，w表示旋转角度。但实际上，如果ax,ay,az是旋转轴向量，theta是旋转角度的话，四元数实际是：
 

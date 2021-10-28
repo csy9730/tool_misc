@@ -83,7 +83,7 @@ down.log &
 
 
 \* 使用代理下载
-wget -Y on -p -k [https://sourceforge.net/projects/wvware/](https://link.zhihu.com/?target=https%3A//sourceforge.net/projects/wvware/)
+wget -Y on -p -k [https://sourceforge.net/projects/wvware/](https://sourceforge.net/projects/wvware/)
 
 代理可以在环境变量或wgetrc文件中设定
 

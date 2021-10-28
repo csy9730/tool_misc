@@ -2,7 +2,7 @@
 
 ## 概述
 
-[draw.io](https://link.jianshu.com/?t=http%3A%2F%2Fwww.draw.io) 是一个强大简洁的在线的绘图网站，支持流程图，UML图，架构图，原型图等图标。支持Github，Google Drive, One drive等网盘同步，并且永久免费。如果觉得使用Web版不方便，draw.io 也提供了多平台的离线桌面版可供[下载](https://link.jianshu.com/?t=https%3A%2F%2Fabout.draw.io%2Fintegrations%2F%23integrations_offline)。
+[draw.io](http%3A%2F%2Fwww.draw.io) 是一个强大简洁的在线的绘图网站，支持流程图，UML图，架构图，原型图等图标。支持Github，Google Drive, One drive等网盘同步，并且永久免费。如果觉得使用Web版不方便，draw.io 也提供了多平台的离线桌面版可供[下载](https%3A%2F%2Fabout.draw.io%2Fintegrations%2F%23integrations_offline)。
 
 本文的主要内容如下:
 

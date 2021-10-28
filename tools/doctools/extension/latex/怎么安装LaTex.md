@@ -29,7 +29,7 @@
 
 ## **安装最新的Texlive**
 
-官方网站：[https://www.tug.org/texlive/](https://link.zhihu.com/?target=https%3A//www.tug.org/texlive/)
+官方网站：[https://www.tug.org/texlive/](https://www.tug.org/texlive/)
 
 
 

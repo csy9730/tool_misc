@@ -6,7 +6,7 @@
 
 跨年龄人脸识别数据集
 
-官网：[https://ibug.doc.ic.ac.uk/resources/agedb/](https://link.zhihu.com/?target=https%3A//ibug.doc.ic.ac.uk/resources/agedb/)
+官网：[https://ibug.doc.ic.ac.uk/resources/agedb/](https://ibug.doc.ic.ac.uk/resources/agedb/)
 
 AgeDB包含16,488个各种名人的图像，如演员，作家，科学家，政治家，每个图像都注明了身份，年龄和性别属性。 共存在568个不同的科目。 每个科目的平均图像数为29。最低和最高年龄分别为1和101。每个科目的平均年龄范围是50.3岁。
 

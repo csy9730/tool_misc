@@ -22,7 +22,7 @@ wget -r -p -np -k http://xxx.com/xxx
 拿我自己的网站扒皮试一下吧
 执行 `wget -r -p -np -k https://wujunze.com/` 命令
 
-## 转载来自：[ wget 递归下载整个网站(网站扒皮必备)](https://link.jianshu.com/?t=https%3A%2F%2Fwujunze.com%2Flinux_wget.jsp)
+## 转载来自：[ wget 递归下载整个网站(网站扒皮必备)](https%3A%2F%2Fwujunze.com%2Flinux_wget.jsp)
 
 ## runs
 

@@ -48,7 +48,7 @@ MPI （Message Passing Interface）是一套标准，在很长一段时间里我
 
 Linux 下的安装非常方便
 
-```text
+``` bash
 sudo apt install python-mpi4py
 ```
 
@@ -62,7 +62,7 @@ sudo apt install python-mpi4py
 
 解决方法是安装VSCompiler，官方下载地址：
 
-[ [https://visualstudio.microsoft.com/visual-cpp-build-tools/](https://link.zhihu.com/?target=https%3A//visualstudio.microsoft.com/visual-cpp-build-tools/) ]
+[ [https://visualstudio.microsoft.com/visual-cpp-build-tools/](https://visualstudio.microsoft.com/visual-cpp-build-tools/) ]
 
 ![img](https://pic1.zhimg.com/80/v2-080a0767ff57a5c35afa56d31c63a3bc_720w.jpg)
 
@@ -70,7 +70,7 @@ sudo apt install python-mpi4py
 
 开始编译之后还是遇到了一个问题，就是没有mpi的库文件，编译报错。
 
-```text
+``` 
  “mpi.h”: No such file or directory
 ```
 
@@ -107,13 +107,13 @@ else:
 
 运行方式，命令行里执行：
 
-```text
+``` bash
 mpiexec -np 8 python MPI_test.py
 ```
 
 得到如下结果：
 
-```text
+``` 
 rank 4: idle
 rank 5: idle
 rank 3: idle
@@ -196,7 +196,7 @@ if __name__=="__main__":
 
 然后在命令行里执行：
 
-```text
+``` bash
 mpiexec -n 128 python myscript.py
 ```
 

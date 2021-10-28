@@ -55,7 +55,7 @@
 
 因为一般都是用MMZ和VB处理视频数据，因此常常打交道的是YUV格式图片。在介绍怎么用MMZ和VB读写图片之前，需要介绍YUV。 YUV格式有很多，就存储的数据内容而言，可以分为：YUV444（全格式，UV分量无损耗），YUV422和YUV420（常见格式）；就YUV420而言，Y/U/V三个分量的组织形式不同，可以分为planner（平面格式），packet（大包格式）和semi-packet（半包格式）。更多分为和内容，欢迎阅读我之前的文章《xxx》
 
-海思上接触到更多的应该是**YUV420SP**，也就是YUV420下的semi-packet。这种格式的存组织数据格式是：**先存放Y分量，接着UV分量相邻存放**。如下图（图片引用于[AOE工程实践-银行卡OCR里的图像处理](https://link.zhihu.com/?target=https%3A//www.cnblogs.com/puhuichanpin/p/11466058.html)）：
+海思上接触到更多的应该是**YUV420SP**，也就是YUV420下的semi-packet。这种格式的存组织数据格式是：**先存放Y分量，接着UV分量相邻存放**。如下图（图片引用于[AOE工程实践-银行卡OCR里的图像处理](https://www.cnblogs.com/puhuichanpin/p/11466058.html)）：
 
 ![img](https://pic3.zhimg.com/80/v2-ca2666d18afda97f2fa158ff914008f2_720w.jpg)YUV420SP
 
@@ -96,7 +96,7 @@
   fclose(fout);
 ```
 
-以上伪代码可见笔者个人github仓库：[rapidcv_mpp](https://link.zhihu.com/?target=https%3A//github.com/ooooona/rapidcv_mpp/blob/master/src/rapidcv_mpp/common.cpp)。
+以上伪代码可见笔者个人github仓库：[rapidcv_mpp](https://github.com/ooooona/rapidcv_mpp/blob/master/src/rapidcv_mpp/common.cpp)。
 
 ### **写在后面**
 

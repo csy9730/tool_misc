@@ -20,7 +20,7 @@ Jfrog Artifactory是一款二进制存储管理工具，用来管理构建工具
 
 Artifactory软件下载地址：
 
-[https://bintray.com/jfrog/artifactory/jfrog-artifactory-oss-zip/6.21.0](https://link.zhihu.com/?target=https%3A//bintray.com/jfrog/artifactory/jfrog-artifactory-oss-zip/6.21.0)
+[https://bintray.com/jfrog/artifactory/jfrog-artifactory-oss-zip/6.21.0](https://bintray.com/jfrog/artifactory/jfrog-artifactory-oss-zip/6.21.0)
 
 下载解压到本地，打开bin目录 执行启动命令
 

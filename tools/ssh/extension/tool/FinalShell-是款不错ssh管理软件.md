@@ -13,12 +13,12 @@ FinalShell是一体化的的服务器,网络管理软件,不仅是ssh客户端,�
 
 免费海外服务器远程桌面加速,ssh加速,双边tcp加速,内网穿透.
 官网：
-[http://www.hostbuf.com/](https://link.zhihu.com/?target=https%3A//link.jianshu.com/%3Ft%3Dhttp%3A%2F%2Fwww.hostbuf.com%2F)
+[http://www.hostbuf.com/](https://www.hostbuf.com%2F)
 Windows版下载地址:
-[http://www.hostbuf.com/downloads/finalshell_install.exe](https://link.zhihu.com/?target=https%3A//link.jianshu.com/%3Ft%3Dhttp%3A%2F%2Fwww.hostbuf.com%2Fdownloads%2Ffinalshell_install.exe)
+[http://www.hostbuf.com/downloads/finalshell_install.exe](https://www.hostbuf.com/downloads/finalshell_install.exe)
 Mac版,Linux版安装及教程:
-[http://www.hostbuf.com/t/1059.html](https://link.zhihu.com/?target=https%3A//link.jianshu.com/%3Ft%3Dhttp%3A%2F%2Fwww.hostbuf.com%2Ft%2F1059.html)
-[双边TCP加速教程,轻松跑满带宽](https://link.zhihu.com/?target=https%3A//link.jianshu.com/%3Ft%3Dhttp%3A%2F%2Fwww.hostbuf.com%3A80%2Ft%2F1127.html)
+[http://www.hostbuf.com/t/1059.html](https://www.hostbuf.com%2Ft/1059.html)
+
 主要特性:
 
 1.多平台支持Windows,Mac OS X,Linux
