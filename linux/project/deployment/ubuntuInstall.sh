@@ -17,10 +17,14 @@ sudo apt install net-tools  openssh-server rdesktop putty adb -y
 
 # sudo apt install nmap  -y
 
+installNode(){
 # sudo apt install nodejs npm -y
+}
 
+installVm(){
 # vm
-
+# kali
+}
 
 installDocker(){
 
@@ -28,7 +32,6 @@ installDocker(){
 
 installEtcHosts(){
     sudo  bash -c 'echo "12.34.56.78 foo foo.com">> /etc/hosts'
-    
 
 }
 
