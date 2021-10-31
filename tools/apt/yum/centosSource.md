@@ -28,9 +28,11 @@ wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Cent
 yum makecache # 运行yum makecache生成缓存
 ```
 显示以下结果
+```
 [root@localhost ~]# yum -y update
 已加载插件：fastestmirror, refresh-packagekit, security
 设置更新进程Loading mirror speeds from cached hostfile
 * base: mirrors.aliyun.com
 * extras: mirrors.aliyun.com
 * updates: mirrors.aliyun.com
+```

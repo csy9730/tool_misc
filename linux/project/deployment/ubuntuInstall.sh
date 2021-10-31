@@ -6,7 +6,6 @@ sudo apt install -y git vim zsh wget curl
 sudo apt install tmux screenzip -y
 sudo apt install net-tools  openssh-server rdesktop putty adb -y
 
-# sudo apt-get install gcc g++ cmake pkg-config -y
 
 # sudo apt install python3 python3-dev -y
 # sudo apt install pip3 -y
@@ -17,8 +16,18 @@ sudo apt install net-tools  openssh-server rdesktop putty adb -y
 
 # sudo apt install nmap  -y
 
+# apt install sqlite
+
+# sudo apt install perl lua5.3  -y
+
+installGcc(){
+    sudo apt-get install gcc g++ cmake  -y
+    apt install autoconf  automake libtool pkg-config -y
+}
+
 installNode(){
 # sudo apt install nodejs npm -y
+
 }
 
 installVm(){
