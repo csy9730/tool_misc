@@ -5,19 +5,19 @@
 Part 1. 简介
 Part 2. 常见的手机应用场景
 Part 3. DLNA 认证的设备
-Part 4. DLNA 的一些显著特点**（** 3月5日补充**）**
+Part 4. DLNA 的一些显著特点（ 3月5日补充）
 
-**Part 1. 简介**
+## Part 1. 简介
 
 DLNA - Digital Living Network Alliance 作为一个老旧的标准，仍然有其存在的必要，因为这些以 SONY 为首的不思进取的厂商既不更新 DLNA，也没有推出类似的其他标准！坐视 AirPlay 蚕食这片大市场。
 
 DLNA 2003年诞生是为了能够把当时相互独立的电视机及其相关设备（功放、音响、DVD/蓝光播放机）、PC及其相关设备（数码相机、音乐播放器）和移动电话在家庭中有机地整合起来，使得多媒体内容能够在各个设备上便捷地播放。
 
-**Part 2. 常见的手机应用场景**
+## Part 2. 常见的手机应用场景
 
-**通常 Android 手机中的 DLNA 功能是把手机作为 DMS(Digital Media Server) 或者 DMC(Digital Media Controller) 这两种角色。**有时候也作为 DMP (Digital Media Player) 或者 DMD(Digital Media Downloader) 或者 DMU(Digital Media Uploader) 查看/下载/上传网络上其他服务器的内容，不过这些功能很多厂商并不一定实现了。【注1】
+通常 Android 手机中的 DLNA 功能是把手机作为 DMS(Digital Media Server) 或者 DMC(Digital Media Controller) 这两种角色。有时候也作为 DMP (Digital Media Player) 或者 DMD(Digital Media Downloader) 或者 DMU(Digital Media Uploader) 查看/下载/上传网络上其他服务器的内容，不过这些功能很多厂商并不一定实现了。【注1】
 
-此时你需要**连上局域网**，如果局域网中存在 DMP(Digital Media Player) 或者 DMR(Digital Media Render)，通常是电视或者音响，**就可以把手机上**（也可以是同一个网络上的 NAS 或者其他服务器）的**内容通过网络在电视或者音响上播放**。如果局域网中存在 DMPr(Digital Media Printer)，就可以把手机上或者其他服务器上的照片透过网络打印出来。
+此时你需要连上局域网，如果局域网中存在 DMP(Digital Media Player) 或者 DMR(Digital Media Render)，通常是电视或者音响，就可以把手机上（也可以是同一个网络上的 NAS 或者其他服务器）的内容通过网络在电视或者音响上播放。如果局域网中存在 DMPr(Digital Media Printer)，就可以把手机上或者其他服务器上的照片透过网络打印出来。
 
 场景一：通过网络可以把手机上播放的本地照片、视频或者照片在电视或者扬声器播放，需要手机端软件支持，同时电视或者扬声器支持。
 
@@ -53,7 +53,7 @@ DLNA 2003年诞生是为了能够把当时相互独立的电视机及其相关�
 【注1】严格来说，手机上的 DLNA 角色都应该加上 M(obile) 前缀，不过为了理解方便，就不引入过多的概念。而且事实上对于用户日常使用来说 M-DMS 和 DMS 并无区别。
 【注2】『Throw』是索尼关于 DLNA 使用的特有品牌，并非所有的手机中都叫 Throw，特此澄清。据我所知，三星手机的 DLNA 功能叫『AllShare』，其他的不知道了，欢迎补充。
 
-**Part 3. DLNA 认证的设备**
+## Part 3. DLNA 认证的设备
 
 支持 DLNA 的设备还算比较多，可以购买的时候看包装上是否有 DLNA 认证的 logo。不过国内很多厂商省钱都没有过 DLNA 认证，可能没有这个标志，不过只要宣称支持的话，日常使用应该问题不大。
 
@@ -63,13 +63,13 @@ DLNA 2003年诞生是为了能够把当时相互独立的电视机及其相关�
 
 
 
-**国内常见的支持 DLNA 的设备：**SONY 目前在卖的有 RJ45 接口（网线口）的电视，几乎全线支持
+国内常见的支持 DLNA 的设备：SONY 目前在卖的有 RJ45 接口（网线口）的电视，几乎全线支持
 SamSung / LG 目前在卖的大部分电视（因为不了解，所以低端的不敢保证，目前我个人就是用的三年前买的三星的，DLNA 没问题）
 Netgear 、Cisco 和 华硕 500RMB+ 的路由器，原生固件都带 DLNA Server。（因为不了解，所以低端的不敢保证。其他大厂像 Baffulo / Belkin / D-Link 应该也都有，不过没用过不敢保证）其他路由器只要能刷 DDWRT/Tomato/OpenWRT 也都能支持 DLNA Server。
 群晖 NAS 全线完美支持 DLNA
 Play Station 3/4 完美支持 DLNA
 
-**Part 4. DLNA 的一些显著特点（** 3月5日补充**）**
+## Part 4. DLNA 的一些显著特点（ 3月5日补充）
 
 简单谈一下 DLNA 的特点，由于是早年的标准且很久未更新，我手头上最新的是 2009 年8月的 Guideline，这份 Guideline 要成为会员才能拿的到，国内很多厂商都是会员，像小米/Oppo/魅族/华为/中兴等等（据说成为会员要交10000刀？欢迎知情者核实）。所以这个协议的特点非常突出：
 
