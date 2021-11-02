@@ -39,8 +39,10 @@ OpenCV_LIBS_RELEASE = opencvRelease/build/
 在CMake脚本中注释 find_package，自行定义库路径。
 
 ## misc
+
 ### opencv lib
 
+opencv 目录下有比较深的层级目录，如何正确选择cmake需要的目录？
 
 opencvRelease\build
 - bin/opencv_ffmpeg3413_64.dll
@@ -58,3 +60,4 @@ opencvRelease\build
 
 
 确保 OpenCV_LIBS 路径下 有 OpenCVConfig.cmake文件
+所以：OpenCV_LIBS=opencvRelease\build
