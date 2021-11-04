@@ -1,6 +1,12 @@
 # robot
 
+## 工业机器人
+首先，2019年工业机器人份额，日本Fanuc占17.5%，瑞士瑞典ABB占13.5%，德国KUKA占13.5%，日本安川占12%。以市场份额来说，KUKA和ABB并列第二。
 
+- [Fanuc](Fanuc/Fanuc.md)
+- [ABB](ABB/RobotStudio.md)
+- [KUKA](KUKA/KUKA.md)
+- 
 
 ## misc
 

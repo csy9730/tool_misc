@@ -1,5 +1,8 @@
 # nvcc
 
+## install
+
+### demo
 ```
 H:\Project>where nvcc
 C:\Program Files\NVIDIA GPU Computing Toolkit\cuda\v10.1\bin\nvcc.exe
