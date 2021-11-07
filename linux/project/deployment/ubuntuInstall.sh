@@ -11,9 +11,21 @@ sudo apt install net-tools  openssh-server rdesktop putty adb -y
 # sudo apt install pip3 -y
 
 # sudo apt install nginx redis -y
+installJava(){
+    sudo apt install default-jre -y
+    # apt install openjdk-11-jre-headless        
+    # apt install openjdk-8-jre-headless 
+    java --version
 
-# java
+    sudo apt install default-jdk -y
+    # sudo apt install openjdk-8-jdk -y
+    javac -version
 
+}
+
+installGo(){
+
+}
 # sudo apt install nmap  -y
 
 # apt install sqlite
@@ -93,4 +105,5 @@ installNvidia(){
 
 installAll(){
     installAnaconda
+    installJava
 }

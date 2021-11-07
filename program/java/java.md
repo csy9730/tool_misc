@@ -1,8 +1,12 @@
 # java
 
 
+[https://www.java.com/](https://www.java.com/z)
 
 ## install
+
+[https://www.java.com/zh-CN/download/manual.jsp](https://www.java.com/zh-CN/download/manual.jsp)
+
 
 ### demo
 ``` bash

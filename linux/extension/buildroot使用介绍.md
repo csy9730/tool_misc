@@ -1,10 +1,10 @@
-## [buildroot使用介绍](https://www.cnblogs.com/arnoldlu/p/9553995.html)
+# [buildroot使用介绍](https://www.cnblogs.com/arnoldlu/p/9553995.html)
 
 [buildroot](https://buildroot.org/)是Linux平台上一个构建嵌入式Linux系统的框架。整个Buildroot是由Makefile脚本和Kconfig配置文件构成的。你可以和编译Linux内核一样，通过buildroot配置，menuconfig修改，编译出一个完整的可以直接烧写到机器上运行的Linux系统软件(包含boot、kernel、rootfs以及rootfs中的各种库和应用程序)。
 
 使用buildroot搭建基于qemu的虚拟开发平台，参考《[通过buildroot+qemu搭建ARM-Linux虚拟开发环境](https://www.cnblogs.com/arnoldlu/p/9689585.html)》。
 
-# 1. buildroot入门
+## 1. buildroot入门
 
 首先如何使用buildroot，1.选择一个defconfig；2.根据需要配置buildroot；3.编译buildroot；4.在qemu或者目标板上运行buildroot构建的系统。
 
@@ -12,7 +12,7 @@
 
 进入buildroot首先映入眼帘的是一系列目录，简要介绍如下：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 .
@@ -44,7 +44,7 @@
 └── toolchain
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ## 1.2 buildroot配置
 
@@ -52,7 +52,7 @@
 
 然后通过make menuconfig进行配置。
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 Target options  --->选择目标板架构特性。
@@ -67,13 +67,13 @@ Host utilities  --->
 Legacy config options  --->
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ## 1.3 make命令使用
 
 通过make help可以看到buildroot下make的使用细节，包括对package、uclibc、busybox、linux以及文档生成等配置。
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 Cleaning:
@@ -124,7 +124,7 @@ Documentation:
   graph-size             - generate stats of the filesystem size
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 # 2. buildroot框架
 
@@ -225,7 +225,7 @@ PATH="/bin..." BR_BINARIES_DIR=/home/.../output/images /usr/bin/make -j9 HOSTCC=
 
 fs/initramfs/initramfs.mk中：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 rootfs-initramfs: linux-rebuild-with-initramfs
@@ -240,11 +240,11 @@ TARGETS_ROOTFS += rootfs-initramfs
 endif
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 在linux/linux.mk中：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 .PHONY: linux-rebuild-with-initramfs
@@ -262,7 +262,7 @@ linux-rebuild-with-initramfs:
     test ! -f $(LINUX_IMAGE_PATH).ub || cp $(LINUX_IMAGE_PATH).ub $(BINARIES_DIR)
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 在打开initramfs的情况下，重新将rootfs.cpio编译进内核vmlinxu中。
 
@@ -280,7 +280,7 @@ linux-rebuild-with-initramfs:
 
 系统在make menuconfig的时候就可以找到对应的APP的Config.in。
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 diff --git a/package/Config.in b/package/Config.in
@@ -296,7 +296,7 @@ index 43d75a9..6ef9fad 100644
 +endmenu
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  如果在make menuconfig的时候选中helloworld，在make savedefconfig的时候就会打开BR2_PACKAGE_HELLOWORLD=y。
 
@@ -317,7 +317,7 @@ buildroot编译helloworld所需要的设置helloworld.mk，包括源码位置、
 
 下面的HELLOWORLD的开头也是必须的。
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 ################################################################################
@@ -346,7 +346,7 @@ endef
 $(eval $(generic-package))
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 如果源码在git上，需要如下设置：
 
@@ -368,9 +368,9 @@ $(eval$(generic-package)) 最核心的就是这个东西了，一定不能够漏
 
 简单的编写一个helloworld.c文件：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
-```
+
+``` cpp
 #include <stdio.h>
 
 void main(void)
@@ -379,13 +379,13 @@ void main(void)
 }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 然后编写Makefile文件：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
-```
+
+``` makefile
 CPPFLAGS += 
 LDLIBS += 
 
@@ -400,7 +400,7 @@ clean:
 .PHONY: all clean
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ## 5.4 通过make menuconfig选中APP
 
@@ -488,9 +488,9 @@ BR2_ROOTFS_POST_IMAGE_SCRIPT - 对最终生成的images进行打包处理等。
 
 一个post_build.sh范例，对一系列文件进行删除和strip操作：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
-```
+
+``` bash
 #!/bin/sh
 #set -x
 set +o errexit
@@ -524,7 +524,7 @@ done
 ${BR2_EXTERNAL_INTELLIF_PATH}/board/common/post_build.sh
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ## 7.2 post image
 
@@ -540,9 +540,9 @@ target-post-image: $(TARGETS_ROOTFS) target-finalize
 
 一个范例如下，对images文件进行打包操作。
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
-```
+
+``` bash
 #!/bin/sh
 set -x -e
 
@@ -570,7 +570,7 @@ tar -czf ${DEBUG_TAR} -C ${IMG_DIR} debug/
 md5sum ${IMG_TAR} > ${IMG_MD5}
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 # 8. buildroot编译性能
 
@@ -578,7 +578,7 @@ buildroot还提供了一些命令，用于分析buildroot编译过程中耗时�
 
 通过make help发现相关命令：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 Documentation:
@@ -594,7 +594,7 @@ Documentation:
   list-defconfigs        - list all defconfigs (pre-configured minimal systems)
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ## 8.1 编译耗时
 
