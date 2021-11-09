@@ -24,14 +24,21 @@
 
 #### 谷歌学术镜像
 
-- [http://so.hiqq.com.cn/](https://www.luckydesigner.space/wp-content/themes/begin5.2/inc/go.php?url=http://so.hiqq.com.cn/)
-- [https://sci-hub.org.cn/](https://www.luckydesigner.space/wp-content/themes/begin5.2/inc/go.php?url=https://sci-hub.org.cn/)
-- [https://xueshu.soogle.top/](https://www.luckydesigner.space/wp-content/themes/begin5.2/inc/go.php?url=https://xueshu.soogle.top/)
-- http://www.ndtsg.com/
-- https://www.80xueshu.com/
-- [https://gfsoso.99lb.net/](https://www.luckydesigner.space/wp-content/themes/begin5.2/inc/go.php?url=https://gfsoso.99lb.net/)
-- [https://scholar.123admin.com/](https://www.luckydesigner.space/wp-content/themes/begin5.2/inc/go.php?url=https://scholar.123admin.com/)
+- [http://so.hiqq.com.cn/](http://so.hiqq.com.cn/)
+- [https://sci-hub.org.cn/](https://sci-hub.org.cn/)
+- [https://xueshu.soogle.top/](https://xueshu.soogle.top/)
+- [http://www.ndtsg.com/](http://www.ndtsg.com/)
+- [https://www.80xueshu.com/](https://www.80xueshu.com/)
+- [https://gfsoso.99lb.net/](https://gfsoso.99lb.net/)
+- [https://scholar.123admin.com/](https://scholar.123admin.com/)
 - https://s.g456.top/
 - https://e.glgoo.top/scholar/
 - https://c3.glgoo.top/scholar/
-- [https://scholar.xiayige.org/](https://www.luckydesigner.space/wp-content/themes/begin5.2/inc/go.php?url=https://scholar.xiayige.org/)
+- [https://scholar.xiayige.org/](https://scholar.xiayige.org/)
+
+- [http://dir.scmor.com/google/](http://dir.scmor.com/google/)
+- [http://scholar.glgoo.org/](http://scholar.glgoo.org/)
+- [http://scholar.scqylaw.com/](http://scholar.scqylaw.com/)
+- [https://xs2.dailyheadlines.cc/](https://xs2.dailyheadlines.cc/)
+- [https://xs.dailyheadlines.cc/](https://xs.dailyheadlines.cc/)
+- [https://ac.scmor.com/](https://ac.scmor.com/)
