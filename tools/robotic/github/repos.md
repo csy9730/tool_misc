@@ -11,8 +11,6 @@
 ### moveit
 [moveit](https://moveit.ros.org/)
 
-### pcl
-[https://github.com/PointCloudLibrary/pcl](https://github.com/PointCloudLibrary/pcl)
 
 ### octomap
 [https://github.com/OctoMap/octomap](https://github.com/OctoMap/octomap)
@@ -144,10 +142,11 @@ For implementation details on GJK algorithm, see http://www.win.tue.nl/~gino/sol
 [https://github.com/LinuxCNC/linuxcnc]([https://github.com/LinuxCNC/linuxcnc])
 
 ### TinyG
+TinyG项目是一个多轴运动控制系统，它面向数控加工中心和其它需要高精度运动控制的应用场景。TinyG是一个针对中小型功率电机控制的嵌入式解决方案。
 ### marlin
 ### Smoothieware
 ### Orocos
-
+个开源的机器人控制程序开发软件
 ## misc
 
 

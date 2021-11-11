@@ -1,0 +1,4 @@
+# AVR
+
+通常来讲，[AVR单片机](https://baike.baidu.com/item/AVR单片机/4089769)指的是1997年由[ATMEL公司](https://baike.baidu.com/item/ATMEL公司/2002428)研发出的增强型内置[Flash](https://baike.baidu.com/item/Flash/19437587)的RISC(Reduced Instruction Set Computer) [精简指令集](https://baike.baidu.com/item/精简指令集/4736552)高速8位[单片机](https://baike.baidu.com/item/单片机/102396)。AVR的单片机可以广泛应用于计算机外部设备、工业实时控制、[仪器仪表](https://baike.baidu.com/item/仪器仪表/1291650)、[通讯设备](https://baike.baidu.com/item/通讯设备/10889207)、[家用电器](https://baike.baidu.com/item/家用电器/3161846)等各个领域。 但AVR的诞生颇有传奇色彩，1992年Alf-Egil Bogen和Vegard Wollan在瑞典理工学院的毕业论文中提到了一种使用闪存[程序存储器](https://baike.baidu.com/item/程序存储器/7661398)的，使用[RISC指令集](https://baike.baidu.com/item/RISC指令集/9131040)的[微控制器](https://baike.baidu.com/item/微控制器/6688343)。在接下来的几年里， Alf-Egil和Vegard不断完善设计， 并加入一些集成外设，1997年，加入Atmel公司[挪威](https://baike.baidu.com/item/挪威)设计中心的A先生和V先生，利用Atmel公司的Flash新技术，共同研发出RISC精简指令集高速8位单片机，简称AVR。随着2016年，Atmel被Microchip收购，AVR随即成为Microchip的主力8位单片机产品之一。
+
