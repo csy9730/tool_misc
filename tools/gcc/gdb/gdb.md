@@ -52,15 +52,28 @@ target remote /dev/ttyS0
 
 ## misc
 问题收集：
-1.出现“No symbol table is loaded.  Use the "file" command.”表示编译app应用程序时没加－g调试信息选项导致无法load符号表。
-2.出现”cannot execute binary file“表示编译gdbserver时平台交叉编译器配置不对，提示无法执行二进制文件，可用“file gdbserver”查看执行平台信息。
+
+出现“No symbol table is loaded.  Use the "file" command.”
+
+表示编译app应用程序时没加－g调试信息选项导致无法load符号表。
+
+
+出现”cannot execute binary file“
+
+表示编译gdbserver时平台交叉编译器配置不对，提示无法执行二进制文件，可用“file gdbserver”查看执行平台信息。
+
+
+**Q**: gdb 显示："Program exited normally"
+
+**A**: 
+程序正确退出，这种情况一般是断点没有生效，可能是：没有正确的打断点。
 
 
 dmesg 来查看安装驱动的信息
-开发板连接的是USB转串口设备/dev/ttyUSB0，如果是普通的串口设备会是/dev/ttyS*.
-
-stty -F /dev/ttyS0 
 
 
-(gdb) target remote /dev/ttyUSB0
-/dev/ttyUSB0: 输入/输出错误.
+开发板连接的是USB转串口设备`/dev/ttyUSB0`，如果是普通的串口设备会是`/dev/ttyS*`.
+
+使用指定设备作为stdin： `stty -F /dev/ttyS0 ` 
+
+gdb连接串口设备：`(gdb) target remote /dev/ttyUSB0`
