@@ -82,7 +82,11 @@ mount
 
 
 ## misc
-···
+```
 root@devel:~/tmp$ sudo mount ./bcd ./abc
 mount:./abc: ./bcd is not a block device.
-···
+```
+
+
+mkdir /media/csy/sdb5 -p
+mount /dev/sdb5 /media/csy/sdb5
