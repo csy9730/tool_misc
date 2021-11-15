@@ -8,9 +8,9 @@
 
 Codesys 号称PLC界的安卓，国内造PLC的 基本都用Codesys内核了。
 
-如：汇川 ，合信，  和利时 ，英威腾，  台达。  
+如：汇川，合信，和利时，英威腾，台达。  
 
-包括国外的： 倍福TC2  施耐德Somachine  力士乐 等等都是Codesys
+包括国外的： 倍福TC2，施耐德Somachine，力士乐等等都是Codesys
 
 
 

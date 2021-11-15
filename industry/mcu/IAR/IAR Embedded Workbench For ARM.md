@@ -1,0 +1,2 @@
+# IAR Embedded Workbench For ARM
+瑞典著名软件开发商IAR Systems公司2014年推出了最新版本IAR Embedded Workbench For ARM V7.1 (简称IAR EWARM V7.1），它是一种增强型一体化开发平台，其中完全集成了开发嵌入式系统所需要的文件编辑、项目管理、编译、链接和调试工具。IAR公司独具特色的CSPY调试器，不仅可以在系统开发初期进行无目标硬件的纯软件仿真，也可以结合JLink/JTrace硬件仿真器，对用户系统进行实时在线仿真调试。
