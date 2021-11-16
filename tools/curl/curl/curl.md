@@ -1,5 +1,16 @@
 # curl
 
+
+## i常用参数项
+- -H 指定header
+- -d 指定 POST data
+- -b, --cookie <data> 指定cookie
+- -L, --location      跟随重定向
+- -o, --output <file> stdout重定向文件
+- -u, --user <user:password> 设置用户名和密码
+-  -A, --user-agent 设置用户的客户端代理
+
+
 ## help
 ```
 root@devel:~/Project$ curl --help
