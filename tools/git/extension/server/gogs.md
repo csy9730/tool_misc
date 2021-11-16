@@ -1,6 +1,0 @@
-# gogs
-
-
-## install
-
-

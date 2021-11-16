@@ -5,11 +5,13 @@
 TortoiseGit ，windows下可用。
 
 [GitHub Desktop](http://windows.github.com/)
+
 [SourceTree](http://www.sourcetreeapp.com/)
 
 SmartGit/Hg 是一家 syntevo 公司的产品，由于 GUI 采用 Java 编写，支持 Windows XP +系统和mac系统。
 
 gitk：git-bash自带的gui界面, 适合用来查看分支和历史，查看每个commit。
+
 git-gui : git-bash自带的gui界面, 可以执行commit。
 
 如何从git repo按照时间轴 查看每个提交，按照时间顺序快进后退查看？
