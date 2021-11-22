@@ -104,6 +104,8 @@ frp 支持 虚拟主机、多路复用、负载均衡、点对点内网穿透
 **Q**: frp报错“http: proxy error: no such domain”
 **A**: 
 
+### windows boot
+
 **Q**: windows把frpc.exe 设为启动项？
 **A**：
 ``` bash
@@ -118,6 +120,7 @@ Set ws = CreateObject("Wscript.Shell")
 ws.run "cmd /c c:\frps\frps.exe -c c:\frps\frps.ini",vbhide
 ```
 
+### linux boot
 
 **Q**: linux把frpc设为启动项？
 **A**：
