@@ -28,6 +28,7 @@ ABI规范的基础数据类型及大小：在硬件CPU上面，肯定是ABI规�
 这里给出两个代码，下面配合下面的概念，有不懂的可以翻上来对照着看
 
 C程序
+``` cpp
 void add (int, int, int);
 
 main(void)
@@ -44,23 +45,10 @@ void add(int a, int b, int c)
 {
 	c = a + b;
 }
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
+···
+
 编译后的汇编程序
+``` asm
 mov bp,sp
 sub sp,6
 mov word ptr [bp-6],0001	:int a
@@ -82,27 +70,9 @@ ADDR:
 	mov sp,bp
 	pop bp
 	ret
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
+```
+
+
 根据以上汇编画出函数调用过程中，栈的动态变化过程，之后，会深刻理解ABI。
 
 以下部分内容搬运自维基，详见X86调用约定
@@ -135,7 +105,7 @@ ADDR:
 调用者清理
 在这些约定中，调用者自己清理堆栈上的参数(arguments)，这样就允许了可变参数列表的实现，如printf()。
 
-cdecl
+### cdecl
 cdecl(C declaration，即C声明)是源起C语言的一种调用约定，也是C语言的事实上的标准。在x86架构上，其内容包括：
 
 函数实参在线程栈上按照从右至左的顺序依次压栈。
@@ -147,6 +117,7 @@ cdecl(C declaration，即C声明)是源起C语言的一种调用约定，也是C
 受到函数调用影响的寄存器（volatile registers）：EAX, ECX, EDX, ST0 - ST7, ES, GS
 不受函数调用影响的寄存器： EBX, EBP, ESP, EDI, ESI, CS, DS
 RET指令从函数被调用者返回到调用者（实质上是读取寄存器EBP所指的线程栈之处保存的函数返回地址并加载到IP寄存器）
+``` cpp
 int callee(int, int, int);
   int caller(void)
   {
@@ -156,17 +127,10 @@ int callee(int, int, int);
       ret += 5;
       return ret;
   }
-1
-2
-3
-4
-5
-6
-7
-8
-9
-在x86上， 会产生如下汇编代码(AT&T 语法)：
+···
 
+在x86上， 会产生如下汇编代码(AT&T 语法)：
+··· asm
  .globl  caller
   caller:
         pushl   %ebp
@@ -179,65 +143,54 @@ int callee(int, int, int);
         addl    $5,%eax
         leave
         ret
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
+```
 cdecl调用约定通常作为x86 C编译器的默认调用规则，许多编译器也提供了自动切换调用约定的选项。如果需要手动指定调用规则为cdecl，编译器可能会支持如下语法：
 
+``` cpp
 return_type _cdecl funct();
-1
-syscall
-与cdecl类似，参数被从右到左推入堆栈中。EAX, ECX和EDX不会保留值。参数列表的大小被放置在AL寄存器中。 syscall是32位OS/2 API的标准。
+```
+### syscall
+syscall与cdecl类似，参数被从右到左推入堆栈中。EAX, ECX和EDX不会保留值。参数列表的大小被放置在AL寄存器中。 syscall是32位OS/2 API的标准。
 
 被调用者清理
 如果被调用者要清理栈上的参数，需要在编译阶段知道栈上有多少字节要处理。因此，此类的调用约定并不能兼容于可变参数列表，如printf()。然而，这种调用约定也许会更有效率，因为需要解堆栈的代码不要在每次调用时都生成一遍。 使用此规则的函数容易在asm代码被认出，因为它们会在返回前解堆栈。x86 ret指令允许一个可选的16位参数说明栈字节数，用来在返回给调用者之前解堆栈。代码类似如下：
-
+```
 ret 12
-1
-指令ret n的含义用汇编语法描述为：
-
+```
+指令`ret n`的含义用汇编语法描述为：
+``` asm
 pop ip
 add sp,n
-1
-2
+```
 因为用栈传递参数，所以调用者在调用程序的时候要向栈中压入参数，子程序在返回的时候可以用ret n指令将栈顶指针修改为调用前的值。
 
-stdcall
+### stdcall
 stdcall是由微软创建的调用约定，是Windows API的标准调用约定。非微软的编译器并不总是支持该调用协议。GCC编译器如下使用：
-
+```
 int __attribute__((__stdcall__ )) func()
-1
+```
 寄存器EAX, ECX和EDX被指定在函数中使用，返回值放置在EAX中。
 
-Microsoft/GCC fastcall
+### Microsoft/GCC fastcall
 Microsoft或GCC的__fastcall约定(也即__msfastcall)把第一个(从左至右)不超过32比特的参数通过寄存器ECX/CX/CL传递，第二个不超过32比特的参数通过寄存器EDX/DX/DL，其他参数按照自右到左顺序压栈传递。
 
-register
+### register
 Borland fastcall的别名。
 
-Borland fastcal
+### Borland fastcal
 
 从左至右，传入三个参数至EAX, EDX和ECX中。剩下的参数推入栈，也是从左至右。 在32位编译器Embarcadero Delphi中，这是缺省调用约定，在编译器中以register形式为人知。 在i386上的某些版本Linux也使用了此约定。
 
 调用者或被调用者清理
 
-Intel ABI
+### Intel ABI
 根据Intel ABI，EAX、EDX及ECX可以自由在过程或函数中使用，不需要保留。
 x86-64调用约定
 x86-64调用约定得益于更多的寄存器可以用来传参。而且，不兼容的调用约定也更少了，不过还是有2种主流(windows和Linux)的规则。
 
 这里只关注Linux的
 
-System V AMD64 ABI
+### System V AMD64 ABI
 此约定主要在Solaris，GNU/Linux，FreeBSD和其他非微软OS上使用。头六个整型参数放在寄存器RDI, RSI, RDX, RCX, R8和R9上；同时XMM0到XMM7用来放置浮点变元。对于系统调用，R10用来替代RCX。同微软x64约定一样，其他额外的参数推入栈，返回值保存在RAX中。 与微软不同的是，不需要提供影子空间。在函数入口，返回值与栈上第七个整型参数相邻。
 
 名称修饰：符号修饰（name decoration）或称符号改编（name mangling）
