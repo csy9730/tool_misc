@@ -4,6 +4,7 @@
 
 为了便于说明，以下给出三种类的继承方式：
 
+### overwrite
 第一种，普通继承，没有虚函数，子类同名函数完全覆盖父类：
 
 ```cpp
@@ -16,7 +17,7 @@ struct Drv : public Base{
 };
 ```
 
-
+### override
 
 第二种，普通继承，用虚函数：
 
@@ -30,7 +31,7 @@ struct Drv : public Base{
 ```
 
 
-
+### CRTP模式
 第三种：采用CRTP模式：
 
 ``` cpp
