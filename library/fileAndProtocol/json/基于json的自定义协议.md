@@ -1,7 +1,4 @@
-
-
-Protocol Buffers
-json
+# 基于json的自定义协议
 
 json设计分页
 

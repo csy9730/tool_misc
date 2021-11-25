@@ -5,7 +5,7 @@
 
 12 人赞同了该文章
 
-坐标系
+## 坐标系
 
 右手坐标系：把右手拇指食指中指伸直并正交，拇指X，食指Y，中指Z。一般无特殊说明，都是右手坐标系。
 
@@ -31,8 +31,11 @@ FLU和NWU配合：当自身面北平放的时候，FLU坐标系和NWU坐标系�
 
 
 
-yaw, pitch, roll
+## yaw, pitch, roll
 
+~~以头部运动为例：yaw是摇头，pitch是点头，roll是摆头。~~
+
+### yaw
 yaw：偏航角。是沿世界坐标系的Z轴旋转的角度。0表示面向世界坐标系的X轴正向。
 
 在NED坐标下，0度是面向正北。在ENU做坐标下，0度是面向正东。
@@ -43,12 +46,14 @@ yaw：偏航角。是沿世界坐标系的Z轴旋转的角度。0表示面向世
 
 所以，可以推算出来，yaw从END坐标系转到ENU坐标系的转换公式为：yaw_ENU = PI/2 - yaw_END
 
+### pitch
 pitch：俯仰角。就是抬头或低头，和大地水平面的夹角。换句话说，是沿自身坐标系（X轴向前的坐标系）的Y轴旋转的角度。
 
 抬头1度，在FRD坐标系下，pitch=0.01745，在FLU坐标系中，pitch=-0.01745。
 
 所以，可以推算出来，pitch从FRD坐标系转到FLU坐标系的转换公式为：pitch_FLU = - pitch_FRD
 
+### roll
 roll：翻滚角。就是左倾或右倾，和大地水平面的夹角。换句话说，是沿自身坐标系（X轴向前的坐标系）的X轴旋转的角度。
 
 右倾1度，在FRD坐标系下，roll=0.01745，在FLU坐标系中，roll=0.01745。
@@ -59,7 +64,7 @@ roll：翻滚角。就是左倾或右倾，和大地水平面的夹角。换句�
 
 
 
-欧拉角
+## 欧拉角
 
 参考 [马同学：如何通俗地解释欧拉角？之后为何要引入四元数？](https://www.zhihu.com/question/47736315/answer/236284413)
 
@@ -79,7 +84,7 @@ roll：翻滚角。就是左倾或右倾，和大地水平面的夹角。换句�
 
 
 
-Z-Y-X欧拉角
+### Z-Y-X欧拉角
 
 参考 Introduction to Robotics Machanics and Control.pdf P43
 
@@ -97,7 +102,7 @@ R_yaw是旋转后z不变的阵，R_pitch是旋转后y不变的阵，R_roll是旋
 
 
 
-求一个点在另一个坐标系中的坐标
+### 求一个点在另一个坐标系中的坐标
 
 参考 Introduction to Robotics Machanics and Control.pdf P27 Mappings involving general frames 公式2.19
 
@@ -107,26 +112,27 @@ R_yaw是旋转后z不变的阵，R_pitch是旋转后y不变的阵，R_roll是旋
 
 那么，我们可以先保持B的原点不动，把B旋转为B1，和A同向。此时该点P的坐标在B1里面是P_b1。而P_a = P_b1 + O_ba。
 
-所以有 P_a = R_ab P_b + O_ba（2.17)
+所以有 `P_a = R_ab P_b + O_ba`（2.17)
 
 以上的公式，可以写成更酷的一个公式：
-
+```
 [P_a, 1]T = T_ab [P_b, 1] (2.19)
-
+```
 其中，T_ab为1个4*4的矩阵，左上角是R_ab，右上角是O_ba，左下角是 0 0 0，右下角是1。
 
 
 
-四元数用于旋转
+## 四元数用于旋转
 
 参考 [彻底搞懂四元数 - 前路漫漫的博客 - CSDN博客](https://blog.csdn.net/shenshen211/article/details/78492055)
 
 四元数有x,y,z,w这4个分量。错误的理解是：x,y,z表示旋转轴，w表示旋转角度。但实际上，如果ax,ay,az是旋转轴向量，theta是旋转角度的话，四元数实际是：
-
+```
 w = cos(theta/2)
 x = ax * sin(theta/2)
 y = ay * sin(theta/2)
 z = az * sin(theta/2)
+```
 
 这样定义很不直观，但好处是可以可以插值。
 
