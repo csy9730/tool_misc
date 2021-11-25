@@ -7,8 +7,22 @@ sudo apt install tmux screenzip -y
 sudo apt install net-tools  openssh-server rdesktop putty adb -y
 
 
-# sudo apt install python3 python3-dev -y
-# sudo apt install pip3 -y
+# 
+installPython(){
+    sudo apt install python3 python3-dev -y
+}
+
+
+installPip(){
+    # apt install python-pip  -y
+    apt install python3-pip  -y
+    #  wget https://bootstrap.pypa.io/get-pip.py
+    # python get-pip.py
+
+    python3 -m pip -V # query version
+    python3 -m pip  install -U pip
+}
+
 
 # sudo apt install nginx redis -y
 installJava(){

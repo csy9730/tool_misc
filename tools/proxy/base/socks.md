@@ -132,7 +132,7 @@ export http_proxy="socks5h://127.0.0.1:1080"
 export HTTPS_PROXY="socks5h://127.0.0.1:1080"
 ```
 
-```
+``` bash
 env http_proxy=socks5h://localhost:1080 HTTPS_PROXY=socks5h://localhost:1080 ALL_PROXY=socks5h://localhost:1080 PROG
 env ALL_PROXY=socks5h://localhost:1080  curl www.google.com
 ```
