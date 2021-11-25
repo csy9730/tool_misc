@@ -1,4 +1,4 @@
-# [ART、SPI和I2C详解](https://www.cnblogs.com/Ray-liang/p/9786084.html)
+# [UART、SPI和I2C详解](https://www.cnblogs.com/Ray-liang/p/9786084.html)
 
 
 

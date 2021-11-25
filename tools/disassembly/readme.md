@@ -1,22 +1,23 @@
 # readme
 
 
-- [file](main/tools/file.md)
-- [ldd](main/tools/ldd.md)
-- [size](main/tools/size.md)
-- [xxd](main/tools/xxd.md)
-- [nm](main/tools/nm.md)
-- [readelf](main/tools/readelf.md)
-- [objcopy](main/tools/objcopy.md)
-- [objdump](main/tools/objdump%20help.md)
-- [strings](main/tools/strings.md)
-- [otools](main/tools/otools.md)
-- [c++filt](main/tools/c++filt.md)
-- [pe tools](main/tools/petools.md)
-- [DependencyWalker](main/tools/DependencyWalker.md)
+- [file](gnutool/file.md)
+- [ldd](gnutool/ldd.md)
+- [size](gnutool/size.md)
+- [xxd](gnutool/xxd.md)
+- [nm](gnutool/nm.md)
+- [readelf](gnutool/readelf.md)
+- [objcopy](gnutool/objcopy.md)
+- [objdump](gnutool/objdump%20help.md)
+- [strings](gnutool/strings.md)
+- [c++filt](gnutool/c++filt.md)
+- [pe tools](petool/petools.md)
+- [DependencyWalker](Dependencies/DependencyWalker.md)
+- [otools](otool/otools.md)
 
 
 - [https://securityonline.info/](https://securityonline.info/)
 - [https://www.52pojie.cn/](https://www.52pojie.cn/)
 
 
+                 

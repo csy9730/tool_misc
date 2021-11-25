@@ -124,7 +124,12 @@ software：
   - [x] git
 - [ ] browser/chrome
 - [ ] server
-  
+
+
+- [ ] ss: NLP
+- [ ] ss: audio
+- [ ] ss: graph arith
+- [x] ss: mlpr
 
 
 
