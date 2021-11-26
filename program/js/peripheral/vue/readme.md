@@ -20,12 +20,12 @@ For Vue 1.x use: vue init webpack#1.0 my-project
 ? Setup unit tests with Karma + Mocha? Yes
 ? Setup e2e tests with Nightwatch? Yes
 
-   vue-cli · Generated "my-project".
+   `vue-cli · Generated "my-project".`
 
    To get started:
-   
+   ``` bash
      cd my-project
      npm install
      npm run dev
-   
+   ```
    Documentation can be found at https://vuejs-templates.github.io/webpack

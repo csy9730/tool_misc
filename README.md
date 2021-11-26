@@ -116,13 +116,14 @@ software：
 - [ ] program/coding
 - [ ] matlab
 - [x] qt
-- [ ] boost
+- [x] boost
 - [ ] html/css
 
 - [x] dnn
 - [ ] tool
   - [x] git
-- [ ] browser/chrome
+- [x] browser/chrome
+- [x] gui/
 - [ ] server
 
 
