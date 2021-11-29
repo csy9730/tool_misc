@@ -1,7 +1,7 @@
 # windows ssh
 
-## manager
-### install
+## install
+### server
 
 bash-like的ssh，都是在windows系统上模拟linux环境，可以提供ssh执行依赖和环境，有以下几种： 
 [git for windows](https://git-scm.com/download/win)
@@ -21,6 +21,7 @@ bash-like的ssh，都是在windows系统上模拟linux环境，可以提供ssh�
 
 openssh371.zip的版本很旧，发布于2003年，powershell-Win32-OpenSSH较新。
 
+### client
 客户端：
 [putty](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
 
@@ -28,7 +29,7 @@ window10自带openssh的客户端，还需要安装服务端sshd；此外也可�
 windows7可以安装openssh或者git-bash套件
 windowsXp可以安装openssh。
 
-
+## useage
 ### xp使用OpenSSH
 
 
