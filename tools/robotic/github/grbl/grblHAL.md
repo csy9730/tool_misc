@@ -1,6 +1,10 @@
 # grblHAL
 [https://www.grbl.org/what-is-grblhal](https://www.grbl.org/what-is-grblhal)
 
+[https://github.com/grblHAL/core](https://github.com/grblHAL/core)
+
+[https://github.com/terjeio/grblHAL](https://github.com/terjeio/grblHAL)
+
 
  
 > GRBL分成两部分：处理器相关代码-硬件抽象层和 处理器无关代码-GRBL内核

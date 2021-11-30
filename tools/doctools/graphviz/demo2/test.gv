@@ -1,0 +1,7 @@
+digraph test {
+	a
+	b
+	c
+	a -> b [color=green]
+	b -> c
+}
