@@ -24,7 +24,7 @@
 
  
 
-```matlab
+``` matlab
 s=serial('COM2')           %将串口2赋给s
 s.status                                         %查看串口2的状态
 fopen(s)                                         %打开串口2

@@ -1,5 +1,10 @@
 # trap
 
+trap可以为shell注册钩子函数。
+
+钩子基于shell接收的信号生效，支持信号：EXIT，DEBUG，RETURN
+
+
 ## demo
 ``` bash
 function cleanup {
