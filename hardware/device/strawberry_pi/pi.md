@@ -18,7 +18,7 @@ SSH客户端推荐PuTTY和Xshell。
 5. 使用advanced IP scanner暴力搜索IP地址
 
 #### VNC远程连接
-``` 
+``` bash
 # 开启VNC
 sudo raspi-config
 5 Interfacing Options。
@@ -29,7 +29,7 @@ vncserver
 
 电脑下载VNC远程连接，连接方式与SSH连接相同
 #### 外接HDMI
-```
+``` bash
 sudo rm -rf LCD-show
 git clone https://github.com/goodtft/LCD-show.git
 chmod -R 755 LCD-show
@@ -37,9 +37,12 @@ cd LCD-show/
 sudo ./LCD35-show
 ```
 解决树莓派外接HDMI无法显示屏幕的问题
+
+``` bash
 cd LCD-show/
 ./LCD-hdmi
 ./LCD35-show
+```
 
 树莓派设置显示屏分辨率
 // 打开/boot/config.txt目录下的配置文件
@@ -84,7 +87,9 @@ deb-src http://mirror.tuna.tsinghua.edu.cn/raspberrypi/ stretch main ui
 #### misc
 
 定时关机
+```
 shutdown -t 60 # 60分钟后关机
+```
 
 ### 参考
 http://www.lcdwiki.com/zh/3.5inch_RPi_Display
