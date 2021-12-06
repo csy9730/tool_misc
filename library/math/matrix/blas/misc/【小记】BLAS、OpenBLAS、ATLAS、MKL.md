@@ -15,7 +15,7 @@ LAPACK （linear algebra package），是著名的线性代数库，也是Netlib
 
 Linear Algebra Package，线性代数包，底层使用BLAS，使用Fortran语言编写。在BLAS的基础上定义很多矩阵和向量高级运算的函数，如矩阵分解、求逆和求奇异值等。该库的运行效率比BLAS库高。为了进行C语言的开发，开发了CBLAS和CLAPACK。
 
-# CBALS & CLAPACK
+# CBLAS & CLAPACK
 
 前面BLAS和LAPACK的实现均是用的Fortran语言。为了方便c程序的调用，Netlib开发了CBLAS和CLAPACK。其本质是在BLAS和LAPACK的基础上，增加了c的调用方式。
 
@@ -39,7 +39,10 @@ Openblas在编译时根据目标硬件进行优化，生成运行效率很高的
 
 Intel的MKL和AMD的ACML都是在BLAS的基础上，针对自己特定的CPU平台进行针对性的优化加速。以及NVIDIA针对GPU开发的cuBLAS。
 
+# ACML
 商业公司对BLAS和LAPACK的实现，有Intel的MKL和AMD的ACML。他们对自己的cpu架构，进行了相关计算过程的优化，实现算法效率也很高。
+
+# cuBLAS
 NVIDIA针对其GPU，也推出了cuBLAS，用以在GPU上做矩阵运行。
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190612000430391.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzMxMzQ3ODY5,size_16,color_FFFFFF,t_70)

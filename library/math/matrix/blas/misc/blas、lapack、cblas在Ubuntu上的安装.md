@@ -8,7 +8,7 @@
 
 ### 1.确保机器上安装了gfortran编译器，如果没有安装的话，可以使用
 
-```csharp
+``` bash
 sudo apt-get install gfortran
 ```
 
