@@ -24,7 +24,7 @@ Annoy(Approximate Nearest Neighbors Oh Yeah)是一个带有Python bindings的C +
 
 这有用吗？如果要查找最近的邻居并且有很多CPU，则只需建立一次索引。您还可以传递和分发静态文件以用于生产环境，Hadoop作业等中。任何进程都将能够将索引加载到内存中，并且能够立即执行查找。
 
-用在哪呢？如在[Spotify上](https://link.zhihu.com/?target=http%3A//www.spotify.com/)使用它来推荐音乐。运行[矩阵分解算法](https://www.zhihu.com/search?q=%E7%9F%A9%E9%98%B5%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22%3A%22article%22%2C%22sourceId%22%3A109633593%7D)后，每个用户/项目都可以表示为f-维空间中的向量。该库可帮助我们搜索相似的用户/物品。当在[高维空间](https://www.zhihu.com/search?q=%E9%AB%98%E7%BB%B4%E7%A9%BA%E9%97%B4&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22%3A%22article%22%2C%22sourceId%22%3A109633593%7D)中有数百万条查找对象时，内存使用是首要考虑的问题。
+用在哪呢？如在[Spotify上](https://www.spotify.com/)使用它来推荐音乐。运行[矩阵分解算法](https://www.zhihu.com/search?q=%E7%9F%A9%E9%98%B5%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22%3A%22article%22%2C%22sourceId%22%3A109633593%7D)后，每个用户/项目都可以表示为f-维空间中的向量。该库可帮助我们搜索相似的用户/物品。当在[高维空间](https://www.zhihu.com/search?q=%E9%AB%98%E7%BB%B4%E7%A9%BA%E9%97%B4&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22%3A%22article%22%2C%22sourceId%22%3A109633593%7D)中有数百万条查找对象时，内存使用是首要考虑的问题。
 
 > **相比于其他的最近邻搜索库，annoy的学习成本非常低，能较快的掌握，非常适合项目的快速开发，于此对比的是，faiss的学习成本较高，用起来较为复杂。**
 

@@ -4,32 +4,32 @@
 ### 202006
 
 #### 20200615
-drawio
-Zotero 文献管理软件
 http://nginx.org/en/download.html
 http://www.phoenixos.com/download_x86
 虚拟机镜像 (Virtual Mechines)
 tiny core linux
 https://www.ctfile.com/p/register
-MountainDuck
-RailDrive 
+
+ 
 http-dav
-https://www.raidrive.com/download
+
 Tiny Core Linux
-AnyDesk 
-skydrive ==>onedrive
+
+
 凤凰系统
 Vysor、AirDroid  mobizen
 https://quiterss.org/en/download
 FeedDemon
 newsflow
-mount 网盘
+
+
 Vimium 和 Vimperator 就是两款参考了 Vim 按键操作方式和理念而来的浏览器插件
 Splashtop2
 Android-x86
-powershadow 
-http://www.shadowdefender.com/
-https://www.box.com/pricing
+ 
+
+
+
 nginx 或 lighttpd 都能装好webdav服务。
 
 #### 20200606
@@ -60,8 +60,7 @@ nginx 或 lighttpd 都能装好webdav服务。
 
 - [ ] adb
 查看adb命令帮助：adb help
-列出fastboot设备：fastboot devices
-查看fastboot命令帮助：fastboot help
+
 
 - [ ] holer，shadowsocks，frp
 - [ ] shadowsocks
@@ -75,24 +74,13 @@ nginx 或 lighttpd 都能装好webdav服务。
 * RuntimeBroker是什么进程，
 RuntimeBroker.exe进程win10或者win10.1系统中才会出现的进程，是一个重要的系统核心进程，是win10或者win10.1用来进行Metro App权限管理的一个进程。该程序正常情况下位于C：\windows\system32目录下，大小一般为32.7KB
 
-* expect
-```
-#!/usr/bin/expect
-set timeout 30
-spawn ssh -l username 192.168.1.1
-expect "password:"
-send "ispass\r"
-interact
-```
+
 
 
 nginx+ gitlab/workwpress
 ftp,nas,pypi,http-server
 
-- [ ] ss: powerdns 
-- [ ] ss: DDNS（Dynamic Domain Name Server，动态域名服务）是将用户的动态IP地址映射到一个固定的域名解析服务上，用户每次连接网络的时候客户端程序就会通过信息传递把该主机的动态IP地址传送给位于服务商主机上的服务器程序，服务器程序负责提供DNS服务并实现动态域名解析。
 - [ ] ss: [feeder](https://feeder.co/)
-- [ ] [nextcloud](https://github.com/nextcloud/news)
 - [ ] gitlite
 - [ ]  ss: Gitblit  下载Gitblit.下载地址：[gitblit](http://www.gitblit.com/), 系统：Windows ,JDK1.7,gitblit1.8.0(类似软件gitlab这个好像功能更多，svn)
 - [ ]  adb kindle  https://www.zhihu.com/question/22210090
@@ -108,13 +96,9 @@ ftp,nas,pypi,http-server
 - [ ]  用watchdog来监视新文件，当新文件来时候，调用相应的解析脚本，进行解析入库。
 - [ ]  http://irreader.fatecore.com/
 
-Ansible
-NTLM验证关系
-OpenSSH + PowerShell 
-Total Commande
 
-CVS 编辑
-CVS是一个C/S系统，是一个常用的代码版本控制软件。主要在开源软件管理中使用。与它相类似的代码版本控制软件有subversion。多个开发人员通过一个中心版本控制系统来记录文件版本，从而达到保证文件同步的目的。CVS版本控制系统是一种GNU软件包，主要用于在多人开发环境下的源码的维护。但是由于之前CVS编码的问题，大多数软件开发公司都使用SVN替代了CVS。
+NTLM验证关系
+
 
 
 20200508
@@ -282,7 +266,7 @@ tool:ios python
 https://github.com/wistbean/learn_python3_spider
 https://www.genymotion.com/download
 ‌abs: 重视filter和sorter
-wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/ssr.sh && chmod +x ssr.sh && sudo bash ssr.sh
+`wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/ssr.sh && chmod +x ssr.sh && sudo bash ssr.sh`
 研究chrome 插件，vscode插件，pycharm，fox fire，
 
 
@@ -301,12 +285,10 @@ context 打包相关变量(类似环境变量)，在结构间传递，像足球�
 ## windows
 命令行参数传递  最大长度 windows7:8192
 
-nuget
-[nuget_cli](https://dist.nuget.org/win-x86-commandline/latest/nuget.exe)
 
 在禁用 Device/Credential Guard 后，可以运行 VMware Workstation。有关更多详细信
 1、出现此问题的原因是Device Guard或Credential Guard与Workstation不兼容。
 2、Windows系统的Hyper-V不兼容导致。
-bcdedit /set hypervisorlaunchtype off
+`bcdedit /set hypervisorlaunchtype off`
 
 ubuntu samba 安装
