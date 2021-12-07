@@ -1,8 +1,8 @@
 # certutil
 
-
 比如在网上下载的文件，需要校验文件完整性，查看是否遭到破坏。
-Windows下shell中也集成了专门的工具用来校验文件的MD5值、SHA1值、SHA256值的：
+
+Windows下shell中也集成了专门的工具用来校验文件的MD5值、SHA1值、SHA256值的：`C:\Windows\System32\certutil.exe`
 
 ``` powershell
 certutil -hashfile xxx MD5
@@ -18,12 +18,8 @@ E:\project>certutil -hashfile abc.log MD5
 MD5 的 abcabc.log 哈希:
 2a32ec634c70f3caf00e8710dad45858
 CertUtil: -hashfile 命令成功完成。
-
-
-E:\project >where certutilabcabc
-$ C:\Windows\System32\certutil.exe
-$ C:\Windows\SysWOW64\certutil.exe
 ```
+
 
 
 ## help
