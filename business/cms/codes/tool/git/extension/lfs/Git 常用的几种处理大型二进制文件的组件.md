@@ -17,10 +17,13 @@
 
 **本文将介绍几种常用的处理大型二进制文件的组件，旨在为你解决上述问题。**
 
+### Git annex
 [**Git annex**](http://www.oschina.net/p/git-annex) : 允许映射 Git 资料库到文件，Git annex 采用 [Haskell Script](http://www.oschina.net/p/haskell) 编写。
 
+### Git LFS
 [**Git LFS**](http://www.oschina.net/search?scope=project&q=git+LFS) : 一个命令行扩展和规范用于利用Git来管理大文件。其客户端采用Go开发，为Mac, Windows, Linux, and FreeBSD提供预编译好的binaries。
 
+### Git bigfiles
 [**Git bigfiles**](http://www.oschina.net/p/git+bigfiles) : 提供了Python接口，允许用户处理没有存储在Git上的大文件。
 
 优点：
@@ -33,6 +36,7 @@ Git 操作可以回滚。
 
 存在兼容性问题。
 
+### Git fat
 [**Git fat**](http://www.oschina.net/p/git-fat) : 可以简单的处理一些比较大的文件，而无需提交到Git。同时，Git-fat 也支持 rsync 同步处理。
 
 优点：
@@ -42,7 +46,7 @@ Git 操作可以回滚。
     仅支持rsync的作为后端。
 
 
-
+### Git media
 [**Git media**](http://www.oschina.net/p/git+media) : 可能是可供选择的最古老的多媒体处理方案。 Git media使用类似过滤器，并支持亚马逊的S3，本地文件系统路径，SCP，ATMOS和WebDAV作为后端存储大文件。 Git media是用Ruby编写的。
 
 优点：
@@ -53,7 +57,7 @@ Git 操作可以回滚。
     含糊的命令（e.g. git update-index --really refresh)）。
     并不完全与Windows兼容。
 
-
+### Git bigstore
 
 [**Git bigstore**](http://www.oschina.net/p/git+bigstore) : 最初实现是作为 [Git media](http://www.oschina.net/p/git+media?fromerr=3psbVGbr) 替代品。它支持Amazon S3的，谷歌云端存储或Rackspace公司云帐户作为后端存储二进制文件。Git bigstore 提高协同开发时的稳定性。 Git bigstore是根据Apache 2.0许可授权。Git bigstore是用Python编写，需要Python2.7以上的运行环境。
 
@@ -66,7 +70,7 @@ Git 操作可以回滚。
 缺点：
 
 目前只支持基于云存储。
-
+### Git sym
 [**Git sym**](http://www.oschina.net/p/git-sym) : 是一款通过git符号链接的进行大文件处理的软件，其目的是从修订控制中分离出庞大的文件缓存。
 
 结论：

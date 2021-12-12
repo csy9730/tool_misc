@@ -1,13 +1,13 @@
 # [Linux查看硬件信息命令](https://www.cnblogs.com/cloudos/p/8416415.html)
 
-**一、查看服务器硬件信息**
+## 一、查看服务器硬件信息
 
 （1）查看服务器型号、序列号
 
-[root@Master ~]# dmidecode|grep "System Information" -A9|egrep "Manufacturer|Product|Serial"**
-**
+[root@Master ~]# dmidecode|grep "System Information" -A9|egrep "Manufacturer|Product|Serial"
 
-**![img](https://images2017.cnblogs.com/blog/1121174/201802/1121174-20180205101645216-1465909505.png)**
+
+![img](https://images2017.cnblogs.com/blog/1121174/201802/1121174-20180205101645216-1465909505.png)
 
  （2）查看主板型号
 [root@Master ~]# dmidecode |grep -A16 "System Information$"
@@ -132,8 +132,8 @@ igb 0000:02:00.1: Intel(R) Gigabit Ethernet Network Connection
 
  
 
-二**、查看CPU信息
-**
+## 二、查看CPU信息
+
 
 （1）查看cpu型号
 
@@ -253,7 +253,7 @@ NUMA node1 CPU(s):     10-19,30-39
 
  
 
-三**、查看内存信息
+## 三**、查看内存信息
 **（1）查看内存硬件信息
 
 [![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
@@ -341,7 +341,7 @@ Swap:        16383         38      16345
 
  
 
- **四、查看硬盘信息
+## **四、查看硬盘信息
 **（1）查看挂接的分区状态
 [root@Master ~]# fdisk -l |grep Disk
 ![img](https://images2017.cnblogs.com/blog/1121174/201802/1121174-20180205130727873-76807497.png)
@@ -485,8 +485,8 @@ Device does not support Self Test logging
 
  
 
-**五、查看网卡信息
-**
+## 五、查看网卡信息
+
 
 （1)查看网卡硬件信息
 [root@Master ~]# lspci | grep -i 'eth'
@@ -560,8 +560,8 @@ Settings for eth9:
 
  
 
- **六、列出所有PCI设备信息
-**
+## 六、列出所有PCI设备信息
+
 
 [![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 

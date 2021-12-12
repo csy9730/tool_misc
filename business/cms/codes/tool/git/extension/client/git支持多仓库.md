@@ -6,6 +6,11 @@
 首先设置使支持多个远程仓库
 
 简单执行 `git remote add origin git@gitee.com:abc/a_repo.git`不行，这个会报冲突的错误
+
+- 配置origin以外的其他自定义源（非默认）。
+- 配置origin支持多个仓库源
+
+### 异名多仓库
 简单的设置`git remote add mirror git@gitee.com:abc/a_repo.git`，虽然可以，但是push的时候麻烦。
 ``` bash
 git pull origin master 
@@ -14,12 +19,18 @@ git push origin master
 git push mirror master
 ```
 
+### 同名多仓库
 执行以下指令,可以实现同时更新多个远程仓库
 ``` bash
 git remote set-url --add origin git@gitee.com:abc/a_repo.git
 git remote set-url --add origin https://github.com/abc/a_repo.git
 git remote set-url --add origin ssh://git@server/home/git/abc/a_repo.git
 ```
+
+上面的命令会立即改变`.git/config`文件
+#### .git/config
+
+可以看到配置如下
 
 ``` ini
 [core]
@@ -41,6 +52,7 @@ git remote set-url --add origin ssh://git@server/home/git/abc/a_repo.git
 	merge = refs/heads/master
 ```
 
+
 执行`git remote -v`
 ```
 origin  https://github.com/abc/a_repo.git (fetch)
@@ -49,7 +61,7 @@ origin  git@gitee.com:abc/a_repo.git (push)
 origin  ssh://git@server:2222/home/git/abc/a_repo.git (push)
 ```
 
-## 多账户
+### 多账户
 
 使用多个账号，需要有多个密码，如何使仓库支持多账户？
 
@@ -59,7 +71,7 @@ origin  ssh://git@server:2222/home/git/abc/a_repo.git (push)
 * 使用~/.ssh/config 保存多个私钥凭证
 * 直接在本地仓库配置文件使用密码
 
-### ssh-agent
+#### ssh-agent
 
 通过在bash中
 ``` bash
@@ -73,7 +85,7 @@ ssh-add -l
 
 可以把以上脚本，放在git-bash启动时执行。
 
-### ssh/config
+#### ssh/config
 
 config文件位于`~/.ssh/config`，可以保存pem账户和密码
 
@@ -98,16 +110,17 @@ IdentityFile ~/.ssh/id_rsa_gitlab
 ```
 该文件分为多个用户配置，每个用户配置包含以下几个配置项：
 
-Host：仓库网站的别名，（虽然可以随意取，但是作为一个简名，尽量与目标域名一致，增加匹配度）
-HostName：仓库网站的域名（PS：IP 地址应该也可以）
-User：仓库网站上的用户名
-IdentityFile：私钥的绝对路径!
+- Host：仓库网站的别名，（虽然可以随意取，但是作为一个简名，尽量与目标域名一致，增加匹配度）
+- HostName：仓库网站的域名（PS：IP 地址应该也可以）
+- User：仓库网站上的用户名
+- IdentityFile：私钥的绝对路径!
 
 测试ssh连接：
 `ssh -T github.com`
 
-### git/config
-  上面通过git remote命令完成一个本地仓库多个远程仓库配置，这些命令实际上都是通过修改.git/config实现的，其实直接修改配置文件可能会更快，直接修改配置文件如下：
+#### .git/config
+上面通过`git remote`命令完成一个本地仓库多个远程仓库配置，这些命令实际上都是通过修改.git/config实现的，其实直接修改配置文件可能会更快，直接修改配置文件如下：
+
 ``` ini
 [core]
         repositoryformatversion = 0

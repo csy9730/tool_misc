@@ -1,6 +1,13 @@
 # tty
 
 
+- TTY TeleType
+- pty
+- pts(pseudo-terminal slave)
+- ptmx(pseudo-terminal master)
+- console
+- shell
+
 
 ## base
 

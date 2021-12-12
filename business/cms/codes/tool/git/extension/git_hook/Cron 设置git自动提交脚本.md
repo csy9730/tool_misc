@@ -65,7 +65,7 @@ fatal: Could not read from remote repository.
 
 **6. id_rsa 的权限是 700**
 
-```javascript
+``` bash
 sudo chmod 700 ~/.ssh/id_rsa
 ```
 

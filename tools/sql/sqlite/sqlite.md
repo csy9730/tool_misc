@@ -1,5 +1,7 @@
 # sqlite
 
+[https://www.sqlite.org/](https://www.sqlite.org/)
+
 ## demo
 下面是一个实例，它创建了一个 COMPANY 表，ID 作为主键，NOT NULL 的约束表示在表中创建纪录时这些字段不能为 NULL：
 

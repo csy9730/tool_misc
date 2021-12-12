@@ -1,7 +1,11 @@
 # 简介
+
 ## 烧录
+
 SD Formatter
+
 树莓派装完系统后TF卡显示只有40MB，
+
 ## ssh连接
 
 树莓派一般默认开启ssh连接
@@ -11,18 +15,19 @@ SSH客户端推荐PuTTY和Xshell。
 默认密码：raspberry
 
 ##### 查看树莓派ip地址的几种方法
-1. 树莓派界面输入： ifconfig
-2. ping raspberrypi
-3. arp -a
-4. nmap -sn 192.168.1.0/24
+1. 树莓派界面输入： `ifconfig`
+2. `ping raspberrypi`
+3. `arp -a`
+4. `nmap -sn 192.168.1.0/24`
 5. 使用advanced IP scanner暴力搜索IP地址
 
 #### VNC远程连接
 ``` bash
 # 开启VNC
-sudo raspi-config
+$ sudo raspi-config
 5 Interfacing Options。
 P3 VNC
+
 # 开启VNC
 vncserver
 ```
