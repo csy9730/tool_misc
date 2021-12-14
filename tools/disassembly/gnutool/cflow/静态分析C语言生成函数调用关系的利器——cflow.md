@@ -2,30 +2,30 @@
 
 breaksoftware 2017-07-20 22:39:37  16437  收藏 25
 
-​        除了《静态分析C语言生成函数调用关系的利器——calltree》一文中介绍的calltree，我们还可以借助cflow辅助我们阅读理解代码。（转载请指明出于breaksoftware的csdn博客）
+除了《静态分析C语言生成函数调用关系的利器——calltree》一文中介绍的calltree，我们还可以借助cflow辅助我们阅读理解代码。（转载请指明出于breaksoftware的csdn博客）
 
-cflow的说明和安装
-        cflow是一款静态分析C语言代码的工具，通过它可以生成函数的调用关系。和calltree不一样，cflow有独立的网页介绍它（https://www.gnu.org/software/cflow/#TOCdocumentation）。而且在Ubuntu系统上，我们可以不用去编译cflow的源码，而直接使用下面命令获取
+## cflow的说明和安装
+cflow是一款静态分析C语言代码的工具，通过它可以生成函数的调用关系。和calltree不一样，cflow有独立的网页介绍它（https://www.gnu.org/software/cflow/#TOCdocumentation）。而且在Ubuntu系统上，我们可以不用去编译cflow的源码，而直接使用下面命令获取
 
 `apt-get install cflow`
-cflow的使用
-        安装完毕，我们可以使用下面指令看到cflow的参数说明
 
-cflow --help
-        我们可以得到如下提示
 
+## cflow的使用
+安装完毕，我们可以使用下面指令看到cflow的参数说明
 
 
 ```
--T输出函数调用树状图
+-T 输出函数调用树状图
 
--m指定需要分析的函数名
--n输出函数所在行号
--r输出调用的反向关系图
---cpp预处理，这个还是很重要的
+-m 指定需要分析的函数名
+-n 输出函数所在行号
+-r 输出调用的反向关系图
+--cpp 预处理，这个还是很重要的
 ```
 
 ## help
+
+cflow --help 我们可以得到如下提示
 
 ```
 Usage: cflow [OPTION...] [FILE]...
@@ -99,9 +99,10 @@ long name is prefixed with `no-'. For example, --no-cpp cancels --cpp.
 Report bugs to <bug-cflow@gnu.org>.
 
 ```
+## demo
+### 文本输出
+最简单的使用方法是以ASCII文本的方式输出结果，比如
 
-#### 文本输出
-        最简单的使用方法是以ASCII文本的方式输出结果，比如
 ```
 cflow -T -m main -n timer.c
         其结果是一个包含文件名和函数所在代码行号的调用关系图
@@ -115,8 +116,16 @@ cflow -T -m main -n timer.c
 ```
 然而，对于有一定代码量的项目，我们不会使用ASCII文本的方式去查看函数调用关系，因为调用是相当复杂的，而文本图并不适合人去理解。于是我们希望能cflow能产出一个可供其他软件转换成图片的格式的文件。可惜cflow并不支持，好在网上有开发者做了一个工具，可将其结果转换成dot格式。
 
-#### 转成dot文件
-        我们可以使用下面方法获取转换工具
+### 转成dot文件
+
+0. 准备cflow，tree2dotx，graphviz
+1. 生成cflow文件
+2. 调用tree2dotx生成dot文件
+3. 调用graphviz的dot生成图片
+
+
+#### tree2dotx
+我们可以使用下面方法获取转换工具
 ``` bash
 wget -c https://github.com/tinyclub/linux-0.11-lab/raw/master/tools/tree2dotx
 # 下载完tree2dotx后，可对其做个软链便于使用
@@ -124,7 +133,7 @@ cd /usr/bin
 ln -s 【Your Path】/tree2dotx tree2dotx
 ```
 
-### 具体的转换方法是
+#### 具体的转换方法是
 ```
 cflow -T -m main -n timer.c > main.txt
 cat main.txt | tree2dotx > main.dot
