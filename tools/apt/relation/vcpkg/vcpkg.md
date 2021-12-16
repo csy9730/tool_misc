@@ -87,10 +87,15 @@ LICENSE.txt
 NOTICE.txt
 ```
 
-- ports 包含上千个库的描述信息。
+- ports 包含上千个库的描述信息，cmake相关信息。
 - buildtrees 本地的编译文件？
-- packages 包含包文件夹，和installed文件夹有什么区别？
-- installed 包含包文件夹
+- packages 包含包文件夹，次级目录是包名+cpu架构，次次级目录是bin，lib。
+- installed 包含包文件夹, 次级目录是cpu架构（例如x64-windows），次次级目录是bin，lib。
+
+
+packages和installed文件夹有什么区别？
+目录结构不同。
+
 
 ## demo
 
@@ -104,6 +109,8 @@ If your library is not listed, please open an issue at and/or consider making a 
 ```
 
 ### vcpkg install
+
+#### vcpkg install 7zip
 ```
 H:\Project\tmp\vcpkg>vcpkg install 7zip
 Your feedback is important to improve Vcpkg! Please take 3 minutes to complete our survey by running: vcpkg contact --su
@@ -158,6 +165,11 @@ The package 7zip:x86-windows provides CMake targets:
     target_link_libraries(main PRIVATE 7zip::7zip)
 
 ```
+#### vcpkg install curl:x64-windows
+```
+
+```
+
 
 ### vcpkg list
 ```

@@ -15,7 +15,7 @@ for /f "tokens=1,* delims==" %%a in ('wmic BASEBOARD get Manufacturer^,Product^,
 )
 set tee=0
 echo BIOS:
-for /f "tokens=1,* delims==" %%a in ('wmic bios get </p> <p>CurrentLanguage^,Manufacturer^,SMBIOSBIOSVersion^,SMBIOSMajorVersion^,SMBIOSMinorVersion^,ReleaseDate /value') do (
+for /f "tokens=1,* delims==" %%a in ('wmic bios get CurrentLanguage^,Manufacturer^,SMBIOSBIOSVersion^,SMBIOSMajorVersion^,SMBIOSMinorVersion^,ReleaseDate /value') do (
 set /a tee+=1
 if "!tee!" == "3" echo 当前语言 = %%b
 if "!tee!" == "4" echo 制造商 = %%b
@@ -104,6 +104,6 @@ ping /n 2 127.1>nul
 goto 显卡
 )
 set /p var=需要额外信息吗(y/n): 
-if /i %var% == y notepad "%TEMP%\temp.txt"
+if /i %var% == y (notepad "%TEMP%\temp.txt")
 del /f "%TEMP%\temp.txt" 2>nul
 pause
