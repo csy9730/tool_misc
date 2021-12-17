@@ -19,7 +19,7 @@ sudo apt-get install pkg-config
 
 ------
 
-扩展知识：
+### 扩展知识
 
 关于pkg-config的简介：
 

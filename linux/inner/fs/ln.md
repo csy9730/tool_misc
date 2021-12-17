@@ -17,19 +17,27 @@ ln命令用于将一个文件创建链接,链接分为软链接(类似于windows
 1.对文件创建软链接
 
 ```
-[root@``ping` `~]``# ln -s /root/student.sql /root/db/ln.sql``[root@``ping` `~]``# ls -lh db/ln.sql ``lrwxrwxrwx 1 root root 17 2月  23 15:31 db``/ln``.sql -> ``/root/student``.sql
+[root@ ping` `~] # ln -s /root/student.sql /root/db/ln.sql
+[root@ ping` `~] # ls -lh db/ln.sql  
+lrwxrwxrwx 1 root root 17 2月  23 15:31 db /ln sql -> /root/student.sql
 ```
 
 2.对目录创建软链接
 
 ```
-[root@``ping` `~]``# ln -s db data``[root@``ping` `~]``# ll -h data/``lrwxrwxrwx 1 root root 17 2月  23 15:31 ``ln``.sql -> ``/root/student``.sql``[root@``ping` `~]``# ln student.sql db/
+[root@ ping` `~] # ln -s db data
+[root@ ping` `~] # ll -h data/
+lrwxrwxrwx 1 root root 17 2月  23 15:31  ln .sql ->  /root/student .sql 
+[root@ ping` `~] # ln student.sql db/
 ```
 
 3.对文件创建硬链接
 
 ```
-[root@``ping` `~]``# ln student.sql db/``[root@``ping` `~]``# ls -lh db/``lrwxrwxrwx 1 root root   17 2月  23 15:31 ``ln``.sql -> ``/root/student``.sql``-rw-r--r-- 2 root root 2.9K 2月  12 10:17 student.sql
+[root@``ping` `~]``# ln student.sql db/
+[root@``ping` `~]``# ls -lh db/
+lrwxrwxrwx 1 root root   17 2月  23 15:31 ``ln``.sql -> ``/root/student``.sql
+-rw-r--r-- 2 root root 2.9K 2月  12 10:17 student.sql
 ```
 
  

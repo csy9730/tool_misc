@@ -8,9 +8,9 @@
 
 pkg-config是一个linux下的命令，用于获得某一个库/模块的所有编译相关的信息。
 例子：
-
-​    pkg-config opencv –libs –cflags
-
+```
+pkg-config opencv –libs –cflags
+```
 结果：
 
 ```
@@ -105,8 +105,7 @@ Cflags: -I${includedir_old} -I${includedir_new}
 ### 4.3 pkg-config –list-all。查看pkg-config的所有模块信息。
 
 例子：
-
-​    pkg-config –list-all
+`pkg-config –list-all`
 
 结果：
 
@@ -201,10 +200,10 @@ Libs: -L${libdir} -lfoo
 
 其实这个问题，就发生在我最近搞的ffmpeg事情上。
 我下载了ffmpg，按照guide编译好了。生成了ffmpeg，以及相关的库。
-
+```
 chenxf@chenxf-PC:~/ffmpeg_build/lib$ ls
 libavcodec.a  libavdevice.a  libavfilter.a  libavformat.a  libavutil.a  libpostproc.a   libswresample.a  libswscale.a  libx264.a  libx265.a  pkgconfig
-
+```
 
 
 当我写了个程序，想使用libavcodec.a，却各种编译错误。
@@ -226,10 +225,10 @@ gcc test.c -o test -I/home/chenxf/ffmpeg_build/include/ -L/home/chenxf/ffmpeg_bu
 那我如果编译第三方程序，还得一个个添加libavcodec.a锁依赖的库，岂不是累死了？！！！！
 
 而其实，ffmpeg已经操心过这个事情了，它编译好了后，也生成了pc文件。就在“/home/chenxf/ffmpeg_build/lib/pkgconfig”
-
-​    chenxf@chenxf-PC:~/ffmpeg_build/lib/pkgconfig$ ls
-​    libavcodec.pc libavdevice.pc libavfilter.pc libavformat.pc libavutil.pc libpostproc.pc libswresample.pc libswscale.pc x264.pc x265.pc
-
+```
+chenxf@chenxf-PC:~/ffmpeg_build/lib/pkgconfig$ ls
+libavcodec.pc libavdevice.pc libavfilter.pc libavformat.pc libavutil.pc libpostproc.pc libswresample.pc libswscale.pc x264.pc x265.pc
+```
 随便打开一个看看。
 libavcodec.pc
 
@@ -265,13 +264,13 @@ export PKG_CONFIG_PATH
 
 然后
 
-​    `source /home/chenxf/.bashrc`
+`source /home/chenxf/.bashrc`
 
 然后重新编译我的代码，就通过了！！！！好开森的样子！！！！…………^^
 
-    ```
+```
 gcc test.c -o test `pkg-config libavcodec libavformat libavutil --cflags --libs`
-    ```
+```
 
 
 
