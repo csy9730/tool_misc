@@ -24,3 +24,23 @@ vsftpd
 - explorer ，容易阻塞，不方便使用
 - chrome 浏览器，逐渐不支持ftp
 - android 可以使用 ES浏览器
+
+
+### 用windows下的ftp命令实现自动下载
+ftp是常用的下载工具，ftp界面中有40多个常用命令，自己学习了，不介绍了。这里介绍如何用dos命令行调用ftp命令，实现ftp自动登录，并上传下载，并自动退出ftp程序。
+其实可以将ftp命令组合保存为一个文本文件，然后用以下命令调用即可。
+`ftp  -n -s:[[drive:]path]filename`
+上面的filename为ftp命令文件，包括登录IP地址，用户名、密码、操作命令等
+例：
+``` bash
+open 90.52.8.3   ＃ 打开ip
+user iware       ＃ 用户为iware
+password8848    ＃ 密码
+bin             ＃ 二进制传输模式
+prompt
+cd tmp1         ＃切换至iware用户下的tmp1目录
+pwd
+lcd d:\download   ＃ 本地目录
+mget *          ＃ 下载tmp1目录下的所有文件
+bye             ＃ 退出ftp
+```

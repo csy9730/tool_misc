@@ -1,3 +1,5 @@
 dt=`date +'%Y-%m-%d-%H-%M-%S'`
-echo "${dt} $*" >> "$(dirname "$0")/cmd_recorder.log"
-$* 2>&1 |tee "$(dirname "$0")/${dt}.txt"
+export DN=$(dirname "$0")/tmp
+mkdir -p ${DN}
+echo "${dt} `pwd`:$*" >> "${DN}/cmd_recorder.log"
+$* 2>&1 |tee "${DN}/${dt}.txt"

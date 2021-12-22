@@ -1,0 +1,9 @@
+E:\Program Files\NVIDIA GPU Computing Toolkit\cuda\v11.5\extras\demo_suite>"E:\Program Files\NVIDIA GPU Computing Toolki
+t\cuda\v10.1\extras\demo_suite\deviceQuery.exe"
+E:\Program Files\NVIDIA GPU Computing Toolkit\cuda\v10.1\extras\demo_suite\deviceQuery.exe Starting...
+
+ CUDA Device Query (Runtime API) version (CUDART static linking)
+
+cudaGetDeviceCount returned 100
+-> no CUDA-capable device is detected
+Result = FAIL

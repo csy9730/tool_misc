@@ -39,12 +39,39 @@ NVIDIA CUDA下载官网地址：
 
 [CUDA Toolkit 10.2 Download](https://developer.nvidia.com/cuda-10.2-download-archive?target_os=Windows&target_arch=x86_64&target_version=10&target_type=exelocal)
 
-### NVIDIA cuDNN 
 
-[https://developer.nvidia.com/rdp/cudnn](https://developer.nvidia.com/zh-cn/cudnn)
+### NVIDIA GPU Driver
+The version of the development NVIDIA GPU Driver packaged in each CUDA Toolkit release is shown below.
 
-NVIDIA CUDA® 深度神经网络库 (cuDNN) 是经 GPU 加速的深度神经网络基元库。cuDNN 可大幅优化标准例程（例如用于前向传播和反向传播的卷积层、池化层、归一化层和激活层）的实施。
+Table 3. CUDA Toolkit and Corresponding Driver Versions
 
-世界各地的深度学习研究人员和框架开发者都依赖 cuDNN 实现高性能 GPU 加速。借助 cuDNN，研究人员和开发者可以专注于训练神经网络及开发软件应用，而不必花时间进行低层级的 GPU 性能调整。cuDNN 可加速广泛应用的深度学习框架，包括 Caffe2、Chainer、Keras、MATLAB、MxNet、PyTorch 和 TensorFlow。如需获取经 NVIDIA 优化且已在框架中集成 cuDNN 的深度学习框架容器，请访问 NVIDIA GPU CLOUD 了解详情并开始使用。
+| CUDA Toolkit                                      | Toolkit Driver Version        |           |
+| ------------------------------------------------- | ----------------------------- | --------- |
+|                                   |Linux x86_64 Driver Version | Windows x86_64 Driver Version|
+| CUDA 11.5 GA                                      | >=495.29.05                   | >=496.04  |
+| CUDA 11.4 Update 3                                | >=470.82.01                   | >=472.50  |
+| CUDA 11.4 Update 2                                | >=470.57.02                   | >=471.41  |
+| CUDA 11.4 Update 1                                | >=470.57.02                   | >=471.41  |
+| CUDA 11.4.0 GA                                    | >=470.42.01                   | >=471.11  |
+| CUDA 11.3.1 Update 1                              | >=465.19.01                   | >=465.89  |
+| CUDA 11.3.0 GA                                    | >=465.19.01                   | >=465.89  |
+| CUDA 11.2.2 Update 2                              | >=460.32.03                   | >=461.33  |
+| CUDA 11.2.1 Update 1                              | >=460.32.03                   | >=461.09  |
+| CUDA 11.2.0 GA                                    | >=460.27.03                   | >=460.82  |
+| CUDA 11.1.1 Update 1                              | >=455.32                      | >=456.81  |
+| CUDA 11.1 GA                                      | >=455.23                      | >=456.38  |
+| CUDA 11.0.3 Update 1                              | >= 450.51.06                  | >= 451.82 |
+| CUDA 11.0.2 GA                                    | >= 450.51.05                  | >= 451.48 |
+| CUDA 11.0.1 RC                                    | >= 450.36.06                  | >= 451.22 |
+| CUDA 10.2.89                                      | >= 440.33                     | >= 441.22 |
+| CUDA 10.1 (10.1.105 general release, and updates) | >= 418.39                     | >= 418.96 |
+| CUDA 10.0.130                                     | >= 410.48                     | >= 411.31 |
+| CUDA 9.2 (9.2.148 Update 1)                       | >= 396.37                     | >= 398.26 |
+| CUDA 9.2 (9.2.88)                                 | >= 396.26                     | >= 397.44 |
+| CUDA 9.1 (9.1.85)                                 | >= 390.46                     | >= 391.29 |
+| CUDA 9.0 (9.0.76)                                 | >= 384.81                     | >= 385.54 |
+| CUDA 8.0 (8.0.61 GA2)                             | >= 375.26                     | >= 376.51 |
+| CUDA 8.0 (8.0.44)                                 | >= 367.48                     | >= 369.30 |
+| CUDA 7.5 (7.5.16)                                 | >= 352.31                     | >= 353.66 |
+| CUDA 7.0 (7.0.28)                                 | >= 346.46                     | >= 347.62 |
 
-[https://developer.nvidia.com/zh-cn/cudnn-download](https://developer.nvidia.com/rdp/cudnn-download)

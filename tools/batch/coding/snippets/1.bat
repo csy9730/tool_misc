@@ -1,1 +1,2 @@
-cd %~dp0
+@echo off
+cd /d "%~dp0"
