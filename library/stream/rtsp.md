@@ -1,5 +1,9 @@
 # stream protocol
 
+- rtsp 共有协议
+- rtmp adobe公司的协议
+- MMS 微软公司的协议
+- hls 苹果公司的协议
 
 ## base
 ### stream

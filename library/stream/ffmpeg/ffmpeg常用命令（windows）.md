@@ -121,7 +121,7 @@ ffmpeg -re -stream_loop -1 -i f:/8.mp4 -vcodec copy -acodec copy -f flv -r 30 -b
 
 - rtmp流
 
-```
+``` bash
 #推流到流服务器
 ffmpeg -f dshow -i video="screen-capture-recorder" -r 15 -s 990x512 -f flv rtmp://203.195.150.231:1935/live/
 
@@ -150,11 +150,15 @@ ffmpeg -f dshow -i video="screen-capture-recorder" -r 15 -s 990x512 -f flv rtmp:
 
 #使用ffplay拉流播放
 ffplay "rtmp://203.195.150.231:1935/live/ live=1"
+```
 
-#读取流音频，保存到本地
+``` bash
+# 读取流音频，保存到本地
 ffmpeg –i rtsp://192.168.3.205:5555/test –vcodec copy out.avi
 ffmpeg -re -i out.mp4 -c copy -f flv rtmp://server/live/streamName
 ```
+
+ffmpeg –i rtsp://localhost:554/test –vcodec copy out.avi
 
 #### 格式转换
 

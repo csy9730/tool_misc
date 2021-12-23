@@ -61,7 +61,7 @@
 
 > 一个简单的转码命令 将input.avi转码成output.ts，并设置视频的码率为640kbps
 
-```css
+``` bash
 ffmpeg -i input.avi -b:v 640k output.ts  
 ```
 
@@ -74,7 +74,7 @@ ffmpeg -i input.avi -b:v 640k output.ts
 
 > 播放test.avi
 
-```css
+``` bash
 ffplay test.avi  
 ```
 

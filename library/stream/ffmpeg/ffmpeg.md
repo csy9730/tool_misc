@@ -3,25 +3,39 @@
 ## demo
 
 ``` bash
-
-ffmpeg -rtsp_transport udp -i rtsp://localhost:8554/6 -t 5 H:\Dataset\segment\mov\湘AE0959.mp4
+# push流
 ffmpeg -i H:\Dataset\segment\mov\1.mp4  -t 5 rtsp://localhost:8554/6 
 
+# 指定udp，push流
+ffmpeg -rtsp_transport udp -i rtsp://localhost:8554/6 -t 5 H:\Dataset\segment\mov\湘AE0959.mp4
+
+# 指定tcp，push流
 ffmpeg -rtsp_transport tcp -i rtsp://localhost:554/stream/main -codec copy  -r 15 -s 1366x768 -f rtsp rtsp://localhost:554/stream/main
 
-# -stream_loop -1   循环读取视频源的次数，-1为无限循环
+# pull & dump to file
+ffmpeg -i rtsp://localhost/test -c copy shifu.avi
+
+
 ```
 
--f fmt              force format(rtsp)
--c codec            codec name
--codec codec        codec name
--vcodec             codec name: h264
--rtsp_transport         tcp or udp
--acodec             :(copy)
+
+- -stream_loop -1   循环读取视频源的次数，-1为无限循环
+- -f fmt              force format 默认是(rtsp),可选rtp
+- -c codec            codec name
+- -codec codec        codec name
+- -vcodec             video codec name （libx264）
+- -acodec             audio codec name :(copy)
+- -rtsp_transport         tcp or udp           
+- -i                  指定输入源，可以是url或本地文件
+- -ac channels        set number of audio channels
+- outfile             指定输出源，可以是url或本地文件
+- -ar rate            set audio sampling rate (in Hz)
+
 #### easyEdawin
 ``` bash
-
+# tcp，h264编码， 推流
 ffmpeg -re -i H:\Dataset\segment\mov\1.mp4 -rtsp_transport tcp -vcodec h264 -f rtsp rtsp://localhost/test 
+
 ffmpeg -re -i H:\Dataset\misc\SDRSample.mkv  -vcodec copy -acodec copy -f rtsp rtsp://localhost:554/live.sdp
 
 ```
