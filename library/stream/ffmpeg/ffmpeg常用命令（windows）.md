@@ -34,30 +34,32 @@ ffmpeg -list_devices true -f dshow -i dummy
 需要安装java jre
 它还包括一个免费的、通用的、开源的DirectShow桌面/屏幕源捕获过滤器。
 配合ffmpeg录屏
-```
+``` bash
 ffmpeg -f dshow  -i video="screen-capture-recorder"  -r 20 -t 10 screen-capture.mp4 
 # -t 10 for 10 seconds recording
 ```
 
 - 录屏
 
-```
-#列出设备列表
+``` bash
+# 列出设备列表
 ffmpeg -list_devices true -f dshow -i dummy
-#全屏录像
+
+# 全屏录像
 ffmpeg -f dshow -i video="screen-capture-recorder" -f dshow -i audio="virtual-audio-capturer" -vcodec libx264 -acodec libmp3lame -s 1280x720 -r 15 e:/temp/temp.mkv
--f指定使用dshow采集数据
--i指定从哪里采集数据
--r指定帧率（-framerate用来限制输入，-r用来限制输出），桌面的输入对帧率没有要求，所以不用限制桌面的帧率，其实限制了也没用。
--s设置窗口大小 -s 100x200 将桌面画布压缩为100x200
-#gdigrab录屏，h264编码
+# -f指定使用dshow采集数据
+# -i指定从哪里采集数据
+# -r指定帧率（-framerate用来限制输入，-r用来限制输出），桌面的输入对帧率没有要求，所以不用限制桌面的帧率，其实限制了也没用。
+# -s设置窗口大小 -s 100x200 将桌面画布压缩为100x200
+
+# gdigrab录屏，h264编码
 ffmpeg -f gdigrab -i desktop -f dshow -i audio="virtual-audio-capturer" -vcodec libx264 -acodec libmp3lame -s 1280x720 -r 15 G:\ffmpeg\testout\temp.mkv
 ```
 
 - 音视频录制
 
 ```
-#调用本地麦克风录制音频，保存到文件
+# 调用本地麦克风录制音频，保存到文件
 ffmpeg -f dshow -i audio="麦克风（Conexant SmartAudio HD）"  G:/testout/1.mp3
 #调用摄像头录制视频，并保存到文件
 ffmpeg -f dshow -i video="Lenvo EasyCamera" G:/testout/1.flv
@@ -144,11 +146,11 @@ ffplay "rtmp://192.168.134.130:1936/live/dc live=1"
 
 - rtmp流
 
-```
-#推流到流服务器
+``` bash
+# 推流到流服务器
 ffmpeg -f dshow -i video="screen-capture-recorder" -r 15 -s 990x512 -f flv rtmp://203.195.150.231:1935/live/
 
-#使用ffplay拉流播放
+# 使用ffplay拉流播放
 ffplay "rtmp://203.195.150.231:1935/live/ live=1"
 ```
 
@@ -156,9 +158,9 @@ ffplay "rtmp://203.195.150.231:1935/live/ live=1"
 # 读取流音频，保存到本地
 ffmpeg –i rtsp://192.168.3.205:5555/test –vcodec copy out.avi
 ffmpeg -re -i out.mp4 -c copy -f flv rtmp://server/live/streamName
-```
 
 ffmpeg –i rtsp://localhost:554/test –vcodec copy out.avi
+```
 
 #### 格式转换
 
@@ -177,10 +179,11 @@ ffmpeg -accurate_seek -i I:/8.mp4 -codec copy -y -ss 00:00:10 -to 00:00:30 I:/8-
 
 #### 添加字幕
 
-```
-1)嵌入到视频(嵌入到视频流)
+``` bash
+# 嵌入到视频(嵌入到视频流)
 ffmpeg -i 0806.mp4 -vf subtitles=a.srt srtout.mp4 
-2)嵌入到视频(嵌入到字幕流)
+
+# 嵌入到视频(嵌入到字幕流)
 ffmpeg -i 0806.mp4 -i a.srt -c:s mov_text -c:v copy -c:a copy srtout3.mp4
 
 ffmpeg -i video.avi -vf subtitles=subtitle.srt out.avi
@@ -203,7 +206,7 @@ file 0806.mp4
 file 0806-2.mp4
 ```
 
-## . 视频转换
+## 视频转换
 
 比如一个avi文件，想转为mp4，或者一个mp4想转为ts。
 `ffmpeg -i input.avi output.mp4`
@@ -283,17 +286,20 @@ ffmpeg –i input.mp4 –vcodec copy –an –f m4v output.h264
 比如，我有这么一个图片
 ![iqiyi logo](http://img.blog.csdn.net/20160512155254687)
 想要贴到一个视频上，那可以用如下命令：
+```
 ./ffmpeg -i input.mp4 -i iQIYI_logo.png -filter_complex overlay output.mp4
+```
 结果如下所示：
 ![add logo left](http://img.blog.csdn.net/20160512155411797)
 要贴到其他地方？看下面：
-右上角：
+``` bash
+# 右上角：
 ./ffmpeg -i input.mp4 -i logo.png -filter_complex overlay=W-w output.mp4
-左下角：
+# 左下角：
 ./ffmpeg -i input.mp4 -i logo.png -filter_complex overlay=0:H-h output.mp4
-右下角：
+# 右下角：
 ./ffmpeg -i input.mp4 -i logo.png -filter_complex overlay=W-w:H-h output.mp4
-
+```
 ### 8.3 去掉视频的logo
 
 语法：-vf delogo=x:y:w:h[:t[:show]]
@@ -322,11 +328,13 @@ show：若设置为1有一个绿色的矩形，默认值0。
 ## 10. 序列帧与视频的相互转换
 
 把darkdoor.[001-100].jpg序列帧和001.mp3音频文件利用mpeg4编码方式合成视频文件darkdoor.avi：
-**$ ffmpeg -i 001.mp3 -i darkdoor.%3d.jpg -s 1024x768 -author fy -vcodec mpeg4 darkdoor.avi**
-
+```
+$ ffmpeg -i 001.mp3 -i darkdoor.%3d.jpg -s 1024x768 -author fy -vcodec mpeg4 darkdoor.avi
+```
 还可以把视频文件导出成jpg序列帧：
-$ **ffmpeg -i bc-cinematic-en.avi example.%d.jpg**
-
+```
+$ ffmpeg -i bc-cinematic-en.avi example.%d.jpg
+```
 **1.分离视频音频流**
 
 ```

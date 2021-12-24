@@ -18,18 +18,42 @@ ffmpeg -i rtsp://localhost/test -c copy shifu.avi
 
 ```
 
-
-- -stream_loop -1   循环读取视频源的次数，-1为无限循环
-- -f fmt              force format 默认是(rtsp),可选rtp
-- -c codec            codec name
-- -codec codec        codec name
-- -vcodec             video codec name （libx264）
-- -acodec             audio codec name :(copy)
-- -rtsp_transport         tcp or udp           
+参数
 - -i                  指定输入源，可以是url或本地文件
-- -ac channels        set number of audio channels
-- outfile             指定输出源，可以是url或本地文件
-- -ar rate            set audio sampling rate (in Hz)
+- outfile             位置参数，指定输出源，可以是url或本地文件
+
+文件选项
+- -f fmt              协议名？默认是(rtsp), 可选rtp
+- -rtsp_transport     tcp or udp  
+- -t duration         切片的持续时长
+- -to time_stop       切片的结束时间
+- -ss time_off        切片的开始时间
+- -fs limit_size      set the limit file size in bytes
+- -stream_loop -1     循环读取视频源的次数，-1为无限循环
+- -qscale -q q                use fixed quality scale (VBR)
+
+视频选项
+- -r rate             帧频率 (Hz value, fraction or abbreviation)
+- -s size             单帧尺寸 (WxH or abbreviation)
+- -aspect aspect      比例，set aspect ratio (4:3, 16:9 or 1.3333, 1.7777)
+- -bits_per_raw_sample number  set the number of bits per raw sample
+- -ab bitrate         audio bitrate (please use -b:a)
+- -b bitrate          video bitrate (please use -b:v)
+- -c -codec codec     编码？
+- -vcodec             视频编码：copy，h264，mjpeg
+- -vn                 不处理（删除）视频
+- -pass n             select the pass number (1 to 3)
+- -vf filter_graph    set video filters
+- -re                 read input at native frame rate
+
+音频选项
+- -acodec             音频编码 :copy
+- -ar rate            set audio sampling rate (in Hz) 44000？
+- -ac channels        设置音量通道数 
+- -vol volume         更改音量 (256=normal)
+- -an                 不处理（删除）音频
+
+
 
 #### easyEdawin
 ``` bash
