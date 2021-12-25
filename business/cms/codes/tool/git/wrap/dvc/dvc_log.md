@@ -2,20 +2,33 @@
 
 ## main
 
+1. git init
+2. dvc init
+3. dvc add 
+4. dvc remote add
+5. dvc push
+6. dvc pull
+7. dvc commit
+
+
 ### git init
 ### dvc init
 ### dvc add
-dvc add Home\ Learning\ Tips\ for\ Students\ Instagram\ Carousel-2.pdf
+
+```
+dvc add Home.pdf
 
 
-Home Learning Tips for Students Instagram Carousel-2.pdf.dvc
+Home.pdf.dvc
 
 /Home Learning Tips for Students Instagram Carousel-2.pdf
 .gitignore
+```
 
 ### dvc remote add
+```
 dvc remote add -d myremote ssh://admin@192.168.0.113/Resource/
-
+```
 ### dvc push
 
 
@@ -37,8 +50,6 @@ H:\project\tmp\dvc_demo>dvc push
 100% Querying cache in /Resource/Project|█| /Resource/Project/3b/b099c4d2e134cd3cc8d1b9af5ceb10 |1/1 [00:00<00:00,  3.2
 ERROR: failed to transfer 'md5: 3bb099c4d2e134cd3cc8d1b9af5ceb10' - Permission denied
 ERROR: failed to push data to the cloud - 1 files failed to upload
-
-
 ```
 
 ```
