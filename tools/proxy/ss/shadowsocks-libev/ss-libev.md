@@ -1,6 +1,28 @@
 # shadowsocks-libev
 
 
+
+
+*ss-local*|*ss-redir*|*ss-server*|*ss-tunnel*|*ss-manager* 有什么区别？
+- ss-local
+- ss-redir
+- ss-server
+- ss-tunnel
+- ss-manager
+
+
+流程：
+1. 服务端
+   1. ss-server 提供ss服务
+   2. ss-manager 提供ss服务
+2. ss客户端
+   - ss-tunel 接收ss服务，在本地提供转发远程的端口到本地端口服务，相当于`ssh -L`
+   - ss-local 接受ss服务，在本地提供socks5服务，相当于`ssh -D`
+   - ss-redir 提供透明代理，无需暴露socks服务，直接暴露网关服务
+3. socks5 的服务端
+4. socks5 的客户端
+
+
 ## install
 
 
@@ -244,116 +266,3 @@ WantedBy=multi-user.target
 #### /lib/systemd/system/shadowsocks-libev-server@.service
 内容和/lib/systemd/system/shadowsocks-libev-server@.service类似
 
-
-## help
-
-
-### ss-server
-```
-root@DESKTOP-PGE4ABC:/mnt # /usr/bin/ss-server --help
-
-shadowsocks-libev 3.1.3
-
-  maintained by Max Lv <max.c.lv@gmail.com> and Linus Yang <laokongzi@gmail.com>
-
-  usage:
-
-    ss-server
-
-       -s <server_host>           Host name or IP address of your remote server.
-       -p <server_port>           Port number of your remote server.
-       -l <local_port>            Port number of your local server.
-       -k <password>              Password of your remote server.
-       -m <encrypt_method>        Encrypt method: rc4-md5,
-                                  aes-128-gcm, aes-192-gcm, aes-256-gcm,
-                                  aes-128-cfb, aes-192-cfb, aes-256-cfb,
-                                  aes-128-ctr, aes-192-ctr, aes-256-ctr,
-                                  camellia-128-cfb, camellia-192-cfb,
-                                  camellia-256-cfb, bf-cfb,
-                                  chacha20-ietf-poly1305,
-                                  xchacha20-ietf-poly1305,
-                                  salsa20, chacha20 and chacha20-ietf.
-                                  The default cipher is rc4-md5.
-
-       [-a <user>]                Run as another user.
-       [-f <pid_file>]            The file path to store pid.
-       [-t <timeout>]             Socket timeout in seconds.
-       [-c <config_file>]         The path to config file.
-       [-n <number>]              Max number of open files.
-       [-i <interface>]           Network interface to bind.
-       [-b <local_address>]       Local address to bind.
-
-       [-u]                       Enable UDP relay.
-       [-U]                       Enable UDP relay and disable TCP relay.
-       [-6]                       Resovle hostname to IPv6 address first.
-
-       [-d <addr>]                Name servers for internal DNS resolver.
-       [--reuse-port]             Enable port reuse.
-       [--fast-open]              Enable TCP fast open.
-                                  with Linux kernel > 3.7.0.
-       [--acl <acl_file>]         Path to ACL (Access Control List).
-       [--manager-address <addr>] UNIX domain socket address.
-       [--mtu <MTU>]              MTU of your network interface.
-       [--mptcp]                  Enable Multipath TCP on MPTCP Kernel.
-       [--no-delay]               Enable TCP_NODELAY.
-       [--key <key_in_base64>]    Key of your remote server.
-       [--plugin <name>]          Enable SIP003 plugin. (Experimental)
-       [--plugin-opts <options>]  Set SIP003 plugin options. (Experimental)
-
-       [-v]                       Verbose mode.
-       [-h, --help]               Print this message.
-```
-
-### ss-local
-```
-
-root@DESKTOP-PGE4ABC:/mnt# /usr/bin/ss-local --help
-
-shadowsocks-libev 3.1.3
-
-  maintained by Max Lv <max.c.lv@gmail.com> and Linus Yang <laokongzi@gmail.com>
-
-  usage:
-
-    ss-local
-
-       -s <server_host>           Host name or IP address of your remote server.
-       -p <server_port>           Port number of your remote server.
-       -l <local_port>            Port number of your local server.
-       -k <password>              Password of your remote server.
-       -m <encrypt_method>        Encrypt method: rc4-md5,
-                                  aes-128-gcm, aes-192-gcm, aes-256-gcm,
-                                  aes-128-cfb, aes-192-cfb, aes-256-cfb,
-                                  aes-128-ctr, aes-192-ctr, aes-256-ctr,
-                                  camellia-128-cfb, camellia-192-cfb,
-                                  camellia-256-cfb, bf-cfb,
-                                  chacha20-ietf-poly1305,
-                                  xchacha20-ietf-poly1305,
-                                  salsa20, chacha20 and chacha20-ietf.
-                                  The default cipher is rc4-md5.
-
-       [-a <user>]                Run as another user.
-       [-f <pid_file>]            The file path to store pid.
-       [-t <timeout>]             Socket timeout in seconds.
-       [-c <config_file>]         The path to config file.
-       [-n <number>]              Max number of open files.
-       [-i <interface>]           Network interface to bind.
-       [-b <local_address>]       Local address to bind.
-
-       [-u]                       Enable UDP relay.
-       [-U]                       Enable UDP relay and disable TCP relay.
-
-       [--reuse-port]             Enable port reuse.
-       [--fast-open]              Enable TCP fast open.
-                                  with Linux kernel > 3.7.0.
-       [--acl <acl_file>]         Path to ACL (Access Control List).
-       [--mtu <MTU>]              MTU of your network interface.
-       [--mptcp]                  Enable Multipath TCP on MPTCP Kernel.
-       [--no-delay]               Enable TCP_NODELAY.
-       [--key <key_in_base64>]    Key of your remote server.
-       [--plugin <name>]          Enable SIP003 plugin. (Experimental)
-       [--plugin-opts <options>]  Set SIP003 plugin options. (Experimental)
-
-       [-v]                       Verbose mode.
-       [-h, --help]               Print this message.
-```       

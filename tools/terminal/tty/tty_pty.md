@@ -7,6 +7,7 @@
 - ptmx(pseudo-terminal master)
 - console
 - shell
+- notty
 
 
 ## base
