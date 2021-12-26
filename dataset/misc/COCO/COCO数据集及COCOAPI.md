@@ -8,13 +8,13 @@
 
 42 人赞同了该文章
 
-一、COCO数据集的结构
+# 一、COCO数据集的结构
 
 假定dataDir的目录结构：annotations，test2014，train2014，val2014
 
 由于annotations文件是一个json文件，所以用json来看看数据基本结构
 
-```text
+``` python
 import json
 dataDir=r'D:\data\coco\coco2014'
 dataType='val2014'
@@ -24,7 +24,7 @@ data=json.load(open(annFile,'r'))
 
 先看看最顶层的结构：
 
-```text
+``` python
 for k in data:
     print(k)
 -------------------------------
@@ -39,7 +39,7 @@ categories
 
 1、images的结构：
 
-```text
+``` python
 for k in data["images"][0]:
     print(k)
 -----------------------------
@@ -55,7 +55,7 @@ id
 
 2、annotations 的结构：
 
-```text
+``` python
 for k in data["annotations "][0]:
     print(k)
 ------------------------------------
@@ -79,13 +79,13 @@ id
 name
 ```
 
-二、cocoapi（[cocoapi](https://link.zhihu.com/?target=https%3A//github.com/cocodataset/cocoapi)）：
+## 二、cocoapi（[cocoapi](https://link.zhihu.com/?target=https%3A//github.com/cocodataset/cocoapi)）：
 
 pycocotools下有三个模块：coco、cocoeval、mask、_mask。
 
 1、coco模块：
 
-```text
+``` python
 # The following API functions are defined:
 #  COCO       - COCO api class that loads COCO annotation file and prepare data structures.
 #  getAnnIds  - Get ann ids that satisfy given filter conditions.
@@ -106,7 +106,7 @@ COCO类定义了10个方法：
 
 （1）获取标注id：
 
-```text
+``` python
 def getAnnIds(self, imgIds=[], catIds=[], areaRng=[], iscrowd=None):
         """
         Get ann ids that satisfy given filter conditions. default skips that filter
@@ -120,7 +120,7 @@ def getAnnIds(self, imgIds=[], catIds=[], areaRng=[], iscrowd=None):
 
 （2）获取类别id：
 
-```text
+``` python
 def getCatIds(self, catNms=[], supNms=[], catIds=[]):
         """
         filtering parameters. default skips that filter.
@@ -133,7 +133,7 @@ def getCatIds(self, catNms=[], supNms=[], catIds=[]):
 
 （3）获取图片id：
 
-```text
+``` python
 def getImgIds(self, imgIds=[], catIds=[]):
         '''
         Get img ids that satisfy given filter conditions.
@@ -145,7 +145,7 @@ def getImgIds(self, imgIds=[], catIds=[]):
 
 （4）加载标注：
 
-```text
+``` python
 def loadAnns(self, ids=[]):
         """
         Load anns with the specified ids.
@@ -156,7 +156,7 @@ def loadAnns(self, ids=[]):
 
 （5）加载类别：
 
-```text
+``` python
 def loadCats(self, ids=[]):
         """
         Load cats with the specified ids.
@@ -167,7 +167,7 @@ def loadCats(self, ids=[]):
 
 （6）加载图片：
 
-```text
+```python
 def loadImgs(self, ids=[]):
         """
         Load anns with the specified ids.
@@ -178,7 +178,7 @@ def loadImgs(self, ids=[]):
 
 （7）用matplotlib在图片上显示标注：
 
-```text
+``` python
 def showAnns(self, anns):
         """
         Display the specified annotations.
@@ -189,7 +189,7 @@ def showAnns(self, anns):
 
 （8）加载结果文件：
 
-```text
+``` python
 def loadRes(self, resFile):
         """
         Load result file and return a result api object.
@@ -200,7 +200,7 @@ def loadRes(self, resFile):
 
 （9）下载数据集（国内用这个真的行吗？还是百度网盘更好吧？）：
 
-```text
+``` python
 def download(self, tarDir = None, imgIds = [] ):
         '''
         Download COCO images from mscoco.org server.
@@ -212,7 +212,7 @@ def download(self, tarDir = None, imgIds = [] ):
 
 （10）ann转为rle格式：
 
-```text
+``` python
 def annToRLE(self, ann):
         """
         Convert annotation which can be polygons, uncompressed RLE to RLE.
@@ -222,7 +222,7 @@ def annToRLE(self, ann):
 
 （11）获取mask：
 
-```text
+``` python
 def annToMask(self, ann):
         """
         Convert annotation which can be polygons, uncompressed RLE, or RLE to binary mask.
@@ -232,7 +232,7 @@ def annToMask(self, ann):
 
 2、mask模块下定义了四个函数：
 
-```text
+``` python
 def encode(bimask)：
 def decode(rleObjs):
 def area(rleObjs):
@@ -241,7 +241,7 @@ def toBbox(rleObjs):
 
 3、cocoeval模块定义了COCOeval和Params类：
 
-```text
+``` python
     # The usage for CocoEval is as follows:
     #  cocoGt=..., cocoDt=...       # load dataset and results
     #  E = CocoEval(cocoGt,cocoDt); # initialize CocoEval object
@@ -255,9 +255,9 @@ def toBbox(rleObjs):
 
 
 
-三、示例（jupyter notebook）：
+## 三、示例（jupyter notebook）：
 
-```text
+``` python
 %matplotlib inline
 from pycocotools.coco import COCO
 from pycocotools.mask import encode,decode,area,toBbox
@@ -292,7 +292,7 @@ toBbox(rle)
 
 
 
-四、segmentation的两种格式：RLE（*run-length encoding*）和polygon：
+## 四、segmentation的两种格式：RLE（*run-length encoding*）和polygon：
 
 1、iscrowd=1时表示格式是RLE，iscrowd=0时表示格式是polygon：
 
@@ -326,7 +326,7 @@ coco数据集好像都是polygon格式，而[understanding_cloud_organization](h
 
 2、polygon与mask之间的转换：
 
-```text
+``` python
 import cv2
 
 def mask2polygon(mask):
@@ -361,7 +361,7 @@ mask2polygon(mask)
 
 3、RLE与mask之间的转换：
 
-```text
+```python
 def mask2rle(img):
     '''
     img: numpy array, 1 - mask, 0 - background
@@ -391,7 +391,7 @@ def rle2mask(rle, input_shape):
 
 4、计算mask的bbox：
 
-```text
+```python
 def bounding_box(img):
     # return max and min of a mask to draw bounding box
     rows = np.any(img, axis=1)
@@ -404,7 +404,7 @@ def bounding_box(img):
 
 
 
-五、其他格式的数据集转化为coco格式数据集
+## 五、其他格式的数据集转化为coco格式数据集
 
 参看一个示例：[convert-dataset-to-coco-format-tools](https://link.zhihu.com/?target=https%3A//www.kaggle.com/fmscole/convert-dataset-to-coco-format-tools)
 
