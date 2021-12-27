@@ -1,0 +1,51 @@
+admin@DS918Plus:~$ sudo ethtool eth0
+Password:
+Settings for eth0:
+        Supported ports: [ TP ]
+        Supported link modes:   10baseT/Half 10baseT/Full
+                                100baseT/Half 100baseT/Full
+                                1000baseT/Full
+        Supported pause frame use: Symmetric
+        Supports auto-negotiation: Yes
+        Advertised link modes:  10baseT/Half 10baseT/Full
+                                100baseT/Half 100baseT/Full
+                                1000baseT/Full
+        Advertised pause frame use: Symmetric
+        Advertised auto-negotiation: Yes
+        Speed: 100Mb/s
+        Duplex: Full
+        Port: Twisted Pair
+        PHYAD: 1
+        Transceiver: internal
+        Auto-negotiation: on
+        MDI-X: on (auto)
+        Supports Wake-on: pumbg
+        Wake-on: g
+        Current message level: 0x00000007 (7)
+                               drv probe link
+        Link detected: yes
+
+admin@DS918Plus:~$ sudo ethtool -l eth0
+Channel parameters for eth0:
+Pre-set maximums:
+RX:             0
+TX:             0
+Other:          1
+Combined:       2
+Current hardware settings:
+RX:             0
+TX:             0
+Other:          1
+Combined:       2
+
+admin@DS918Plus:~$ sudo ethtool -i eth0
+driver: igb
+version: 5.3.0-k
+firmware-version:  0. 6-1
+bus-info: 0000:03:00.0
+supports-statistics: yes
+supports-test: yes
+supports-eeprom-access: yes
+supports-register-dump: yes
+supports-priv-flags: no
+

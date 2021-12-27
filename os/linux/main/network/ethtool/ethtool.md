@@ -12,7 +12,7 @@ ethtool 是用于查询及设置网卡参数的命令。
 
 
 使用概要：
-
+```
 ethtool ethx       //查询ethx网口基本设置，其中 x 是对应网卡的编号，如eth0、eth1等等
 ethtool –h        //显示ethtool的命令帮助(help)
 ethtool –i ethX    //查询ethX网口的相关信息 
@@ -24,6 +24,7 @@ ethtool –s ethX [speed 10|100|1000] [duplex half|full]  [autoneg on|off]      
 ethtool -E eth0 magic 0x10798086 offset 0x10 value 0x1A  修改网卡EEPROM内容（0x1079 网卡device id , 0x8086网卡verdor id  ）
 
 ethtool -e eth0  : dump网卡EEPROM内容
+```
 
 普通的百兆网卡理论传输速度为100Mbps，实际换算后极限下载速度12.5MB/s，而千兆网卡的理论传输速度则为125MB/s。
 ```
@@ -198,58 +199,3 @@ Usage:
         ethtool --version               Show version number
 ```
 
-
-
-```
-admin@DS918Plus:~$ sudo ethtool eth0
-Password:
-Settings for eth0:
-        Supported ports: [ TP ]
-        Supported link modes:   10baseT/Half 10baseT/Full
-                                100baseT/Half 100baseT/Full
-                                1000baseT/Full
-        Supported pause frame use: Symmetric
-        Supports auto-negotiation: Yes
-        Advertised link modes:  10baseT/Half 10baseT/Full
-                                100baseT/Half 100baseT/Full
-                                1000baseT/Full
-        Advertised pause frame use: Symmetric
-        Advertised auto-negotiation: Yes
-        Speed: 100Mb/s
-        Duplex: Full
-        Port: Twisted Pair
-        PHYAD: 1
-        Transceiver: internal
-        Auto-negotiation: on
-        MDI-X: on (auto)
-        Supports Wake-on: pumbg
-        Wake-on: g
-        Current message level: 0x00000007 (7)
-                               drv probe link
-        Link detected: yes
-
-admin@DS918Plus:~$ sudo ethtool -l eth0
-Channel parameters for eth0:
-Pre-set maximums:
-RX:             0
-TX:             0
-Other:          1
-Combined:       2
-Current hardware settings:
-RX:             0
-TX:             0
-Other:          1
-Combined:       2
-
-admin@DS918Plus:~$ sudo ethtool -i eth0
-driver: igb
-version: 5.3.0-k
-firmware-version:  0. 6-1
-bus-info: 0000:03:00.0
-supports-statistics: yes
-supports-test: yes
-supports-eeprom-access: yes
-supports-register-dump: yes
-supports-priv-flags: no
-
-```

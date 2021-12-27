@@ -8,7 +8,7 @@
 
 解决方案
 1.禁用git的自动换行功能：
-在本地路径C:\Users\[用户名]\.gitconfig下修改git配置[core]，如果没有就直接添加上去：
+在本地路径`~/.gitconfig`下修改git配置[core]，如果没有就直接添加上去：
 ``` ini
 [core]
 autocrlf = false
@@ -18,16 +18,19 @@ safecrlf = true
 git bash命令行也可以修改，最终也是修改.gitconfig配置文件：
 分别执行：
 ``` bash
+# 全局闭自动转换CR/LF
 git config --global core.autocrlf false 
+# 关闭filemode
 git config --global core.filemode false 
 git config --global core.safecrlf true
 
-
-git config --get core.autocrlf # 显示false
+# 当前仓库关闭自动转换CR/LF
+git config --local core.autocrlf false 
 ```
 
-`git config --global core.autocrlf true --global core.safecrlf false`
-
+```
+git config --get core.autocrlf # 显示false
+```
 
 ## misc
 在windows平台下git add 的时候经常会出现如下错误
