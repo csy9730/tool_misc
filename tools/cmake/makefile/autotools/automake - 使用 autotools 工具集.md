@@ -15,16 +15,16 @@
 本文介绍 autotools 工具集自动生成符合 Linux 规范的 Makefile 文件。
 
 如果读者没有安装 autotools 工具集，安装命令如下，
-
+```
 $ sudo apt-get install automake
-
+```
 安装完成之后，会有如下工具可用，
 
-​     aclocal
-​     autoscan
-​     autoconf
-​     autoheader
-​     automake
+- aclocal
+- autoscan
+- autoconf
+- autoheader
+- automake
 
 一般大型项目，代码组织结构分为两种，一种是所有文件都在同一个目录下的 flat 结构，另一种是按层次组织的多文件夹形式。先来看第一种，
 
@@ -38,7 +38,7 @@ $ sudo apt-get install automake
 
 [![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
-```
+``` cpp
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -67,15 +67,13 @@ int main()
 }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
- 
 
 辅助代码，头文件，
 
 sum.h
 
-```
+``` cpp
 #ifndef SUM_H_
 #define SUM_H_
 
@@ -86,7 +84,7 @@ int sum(int x, int y);
 
 sub.h
 
-```
+``` cpp
 #ifndef SUB_H_
 #define SUB_H_
 
@@ -97,7 +95,7 @@ int sub(int x, int y);
 
 mul.h
 
-```
+``` cpp
 #ifndef MUL_H_
 #define MUL_H_
 
@@ -108,7 +106,7 @@ int mul(int x, int y);
 
 div.h
 
-```
+``` cpp
 #ifndef DIV_H_
 #define DIV_H_
 
@@ -123,7 +121,7 @@ int divide(int x, int y);
 
 sum.c
 
-```
+``` cpp
 #include "sum.h"
 
 int sum(int x, int y)
@@ -134,7 +132,7 @@ int sum(int x, int y)
 
 sub.c
 
-```
+``` cpp
 #include "sub.h"
 
 int sub(int x, int y)
@@ -145,7 +143,7 @@ int sub(int x, int y)
 
 mul.c
 
-```
+``` cpp
 #include "mul.h"
 
 int mul(int x, int y)
@@ -156,9 +154,8 @@ int mul(int x, int y)
 
 div.c
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
-```
+``` cpp
 #include "div.h"
 #include <stdio.h>
 
@@ -171,16 +168,13 @@ int divide(int x, int y)
 }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
- 
 
 1) 在项目目录下，运行 autoscan 命令，生成 configure.scan 文件，内容如下，
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
-```
-#                                               -*- Autoconf -*-
+``` 
+# -*- Autoconf -*-
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.69])
@@ -202,11 +196,8 @@ AC_CHECK_HEADERS([stdlib.h unistd.h])
 AC_OUTPUT
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
-
 重命名 configure.scan 为 configure.ac ，并修改其内容为，
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
 ```
 #                                               -*- Autoconf -*-
@@ -234,7 +225,6 @@ AC_CONFIG_FILES([Makefile])
 AC_OUTPUT
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
 上述 configure.ac 中宏定义意义如下，
 
@@ -250,13 +240,13 @@ AC_CONFIG_FILES   ： 指定生成 Makefile，如果是多目录结构，可指�
 AC_OUTPUT         ： autoscan 输出
 ```
 
-2) 运行 aclocal，根据 configure.ac 生成 aclocal.m4 文件，该文件主要处理各种宏定义
+1) 运行 aclocal，根据 configure.ac 生成 aclocal.m4 文件，该文件主要处理各种宏定义
 
-3) 运行 autoconf，将 configure.ac 中的宏展开，生成 configure 脚本，这过程中可能会用到 aclocal.m4
+2) 运行 autoconf，将 configure.ac 中的宏展开，生成 configure 脚本，这过程中可能会用到 aclocal.m4
 
-4) 执行 autoheader，生成 config.h.in 文件，该命令通常会从 "acconfig.h” 文件中复制用户附加的符号定义。该例子中没有附加的符号定义, 所以不需要创建 "acconfig.h” 文件
+3) 执行 autoheader，生成 config.h.in 文件，该命令通常会从 "acconfig.h” 文件中复制用户附加的符号定义。该例子中没有附加的符号定义, 所以不需要创建 "acconfig.h” 文件
 
-5) 创建 Makefile.am 文件，automake工具会根据 configure.in 中的参量把 Makefile.am 转换成 Makefile.in 文件，最终通过 Makefile.in 生成 Makefile
+4) 创建 Makefile.am 文件，automake工具会根据 configure.in 中的参量把 Makefile.am 转换成 Makefile.in 文件，最终通过 Makefile.in 生成 Makefile
 
 ```
 AUTOMAKE_OPTIONS=foreign
@@ -310,9 +300,7 @@ int_arithmetic_SOURCES ： 可执行文件依赖的所有源文件。
 
 主入口函数 int_arithmetic.c
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
-
-```
+``` cpp
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -341,13 +329,12 @@ int main()
 }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
 头文件，
 
 sum.h
 
-```
+``` cpp
 #ifndef SUM_H_
 #define SUM_H_
 
@@ -358,7 +345,7 @@ int sum(int x, int y);
 
 sub.h
 
-```
+``` cpp
 #ifndef SUB_H_
 #define SUB_H_
 
@@ -369,7 +356,7 @@ int sub(int x, int y);
 
 mul.h
 
-```
+``` cpp
 #ifndef MUL_H_
 #define MUL_H_
 
@@ -380,7 +367,7 @@ int mul(int x, int y);
 
 div.h
 
-```
+``` cpp
 #ifndef DIV_H_
 #define DIV_H_
 
@@ -393,7 +380,7 @@ int divide(int x, int y);
 
 sum.c
 
-```
+``` cpp
 #include "../include/sum.h"
 
 int sum(int x, int y)
@@ -404,7 +391,7 @@ int sum(int x, int y)
 
 sub.c
 
-```
+``` cpp
 #include "../include/sub.h"
 
 int sub(int x, int y)
@@ -415,7 +402,7 @@ int sub(int x, int y)
 
 mul.c
 
-```
+``` cpp
 #include "../include/mul.h"
 
 int mul(int x, int y)
@@ -426,9 +413,8 @@ int mul(int x, int y)
 
 div.c
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
-```
+``` cpp
 #include "../include/div.h"
 #include <stdio.h>
 
@@ -440,8 +426,6 @@ int divide(int x, int y)
     return x / y;
 }
 ```
-
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
 1) 在项目顶层目录，建立文件 Makefile.am, 内容如下，
 
@@ -464,10 +448,9 @@ include_HEADERS=../include/sum.h ../include/sub.h ../include/mul.h ../include/di
 
 2） 执行 autoscan 生成 configure.scan 文件， 如下，
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
 ```
-#                                               -*- Autoconf -*-
+# -*- Autoconf -*-
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.69])
@@ -492,14 +475,12 @@ AC_CONFIG_FILES([Makefile
 AC_OUTPUT
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
  重命名 configure.scan 为 configure.ac 并修改如下，
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
 ```
-#                                               -*- Autoconf -*-
+# -*- Autoconf -*-
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.69])
@@ -530,21 +511,19 @@ AC_CONFIG_FILES([Makefile
 AC_OUTPUT
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
- 
 
-3) 执行 aclocal
+1) 执行 aclocal
 
-4) 运行 autoconf
+2) 运行 autoconf
 
-5) 运行 autoheader
+3) 运行 autoheader
 
-6) 手动添加必要的文件 NEWS，README，AUTHORS，ChangeLog
+4) 手动添加必要的文件 NEWS，README，AUTHORS，ChangeLog
 
-7) 执行 automake --add-missing
+5) 执行 automake --add-missing
 
-8) 执行 ./configure 生存 Makefile
+6) 执行 ./configure 生存 Makefile
 
 ====>>> 至此 Makefile 生成完毕。
 

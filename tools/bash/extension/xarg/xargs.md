@@ -11,7 +11,8 @@ redirect to file stdout/stdin/file/argument
 注意区分 argument 和stdin。
 
 xargs将 stdin 转变为 argument 
-
+``` bash
 dir abc  2>&1 > a.log
 
 dir abc   >a.log 2>&1
+```

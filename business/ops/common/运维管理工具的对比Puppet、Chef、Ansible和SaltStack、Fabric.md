@@ -16,7 +16,7 @@
 
 下面我们分别来简单了解下这几种工具并且做对比。
 
-Ansible
+## Ansible
 简介
 官网[https://www.ansible.com/](https://www.ansible.com/)
 Ansible介绍视频： https://www.youtube.com/watch?v=iVWmbStE1MM
@@ -67,7 +67,7 @@ Playbook结构简单，结构清晰。
 输入，输出和配置文件的格式之间不一致
 性能和速度有待加强
 
-chef
+## chef
 简介
 官网https://www.chef.io/
 Chef介绍视频：https://www.youtube.com/watch?v=kDeRHgnuDzc
@@ -104,7 +104,7 @@ Chef的配置离不开Git，所以对Chef运作而言，了解Git如何工作是
 这不是一个简单的工具，这可能导致大的代码库和复杂的环境。
 不支持推送功能。
 
-Fabric
+## Fabric
 简介
 官网http://www.fabfile.org/
 Fabric介绍视频：https://www.youtube.com/watch?v=VmcGuKPpWH8
@@ -127,7 +127,7 @@ Fabric是在应用程序部署精简SSH一个基于Python的工具。 它主要�
 Fabric是单点故障设置（通常是您运行部署的机器）
 虽然它是用于在大多数语言中部署应用程序的一个很好的工具，但它需要Python运行，因此您的Fabric环境中必须至少有一个Python。
 
-Puppet
+## Puppet
 简介
 官网https://puppet.com/
 Puppet介绍视频：https://www.youtube.com/watch?v=j8ImF23jZAg
@@ -164,7 +164,7 @@ Puppet可以使用免费开源版本，同时也提供收费企业版每年每�
 由于DSL和一个不专注于简单性的设计，Puppet代码库可能会变得庞大，笨重，难以在更高规模的组织中接纳新用户。
 与代码驱动方法相比，模型驱动方法意味着更少的控制。
 
-SaltStack
+## SaltStack
 简介
 官网https://saltstack.com/
 
