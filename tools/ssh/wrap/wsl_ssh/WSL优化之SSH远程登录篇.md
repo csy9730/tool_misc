@@ -24,7 +24,7 @@ sudo vim /etc/ssh/sshd_config
 
 **将以下配置复制到sshd_config配置文件**
 
-```
+``` ini
 Port 2222   #设置ssh的端口号, 由于22在windows中有别的用处, 尽量不修改系统的端口号
 PermitRootLogin yes   # 可以root远程登录
 PasswordAuthentication yes     # 允许密码验证登录

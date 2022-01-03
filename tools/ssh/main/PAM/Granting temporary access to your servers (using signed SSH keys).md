@@ -17,9 +17,9 @@ We have two machines for this purpose. One is a system running Arch Linux, the *
 ### Creating a Certificate Authority
 
 The first step is to create a CA key. This key will be used to sign the public key of the user providing the support. Ideally, this key creation should be done on a secure system.
-
+```
 > ssh-keygen -f ssh_ca
-
+```
 This should result in two files:
 
 - **ssh_ca** (private key)
@@ -102,15 +102,15 @@ To get things working, we have to add the public key to the other end. However, 
 #### Configuration on server
 
 The first step is to configure the account on the receiving server. In our case the support user.
-
+```
 > umask 700
 > mkdir /home/support/.ssh
 > touch /home/support/.ssh/authorized_keys
-
+```
 Add then the CA public key to the **authorized_keys** file.
-
+```
 > cert-authority ssh-rsa AAAAB3NzaC1yc2EAAAA<long string>
-
+```
 Ensure that you are copying the public key of the **certificate authority**. We want to trust only those authentication requests, which are signed by our CA.
 
 #### Logging in

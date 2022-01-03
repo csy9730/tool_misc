@@ -6,7 +6,7 @@
 
 
 
-第一阶段：验证阶段
+### 第一阶段：验证阶段
 
 1.经过pam_securetty.so判断，看用户是什么，如果是root，读取/etc/
 
@@ -22,20 +22,20 @@ securetty的配置
 
 
 
-第二阶段：授权阶段
+### 第二阶段：授权阶段
 
 1. 先以 pam_nologin.so 判断 /etc/nologin 是否存在，若存在则不许一般使用者登陆；
 2. 以 pam_unix 进行账号管理，
 3. pam_succeed_if.so 判断 UID 是否小于 500 ，若小于 500 则不记录登录信息。
 4. 最后以 pam_permit.so 允许该账号登陆。
 
-第三阶段：口令阶段
+### 第三阶段：口令阶段
 
 1. 先以 pam_cracklib.so 配置口令仅能尝试错误 3 次；
 2. 接下来以pam_unix.so 透过 md5, shadow 等功能进行口令检验，若通过则回报 login 程序，若不通过则
 3. 以 pam_deny.so 拒绝登陆。
 
-第四阶段：会议阶段
+### 第四阶段：会议阶段
 
 1. 先以 pam_selinux.so 暂时关闭 SELinux；
 2. 使用 pam_limits.so 配置好用户能够操作的系统资源；
