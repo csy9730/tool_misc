@@ -29,6 +29,13 @@ Home.pdf.dvc
 ```
 dvc remote add -d myremote ssh://admin@192.168.0.113/Resource/
 ```
+
+
+
+dvc??cache?????????????
+
+????????????????cache???remote???
+
 ### dvc push
 
 
@@ -45,6 +52,7 @@ Collecting dvc-ssh
   Downloading dvc_ssh-0.0.1a0-py3-none-any.whl (11 kB)
 ```
 ### dvc push
+#### Permission denied
 ```
 H:\project\tmp\dvc_demo>dvc push
 100% Querying cache in /Resource/Project|█| /Resource/Project/3b/b099c4d2e134cd3cc8d1b9af5ceb10 |1/1 [00:00<00:00,  3.2
@@ -52,6 +60,17 @@ ERROR: failed to transfer 'md5: 3bb099c4d2e134cd3cc8d1b9af5ceb10' - Permission d
 ERROR: failed to push data to the cloud - 1 files failed to upload
 ```
 
+???????????
+???????
+??sftp???????????remote???
+``` bash
+$ sftp my_remote
+> put -r .dvc/cache/*  /Resource/Project/repos/
+
+```
+[Permission denied with windows share accessed from a linux dvc client](ttps://github.com/iterative/dvc/issues/4804)
+
+#### Connection lost
 ```
 $ dvc push
 ERROR: unexpected error - Connection lost
@@ -60,14 +79,17 @@ Having any troubles? Hit us up at https://dvc.org/support, we are always happy t
 (base)
 
 ```
+???????
 
-
+#### config file error: Unsupported URL type
 ```
 ERROR: configuration error - config file error: Unsupported URL type sftp:// for dictionary value @ data['remote']['myre
 mote']
 
 ```
+??????sftp???????ssh????????????sftp???????sftp?????ssh/scp??????
 
+#### invalid literal
 ```
 ['remote "myremote"']
     url = ssh://my_nas:~/
@@ -77,6 +99,8 @@ ERROR: unexpected error - invalid literal for int() with base 10: '~'
 
 Having any troubles? Hit us up at https://dvc.org/support, we are always happy to help!
 ```
+????????
+
 ### dvc pull
 
 ## outside git

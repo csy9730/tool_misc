@@ -118,24 +118,12 @@ id_ed25519-cert.pub:
 ## usage
 ``` bash
 # 1. 静默生成密钥文件
-ssh-keygen -t ed25519 -C "strawperrypi" -f pi_ed25519a -q -N ""
+ssh-keygen -t ed25519 -C "strawperrypi" -f pi_ed25519 -q -N ""
 
-ssh-keygen -C "strawperrypi" -f pi_ed25519a -q -N ""
+# ssh-keygen -C "strawperrypi" -f pi_rsa -q -N ""
 
 # 2. 复制公钥到目标设备
-scp pi_ed25519.pub my_rasp:/tmp/
-
-# 3. 写入到authorized_keys文件 。总是会失败。
-# ssh my_rasp cat /tmp/pi_ed25519.pub >>/home/pi/.ssh/authorized_keys
-ssh my_rasp bash -c "cat /tmp/pi_ed25519.pub >>/home/pi/.ssh/authorized_keys"
-# ssh my_rasp  cat /tmp/pi_ed25519.pub |tee -a /home/pi/.ssh/authorized_keys
-ssh my_rasp bash -c "cat /tmp/pi_ed25519.pub |tee -a /home/pi/.ssh/authorized_keys"
-
-ssh my_rasp bash -c " cat /tmp/pi_rsa.pub >>/home/pi/.ssh/authorized_keys"
-ssh my_rasp bash -c " cat /tmp/pi_rsa.pub |sudo tee -a /home/pi/.ssh/authorized_keys"
-
-# 4. 删除临时公钥文件
-rm /tmp/pi_ed25519.pub
+ssh-copy-id pi_ed25519.pub my_rasp
 
 ```
 
