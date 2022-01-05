@@ -17,7 +17,7 @@ NSIS官方网站 [http://nsis.sf.net](http://nsis.sf.net/)
 
 在nsis中可以使用单行注释，和多行注释,多行注释不支持嵌套。:#,;,/**/
 
-```
+``` nsis
 #OutFile "注释.exe"
 ;Section ""
 /*
@@ -41,7 +41,7 @@ nsi脚本用行尾的反斜杠"\"表示下一行和当前行逻辑上是同一�
 
 调用系统API创建互斥进程
 
-```
+``` nsis
 OutFile "Temp.exe"
 Section "Temp"
 SectionEnd
@@ -74,13 +74,13 @@ FunctionEnd
 
 压缩资源，直接用资源查看器会提示已加壳，需要先脱壳才能查看资源
 
-```
+``` nsis
 !packhdr "exehead.tmp" '"upx.exe" -4 "exehead.tmp"'
 
 ```
 
 ## 1.6 关于nsis中的变量使用
-
+``` nsis
 \#程序输出名称
 
 OutFile "Variables.exe"
@@ -184,7 +184,7 @@ Function nsis_cmdline #"nsis命令行参数操作"
 ​    DetailPrint "Found"
 
 FunctionEnd
-
+```
 这些变量也可以在插件里传递，因为他们可以被 DLL 插件读取和写入
 
 enum
@@ -250,7 +250,7 @@ __INST_LAST
 ## 1.7 关于nsis中的界面制作
 
 ![img](https://images0.cnblogs.com/i/616541/201404/011131053129543.jpg)
-
+``` nsis
 #头文件
 !include nsDialogs.nsh
 #设置压缩方式
@@ -285,9 +285,9 @@ nsDialogs::show
 FunctionEnd
 Section "NSIS自定义界面中文版教程"
 SectionEnd
-
+```
 ## 1.8 关于nsis中的字符串处理
-
+``` nsis
 !include "WordFunc.nsh"
 OutFile "关于nsis中的字符串处理.exe"
 Var stemp
@@ -327,9 +327,9 @@ Pop $2
 Pop $1
 Exch $0
 FunctionEnd
-
+```
 ## 1.9 关于nsis中的API调用
-
+``` nsis
 #头文件
 !include "WordFunc.nsh"
 #输出文件
@@ -349,11 +349,12 @@ System::Call `*$R0(i.R1, i.R2, i.R3, i.R4) i`
 System::Free $R0
 MessageBox MB_OK " Left:$R1$\n Top:$R2$\n Right:$R3$\n Bottom:$R4$\n"
 SectionEnd
-
+```
 ## NSIS 常用小问题问答合集
 
 问： 如何用 NSIS 安装输入法。
 答： 以下代码：
+``` nsis
 SetOutPath $SYSDIR
 File WBIME.ime
 Push "五笔输入法"
@@ -365,9 +366,10 @@ IntCmp $0 1 0 +3 +3
 MessageBox MB_OK "输入法安装成功"
 Goto +2
 MessageBox MB_OK "输入法安装失败"
-
+```
 问： 如何用NSIS注册字体？
 答： 以下代码：
+``` nsis
 !include WinMessages.nsh
 Section "MainSection" SEC01
 File /oname=$FONTS\tahoma.ttf tahoma.ttf
@@ -378,8 +380,9 @@ IntCmp $0 0 0 +2 +2
 MessageBox MB_OK "注册字体失败"
 SendMessage ${HWND_BROADcast} ${WM_FONTCHANGE} 0 0
 SectionEnd
-
+```
 问： 添加版本号时在脚本中加入下面的代码，则为 NSIS 生成的 exe 添加版本信息。
+``` nsis
 VIProductVersion "1.2.3.4"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "ProductName" "Test Application"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "Comments" "A test comment"
@@ -388,6 +391,7 @@ VIAddVersionKey /LANG=${LANG_ENGLISH} "LegalTrademarks" "Test Application is a t
 VIAddVersionKey /LANG=${LANG_ENGLISH} "LegalCopyright" "?Fake company"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "FileDescription" "Test Application"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "FileVersion" "1.2.3"
+```
 问题就是，能否让属性中语言显示为“中文（中国）”？如附图：
 答： 中文 ID 是 2052。 把 ${LANG_ENGLISH} 改为 2052。
 
@@ -405,19 +409,21 @@ Error finding icon resources: installer, uninstaller icon size mismatch - see th
 
 问： 在安装的时候不是可以选择多种语言么？但是我怎样实现当选择英文时就装英文版，选择中文时就装中文版？
 答： 使用以下脚本：
+``` nsis
 StrCmp $LANGUAGE ${LANG_SIMPCHINESE} 0 +3
 File "你需要安装的中文文件"
 Goto lbl_finish
 File "你需要安装的英文文件"
 lbl_finish:
-
+```
 问： 在NSIS中如何才能做到根据对于注册表键值的判断决定是否写入字串，如果判断出某个key存在，则写入相应的字串，如果不存在，则不写入字串。例如：我先要判断 “ HKLM SOFTWARE\nsis”这个key存不存在。如果存在则写入字串“DispName:nsis”，应该是用“WriteRegStr HKLM "SOFTWARE\nsis" "DispName" "nsis"”。如果不存在这个key，则不写入注册表，继续下面的安装。
 答： 以下代码实现：
+``` nsis
 ReadRegStr $0 HKLM SOFTWARE\nsis ""
 　IfErrors 0 +2
 Goto +2
 WriteRegStr HKLM "SOFTWARE\nsis" "DispName" "nsis"
-
+```
 问：NSIS打包软件安装完毕后选择是否重新启动计算机？
 答：第一种方法：
 SetRebootFlag true
@@ -433,6 +439,7 @@ Reboot
 问： 能不能在 Section 区段中实现读取INI文件状态来安装
 如图所示，若选中单选框1则安装1中定义的文件。若不选中则不安装。若选中单选框2则安装2定义的文件。若不选则不安装。
 答： 使用以下代码：
+``` nsis
 !include LogicLib.nsh
 Section -post
 SetOutPath $INSTDIR
@@ -446,7 +453,9 @@ ${If} $INI_VALUE = 1
 File /a ".\file\fileA.exe"
 ${EndIf}
 SectionEnd
+```
 或者使用以下代码：
+``` nsis
 !include LogicLib.nsh
 Section -post
 SetOutPath $INSTDIR
@@ -460,7 +469,7 @@ ${Else}
 File /a ".\file\fileA.exe"
 ${EndIf}
 SectionEnd
-
+```
 问： 在安装过程中按“取消”的话，会弹出是否终止安装的确认窗口，请问怎样设置可以让这个窗口不要出现，按“取消”就直接退出呢？
 答： !define MUI_ABORTWARNING　把这句去掉就可以了....
 问： 如图所示的地方，现在显示的是“setup 将安装...”，除了用自定义字串来修改这个地方以外，如何把这个setup搞成其他的？比如“安装程序现在将...”
@@ -518,6 +527,7 @@ nevershow 可以阻止用户查看任何信息。注意区段里可以使用 Set
 
 问：我想把一小程序用NSIS打包，但用注册机算出来的注册码保存到注册表中时是以Hex数据保存的，能否在安装过程中将输入到Edit框中的数据转换成Hex数据保存到注册表中呢？注册码的形式是“XXXX-XXXX-XXXX-XXXX”！
 答：试试看这个
+``` nsis
 !define HKEY_CLASSES_ROOT 0x80000000
 !define HKEY_CURRENT_USER 0x80000001
 !define HKEY_LOCAL_MACHINE 0x80000002
@@ -538,7 +548,7 @@ System::Call "Advapi32::RegSetValueEx(i r3, t '${VALUE}', i 0, i 3, i r1, i r2) 
 System::Call "Advapi32::RegCloseKey(i r0)"
 System::Free $1
 System::Free $0
-
+```
 问： 比如，我把 a.exe 用nsis包装好，安装到 c:\helloLib\a.exe，完成后，想把c:\helloLib\添加到 系统环境变量的 path里头，这样，在任何地方输入 a.exe可执行。如何将路径添加到 系统环境变量中？
 答：以下代码实现：
 ReadRegStr $0 HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "Path"
@@ -551,11 +561,13 @@ WriteRegExpandStr HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environ
 @="c:\helloLib\a.exe"
 
 问： 如果是这样写的时候就可以在左边显示页眉位图：
+``` nsis
 !define MUI_ABORTWARNING
 !define MUI_ICON "${NSISDIR}\Contrib\Graphics\Icons\modern-install.ico"
 !define MUI_UNICON "${NSISDIR}\Contrib\Graphics\Icons\modern-uninstall.ico"
 !define MUI_HEADERIMAGE
 !define MUI_HEADERIMAGE_BITMAP "f:\11.bmp"
+```
 会显示如附图1。会靠左，但是如果把 MUI_HEADERIMAGE 换成 MUI_HEADERIMAGE_RIGHT 就无法显示位图,只能出现安装图标了，如附图2。
 答： 把插入的headerimage图片放到右边（默认是在左边）
 !define MUI_HEADERIMAGE
@@ -595,15 +607,18 @@ ReserveFile ".\io.ini"
 
 问：NSIS打包时运行程序时不显示窗口
 答：
+``` nsis
 nsExec::ExecToStack '"$INSTDIR\someprogram.exe" /paramS'
 Pop $0 ;;nsExec::ExecToStack 执行结果
 Pop $1 ;;someprogram.exe 返回结果
+```
 同样有2个插件
 ExecCmd plug-in : http://nsis.sourceforge.net/ExecCmd_plug-in
 ExecDos plug-in : http://nsis.sourceforge.net/ExecDos_plug-in
 
 问：NSIS安装包在安装完成后打开主页的代码
 答：
+``` nsis
 !define MUI_FINISHPAGE_RUN "$INSTDIR\IMETool.exe"
 !define MUI_FINISHPAGE_RUN_TEXT "运行程序"
 !define MUI_FINISHPAGE_SHOWREADME
@@ -613,18 +628,21 @@ ExecDos plug-in : http://nsis.sourceforge.net/ExecDos_plug-in
 Function Info
 ExecShell "open" " http://nsis.sf.net/"
 Functionend
+```
 问：我想在程序安装完毕时自动运行一个文件,比如批处理文件,网页文件,可执行文件,之类的东东,具体要怎么做?
 答：Function .onInstSuccess中使用ExecWait ''来调命令
 问：如何根据对于注册表键值的判断决定是否写入字串？
 在NSIS中如何才能做到根据对于注册表键值的判断决定是否写入字串，如果判断出某个key存在，则写入相应的字串，如果不存在，则不写入字串。例如：我先要判断“HKLM SOFTWARE\nsis”这个key存不存在。如果存在则写入字串“DispName:nsis”，应该是用“WriteRegStr HKLM "SOFTWARE\nsis" "DispName" "nsis"”。如果不存在这个key，则不写入注册表，继续下面的安装。
 答：以下代码可以实现
+``` nsis
 ReadRegStr $0 HKLM SOFTWARE\nsis ""
 　IfErrors 0 +2
 　Goto +2
 WriteRegStr HKLM "SOFTWARE\nsis" "DispName" "nsis"
-
+```
 问： 组件A 组件B 组件C 均为可选，A可单独安装，B或者C被选择的时候A必须被选择。
 答： 以下代码
+``` nsis
 Section "组件 A" aaa
 detailprint "A"
 SectionEnd
@@ -644,6 +662,7 @@ IntCmp $0 1 0 +2
 IntCmp $1 1 0 +2
 　SectionSetFlags ${aaa} 1
 FunctionEnd
+```
 解释：SectionGetFlags 表示获取某区段的flags状态（就是是否被勾选，选中返回值为1，反之为0）
 SectionGetFlags ${bbb} $0 表示获取序号为${bbb}的区段的Flags状态并把返回值输出到变量 $0，C 区段相同。
 接着就是 StrCmp ，解释同上。
@@ -674,15 +693,14 @@ FunctionEnd
 
 问： 如何制作安装包的时候需要调用系统函数来检测当前安装包运行的操作系统的内码页。
 答： 以下代码显示系统语言：
+
+``` nsis
 System::Call "Kernel32::GetSystemDefaultLangID(v ..) i .s"
 Pop $0
 IntOp $0 $0 & 0xFFFF
 MessageBox MB_OK $0
-
 ```
-
-```
-
+``` cpp
 // nsis版本
 
 const char *NSIS_VERSION="v2.46";
@@ -835,21 +853,9 @@ The /O 开关及后面跟随的记录文件告诉编译器输出记录到记录�
 
 ```
 
-```
-
 [nsis中文版下载](http://pan.baidu.com/s/1mgM9YrA)
 
 [![img](https://images0.cnblogs.com/i/616541/201404/011301469683855.jpg)](http://pan.baidu.com/s/1mgM9YrA)
-
-```
-
-```
-
-
-
-
-
-
 
 
 

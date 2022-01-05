@@ -6,9 +6,22 @@
 
 
 ## install
-`pip install dvc`
+```
+pip install dvc
+```
+
+
+``` bash
+conda install -c conda-forge mamba # installs much faster than conda
+mamba install -c conda-forge dvc
+```
+注意：dvc的依赖项较多，如cryptography。容易出错。
+
 
 ## demo
+
+
+### 初始化git仓库
 ``` bash
 
 (base) H:\tmp\dvc_demo>git commit
@@ -25,28 +38,33 @@
  create mode 100644 .dvcignore
  ```
 
-
+### download file
 ```
 dvc get https://github.com/iterative/dataset-registry get-started/data.xml -o data/data.xml
 dvc add data/data.xml
 
 ```
 
-
+### add file
 ```
 git add data/data.xml.dvc data/.gitignore
 git commit -m "Add raw data"
 ```
 
+### remote config
 ```
 dvc remote add -d storage s3://mybucket/dvcstore
 git add .dvc/config
 git commit -m "Configure remote storage"
 ```
 
+### push
 ```
 dvc push
+```
 
+### pull
+```
 dvc pull
 
 dvc checkout
