@@ -25,6 +25,12 @@ if __name__ == '__main__':
     pass
 ```
 
+运行的时候，可以发现后台起了一个matlab服务。
+```
+$ tasklist |grep -i matl
+MATLAB.exe                   23020 Console                    1    463,724 K
+```
+
 ## misc
 
 ### OSError: MATLAB Engine for Python supports Python version 2.7, 3.5 and 3.6 but your version of Python is 3.7
@@ -58,3 +64,29 @@ Although, Matlab supported versions indicates that 3.7 is supported, the "setup.
 Where can I download the latest setup.py.
 
 Is modifying the setup.py to include 3.7 sufficient ? 
+
+### Compatible Versions of Python
+[https://ww2.mathworks.cn/help/matlab/matlab_external/get-started-with-matlab-engine-for-python.html](https://ww2.mathworks.cn/help/matlab/matlab_external/get-started-with-matlab-engine-for-python.html)
+
+The table gives the Python versions which are compatible with the MATLAB Interface to Python, MATLAB Engine
+for Python, and MATLAB Compiler SDK for Python. See Note below for the Python Client Library for MATLAB
+Production Server.
+
+  
+|MATLAB Version |Compatible Versions of Python 2 |Compatible Versions of Python 3|
+|--- |---- |---|
+|R2021b |2.7 |3.7, 3.8, 3.9|
+|R2021a |2.7 |3.7, 3.8|
+|R2020b |2.7 |3.6, 3.7, 3.8|
+|R2020a |2.7 |3.6, 3.7|
+|R2019b |2.7 |3.6, 3.7|
+|R2019a |2.7 |3.5, 3.6, 3.7|
+|R2018b |2.7 |3.5, 3.6|
+|R2018a |2.7 |3.5, 3.6|
+|R2017b |2.7 |3.4, 3.5, 3.6|
+|R2017a |2.7 |3.4, 3.5|
+|R2016b |2.7 |3.3, 3.4, 3.5|
+|R2016a |2.7 |3.3, 3.4|
+|R2015a |2.7 |3.3, 3.4|
+|R2015b |2.7 |3.3, 3.4|
+|R2014b |2.7 |3.3|

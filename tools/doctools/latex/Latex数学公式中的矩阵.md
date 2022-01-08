@@ -16,6 +16,14 @@
 
 使用`matrix`、`pmatrix`、`bmatrix`、`Bmatrix`、`vmatrix`或者`Vmatrix`环境：
 
+- matrix 裸矩阵
+- pmatrix (矩阵)
+- bmatrix [矩阵]
+- Bmatrix {矩阵}
+- vmatrix 行列式： |矩阵|
+- Vmatrix ||矩阵||
+
+
 ```
 $$
 \begin{gathered}
@@ -39,6 +47,13 @@ $$
 
 
 0110(0i−i0)[01−10]{100−1}∣∣∣acbd∣∣∣∥∥∥i00−i∥∥∥0110(0−ii0)[0−110]{100−1}|abcd|‖i00−i‖
+
+### dots
+
+– \ldots for horizontal dots on the line
+– \cdots for horizontal dots above the line
+– \vdots for vertical dots
+– \ddots for diagonal dots
 
 
 

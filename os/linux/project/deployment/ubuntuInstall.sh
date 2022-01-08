@@ -122,3 +122,8 @@ installAll(){
     installAnaconda
     installJava
 }
+
+enableSshd(){
+    # systemctl status sshd
+    service sshd start
+}
