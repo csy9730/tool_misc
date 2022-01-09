@@ -33,3 +33,8 @@ optional arguments:
   --run-cache           Push run history for all stages.
   --glob                Allows targets containing shell-style wildcards.
 ```
+## usage
+```
+dvc push -r myremtoe
+
+```

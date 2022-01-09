@@ -123,7 +123,7 @@ ssh-keygen -t ed25519 -C "strawperrypi" -f pi_ed25519 -q -N ""
 # ssh-keygen -C "strawperrypi" -f pi_rsa -q -N ""
 
 # 2. 复制公钥到目标设备
-ssh-copy-id pi_ed25519.pub my_rasp
+ssh-copy-id -i pi_ed25519.pub my_rasp
 
 ```
 
