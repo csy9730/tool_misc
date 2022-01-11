@@ -1,6 +1,21 @@
 # sci-hub
 [https://sci-hub.ru/](https://sci-hub.ru/)
 
+
+Sci-Hub是俄罗斯的一个网站，通过输入文献的链接或者DOI或者PubMed号可以下载几乎所有SCI论文。
+Sci-hub是通过各大高校的VPN可以访问出版网站下载的资源。
+Sci-Hub站点的本体由于受到了各大出版垄断集团的打击，经常无法访问
+
+下载资源方法
+- DOI号
+- PubMed号
+- 论文的题目
+- PMID号
+- 数据库链接
+
+访问Sci-Hub网站将PMID输入到输入框中，然后回车或点击右侧的“OPEN”按钮
+
+## homepage
 > the first pirate website in the world to provide mass and public access to tens of millions of research papers
 
 

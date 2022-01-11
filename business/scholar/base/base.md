@@ -11,7 +11,7 @@ DOI的格式是什么样的？
 
  知道DOI之后如何检索文献？
 
-DOI自身就是一套非常完备的文献储存与检索系统，有非常方便的检索网站：http://dx.doi.org，进入网站之后，在对话框中输入文献的doi进行检索可以直接链接到文献URL页面。还是刚才那篇JMCA,在dx.doi.org上输入doi进行检索，如下图所示：
+DOI自身就是一套非常完备的文献储存与检索系统，有非常方便的检索网站：[http://dx.doi.org](http://dx.doi.org)，进入网站之后，在对话框中输入文献的doi进行检索可以直接链接到文献URL页面。还是刚才那篇JMCA,在dx.doi.org上输入doi进行检索，如下图所示：
 
 ### sci-hub
-sci-hub.cc是一个很好的文献下载工具，但是它并不是很好的文献检索工具，直接输入作者或者关键字是没用的，输入卷期号也并不能得到相关文献，因此，推荐大家将google scholar和sci-hub.cc结合起来使用，采用google scholar进行检索，得到相关文献的URL网址之后，再采用sci-hub.cc来免费下载文献
+[sci-hub.cc](sci-hub.cc)是一个很好的文献下载工具，但是它并不是很好的文献检索工具，直接输入作者或者关键字是没用的，输入卷期号也并不能得到相关文献，因此，推荐大家将google scholar和sci-hub.cc结合起来使用，采用google scholar进行检索，得到相关文献的URL网址之后，再采用sci-hub.cc来免费下载文献

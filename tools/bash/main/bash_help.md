@@ -40,4 +40,6 @@ General help using GNU software: <http://www.gnu.org/gethelp/>
 ```
 bash -c "help set"
 
+bash --login
+bash -l -i
 ```
