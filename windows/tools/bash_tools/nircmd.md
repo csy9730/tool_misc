@@ -37,6 +37,8 @@ nircmd.exe exitwin poweroff
 nircmd stdbeep
 nircmd speak text "Please visit the Web site of NirSoft at http://www.nirsoft.net" 2 80 
 
+# 休眠
+nircmd standby
 ```
 
 更多命令查看[http://www.nirsoft.net/utils/nircmd.html](http://www.nirsoft.net/utils/nircmd.html)
