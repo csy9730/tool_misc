@@ -47,6 +47,15 @@ $$
 \begin{cases} 选项1\\ 选项2 \\ \cdots \\ 选项n \end{cases} 
 $$
 
+### 不等号
+$$
+ \approx 
+$$
+
+### 求导上标符号
+$$
+x^{'}
+$$
 
 ## demo
 
