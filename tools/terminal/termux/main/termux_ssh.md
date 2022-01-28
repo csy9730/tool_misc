@@ -10,6 +10,12 @@
 * 图形接口： XDMCP VNC XRDP 等
 
 SSH服务器
+
+### install
+``` bash
+apt install openssh
+```
+
 ### SSH
 1. 建立连接
 ``` bash
@@ -17,8 +23,10 @@ sshd -p 9000 # 指定端口号
 ssh u0_a198@192.168.1.101 -p 8022
 ``` 
 2. 断开连接
-Ctrl+D
-logout
+
+
+- Ctrl+D
+- logout
  
 
 

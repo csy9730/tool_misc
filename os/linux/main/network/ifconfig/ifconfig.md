@@ -87,9 +87,9 @@ ifconfig eth0 192.168.224.149 netmask 255.255.255.0 up
 ```
 
 #### 永久配置ip
-修改 /etc/init.d/rcS 文件。
+修改 `/etc/init.d/rcS` 文件。
 
-在 ifconfig lo 127.0.0.1 下面添加一行 `ifconfig eth0 192.168.0.10 netmask 255.255.255.0 up`
+在 `ifconfig lo 127.0.0.1` 下面添加一行 `ifconfig eth0 192.168.0.10 netmask 255.255.255.0 up`
 #### 启停网卡
 重新启停以太网卡：
 ```
@@ -98,8 +98,9 @@ sudo ifconfig eth0 up
 ```
 
 ②添加默认网关：
-
-   sudo route add default gw 192.168.1.1
+```
+sudo route add default gw 192.168.1.1
+```
 ## help
 ```
 (base) ➜  ~ ifconfig --help

@@ -1,0 +1,3 @@
+# The main termux repository:
+#deb https://termux.net stable main
+deb https://mirrors.tuna.tsinghua.edu.cn/termux/termux-packages-24 stable main
