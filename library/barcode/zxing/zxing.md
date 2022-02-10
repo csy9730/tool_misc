@@ -6,15 +6,12 @@
 
 The project is in maintenance mode, meaning, changes are driven by contributed patches. Only bug fixes and minor enhancements will be considered. The Barcode Scanner app can no longer be published, so it's unlikely any changes will be accepted for it. There is otherwise no active development or roadmap for this project. It is "DIY".
 
-## 
-
 ## Get Started Developing
 
 To get started, please visit: https://github.com/zxing/zxing/wiki/Getting-Started-Developing
 
 ZXing ("zebra crossing") is an open-source, multi-format 1D/2D barcode image processing library implemented in Java, with ports to other languages.
 
-## 
 
 ## Supported Formats
 
@@ -28,11 +25,10 @@ ZXing ("zebra crossing") is an open-source, multi-format 1D/2D barcode image pro
 |                       |               | RSS-14       |
 |                       |               | RSS-Expanded |
 
-## 
 
 ## Components
 
-### 
+
 
 ### Active
 
@@ -46,7 +42,6 @@ ZXing ("zebra crossing") is an open-source, multi-format 1D/2D barcode image pro
 | zxingorg            | The source behind `zxing.org`                                |
 | zxing.appspot.com   | The source behind web-based barcode generator at `zxing.appspot.com` |
 
-### 
 
 ### Available in previous releases
 
@@ -58,7 +53,6 @@ ZXing ("zebra crossing") is an open-source, multi-format 1D/2D barcode image pro
 | [actionscript](https://github.com/zxing/zxing/tree/c1df162b95e07928afbd4830798cc1408af1ac67/actionscript) | Partial ActionScript port |
 | [jruby](https://github.com/zxing/zxing/tree/a95a8fee842f67fb43799a8e0e70e4c68b509c43/jruby) | JRuby wrapper             |
 
-### 
 
 ### ZXing-based third-party open source projects
 
@@ -78,7 +72,6 @@ ZXing ("zebra crossing") is an open-source, multi-format 1D/2D barcode image pro
 | [zxing-js/library](https://github.com/zxing-js/library)      | TypeScript port of ZXing library                             |
 | [pyzxing](https://github.com/ChenjieXu/pyzxing)              | Python wrapper to ZXing library                              |
 
-### 
 
 ### Other related third-party open source projects
 
@@ -88,7 +81,7 @@ ZXing ("zebra crossing") is an open-source, multi-format 1D/2D barcode image pro
 | [ZBar](http://zbar.sourceforge.net/)                  | Reader library in C99     |
 | [OkapiBarcode](https://github.com/woo-j/OkapiBarcode) |                           |
 
-## 
+
 
 ## Links
 
@@ -97,13 +90,11 @@ ZXing ("zebra crossing") is an open-source, multi-format 1D/2D barcode image pro
 - [Javadoc](https://zxing.github.io/zxing/apidocs/)
 - [Documentation Site](https://zxing.github.io/zxing/)
 
-## 
 
 ## Contacting
 
 Post to the [discussion forum](https://groups.google.com/group/zxing) or tag a question with [`zxing` on StackOverflow](https://stackoverflow.com/questions/tagged/zxing).
 
-## 
 
 ## Etcetera
 
