@@ -10,7 +10,7 @@
 
 
 
-一、Primer中的说法
+## 一、Primer中的说法
 
 首先我们来看看经典是怎么说的：
 
@@ -19,16 +19,16 @@
 还有一段这样说，
 
 “通常直接初始化和复制初始化仅在低级别优化上存在差异，然而，对于不支持复制的类型，或者使用非explicit构造函数的时候，它们有本质区别：
-
+``` cpp
 ifstream file1("filename")://ok:direct initialization
 
 ifstream file2 = "filename";//error:copy constructor is private
-
+```
 ”
 
 
 
-二、通常的误解
+## 二、通常的误解
 
 从上面的说法中，我们可以知道，直接初始化不一定要调用复制构造函数，而复制初始化一定要调用复制构造函数。然而大多数人却认为，直接初始化是构造对象时要调用复制构造函数，而复制初始化是构造对象时要调用赋值操作函数（operator=），其实这是一大误解。因为只有对象被创建才会出现初始化，而赋值操作并不应用于对象的创建过程中，且primer也没有这样的说法。至于为什么会出现这个误解，可能是因为复制初始化的写法中存在等号（=）吧。
 
@@ -40,189 +40,51 @@ ifstream file2 = "filename";//error:copy constructor is private
 
 ```cpp
 #include <iostream>
-
-
-
 #include <cstring>
-
-
-
 using namespace std;
-
-
-
  
-
-
-
 class ClassTest
-
-
-
 {
-
-
-
-public:
-
-
-
-ClassTest()
-
-
-
-{
-
-
-
-c[0] = '\0';
-
-
-
-cout<<"ClassTest()"<<endl;
-
-
-
-}
-
-
-
-ClassTest& operator=(const ClassTest &ct)
-
-
-
-{
-
-
-
-strcpy(c, ct.c);
-
-
-
-cout<<"ClassTest& operator=(const ClassTest &ct)"<<endl;
-
-
-
-return *this;
-
-
-
-}
-
-
-
-ClassTest(const char *pc)
-
-
-
-{
-
-
-
-strcpy(c, pc);
-
-
-
-cout<<"ClassTest (const char *pc)"<<endl;
-
-
-
-}
-
-
-
-// private:
-
-
-
-ClassTest(const ClassTest& ct)
-
-
-
-{
-
-
-
-strcpy(c, ct.c);
-
-
-
-cout<<"ClassTest(const ClassTest& ct)"<<endl;
-
-
-
-}
-
-
-
-private:
-
-
-
-char c[256];
-
-
-
+    public:
+    ClassTest()
+    {
+        c[0] = '\0';
+        cout<<"ClassTest()"<<endl;
+    }
+    ClassTest& operator=(const ClassTest &ct)
+    {
+        strcpy(c, ct.c);
+        cout<<"ClassTest& operator=(const ClassTest &ct)"<<endl;
+        return *this;
+    }
+    ClassTest(const char *pc)
+    {
+        strcpy(c, pc);
+        cout<<"ClassTest (const char *pc)"<<endl;
+    }
+    // private:
+    ClassTest(const ClassTest& ct)
+    {
+        strcpy(c, ct.c);
+        cout<<"ClassTest(const ClassTest& ct)"<<endl;
+    }
+    private:
+    char c[256];
 };
-
-
-
  
-
-
-
 int main()
-
-
-
 {
-
-
-
-cout<<"ct1: ";
-
-
-
-ClassTest ct1("ab");//直接初始化
-
-
-
-cout<<"ct2: ";
-
-
-
-ClassTest ct2 = "ab";//复制初始化
-
-
-
-cout<<"ct3: ";
-
-
-
-ClassTest ct3 = ct1;//复制初始化
-
-
-
-cout<<"ct4: ";
-
-
-
-ClassTest ct4(ct1);//直接初始化
-
-
-
-cout<<"ct5: ";
-
-
-
-ClassTest ct5 = ClassTest();//复制初始化
-
-
-
-return 0;
-
-
-
+    cout<<"ct1: ";
+    ClassTest ct1("ab");//直接初始化
+    cout<<"ct2: ";
+    ClassTest ct2 = "ab";//复制初始化
+    cout<<"ct3: ";
+    ClassTest ct3 = ct1;//复制初始化
+    cout<<"ct4: ";
+    ClassTest ct4(ct1);//直接初始化
+    cout<<"ct5: ";
+    ClassTest ct5 = ClassTest();//复制初始化
+    return 0;
 }
 ```
 
@@ -242,7 +104,7 @@ return 0;
 
 
 
-三、层层推进，到底谁欺骗了我们
+## 三、层层推进，到底谁欺骗了我们
 
 很多时候，自己的眼睛往往会欺骗你自己，这里就是一个例子，正是你的眼睛欺骗了你。为什么会这样？其中的原因在谈优化时的补充中也有说明，就是因为编译会帮你做很多你看不到，你也不知道的优化，你看到的结果，正是编译器做了优化后的代码的运行结果，并不是你的代码的真正运行结果。
 
@@ -258,57 +120,18 @@ return 0;
 
 ```cpp
 int main()
-
-
-
 {
-
-
-
-cout<<"ct1: ";
-
-
-
-ClassTest ct1("ab");
-
-
-
-cout<<"ct2: ";
-
-
-
-ClassTest ct2 = "ab";
-
-
-
-// cout<<"ct3: ";
-
-
-
-// ClassTest ct3 = ct1;
-
-
-
-// cout<<"ct4: ";
-
-
-
-// ClassTest ct4(ct1);
-
-
-
-cout<<"ct5: ";
-
-
-
-ClassTest ct5 = ClassTest();
-
-
-
-return 0;
-
-
-
+    cout<<"ct1: ";
+    ClassTest ct1("ab");
+    cout<<"ct2: ";
+    ClassTest ct2 = "ab";
+    // cout<<"ct3: ";
+    // ClassTest ct3 = ct1;
+    // cout<<"ct4: ";
+    // ClassTest ct4(ct1);
+    cout<<"ct5: ";
+    ClassTest ct5 = ClassTest();
+    return 0;
 }
 ```
 
@@ -322,25 +145,10 @@ return 0;
 
 ```cpp
 int main()
-
-
-
 {
-
-
-
-cout<<"ct1: ";
-
-
-
-ClassTest ct1("ab");
-
-
-
-return 0;
-
-
-
+    cout<<"ct1: ";
+    ClassTest ct1("ab");
+    return 0;
 }
 ```
 
@@ -348,7 +156,7 @@ return 0;
 
 
 
-四、揭开真相
+## 四、揭开真相
 
 看到这里，你可能已经大惊失色，下面就让我来揭开这个真相吧！
 
@@ -394,16 +202,16 @@ return 0;
 
 
 
-五、假象产生的原因
+## 五、假象产生的原因
 
 产生上面的运行结果的主要原因在于编译器的优化，而为什么把复制构造函数声明为私有（private）就能把这个假象去掉呢？主要是因为复制构造函数是可以由编译默认合成的，而且是公有的（public），编译器就是根据这个特性来对代码进行优化的。然而如里你自己定义这个复制构造函数，编译则不会自动生成，虽然编译不会自动生成，但是如果你自己定义的复制构造函数仍是公有的话，编译还是会为你做同样的优化。然而当它是私有成员时，编译器就会有很不同的举动，因为你明确地告诉了编译器，你明确地拒绝了对象之间的复制操作，所以它也就不会帮你做之前所做的优化，你的代码的本来面目就出来了。
 
 
 
 举个例子来说，就像下面的语句：
-
+``` cpp
 ClassTest ct2 = "ab";
-
+```
 它本来是要这样来构造对象的：首先调用构造函数ClassTest(const char *pc)函数创建一个临时对象，然后调用复制构造函数，把这个临时对象作为参数，构造对象ct2。然而编译也发现，复制构造函数是公有的，即你明确地告诉了编译器，你允许对象之间的复制，而且此时它发现可以通过直接调用重载的构造函数ClassTest(const char *pc)来直接初始化对象，而达到相同的效果，所以就把这条语句优化为ClassTest ct2（"ab"）。
 
 
