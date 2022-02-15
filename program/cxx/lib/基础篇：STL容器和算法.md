@@ -83,7 +83,7 @@ vector: 是一种序列式容器，事实上和数组差不多，但它比数组
 
 当我们开始用上了std::array时，难免会遇到要将其兼容 C 风格的接口，这里有三种做法：
 
-```text
+``` cpp
 void foo(int *p, int len) {
     return;
 }

@@ -2,10 +2,13 @@
 
 Area of polygon
 
+计算多边形面积
+
 ## Syntax
 
 ```
-A = polyarea(X,Y)A = polyarea(X,Y,dim)
+A = polyarea(X,Y)
+A = polyarea(X,Y,dim)
 ```
 
 

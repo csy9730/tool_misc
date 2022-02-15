@@ -2,7 +2,9 @@
 
 Boundary of a set of points in 2-D or 3-D
 
-[collapse all in page](javascript:void(0);)
+这个函数是求一堆(平面/立体)点的边界，它不是凸包，这里的边界可以凹陷
+
+[http://www.mathworks.com/help/matlab/ref/boundary.html](http://www.mathworks.com/help/matlab/ref/boundary.html)
 
 ## Syntax
 

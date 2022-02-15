@@ -24,7 +24,7 @@
 3.ST（实质是动态规划） O(nlogn)-O(1)
 
 
-
+### 线段树方法
 **线段树方法**:
 
 线段树能在对数时间内在数组区间上进行更新与查询。
@@ -55,79 +55,79 @@ M[i]:维护着被分配给该节点(编号:i 线段树根节点编号:1)的区�
 
 [![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
-```
- 1 #include<iostream>
- 2 
- 3 using namespace std;
- 4 
- 5 #define MAXN 100
- 6 #define MAXIND 256 //线段树节点个数
- 7 
- 8 //构建线段树,目的:得到M数组.
- 9 void initialize(int node, int b, int e, int M[], int A[])
-10 {
-11     if (b == e)
-12         M[node] = b; //只有一个元素,只有一个下标
-13     else
-14     {
-15     //递归实现左孩子和右孩子
-16         initialize(2 * node, b, (b + e) / 2, M, A);
-17         initialize(2 * node + 1, (b + e) / 2 + 1, e, M, A);
-18     //search for the minimum value in the first and
-19     //second half of the interval
-20     if (A[M[2 * node]] <= A[M[2 * node + 1]])
-21         M[node] = M[2 * node];
-22     else
-23         M[node] = M[2 * node + 1];
-24     }
-25 }
-26 
-27 //找出区间 [i, j] 上的最小值的索引
-28 int query(int node, int b, int e, int M[], int A[], int i, int j)
-29 {
-30     int p1, p2;
-31 
-32 
-33     //查询区间和要求的区间没有交集
-34     if (i > e || j < b)
-35         return -1;
-36 
-37     //if the current interval is included in
-38     //the query interval return M[node]
-39     if (b >= i && e <= j)
-40         return M[node];
-41 
-42     //compute the minimum position in the
-43     //left and right part of the interval
-44     p1 = query(2 * node, b, (b + e) / 2, M, A, i, j);
-45     p2 = query(2 * node + 1, (b + e) / 2 + 1, e, M, A, i, j);
-46 
-47     //return the position where the overall
-48     //minimum is
-49     if (p1 == -1)
-50         return M[node] = p2;
-51     if (p2 == -1)
-52         return M[node] = p1;
-53     if (A[p1] <= A[p2])
-54         return M[node] = p1;
-55     return M[node] = p2;
-56 
-57 }
-58 
-59 
-60 int main()
-61 {
-62     int M[MAXIND]; //下标1起才有意义,保存下标编号节点对应区间最小值的下标.
-63     memset(M,-1,sizeof(M));
-64     int a[]={3,1,5,7,2,9,0,3,4,5};
-65     initialize(1, 0, sizeof(a)/sizeof(a[0])-1, M, a);
-66     cout<<query(1, 0, sizeof(a)/sizeof(a[0])-1, M, a, 0, 5)<<endl;
-67     return 0;
-68 }
+``` cpp
+#include<iostream>
+
+using namespace std;
+
+#define MAXN 100
+#define MAXIND 256 //线段树节点个数
+
+//构建线段树,目的:得到M数组.
+void initialize(int node, int b, int e, int M[], int A[])
+{
+    if (b == e)
+        M[node] = b; //只有一个元素,只有一个下标
+    else
+    {
+    //递归实现左孩子和右孩子
+        initialize(2 * node, b, (b + e) / 2, M, A);
+        initialize(2 * node + 1, (b + e) / 2 + 1, e, M, A);
+    //search for the minimum value in the first and
+    //second half of the interval
+    if (A[M[2 * node]] <= A[M[2 * node + 1]])
+        M[node] = M[2 * node];
+    else
+        M[node] = M[2 * node + 1];
+    }
+}
+
+//找出区间 [i, j] 上的最小值的索引
+int query(int node, int b, int e, int M[], int A[], int i, int j)
+{
+    int p1, p2;
+
+
+    //查询区间和要求的区间没有交集
+    if (i > e || j < b)
+        return -1;
+
+    //if the current interval is included in
+    //the query interval return M[node]
+    if (b >= i && e <= j)
+        return M[node];
+
+    //compute the minimum position in the
+    //left and right part of the interval
+    p1 = query(2 * node, b, (b + e) / 2, M, A, i, j);
+    p2 = query(2 * node + 1, (b + e) / 2 + 1, e, M, A, i, j);
+
+    //return the position where the overall
+    //minimum is
+    if (p1 == -1)
+        return M[node] = p2;
+    if (p2 == -1)
+        return M[node] = p1;
+    if (A[p1] <= A[p2])
+        return M[node] = p1;
+    return M[node] = p2;
+
+}
+
+
+int main()
+{
+    int M[MAXIND]; //下标1起才有意义,保存下标编号节点对应区间最小值的下标.
+    memset(M,-1,sizeof(M));
+    int a[]={3,1,5,7,2,9,0,3,4,5};
+    initialize(1, 0, sizeof(a)/sizeof(a[0])-1, M, a);
+    cout<<query(1, 0, sizeof(a)/sizeof(a[0])-1, M, a, 0, 5)<<endl;
+    return 0;
+}
 ```
 
 [![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
-
+### ST算法
 **ST算法**（Sparse Table）:它是一种动态规划的方法。
 
 以最小值为例。a为所寻找的数组.
@@ -146,78 +146,71 @@ M[i]:维护着被分配给该节点(编号:i 线段树根节点编号:1)的区�
 
 这样，只要看这两个区间的最小值，就可以知道整个区间的最小值！
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+``` cpp
+#include<iostream>
+#include<cmath>
+#include<algorithm>
+using namespace std;
 
+#define M 100010
+#define MAXN 500
+#define MAXM 500
+int dp[M][18];
+/*
+*一维RMQ ST算法
+*构造RMQ数组 makermq(int n,int b[]) O(nlog(n))的算法复杂度
+*dp[i][j] 表示从i到i+2^j -1中最小的一个值(从i开始持续2^j个数)
+*dp[i][j]=min{dp[i][j-1],dp[i+2^(j-1)][j-1]}
+*查询RMQ rmq(int s,int v)
+*将s-v 分成两个2^k的区间
+*即 k=(int)log2(s-v+1)
+*查询结果应该为 min(dp[s][k],dp[v-2^k+1][k])
+*/
+
+void makermq(int n,int b[])
+{
+    int i,j;
+    for(i=0;i<n;i++)
+        dp[i][0]=b[i];
+    for(j=1;(1<<j)<=n;j++)
+        for(i=0;i+(1<<j)-1<n;i++)
+            dp[i][j]=min(dp[i][j-1],dp[i+(1<<(j-1))][j-1]);
+}
+int rmq(int s,int v)
+{
+    int k=(int)(log((v-s+1)*1.0)/log(2.0));
+    return min(dp[s][k],dp[v-(1<<k)+1][k]);
+}
+
+void makeRmqIndex(int n,int b[]) //返回最小值对应的下标
+{
+    int i,j;
+    for(i=0;i<n;i++)
+        dp[i][0]=i;
+    for(j=1;(1<<j)<=n;j++)
+        for(i=0;i+(1<<j)-1<n;i++)
+            dp[i][j]=b[dp[i][j-1]] < b[dp[i+(1<<(j-1))][j-1]]? dp[i][j-1]:dp[i+(1<<(j-1))][j-1];
+}
+int rmqIndex(int s,int v,int b[])
+{
+    int k=(int)(log((v-s+1)*1.0)/log(2.0));
+    return b[dp[s][k]]<b[dp[v-(1<<k)+1][k]]? dp[s][k]:dp[v-(1<<k)+1][k];
+}
+
+int main()
+{
+    int a[]={3,4,5,7,8,9,0,3,4,5};
+    //返回下标
+    makeRmqIndex(sizeof(a)/sizeof(a[0]),a);
+    cout<<rmqIndex(0,9,a)<<endl;
+    cout<<rmqIndex(4,9,a)<<endl;
+    //返回最小值
+    makermq(sizeof(a)/sizeof(a[0]),a);
+    cout<<rmq(0,9)<<endl;
+    cout<<rmq(4,9)<<endl;
+    return 0;
+}
 ```
- 1 #include<iostream>
- 2 #include<cmath>
- 3 #include<algorithm>
- 4 using namespace std;
- 5 
- 6 #define M 100010
- 7 #define MAXN 500
- 8 #define MAXM 500
- 9 int dp[M][18];
-10 /*
-11 *一维RMQ ST算法
-12 *构造RMQ数组 makermq(int n,int b[]) O(nlog(n))的算法复杂度
-13 *dp[i][j] 表示从i到i+2^j -1中最小的一个值(从i开始持续2^j个数)
-14 *dp[i][j]=min{dp[i][j-1],dp[i+2^(j-1)][j-1]}
-15 *查询RMQ rmq(int s,int v)
-16 *将s-v 分成两个2^k的区间
-17 *即 k=(int)log2(s-v+1)
-18 *查询结果应该为 min(dp[s][k],dp[v-2^k+1][k])
-19 */
-20 
-21 void makermq(int n,int b[])
-22 {
-23     int i,j;
-24     for(i=0;i<n;i++)
-25         dp[i][0]=b[i];
-26     for(j=1;(1<<j)<=n;j++)
-27         for(i=0;i+(1<<j)-1<n;i++)
-28             dp[i][j]=min(dp[i][j-1],dp[i+(1<<(j-1))][j-1]);
-29 }
-30 int rmq(int s,int v)
-31 {
-32     int k=(int)(log((v-s+1)*1.0)/log(2.0));
-33     return min(dp[s][k],dp[v-(1<<k)+1][k]);
-34 }
-35 
-36 void makeRmqIndex(int n,int b[]) //返回最小值对应的下标
-37 {
-38     int i,j;
-39     for(i=0;i<n;i++)
-40         dp[i][0]=i;
-41     for(j=1;(1<<j)<=n;j++)
-42         for(i=0;i+(1<<j)-1<n;i++)
-43             dp[i][j]=b[dp[i][j-1]] < b[dp[i+(1<<(j-1))][j-1]]? dp[i][j-1]:dp[i+(1<<(j-1))][j-1];
-44 }
-45 int rmqIndex(int s,int v,int b[])
-46 {
-47     int k=(int)(log((v-s+1)*1.0)/log(2.0));
-48     return b[dp[s][k]]<b[dp[v-(1<<k)+1][k]]? dp[s][k]:dp[v-(1<<k)+1][k];
-49 }
-50 
-51 int main()
-52 {
-53     int a[]={3,4,5,7,8,9,0,3,4,5};
-54     //返回下标
-55     makeRmqIndex(sizeof(a)/sizeof(a[0]),a);
-56     cout<<rmqIndex(0,9,a)<<endl;
-57     cout<<rmqIndex(4,9,a)<<endl;
-58     //返回最小值
-59     makermq(sizeof(a)/sizeof(a[0]),a);
-60     cout<<rmq(0,9)<<endl;
-61     cout<<rmq(4,9)<<endl;
-62     return 0;
-63 }
-```
-
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
-
- 
-
 
 作　　者：**Angel_Kitty**
 出　　处：<https://www.cnblogs.com/ECJTUACM-873284962/>
