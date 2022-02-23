@@ -86,11 +86,15 @@ HKEY_CURRENT_USER\Software\Microsoft\Command Processor
 显示当前目录.bat
 
 ```
-`cd` `/d %~dp0``echo` `%``cd``%` `pushd` `%~dp0``echo` `%``cd``%``popd``pause`
+cd /d %~dp0
+echo` `%``
+cd``%` `
+pushd` `%~dp0
+echo` `%``
+cd``%``
+popd
+pause
 ```
-
-
-
 
 
 可以看到，在开始使用cd命令跳转到UNC目录时，会出现"CMD 不支持将 UNC 路径作为当前目录。"的提示，即cd命令只能在本地目录跳转，却不能跳转到UNC目录。

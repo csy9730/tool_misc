@@ -1,6 +1,6 @@
 # windows base
 
-
+启动telnet服务
 `net start telnet`
 
 **Q**: 如何查看系统版本
@@ -27,7 +27,7 @@ import os
 os.system('"C:\Program Files\Tencent\WeChat\WeChat.exe"')
 ```
 
--autorun
+### autorun
 
 software\microsoft\windows\currentVersion\run
 HKLM software\microsoft\windows\currentVersion\run

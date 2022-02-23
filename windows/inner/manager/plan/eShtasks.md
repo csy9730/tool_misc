@@ -8,7 +8,7 @@
 schtasks.exe与taskschd.msc（任务计划程序）工具功能相似,taskschd.msc有友好的界面
 
 
-```
+``` bash
 
 schtasks /create /TN shutdown_t /ST 02:00 /sc once /TR "shutdown /s"
 
