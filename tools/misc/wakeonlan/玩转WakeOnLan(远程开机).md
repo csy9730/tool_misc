@@ -166,7 +166,7 @@ MagicPacket 魔术数据包的格式一般看上去像下面这个样子
 
 
 
-```c
+```c#
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -551,7 +551,7 @@ namespace WoL
 
 
 
-```c
+```c#
 static void Main(string[] args)
 {
     var wol = new WakeOnLan();

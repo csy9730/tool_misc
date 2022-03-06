@@ -1,100 +1,10 @@
-# c++框架大全
-
-
-
-[88489](https://blog.csdn.net/m0_37988084) 2019-07-04 22:20:42 ![img](https://csdnimg.cn/release/blogv2/dist/pc/img/articleReadEyes.png) 8683 ![img](https://csdnimg.cn/release/blogv2/dist/pc/img/tobarCollect.png) 收藏 97
-
-分类专栏： [C/C++](https://blog.csdn.net/m0_37988084/category_7944250.html)
-
-
-
-本篇文章主要介绍了"值得推荐的C/C++框架和库 (真的很强大)"，主要涉及到方面的内容，对于C/C++教程感兴趣的同学可以参考一下： 得学习的[C语言](http://lib.csdn.net/base/c)开源项目- 1. Webbench Webbench是一个在[Linux](http://lib.csdn.net/base/linux)下使用的非常简单的网站压测工具。它使用fork()模拟多个客户端同时访问我们...
-
--  
--  
-
-值得学习的[c语言](http://lib.csdn.net/base/c)开源项目
-
-\- 1. Webbench
-
-Webbench是一个在[linux](http://lib.csdn.net/base/linux)下使用的非常简单的网站压测工具。它使用fork()模拟多个客户端同时访问我们设定的URL，[测试](http://lib.csdn.net/base/softwaretest)网站在压力下工作的性能，最多可以模拟3万个并发连接去测试网站的负载能力。Webbench使用C语言编写, 代码实在太简洁，源码加起来不到600行。
-
-下载链接：http://home.tiscali.cz/~cz210552/webbench.html
-
-\- 2. Tinyhttpd
-
-tinyhttpd是一个超轻量型Http Server，使用C语言开发，全部代码只有502行(包括注释)，附带一个简单的Client，可以通过阅读这段代码理解一个 Http Server 的本质。
-
-下载链接：http://sourceforge[.NET](http://lib.csdn.net/base/dotnet)/projects/tinyhttpd/
-
-\- 3. cJSON
-
-cJSON是C语言中的一个JSON编解码器，非常轻量级，C文件只有500多行，速度也非常理想。
-
-cJSON也存在几个弱点，虽然功能不是非常强大，但cJSON的小身板和速度是最值得赞赏的。其代码被非常好地维护着，结构也简单易懂，可以作为一个非常好的C语言项目进行学习。
-
-项目主页:http://sourceforge[.net](http://lib.csdn.net/base/dotnet)/projects/cjson/
-
-\- 4. CMockery
-
-cmockery是google发布的用于C单元测试的一个轻量级的框架。它很小巧，对其他开源包没有依赖，对被测试代码侵入性小。cmockery的源代码行数不到3K，你阅读一下will_return和mock的源代码就一目了然了。
-
-主要特点：
-
-- 免费且开源，google提供技术支持；
-- 轻量级的框架，使测试更加快速简单；
-- 避免使用复杂的编译器特性，对老版本的编译器来讲，兼容性好;
-- 并不强制要求待测代码必须依赖C99标准，这一特性对许多嵌入式系统的开发很有用
-
-下载链接：http://code.google.com/p/cmockery/downloads/list
-
-\- 5. Libev
-
-libev是一个开源的事件驱动库，基于epoll，kqueue等OS提供的基础设施。其以高效出名，它可以将IO事件，定时器，和信号统一起来，统一放在事件处理这一套框架下处理。基于Reactor模式，效率较高，并且代码精简（4.15版本8000多行），是学习事件驱动编程的很好的资源。
-
-下载链接：http://software.schmorp.de/pkg/libev.html
-
-\- 6. Memcached
-
-Memcached 是一个高性能的分布式内存对象缓存系统，用于动态Web应用以减轻[数据库](http://lib.csdn.net/base/mysql)负载。它通过在内存中缓存数据和对象来减少读取数据库的次数，从而提供动态数据库驱动网站的速度。Memcached 基于一个存储键/值对的 hashmap。Memcached-1.4.7的代码量还是可以接受的，只有10K行左右。
-
-下载地址：http://memcached.org/
-
-\- 7. Lua
-
-Lua很棒，Lua是巴西人发明的，这些都令我不爽，但是还不至于脸红，最多眼红。
-
-让我脸红的是Lua的源代码，百分之一百的ANSI C，一点都不掺杂。在任何支持ANSI C编译器的平台上都可以轻松编译通过。我试过，真是一点废话都没有。Lua的代码数量足够小，5.1.4仅仅1.5W行，去掉空白行和注释估计能到1W行。
-
-下载地址：http://www.lua.org/
-
-\- 8. SQLite
-
-SQLite是一个开源的[嵌入式](http://lib.csdn.net/base/embeddeddevelopment)关系数据库，实现自包容、零配置、支持事务的SQL数据库引擎。 其特点是高度便携、使用方便、结构紧凑、高效、可靠。足够小，大致3万行C代码，250K。
-
-下载地址：http://www.sqlite.org/ 。
-
-\- 9. UNIX v6
-
-UNIX V6 的内核源代码包括设备驱动程序在内 约有1 万行，这个数量的源代码，初学者是能够充分理解的。有一种说法是一个人所能理解的代码量上限为1 万行，UNIX V6的内核源代码从数量上看正好在这个范围之内。看到这里，大家是不是也有“如果只有1万行的话没准儿我也能学会”的想法呢？
-
-另一方面，最近的[操作系统](http://lib.csdn.net/base/operatingsystem)，例如Linux 最新版的内核源代码据说超过了1000 万行。就算不是初学者，想完全理解全部代码基本上也是不可能的。
-
-下载地址：http://minnie.tuhs.org/cgi-bin/utree.pl?file=V6
-
-\- 10. NETBSD
-
-NetBSD是一个免费的，具有高度移植性的 UNIX-like 操作系统，是现行可移植平台最多的操作系统，可以在许多平台上执行，从 64bit alpha 服务器到手持设备和嵌入式设备。NetBSD计划的口号是：”Of course it runs NetBSD”。它设计简洁，代码规范，拥有众多先进特性，使得它在业界和学术界广受好评。由于简洁的设计和先进的特征，使得它在生产和研究方面，都有卓越的表现，而且它也有受使用者支持的完整的源代码。许多程序都可以很容易地通过NetBSD Packages Collection获得。
-
-下载地址：http://www.netbsd.org/
-
-C++ 资源大全
+# C++ 资源大全
 
 关于 C++ 框架、库和资源的一些汇总列表，内容包括：标准库、Web应用框架、人工[智能](http://lib.csdn.net/base/aiplanning)、数据库、图片处理、[机器学习](http://lib.csdn.net/base/machinelearning)、日志、代码分析等。
 
  
 
-标准库
+## 标准库
 
 C++标准库，包括了STL容器，[算法](http://lib.csdn.net/base/datastructure)和函数等。
 
@@ -105,7 +15,7 @@ C++标准库，包括了STL容器，[算法](http://lib.csdn.net/base/datastruct
 
  
 
-框架
+## 框架
 
 C++通用框架和库
 
@@ -137,7 +47,7 @@ C++通用框架和库
 
  
 
-[人工智能](http://lib.csdn.net/base/aiframework)
+## [人工智能](http://lib.csdn.net/base/aiframework)
 
 - btsk ：游戏行为树启动器工具
 - Evolving Objects：基于模板的，ANSI C++演化计算库，能够帮助你非常快速地编写出自己的随机优化算法。
@@ -145,7 +55,7 @@ C++通用框架和库
 
  
 
-异步事件循环
+## 异步事件循环
 
 - Boost.Asio：用于网络和底层I/O编程的跨平台的C++库。
 - libev ：功能齐全，高性能的时间循环，轻微地仿效libevent，但是不再像libevent一样有局限性，也修复了它的一些bug。
@@ -154,7 +64,7 @@ C++通用框架和库
 
  
 
-音频
+## 音频
 
 音频，声音，音乐，数字化音乐库
 
@@ -168,7 +78,7 @@ C++通用框架和库
 
  
 
-生态学
+## 生态学
 
 生物信息，基因组学和生物技术
 
@@ -179,7 +89,7 @@ C++通用框架和库
 
  
 
-压缩
+## 压缩
 
 压缩和归档库
 
@@ -199,7 +109,7 @@ C++通用框架和库
 
  
 
-并发性
+## 并发性
 
 并发执行和多线程
 
@@ -216,14 +126,14 @@ C++通用框架和库
 
  
 
-容器
+## 容器
 
 - C++ B-tree ：基于B树数据结构，实现命令内存容器的模板库
 - Hashmaps： C++中开放寻址哈希表算法的实现
 
  
 
-密码学
+## 密码学
 
 - Bcrypt ：一个跨平台的文件加密工具，加密文件可以移植到所有可支持的操作系统和处理器中。
 - BeeCrypt：
@@ -242,7 +152,7 @@ C++通用框架和库
 
  
 
-数据库
+## 数据库
 
 数据库，SQL服务器，ODBC驱动程序和工具
 
@@ -256,7 +166,7 @@ C++通用框架和库
 
  
 
-调试
+## 调试
 
 调试库， 内存和资源泄露检测，单元测试
 
@@ -275,7 +185,7 @@ C++通用框架和库
 
  
 
-游戏引擎
+## 游戏引擎
 
 - Cocos2d-x ：一个跨平台框架，用于构建2D游戏，互动图书，演示和其他图形应用程序。
 - Grit ：社区项目，用于构建一个免费的游戏引擎，实现开放的世界3D游戏。
@@ -284,7 +194,7 @@ C++通用框架和库
 
  
 
-图形用户界面
+## 图形用户界面
 
 - CEGUI ： 很灵活的跨平台GUI库
 - FLTK ：快速，轻量级的跨平台的C++GUI工具包。
@@ -303,7 +213,7 @@ C++通用框架和库
 
  
 
-图形
+## 图形
 
 - bgfx：跨平台的渲染库
 - Cairo：支持多种输出设备的2D图形库
@@ -317,7 +227,7 @@ C++通用框架和库
 
  
 
-图像处理
+## 图像处理
 
 - Boost.GIL：通用图像库
 - CImg ：用于图像处理的小型开源C++工具包
@@ -334,7 +244,7 @@ C++通用框架和库
 
  
 
-国际化
+## 国际化
 
 - gettext ：GNU `gettext’
 - IBM ICU：提供Unicode 和全球化支持的C、C++ 和Java库
@@ -342,7 +252,7 @@ C++通用框架和库
 
  
 
-Jason
+## Json
 
 - frozen ： C/C++的Jason解析生成器
 - Jansson ：进行编解码和处理Jason数据的C语言库
@@ -362,7 +272,7 @@ Jason
 
  
 
-日志
+## 日志
 
 - Boost.Log ：设计非常模块化，并且具有扩展性
 - easyloggingpp：C++日志库，只包含单一的头文件。
@@ -371,7 +281,7 @@ Jason
 
  
 
-机器学习
+## 机器学习
 
 - Caffe ：快速的神经网络框架
 - CCV ：以C语言为核心的现代计算机视觉库
@@ -383,7 +293,7 @@ Jason
 
  
 
-数学
+## 数学
 
 - Armadillo ：高质量的C++线性代数库，速度和易用性做到了很好的平衡。语法和MatlAB很相似
 - blaze：高性能的C++数学库，用于密集和稀疏算法。
@@ -396,7 +306,7 @@ Jason
 
  
 
-多媒体
+## 多媒体
 
 - GStreamer ：构建媒体处理组件图形的库
 - LIVE555 Streaming Media ：使用开放标准协议(RTP/RTCP, RTSP, SIP) 的多媒体流库
@@ -407,7 +317,7 @@ Jason
 
  
 
-网络
+## 网络
 
 - ACE：C++面向对象网络变成工具包
 - Boost.Asio：用于网络和底层I/O编程的跨平台的C++库
@@ -428,7 +338,7 @@ Jason
 
  
 
-物理学
+## 物理学
 
 动力学仿真引擎
 
@@ -442,7 +352,7 @@ Jason
 
  
 
-[机器人](http://lib.csdn.net/base/robot)学
+## [机器人](http://lib.csdn.net/base/robot)学
 
 - MOOS-IvP ：一组开源C++模块，提供机器人平台的自主权，尤其是自主的海洋车辆。
 - MRPT：移动机器人编程工具包
@@ -453,14 +363,14 @@ Jason
 
  
 
-科学计算
+## 科学计算
 
 - FFTW :用一维或者多维计算DFT的C语言库。
 - GSL：GNU科学库。
 
  
 
-脚本
+## 脚本
 
 - ChaiScript ：用于C++的易于使用的嵌入式脚本语言。
 - Lua ：用于配置文件和基本应用程序脚本的小型快速脚本引擎。
@@ -471,7 +381,7 @@ Jason
 
  
 
-序列化
+## 序列化
 
 - Cap’n Proto ：快速数据交换格式和RPC系统。
 - cereal ：C++11 序列化库
@@ -484,7 +394,7 @@ Jason
 
  
 
-视频
+## 视频
 
 - libvpx ：VP8/VP9编码解码SDK
 - FFmpeg ：一个完整的，跨平台的解决方案，用于记录，转换视频和音频流。
@@ -494,7 +404,7 @@ Jason
 
  
 
-虚拟机
+## 虚拟机
 
 - CarpVM：C中有趣的VM，让我们一起来看看这个。
 - MicroPython ：旨在实现单片机上Python3.x的实现
@@ -502,7 +412,7 @@ Jason
 
  
 
-Web应用框架
+## Web应用框架
 
 - Civetweb ：提供易于使用，强大的，C/C++嵌入式Web服务器，带有可选的CGI，SSL和Lua支持。
 - CppCMS ：免费高性能的Web开发框架（不是 CMS）.
@@ -514,7 +424,7 @@ Web应用框架
 
  
 
-XML
+## XML
 
 XML就是个垃圾，xml的解析很烦人，对于计算机它也是个灾难。这种糟糕的东西完全没有存在的理由了。-Linus Torvalds
 
@@ -530,7 +440,7 @@ XML就是个垃圾，xml的解析很烦人，对于计算机它也是个灾难�
 
  
 
-多项混杂
+## 多项混杂
 
 一些有用的库或者工具，但是不适合上面的分类，或者还没有分类。
 
@@ -561,11 +471,11 @@ XML就是个垃圾，xml的解析很烦人，对于计算机它也是个灾难�
 
  
 
-软件
+## 软件
 
 用于创建开发环境的软件
 
-编译器
+## 编译器
 
 C/C++编译器列表
 
@@ -579,7 +489,7 @@ C/C++编译器列表
 
  
 
-在线编译器
+## 在线编译器
 
 在线C/C++编译器列表
 
@@ -592,7 +502,7 @@ C/C++编译器列表
 
  
 
-调试器
+## 调试器
 
 C/C++调试器列表
 
@@ -602,7 +512,7 @@ C/C++调试器列表
 
  
 
-集成开发环境（IDE）
+## 集成开发环境（IDE）
 
 C/C++集成开发环境列表
 
@@ -625,7 +535,7 @@ C/C++集成开发环境列表
 
  
 
-构建系统
+## 构建系统
 
 - Bear ：用于为clang工具生成编译数据库的工具
 - Biicode：基于文件的简单依赖管理器。
@@ -639,7 +549,7 @@ C/C++集成开发环境列表
 
  
 
-静态代码分析
+## 静态代码分析
 
 提高质量，减少瑕疵的代码分析工具列表
 

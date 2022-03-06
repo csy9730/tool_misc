@@ -40,7 +40,8 @@ XXXX：symbol lookup error：/home/....../libpdfium.so：undefined symbol：CRYP
 
 编译生成动态链接库后，调用时出现：
 
-\# lichunhong @ lichunhong-ThinkPad-T470p in ~/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws on git:lichunhong/dev x [18:54:05] C:127
+```
+# lichunhong @ lichunhong-ThinkPad-T470p in ~/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws on git:lichunhong/dev x [18:54:05] C:127
 
 $ rosrun path_plan PathPlanSimulation
 
@@ -49,6 +50,7 @@ $ rosrun path_plan PathPlanSimulation
 symbol lookup error: /home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/src/pathPlan/lib/libpathplan.so:
 
 undefined symbol: _ZN12ninebot_algo10AprAlgoLog9instance_E
+```
 
 即 symbol lookup error: libpathplan.so: undefined symbol: _ZN12ninebot_algo10AprAlgoLog9instance_E
 
@@ -57,15 +59,15 @@ undefined symbol: _ZN12ninebot_algo10AprAlgoLog9instance_E
 （1）使用file 命令查看 so库的架构，看看是否与平台一致
 
 可以看到，当前so库架构为x86-64，可以在GNU/Linux平台下使用。平台与架构一致
-
-\# lichunhong @ lichunhong-ThinkPad-T470p in ~/Documents/src/motion_planner/bin on git:dev x [18:47:54]
+```
+# lichunhong @ lichunhong-ThinkPad-T470p in ~/Documents/src/motion_planner/bin on git:dev x [18:47:54]
 
 $ file libpathplan.so
 
 libpathplan.so: ELF 64-bit LSB shared object, x86-64, version 1 (GNU/Linux), dynamically linked,
 
 BuildID[sha1]=32ae641e73c547376df20ca94746fbf5507de415, not stripped
-
+```
 接下来，需要定位一下 undefined symbol的具体信息
 
 (2)通过 ldd -r xxx.so 命令查看so库链接状态和错误信息
@@ -73,7 +75,7 @@ BuildID[sha1]=32ae641e73c547376df20ca94746fbf5507de415, not stripped
 ldd命令，可以查看对应的可执行文件或库文件依赖哪些库，但可执行文件或库文件要求与操作系统的编译器类型相同，即电脑是X86的GCC编译器，那么无法通过ldd命令查看ARM交叉编译器编译出来的可执行文件或库文件。
 
 如果想在Ubuntu等Linux宿主机上查看ARM交叉编译好的可执行程序和库文件的相关依赖关系，可以通过以下命令：
-
+```
 readelf -d xxx.so | grep NEEDED
 
 
@@ -111,19 +113,20 @@ undefined symbol: _ZN2cv8fastFreeEPv (./libpathplan.so)
 undefined symbol: _ZN2cv3Mat5setToERKNS_11_InputArrayES3_ (./libpathplan.so)
 
 undefined symbol: _ZN12ninebot_algo10AprAlgoLog9instance_E (./libpathplan.so)
-
+```
 可以看到有好多 undefined symbol ，其中就有提到的 _ZN12ninebot_algo10AprAlgoLog9instance_E 错误
 
 (3) 使用 c++filt symbol 定位错误在那个C++文件中
 
 从上面的undefined symbol中，通过c++filt <symbol>，可以定位到大多是opencv的问题
-
-\# lichunhong @ lichunhong-ThinkPad-T470p in ~/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/src/pathPlan/lib on git:lichunhong/dev x [19:04:26] C:1
+```
+# lichunhong @ lichunhong-ThinkPad-T470p in ~/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/src/pathPlan/lib on git:lichunhong/dev x [19:04:26] C:1
 
 $ c++filt _ZN2cv7waitKeyEi
 
 cv::waitKey(int)
 
-\# lichunhong @ lichunhong-ThinkPad-T470p in ~/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/src/pathPlan/lib on git:lichunhong/dev x [19:04:31]
+# lichunhong @ lichunhong-ThinkPad-T470p in ~/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/src/pathPlan/lib on git:lichunhong/dev x [19:04:31]
 
 $ c++filt _ZN2cv3maxERKNS_3MatES2_
+```

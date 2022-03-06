@@ -48,10 +48,10 @@ adb devices # 查询已连接设备/模拟器
  # 可能在adb中存在多个虚拟设备运行 可以指定虚拟设备运行  -s 虚拟设备名称
 ```
 该命令经常出现以下问题：
-offline —— 表示设备未连接成功或无响应；
-device —— 设备已连接；
-no device —— 没有设备/模拟器连接；
-unauthorized —— 设备没有授权，需要用户在手机上点击授权按钮
+- offline —— 表示设备未连接成功或无响应；
+- device —— 设备已连接；
+- no device —— 没有设备/模拟器连接；
+- unauthorized —— 设备没有授权，需要用户在手机上点击授权按钮
 
 List of devices attached 设备/模拟器未连接到 adb 或无响应
 
