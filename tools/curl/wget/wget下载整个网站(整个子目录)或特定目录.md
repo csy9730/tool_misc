@@ -83,16 +83,17 @@ down.log &
 
 
 \* 使用代理下载
+```
 wget -Y on -p -k [https://sourceforge.net/projects/wvware/](https://sourceforge.net/projects/wvware/)
-
+```
 代理可以在环境变量或wgetrc文件中设定
-
-\# 在环境变量中设定代理
-export PROXY=[http://211.90.168.94:8080/](https://link.zhihu.com/?target=http%3A//211.90.168.94%3A8080/)
-\# 在~/.wgetrc中设定代理
-http_proxy = [http://proxy.yoyodyne.com:18023/](https://link.zhihu.com/?target=http%3A//proxy.yoyodyne.com%3A18023/)
-ftp_proxy = [http://proxy.yoyodyne.com:18023/](https://link.zhihu.com/?target=http%3A//proxy.yoyodyne.com%3A18023/)
-
+``` bash
+# 在环境变量中设定代理
+export PROXY=http://211.90.168.94:8080/
+# 在~/.wgetrc中设定代理
+http_proxy = http://proxy.yoyodyne.com:18023/
+ftp_proxy = http://proxy.yoyodyne.com:18023/
+```
 wget各种选项分类列表
 
 \* 启动

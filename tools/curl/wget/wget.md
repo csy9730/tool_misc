@@ -2,9 +2,9 @@
 
 
 ## demo
-```
+``` bash
 wget xxx
-wget -c xxx
+wget -c xxx # 断点续传下载文件
 
 ```
 ## help
