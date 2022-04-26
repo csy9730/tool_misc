@@ -13,9 +13,16 @@ wget -r -p -np -k http://xxx.com/xxx
 ```
 
 - -r, --recursive（递归） specify recursive download.（指定递归下载）
+- -L 递归时不进入其它主机
+- -l, –level=NUMBER 最大递归深度 (inf 或 0 代表无穷).
+- -m, –mirror 等价于 `-r -N -l inf -nr`.
+- -nd 递归下载时不创建一层一层的目录，把所有的文件下载到当前目录
 - -k, --convert-links（转换链接） make links in downloaded HTML point to local files.（将下载的HTML页面中的链接转换为相对链接即本地链接）
 - -p, --page-requisites（页面必需元素） get all images, etc. needed to display HTML page.（下载所有的图片等页面显示所需的内容）
 - -np, --no-parent（不追溯至父级） don't ascend to the parent directory.
+
+- -E, –html-extension 将所有text/html文档以.html扩展名保存
+
 
 另外断点续传用`-nc`参数 , 日志 用`-o`参数
 
@@ -26,8 +33,13 @@ wget -r -p -np -k http://xxx.com/xxx
 
 ## runs
 
-`wget -r -p -np -k  https://www.jianshu.com/p/f5ce2c6fca43 -U 'Mozilla/5.0 (X11; Linux x86_64; rv:30.0) Gecko/20100101 Firefox/30.0'`
+``` bash
+# wget
+wget -r -p -np -k  https://www.jianshu.com/p/f5ce2c6fca43 -U 'Mozilla/5.0 (X11; Linux x86_64; rv:30.0) Gecko/20100101 Firefox/30.0'
+
+wget -r -p -np -k  https://zhuanlan.zhihu.com/p/380793959 -U 'Mozilla/5.0 (X11; Linux x86_64; rv:30.0) Gecko/20100101 Firefox/30.0'
+
+wget -r -p -np -k --level=0 -E --ignore-length -x  -erobots=off  -N https://zhuanlan.zhihu.com/p/380793959 -U 'Mozilla/5.0 (X11; Linux x86_64; rv:30.0) Gecko/20100101 Firefox/30.0'
+```
 
 
-
-https://zhuanlan.zhihu.com/p/380793959
