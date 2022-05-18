@@ -41,7 +41,7 @@ decltype与auto关键字一样，用于进行编译时类型推导，不过它�
 struct 
 {
     int d ;
-    doubel b;
+    double b;
 }anon_s;
 ```
 

@@ -66,15 +66,24 @@ usage: ssh-keygen [-q] [-b bits] [-t dsa | ecdsa | ed25519 | rsa]
 - -c 要求修改私钥和公钥文件中的注释。
 
 #### validity_interval 
-改选项可以配置有效时间段
+`-V`选项可以配置有效时间段
 
-> For example: “+52w1d” (valid from now to 52 weeks and one
->       day from now), “-4w:+4w” (valid from four weeks ago to four
->       weeks from now), “20100101123000:20110101123000” (valid
->       from 12:30 PM, January 1st, 2010 to 12:30 PM, January 1st,
->       2011), “-1d:20110101” (valid from yesterday to midnight,
->       January 1st, 2011), “-1m:forever” (valid from one minute
->       ago and never expiring).
+> For example: 
+>   “+52w1d” (valid from now to 52 weeks and one day from now),
+>   “-4w:+4w” (valid from four weeks ago to four weeks from now),
+>   “20100101123000:20110101123000” (valid from 12:30 PM, January 1st, 2010 to 12:30 PM, January 1st, 2011), 
+>   “-1d:20110101” (valid from yesterday to midnight, January 1st, 2011), 
+>   “-1m:forever” (valid from one minute ago and never expiring).
+
+- 绝对时间格式：20100101123000  
+- 相对时间格式
+- - 当前时间之前
+- + 当前时间之后
+- m 代表分钟
+- d 代表天
+- w 代表周
+- forever 直到永远
+- ：分隔时间段 ，前面是开始段，后面是结束段
 
 
 ### ssh-keygen其他命令
@@ -116,6 +125,8 @@ id_ed25519-cert.pub:
 
 ```
 ## usage
+
+### 生成和分发
 ``` bash
 # 1. 静默生成密钥文件
 ssh-keygen -t ed25519 -C "strawperrypi" -f pi_ed25519 -q -N ""
@@ -127,3 +138,22 @@ ssh-copy-id -i pi_ed25519.pub my_rasp
 
 ```
 
+### 生成
+``` bash
+ssh-keygen -t ed25519 -C "vmware machine a" -f vm_z_ed25519 -q -N ""
+
+ssh-copy-id -i vm_z_ed25519.pub localhost
+
+ssh localhost -i vm_z_ed25519
+
+```
+### 生成密钥
+隐含密码
+
+``` bash
+ssh-keygen -t ed25519 -C "vmware machine a" -f vm_z2_ed25519 -q 
+
+ssh-copy-id -i vm_z2_ed25519.pub localhost
+
+ssh localhost -i vm_z2_ed25519
+```

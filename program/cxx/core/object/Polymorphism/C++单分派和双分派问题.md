@@ -81,16 +81,16 @@ int main()
     problem *p2 = new diffcultProblem();
     p1->display();
     p2->display();
-    // p1, p2 静态类型都为父类problem，但是实际类型不一样，display体现C++运行时多态/**
- * 分别将p1, p2作为参数传入 e1, e2的 solve函数，
+    // p1, p2 静态类型都为父类problem，但是实际类型不一样，display体现C++运行时多态
+    /*** 分别将p1, p2作为参数传入 e1, e2的 solve函数，
 **/
-primaryEngineer *e1 = new primaryEngineer();
-e1->solve(p1);
-e1->solve(p2);
- 
-primaryEngineer *e2 = new seniorEngineer();
-e2->solve(p1);
-e2->solve(p2);
+    primaryEngineer *e1 = new primaryEngineer();
+    e1->solve(p1);
+    e1->solve(p2);
+    
+    primaryEngineer *e2 = new seniorEngineer();
+    e2->solve(p1);
+    e2->solve(p2);
 
 return 0;
 }
@@ -127,7 +127,7 @@ seniorEngineer solve defaultProblem
 
 我们做一下改变：传入时就将类型确定，看是否会如想象中输出。还是原来的代码，将p1 p2类型直接指定。
 
-```
+``` cpp
 // problem *p1 = new simpleProblem();
 // problem *p2 = new diffcultProblem();
 simpleProblem *p1 = new simpleProblem();
@@ -210,12 +210,12 @@ int main()
     problem *p2 = new diffcultProblem();
     p1->display();
     p2->display();// 调用上用静态参数类型
-primaryEngineer *e1 = new primaryEngineer();
-primaryEngineer *e2 = new seniorEngineer();
-e1->solve(p1);
-e1->solve(p2);
-e2->solve(p1);
-e2->solve(p2);
+    primaryEngineer *e1 = new primaryEngineer();
+    primaryEngineer *e2 = new seniorEngineer();
+    e1->solve(p1);
+    e1->solve(p2);
+    e2->solve(p1);
+    e2->solve(p2);
 
 return 0;
 }

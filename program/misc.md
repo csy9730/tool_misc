@@ -40,22 +40,37 @@
 
 auto：通过自动推定变量的类型，可以省略类型名，但类型仍然是在编译时确定。
 
+delctype: decltype与auto关键字一样，用于进行编译时类型推导
 
-类型转换：包括显式类型转换，隐式类型转换。
 
-
-自定义类型定义
+自定义类型定义 struct/class
 
 反射特性。
+##### type convert
+类型转换：包括显式类型转换，隐式类型转换。
+``` cpp
+<static_cast>
+const_cast
+dynamic_cast
+reinterpret_cast
+
+```
 #### array
 
-array 数组
+array 一维数组
 array of array 高维数组
+
+c/cpp 支持一维数组，支持高维数组（实际上是一维数组）
+
+##### container
+容器container
 
 动态数组 go 的slice ，
 迭代器： go 的for range
 动态字典（key-value-pair-collction）：Map
 
+迭代器 iterator
+可以实现访问接口和访问实现分离。
 
 #### 可变
 
@@ -350,6 +365,18 @@ do {
 内置类型如 int/char/str，语言可以实现释放管理，在退出域时释放即可。
 平凡对象，如c语言的 不带指针的struct， java 的 POJO ，也可能实现支持。
 而对于 可能包含 多层 引用的对象，不能在域退出时释放，可能会导致 NULL Pointer 或 memory leak，语言难以在编译时实现管理，需要通过框架在运行时管理。
+
+``` cpp
+void *malloc(unsigned int size);
+
+void *calloc(unsigned int num, unsigned int size);
+void *realloc(void *p, unsigned int size);
+
+void free(void *p);
+
+```
+
+##### stack/heap
 
 #### GC
 存储空间既有堆，也有栈。对象放在栈上，可以复制，也可以随着退栈而被自动销毁掉。
