@@ -40,27 +40,27 @@ echo "性别为$sex"
 
 逻辑判断：
 
-```
-1 read -t 30 -p "请输入用户名称:" isYes
-2 if [ "${isYes}" = "yes" ]; then
-3 echo "输入了Yes"
-4 fi
+``` bash
+read -t 30 -p "请输入用户名称:" isYes
+if [ "${isYes}" = "yes" ]; then
+    echo "输入了Yes"
+fi
 ```
 
 执行并行脚本：
 
-```
-1 wget -c http://www.xxx.com/xx.tar.gz && tar zxf xx.tar.gz && cd xx && ./install.sh
+``` bash
+wget -c http://www.xxx.com/xx.tar.gz && tar zxf xx.tar.gz && cd xx && ./install.sh
 ```
 
 方法调用：
 
-```
-1 print_hello()
-2 {
-3 echo "hello"
-4 }
-5 print_hello
+``` bash
+print_hello()
+{
+echo "hello"
+}
+print_hello
 ```
 
 转自：https://blog.csdn.net/c__chao/article/details/79785571
@@ -106,7 +106,7 @@ echo(选项)(参数)
 
 **文字色：**
 
-```
+``` bash
 echo -e "\e[1;31mThis is red text\e[0m"
 This is red text
 ```

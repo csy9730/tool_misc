@@ -34,7 +34,7 @@ elif 条件; then
 fi
 ```
 ### 格式四
-```
+``` bash
 if 条件; then
 ​    语句
 elif 条件; then
@@ -50,7 +50,7 @@ fi
 
 Bash代码
 
-```
+``` bash
 if [ "foo" = "foo" ]; then
     echo expression evaluated as true
 fi
@@ -69,7 +69,7 @@ expression evaluated as true
 Bash代码 
 
 
-```
+``` bash
 if [ "foo" = "foo" ]; then
     echo expression evaluated as true
 else

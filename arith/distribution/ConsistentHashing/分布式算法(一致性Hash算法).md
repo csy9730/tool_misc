@@ -106,7 +106,7 @@ Hash 算法的一个衡量指标是单调性（ Monotonicity ），定义如下�
 
 [![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
-```
+``` java
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Collection;

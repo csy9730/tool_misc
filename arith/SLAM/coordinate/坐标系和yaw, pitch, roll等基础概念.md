@@ -140,13 +140,14 @@ z = az * sin(theta/2)
 
 举个例子，我们要把一个enu的航向角yaw，转成nwu的yaw，就可以直接用一个表示旋转的四元数乘它既可：
 
+``` cpp
 tf::Quanterion enu2nwu;
 
 enu2nwu.setRPY(0, 0, -M_PI_2); // 以目标坐标nwu为基准，看源坐标enu在目标坐标中，是沿z轴正方向旋转了-PI/2。
 
 yaw_nwu = enu2nwu * yaw_enu; // yaw本身表示一个旋转，左边乘以enu2nwu，表示先旋转坐标系得到新的坐标系，然后再旋转本身。
 
-
+```
 
 
 
