@@ -127,3 +127,8 @@ enableSshd(){
     # systemctl status sshd
     service sshd start
 }
+
+main(){
+    
+}
+main $@

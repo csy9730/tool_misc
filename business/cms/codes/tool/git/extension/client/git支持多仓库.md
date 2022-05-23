@@ -15,6 +15,7 @@
 ``` bash
 git pull origin master 
 git pull mirror master
+
 git push origin master 
 git push mirror master
 ```
@@ -22,9 +23,12 @@ git push mirror master
 ### 同名多仓库
 执行以下指令,可以实现同时更新多个远程仓库
 ``` bash
-git remote set-url --add origin git@gitee.com:abc/a_repo.git
+git remote set-url --add origin url
+
+# 各种协议的url
 git remote set-url --add origin https://github.com/abc/a_repo.git
 git remote set-url --add origin ssh://git@server/home/git/abc/a_repo.git
+git remote set-url --add origin git@gitee.com:abc/a_repo.git
 ```
 
 上面的命令会立即改变`.git/config`文件

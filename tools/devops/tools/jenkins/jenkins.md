@@ -13,12 +13,26 @@ jenkins.exe start;
 ```
 
 程序开启之后，本地开启8108端口：`http://localhost:8108/`
-
+#### 登陆密码文件
 首次登陆需要查询本地生成的密码文件
 ```
 C:\WINDOWS\system32>cat C:\WINDOWS\system32\config\systemprofile\AppData\Local\Jenkins\.jenkins\secrets\initialAdminPassword
 ```
 
+#### 创建第一个管理员用户
+```
+创建第一个管理员用户
+用户名:	
+jadmin
+密码:	
+••••••••••••••
+确认密码:	
+•••••••••••••••
+全名:	
+电子邮件地址:	
+```
+#### 插件安装
+选择“Install suggested plugins”安装默认的插件，下面Jenkins就会自己去下载相关的插件进行安装
 ## arch
 Jenkins
 

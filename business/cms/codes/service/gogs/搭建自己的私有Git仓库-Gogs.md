@@ -33,7 +33,7 @@ chmod 600 ~/.ssh/authorize_keys
 
 将刚才下载的压缩包，上传到服务器，并解压缩。 可以解压到任何地方，推荐/home/git/gogs
 
-```text
+``` bash
 tar xvf gogs_0.11.86_linux_amd64.tar.gz
 ```
 
@@ -41,7 +41,7 @@ tar xvf gogs_0.11.86_linux_amd64.tar.gz
 
 gogs中已经有了初始化数据库文件
 
-```text
+``` bash
 /home/git/gogs/scripts/mysql.sql
 ```
 
@@ -64,7 +64,7 @@ mysql -u root -p
 
 配置文件位于Gogs目录的custom/conf/app.ini，详细参数参考[配置手册](https://gogs.io/docs/advanced/configuration_cheat_sheet.html) 部分参数如下：
 
-```text
+``` ini
 APP_NAME = 网站名称
 RUN_USER = gogs
 RUN_MODE = prod
@@ -90,13 +90,13 @@ OFFLINE_MODE     = false
 
 gogs自带了开机启动的脚本，在`gogs/scripts`下。需要把脚本复制到centos7的脚本目录中。 **复制脚本** centos7使用systemd进行服务管理，需要复制到`/lib/systemd/system/`目录下。
 
-```text
+```bash
 cp /home/git/gogs/scripts/systemd/gogs.service /lib/systemd/system/
 ```
 
 **修改脚本** 修改后的内容如下：
 
-```text
+``` ini
 [Unit]
 Description=Gogs
 After=syslog.target

@@ -16,7 +16,7 @@ service jenkins stop
 此外，还有直接使用url的方式，不过当然不包括启动（此时服务还未启动）,只需要在访问jenkins服务器的网址url地址就可以了
 此处假定 jenkins部署在本机，端口为 8080
 
-```
+``` bash
 # 浏览器进入Jenkins，登录
 http://localhost:8080/
 
