@@ -93,7 +93,7 @@ termux-battery-status
 
 bash
 
-```bash
+``` json
 {
   "health": "GOOD",
   "percentage": 100,
@@ -263,7 +263,7 @@ termux-usb [-l | [-r] [-e 命令] 设备]
 
 properties
 
-```properties
+```
 -l               列出可用设备
 -r               如果尚未授予权限，则显示 权限请求对话框
 -e command       执行指定的命令
@@ -644,10 +644,10 @@ json
 
 ```json
 {
-  "latitude": xx.xxxxxxx,
-  "longitude": xx.xxxxxxx,
+  "latitude": "xx.xxxxxxx",
+  "longitude": "xx.xxxxxxx",
   "altitude": 0.0,
-  "accuracy": xx.0,
+  "accuracy": "xx.0",
   "vertical_accuracy": 0.0,
   "bearing": 0.0,
   "speed": 0.0,
@@ -731,7 +731,7 @@ termux-microphone-record [参数]
 
 properties
 
-```properties
+```
 -d           使用默认设置录制
 -f <file>    录制到特定文件
 -l <limit>   使用指定的时间录制（以秒为单位，无限制为0）
@@ -788,7 +788,7 @@ termux-notification [选项]
 
 properties
 
-```properties
+```
 --action action          按下通知时要执行的动作
 --alert-once             不会在编辑通知时发出警报
 --button1 text           文本将显示在第一个通知按钮上
@@ -825,7 +825,7 @@ properties
 
 properties
 
-```properties
+```
 --media-next             在媒体 下一个按钮 上执行的操作
 --media-pause            在媒体 暂停按钮 上执行的操作
 --media-play             在媒体 播放按钮 上执行的操作
@@ -894,7 +894,7 @@ termux-toast [选项] [通知]
 
 properties
 
-```properties
+```
 -h  显示帮助信息
 -b  设置背景色（默认：gray）
 -c  设置文本颜色（默认：white）
@@ -1094,7 +1094,7 @@ verilog
 
 properties
 
-```properties
+```
 confirm - 显示确认对话框
     [-i 提示] 文本提示 (可选)
     [-t 标题] 设置对话框标题 (可选)
@@ -1141,7 +1141,7 @@ json
 
 properties
 
-```properties
+```
 checkbox - 使用复选框选择多个值
     [-v ",,,"] 多个值用逗号隔开 (必选)
     [-t 标题] 设置对话框的标题 (可选)
@@ -1194,7 +1194,7 @@ json
 
 properties
 
-```properties
+```
 counter - 选择指定范围内的数字
     [-r 最小值,最大值,开始值] 3个值用逗号隔开 (可选l)
     [-t 标题] 设置对话框的标题 (可选)
@@ -1233,7 +1233,7 @@ json
 
 properties
 
-```properties
+```
 date - 选择一个日期e
     [-d "dd-MM-yyyy k:m:s"] 用于日期小部件输出的SimpleDateFormat模式(可选)
     [-t 标题] 设置对话框的标题 (可选)
@@ -1280,7 +1280,7 @@ json
 
 properties
 
-```properties
+```
 radio - 从单选按钮中选择一个值
     [-v ",,,"] 多个值用逗号隔开 (必选)
     [-t 标题] 设置对话框的标题 (可选)
@@ -1328,7 +1328,7 @@ json
 
 properties
 
-```properties
+```
 sheet - 从底部工作表中选择一个值
     [-v ",,,"] 多个值用逗号隔开 (必选)
     [-t 标题] 设置对话框的标题 (可选)
@@ -1376,7 +1376,7 @@ json
 
 properties
 
-```properties
+```
 spinner - 从下拉微调器中选择一个值
     [-v ",,,"] 多个值用逗号隔开 (必选)
     [-t 标题] 设置对话框的标题 (可选)
@@ -1424,7 +1424,7 @@ json
 
 properties
 
-```properties
+```
 text - 输入文本（如果未指定小部件，则为默认值）
     [-i 提示] 文本提示（可选）
     [-m] 多行输入（可选）*
@@ -1476,7 +1476,7 @@ json
 
 properties
 
-```properties
+```
 time - 选择一个时间值
      [-t 标题] 设置对话框的标题 (可选)
 ```

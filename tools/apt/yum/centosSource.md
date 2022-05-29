@@ -6,7 +6,7 @@
 
 1. 首先备份系统自带yum源配置文件/etc/yum.repos.d/CentOS-Base.repo
 2. 下载CentOS7对应的yum源配置文件
-3. # 运行yum makecache生成缓存
+3. 运行`yum makecache`生成缓存
 
 ``` bash
 mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup # 备份系统自带yum源配置文件

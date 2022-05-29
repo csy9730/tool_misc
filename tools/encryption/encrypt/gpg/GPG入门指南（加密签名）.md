@@ -129,7 +129,7 @@ gpg --gen-key
 
 回车后，会看到：
 
-```csharp
+```
 gpg (GnuPG) 1.4.20; Copyright (C) 2015 Free Software Foundation, Inc.
 This is free software: you are free to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.
@@ -156,7 +156,7 @@ RSA 密钥长度应在 1024 位与 4096 位之间。
 
 这一步要让我们输入密钥长度，**长度越长越安全,默认为2048**。我们输入`2048`回车
 
-```xml
+```
 您所要求的密钥尺寸是 2048 位              
 请设定这把密钥的有效期限。
          0 = 密钥永不过期
@@ -169,14 +169,14 @@ RSA 密钥长度应在 1024 位与 4096 位之间。
 
 如果密钥只是个人使用，并且你很确定可以有效保管私钥，建议选择第一个选项，即永不过期。**注意，如果想设置在2年后过期，那么应该输入2y,然后回车** 回答完上面三个问题以后，系统让你确认。
 
-```undefined
+```
 密钥于 日 10/ 8 11:20:32 2017 CST 过期
 以上正确吗？(y/n)y
 ```
 
 到这里，我们对要生成的密钥的配置已经完成了，然后我们还需要一个标识，
 
-```css
+```
 您需要一个用户标识来辨识您的密钥；本软件会用真实姓名、注释和电子邮件地址组合
 成用户标识，如下所示：
     “Heinrich Heine (Der Dichter) <heinrichh@duesseldorf.de>”
@@ -184,7 +184,7 @@ RSA 密钥长度应在 1024 位与 4096 位之间。
 
 按照要求依次输入就行了
 
-```undefined
+```
 真实姓名：
 电子邮件地址：
 注释：
@@ -192,7 +192,7 @@ RSA 密钥长度应在 1024 位与 4096 位之间。
 
 我们这里假设输入的信息为：
 
-```css
+```
 真实姓名：Zhang San
 电子邮件地址：zhangsan@163.com
 注释：
@@ -200,7 +200,7 @@ RSA 密钥长度应在 1024 位与 4096 位之间。
 
 回车后：
 
-```css
+```
 您选定了这个用户标识：
     “Zhang San <zhangsan@163.com>”
 
@@ -215,7 +215,7 @@ RSA 密钥长度应在 1024 位与 4096 位之间。
 
 然后输入密码，再次确认密码后，
 
-```jsx
+```
 我们需要生成大量的随机字节。这个时候您可以多做些琐事(像是敲打键盘、移动
 鼠标、读写硬盘之类的)，这会让随机数字发生器有更好的机会获得足够的熵数。
 .+++++
@@ -242,13 +242,13 @@ sub   2048R/490E5BC8 2016-10-08 [有效至：2017-10-08]
 
 这时，最好再生成一张"撤销证书"，以备以后密钥作废时，可以请求外部的公钥服务器撤销你的公钥。
 
-```undefined
+```bash
 gpg --gen-revoke 74A64469
 ```
 
 然后按照下边的步骤依次执行就行了
 
-```ruby
+```
 sec  2048R/74A64469 2016-10-08 Zhang San <zhangsan@163.com>
 
 要为这把密钥建立一份吊销证书吗？(y/N)y
@@ -296,13 +296,13 @@ glE=
 
 list-keys参数列出系统中已有的密钥
 
-```cpp
+```bash
 gpg --list-keys
 ```
 
 回车后：
 
-```kotlin
+```
 /Users/XXXX/.gnupg/pubring.gpg
 --------------------------------
 pub   2048R/74A64469 2016-10-08 [有效至：2017-10-08]
@@ -314,7 +314,7 @@ sub   2048R/490E5BC8 2016-10-08 [有效至：2017-10-08]
 
 如果你要从密钥列表中删除某个密钥，可以使用delete-key参数。
 
-```cpp
+```
 gpg --delete-key [用户ID]
 ```
 
@@ -322,7 +322,7 @@ gpg --delete-key [用户ID]
 
 公钥文件（.gnupg/pubring.gpg）以二进制形式储存，armor参数可以将其转换为ASCII码显示。
 
-```cpp
+```
 gpg --armor --output public-key.txt --export [用户ID]
 ```
 
@@ -330,7 +330,7 @@ gpg --armor --output public-key.txt --export [用户ID]
 
 类似地，export-secret-keys参数可以转换私钥。
 
-```cpp
+```
 gpg --armor --output private-key.txt --export-secret-keys
 ```
 
@@ -340,7 +340,7 @@ gpg --armor --output private-key.txt --export-secret-keys
 
 公钥服务器是网络上专门储存用户公钥的服务器。send-keys参数可以将公钥上传到服务器
 
-```cpp
+```
 gpg --send-keys [用户ID] --keyserver hkp://subkeys.pgp.net
 ```
 
@@ -348,7 +348,7 @@ gpg --send-keys [用户ID] --keyserver hkp://subkeys.pgp.net
 
 由于公钥服务器没有检查机制，任何人都可以用你的名义上传公钥，所以没有办法保证服务器上的公钥的可靠性。通常，你可以在网站上公布一个公钥指纹，让其他人核对下载到的公钥是否为真。fingerprint参数生成公钥指纹。
 
-```css
+```
 gpg --fingerprint [用户ID]
 ```
 
@@ -356,13 +356,13 @@ gpg --fingerprint [用户ID]
 
 除了生成自己的密钥，还需要将他人的公钥或者你的其他密钥输入系统。这时可以使用import参数。
 
-```swift
+```
 gpg --import [密钥文件]
 ```
 
 为了获得他人的公钥，可以让对方直接发给你，或者到公钥服务器上寻找。
 
-```cpp
+```
 gpg --keyserver hkp://subkeys.pgp.net --search-keys [用户ID]
 ```
 
@@ -372,7 +372,7 @@ gpg --keyserver hkp://subkeys.pgp.net --search-keys [用户ID]
 
 我们演示加密和解密的过程，**这个过程是对文件进行的**。假如我们有一个`test.txt`文件。这个文件中的内容为：
 
-```undefined
+```
 张飞，我爱你，今晚约吗？
 
 床前明月光，疑是地上霜。
@@ -381,13 +381,13 @@ gpg --keyserver hkp://subkeys.pgp.net --search-keys [用户ID]
 
 encrypt参数用于加密。我们使用下边的命令对这个文件进行加密。
 
-```css
+```
 gpg --recipient 74A64469 --output test_en.txt --encrypt test.txt
 ```
 
 然后我们在`test.txt`的同一目录下得到了`test_en.txt`。我们打开后可以看到加密后的数据为：
 
-```undefined
+```
 8501 0c03 50c4 def5 490e 5bc8 0107 f901
 58c7 1221 33ee cc6c 4b43 8d5d a1f5 1a14
 a5ac d406 7f24 a6bf 342c 3ba1 6f95 6d1b
@@ -425,13 +425,13 @@ recipient参数指定接收者的公钥，output参数指定加密后的文件�
 
 使用下边的命令进行解密
 
-```css
+```
 gpg test_en.txt
 ```
 
 依次完成下边的命令：
 
-```ruby
+```
 bogon:Desktop XXXX$ gpg test_en.txt
 
 您需要输入密码，才能解开这个用户的私钥：“Zhang San <zhangsan@163.com>”
@@ -449,19 +449,19 @@ gpg: test_en.txt：未知的后缀名
 
 有时，我们不需要加密文件，只需要对文件签名，表示这个文件确实是我本人发出的。sign参数用来签名。
 
-```css
+```
 gpg --sign test.txt
 ```
 
 然后生成了一个`test.txt.gpg`文件，我们打开这个文件后，发现这也是一个二进制的数据，**这并不是加密后的数据，与上边的二进制数据不一样**。如果想生成ASCII码的签名文件，可以使用clearsign参数
 
-```css
+```
 gpg --clearsign test.txt
 ```
 
 然后生成了一个`test.txt.asc`文件，打开后可以看出：
 
-```ruby
+```
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
@@ -485,13 +485,13 @@ AqRaLqHBBN7xOKs0IQLAJz/5vCEvBEjqAR59NtwA1h9JAUx20VkVO2eu+YaepjU=
 
 如果想生成单独的签名文件，与文件内容分开存放，可以使用detach-sign参数。
 
-```css
+```
 gpg --detach-sign test.txt
 ```
 
 是一个二进制的数据，如果想采用ASCII码形式，要加上armor参数
 
-```css
+```
 gpg --armor --detach-sign test.txt
 ```
 
@@ -499,7 +499,7 @@ gpg --armor --detach-sign test.txt
 
 上一节的参数，都是只签名不加密。如果想同时签名和加密，可以使用下面的命令。
 
-```css
+```
 gpg --local-user [发信者ID] --recipient [接收者ID] --armor --sign --encrypt test.txt
 ```
 
@@ -509,7 +509,7 @@ local-user参数指定用发信者的私钥签名，recipient参数指定用接�
 
 我们收到别人签名后的文件，需要用对方的公钥验证签名是否为真。verify参数用来验证
 
-```css
+```
 gpg --verify test.txt.asc test.txt
 ```
 

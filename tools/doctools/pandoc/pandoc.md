@@ -143,6 +143,7 @@ pdflatex not found. Please select a different --pdf-engine or install pdflatex
 
 ```
 
+注意：pandoc需要pdf latex引擎，才能转化成pdf。Windows可以选用MiKTeX，linux下使用latexmk。
 首先需要安装latex软件，这里选择[MiKTeX](https://miktex.org/)
 
 安装完成之后，通过pdf-engine指定目标程序。

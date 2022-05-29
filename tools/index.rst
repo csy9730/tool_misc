@@ -15,35 +15,35 @@ Welcome to git's documentation!
 
 
 
-.. toctree::
-   :maxdepth: 1
-   :caption: Git:
-   :numbered:
+.. .. toctree::
+..    :maxdepth: 1
+..    :caption: Git:
+..    :numbered:
 
-   git/index.rst
-
-
-.. toctree::
-   :maxdepth: 1
-   :caption: chrome:
-   :numbered:
-
-   chrome/chrome.rst
-
-.. toctree::
-   :maxdepth: 1
-   :caption: batch:
-   :numbered:
-
-   batch/batch.rst
+..    git/index.rst
 
 
-.. toctree::
-   :maxdepth: 1
-   :caption: termux:
-   :numbered:
+.. .. toctree::
+..    :maxdepth: 1
+..    :caption: chrome:
+..    :numbered:
 
-   termux/termux.rst
+..    chrome/chrome.rst
+
+.. .. toctree::
+..    :maxdepth: 1
+..    :caption: batch:
+..    :numbered:
+
+..    batch/batch.rst
+
+
+.. .. toctree::
+..    :maxdepth: 1
+..    :caption: termux:
+..    :numbered:
+
+..    termux/termux.rst
 
 
 Indices and tables

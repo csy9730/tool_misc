@@ -18,21 +18,21 @@ Welcome to ssh's documentation!
    main/config/ssh_config2.md
    main/config/ssh_misc.md
    main/port/ssh端口转发.md
-   main/pem/ssh_pem.md
-   main/pem/ssh_safe.md
-
+   main/PAM/ssh_pem.md
+   main/PAM/ssh_safe.md
 
 .. toctree::
    :maxdepth: 1
    :caption: 扩展:
    :numbered:
 
-   extension/windows_ssh.md
-   extension/fabric.md
-   extension/remote/mosh.md
-   extension/remote/rsh.md
-   extension/remote/vnc.md
+   wrap/Win32-OpenSSH/Win32-OpenSSH.md
+   wrap/Fabric/fabric.md
+   .. extension/remote/mosh.md
+   .. extension/remote/rsh.md
+   .. extension/remote/vnc.md
    extension/scp/scp.md
+   extension/sftp/sftp.md
 
 
 Indices and tables

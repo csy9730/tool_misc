@@ -34,8 +34,9 @@ demo地址会在文章末尾给出（demo项目中`electron`使用得是`V2.0.7`
 
 1. 基础配置
 
-```js
-"build": {  // 这里是electron-builder的配置
+``` javascript
+{
+  "build": {  // 这里是electron-builder的配置
     "productName":"xxxx",//项目名 这也是生成的exe文件的前缀名
     "appId": "com.xxx.xxxxx",//包名  
     "copyright":"xxxx",//版权  信息
@@ -47,6 +48,7 @@ demo地址会在文章末尾给出（demo项目中`electron`使用得是`V2.0.7`
       "icon": "xxx/icon.ico"//图标路径 
     }  
   }
+}
 ```
 
 在配置文件中加入以上的文件之后就可以打包出来简单的<font clolor="red">文件夹</font>，文件夹肯定不是我们想要的东西。下一步我们来继续讲别的配置。
@@ -56,7 +58,8 @@ demo地址会在文章末尾给出（demo项目中`electron`使用得是`V2.0.7`
 2. 使用NSIS工具对我们的文件夹再进行一次打包，打包成exe
 3. 通过electron-builder的nsis直接打包成exe，配置如下
 
-```js
+``` javascript
+{
 "win": {  // 更改build下选项
     "icon": "build/icons/aims.ico",
     "target": [
@@ -65,11 +68,13 @@ demo地址会在文章末尾给出（demo项目中`electron`使用得是`V2.0.7`
       }
     ]
   },
+}
 ```
 
 1. 其他平台配置
 
-```js
+``` javascript
+{
   "dmg": { // macOSdmg
     "contents": [
       ...
@@ -81,6 +86,7 @@ demo地址会在文章末尾给出（demo项目中`electron`使用得是`V2.0.7`
     "linux": { // linux
       "icon": "build/icons"
     }
+}
 ```
 
 1. **nsis配置**
@@ -89,7 +95,8 @@ demo地址会在文章末尾给出（demo项目中`electron`使用得是`V2.0.7`
 
 关于nsis的配置是在build中nsis这个选项中进行配置，下面是部分nsis配置
 
-```js
+``` javascript
+{
 "nsis": {
   "oneClick": false, // 是否一键安装
   "allowElevation": true, // 允许请求提升。 如果为false，则用户必须使用提升的权限重新启动安装程序。
@@ -102,6 +109,7 @@ demo地址会在文章末尾给出（demo项目中`electron`使用得是`V2.0.7`
   "shortcutName": "xxxx", // 图标名称
   "include": "build/script/installer.nsh", // 包含的自定义nsis脚本 这个对于构建需求严格得安装过程相当有用。
 },
+}
 ```
 
 关于`include` 和 `script` 到底选择哪一个 ？
@@ -130,7 +138,8 @@ electron-builder        // 64位(默认)
 
 nsis中配置
 
-```js
+``` javascript
+{
 "win": {
   "icon": "build/icons/aims.ico",
   "target": [
@@ -143,26 +152,30 @@ nsis中配置
     }
   ]
 }
+}
 ```
 
 1. 更新配置
 
 下面这个是给更新用的配置，主要是为了生成`lastest.yaml`配置文件
 
-```js
+``` javascript
+{
 "publish": [
   {
     "provider": "generic", // 服务器提供商 也可以是GitHub等等
     "url": "http://xxxxx/" // 服务器地址
   }
 ],
+}
 ```
 
 ## 完整配置
 
 基本上可用的完整的配置
 
-```js
+``` javascript
+{
 "build": {
     "productName":"xxxx",//项目名 这也是生成的exe文件的前缀名
     "appId": "com.leon.xxxxx",//包名  
@@ -224,6 +237,7 @@ nsis中配置
       "icon": "build/icons"
     }
   }
+}
 ```
 
 ## 命令行参数（CLI）
@@ -290,7 +304,7 @@ Examples(例子):
 
 TargetConfiguration(构建目标配置):
 
-```js
+```
 target:  String - 目标名称，例如snap.
 arch “x64” | “ia32” | “armv7l” | “arm64”> | “x64” | “ia32” | “armv7l” | “arm64”  -arch支持列表
 ```
