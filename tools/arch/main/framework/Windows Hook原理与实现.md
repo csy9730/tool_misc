@@ -1,4 +1,4 @@
-## **Windows Hook原理与实现**
+# Windows Hook原理与实现
 
 ------
 
@@ -39,13 +39,14 @@ Hook分为应用层（Ring3）Hook和内核层（Ring0）Hook，应用层Hook适
 那么我们该如何安装这个消息钩子呢？很简单，Windows提供了一个官方函数SetWindowsHookEx()用于设置消息Hook，编程时只要调用该API就能简单地实现Hook。
 
 消息Hook常被窃密木马用来监听用户的键盘输入，程序里只需写入如下代码就能对键盘消息进行Hook:
+``` c
 SetWindowsHookEx(
-WH_KEYBOARD, //键盘消息
-KeyboardProc, //钩子函数（处理键盘输入的函数）
-hInstance, //钩子函数所在DLL的Handle
-0 //该参数用于设定要Hook的线程ID，为0时表示监视所有线程
+    WH_KEYBOARD, //键盘消息
+    KeyboardProc, //钩子函数（处理键盘输入的函数）
+    hInstance, //钩子函数所在DLL的Handle
+    0 //该参数用于设定要Hook的线程ID，为0时表示监视所有线程
 )
-
+```
 **3.2 代码实现**
 
 过滤notepad输入例子–核心代码：
@@ -131,9 +132,10 @@ MOV EDI,EDI用于将EDI的值再次复制给EDI，这没有什么实际意义。
 ![13](https://img-blog.csdn.net/20180806143356339?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzM3NTUyMDUy/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
 
 如下，将前7个字节改成：
+```
 JMP 10001000（恶意代码地址）
 JMP SHORT 0x7C802366
-
+```
 这样，当API被调用时，首先执行了JMP SHORT 0x7C802366，便跳到了JMP 10001000处执行，最后跳到了恶意代码的起始处0x10001000。
 
 ![14](https://img-blog.csdn.net/20180806143414254?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzM3NTUyMDUy/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
@@ -180,11 +182,11 @@ SSDT Hook属于内核层Hook，也是最底层的Hook。由于用户层的API最
 **6.2SSDT Hook**
 
 其实内核层Hook并没想象中的那么高大上，Hook的原理相同，只不过Hook的对象不一样罢了。Hook步骤还是那5步：
-1.修改内存属性为RWX。
-2.拼接汇编码jmp [HookFunc]。
-3.保存原代码头5个字节。
-4.将头5个字节替换为2的汇编码。
-5.恢复前5个字节。
-6.恢复内存属性。
+1. 修改内存属性为RWX。
+2. 拼接汇编码jmp [HookFunc]。
+3. 保存原代码头5个字节。
+4. 将头5个字节替换为2的汇编码。
+5. 恢复前5个字节。
+6. 恢复内存属性。
 
 ![21](https://img-blog.csdn.net/20180806143805906?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzM3NTUyMDUy/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)

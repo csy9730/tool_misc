@@ -8,7 +8,7 @@ Nmap 是免费开放源代码实用程序，用于网络发现和安全审核。
 
 **Nmap 命令参数解析** 扫描之前先来看一下参数解析.
 
-```BASH
+```
 -sT    TCP connect() 扫描，这是最基本的 TCP 扫描方式。这种扫描很容易被检测到，在目标主机的日志中会记录大批的连接请求以及错误信息。    
 -sS    TCP 同步扫描 (TCP SYN)，因为不必全部打开一个 TCP 连接，所以这项技术通常称为半开扫描 (half-open)。这项技术最大的好处是，很少有系统能够把这记入系统日志。不过，你需要 root 权限来定制 SYN 数据包。    
 -sF,-sX,-sN    秘密 FIN 数据包扫描、圣诞树 (Xmas Tree)、空 (Null) 扫描模式。这些扫描方式的理论依据是：关闭的端口需要对你的探测包回应 RST 包，而打开的端口必Nmap需忽略有问题的包（参考 RFC 793 第 64 页）。    
@@ -39,7 +39,7 @@ Nmap 是免费开放源代码实用程序，用于网络发现和安全审核。
 
 **批量Ping扫描:** 批量扫描一个网段的主机存活数.
 
-```BASH
+```
 [root@localhost ~]# nmap -sP 192.168.1.0/24
 
 Starting Nmap 6.40 ( http://nmap.org ) at 2019-03-19 21:41 EDT
@@ -59,7 +59,7 @@ Nmap done: 256 IP addresses (4 hosts up) scanned in 50.15 seconds
 
 **跳过Ping探测:** 有些主机关闭了ping检测,所以可以使用`-P0`跳过ping的探测,可以加快扫描速度.
 
-```BASH
+```
 [root@localhost ~]# nmap -P0 192.168.1.7
 
 Starting Nmap 6.40 ( http://nmap.org ) at 2019-03-19 21:52 EDT

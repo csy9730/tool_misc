@@ -90,3 +90,20 @@ html_theme = 'sphinx_rtd_theme'
 - example
 - frequent Q&A
 
+## misc
+
+```
+(base) H:\tool_misc\tools>sphinx-build.exe . build -a  -b html
+Running Sphinx v2.2.0
+loading translations [zh-CN]... not available for built-in messages
+making output directory... done
+WARNING: html_static_path entry '_static' does not exist
+
+Theme error:
+sphinx_rtd_theme is no longer a hard dependency since version 1.4.0. Please install it manually.(pip install sphinx_rtd_theme)
+```
+
+```
+pip install recommonmark sphinx_rtd_theme
+
+```
