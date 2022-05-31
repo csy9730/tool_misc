@@ -7,6 +7,14 @@ ipatbles命令仅仅是用户空间的linux内核防火墙管理工具，真正�
 
 ipatbles命令仅支持ipv4，如果使用的IP协议是ipv6则需要使用专门的管理工具ip6tables。
 
+
+iptables 可以管理防火墙，通过增删查改防火墙规则。
+- -A 追加规则，最后适用 
+- -I 插入规则，优先适用 
+- -D 删除规则，规则必须完全匹配
+- -L 查看所有规则 
+
+
 ## useage
 
 **语法格式:**   iptables [参数]
@@ -145,6 +153,9 @@ Options:
 
 
 ### depreciated
+
+服务管理 
+
 
 ``` bash
 # 保存

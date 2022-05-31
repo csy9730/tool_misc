@@ -1,5 +1,8 @@
 # docker help
 
+- 镜像管理
+- 容器管理
+- 
 
 ## help
 
@@ -85,6 +88,7 @@ Run 'docker COMMAND --help' for more information on a command.
 
 
 ### images manager
+镜像管理
 ```
 
 ➜  ~ docker image -h
@@ -128,13 +132,14 @@ docker.io/hello-world   latest              bf756fb1ae65        13 months ago   
 
 
 #### docker rmi
-
+删除镜像
 #### docker search
 #### docker load
 从tar文件中加载一个镜像
 #### docker save
 
 ### conatainer manager
+容器管理
 ```
 ➜  ~ docker container --help
 
@@ -181,9 +186,29 @@ Run 'docker container COMMAND --help' for more information on a command.
 
 
 #### docker rm/create
+- 删除容器，
+- 创建容器
+
+
 #### docker ps/port
+- 查看容器
+- 查看端口映射
+
+
+``` bash
+docker ps -a
+# 查看所有容器
+```
+
 
 #### docker start/stop/kill/pause/restart
+- 启动容器
+- 结束容器
+- 杀死容器
+- 暂停
+- 重启容器
+
+
 ```
 docker start container_id
 ```
