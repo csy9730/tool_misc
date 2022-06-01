@@ -39,6 +39,7 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io
 
 ## 运行
 
+### hello demo
 ``` bash
 docker version
 
@@ -48,7 +49,7 @@ docker ps # 查看
 sudo docker run hello-world
 ```
 
-
+### 管理服务
 ``` bash
 sudo systemctl start docker
 sudo systemctl enable docker # 启动并加入开机启动
@@ -66,8 +67,41 @@ docker ps
 docker stop ubuntu # kill/pause/restart 
 
 ```
+### 运行gcc镜像
+``` bash
+echo '#include "stdio.h"'>a.cpp
+echo 'int main(void){printf("hello\\n");return 0;}'>>a.cpp
+docker run --rm -v `pwd`:/usr/src/myapp -w /usr/src/myapp rikorose/gcc-cmake gcc a.cpp
+```
+
+### 运行python
+在容器中运行python脚本，由于做了路径映射，也是在当前目录下运行。
+``` bash
+echo 'print("Hello World!")'>a.py
+docker run -it --rm --name python3_container -v "$PWD":/usr/src/myapp -w /usr/src/myapp python3 python HelloWorld.py
+```
+
+### python和pip
+- 使用python镜像，通过在主机离线下载wheel，容器中安装wheel。
+- 使用python镜像，通过路径映射，指定路径安装包。
+
+``` bash
+# download online
+pip download package_name -d target_dir
+
+# install offline
+pip install --no-index -f target_dir -r requirements.txt
 
 
+pip install package_name -t python_modules
+```
+
+### 启动服务
+
+``` bash
+docker run -p 127.0.0.1:5001:5000 -v /home/bx_admin/jenkins_work/test:/usr/src/python -w /usr/src/python python python -m http.server 5000
+
+```
 ### config
 ### docker run help
 
@@ -88,8 +122,7 @@ docker run 支持以下配置项
 -e username="ritchie": 设置环境变量；
 -m :设置容器使用内存最大值；
 --link=[]: 添加链接到另一个容器
--P 标记时，Docker 会随机映射一个 49000~49900 的端口到内部容器开放的网络端口
-使用 docker ps 可以看到，本地主机的 49155 被映射到了容器的 5000 端口。此时访问本机的 49155 端口即可访问容器内 web 应用提供的界面。
+-P 标记时，Docker 会随机映射一个 49000~49900 的端口到内部容器开放的网络端口 ,使用 docker ps 可以看到，本地主机的 49155 被映射到了容器的 5000 端口。此时访问本机的 49155 端口即可访问容器内 web 应用提供的界面。
 -p（小写）则可以指定要映射的IP和端口，但是在一个指定端口上只可以绑定一个容器。支持的格式有 hostPort:containerPort、ip:hostPort:containerPort、 ip::containerPort。
 
 使用 docker port 来查看当前映射的端口配置，也可以查看到绑定的地址
@@ -104,8 +137,14 @@ docker run   -p 0.0.0.0:4000:4000 --name linux-insides-book  linux-insides-book
 ```
 ## misc
 
+### docker 互相访问
+docker之间是隔离的，如何相互访问镜像内容，端口，映射路径？
+- 端口，网络地址访问，是docker推荐的方法
+- 路径映射，用户可以任意更改
+- 镜像内容，用户需要编辑dockerfile来生成新的镜像
 
 
+### docker service
 **Q**:  Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docke
 r daemon running?        
 
@@ -118,7 +157,7 @@ sudo service docker restart
 sudo service docker status # (should see active (running))
 ```
 
-
+### docker install log
 
 ``` bash
 Get:1 file:/var/cuda-repo-10-1-local-10.1.105-418.39  InRelease
