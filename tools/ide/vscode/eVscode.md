@@ -1,21 +1,21 @@
 # vscode
 
-VscodeÊÇÒ»¿î¿ªÔ´µÄ¿çÆ½Ì¨±à¼­Æ÷
+Vscodeæ˜¯ä¸€æ¬¾å¼€æºçš„è·¨å¹³å°ç¼–è¾‘å™¨
 ## base
 
-${workspaceRoot} VS Codeµ±Ç°´ò¿ªµÄÎÄ¼þ¼Ð
-${file} µ±Ç°´ò¿ªµÄÎÄ¼þ
-${relativeFile} Ïà¶ÔÓÚworkspaceRootµÄÏà¶ÔÂ·¾¶
-${fileBasename} µ±Ç°´ò¿ªÎÄ¼þµÄÎÄ¼þÃû
-${fileDirname} ËùÔÚµÄÎÄ¼þ¼Ð£¬ÊÇ¾ø¶ÔÂ·¾¶
-${fileExtname} µ±Ç°´ò¿ªÎÄ¼þµÄÍØÕ¹Ãû£¬Èç.json
+- ${workspaceRoot} VS Codeå½“å‰æ‰“å¼€çš„æ–‡ä»¶å¤¹
+- ${file} å½“å‰æ‰“å¼€çš„æ–‡ä»¶
+- ${relativeFile} ç›¸å¯¹äºŽworkspaceRootçš„ç›¸å¯¹è·¯å¾„
+- ${fileBasename} å½“å‰æ‰“å¼€æ–‡ä»¶çš„æ–‡ä»¶å
+- ${fileDirname} æ‰€åœ¨çš„æ–‡ä»¶å¤¹ï¼Œæ˜¯ç»å¯¹è·¯å¾„
+- ${fileExtname} å½“å‰æ‰“å¼€æ–‡ä»¶çš„æ‹“å±•åï¼Œå¦‚.json
 
 ## extension
-### Ê¹ÓÃChromeµ÷ÊÔ
-±¾µØÎÄ¼þ¾²Ì¬µ÷ÊÔ£º
+### ä½¿ç”¨Chromeè°ƒè¯•
+æœ¬åœ°æ–‡ä»¶é™æ€è°ƒè¯•ï¼š
 ``` json
 {
-    "name": "Ê¹ÓÃ±¾»ú Chrome µ÷ÊÔ",
+    "name": "ä½¿ç”¨æœ¬æœº Chrome è°ƒè¯•",
     "type": "chrome",
     "request": "launch",
     "file": "${workspaceRoot}/index.html",
@@ -26,10 +26,10 @@ ${fileExtname} µ±Ç°´ò¿ªÎÄ¼þµÄÍØÕ¹Ãû£¬Èç.json
     "port":5433
 }
 ```
-url¶¯Ì¬µ÷ÊÔ£º
+urlåŠ¨æ€è°ƒè¯•ï¼š
 ``` json
 {
-    "name": "Ê¹ÓÃ±¾»ú Chrome µ÷ÊÔ",
+    "name": "ä½¿ç”¨æœ¬æœº Chrome è°ƒè¯•",
     "type": "chrome",
     "request": "launch",
     "url": "http://mysite.com/index.html",
@@ -53,18 +53,18 @@ url¶¯Ì¬µ÷ÊÔ£º
 
 
 ### cn
-**Q**: VS Code ÖÐÎÄÏÔÊ¾ÂÒÂëÔõÃ´°ì£¿
-**A**: ¿ªÆô×Ô¶¯Çø·Ögbk±àÂëºÍutf8±àÂë:
-½«setting-Text EditorÖÐµÄ"files.autoGuessEncoding"ÏîµÄÖµ¸ÄÎªtrue¼´¿É¡£
+**Q**: VS Code ä¸­æ–‡æ˜¾ç¤ºä¹±ç æ€Žä¹ˆåŠžï¼Ÿ
+**A**: å¼€å¯è‡ªåŠ¨åŒºåˆ†gbkç¼–ç å’Œutf8ç¼–ç :
+å°†setting-Text Editorä¸­çš„"files.autoGuessEncoding"é¡¹çš„å€¼æ”¹ä¸ºtrueå³å¯ã€‚
 
 
-½«ÉèÖÃÖÐµÄ"files.autoGuessEncoding"ÏîµÄÖµ¸ÄÎªtrue¼´¿É¡£
+å°†è®¾ç½®ä¸­çš„"files.autoGuessEncoding"é¡¹çš„å€¼æ”¹ä¸ºtrueå³å¯ã€‚
 
 
 
-**Q**: vscodeÊ¹ÓÃµÄÓïÑÔÎªÓ¢ÎÄ(us)£¬ÈçºÎ½«ÆäÏÔÊ¾ÓïÑÔÐÞ¸Ä³ÉÖÐÎÄÁË£¿
+**Q**: vscodeä½¿ç”¨çš„è¯­è¨€ä¸ºè‹±æ–‡(us)ï¼Œå¦‚ä½•å°†å…¶æ˜¾ç¤ºè¯­è¨€ä¿®æ”¹æˆä¸­æ–‡äº†ï¼Ÿ
 **A**: 
-1£©´ò¿ªvscode¹¤¾ß£»
-2£©Ê¹ÓÃ¿ì½Ý¼ü×éºÏ¡¾Ctrl+Shift+p¡¿£¬ÔÚËÑË÷¿òÖÐÊäÈë¡°configure display language¡±£¬µã»÷È·¶¨ºó£»
-3£©ÐÞ¸Älocale.jsonÎÄ¼þÏÂµÄÊôÐÔ¡°locale¡±Îª¡°zh-CN¡±;
-4£©ÖØÆôvscode¹¤¾ß£»
+1ï¼‰æ‰“å¼€vscodeå·¥å…·ï¼›
+2ï¼‰ä½¿ç”¨å¿«æ·é”®ç»„åˆã€Ctrl+Shift+pã€‘ï¼Œåœ¨æœç´¢æ¡†ä¸­è¾“å…¥â€œconfigure display languageâ€ï¼Œç‚¹å‡»ç¡®å®šåŽï¼›
+3ï¼‰ä¿®æ”¹locale.jsonæ–‡ä»¶ä¸‹çš„å±žæ€§â€œlocaleâ€ä¸ºâ€œzh-CNâ€;
+4ï¼‰é‡å¯vscodeå·¥å…·ï¼›

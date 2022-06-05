@@ -78,9 +78,6 @@ Please post any comments on the Yahoo! group created for this purpose:
 
 http://groups.yahoo.com/group/xunitpatterns/post
 
-------
-
-------
 
 Page generated at Wed Feb 09 16:38:57 +1100 2011
 

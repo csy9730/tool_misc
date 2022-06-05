@@ -500,26 +500,26 @@ dig @208.67.222.222 -p 443 www.twitter.com
 # 同时，查看 /var/log/ss-redir.log 日志可以看到 udp_relay 成功的信息
 ```
 
-------
+
 
 - [PREVIOUS
   为JEKYLL静态博客添加搜索功能](http://ivo-wang.github.io/2018/02/24/jekyll-search/)
 - [NEXT
   LINUX下SUSPEND与HIBERNATE的区别](http://ivo-wang.github.io/2018/02/24/suspend-hibernate/)
 
-------
+
 
 ##### [CATALOG](http://ivo-wang.github.io/2018/02/24/ss-redir/#)
 
 
 
-------
+
 
 ##### [FEATURED TAGS](http://ivo-wang.github.io/tags/)
 
 [linux](http://ivo-wang.github.io/tags/#linux) [shell](http://ivo-wang.github.io/tags/#shell) [vim](http://ivo-wang.github.io/tags/#vim) [python](http://ivo-wang.github.io/tags/#python) [archlinux](http://ivo-wang.github.io/tags/#archlinux) [samba](http://ivo-wang.github.io/tags/#samba) [python 3.5](http://ivo-wang.github.io/tags/#python 3.5) [centos7](http://ivo-wang.github.io/tags/#centos7) [ubuntu](http://ivo-wang.github.io/tags/#ubuntu) [ubuntu 18.04 lts](http://ivo-wang.github.io/tags/#ubuntu 18.04 lts) [debian](http://ivo-wang.github.io/tags/#debian)
 
-------
+
 
 ##### FRIENDS
 

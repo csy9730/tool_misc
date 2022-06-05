@@ -95,7 +95,7 @@ termux-call-log -l limit -o offset
     "date":"通话时间",
     "duration":"通话时长"
   }
-  ...
+  // ...
 ]
 ```
 
@@ -115,7 +115,7 @@ termux-call-log -l limit -o offset
         "width": 4080,
         "height": 3072
       },
-      ...
+      // ...
     ],
     "focal_lengths": [
       7.590000152587891
@@ -142,7 +142,7 @@ termux-call-log -l limit -o offset
       "manual_post_processing"
     ]
   },
-  ...
+  // ...
 ]
 ```
 
@@ -199,7 +199,7 @@ termux-clipboard-set text
     "name":"名称",
     "nuumber":"号码"
   }
-  ...
+  // ...
 ]
 ```
 
@@ -695,10 +695,10 @@ termux-torch status
 [
   {
     "name":"包名",
-    "label":"名称"
+    "label":"名称",
     "default":true
   },
-  ...
+  // ...
 ]
 ```
 
@@ -889,7 +889,7 @@ termux-wifi-enable status
     "timestamp": 584216631835,
     "channel_bandwidth_mhz": "20"
   },
-  ...
+  // ...
 ]
 ```
 
