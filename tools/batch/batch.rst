@@ -42,15 +42,15 @@ Welcome to batch's documentation!
    :caption: 扩展:
    
 
-   main/text/Windows——cmd findstr 字符串查找增强使用说明.md
-   misc/misc.md
-   misc/windows黑客相关.md
-   misc/黑客基础之DOS.md
+   .. main/text/Windows——cmd findstr 字符串查找增强使用说明.md
+   .. misc/misc.md
+   .. misc/windows黑客相关.md
+   .. misc/黑客基础之DOS.md
 
-   coding/demo/eLink.md
+   .. coding/demo/eLink.md
    .. coding/demo/tools.md
-   coding/demo/简单demo.md
-   coding/demo/随机.md
+   .. coding/demo/简单demo.md
+   .. coding/demo/随机.md
 
 
 
