@@ -26,7 +26,7 @@
 
 Similar to access the Windows file system, NTFS partitions on Linux,  opening Ext4 on Windows, or accessing other Linux partitions on your  Windows local disk isn't easy. Although you can find them listed on the  disk, you need to **mount Ext4 on Windows** to open such  extension files. So, let us dive deep into this concept and get to know  the issues and solutions to get through Ext4 files on Windows in our  today's article!  
 
-------
+
 
 ## Part 1: Overview of Ext4
 
@@ -42,7 +42,7 @@ But do not worry as we have the solutions for you. We will provide  you with a r
 
 If you wish to avoid such complications in the future, you can  consider the technique of keeping a "Pooled" Linux partition drive  formatted as NTFS. It will allow you to share file systems on both the  system after being dual-booted. You can also try syncing the files to  Google Drive - This seems comforting, doesn't it?
 
-------
+
 
 ## Part 2: Solutions – How to mount Ext4 on Windows
 
@@ -100,7 +100,7 @@ Another way to use Ext4 files on your Windows is by changing the Ext4 file to da
 
 ![ convert ext4 to ntfs](https://images.wondershare.com/recoverit/article/2021/05/convert-ext4-to-ntfs.jpg)
 
-------
+
 
 ## Bonus tip – How to Read and Save Ext4 Partition Files on Windows with Recoverit?
 
@@ -138,7 +138,7 @@ Note: Please note that before attempting the solutions mentioned  here, make sur
 
 [**Download | Win**](https://ssl-download.wondershare.com/recoverit_full4134.exe) [**Download | Mac**](https://download.wondershare.com/recoverit_full4138.dmg)
 
-------
+
 
 ## The Bottom Line
 

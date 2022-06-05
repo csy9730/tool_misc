@@ -286,7 +286,7 @@ $ http -A digest -a username:password example.org
 $ http -a username example.org
 ```
 
-------
+
 
 via: [https://www.2daygeek.com/httpie-curl-wget-alternative-http-client-linux/](https://link.zhihu.com/?target=https%3A//www.2daygeek.com/httpie-curl-wget-alternative-http-client-linux/)
 

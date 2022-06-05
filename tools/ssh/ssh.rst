@@ -28,9 +28,9 @@ Welcome to ssh's documentation!
 
    wrap/Win32-OpenSSH/Win32-OpenSSH.md
    wrap/Fabric/fabric.md
-   .. extension/remote/mosh.md
-   .. extension/remote/rsh.md
-   .. extension/remote/vnc.md
+.. extension/remote/mosh.md
+.. extension/remote/rsh.md
+.. extension/remote/vnc.md
    extension/scp/scp.md
    extension/sftp/sftp.md
 
