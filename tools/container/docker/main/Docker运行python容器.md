@@ -8,11 +8,11 @@
 
  
 
-1.编写Dockerfile文件
+### 1.编写Dockerfile文件
 
 每一个镜像都有一个Dockerfile文件对应，Dockerfile定义了如何构建镜像。
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 FROM python:3.6.4
@@ -29,7 +29,7 @@ WORKDIR /code
 CMD ["/bin/bash","run.sh"]
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 
@@ -45,7 +45,7 @@ CMD：容器启动命令，Docker 不是虚拟机，容器就是进程。既然�
 
  
 
-2.构建镜像 
+### 2.构建镜像 
 
 构建目录，我这里有四个文件和文件夹。
 
@@ -64,7 +64,7 @@ app  Dockerfile  requirements.txt  run.sh
 
 requirements.txt
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 Django
@@ -79,7 +79,7 @@ paramiko
 psutil
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 run.sh
 
@@ -89,7 +89,7 @@ python /code/app/manage.py runserver 0.0.0.0:8000
 
 docker bulid -t <name> . 用于构建镜像。
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 [root@CentOS webtest]# ls
@@ -106,19 +106,19 @@ Removing intermediate container 0bd29255c648
 Successfully built 1dfa2905efac
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 构建完成后返回一个镜像id 1dfa2905efac 。
 
  
 
-3.运行容器
+### 3.运行容器
 
 启动容器，运行刚才构建的镜像。
 
 docker run -it -p 6500:8000 -v /home/code/webtest:/code --name web --restart always --privileged=true web
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 [root@CentOS webtest]# docker run -it -p 6500:8000 -v /home/code/webtest:/code --name web --restart always --privileged=true web
@@ -135,7 +135,7 @@ Starting development server at http://0.0.0.0:8000/
 Quit the server with CONTROL-C.
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ​     
 

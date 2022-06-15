@@ -71,7 +71,7 @@ apt update
 apt upgrade
 
 # 安装python主程序和必要模块
-#默认的python版本是3.6，为了避免安装相关模块失败，python2建议也安装了。
+# 默认的python版本是3.6，为了避免安装相关模块失败，python2建议也安装了。
 apt install python python-dev python2 python2-dev
 
 
@@ -79,12 +79,11 @@ apt install python python-dev python2 python2-dev
 apt install libxml2 libxml2-dev libxslt libxslt-dev openssl libffi libffi-dev openssl-tool openssl-dev fftw fftw-dev libzmq libzmq-dev freetype freetype-dev libpng libpng-dev pkg-config scrypt -y
 pkg install libcrypt libcrypt-dev ccrypt libgcrypt libgcrypt-dev -y
 
+
 ```
 
 ###### scrapy
 ``` bash
-
-
 #1.3 安装python模块
 #1.3.1 爬虫相关模块
 pip install BeautifulSoup4 requests
@@ -102,17 +101,31 @@ pip install scrapy
 
 numpy；matplotlib；pandas；ipython（有些依赖跟爬虫模块重复，安装会自动跳过）
 ``` bash
-pip install --force-reinstall --no-cache-dir jupyter 
+
+apt install  python python-dev 
 
 python2 -m pip install --upgrade pip
-python -m pip install --upgrade pip
+python3 -m pip install --upgrade pip
 
-LDFLAGS=" -lm -lcompiler_rt" pip install numpy==1.12.1 &LDFLAGS=" -lm -lcompiler_rt" pip install matplotlib pandas jupyter
 
-pip install BeautifulSoup4 requests &pip install lxml &pip install scrapy &pip install demjson tushare colorama &pip install pillow &pip install future &pip install paramiko
+apt install clang fftw libzmq  freetype  libpng pkg-config
 
-apt install clang python python-dev fftw libzmq libzmq-dev freetype freetype-dev libpng libpng-dev pkg-config
-LDFLAGS=" -lm -lcompiler_rt" pip install numpy matplotlib pandas jupyter
+
+LDFLAGS=" -lm -lcompiler_rt" pip install numpy==1.12.1 
+LDFLAGS=" -lm -lcompiler_rt" pip install matplotlib pandas jupyter
+
+
+pip install --force-reinstall --no-cache-dir jupyter 
+
+pip install BeautifulSoup4 requests 
+pip install lxml 
+pip install scrapy 
+pip install demjson tushare colorama 
+pip install pillow 
+pip install future paramiko
+
+
+
 ```
 
 
@@ -210,3 +223,11 @@ termux-telephony-call  10086  # 拨打电话
 * set instant output （notification,toast，torch,vibrate,wallpaper,mp3,tts）
 * read/write file : clipboard,sms
 * read file: ,call contact
+
+## misc
+```
+No more -dev packages
+As of July 28 2019 packages ending in -dev will no longer exist.
+
+These packages previously contained header files and other files needed to build software on the device. As those files are small they are no longer split out but instead merged into their main packages.
+```

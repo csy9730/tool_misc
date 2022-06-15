@@ -10,7 +10,7 @@
 
 我们内部压力（cpu 80%，内存90%）通过stress （做页面压力测试）在容器内部做测试中，发现某几个时候通过
 `docker stop $containerid`
-docker cli退出后，短暂时间内docker ps查看到容器依然在运行状态。但是很快docker ps查看容器或者ps查看容器主进程pid就可以确认容器推出了。我们需要解释一下Docker stop发生了什么
+docker cli退出后，短暂时间内`docker ps`查看到容器依然在运行状态。但是很快`docker ps`查看容器或者ps查看容器主进程pid就可以确认容器推出了。我们需要解释一下Docker stop发生了什么
 
 # Docker主要执行流程
 

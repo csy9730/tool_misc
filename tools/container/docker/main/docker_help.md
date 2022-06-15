@@ -319,11 +319,12 @@ docker ps -a
 
 
 #### docker start/stop/kill/pause/restart
-- 启动容器
-- 结束容器
-- 杀死容器
-- 暂停
-- 重启容器
+- start 启动容器 启动一个或多个已经被停止的容器
+- stop 结束容器 停止一个或多个运行中的容器 发送sigterm信号
+- kill 杀死容器 发送SIGKILL信号
+- pause 暂停
+- unpause 取消暂停
+- restart 重启容器 重启一个或多个容器
 
 
 ```
