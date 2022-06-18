@@ -42,6 +42,7 @@ apt list --installed | grep -i apache
 # 下载包
 apt-get install dependpackname –reinstall -d
 
+
 apt remove xxx # 卸载 xxx软件
 
 yum list installed # centos 查看所有本机已经安装的软件包
@@ -49,6 +50,15 @@ yum list installed # centos 查看所有本机已经安装的软件包
 
 ```
 
+#### 离线安装deb包
+查看依赖
+`apt-cache depends <package name>`
+
+比如要下载tree这个deb包, 则使用如下指令： `apt download tree`
+
+
+安装一个 Debian 软件包，如你手动下载的文件。
+`sudo dpkg -i <package.deb>`
 
 
 ### help

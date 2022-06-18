@@ -95,7 +95,10 @@ pip install --no-index -f target_dir -r requirements.txt
 
 pip install package_name -t python_modules
 ```
-
+### docker切换root用户登录
+``` bash
+docker exec -it --user root <container id> /bin/bash
+```
 ### 启动服务
 
 ``` bash

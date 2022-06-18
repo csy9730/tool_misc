@@ -10,7 +10,6 @@ uname -a
 
 先看一看自己电脑上有哪些内核文件
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
 ```
 merlin@tfAnalysis:~$ dpkg --get-selections|grep linux
@@ -41,8 +40,6 @@ syslinux-legacy                    install
 util-linux                    install
 merlin@tfAnalysis:~$ 
 ```
-
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
 之后再将最新的内核，这儿是36删除掉：
 
