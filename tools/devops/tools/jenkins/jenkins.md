@@ -110,3 +110,13 @@ Bug tracker: https://github.com/kohsuke/winsw/issues
 
 ## misc
 gogs 发送事件，jenkins消费事件，worker执行事件。
+
+### node manager tag
+通过限制项目的运行节点
+可以指定项目运行在哪个标签的设备上。
+
+例如，通过指定windows，linux标签，可以指定设备。
+
+- windows linux 
+- docker c++ python pyqt qt vue react cuda mingw go php lua java javascript nodejs
+- amd64  aarch64 

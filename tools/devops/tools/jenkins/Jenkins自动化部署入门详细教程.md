@@ -211,44 +211,35 @@
 
 ![复制代码](https://common.cnblogs.com/images/copycode.gif)
 
-```
-1 #!/bin/bash
-2 echo "Stop Procedure : demo2-0.0.1-SNAPSHOT.jar"
-3 pid=`ps -ef |grep java|grep demo2-0.0.1-SNAPSHOT.jar|awk '{print $2}'`
-4 echo 'old Procedure pid:'$pid
-5 if [ -n "$pid" ]
-6 then
-7 kill -9 $pid
-8 fi
-```
-
-![复制代码](https://common.cnblogs.com/images/copycode.gif)
-
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
-
-　　案例中给出的start.sh脚本如下：
-
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
-
-![复制代码](https://common.cnblogs.com/images/copycode.gif)
-
-```
-1 #!/bin/bash
-2 export JAVA_HOME=/usr/java/jdk1.8.0_131
-3 echo ${JAVA_HOME}
-4 echo 'Start the program : demo2-0.0.1-SNAPSHOT.jar' 
-5 chmod 777 /home/ldp/app/demo2-0.0.1-SNAPSHOT.jar
-6 echo '-------Starting-------' 
-7 cd /home/ldp/app/
-8 nohup ${JAVA_HOME}/bin/java -jar demo2-0.0.1-SNAPSHOT.jar &
-9 echo 'start success'
+``` bash
+#!/bin/bash
+echo "Stop Procedure : demo2-0.0.1-SNAPSHOT.jar"
+pid=`ps -ef |grep java|grep demo2-0.0.1-SNAPSHOT.jar|awk '{print $2}'`
+echo 'old Procedure pid:'$pid
+if [ -n "$pid" ]
+then
+kill -9 $pid
+fi
 ```
 
-![复制代码](https://common.cnblogs.com/images/copycode.gif)
+案例中给出的start.sh脚本如下：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
- 　　到此，Jenkinds服务器配置完成，接下来我还有要配置Linux服务器和Git服务器。
+
+``` bash
+#!/bin/bash
+export JAVA_HOME=/usr/java/jdk1.8.0_131
+echo ${JAVA_HOME}
+echo 'Start the program : demo2-0.0.1-SNAPSHOT.jar' 
+chmod 777 /home/ldp/app/demo2-0.0.1-SNAPSHOT.jar
+echo '-------Starting-------' 
+cd /home/ldp/app/
+nohup ${JAVA_HOME}/bin/java -jar demo2-0.0.1-SNAPSHOT.jar &
+echo 'start success'
+```
+
+
+到此，Jenkinds服务器配置完成，接下来我还有要配置Linux服务器和Git服务器。
 
 ## 3.2.Linux服务器配置
 

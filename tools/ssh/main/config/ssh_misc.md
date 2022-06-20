@@ -154,6 +154,17 @@ sudo chown $USER .ssh/config
 右击config,属性→安全→高级→禁止继承→删除所有继承(忘了全称了，大概这个意思)→确定
 如果系统是英文：
 Properties -> Security -> Advanced -> Disable Inheritance -> Remove all inherited permissions from this object
+### private key
+对于密钥文件，需要设置访问性
+```
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@ WARNING: UNPROTECTED PRIVATE KEY FILE!                  @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Permissions 0644 for '.ssh/id_ed25519-cert.pub' are too open. It is required that your private key files are NOT accessible by others. This private key will be ignored.
+```
+
+`sudo chmod 700 *`
+
 
 ### authorized_keys
 
