@@ -122,7 +122,7 @@ git gc --aggressive --prune=now
 
 既然所指定的子文件夹已经被分离为一个单独的 git repo 了，我们就可以放心地在原仓库中删除它了：
 
-```
+``` bash
 git rm -rf <name-of-folder>
 # 提交一下说明对应操作
 git commit -m 'Remove some fxxking shit'
