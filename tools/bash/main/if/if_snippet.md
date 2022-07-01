@@ -11,14 +11,14 @@ Shell中的条件判断语句，与其他编程语言类似。
 ## 常用格式
 
 ### 格式一
-```
+``` bash
 if 条件; then
 ​    语句
 fi
 ```
 
 ### 格式二
-```
+``` bash
 if 条件; then
 ​    语句
 else
@@ -26,7 +26,7 @@ else
 fi
 ```
 ### 格式三
-```
+``` bash
 if 条件; then
 ​    语句
 elif 条件; then
@@ -57,13 +57,13 @@ fi
 ```
 
  
-
+```
 [root@jfht ~]# if [ "foo" = "foo" ]; then
 \>     echo expression evaluated as true
 \> fi
 expression evaluated as true
 [root@jfht ~]#
-
+```
 ### 示例二
 
 Bash代码 
@@ -81,7 +81,7 @@ fi
 
 Bash代码 
 
-```
+``` bash
 T1="foo"
 T2="bar"
 if [ "$T1" = "$T2" ]; then
@@ -93,7 +93,7 @@ fi
 
 ### 示例四 判断命令行参数数量
 
-```
+``` bash
 #!/bin/sh
 
 if [ "$#" != "1" ]; then
@@ -104,7 +104,7 @@ fi
 
 ### 示例五 判断文件中是否包含某个字符串
 
-```
+``` bash
 if grep -q root /etc/passwd; then
     echo account root exists
 else
@@ -115,7 +115,7 @@ fi
 ### 示例六 判断文件是否存在
 
 
-```
+``` bash
 if [ -e myfile ]; then
     echo myfile exists
 else
@@ -128,7 +128,7 @@ fi
 
 ### 示例七 判断两个文件是否相同
 
-```
+``` bash
 echo 1 >file1
 echo 2 >file2
 if ! diff -q file1 file2; then

@@ -2,9 +2,9 @@
 
 **1、who命令查看**
 
-who -b查看最后一次系统启动的时间。
+`who -b`查看最后一次系统启动的时间。
 
-who -r查看当前系统运行时间
+`who -r`查看当前系统运行时间
 
 **2、last reboot**
 
@@ -49,13 +49,13 @@ date -d "$(awk -F. '{print $1}' /proc/uptime) second ago" +"%Y-%m-%d %H:%M:%S"
 
  
 
-参考：
+## 参考：
 
-https://www.cnblogs.com/kerrycode/p/3759395.html（以上内容转自此篇文章）
+[https://www.cnblogs.com/kerrycode/p/3759395.html](https://www.cnblogs.com/kerrycode/p/3759395.html)（以上内容转自此篇文章）
 
-http://www.thegeekstuff.com/2011/10/linux-reboot-date-and-time/
+[http://www.thegeekstuff.com/2011/10/linux-reboot-date-and-time/](http://www.thegeekstuff.com/2011/10/linux-reboot-date-and-time/)
 
-http://www.averainy.info/linux-system-operation-time-and-the-view-of-the-latest-powered-up-time/
+[http://www.averainy.info/linux-system-operation-time-and-the-view-of-the-latest-powered-up-time/](http://www.averainy.info/linux-system-operation-time-and-the-view-of-the-latest-powered-up-time/)
 
 分类: [服务器运维-[Linux/Mac/Ubuntu/CentOS/Windows\]](https://www.cnblogs.com/EasonJim/category/811268.html)
 

@@ -49,13 +49,10 @@ CMD：容器启动命令，Docker 不是虚拟机，容器就是进程。既然�
 
 构建目录，我这里有四个文件和文件夹。
 
-1.app是django项目
-
-2.Dockerfile
-
-3.requirements.txt是项目运行所需要的python库
-
-4.run.sh是运行容器时需要调用的shell脚本
+1. app是django项目
+2. Dockerfile
+3. requirements.txt是项目运行所需要的python库
+4. run.sh是运行容器时需要调用的shell脚本
 
 ```
 [root@CentOS webtest]# ls
@@ -83,11 +80,11 @@ psutil
 
 run.sh
 
-```
+``` bash
 python /code/app/manage.py runserver 0.0.0.0:8000
 ```
 
-docker bulid -t <name> . 用于构建镜像。
+`docker bulid -t <name> .` 用于构建镜像。
 
 
 
@@ -115,9 +112,9 @@ Successfully built 1dfa2905efac
 ### 3.运行容器
 
 启动容器，运行刚才构建的镜像。
-
+```
 docker run -it -p 6500:8000 -v /home/code/webtest:/code --name web --restart always --privileged=true web
-
+```
 
 
 ```
@@ -134,26 +131,19 @@ Django version 2.1, using settings 'ShiHangTool.settings'
 Starting development server at http://0.0.0.0:8000/
 Quit the server with CONTROL-C.
 ```
-
-
-
 ​     
 
-​     -p：把容器的8000端口映射到宿主机6500
-
-​     -v：主机的目录/home/code/webtest映射到容器的目录/code
-
-​     --name：给容器起个名字web，webtest是我们刚刚构建的镜像
-
-​     --restart：always 容器退出时总是重启
-
-​     --privileged=true：执行容器内文件需要的权限
+-p：把容器的8000端口映射到宿主机6500
+-v：主机的目录/home/code/webtest映射到容器的目录/code
+--name：给容器起个名字web，webtest是我们刚刚构建的镜像
+--restart：always 容器退出时总是重启
+--privileged=true：执行容器内文件需要的权限
 
  
 
  
 
-输入 ip:6000/Home/OrderSettle-K8S/
+输入 `ip:6000/Home/OrderSettle-K8S/`
 
  ![img](https://blogimg-1256334314.cos.ap-chengdu.myqcloud.com/dce40e4a-b2c5-446f-b241-5b23ccbdec0d.png)
 

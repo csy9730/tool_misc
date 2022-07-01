@@ -86,7 +86,7 @@ docker会在接收容器中设置名为<alias>_NAME的环境变量，该环境�
 
 我们进入node容器，看下此环境变量：
 
-```ruby
+``` bash
 docker exec -it node /bin/bash
 seluser@c4cc05d832e0:/$ env | grep -i hub_name
 HUB_NAME=/node/hub
@@ -112,13 +112,13 @@ docker用上面定义的前缀定义3个环境变量：
 
 [查看selenium/hub的Dockerfile](https://link.jianshu.com/?t=https://github.com/SeleniumHQ/docker-selenium/blob/master/Hub/Dockerfile)，可见只暴露了4444端口号：
 
-```undefined
+```
 EXPOSE 4444
 ```
 
 我们进入node容器，看这些此环境变量：
 
-```ruby
+```bash
 docker exec -it node /bin/bash
 seluser@c4cc05d832e0:/$ env | grep -i HUB_PORT_4444_TCP_
 HUB_PORT_4444_TCP_PROTO=tcp
@@ -132,7 +132,7 @@ HUB_PORT_4444_TCP_PORT=4444
 
 我们进入node容器，看下此环境变量：
 
-```ruby
+```bash
 docker exec -it node /bin/bash
 seluser@c4cc05d832e0:/$ env | grep -i HUB_PORT=
 HUB_PORT=tcp://172.17.0.2:4444
@@ -151,7 +151,7 @@ docker会在接收容器中创建一些环境变量，这些环境变量是的�
 
 [查看selenium/hub的Dockerfile](https://link.jianshu.com/?t=https://github.com/SeleniumHQ/docker-selenium/blob/master/Hub/Dockerfile)，可见Dockerfile中ENV标签设置的环境变量有：
 
-```objectivec
+```
 # As integer, maps to "maxSession"
 ENV GRID_MAX_SESSION 5
 # In milliseconds, maps to "newSessionWaitTimeout"
@@ -172,7 +172,7 @@ ENV GRID_DEBUG false
 
 我们进入selenium_hub容器，看下这些环境变量：
 
-```ruby
+```
 root@ubuntu:~# docker exec -it selenium_hub /bin/bash
 seluser@1cbbf6f07804:/$ env | grep -i grid_
 GRID_DEBUG=false
@@ -187,7 +187,7 @@ GRID_NEW_SESSION_WAIT_TIMEOUT=-1
 
 我们再进入node容器，看下node容器中关于selenium_hub的<alias>*ENV*<name>环境变量：
 
-```ruby
+```
 docker exec -it node /bin/bash
 seluser@c4cc05d832e0:/$ env | grep -i hub_env
 HUB_ENV_GRID_DEBUG=false
@@ -213,7 +213,7 @@ HUB_ENV_GRID_NEW_SESSION_WAIT_TIMEOUT=-1
 docker会将源容器的host更新到目标容器的/etc/hosts中：
 我们再进入node容器，查看node容器中的/etc/hosts文件的内容：
 
-```ruby
+```
 docker exec -it node /bin/bash
 seluser@c4cc05d832e0:/$ cat /etc/hosts
 127.0.0.1   localhost

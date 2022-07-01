@@ -119,17 +119,17 @@ vmstat的输出值能够帮助我们了解当前系统的性能。比如说，�
 
 ### 查看当前主机的外部IP
 
-curl ifconfig.me
+`curl ifconfig.me`
 查看网口信息-ifconfig
 
 ifconfig可以用来查看ip地址，网口等信息：
 
-ifconfig -a
+`ifconfig -a`
 查看ip地址--ip
 
 有时候使用ifconfig命令并不一定能够看到所有的ip地址，因此可以使用：
 
-ip addr
+`ip addr`
 ### 查看网络连接状态--netstat
 
 netstat命令可以查看网络连接状态，通常用于诊断网络相关问题。例如查看端口是否被占用，连接是否已经释放，服务是否在监听等等。具体可参考《不可不知的网络命令-netstat》。
@@ -137,7 +137,7 @@ netstat命令可以查看网络连接状态，通常用于诊断网络相关问�
 ### 查看CPU利用率等-top
 
 top命令可用于查看系统的CPU利用率，内存占用等情况：
-
+```
 top
 top - 22:06:11 up 12 min,  1 user,  load average: 0.87, 1.12, 1.02
 Tasks: 235 total,   1 running, 180 sleeping,   0 stopped,   0 zombie
@@ -149,6 +149,8 @@ KiB Swap:  8002556 total,  8002556 free,        0 used.  4804820 avail Mem
  3389 hyb       20   0 1243184 108880  68152 S   6.0  1.4   0:28.70 compiz      
  6414 hyb       20   0 1299428 209808  84204 S   6.0  2.6   0:07.48 chrome      
  4879 hyb       20   0 1670760 270444 127124 S   5.6  3.4   0:32.89 chrome
+```
+
 ### 查看进程间关系--pstree
 
 通过pstree命令可以看到进程间的父子关系，它以树形结构显示这些信息：
@@ -182,9 +184,9 @@ systemd─┬─ModemManager─┬─{gdbus}
 
 实际上，前面所提到的很多相关命令信息都是从系统文件中获取的，例如/proc/meminfo保存了内存相关信息，/proc/net/dev保存网络流量相关信息。只是，它们都是静态数值，但是我们可以结合watch命令来动态地观察这些信息，例如：
 
-watch -n 1 cat /proc/meminfo 
+`watch -n 1 cat /proc/meminfo `
 
-watch -n 1 cat /proc/net/dev
-上面的命令表示，每隔一秒执行一次cat /proc/meminfo或cat /proc/net/dev，因此我们可以看到内存信息或网卡流量信息在实时刷新。更多内容可参考《Linux中不可错过的信息宝库》。
+`watch -n 1 cat /proc/net/dev`
+上面的命令表示，每隔一秒执行一次`cat /proc/meminfo`或`cat /proc/net/dev`，因此我们可以看到内存信息或网卡流量信息在实时刷新。更多内容可参考《Linux中不可错过的信息宝库》。
 
 本文仅介绍这些命令的经典使用，更多使用可通过man 命令查看。通过前面这些系统自带命令，我们可以比较方便地监控系统状态，从而帮助我们维护系统或定位问题。欢迎留言补充或更正。

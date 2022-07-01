@@ -6,6 +6,31 @@ sudo apt install -y git vim zsh wget curl
 sudo apt install tmux screen zip -y
 sudo apt install net-tools  openssh-server rdesktop putty adb -y
 
+guess_os(){
+    isLinux=$(uname -a |grep -i Linux)
+    guess_os=""
+    if [ "$isCentos" != ""  ] ;then
+        # isCentos=$(lsb_release -a |grep -i Centos)
+        if test -n "$(cat /etc/issue |grep -i Ubuntu)" ;then
+            echo "Your system is ubuntu"
+            guess_os="Linux ubuntu"
+        elif test -n "$(cat /etc/redhat-release |grep -i CentOS)" ;then
+            echo "Your system is Centos"
+            guess_os="Linux Centos"
+        elif test -n "$(uname -a |grep -i android)" ;then
+            echo "Your system is android"
+            guess_os="Linux android"
+        else
+            guess_os="Linux"
+            echo "Your system is Linux"
+        fi
+    elif test -n "$(uname -a |grep -i NT)"; then
+        guess_os="windows"
+        echo "Your system is windows"
+    else
+        echo "Your system is else"
+    fi
+}
 
 # 
 installPython(){

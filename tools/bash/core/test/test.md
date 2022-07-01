@@ -1,7 +1,71 @@
 # test
 
+## demo
+
+##### 字符相等判断
+``` bash
+str="abc"
+str="abc2"
+
+if test "abc" = $str
+then
+    echo '=='
+else
+    echo '!='
+fi
+```
+
+##### 整数相等判断
+``` bash
+str=3
+str=2
+
+if test 2 = $str
+then
+    echo '=='
+else
+    echo '!='
+fi
+```
+
+##### 字符串空判断
 
 ``` bash
+# 文件已存在
+
+if test -z "abc"
+then
+    echo 'len=0'
+else
+    echo 'len>0'
+fi
+
+if test -z ""
+then
+    echo 'len=0'
+else
+    echo 'len>0'
+fi
+
+if test ! -z "def"
+then
+    echo 'len>0'
+else
+    echo 'len=0'
+fi
+
+if test  -n ""
+then
+    echo 'len>0'
+else
+    echo 'len=0'
+fi
+```
+
+
+##### 文件存在判断
+``` bash
+# 文件已存在
 cd /bin
 if test -e ./bash
 then
@@ -10,7 +74,6 @@ else
     echo '文件不存在!'
 fi
 ```
-
 
 ## help
 ```
