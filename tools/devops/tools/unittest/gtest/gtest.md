@@ -4,7 +4,7 @@
 
 ## Test Doubles
 测试相关的Doubles包括Dummy， Fake，Stubs，Mocks
-- Dummy是个哑巴，啥也不会干。
+- Dummy 是个哑巴，啥也不会干。
 - Stubs 会按照预定的备案输出，（含义是桩，一般充当占位符）
 - Mocks 可以设置更加灵活的输出策略。
 - Fake 可以实际工作,但是有缺陷，不适合用于产品
