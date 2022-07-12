@@ -1,1 +1,1 @@
-# trapz
+# trapzoid
