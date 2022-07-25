@@ -18,7 +18,7 @@
 
 按照 Peter M. Fenwick 的说法，BIT 的产生源自整数与二进制的类比。
 
-Each integer can be represented as sum of powers of two. In the same way, cumulative frequency can be represented as sum of sets of subfrequencies. In our case, each set contains some successive number of non-overlapping frequencies.
+> Each integer can be represented as sum of powers of two. In the same way, cumulative frequency can be represented as sum of sets of subfrequencies. In our case, each set contains some successive number of non-overlapping frequencies.
 
 简单翻一下：每个整数可以用二进制来进行表示，在某些情况下，序列累和（这里没有翻译为频率）也可以用一组子序列累和来表示。在本例子中，每个集合都有一些连续不重叠的子序列构成。
 
@@ -108,15 +108,17 @@ num=13=11012子序列1=f[1](f[00012])+f[2]+⋯+f[8](f[10002])len(10002)子序列
 
 3. 利用BIT计算 c[i]c[i] 时，通过类似整数的二进制拆分，将 c[i]c[i] 拆分为 O(log2n)O(log2⁡n) 个 tree[j]tree[j] 进行求解。求解的流程为不断累加 tree[i]tree[i] 并置 i←i−lowbit(i)i←i−lowbit(i)
 
-4. ```c++
-   Copy计算流程的伪代码：
-   let ans <- 0
-   while i > 0:
-   	sub_sum <- tree[i] // 获取子序列累和
-   	i <- i - lowbit(i) // 更新 i 
-   	ans <- ans + sub_sum
-   return ans
-   ```
+4. 
+5. 
+
+```c++
+let ans <- 0
+while i > 0:
+    sub_sum <- tree[i] // 获取子序列累和
+    i <- i - lowbit(i) // 更新 i 
+    ans <- ans + sub_sum
+return ans
+```
 
 
 
