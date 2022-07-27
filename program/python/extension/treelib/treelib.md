@@ -2,15 +2,15 @@
 
 treelib 库是一个 Python 的第三方库。这个库实现了一些多叉树相关的常用方法。
 
-**一、安装treelib**
+### **一、安装treelib**
 
 在 treelib 库中，实现了两个类 Tree 和 Node，分别用于创建多叉树和创建节点。
 
-**二、创建多叉树和添加节点**
+### **二、创建多叉树和添加节点**
 
-1\. 创建一棵多叉树
+#### 1. 创建一棵多叉树
 
-```javascript
+```python
 # coding=utf-8
 from treelib import Tree, Node
 
@@ -22,7 +22,7 @@ print(tree.identifier)
 
 运行结果：
 
-```javascript
+```
 Tree is empty
 
 2f9fa5c8-e7aa-11ea-9b8b-b886873e4844
@@ -30,9 +30,9 @@ Tree is empty
 
 Tree 类用于实例化一棵多叉树。有四个初始化参数(tree=None, deep=False, node\_class=None, identifier=None)，都有默认值。tree表示拷贝一棵已有的树，传入一个Tree的对象。deep表示拷贝另一棵树时是否深拷贝。node\_class表示节点类，一般不需要使用，可以不管。identifier表示树的id，在初始化时会默认分配一个唯一的id值，也可以手动指定一个id，保证是唯一的就行，树一旦创建完成，id就不能再修改。
 
-2\. 添加节点到多叉树中
+#### 2. 添加节点到多叉树中
 
-```javascript
+```python
 tree.create_node(tag='Node-5', identifier='node-5', data=5)
 tree.create_node(tag='Node-10', identifier='node-10', parent='node-5', data=10)
 tree.create_node('Node-15', 'node-15', 'node-10', 15)
@@ -47,7 +47,7 @@ tree.show()
 
 运行结果：
 
-```javascript
+```
 Node-5
 └── Node-10
     └── Node-15
@@ -63,17 +63,17 @@ create\_node(tag=None, identifier=None, parent=None, data=None): 创建一个节
 
 add\_node(node, parent=None): 添加一个节点到树中。这个方法需要先用 Node 类创建好节点，第一个参数传入节点，第二参数同create\_node()方法。
 
-**三、Node创建节点和Node类中的方法**
+### **三、Node创建节点和Node类中的方法**
 
-1\. 创建节点
+#### 1\. 创建节点
 
 Node 类用于创建节点，有四个初始化参数(tag=None, identifier=None, expanded=True, data=None)，都有默认值。tag、identifier和data同前面的create\_node()方法。expanded表示节点的可扩展性，在 Tree 中会使用到，可以不用管，保持默认就行。
 
 Node 类创建节点一般和 Tree 类中的add\_node()配合使用。
 
-2\. 节点的属性和方法
+#### 2\. 节点的属性和方法
 
-```javascript
+```python
 print(node)
 print('node id: ', node.identifier)
 print('node tag:', node.tag)
@@ -85,7 +85,7 @@ print('node is root: ', node.is_root())
 
 运行结果：
 
-```javascript
+```
 Node(tag=719f3842-e7af-11ea-8caa-b886873e4844, identifier=719f3842-e7af-11ea-8caa-b886873e4844, data=50)
 node id:  719f3842-e7af-11ea-8caa-b886873e4844
 node tag: 719f3842-e7af-11ea-8caa-b886873e4844
@@ -102,11 +102,11 @@ is\_root(tree\_id=None): 返回节点在树中的位置是不是根节点。
 
 Node 类中还有一些其他的方法，主要用于对节点的指针作处理，一般不会直接调用，这里就不介绍了。
 
-**四、Tree中的方法介绍**
+### **四、Tree中的方法介绍**
 
-1\. 返回多叉树中的节点个数
+#### 1\. 返回多叉树中的节点个数
 
-```javascript
+```python
 tree.show()
 print('tree len: ', len(tree))
 print('tree size:', tree.size())
@@ -117,7 +117,7 @@ print('tree size:', tree.size())
 
 运行结果：
 
-```javascript
+```
 Node-5
 ├── 6e75a77a-e92d-11ea-abfe-b886873e4844
 ├── Node-10
@@ -133,9 +133,9 @@ show(): 将多叉树按树形结构展示输出。可以传入相关参数来限
 
 size(level=None): 返回多叉树的节点个数，默认返回多叉树中的所有节点，与len()方法相同。如果指定层数level，则只返回该层的节点个数。
 
-2\. 返回多叉树中的节点
+#### 2\. 返回多叉树中的节点
 
-```javascript
+```python
 tree.show()
 print(tree.all_nodes())
 for node in tree.all_nodes_itr():
@@ -146,7 +146,7 @@ for id in tree.expand_tree():
 
 运行结果：
 
-```javascript
+```
 Node-5
 ├── Node-10
 │   ├── Node-15
@@ -178,9 +178,9 @@ all\_nodes\_itr(): 返回多叉树中的所有节点，返回结果是一个迭�
 
 expand\_tree(): 返回多叉树中的所有节点id，返回结果是一个生成器，顺序是按深度优先遍历的顺序。可以传入过滤条件等参数来改变返回的生成器。
 
-3\. 多叉树中的节点关系
+#### 3\. 多叉树中的节点关系
 
-```javascript
+```python
 print('node-5 children:', tree.children('node-5'))
 print('node-10 branch:', tree.is_branch('node-10'))
 print('node-20 siblings:', tree.siblings('node-20'))
@@ -193,7 +193,7 @@ for node in tree.rsearch('node-30'):
 
 运行结果：
 
-```javascript
+```
 node-5 children: [Node(tag=Node-10, identifier=node-10, data=10), Node(tag=2fbce8a8-e933-11ea-9304-b886873e4844, identifier=2fbce8a8-e933-11ea-9304-b886873e4844, data=50), Node(tag=Node-A, identifier=node-A, data=A)]
 node-10 branch: ['node-15', 'node-20']
 node-20 siblings: [Node(tag=Node-15, identifier=node-15, data=15)]
@@ -220,9 +220,9 @@ is\_ancestor(ancestor, grandchild): 传入两个节点id，判断ancestor是不�
 
 rsearch(nid, filter=None): 传入节点id，遍历节点到根节点的路径上的所有节点id，包含该节点和根节点，返回结果是一个生成器。可以传入过滤条件对结果进行过滤。
 
-4\. 多叉树的深度和叶子节点
+#### 4\. 多叉树的深度和叶子节点
 
-```javascript
+```python
 print('tree depth:', tree.depth())
 print('node-20 depth:', tree.depth(node='node-20'))
 print('node-20 level:', tree.level('node-20'))
@@ -232,7 +232,7 @@ print(tree.paths_to_leaves())
 
 运行结果：
 
-```javascript
+```
 tree depth: 3
 node-20 depth: 2
 node-20 level: 2
@@ -248,9 +248,9 @@ leaves(nid=None): 返回多叉树的所有叶节点，返回结果是一个节�
 
 paths\_to\_leaves(): 返回根节点到每个叶节点的路径上的所有节点id，每个叶节点的结果是一个列表，所有叶节点的结果又组成一个列表。所以最终结果是列表嵌套列表。
 
-5\. 判断节点是否在多叉树中和获取节点
+#### 5\. 判断节点是否在多叉树中和获取节点
 
-```javascript
+```python
 print('node-10 is in tree:', tree.contains('node-10'))
 print('node-100 is in tree:', tree.contains('node-100'))
 print(tree.get_node('node-10'))
@@ -261,7 +261,7 @@ print('data of node-20:', tree.get_node('node-20').data)
 
 运行结果：
 
-```javascript
+```
 node-10 is in tree: True
 node-100 is in tree: False
 Node(tag=Node-10, identifier=node-10, data=10)
@@ -275,9 +275,9 @@ get\_node(nid): 传入节点id，从树中获取节点，返回节点对象，�
 
 update\_node(nid, \*\*attrs): 传入节点id，修改节点的属性值，需要修改哪个参数就用关键字参数的方式传入，可以传入0个或多个属性。
 
-6\. 调整多叉树中的节点关系
+#### 6\. 调整多叉树中的节点关系
 
-```javascript
+```python
 tree.show()
 tree.link_past_node('node-10')
 tree.show()
@@ -287,7 +287,7 @@ tree.show()
 
 运行结果：
 
-```javascript
+```
 Node-5
 ├── 488e66b6-e939-11ea-aa02-b886873e4844
 ├── Node-10
@@ -315,9 +315,9 @@ link\_past\_node(nid): 传入节点id，将该节点的所有子节点都链接�
 
 move\_node(source, destination): 传入两个节点id，将source节点移动成为destination节点的子节点。如果节点id不在树中则报错。
 
-7\. 多叉树的合并和子树拷贝
+#### 7\. 多叉树的合并和子树拷贝
 
-```javascript
+```python
 tree2 = Tree()
 tree2.create_node(tag='Node-7', identifier='node-7', data=7)
 tree2.create_node(tag='Node-17', identifier='node-17', parent='node-7', data=17)
@@ -337,7 +337,7 @@ print(tree.subtree('node-20'))
 
 运行结果：
 
-```javascript
+```
 Node-7
 └── Node-17
 
@@ -375,9 +375,9 @@ merge(nid, new\_tree, deep=False): 传入节点id和一棵新树，将新树与�
 
 subtree(nid, identifier=None): 传入节点id，拷贝以该节点作为根节点的子树。如果节点不在树中则报错。
 
-8\. 多叉树转换成字典和保存到文件中
+#### 8\. 多叉树转换成字典和保存到文件中
 
-```javascript
+```python
 print(tree.to_dict())
 print(tree.to_json())
 tree.to_graphviz()
@@ -386,7 +386,7 @@ tree.save2file('demo_tree.tree')
 
 运行结果：
 
-```javascript
+```
 {'Node-5': {'children': ['Node-15', {'Node-20': {'children': ['Node-30', {'Node-7': {'children': ['Node-17']}}]}}, {'Node-A': {'children': ['Node-18']}}, 'e1f2ba34-e93b-11ea-a5f9-b886873e4844']}}
 {"Node-5": {"children": ["Node-15", {"Node-20": {"children": ["Node-30", {"Node-7": {"children": ["Node-17"]}}]}}, {"Node-A": {"children": ["Node-18"]}}, "e1f2ba34-e93b-11ea-a5f9-b886873e4844"]}}
 digraph tree {
@@ -420,9 +420,9 @@ save2file(filename): 将树保存到一个指定文件中，运行后会在当�
 
 这四个方法都有很多关键字参数，可以指定参数来改变转化的结果。
 
-9\. 多叉树删除子树
+#### 9\. 多叉树删除子树
 
-```javascript
+```python
 tree.show()
 print('remover node: ', tree.remove_node('node-7'))
 tree.show()
@@ -432,7 +432,7 @@ tree.show()
 
 运行结果：
 
-```javascript
+```
 Node-5
 ├── 9e0bce40-e93d-11ea-99e7-b886873e4844
 ├── Node-15
