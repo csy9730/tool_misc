@@ -1,4 +1,4 @@
-## SVG 路径 ＜path＞ 格式指令解析M/L/H/V/C/S/Q/T/A/Z
+# SVG 路径 ＜path＞ 格式指令解析M/L/H/V/C/S/Q/T/A/Z
 
 
 
@@ -6,7 +6,7 @@
 
 
 
-# 指令
+## 指令
 
 - M = `moveto`
 - L = `lineto`
@@ -21,17 +21,18 @@
 
 注意：以上所有命令均允许小写字母。大写表示绝对定位，小写表示相对定位。
 
-# 例子
+## 例子
 
+### 绘制三角形
 ![在这里插入图片描述](https://www.codeleading.com/imgrdrct/https://img-blog.csdnimg.cn/d5600902c4954dac9055996331f99fc3.png)
 
 ```xml
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
     <path d="M150 0 L75 200 L225 200 Z" />
 </svg>
-123
 ```
 
+### 绘制圆弧
 ![在这里插入图片描述](https://www.codeleading.com/imgrdrct/https://img-blog.csdnimg.cn/472046577ac64a16b407ca6246af5973.jpeg)
 
 ```xml
@@ -48,12 +49,10 @@
 
   </g>
 </svg>
-
-1234567891011121314
 ```
 
 
 
 版权声明：本文为kangweijian原创文章，遵循[ CC 4.0 BY-SA ](https://creativecommons.org/licenses/by-sa/4.0/)版权协议，转载请附上原文出处链接和本声明。
 
-本文链接：<https://blog.csdn.net/kangweijian/article/details/125169164>
+本文链接：[https://blog.csdn.net/kangweijian/article/details/125169164](https://blog.csdn.net/kangweijian/article/details/125169164)
