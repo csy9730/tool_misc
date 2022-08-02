@@ -12,7 +12,11 @@
 wget https://bootstrap.pypa.io/get-pip.py
 
 sudo python get-pip.py    # 运行安装脚本
-```
+
+wget https://bootstrap.pypa.io/pip/3.6/get-pip.py # pip 对应的是 Python 3.6
+
+wget https://bootstrap.pypa.io/pip/2.7/get-pip.py # pip 对应的是 Python 2.7
+``` 
 
 注意：用哪个版本的 Python 运行安装脚本，pip 就被关联到哪个版本，如果是 Python3 则执行以下命令：
 

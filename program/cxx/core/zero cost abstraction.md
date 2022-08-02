@@ -7,8 +7,8 @@ zero cost abstraction  的表现。
 
 首先他对zero-cost abstractions的定义是引用的C++之父Bjarne的定义
 
-Iterators are one of Rust's zero-cost abstractions, by which we mean using the abstraction imposes no additional runtime overhead in the same way that Bjarne Stroustrup, the original designer and implementer of C++, defines zero-overhead:
-In general, C++ implementations obey the zero-overhead principle: What you don’t use, you don’t pay for. And further: What you do use, you couldn’t hand code any better.
+> Iterators are one of Rust's zero-cost abstractions, by which we mean using the abstraction imposes no additional runtime overhead in the same way that Bjarne Stroustrup, the original designer and implementer of C++, defines zero-overhead:
+> In general, C++ implementations obey the zero-overhead principle: What you don’t use, you don’t pay for. And further: What you do use, you couldn’t hand code any better.
 
 直译就是你不会为没使用的功能付出代价，而对使用了的功能，你无法手写出更好的代码
 

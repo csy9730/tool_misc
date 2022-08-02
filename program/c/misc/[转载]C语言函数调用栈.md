@@ -287,7 +287,7 @@ StackFrame栈帧
 - **naked call调用约定**
   对于使用naked call方式声明的函数，编译器不产生保存(prologue)和恢复(epilogue)寄存器的代码，且不能用return返回返回值(只能用内嵌汇编返回结果)，故称naked call。该调用约定用于一些特殊场合，如声明处于非C/C++上下文中的函数，并由程序员自行编写初始化和清栈的内嵌汇编指令。注意，naked call并非类型修饰符，故该调用约定必须与__declspec同时使用，如VC下定义求和函数，代码示例如下(Windows采用Intel汇编语法，注释符为;)：
 
-```objectivec
+``` cpp
 __declspec(naked) int __stdcall function(int a, int b)
 {
     ;mov DestRegister, SrcImmediate(Intel) vs. movl $SrcImmediate, %DestRegister(AT&T)
@@ -316,7 +316,7 @@ Linux下可借用函数attribute 机制，如int **attribute**((**stdcall**)) fu
 
 代码示例如下：
 
-```java
+``` cpp
 int __attribute__((__cdecl__)) CalleeFunc(int i, int j, int k){
 // int __attribute__((__stdcall__)) CalleeFunc(int i, int j, int k){
 //int __attribute__((__fastcall__)) CalleeFunc(int i, int j, int k){

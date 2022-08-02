@@ -1,7 +1,8 @@
 # c++ extra qualification
 运行代码时候遇到了如下错误：
-
+```
 extra qualification ‘Complex::’ on member ‘Complex’
+```
 其代码如下：
 ``` cpp
 Complex::Complex(double r)

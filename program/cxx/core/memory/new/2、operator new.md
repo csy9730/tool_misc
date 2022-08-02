@@ -17,14 +17,13 @@ placement new 是c++中对operator new 的一个标准、全局的重载版本�
 
 在堆上分配分配一块内存
 
-```
+``` cpp
 struct A* i0 = new A;
 struct A* i1 = new A();
 ```
 
 看new的原型：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
 ```
 void* operator new(std::size_t) _GLIBCXX_THROW (std::bad_alloc)
@@ -45,7 +44,6 @@ void operator delete[](void*, const std::nothrow_t&) _GLIBCXX_USE_NOEXCEPT
   __attribute__((__externally_visible__));
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
 发现它有一个参数，size_t，表示前面调用placement new分配的内存大小，new接下来会在这块内存中调用构造函数，new的操作也是c++来保证的。
 
@@ -69,9 +67,8 @@ void* i = operator new (8);
 
 比如下面的例子中，在A重载了operator new打印出tag，返回全局的opereator new，然后在main函数中调用A的重载版本。
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
-```
+``` cpp
 struct A{
     int a;
     char b;
@@ -90,7 +87,6 @@ int main()
 }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
 最终结果即分配了内存，又打印出了tag的值
 
@@ -98,9 +94,8 @@ int main()
 
 如果我们重载全局的operator new函数，然后调用new，则new的操作也会被更改，比如下面的例子(这个例子的operator new只有一个参数)
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
-```
+``` cpp
 struct A{
     int a;
     char b;
@@ -120,7 +115,6 @@ int main()
 }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
 最终的结果是
 
@@ -139,8 +133,6 @@ A* i = new(1) A ;
 ### 3、placement new的使用
 
 placement new是c++实现的operator new版本，它的实现如下
-
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
 ```
 // Default placement versions of operator new.

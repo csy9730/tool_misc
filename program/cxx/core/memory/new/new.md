@@ -7,6 +7,7 @@ new 的行为和malloc类似。
 - new支持placement new
 - new支持 operator new
 - new支持new[]，operator new[]
+- new 和delete配对， malloc()和free()配对
 
 ### new[]
 ### operator new
