@@ -8,8 +8,8 @@
 * mingw32，windows系统可用的bash环境
 * GUI：tortoiseGit
 * GUI：git for windows
-* github
-* gitlab: https://github.com
+* github https://github.com
+* gitlab: https://gitlab.com
 
 ##### 初始化帐号
 ```
@@ -19,8 +19,8 @@ git config --global core.autocrlf false
 git config --global core.safecrlf false
 git config --global core.quotepath false
 ```
-全局的config 通过vim ~/.gitconfig来查看,位于C:\Users\admin\.gitconfig路径
-```
+全局的config 通过vim ~/.gitconfig来查看,位于`C:\Users\abc\.gitconfig`路径
+``` bash
 git config user.name "Your Name"
 git config user.email you@example.com
 # 局部的通过当前路径下的 .git/config文件来查看
@@ -39,11 +39,22 @@ git config user.email you@example.com
 #### 本地仓库配置
 本地仓库是在当前目录新建.git文件夹，该文件夹包含所有变更的补丁、快照以及镜像，并且可以自由复制黏贴。
 git本地配置保存在 %userprofile%\.gitconfig
-```
+``` bash
 git clone url  # 克隆 url的仓库到本地文件夹,url可以使用本地路径
 git init  # 初始化操作，新建空仓库
 ```
 
+#### ignore文件
+```bash
+ *.[oa]
+
+ # 忽略*.b和*.B文件，my.b除外
+*.[bB]
+!my.b
+ # 忽略dbg文件和dbg目录
+ dbg
+ # 忽略*.o和*.a文件
+```
 
 
 #### 代码变更操作
@@ -74,10 +85,10 @@ git add abc  # 添加abc文件到索引区、暂存区
 git add .    #  添加当前路径到索引区、暂存区
 git rm abc #  从索引区版本库移除abc文件
 git rm --cached readme.txt # 从索引区版本库移除但不删除文件
-git add -i   #  互动添加文件到暂存区
+git add -i   #  互动方式地添加文件到暂存区
 git add -f . #  无视.gitignore文件约束，添加文件
 
-git ls-files # 查看暂存区
+git ls-files # 查看索引区HEAD的文件
 git reset (HEAD ) # 默认使用 --mixed,从暂存区删除所有被修改的文件
 git reset HEAD <filename> # 从暂存区删除一个被修改的文件
 
@@ -97,15 +108,16 @@ git clean –df   ## 清理工作区
 # -x 删除当前目录下所有untracked文件. 会删除.gitignore文件里面指定的文件夹和文件
 ```
 
-#### commit
+#### 快照
 
-```
+``` bash
 git commit -m "abc" # 提交
 git commit --amend # 提交，与上次的提交合并
 git reset --hard ver  # 将版本回退到ver版本，只影响tracked文件
 git revert -n  # 通过反做创建一个新的版本，这个版本的内容与我们要回退到的目标版本一样，但是HEAD指针是指向这个新生成的版本，而不是目标版本
 
 ```
+
 ##### 版本号
 版本号表达方式：
 * HEAD  （大写）
@@ -128,13 +140,20 @@ git rev-parse --short HEAD
 
 ##### log
 
-```
+``` bash
 git log # 使用udfb翻页查看，q退出当前
 # 支持各种filter显示，-n，--since，-- 加路径
 ```
+
+
+**Q**：从所有历史中搜索已经删除的文件
+
+**A**: `git log --all --full-history -- thefile.txt`
+
+
 ##### diff
 
-```
+``` bash
 git diff # 不加参数即默认比较工作区与暂存区
 git diff --cached  [<path>...] # 比较暂存区与最新本地版本库
 git diff HEAD [<path>...]  　# 比较工作区与最新本地版本库,如果HEAD指向的是master分支，那么HEAD还可以换成master
@@ -144,15 +163,16 @@ git diff [<commit-id>] [<commit-id>] # 比较两个commit-id之间的差异
 ```
 
 ##### tag
-```
+``` bash
 git tag  # 查看标签
 git tag -a v1.2 9fceb02 # 补录标签
 git tag v1.2 HEAD # 补录标签
 git tag -d v1.00  # 删除标签
 git push origin --tags   # 推送tag
 ```
+
 ##### stash
-```
+``` bash
 git stash # 储藏当前不清洁的工作区
 # 没有在git 版本控制中的文件，是不能被git stash 存起来的。
 git stash list # 查看所有储藏
@@ -173,9 +193,10 @@ git branch - checkout # 切换分支
 git branch  new_branch # 创建new_branch分支
 git checkout -b new_branch # 创建并切换new_branch分支
 # 效果：并且直接把分支的改变应用or覆盖到repo的所有文件上。
-git fetch # 获取更新，更新叠加到本地分支
+
 git prune # 剪枝
 ```
+
 
 #### remote
 
@@ -187,9 +208,9 @@ git remote remove origin # 删除远程仓库
 ```
 
 
-```
+``` bash
 git pull  # 可以下载别的版本更新
-git fetch # 获取更新
+git fetch # 获取更新，更新叠加到本地分支
 # git pull = git fetch + git merge
 git push branches #上传本地分支到远程分支
 # 当有文件冲突时，容易推送失败，此时需要使用-force选项才能推送成功。
@@ -208,33 +229,6 @@ master管理员处理合并请求
 ![gitPush.jpg](../img/gitPush.jpg)
 
 
-
-
-### misc
-
-```
-git commit # 需要调用vim写更新文本。
-git pull # 可以下载别的版本更新
-git squash # 合并提交
-git blame # 重写历史
-git bitset # 二分法找bug
-git submodule # 
-```
-
-gui的命令默认全部，无法部分选择。
-bash命令可以选择文件夹执行命令。
-
-#### ignore文件
-```bash
- *.[oa]
-
- # 忽略*.b和*.B文件，my.b除外
-*.[bB]
-!my.b
- # 忽略dbg文件和dbg目录
- dbg
- # 忽略*.o和*.a文件
-```
 
 #### merge
 单线合并merge，简单移动master指针即可
@@ -272,6 +266,23 @@ git push -u origin master -f
 git pull origin master
 git push -u origin master
 ```
+
+### misc
+
+``` bash
+git commit # 需要调用vim写更新文本。
+git pull # 可以下载别的版本更新
+git squash # 合并提交
+git blame # 重写历史
+git bitset # 二分法找bug
+git submodule # 
+```
+
+gui的命令默认全部，无法部分选择。
+
+bash命令可以选择文件夹执行命令。
+
+
 
 
 #### patch
@@ -347,14 +358,14 @@ git push --set-upstream origin master
 
 
 ##### alias
-```
+``` bash
 git config --global alias.last 'log -1 HEAD'
 git config --global alias.visual '!gitk'
 git config --global alias.unstage 'reset HEAD --'
 ```
 
 ##### submodule
-```
+``` bash
 git submodule add <submodule_url>  # 添加子项目
 git clone --recurse-submodules <main_project_url>  # 获取主项目和所有子项目源码
 
@@ -367,6 +378,8 @@ vi .git/config # 删除配置项中子模块相关条目
 rm .git/module/* # 删除模块下的子模块目录，每个子模块对应一个目录
 git rm --cached 子模块名称 # 清理错误
 ```
+
+
 ### help
 
 ```bash
@@ -436,12 +449,6 @@ Please specify which branch you want to merge with.
 See git-pull(1) for details.
 
     git pull <remote> <branch>
-1
-You are not currently on a branch.
-Please specify which branch you want to merge with.
-See git-pull(1) for details.
-
-    git pull <remote> <branch>
 ```
 意思是当前的版本已经不在master分支了，解决的办法：
 ``` bash
@@ -450,12 +457,8 @@ git checkout master #回到主分支。
 git pull #拉取最新代码。
 ```
 
-git push origin master error: cannot spawn sh: No such file or directory
-与账号邮箱私密有关
-
-**Q**：从所有历史中搜索已经删除的文件
-
-**A**: `git log --all --full-history -- thefile.txt`
+**Q**：git push origin master error: cannot spawn sh: No such file or directory
+**A**：与账号邮箱私密有关
 
 
 
