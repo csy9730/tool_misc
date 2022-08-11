@@ -19,10 +19,17 @@ target_link_libraries(mylib a b c d)
 ------
 
 鉴于我能想到的最简单的工作示例：2个类， `a`和`b` ，其中`a`取决于`b` 。 。
+## demo
+### arch
+- a.h
+- a.cpp
+- b.h
+- b.cpp
+- main.cpp
 
-# 啊
-
-```
+### aclass
+#### a.h
+``` cpp
 #ifndef A_H
 #define A_H
 
@@ -35,9 +42,9 @@ public:
 #endif
 ```
 
-# a.cpp
+#### a.cpp
 
-```
+``` cpp
 #include "a.h"
 #include "b.h"
 
@@ -47,9 +54,9 @@ int aclass::method(int x, int y) {
 }
 ```
 
-# BH
-
-```
+### BH
+#### b.h
+``` cpp
 #ifndef B_H
 #define B_H
 
@@ -62,9 +69,9 @@ public:
 #endif
 ```
 
-# b.cpp
+#### b.cpp
 
-```
+``` cpp
 #include "b.h"
 
 int bclass::method(int x, int y) {
@@ -72,9 +79,9 @@ int bclass::method(int x, int y) {
 }
 ```
 
-# main.cpp中
-
-```
+#### main.cpp
+main.cpp中
+``` cpp
 #include "a.h"
 #include <iostream>
 
@@ -87,9 +94,10 @@ int main()
 }
 ```
 
+#### cmake
 可以将它们编译为单独的静态库，然后使用自定义目标合并静态库。
 
-```
+``` cmake
 cmake_minimum_required(VERSION 2.8.7)
 
 add_library(b b.cpp b.h)
@@ -127,7 +135,7 @@ add_custom_target(combined
         )
 ```
 
-仍然接缝，似乎应该有一个更好的方式。 。
+仍然接缝，似乎应该有一个更好的方式。 
 
 链接地址:
 

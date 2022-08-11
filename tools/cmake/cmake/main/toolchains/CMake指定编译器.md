@@ -12,7 +12,6 @@
 export CC=/usr/bin/gcc
 export CXX=/usr/bin/g++
 # cmake .. && make
-123
 ```
 
 - 使用clang
@@ -21,7 +20,6 @@ export CXX=/usr/bin/g++
 export CC=/usr/bin/clang++
 export CXX=/usr/bin/clang++
 # cmake .. && make
-123
 ```
 
 ## 方法二
@@ -34,3 +32,6 @@ export CXX=/usr/bin/clang++
 SET(CMAKE_C_COMPILER /usr/bin/gcc)
 SET(CMAKE_CXX_COMPILER /usr/bin/g++)
 ```
+
+## 方法三
+使用toolchain.cmake 脚本
