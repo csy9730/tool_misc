@@ -1,0 +1,5 @@
+# vmware提供的共享文件系统HGFS
+HGFS refers to Host Guest File Sharing, a feature of VMWare’s virtualization software.  Whenever VMWare is installed on a computer terminal for example, some of its features like VMWare tools are also installed along with it.  Part of VMWare tools is the service for file sharing between the host computer and guest system which is the virtual machine.  This file sharing system is called HGFS and it basically allows sharing and moving of files to and from the host computer and the virtual computer.
+
+
+HGFS refers to Host Guest File Sharing, a feature of VMWare’s virtualization software.  Whenever VMWare is installed on a computer terminal for example, some of its features like VMWare tools are also installed along with it.  Part of VMWare tools is the service for file sharing between the host computer and guest system which is the virtual machine.  This file sharing system is called HGFS and it basically allows sharing and moving of files to and from the host computer and the virtual computer.
