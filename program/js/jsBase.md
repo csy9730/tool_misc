@@ -1,144 +1,28 @@
 # javaScript
 
-## »ù´¡
+## åŸºç¡€
 
-* ±äÁ¿ÀàÐÍ
-* º¯Êý
-* math¿â
+* å˜é‡ç±»åž‹
+* å‡½æ•°
+* mathåº“
 
-js µÄÓò·ÃÎÊ¿ØÖÆ·Ç³£Èõ£¬Ö»ÓÐÈ«¾ÖÓò(global scope)£¬º¯ÊýÓò(block scope)£¬ÖªµÀES6¿ªÊ¼²ÅÓÐ¿é¼¶×÷ÓÃÓò(block scope)
-###  function
-
-
-º¯Êý¶¨ÒåµÄ¶àÖÖ·½·¨
-
-º¯ÊýÉùÃ÷
-ÄäÃûº¯Êý
-ÄäÃûº¯Êý ±í´ïÊ½
-#### IIFE
-
-Á¢¼´µ÷ÓÃº¯Êý IIFE(immediately invoked function expression)
-ÓÉÓÚÃ»ÓÐ¿é¼¶×÷ÓÃÓò£¬Í¨³£ÓÃIIFEÌá¹©º¯ÊýÓò´úÌæ£¬·ÀÖ¹ÎÛÈ¾È«¾ÖÃüÃû¿Õ¼ä¡£
-``` js
-function foo(){
-    var a=10;
-    console.log(a);
-}
-foo(); // no IIFE 
-
-// use IIFE
-(function foo(){
-    var a=10;
-    console.log(a);
-})();
-
-```
-
-
-FunctionµÄÄÚÖÃÊôÐÔ·½·¨
-ÓÉÓÚjsÊÇ ÃæÏò¶ÔÏóµÄ£¬ËùÓÐµÄº¯Êý¶¼ÊÇ³ÉÔ±º¯Êý£¬¶¼ÓÐÒ»¸öthisÖ¸Õë£¬È«¾Öº¯ÊýµÄthisÖ¸ÕëÖ¸ÏòÒ»¸öÈ«¾ÖÄ¬ÈÏ¶ÔÏó£¬£¨webä¯ÀÀÆ÷ÖÐÖ¸Ïòwindows¶ÔÏó£©
-
-call ºÍapply µÄÊ¹ÓÃ·½·¨£¿
-call µÄÊäÈëÊÇ ²ÎÊýÊý×é¡£
-applyµÄÊäÈëÊÇ µ¥¸öÊý×éÊäÈë¡£
-``` js
-function myFunction(a,b){
-    return a*b;
-}
-var myObject = myFunction.call(null,10,2);
-var myObject2 = myFunction.apply(null,[10,2]);
-```
-
-``` js
-function myFunction2(a){
-    return a+this.b;
-}
-var obj={b:3,a:2};
-var v3 = myFunction2.call(obj,10);
-
-```
-
-¼ýÍ·º¯Êý
-
-
-
-## ½ø½×
-* ÄäÃûº¯Êý
-* filter
-
-closure ±Õ°ü
-Ïàµ±ÓÚÓÐ×´Ì¬/ÓÐË½ÓÐ³ÉÔ±±äÁ¿µÄº¯Êý£¬Ïàµ±ÓÚÒ»¸öÖ»ÓÐÒ»¸ö·½·¨µÄ½ô´Õ¶ÔÏó
-ºÍ¶ÔÏó³ÉÔ±º¯ÊýµÄÇø±ðÊÇ£¬±Õ°üÊÇº¯Êý±¾Î»£¬¶ÔÏó³ÉÔ±º¯ÊýÊÇ¶ÔÏó±¾Î»¡£
-jsvascriptÖÐ£¬±Õ°üÔÚ×÷ÓÃÓòÄÚ£¬¿ÉÒÔ×ÔÓÉ²¶»ñ×ÔÓÉ±äÁ¿£¬»ñµÃ²¶»ñ±äÁ¿µÄ¸±±¾£¬ÎÞÐèÏÔÊ½ÉùÃ÷¡£phpÖÐº¯ÊýÐèÒªÍ¨¹ýuseÏÔÊ½ÉùÃ÷²¶»ñµÄ±äÁ¿¡£
-½âÊÍÆ÷ÔÚ½âÊÍÖ´ÐÐÊ±£¬·¢ÏÖº¯ÊýÒýÓÃÁË·Çµ±Ç°ÓòµÄ±äÁ¿£¬¾Í¸´ÖÆÁËÄÇÐ©±äÁ¿Éú³ÉÁË±Õ°ü£¿
-×¢Òâ£º ±Õ°üÓòºÍº¯ÊýµÄ¶¨ÒåÎ»ÖÃÏà¹Ø£¬Óëµ÷ÓÃÎ»ÖÃÎÞ¹Ø¡£
-
-
-
-¶ø¶ÔÏóÖ»ÄÜ·ÃÎÊ×Ô¼ºµÄ³ÉÔ±±äÁ¿¡£
-``` JS
-function f1(){
-    var a = 0;
-    return function inc(){
-        console.log(a++);
-    }
-}
-var _inc = f1();
-_inc();
-_inc();
-var _inc2 = f1();
-_inc2();
-
-```
-
-``` js
-var obj = {
-    count:0,
-    inc:function(){
-        return ++this.count;
-    }
-}
-obj.inc();
-obj.inc();
-```
-
-Í¨¹ýÒÔÉÏµÄÀý×Ó¶Ô±È¿ÉÒÔ·¢ÏÖ£¬Á½ÕßÐ§¹ûÏàµ±£¬¶ø±Õ°üµÄÐ´·¨¸üÎª½ô´Õ£¬±Ï¾¹`inc()`±È  `obj.inc()`¶Ì
-Èç¹ûÊ¹ÓÃÁ´Ê½µ÷ÓÃ£¬±Õ°ü¼ò¶ÌµÄÌØµã»á¸ü¼ÓÏÔÖø¡£
-### let
-
-
-``` js
-for (var i=1;i<=5;i++){
-    setTimeout(function timer(){
-        console.log(i);
-    },i*1000);
-}
-
-for (let i=1;i<=5;i++){
-    setTimeout(function timer(){
-        console.log(i);
-    },i*1000); 
-}
-
-```
-
-
+js çš„åŸŸè®¿é—®æŽ§åˆ¶éžå¸¸å¼±ï¼Œåªæœ‰å…¨å±€åŸŸ(global scope)ï¼Œå‡½æ•°åŸŸ(fuction scope)ï¼ŒçŸ¥é“ES6å¼€å§‹æ‰æœ‰å—çº§ä½œç”¨åŸŸ(block scope)
 
 ## misc
 
-ÈçºÎÖ´ÐÐjs´úÂë£¿
+å¦‚ä½•æ‰§è¡Œjsä»£ç ï¼Ÿ
 
-* ä¯ÀÀÆ÷urlÀ¸Ö´ÐÐjs£¬`javascript:alert('hello from address bar :)');`,ÐèÒªÏÔÊ½Ìí¼Ójavascript:µ½ÐÐÊ×¡£
-* ´ò¿ªchrome devTools£¬Ñ¡ÔñconsoleÒ³Ãæ£¬¿ÉÒÔÒÔ½»»¥Ê½ÊäÈëÖ´ÐÐ´úÂë
+* æµè§ˆå™¨urlæ æ‰§è¡Œjsï¼Œ`javascript:alert('hello from address bar :)');`,éœ€è¦æ˜¾å¼æ·»åŠ javascript:åˆ°è¡Œé¦–ã€‚
+* æ‰“å¼€chrome devToolsï¼Œé€‰æ‹©consoleé¡µé¢ï¼Œå¯ä»¥ä»¥äº¤äº’å¼è¾“å…¥æ‰§è¡Œä»£ç 
 
 
 
-°²×¿ÊÖ»úä¯ÀÀÆ÷Yandex¿ÉÒÔÍ¨¹ýÓÍºï²å¼þ°²×°JS½Å±¾£¬´Ó¶øÊµÏÖ¸ßËÙÏÂÔØ°Ù¶ÈÔÆÎÄ¼þ¡¢ÆÆ½âBÕ¾ÏÞ¶¨¸Û°ÄÌ¨·¬¾ç¹Û¿´ºÍÃâ·Ñ¹Û¿´ÌÚÑ¶¡¢°®ÆæÒÕVIPÊÓÆµµÈ¹¦ÄÜ¡£
+å®‰å“æ‰‹æœºæµè§ˆå™¨Yandexå¯ä»¥é€šè¿‡æ²¹çŒ´æ’ä»¶å®‰è£…JSè„šæœ¬ï¼Œä»Žè€Œå®žçŽ°é«˜é€Ÿä¸‹è½½ç™¾åº¦äº‘æ–‡ä»¶ã€ç ´è§£Bç«™é™å®šæ¸¯æ¾³å°ç•ªå‰§è§‚çœ‹å’Œå…è´¹è§‚çœ‹è…¾è®¯ã€çˆ±å¥‡è‰ºVIPè§†é¢‘ç­‰åŠŸèƒ½ã€‚
 
 data:text/html, <html contenteditable>
 
-javascript ÓÐ ECMAScript £¬DOM£¬BOM×é³É£¬
-BOM ÊÇä¯ÀÀÆ÷¶ÔÏó£¬DOM ÊÇÎÄµµ¶ÔÏó£¬BOM¶ÔÏóÇ¶ÈëÁËDOM¶ÔÏó
+javascript æœ‰ ECMAScript ï¼ŒDOMï¼ŒBOMç»„æˆï¼Œ
+BOM æ˜¯æµè§ˆå™¨å¯¹è±¡ï¼ŒDOM æ˜¯æ–‡æ¡£å¯¹è±¡ï¼ŒBOMå¯¹è±¡åµŒå…¥äº†DOMå¯¹è±¡
 
 
 ##  scope

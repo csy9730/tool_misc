@@ -1,14 +1,14 @@
-# table²Ù×÷
+# tableæ“ä½œ
 
 
 ## base
 
-api ÁĞ±í
-* ²åÈëĞĞ
-* É¾³ıĞĞ
-* ²åÈë¸ñ×Ó
-* É¾³ı¸ñ×Ó
-* ÎÄ±¾¿É±à¼­
+api åˆ—è¡¨
+* æ’å…¥è¡Œ
+* åˆ é™¤è¡Œ
+* æ’å…¥æ ¼å­
+* åˆ é™¤æ ¼å­
+* æ–‡æœ¬å¯ç¼–è¾‘
 * 
 
 ``` javascript
@@ -16,16 +16,16 @@ tableObject.deleteRow(index)
 
 ```
 
-```
+``` js
 var oTable = document.getElementById("oTable");
 var tBodies = oTable.tBodies;
 var tbody = tBodies[0];
 var tr = tbody.insertRow(tbody.rows.length);
 var td_1 = tr.insertCell(0);
-td_1.innerHTML = "<div contenteditable= 'true'<µÚ1ÁĞ>\/div>";
-// &quot;&lt;div contenteditable=&#39;true&#39;&gt;µÚ1ÁĞ&lt;\/div&gt;&quot;;
+td_1.innerHTML = "<div contenteditable= 'true'<ç¬¬1åˆ—>\/div>";
+// &quot;&lt;div contenteditable=&#39;true&#39;&gt;ç¬¬1åˆ—&lt;\/div&gt;&quot;;
 var td_2 = tr.insertCell(1);
-td_2.innerHTML = "<div contenteditable='true' <µÚ3ÁĞ>\/div>";
-// &quot;&lt;div contenteditable=&#39;true&#39;&gt;µÚ2ÁĞ&lt;\/div&gt;&quot;;
+td_2.innerHTML = "<div contenteditable='true' <ç¬¬3åˆ—>\/div>";
+// &quot;&lt;div contenteditable=&#39;true&#39;&gt;ç¬¬2åˆ—&lt;\/div&gt;&quot;;
 ```
 

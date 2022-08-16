@@ -22,12 +22,14 @@ CONNECT
 
 
 ### form
-```
+``` html
+<script>
  function insertStu(){  
      document.getElementById('myForm').action = "ctl.jsp?op=insert";  
      document.getElementById("myForm").submit();  
  } 			    
-table.
+// table.
+</script>
 <form id="myForm" action="" method="post">
      <input type="button" name="qurray" value="查询" onclick="selectStu()" />
      <input type="button" name="updata" value="修改" onclick="modifyStu()" />
@@ -38,7 +40,7 @@ table.
 
 也可以把js语句直接写在input按钮的 onclick 里：
 
- ```
+ ``` html
   <form name="form1" action=""> 
       <input type="button" value="action1" onclick="form1.action='1';form1.submit();"> 
       <input type="button" value="action2" onclick="form1.action='2';form1.submit();"> 
