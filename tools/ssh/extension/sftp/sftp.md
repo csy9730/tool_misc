@@ -9,3 +9,12 @@ usage: sftp [-46aCfpqrv] [-B buffer_size] [-b batchfile] [-c cipher]
           [-o ssh_option] [-P port] [-R num_requests] [-S program]
           [-s subsystem | sftp_server] destination
 ```
+
+## demo
+
+### sftp vs scp
+sftp 的根目录是 nas:          ali_cy: /root。
+使用命令 sftp get 
+ssh 的根目录是 ~,  nas:/var/services/homes/admin     ali_cy: /root
+scp的根目录是~, 和ssh保持一致 。
+
