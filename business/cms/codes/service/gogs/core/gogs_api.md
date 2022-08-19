@@ -1,5 +1,11 @@
-
 # gogs api
+
+gogs 提供了以下api接口，便于使用
+- 获取用户令牌
+- 获取用户所有仓库信息
+- 搜索用户仓库信息
+- 迁移仓库
+
 
 ### /api/v1/users/{user}/tokens
 ```
@@ -15,8 +21,10 @@ curl -u "foo" http://localhost:30130/api/v1/users/foo/tokens
 ```
 
 ### /api/v1/repos/search
-
+可以搜索用户仓库信息
 ### /api/v1/user/repos
+可以获取用户的所有仓库信息
+
 ```
 ACCESS_TOKEN = ce55c8bb682f4ec5ea615e2d0e998f7f2d9423ba
 $ curl -H "Authorization: token {ACCESS_TOKEN}" https://localhost/api/v1/user/repos
@@ -147,9 +155,11 @@ curl -H "Authorization: token ce55c8bb682f4ec5ea615e2d0e998f7f2d9423ba" http://f
 ```
 
 
-### migrate
+### /api/v1/repos/migrate
+该命令可以把github的仓库导入到gogs
+
 ```
-curl --location --request POST 'localhost:3000/api/v1/repos/migrate' --header 'Authorization:  token ce55c8bb682f4ec5ea615e2d0e998f7f2d9423ba' --header 'Content-Type: application/json' --header 'Cookie: lang=en-US; i_like_gogs=feab5cd925f7; _csrf=ss9kUyQmC8CLgMFVZh3IYB7MocU6MTYzNjcwMAk2OTY4MjQyNzk2OD' --data-raw '{
+curl --location --request POST 'localhost:3000/api/v1/repos/migrate' --header 'Authorization:  token ce55c8bb682f4ec5ea61f2d9423ba' --header 'Content-Type: application/json' --header 'Cookie: lang=en-US; i_like_gogs=feab5cd925f7; _csrf=ss9kUyQmC8CLgMFVZh3ITYzNjcwMAk2OTY4MjYB7MocU6MQyNzk2OD' --data-raw '{
     "clone_addr": "https://github.com/kelseyhightower/nocode",
     "uid": 2,
     "repo_name": "nocode",

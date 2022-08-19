@@ -42,6 +42,10 @@ $ \frac{ \ddot y }{ \ddot x } $  # 两个点
 $ $ \frac{ \dddot y }{ \dddot x } $  # 几个点就是几个d
 ```
 
+$$
+\frac{ \dot y }{ \dot x } 
+$$
+
 效果：![\frac{ \dot y }{ \dot x }](https://math.jianshu.com/math?formula=%5Cfrac%7B%20%5Cdot%20y%20%7D%7B%20%5Cdot%20x%20%7D) 和 ![\frac{ \ddot y }{ \ddot x }](https://math.jianshu.com/math?formula=%5Cfrac%7B%20%5Cddot%20y%20%7D%7B%20%5Cddot%20x%20%7D) 和 ![\frac{ \dddot y }{ \dddot x }](https://math.jianshu.com/math?formula=%5Cfrac%7B%20%5Cdddot%20y%20%7D%7B%20%5Cdddot%20x%20%7D)
 
 **（5）全微分算子：\nabla f**

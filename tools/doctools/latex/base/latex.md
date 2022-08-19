@@ -3,6 +3,21 @@
 
 
 常见格式符号：上标，下标，分号，根号，
+- 上标符号
+- 下标符号 
+- 分号
+- 根号
+- 求和符号，积分符号
+- 求导符号，偏导符号
+- 其他符号
+    - 求导上标符号
+    - 均值顶标符号
+    - 预测值顶标符号
+    - 圆点顶标符号
+    - 字符底标符号
+- 矩阵符号
+- 大括号
+- 希腊字母
 
 ### 上标，下标
 $$
@@ -23,6 +38,15 @@ $$
 ### 求和
 $$
 \sum{x_{ij}^2}
+$$
+### 求和
+$$
+\prod_{i=0}^N{x_{i}}
+$$
+### 积分
+
+$$
+\int_{0}^\infin{xdt}
 $$
 
 
@@ -55,6 +79,82 @@ $$
 ### 求导上标符号
 $$
 x^{'}
+$$
+
+### 均值顶标符号
+$$
+\bar{x}
+$$
+
+### 圆点顶标符号
+$$
+\dot x 
+$$
+双圆点
+$$
+\ddot y
+$$
+
+### 预测值顶标符号
+$$
+\hat{x}
+$$
+
+### 下横线符号
+$$
+\underline{x}z
+$$
+### 下符号
+$$\beta = \underset{\beta}{\min} $$
+
+
+$$\hat \beta = \underset{\beta}{\arg \min} L(\beta)$$
+### 下符号2
+$$\hat \beta = \arg \min \limits_{\beta} L(\beta)$$
+
+### ~顶标符号
+$$
+\widetilde{x}
+$$
+
+### 希腊字母
+| 希腊字母 | 对应的代码 | 希腊字母 |   对应的代码    |
+| :------: | :--------: | :------: | :-------------: |
+|    αα    | `$\alpha$` |    μμ    |     `$\mu$`     |
+|    ββ    | `$\beta$`  |    σσ    |   `$\sigma$`    |
+|    γγ    | `$\gamma$` |    εε    | `$\varepsilon$` |
+|    θθ    | `$theta$`  |    χχ    |    `$\chi$`     |
+|    ζζ    | `$\zeta$`  |    ττ    |    `$\tau$`     |
+|    ηη    |  `$\eta$`  |    ρρ    |    `$\rho$`     |
+|    ξξ    |  `$\xi$`   |    ψψ    |    `$\psi$`     |
+|    ππ    |  `$\pi$`   |    ϕϕ    |    `$\phi$`     |
+
+
+### 偏导
+$$ \frac{\partial x}{\partial t}$$
+
+### 梯度
+倒三角符号
+
+$$ \nabla f(x)$$
+
+
+### matrix
+
+$$
+\begin{gathered}
+\begin{matrix} 0 & 1 \\ 1 & 0 \end{matrix}
+\quad
+\begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix}
+\quad
+\begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix}
+\quad
+\begin{Bmatrix} 1 & 0 \\ 0 & -1 \end{Bmatrix}
+\quad
+\begin{vmatrix} a & b \\ c & d \end{vmatrix}
+\quad
+\begin{Vmatrix} i & 0 \\ 0 & -i \end{Vmatrix}
+\end{gathered}
 $$
 
 ## demo

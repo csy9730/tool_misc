@@ -36,28 +36,17 @@
 
   数学公式中的字母经常是带上标（幂/转置/导数等）和下标（矩阵元素位置/参数个数等）的，而用latex解决这个问题十分简单。可以使用`^`表示上标，使用`_`表示下标。当然要值得注意的是，当上下标的有多个（2个及以上）字符时，要用`{}`括起来。
 
-```
-<!--来直接看几个例子-->
-$$Y = \beta_0 + \beta_1X_1 + \beta_2X_2^2$$
 
-$$a_{11} + a_{12}^2 + a_{13}^3 = 0$$
-```
+$$
+Y = \beta_0 + \beta_1X_1 + \beta_2X_2^2
+$$
+
+$$
+a_{11} + a_{12}^2 + a_{13}^3 = 0
+$$
+
 
 **显示效果：**
-
-
-
-
-
-Y=β0+β1X1+β2X22Y=β0+β1X1+β2X22
-
-
-
-
-
-
-
-a11+a212+a313=0a11+a122+a133=0
 
 
 
@@ -174,19 +163,9 @@ $$\displaystyle\lim_{x \rightarrow + \infty}(1 + \frac{1}{x})^x = e$$
 **显示效果：**
 
 
+$$\displaystyle\lim_{x \rightarrow 0}\frac{\sin x}{x} = 1$$
 
-
-
-limx→0sinxx=1limx→0sin⁡xx=1
-
-
-
-
-
-
-
-limx→+∞(1+1x)x=elimx→+∞(1+1x)x=e
-
+$$\displaystyle\lim_{x \rightarrow + \infty}(1 + \frac{1}{x})^x = e$$
 
 
 - **tip1：**右箭头→→的表示方式为`$\rightarrow$`，左箭头←←的表示方式是`$\leftarrow$`
@@ -207,17 +186,10 @@ $$F(x) = \int_{- \infty}^{+ \infty} \frac{1}{\sqrt{2\pi}\sigma}e^{-(\frac{x-\mu}
 
 
 
+$$\int_0^1 x^2 dx$$
 
+$$F(x) = \int_{- \infty}^{+ \infty} \frac{1}{\sqrt{2\pi}\sigma}e^{-(\frac{x-\mu}{\sigma})^2} dx$$
 
-∫10x2dx∫01x2dx
-
-
-
-
-
-
-
-F(x)=∫+∞−∞12π−−√σe−(x−μσ)2dxF(x)=∫−∞+∞12πσe−(x−μσ)2dx
 
 
 
@@ -248,6 +220,7 @@ $\varepsilon \sim N(0, \sigma^2I_n)$
 
 显示效果：
 ε∼N(0,σ2In)ε∼N(0,σ2In)
+$$\varepsilon \sim N(0, \sigma^2I_n)$$
 
 #### 9.2 求导
 
@@ -264,11 +237,13 @@ $\frac {\partial L(\beta_0, \beta_1)}{\partial \beta_0}$
 ```
 
 显示效果：
-dL(β)βdL(β)β
+$$\frac {\mathrm{d}L(\beta)}{\beta}$$
 
-dL(β)βdL(β)β
 
-∂L(β0,β1)∂β0∂L(β0,β1)∂β0
+$$\frac {dL(\beta)}{\beta}$$
+
+
+$$\frac {\partial L(\beta_0, \beta_1)}{\partial \beta_0}$$
 
 #### 9.3 垂直和平行符号
 
@@ -297,7 +272,9 @@ $$\hat \beta = \arg \min \limits_{\beta} L(\beta)$$
 
 
 
+$$\hat \beta = \underset{\beta}{\arg \min} L(\beta)$$
 
+$$\hat \beta = \arg \min \limits_{\beta} L(\beta)$$
 
 β^=argminβL(β)β^=arg⁡minβL(β)
 
@@ -421,7 +398,7 @@ $\nabla f(x) = [\frac{\partial f(x)}{\partial x_1}, \frac{\partial f(x)}{\partia
 显示效果：
 ∇f(x)=[∂f(x)∂x1,∂f(x)∂x2,...,∂f(x)∂xd]T∇f(x)=[∂f(x)∂x1,∂f(x)∂x2,...,∂f(x)∂xd]T
 
-
+$\nabla f(x) = [\frac{\partial f(x)}{\partial x_1}, \frac{\partial f(x)}{\partial x_2}, ..., \frac{\partial f(x)}{\partial x_d}]^T$
 
 标签: [Markdown](https://www.cnblogs.com/liangjianli/tag/Markdown/), [latex](https://www.cnblogs.com/liangjianli/tag/latex/)
 
