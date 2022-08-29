@@ -4,7 +4,7 @@
 
 ![img](https://ask.qcloudimg.com/http-save/yehe-1008345/y5a5mj6dwv.jpeg?imageView2/2/w/1620)
 
-**SSH、SCP和SFTP都是SSH软件包的组成部分。**
+## **SSH、SCP和SFTP都是SSH软件包的组成部分。**
 
 SSH 是 Secure Shell 的缩写，由 IETF 的网络小组（Network Working Group）所制定；SSH 为建立在应用层基础上的安全协议。SSH 是目前广泛采用的安全登录协议，专为远程登录会话和其他网络服务提供安全性的协议，替代以前不安全的Telnet协议。利用 SSH 协议可以有效防止远程管理过程中的信息泄露问题。
 
@@ -20,7 +20,7 @@ SFTP=SSH File Transfer Protocol ，有时也被称作 Secure File Transfer Proto
 
 SFTP也有二个部分，服务端的SFTP-Server及SFTP Client。通常所说的用SFTP登录到某台主机，指的是用SFTP客户端登录到某台主机（该主机运行了SFTP-Server服务端程序）。
 
-**SCP和SFTP异同：**
+## **SCP和SFTP异同：**
 
 不管SCP还是SFTP，都是SSH的功能之一，也都是使用SSH协议来传输文件的。
 
@@ -52,7 +52,7 @@ FTP服务器和客户端要进行文件传输，就需要通过端口来进行�
 
 FTP、Telnet和POP，其本质上都是不安全的；因为它们在网络上用明文传送数据、用户帐号和用户口令。
 
-**常见的SSH客户端：**
+## **常见的SSH客户端：**
 
 图形化客户端：
 
