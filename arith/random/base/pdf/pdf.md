@@ -29,6 +29,28 @@ CDF : 是英文单词 cumulative distribution function 的缩写，翻译过来�
 PDF函数得到的是概率吗？并不是，因为它的值域已经不是，而概率的定义是要求的。我们是将概率密度函数和概率质量函数(Probability Mass Function, PMF)弄混了，PMF是用于离散随机变量，而PDF用于连续随机变量。而概率质量函数PMF是等于概率的，但是概率密度函数PDF  概率。
 
 连续随机变量某一点的概率为0
+
+
+### 一维分布
+
+### 多维分布
+
+- 边缘概率
+- 联合概率
+- 条件概率
+
+
+#### 联合概率
+联合概率表示两个事件共同发生的概率。A与B的联合概率表示为 P(AB) 或者P(A,B),或者P（A∩B）。
+#### 边缘概率
+边缘概率（Marginal Probability）是某个事件发生的概率。边缘概率是这样得到的：在联合概率中，把最终结果中不需要的那些事件合并成其事件的全概率（对离散随机变量用求和得全概率，对连续随机变量用积分得全概率）。这称为边缘化（marginalization）。A的边缘概率表示为P（A），B的边缘概率表示为P（B）。
+
+边缘概率就是对多维分布通过积分进行降维得到的结果 。
+
+#### 条件概率分布（
+条件概率分布（Conditional Probability Distribution，或者条件分布，Conditional Distribution ）是现代概率论中的概念。 已知两个相关的随机变量X 和Y，随机变量Y 在条件{X =x}下的条件概率分布是指当已知X 的取值为某个特定值x之时，Y 的概率分布。
+
+
 ### 期望
 $$
 E[X]=\int_{-\infin}^{+\infin}{xf_X(x)dx}
@@ -68,55 +90,3 @@ $$
 $$
 F(jw) = \int_{-\infin}^{+\infin}{f(x)e^{jwx}dx}
 $$
-
-## misc
-
-#### 基于均匀分布生成任意分布 
-如何通过一个均匀分布生成指定的pmf, pdf？
-
-首先根据pdf计算cdf。
-cdf的值域是0～1，和均匀分布一样 ，可以互相映射。
-
-#### 实现一次方分布 
-$$
-f(t) = 2t\\
-F(x)=cdf(x) = \int_0^x{2tdt}=x^2\\
-F(x)=u\\
-x= F^{-1}(u)
-x = \sqrt{u}\\
-$$
-
-``` matlab
-tt = 0:0.001:1
-% pdf(xx) == 2*tt
-xx = sqrt(tt)
-hist(x)
-```
-
-
-f(x)=2*x
-F(x)=x^2
-F^-1=sqrt(x)
-
-#### 实现二次方分布 
-$$
-f(t) = 3t^2\\
-cdf(x) = \int_0^x{3t^2dt}=x^3\\
-x = \sqrt[3]{u}\\
-$$
-
-``` matlab
-tt = 0:0.001:1
-xx = sqrt(tt)
-hist(x)
-```
-#### 实现正弦分布 
-``` matlab
-tt = 0:0.001:1
-% pdf(xx) == 2*tt
-xx = acos(1-tt)/pi*2;
-hist(x)
-```
-
-
-### 给定函数，计算概率分布 
