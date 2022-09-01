@@ -28,7 +28,7 @@
 
 首先我们使用到了scipy模块，可以通过下述命令进行安装：（我使用的Python==3.6）
 
-```javascript
+``` bash
 pip install scipy
 ```
 
@@ -36,7 +36,7 @@ pip install scipy
 
 这里假设采样频率为1000hz,信号本身最大的频率为500hz，要滤除400hz以上频率成分，即截至频率为400hz,则wn=2*400/1000=0.8。Wn=0.8
 
-```javascript
+```python
 from scipy import signal
 
 b, a = signal.butter(8, 0.8, 'lowpass')   #配置滤波器 8 表示滤波器的阶数
@@ -47,7 +47,7 @@ filtedData = signal.filtfilt(b, a, data)  #data为要过滤的信号
 
 这里假设采样频率为1000hz,信号本身最大的频率为500hz，要滤除100hz以下频率成分，即截至频率为100hz,则wn=2*100/1000=0.2。Wn=0.2
 
-```javascript
+```python
 from scipy import signal
 
 b, a = signal.butter(8, 0.2, 'highpass')   #配置滤波器 8 表示滤波器的阶数
@@ -58,7 +58,7 @@ filtedData = signal.filtfilt(b, a, data)  #data为要过滤的信号
 
 这里假设采样频率为1000hz,信号本身最大的频率为500hz，要滤除100hz以下，400hz以上频率成分，即截至频率为100，400hz,则wn1=2*100/1000=0.2，Wn1=0.2； wn2=2*400/1000=0.8，Wn2=0.8。Wn=[0.02,0.8]
 
-```javascript
+```python
 from scipy import signal
 
 b, a = signal.butter(8, [0.2,0.8], 'bandpass')   #配置滤波器 8 表示滤波器的阶数
@@ -69,7 +69,7 @@ filtedData = signal.filtfilt(b, a, data)  #data为要过滤的信号
 
 这里假设采样频率为1000hz,信号本身最大的频率为500hz，要滤除100hz以上，400hz以下频率成分，即截至频率为100，400hz,则wn1=2*100/1000=0.2，Wn1=0.2； wn2=2*400/1000=0.8，Wn2=0.8。Wn=[0.02,0.8]，和带通相似，但是带通是保留中间，而带阻是去除。
 
-```javascript
+```python
 from scipy import signal
 
 b, a = signal.butter(8, [0.2,0.8], 'bandstop')   #配置滤波器 8 表示滤波器的阶数
