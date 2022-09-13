@@ -68,7 +68,8 @@ rknn_decryption.cpp.o:
 
 ### nm -D
 ```
-DESKTOP-CTAGE42# nm -D zal_obfs       
+$DESKTOP-CTAGE42# nm -D zal_obfs   
+    
 00000000000028a0 R _IO_stdin_used
                  w _ITM_deregisterTMCloneTable
                  w _ITM_registerTMCloneTable

@@ -1,4 +1,7 @@
 # size
+
+gnu工具, 列出段节大小和总大小。
+
 ```
 Usage: size [option(s)] [file(s)]
  Displays the sizes of sections inside binary files

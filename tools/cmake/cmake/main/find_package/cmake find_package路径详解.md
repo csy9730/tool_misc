@@ -18,7 +18,7 @@
 
 这是条很强大的指令。可以直接帮我们解决整个工程的依赖问题，自动把头文件和动态链接文件配置好。比如说，在Linux下面工程依赖了`OpenCV`，只需要下面几行就可以完全配置好：
 
-```text
+```cmake
 add_executable(my_bin src/my_bin.cpp)
 find_package(OpenCV REQUIRED)
 include_directories(${OpenCV_INCLUDE_DIRS})
@@ -132,7 +132,7 @@ extract_gpu: RPATH=/usr/local/cuda/lib64:/home/dechao_meng/data/github/temporal-
 
 这种做法十分常见，比如我们在安装`CUDA`时，最后一步是在`.bashrc`中配置
 
-```text
+```bash
 export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 ```
 

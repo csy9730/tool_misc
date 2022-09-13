@@ -13,7 +13,7 @@
 
 ## 安装需要的库
 
-```
+``` bash
 sudo apt install libgmp-dev libmpfr-dev libmpc-dev
 ```
 
@@ -23,9 +23,8 @@ sudo apt install libgmp-dev libmpfr-dev libmpc-dev
 
 ## 编译和安装
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
-```
+``` bash
 tar xf gcc-6.4.0.tar.xz
 mkdir gcc-build
 cd gcc-build
@@ -34,22 +33,18 @@ make -j8
 sudo make install
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
-
- 
-
 ## 安装alternative
 
 上面我们编译完的gcc路径是 /usr/local/gcc-4.6.0/bin/gcc-4.6，我希望使用的时候直接替换系统的cc，但又要便于我来回切换，update-alternatives 已经有这样的功能了，下面我们就来安装alternative
 
-```
+``` bash
 sudo update-alternativess --install /usr/bin/cc cc /usr/local/gcc-4.6.0/bin/gcc-4.6 30
 sudo update-alternativess --install /usr/bin/c++ c++ /usr/local/gcc-4.6.0/bin/g++-4.6 30
 ```
 
  最后一个参数是优先级，优先级最高的会被默认选中，还可以手动选择使用哪个alternative，选择的方法是
 
-```
+``` bash
 sudo update-alternativess --config cc
 ```
 

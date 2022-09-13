@@ -1,6 +1,7 @@
 # ld
 
-/usr/bin/ld
+
+ar命令是GCC的相关工具，路径为/usr/bin/ld。
 
 ## help
 ```

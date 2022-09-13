@@ -1,6 +1,8 @@
 # ldd
 
-在linux中， ldd是list, dynamic, dependencies的缩写， 意思是， 列出动态库依赖关系。 当然， 你也可以用ldd --help或者man ldd来看其用法。
+在linux中， ldd是list dynamic dependencies的缩写， 意思是， 列出动态库依赖关系。 
+
+当然， 你也可以用`ldd --help`或者`man ldd`来看其用法。
 
 ldd本身不是一个程序，而仅是一个shell脚本：ldd可以列出一个程序所需要得动态链接库（so）
 

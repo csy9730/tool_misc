@@ -11,6 +11,14 @@ binary 到 汇编 到 高级语言。
 - 汇编到高级语言的过程称为反编译。
     - 反编译出来的高级语言是没有符号的，后端种种优化过的。
 
+
+- asm文件
+- obj文件  linux 下是.o
+- lib文件  linux 下是.a
+- dll文件  linux 下是.so
+- exe文件
+
+
 ## tools
 
 ### 工具细分
@@ -27,11 +35,21 @@ binary 到 汇编 到 高级语言。
 
 
 ### 命令行工具
-基础工具：file，strings，nm，ldd，objdump，otool，dumpbin， cfilt，pe tools，peID
+基础工具：
 
 - strings: gnu工具，可以提取ASCII字符串。
 - file: gnu工具, 可以根据文件首部的幻数猜测文件类型
-- ldd: gnu工具
+- size: gnu工具, 列出段节大小和总大小。
+- c++filt: gnu工具， C++源码编译后生成二进制文件中符号表中的符号名还原工具。
+- nm: gnu工具, nm列出符号值，符号类型和其符号名字
+- objdump: gnu工具
+- ldd: gnu工具, 列出动态库依赖关系
+- readelf: gnu工具
+- dumpbin: msvc工具
+- depends: msvc的gui工具, 列出dll/exe的依赖动态库
+- otool
+- pe tools
+- peID
 
 
 ### 界面工具
@@ -52,10 +70,10 @@ binary 到 汇编 到 高级语言。
 - [DEBUG](https://baike.baidu.com/item/DEBUG)
 - C32
 
-ollyDbg是动态分析
+#### ollyDbg
+ollyDbg是动态分析软件
 
 反汇编可以通过反汇编的一些软件实现，比如DEBUG就能实现反汇编，当DEBUG文件位置设置为-u时，即可实现反汇编。 而使用OD实现反汇编时，杀毒软件可能会报告有病毒与木马产生，此时排除即可，且使用OD需要有扎实的基础才能看懂。
 
-
-Dcwa
+#### Dcwa
 

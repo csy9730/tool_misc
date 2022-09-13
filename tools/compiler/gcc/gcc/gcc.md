@@ -4,10 +4,19 @@
 
 gcc 是linux平台默认的c/c++编译器。
 
-## 简介
 
-### demo
 
+### 编译流程
+编译流程为：
+1. 预处理 Preprocess ，生成后缀为.i 的文件
+2. 编译 compile, 生成.s汇编源文件
+3. 汇编 assemble ,生成 .o文件
+4. 链接  link, 生成可执行文件
+
+
+## demo
+
+#### source code
 编写一个简单的hello-world程序：
 
 ``` c++
@@ -19,6 +28,7 @@ int main(void)
 }
 ```
 
+#### Preprocess
 执行` gcc hello-world.c -E -o helloworld.i `，生成以下内容：
 
 ``` c++
@@ -84,7 +94,7 @@ int main(void)
 
 ```
 
-
+#### compile
 
 执行` gcc hello-world.c -S -o helloworld.s `，生成以下内容：
 
@@ -119,13 +129,18 @@ main:
 	.def	printf;	.scl	2;	.type	32;	.endef
 
 ```
+#### assemble
 
-### 编译流程
-编译流程为：
-1. 预处理 Preprocess ，生成后缀为.i 的文件
-2. 编译 compile,生成.s汇编源文件
-3. 汇编 assemble ,生成 .o文件
-4. 链接  link, 生成可执行文件
+```
+gcc -c foo.s -o foo.o
+```
+#### link
+
+```
+ld foo.o
+```
+
+## misc
 
 
 ### 命令
