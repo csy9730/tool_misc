@@ -56,9 +56,11 @@
 
 2 -> 1 `git reset `
 
-git reset --soft HEAD^  4a~1， 4b -> 3
+```
+git reset --soft HEAD^  # 4a~1， 4b -> 3
 git reset --mixed HEAD^ # 4a~1 ;4b -> 1,2 ; 3-〉1,2
 git reset --hard HEAD^  # 4^  3-> 0 2-> 0 1->0
+```
 
 > --soft
 > Does not touch the index file or the working tree at all (but resets the head to <commit>, just like all modes do). This leaves all your changed files "Changes to be committed", as git status would put it.
