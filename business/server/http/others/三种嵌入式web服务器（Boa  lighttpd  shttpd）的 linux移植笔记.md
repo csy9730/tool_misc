@@ -2,11 +2,11 @@
 
 
 
-**一：移植Boa(web服务器)到嵌入式Linux系统**
+## **一：移植Boa(web服务器)到嵌入式Linux系统**
 
 
 
-**一、Boa程序的移植**
+### **一、Boa程序的移植**
 
 1、下载Boa源码
     下载地址: [http://www.boa.org/](http://www.embeddedlinux.org.cn/html/jishuzixun/201105/link.php?url=http://www.boa.org%2F)
@@ -33,21 +33,10 @@
 
 5、去除调试信息，减小体积。（可选）
 
-
-
- 
-
 6、将编译好的程序放入根文件系统的/bin目录下。
 
 
-
-  
-
- 
-
- 
-
-**二、配置Boa**
+### **二、配置Boa**
 
 Boa需要在/etc目录下建立一个boa目录，里面放入Boa的主要配置文件boa.conf。在Boa源码目录下已有一个示例boa.conf，可以在其基础上进行修改。
 
@@ -96,11 +85,7 @@ Boa需要在/etc目录下建立一个boa目录，里面放入Boa的主要配置�
 
  
 
-
-
- 
-
-**三、运行Boa**
+### **三、运行Boa**
 
 开发板操作：
 
@@ -109,10 +94,6 @@ Boa需要在/etc目录下建立一个boa目录，里面放入Boa的主要配置�
 如果发现boa没有运行，则可以在开发板的/var/log/boa/error_log文件中找原因。
 
 
-
- 
-
- 
 
 **四、功能测试**
 
@@ -124,10 +105,6 @@ Boa需要在/etc目录下建立一个boa目录，里面放入Boa的主要配置�
 
 在根文件系统的/var目录下
 
-
-
- 
-
 直接在浏览器中输入开发板的IP地址（比如我的是[http://192.168.1.2](http://www.embeddedlinux.org.cn/html/jishuzixun/201105/link.php?url=http://192.168.1.2%2F)） ，出现fedora的欢迎网页。静态HTML调试成功。
 
 CGI功能测试
@@ -138,27 +115,13 @@ CGI功能测试
 
 (主程序的程序开头一定要用Tab，而不是空格，不然编译可能不通过)
 
- 
-
-
-
- 
 
 2.交叉编译生成CGI程序
 
  
 
-
-
- 
-
 将helloworldCGI 拷贝至根文件系统的/var/www/cgi-bin/下
 
- 
-
-
-
- 
 
 3.测试
 
@@ -166,38 +129,19 @@ CGI功能测试
    [http://192.168.1.2/cgi-bin/helloworldCGI](http://www.embeddedlinux.org.cn/html/jishuzixun/201105/link.php?url=http://192.168.1.2%2Fcgi-bin%2FhelloworldCGI)
 
 网页出现 **Hello,world.** 调试成功！
+ 
+
+## **二：移植lighttpd Web服务器到嵌入式linux系统**
 
  
 
-
-
- 
-
-
-
-
-
- 
-
-
-
-
-
-
-
- 
-
-**二：移植lighttpd Web服务器到嵌入式linux系统**
-
- 
-
-**一、下载并解压**
+### **一、下载并解压**
 下载的官方主页：[www.lighttpd.net](http://www.embeddedlinux.org.cn/html/jishuzixun/201105/link.php?url=http://www.lighttpd.net)
 我下的是目前最新的lighttpd-1.4.18
 解压：
 [tekkamanninja@Tekkaman-Ninja source]$ tar xjvf lighttpd-1.4.18.tar.bz2
 
-**二、配置和交叉编译**
+### **二、配置和交叉编译**
 [tekkamanninja@Tekkaman-Ninja source]$ cd lighttpd-1.4.18
 [tekkamanninja@Tekkaman-Ninja lighttpd-1.4.18]$ CC=/home/tekkamanninja/working/gcc4.1.1/gcc-4.1.1-glibc-2.3.2/arm-9tdmi-linux-gnu/bin/arm-9tdmi-linux-gnu-gcc ./configure -prefix=/lighttpd  -host=arm-9tdmi-linux-gnu --disable-FEUTARE -disable-ipv6 -disable-lfs  
 
@@ -207,7 +151,7 @@ CGI功能测试
 
 [tekkamanninja@Tekkaman-Ninja lighttpd-1.4.18]$ make
 
-**三、程序安装**
+### **三、程序安装**
 [tekkamanninja@Tekkaman-Ninja lighttpd-1.4.18]$ make install
 
 拷贝配置文件到开发板根文件系统的etc文件夹并进行适当修改：
@@ -228,6 +172,7 @@ CGI功能测试
 \#}
 
 开看程序需要那些动态库：
+```
 [tekkamanninja@Tekkaman-Ninja lighttpd-1.4.18]$ ~/working/gcc4.1.1/gcc-4.1.1-glibc-2.3.2/arm-9tdmi-linux-gnu/bin/arm-9tdmi-linux-gnu-readelf -d src/lighttpd
 
 Dynamic section at offset 0x20790 contains 21 entries:
@@ -253,14 +198,16 @@ Dynamic section at offset 0x20790 contains 21 entries:
  0x6fffffff (VERNEEDNUM)                 2
  0x6ffffff0 (VERSYM)                     0xba72
  0x00000000 (NULL)                       0x0
-
+```
 拷贝动态库：
+```
 [tekkamanninja@Tekkaman-Ninja lighttpd-1.4.18]$ cp ~/working/gcc4.1.1/gcc-4.1.1-glibc-2.3.2/arm-9tdmi-linux-gnu/arm-9tdmi-linux-gnu/lib/libdl-2.3.2.so~/working/nfs/rootfs/lib/
 [tekkamanninja@Tekkaman-Ninja lighttpd-1.4.18]$ cp ~/working/gcc4.1.1/gcc-4.1.1-glibc-2.3.2/arm-9tdmi-linux-gnu/arm-9tdmi-linux-gnu/lib/libdl.s*  ~/working/nfs/rootfs/lib/
-
+```
 在开发板为此程序新建一个用户及存储网页的根目录以及一个log目录：
 
 开发板操作：
+```
 [root@~]#adduser -g user lighttpd
 Changing password for lighttpd
 Enter the new password (minimum of 5, maximum of 8 characters)
@@ -273,22 +220,26 @@ Re-enter new password:
 passwd[786]: password for `lighttpd' changed by user `root'
 Password changed.
 [root@~]#
-
+```
 HOST 操作：
+```
 [tekkamanninja@Tekkaman-Ninja lighttpd-1.4.18]$ cd ../../nfs/rootfs/home/lighttpd/
 [tekkamanninja@Tekkaman-Ninja lighttpd]$ su
+```
 口令：
+```
 [root@Tekkaman-Ninja lighttpd]# mkdir html
 [root@Tekkaman-Ninja lighttpd]# chmod 777 html/
 [root@Tekkaman-Ninja lighttpd]# mkdir  ../../var/log/lighttpd
 [root@Tekkaman-Ninja lighttpd]# chmod 777 ../../var/log/lighttpd
-
+```
 将移植好的程序（整个目录，其中包含了bin、sbin、lib和share目录）拷贝到开发板根文件系统的根目录下：
+```
 [root@Tekkaman-Ninja lighttpd]# mv /lighttpd   /home/tekkamanninja/working/nfs/
 [root@Tekkaman-Ninja lighttpd]# exit
 exit
-
-**四、运行程序**
+```
+### **四、运行程序**
 
 在开发板上操作：
 
@@ -302,18 +253,18 @@ exit
 
 
 
-**三：移植shttpd Web服务器到嵌入式Linux系统**
+## **三：移植shttpd Web服务器到嵌入式Linux系统**
 
  
 
-**一、下载并解压**下载的官方主页：[http://shttpd.sourceforge.net/](http://www.embeddedlinux.org.cn/html/jishuzixun/201105/link.php?url=http://shttpd.sourceforge.net%2F)
+### **一、下载并解压**下载的官方主页：[http://shttpd.sourceforge.net/](http://www.embeddedlinux.org.cn/html/jishuzixun/201105/link.php?url=http://shttpd.sourceforge.net%2F)
 我下的是目前最新的shttpd-1.39.tar.gz
 解压：
 [tekkamanninja@Tekkaman-Ninja source]$ tar zxvf shttpd-1.39.tar.gz
 
  
 
-**二、配置和交叉编译**
+### **二、配置和交叉编译**
 [tekkamanninja@Tekkaman-Ninja source]$ cd shttpd-1.39  
 [tekkamanninja@Tekkaman-Ninja shttpd-1.39]$ cd src/
 [tekkamanninja@Tekkaman-Ninja src]$ kwrite Makefile
@@ -321,10 +272,11 @@ exit
  
 
 只需在前面加上交叉编译器路径就好：
+```
 CC = /home/tekkamanninja/working/gcc4.1.1/gcc-4.1.1-glibc-2.3.2/arm-9tdmi-linux-gnu/bin/arm-9tdmi-linux-gnu-gcc
 AR = /home/tekkamanninja/working/gcc4.1.1/gcc-4.1.1-glibc-2.3.2/arm-9tdmi-linux-gnu/bin/arm-9tdmi-linux-gnu-ar
 CFLAGS =  -DNO_SSL
-
+```
  
 
 加上CFLAGS =  -DNO_SSL，是因为如果编译SSL支持，会因符号未定义而无法通过。所以我去除了SSL 支持。
@@ -336,6 +288,7 @@ CFLAGS =  -DNO_SSL
 [tekkamanninja@Tekkaman-Ninja src]$ make unix
 
 开看程序需要那些动态库：
+```
 [tekkamanninja@Tekkaman-Ninja src]$ ~/working/gcc4.1.1/gcc-4.1.1-glibc-2.3.2/arm-9tdmi-linux-gnu/bin/arm-9tdmi-linux-gnu-readelf -d shttpd
 
 Dynamic section at offset 0x12cc8 contains 20 entries:
@@ -360,14 +313,14 @@ Dynamic section at offset 0x12cc8 contains 20 entries:
  0x6fffffff (VERNEEDNUM)                 1
  0x6ffffff0 (VERSYM)                     0x8d84
  0x00000000 (NULL)                       0x0
-
+```
 
 将编译好的程序放入开发板的文件系统下：
 [tekkamanninja@Tekkaman-Ninja src]$ cp shttpd /home/tekkamanninja/working/nfs/rootfs/sbin/
 
  
 
-**三、运行shttpd**
+### **三、运行shttpd**
 
 因为shttpd 没有配置文件，所以配置是由启动参数加的，比如我在开发板中操作如下：
 [root@~]#shttpd -root /var/www -ports 80  &
@@ -377,6 +330,7 @@ Dynamic section at offset 0x12cc8 contains 20 entries:
  
 
 还有别的参数如下：
+```
 [root@~]#shttpd --help
 SHTTPD version 1.39 (c) Sergey Lyubka
 usage: shttpd [options] [config_file]
@@ -401,12 +355,12 @@ usage: shttpd [options] [config_file]
   -acl          Allow/deny IP addresses/subnets
   -inetd        Inetd mode (default: 0)
   -uid          Run as user
-
+```
  
 
 **这里说明一下 -cgi_ext  ：shttpd没有CGI 目录的概念，它是通过认文件扩展名来识别的。要运行CGI 程序，默认情况下就要在编译好的程序后面加上 “.cgi””pl””php”等后缀。而 -cgi_ext  是你可以自定义其后缀。**
 
-**四、开发板测试**
+### **四、开发板测试**
 
  
 

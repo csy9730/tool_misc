@@ -1,5 +1,12 @@
 # readelf
 
+
+## usage
+```
+readelf -h a.out
+```
+
+## help
 ```
  readelf --help
 用法：readelf <选项> elf-文件

@@ -1,5 +1,8 @@
 # file
 
+gnu工具, 可以根据文件首部的幻数猜测文件类型
+## help
+
 ```
  file --help
 Usage: file [OPTION...] [FILE...]
@@ -49,3 +52,22 @@ Determine type of FILEs.
 
 Report bugs to http://bugs.gw.com/
 ```
+
+## demo
+
+``` 
+D:\gcc\tmp>file 1.s
+1.s: assembler source, ASCII text, with CRLF line terminators
+```
+
+``` 
+D:\gcc\tmp>file 1.o
+1.o: Intel 80386 COFF object file, no line number info, not stripped, 7 sections, symbol offset=0x1f8, 23 symbols
+``` 
+
+
+
+``` 
+D:\gcc\tmp>file a.exe
+a.exe: PE32 executable (console) Intel 80386, for MS Windows
+``` 

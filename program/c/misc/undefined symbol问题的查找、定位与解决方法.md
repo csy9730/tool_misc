@@ -17,8 +17,9 @@
 原文链接：https://blog.csdn.net/buknow/article/details/96130049
 
 今天被客户测出来一个问题：程序执行中报错，报错内容如下
-
+```
 XXXX：symbol lookup error：/home/....../libpdfium.so：undefined symbol：CRYPT_MD5Generate
+```
 
 报错分析：
 
@@ -52,7 +53,7 @@ symbol lookup error: /home/lichunhong/Documents/src/effective_robotics_programmi
 undefined symbol: _ZN12ninebot_algo10AprAlgoLog9instance_E
 ```
 
-即 symbol lookup error: libpathplan.so: undefined symbol: _ZN12ninebot_algo10AprAlgoLog9instance_E
+即 `symbol lookup error: libpathplan.so: undefined symbol: _ZN12ninebot_algo10AprAlgoLog9instance_E`
 
 出现这种问题时，往往是链接时出现了问题，下面分3步解决
 
@@ -70,7 +71,7 @@ BuildID[sha1]=32ae641e73c547376df20ca94746fbf5507de415, not stripped
 ```
 接下来，需要定位一下 undefined symbol的具体信息
 
-(2)通过 ldd -r xxx.so 命令查看so库链接状态和错误信息
+(2)通过 `ldd -r xxx.so` 命令查看so库链接状态和错误信息
 
 ldd命令，可以查看对应的可执行文件或库文件依赖哪些库，但可执行文件或库文件要求与操作系统的编译器类型相同，即电脑是X86的GCC编译器，那么无法通过ldd命令查看ARM交叉编译器编译出来的可执行文件或库文件。
 

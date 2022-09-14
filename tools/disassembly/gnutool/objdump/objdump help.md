@@ -1,5 +1,7 @@
 # objdump help
 
+objdump 可以打印obj文件的信息。
+## help
 ```
 $ objdump --help
 用法：objdump <选项> <文件>
@@ -94,7 +96,7 @@ objdump：支持的体系结构： i386 i386:x86-64 i386:x64-32 i8086 i386:intel
 
 ## demo
 
-
+### 打印符号表 
 ```
 DESKTOP-CTAGE42# objdump -t zal_obfs
 
@@ -182,6 +184,8 @@ SYMBOL TABLE:
 0000000000000000       F *UND*  0000000000000000              rand@@GLIBC_2.2.5
 ```
 
+### 打印符号表捕捉代码段
+
 ```
 DESKTOP-CTAGE42# objdump -t zal_obfs|grep text
 0000000000000b50 l    d  .text  0000000000000000              .text
@@ -196,4 +200,43 @@ DESKTOP-CTAGE42# objdump -t zal_obfs|grep text
 0000000000000b50 g     F .text  000000000000002b              _start
 0000000000000c5a g     F .text  0000000000000211              main
 0000000000001b84 g     F .text  000000000000002d              zal_obfs_model
+```
+
+### 3
+```
+
+D:\gcc\tmp>objdump -h a.exe
+
+a.exe:     file format pei-i386
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00001164  00401000  00401000  00000400  2**4
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE, DATA
+  1 .data         0000001c  00403000  00403000  00001600  2**2
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .rdata        00000270  00404000  00404000  00001800  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  3 .eh_frame     000004f8  00405000  00405000  00001c00  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  4 .bss          00000084  00406000  00406000  00000000  2**2
+                  ALLOC
+  5 .idata        00000494  00407000  00407000  00002200  2**2
+                  CONTENTS, ALLOC, LOAD, DATA
+  6 .CRT          00000018  00408000  00408000  00002800  2**2
+                  CONTENTS, ALLOC, LOAD, DATA
+  7 .tls          00000020  00409000  00409000  00002a00  2**2
+                  CONTENTS, ALLOC, LOAD, DATA
+  8 .debug_aranges 00000038  0040a000  0040a000  00002c00  2**3
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_info   00001cff  0040b000  0040b000  00002e00  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_abbrev 0000012f  0040d000  0040d000  00004c00  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_line   000001c8  0040e000  0040e000  00004e00  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_frame  00000038  0040f000  0040f000  00005000  2**2
+                  CONTENTS, READONLY, DEBUGGING
+
+D:\gcc\tmp>
 ```

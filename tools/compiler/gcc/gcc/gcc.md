@@ -8,6 +8,7 @@ gcc 是linux平台默认的c/c++编译器。
 
 ### 编译流程
 编译流程为：
+0. 源代码  c文件 
 1. 预处理 Preprocess ，生成后缀为.i 的文件
 2. 编译 compile, 生成.s汇编源文件
 3. 汇编 assemble ,生成 .o文件
