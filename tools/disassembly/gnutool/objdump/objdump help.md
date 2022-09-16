@@ -1,6 +1,34 @@
 # objdump help
 
 objdump 可以打印obj文件的信息。
+
+
+- x86-64      在 64 位模式下反汇编
+- i386        在 32 位模式下反汇编
+- i8086       在 16 位模式下反汇编
+
+
+
+pei-i386 
+pei-x86-64 
+pe-x86-64 
+pe-bigobj-x86-64 
+pe-i386
+
+elf64-x86-64 
+elf64-l1om 
+elf64-k1om 
+elf64-little 
+elf64-big 
+
+elf32-i386
+elf32-iamcu 
+elf32-x86-64 
+elf32-little 
+elf32-big 
+
+a.out-i386-linux 
+
 ## help
 ```
 $ objdump --help
@@ -239,4 +267,73 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
 
 D:\gcc\tmp>
+```
+
+
+#### 查看头信息
+
+```
+D:\Project\mylib\tool_misc\tools\compiler\gcc\gcc\tmp>objdump -a 1.o
+
+1.o:     file format pe-i386
+1.o
+
+```
+#### 查看架构信息
+```
+D:\Project\mylib\tool_misc\tools\compiler\gcc\gcc\tmp>objdump -f 1.o
+
+1.o:     file format pe-i386
+architecture: i386, flags 0x00000039:
+HAS_RELOC, HAS_DEBUG, HAS_SYMS, HAS_LOCALS
+start address 0x00000000
+```
+
+#### 查看段信息
+```
+D:\Project\mylib\tool_misc\tools\compiler\gcc\gcc\tmp>objdump -h 1.o
+
+1.o:     file format pe-i386
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000024  00000000  00000000  0000012c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  1 .data         00000004  00000000  00000000  00000150  2**2
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000000  00000000  00000000  00000000  2**2
+                  ALLOC
+  3 .drectve      00000014  00000000  00000000  00000154  2**2
+                  CONTENTS, ALLOC, LOAD, DATA
+  4 .rdata        0000000c  00000000  00000000  00000168  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  5 .rdata$zzz    00000024  00000000  00000000  00000174  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  6 .eh_frame     00000038  00000000  00000000  00000198  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+```
+
+#### 反汇编
+```
+D:\Project\mylib\tool_misc\tools\compiler\gcc\gcc\tmp>objdump -d 1.o
+
+1.o:     file format pe-i386
+
+
+Disassembly of section .text:
+
+00000000 <_main>:
+   0:   55                      push   %ebp
+   1:   89 e5                   mov    %esp,%ebp
+   3:   83 e4 f0                and    $0xfffffff0,%esp
+   6:   83 ec 10                sub    $0x10,%esp
+   9:   e8 00 00 00 00          call   e <_main+0xe>
+   e:   c7 04 24 00 00 00 00    movl   $0x0,(%esp)
+  15:   e8 00 00 00 00          call   1a <_main+0x1a>
+  1a:   b8 00 00 00 00          mov    $0x0,%eax
+  1f:   c9                      leave
+  20:   c3                      ret
+  21:   90                      nop
+  22:   90                      nop
+  23:   90                      nop
 ```
