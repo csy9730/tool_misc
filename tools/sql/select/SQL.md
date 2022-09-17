@@ -36,9 +36,11 @@ DROP INDEX
 #### 元表
 
 众表之表
-```
+
 sqlite查询库里所有表名
-SELECT name FROM sqlite_master WHERE type=’table’ ORDER BY name;  
+```
+
+SELECT name FROM sqlite_master WHERE type="table" ORDER BY name;  
 SELECT name FROM sqlite_master; 
 SELECT * FROM sqlite_master; 
 ```
@@ -57,9 +59,10 @@ sqlite>  PRAGMA table_info(sqlite_master)
 mysql的元表
 ``` sql
 SELECT TABLE_NAME,TABLE_ROWS FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA=’dbname'; %–dbname为mysql的数据库名称
+```
 
 查询指定数据库中指定表的所有字段名
-
+``` dql
 select column_name from information_schema.columns where table_schema=’YOURDATABASENAME’ and table_name=’YOURTABLENAME’
 ```
 #### 索引
@@ -78,6 +81,10 @@ select column_name from information_schema.columns where table_schema=’YOURDAT
 #### COLUMN
 - DROP COLUMN column_name
 
+``` sql
+ALTER TABLE Customers
+DROP COLUMN ContactName;
+```
 
 #### data
 
@@ -114,7 +121,7 @@ SELECT DISTINCT country FROM Websites;
 下面的 SQL 语句从 "Websites" 表中选取国家为 "CN" 的所有网站：
 
 实例
-SELECT * FROM Websites WHERE country='CN';
+`SELECT * FROM Websites WHERE country='CN';`
 
 
 下面的运算符可以在 WHERE 子句中使用：
@@ -166,24 +173,28 @@ AND (country='CN' OR country='USA');
 
 #### ORDER BY 关键字
 ORDER BY 关键字用于对结果集进行排序。
-
+``` sql
 SELECT * FROM Websites
 ORDER BY alexa;
-
+```
 下面的 SQL 语句从 "Websites" 表中选取所有网站，并按照 "alexa" 列降序排序：
+``` sql
 SELECT * FROM Websites
 ORDER BY alexa DESC;
-
+```
 
 下面的 SQL 语句从 "Websites" 表中选取所有网站，并按照 "country" 和 "alexa" 列排序：
 
 实例
+``` sql
 SELECT * FROM Websites
 ORDER BY country,alexa;
+```
 #### LIKE
 
-
+``` sql
 Select * from emp where ename like 'M%';
+```
 查询 EMP 表中 Ename 列中有 M 的值，M 为要查询内容中的模糊信息。
 
  % 表示多个字值，_ 下划线表示一个字符；
@@ -213,15 +224,18 @@ IN 操作符允许您在 WHERE 子句中规定多个值。
 下面的 SQL 语句选取 name 为 "Google" 或 "菜鸟教程" 的所有网站：
 
 实例
+``` sql
 SELECT * FROM Websites
 WHERE name IN ('Google','菜鸟教程');
-
+```
 #### BETWEEN 操作符
 下面的 SQL 语句选取 alexa 介于 1 和 20 之间的所有网站：
 
 实例
+``` sql
 SELECT * FROM Websites
 WHERE alexa BETWEEN 1 AND 20;
+```
 #### SELECT TOP 
 SELECT TOP 子句用于规定要返回的记录的数目。
 
@@ -269,7 +283,7 @@ SQL 约束用于规定表中的数据规则。
 约束可以在创建表时规定（通过 CREATE TABLE 语句），或者在表创建之后规定（通过 ALTER TABLE 语句）。
 #### create table
 
-```
+``` sql
 CREATE TABLE Persons
 (
 ID int NOT NULL AUTO_INCREMENT,
@@ -286,8 +300,9 @@ TRUNCATE TABLE 语句
 如果我们仅仅需要删除表内的数据，但并不删除表本身，那么我们该如何做呢？
 
 请使用 TRUNCATE TABLE 语句：
-
+``` sql
 TRUNCATE TABLE table_name
+```
 
 #### AUTO INCREMENT
 
@@ -303,6 +318,31 @@ TRUNCATE TABLE table_name
 DROP VIEW view_name
 
 #### sql 函数
+last()
+max()
+min()
+sum()
+len()
+avg()
+#### count()
+COUNT(column_name) 函数返回指定列的值的数目（NULL 不计入）：
+SELECT COUNT(column_name) FROM table_name
+
+
+SQL COUNT(*) 实例
+如果我们省略 WHERE 子句，比如这样：
+
+SELECT COUNT(*) AS NumberOfOrders FROM Orders
+
+
+SQL COUNT(DISTINCT column_name) 实例
+现在，我们希望计算 "Orders" 表中不同客户的数目。
+
+我们使用如下 SQL 语句：
+
+SELECT COUNT(DISTINCT Customer) AS NumberOfCustomers FROM Orders
+
+#### first()
 #### MySQL Date 函数
 
 下面的表格列出了 MySQL 中最重要的内建日期函数：

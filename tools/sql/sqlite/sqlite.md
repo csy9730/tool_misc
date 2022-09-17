@@ -47,11 +47,31 @@ CREATE TABLE COMPANY(
 );
 ```
 
+sqlite查询库里所有表名
+``` sql
+
+SELECT name FROM sqlite_master WHERE type="table" ORDER BY name;  
+SELECT name FROM sqlite_master; 
+SELECT * FROM sqlite_master; 
+```
+
+
+#### drop column
+SQLite目前还不支持drop column
+
+ALTER TABLE仅仅支持表名重命名，添加字段，却没有删除字段的方法。
+#####  rename
+直接删掉这个表，然后在新建
+``` sql
+create table temp as select recordId, customer, place, time from record where 1 = 2;
+drop table record;
+ 
+alter table temp rename to record;
+```
+`where 1=2`是为了只复制表的结构，而不会复制表的内容.
 ### file
 ```
 $ .open foo.sqlite
-
-
 
 ```
 
