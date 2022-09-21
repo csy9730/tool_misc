@@ -1,0 +1,32 @@
+# C標準函式庫
+More Actions[C 標準函式庫](http://zh.wikipedia.org/wiki/C_%E6%A8%99%E6%BA%96%E5%87%BD%E5%BC%8F%E5%BA%AB)
+
+- <assert.h>
+- <complex.h>
+- <ctype.h>
+- <errno.h>
+- <fenv.h>
+- <float.h>
+- <inttypes.h>
+- <iso646.h>
+- <limits.h>
+- <locale.h>
+- <math.h>
+- <setjmp.h>
+- <signal.h>
+- <stdalign.h>
+- <stdarg.h>
+- <stdatomic.h>
+- <stdbool.h>
+- <stddef.h>
+- <stdint.h>
+- <stdio.h>
+- <stdlib.h>
+- <stdnoreturn.h>
+- <string.h>
+- <tgmath.h>
+- <threads.h>
+- <time.h>
+- <uchar.h>
+- <wchar.h>
+- <wctype.h>`
