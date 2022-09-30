@@ -29,7 +29,20 @@ ssh的端口转发有以下三种：
 ### 远程转发
 
 
-A是客户端，没有公网ip，B是服务端，有公网ip。也就是A可以以固定ip端口的方式访问B，B难以以固定ip端口的方式访问A。
+
+hostA是本地主机(localhost)。
+hostB是远程主机。
+hostC是本地主机的相邻主机。
+
+`-R portB2:hostC:portC`  就是把我们内部的hostC机器的portC监听端口映射到远程机器的portB2监听端口上。
+
+
+`ssh -R portB2:hostC:portC  -p portB hostB`
+
+client -> hostB:portB2 -> hostA:port -> hostC:portC
+
+
+A是本地端，没有公网ip，B是远程服务端，有公网ip。也就是A可以以固定ip端口的方式访问B，B难以以固定ip端口的方式访问A。
 
 以下的`localhost:22`指的是相对A客户端的ip地址, 不仅可以转发A客户端的端口，也可以转发A以外的ip和端口。
 
@@ -38,10 +51,23 @@ A执行 `ssh -NR 222:localhost:22   -p 22 root@B`
 B执行 `ssh -p 222 root@B`
 
 
-例如：-R X:Y:Z 就是把我们内部的Y机器的Z监听端口映射到远程机器的X监听端口上。
 
 ### 本地转发
-本地转发
+
+hostA是本地主机(localhost)。
+hostB是远程主机。
+hostC是远程主机的相邻主机。
+
+本地转发命令：`ssh -L portA:hostC:portC  -p portB hostB`
+
+端口转发流程：
+client:port -> hostA:portA -> hostB:portB -> hostC:portC
+
+就是远程机器hostB的邻居hostC机器的portC监听端口映射到本地机器的portA监听端口上。
+
+
+
+
 以下的localhost:222指的是相对B服务端的ip地址
 A执行 `ssh -NL 4444:localhost:333   -p 22 root@B`
 
@@ -53,7 +79,8 @@ A->>B:  A:ssh=>B:22
 A-->>B:  A:ssh2=>A:4444=>B:tmp
 B-->>B: B:tmp=>B:333
 ```
-例如：-L X:Y:Z 就是远程机器的Y机器的Z监听端口映射到本地机器的X监听端口上。
+
+
 
 ### 远程转发+本地转发
 远程转发+本地转发
@@ -92,6 +119,12 @@ B-->>C: tmp2=>222
 `ssh -N -f -L 2121:otheripaddr:21 root@host`
 然后使用localhost:2121即可访问otheripaddr的ftp服务，间接通过root@host的服务器。
 
+client ->  locahost:2121 -> host -> other_ipaddr:21
+
+
+
 对于代理服务，使用
 `ssh -CNf -D 127.0.0.1:1080 root@host -P 22`
 这样使用localhost:1080就可以通过root@host访问任意流量。
+
+client ->  locahost:1080 -> host -> other_ipaddr
