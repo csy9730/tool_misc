@@ -11,8 +11,8 @@ double found(double x);
 double ldexp ( double, int e);
 double frexp(double x, int* e );
 
-double log(double x) // log(1+x) = x - 0.5 x**2 + x**3 P(x)/Q(x) 
-// z = 2(x-1)/x+1),log(x) = z + z**3 P(z)/Q(z).
+double log(double x) // log(1+x) = x - 0.5 x**2 + x**3 P(x)/Q(x)  ， 
+// z = 2(x-1)/x+1),log(x) = z + z**3 P(z)/Q(z).  x<0.25, x>2
 double exp(double x) // e**x = 1 + 2x P(x**2)/( Q(x**2) - P(x**2) )
 pow(x,y) // x**y  =  exp( y log(x) )
 
@@ -22,7 +22,12 @@ sin // x  +  x**3 P(x**2)  , 1  -  x**2 Q(x**2).
 sincos
 tan(x) //  x + x**3 P(x**2)/Q(x**2)
 asin // x + x**3 P(x**2)/Q(x**2)
+// asin(x) = pi/2 - 2 asin( sqrt( (1-x)/2 ) )
+acosh(x) // sqrt(z) * P(z)/Q(z) z = x-1, is used.  Otherwise,
+// acosh(x)  =  log( x + sqrt( (x-1)(x+1) ).
+cosh(x) //  ( exp(x) + exp(-x) )/2.
 asinh   // x + x**3 P(x)/Q(x).
+// asinh(x) = log( x + sqrt(1 + x*x) ).
 atanh(x) // arctan(x)  = x + x^3 P(x^2)/Q(x^2)
 tanh(x) // x + x**3 P(x)/Q(x)
 

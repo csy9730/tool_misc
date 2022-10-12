@@ -70,6 +70,9 @@ i=n 很好算，自然是 ![[公式]](https://www.zhihu.com/equation?tex=t%5En+)
 
 > ![[公式]](https://www.zhihu.com/equation?tex=B_i%5En%28t%29%3DC%5Ei_nt%5Ei%281-t%29%5E%7Bn-i%7D)
 
+$$
+B_i^n(t)=C_n^it^i(1-t)^{n-i}
+$$
 或者
 
 > ![[公式]](https://www.zhihu.com/equation?tex=B_i%5En%28t%29%3D%5Cbinom%7Bn%7D%7Bi%7Dt%5Ei%281-t%29%5E%7Bn-i%7D)
@@ -122,11 +125,17 @@ i=n 很好算，自然是 ![[公式]](https://www.zhihu.com/equation?tex=t%5En+)
 
 > ![[公式]](https://www.zhihu.com/equation?tex=%5Csum_%7Bi%3D0%7D%5E%7Bn%7D%7BB_i%5En%28t%29%7D%3D%5Csum_%7Bi%3D0%7D%5E%7Bn%7D%7BC%5Ei_nt%5Ei%281-t%29%5E%7Bn-i%7D%7D%3D%28t%2B%281-t%29%29%5En%3D1)
 
-
+$$
+\sum_{i=0}^nB_i^n(t)=1
+$$
 
 ## 对称性（Symmetry）
 
 > ![[公式]](https://www.zhihu.com/equation?tex=B_i%5En%281-t%29%3DB_%7Bn-i%7D%5En%28t%29)
+
+$$
+B_i^n(1-t)=B_{n-i}^n(t)
+$$
 
 我们也可从下图曲线看出其对称性：
 
@@ -149,6 +158,11 @@ i=n 很好算，自然是 ![[公式]](https://www.zhihu.com/equation?tex=t%5En+)
 递归性是什么意思呢，就是说一个n阶的伯恩斯坦多项式 ![[公式]](https://www.zhihu.com/equation?tex=B_i%5En%28t%29) ，它可以写成两个n-1阶的伯恩斯坦多项式的组合，即：
 
 > ![[公式]](https://www.zhihu.com/equation?tex=B_i%5En%28t%29%3D%281-t%29B_i%5E%7Bn-1%7D%28t%29%2BtB_%7Bi-1%7D%5E%7Bn-1%7D%28t%29)
+> 
+$$
+B_i^n(t)=(1-t)B_{i}^{n-1}(t)+tB_{i-i}^{n-1}(t)
+$$
+
 
 很多贝塞尔曲线的定理和证明里都是做这个组合公式的应用。
 

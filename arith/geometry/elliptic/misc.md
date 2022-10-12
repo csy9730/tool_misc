@@ -8,7 +8,7 @@ Assume g is strictly positive (or strictly negative), hence f−1 exists and is 
 
 Then $f(f^{−1}(x))=x$, so by differentiating, we get that $f^′(f^{−1}(x))(f^{−1})^′(x)=1$, i.e, $g(f^{−1}(x))(f^{−1})^′(x)=1$.
 
-Thus we see that f−1 satisfies the differential equation
+Thus we see that $f^{−1}$ satisfies the differential equation
 $$
 y^′=\frac{1}{g(y)}
 $$
