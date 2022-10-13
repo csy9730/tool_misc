@@ -5,7 +5,7 @@
 
 - 三次样条：非均匀 三次样条。
 - 均匀B样条 UBS
-- 贝塞尔曲线：非均匀 波恩斯坦多项式样条？
+- 贝塞尔曲线：非均匀 波恩斯坦多项式
 - 非均匀B样条 NUBS
 - 非均匀有理B样条(Non-Uniform Rational B-Splines, NURBS)
 
