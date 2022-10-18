@@ -40,3 +40,27 @@
 
 下载得到pdf
 
+## misc
+
+
+[数值分析](https://libgen.rocks/ads.php?md5=0cc89d10a05aab6a66002a87de26261e)
+
+```
+Title: 数值分析
+Series: 图灵数学·统计学丛书
+Author(s): 索尔(Timothy Sauer)
+Publisher: 人民邮电出版社
+Year: 2010
+ISBN: 9787115217592; 7115217599
+```
+
+
+[Numerical Analysis](https://libgen.rocks/ads.php?md5=f3e0057a9893be05137de4d43e33e189)
+```
+	Title: Numerical Analysis
+Series:
+Author(s): Timothy Sauer
+Publisher: Pearson
+Year: 2017
+ISBN: 9780134696454; 013469645X
+```
