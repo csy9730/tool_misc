@@ -148,6 +148,13 @@ h_0 & 2(h_0+h_1) & h_1 & ... & 0 & 0\\
 =6\begin{pmatrix} m_0/6\\ \frac{y_{2}-y_{1}}{h_{1}}-\frac{y_{1}-y_0}{h_0}\\\frac{y_{3}-y_{2}}{h_{2}}-\frac{y_{2}-y_1}{h_1}\\...\\ \frac{y_{n}-y_{n-1}}{h_{n-1}}-\frac{y_{n-1}-y_{n-2}}{h_{n-2}}\\m_{n}/6\end{pmatrix}
 $$
 
+
+H是三对角矩阵，对应的三向量是：
+$$
+B = \begin{pmatrix} 1 & 2(h_0+h_1) & 2(h_1+h_2) & ... & 2(h_{n-2}+h_{n-1}) & 1\end{pmatrix}\\
+A = \begin{pmatrix} 0 & h_1 & h_2 & ... & h_{n-2} & h_{n-1}\end{pmatrix}\\
+C = \begin{pmatrix} h_0 & h_1 & h_2 & ... & h_{n-2} & 0\end{pmatrix}\\
+$$
 #### 夹持边界条件
 
 紧压样条(Clamped), 也叫做完全三次样条，一阶导数条件.
@@ -200,7 +207,14 @@ h_0 & 2(h_0+h_1) & h_1 & ... & 0 & 0\\
 0 & 0 & ... & h_{n-2} & 2(h_{n-2}+h_{n-1}) & h_{n-1}\\
 0 & 0  & ... & 0 & h_{n-1} & 2h_{n-1}\\\end{pmatrix}\\
 M=\begin{pmatrix} m_0\\m_1\\m_2\\...\\m_{n-1}\\m_{n}\end{pmatrix}\\
-Y=6\begin{pmatrix} \frac{y_1-y_0}{h_0}-A\\ \frac{y_{2}-y_{1}}{h_{1}}-\frac{y_{1}-y_0}{h_0}\\\frac{y_{3}-y_{2}}{h_{2}}-\frac{y_{2}-y_1}{h_1}\\...\\ \frac{y_{n}-y_{n-1}}{h_{n-1}}-\frac{y_{n-1}-y_{n-2}}{h_{n-2}}\\B-\frac{y_n-y_{n-1}}{h_{n-1}}\end{pmatrix}
+Y=6\begin{pmatrix} \frac{y_1-y_0}{h_0}-A\\ \frac{y_{2}-y_{1}}{h_{1}}-\frac{y_{1}-y_0}{h_0}\\\frac{y_{3}-y_{2}}{h_{2}}-\frac{y_{2}-y_1}{h_1}\\...\\ \frac{y_{n}-y_{n-1}}{h_{n-1}}-\frac{y_{n-1}-y_{n-2}}{h_{n-2}}\\B-\frac{y_n-y_{n-1}}{h_{n-1}}\end{pmatrix}\\
+$$
+
+H是三对角矩阵，对应的三向量是：
+$$
+B = \begin{pmatrix} 2h_0 & 2(h_0+h_1) & 2(h_1+h_2) & ... & 2(h_{n-2}+h_{n-1}) & 2h_{n-1}\end{pmatrix}\\
+A = \begin{pmatrix} h_0 & h_1 & h_2 & ... & h_{n-2} & h_{n-1}\end{pmatrix}\\
+C = \begin{pmatrix} h_0 & h_1 & h_2 & ... & h_{n-2} & h_{n-1}\end{pmatrix}\\
 $$
 
 #### 在非扭结边界条件
@@ -251,6 +265,8 @@ h_0 & 2(h_0+h_1) & h_1 & ... & 0 & 0\\
 Y=6\begin{pmatrix} 0\\ \frac{y_{2}-y_{1}}{h_{1}}-\frac{y_{1}-y_0}{h_0}\\\frac{y_{3}-y_{2}}{h_{2}}-\frac{y_{2}-y_1}{h_1}\\...\\ \frac{y_{n}-y_{n-1}}{h_{n-1}}-\frac{y_{n-1}-y_{n-2}}{h_{n-2}}\\0\end{pmatrix}
 $$
 
+H是5对角矩阵。
+
 #### 周期边界条件
 略
 
@@ -273,4 +289,66 @@ $$
 
 ### reference
 [https://zhuanlan.zhihu.com/p/62860859](https://zhuanlan.zhihu.com/p/62860859)
+
+### 3
+
+> from Bernstein basis to the canonical monomial basis
+$$
+\begin{pmatrix}
+B_1(t)\\
+B_2(t)\\
+B_3(t)\\
+B_4(t)\\
+\end{pmatrix}
+= \begin{pmatrix}
+1 & -3 & 3 & -1\\
+0 & 3 & -6 & 3\\
+0 & 0 & 3 & -3\\
+0 & 0 & 0 & 1\\
+\end{pmatrix}
+\begin{pmatrix}
+1\\
+t\\
+t^2\\
+t^3\\
+\end{pmatrix}
+$$
+
+
+
+$$
+\begin{pmatrix}
+1\\
+t\\
+t^2\\
+t^3\\
+\end{pmatrix}
+= \begin{pmatrix}
+1 & 1 & 1 & 1\\
+0 & 1/3 & 2/3 & 1\\
+0 & 0 & 1/3 & 1\\
+0 & 0 & 0 & 1\\
+\end{pmatrix}
+
+\begin{pmatrix}
+B_1(t)\\
+B_2(t)\\
+B_3(t)\\
+B_4(t)\\
+\end{pmatrix}
+$$
+
+
+$$
+P(t) = \begin{pmatrix}
+P_1 & P_2 & P_3 & P_4 
+\end{pmatrix}
+
+\begin{pmatrix}
+B_1(t)\\
+B_2(t)\\
+B_3(t)\\
+B_4(t)\\
+\end{pmatrix}
+$$
 
