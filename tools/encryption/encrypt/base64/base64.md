@@ -40,6 +40,13 @@ YWJjabc
 
 ```
 
+
+图片编码和解码
+``` bash
+base64 abc.png>abc.png.b64
+
+base64 -d abc.png.b64>abc2.png
+```
 ### python base64
 
 ``` python

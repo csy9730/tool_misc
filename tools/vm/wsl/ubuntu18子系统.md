@@ -10,6 +10,7 @@
 管理员权限运行powershell并运行下面的命令：
 `Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux`
 或者：控制面板->程序和功能->启用或关闭Windows功能->勾选 适用于Linux的Windows子系统
+
 ## overview
 直接执行wsl可以进入wsl子系统（C:\Windows\System32\wsl.exe）
 通过bash可以执行单条指令，（C:\Windows\System32\bash.exe）
@@ -40,3 +41,6 @@ $ ln -s /mnt/c/Users/xxx ~/win10 
 在ubuntu下通过下面的命令直接进入win10的home目录
 
 $ cd win10
+### reference
+
+[https://learn.microsoft.com/zh-cn/windows/wsl/install](https://learn.microsoft.com/zh-cn/windows/wsl/install)

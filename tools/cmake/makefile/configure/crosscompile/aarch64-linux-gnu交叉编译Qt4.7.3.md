@@ -19,7 +19,7 @@ $ sudo apt-get install libqt4-core libqt4-dev libqt4-webkit qt4-demos
 
 解压后进入目录，ls bin/可以看到aarch64-linux-gnu-gcc、aarch64-linux-gnu-g++等编译器。
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 [~/qtArm64Toolchain/Ambarella_Linaro_Toolchain_2016.02_For_S5/linaro-aarch64-2016.02-gcc5.3 root@jz4775dev]
@@ -33,8 +33,6 @@ aarch64-linux-gnu-as         aarch64-linux-gnu-g++        aarch64-linux-gnu-gcc-
 aarch64-linux-gnu-c++        aarch64-linux-gnu-gcc        aarch64-linux-gnu-gcov        aarch64-linux-gnu-ld.bfd  aarch64-linux-gnu-pkg-config-real  aarch64-linux-gnu-strip
 aarch64-linux-gnu-c++filt    aarch64-linux-gnu-gcc-5.3.1  aarch64-linux-gnu-gcov-tool   aarch64-linux-gnu-nm      aarch64-linux-gnu-ranlib　
 ```
-
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
 ```
 [root@jz4775dev]# vim /etc/profile
@@ -67,32 +65,30 @@ mkdir qt-4.7.3-arm64
 然后进入qt-everywhere-opensource-src-4.7.3目录：
 a.修改mkspecs/qws/linux-arm-gnueabi-g++/qmake.conf文件如下:
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+``` makefile
+#
+# qmake configuration for building with arm-none-linux-gnueabi-g++
+#
 
-```
- 1 #
- 2 # qmake configuration for building with arm-none-linux-gnueabi-g++
- 3 #
- 4 
- 5 include(../../common/g++.conf)
- 6 include(../../common/linux.conf)
- 7 include(../../common/qws.conf)
- 8 
- 9 # modifications to g++.conf
-10 QMAKE_CC                = aarch64-linux-gnu-gcc
-11 QMAKE_CXX               = aarch64-linux-gnu-g++
-12 QMAKE_LINK              = aarch64-linux-gnu-g++
-13 QMAKE_LINK_SHLIB        = aarch64-linux-gnu-g++
-14 
-15 # modifications to linux.conf
-16 QMAKE_AR                = aarch64-linux-gnu-ar cqs
-17 QMAKE_OBJCOPY           = aarch64-linux-gnu-objcopy
-18 QMAKE_STRIP             = aarch64-linux-gnu-strip
-19 
-20 load(qt_config)
+include(../../common/g++.conf)
+include(../../common/linux.conf)
+include(../../common/qws.conf)
+
+# modifications to g++.conf
+QMAKE_CC                = aarch64-linux-gnu-gcc
+QMAKE_CXX               = aarch64-linux-gnu-g++
+QMAKE_LINK              = aarch64-linux-gnu-g++
+QMAKE_LINK_SHLIB        = aarch64-linux-gnu-g++
+
+# modifications to linux.conf
+QMAKE_AR                = aarch64-linux-gnu-ar cqs
+QMAKE_OBJCOPY           = aarch64-linux-gnu-objcopy
+QMAKE_STRIP             = aarch64-linux-gnu-strip
+
+load(qt_config)
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 
@@ -107,8 +103,6 @@ b.执行configure生成Makefile文件，命令如下：
  
 
 配置成功显示如下：
-
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
 ```
 NOTICE: Atomic operations are not yet supported for this
@@ -126,9 +120,6 @@ Qt will be installed into /opt/qt-4.7.3-arm64
 To reconfigure, run 'make confclean' and 'configure'.
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
-
- 
 
 然后：
 
@@ -142,7 +133,7 @@ make
 
 \1. qt4.7.3 configure时要加上-embedded armv8参数，armv8是arm芯片的架构(arm9对应armv5，arm11对应armv6，cortex-a8和cortex-a9对应armv7),不然会出现以下情况:
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 You have not explicitly asked to use pkg-config and are cross-compiling.
@@ -167,7 +158,7 @@ Basic XLib functionality test failed!
  QMAKE_INCDIR_X11 and QMAKE_LIBDIR_X11 in /opt/qt-everywhere-opensource-src-4.7.3/mkspecs/qws/linux-arm-gnueabi-g++.
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
  
@@ -187,7 +178,7 @@ google了一波并没有找到解决办法，个人感觉可能是qt代码太老
 
 但是在后面编译时出现了新的错误，如下：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 runtime/JSValue.h: In constructor 'JSC::JSValue::JSValue(JSC::JSCell*)':
@@ -203,7 +194,7 @@ make[1]: Leaving directory `/opt/qt-everywhere-opensource-src-4.7.3/src/3rdparty
 make: *** [sub-javascriptcore-make_default-ordered] Error 2
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 google了一下，原来是Qt4.7的一个Bug,国外大胸弟们也是一顿操作，然而并没有给出具体的解决办法，想到在64位arm上跑，所以把494和506行的int32_t改成int64_t编译通过了，但是编译完成后并没有生成webkit的动态库，很是无语。这个错误就是编译webkit第三方库的时候出现的，为什么编译通过后没有libQtWebKit.so.4.7.3呢！
 
@@ -221,55 +212,54 @@ google了一下，原来是Qt4.7的一个Bug,国外大胸弟们也是一顿操�
 
 一个个来查看：
 
-```
-[root@jz4775dev]# vim ./src/3rdparty/webkit/WebCore/ForwardingHeaders/runtime/JSValue.h
-
-  1 #ifndef WebCore_FWD_JSValue_h
-  2 #define WebCore_FWD_JSValue_h
-  3 #include <JavaScriptCore/JSValue.h>
-  4 #endif
+``` cpp
+// [root@jz4775dev]# vim ./src/3rdparty/webkit/WebCore/ForwardingHeaders/runtime/JSValue.h
+#ifndef WebCore_FWD_JSValue_h
+#define WebCore_FWD_JSValue_h
+#include <JavaScriptCore/JSValue.h>
+#endif
 ```
 
 不是这个；
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
+
+``` cpp
+// [root@jz4775dev]# vim ./src/3rdparty/webkit/JavaScriptCore/runtime/JSValue.h
+
+
+  inline JSValue::JSValue(JSCell* ptr)
+  {
+      if (ptr)
+          u.asBits.tag = CellTag;
+      else
+          u.asBits.tag = EmptyValueTag;
+      u.asBits.payload = reinterpret_cast<int32_t>(ptr);
+#if ENABLE(JSC_ZOMBIES)
+      ASSERT(!isZombie());
+#endif
+  }
+
+  inline JSValue::JSValue(const JSCell* ptr)
+  {
+      if (ptr)
+          u.asBits.tag = CellTag;
+      else
+          u.asBits.tag = EmptyValueTag;
+      u.asBits.payload = reinterpret_cast<int32_t>(const_cast<JSCell*>(ptr));
+#if ENABLE(JSC_ZOMBIES)
+        ASSERT(!isZombie());
+#endif
+    }
 ```
-[root@jz4775dev]# vim ./src/3rdparty/webkit/JavaScriptCore/runtime/JSValue.h
 
-487 
-488     inline JSValue::JSValue(JSCell* ptr)
-489     {
-490         if (ptr)
-491             u.asBits.tag = CellTag;
-492         else
-493             u.asBits.tag = EmptyValueTag;
-494         u.asBits.payload = reinterpret_cast<int32_t>(ptr);
-495 #if ENABLE(JSC_ZOMBIES)
-496         ASSERT(!isZombie());
-497 #endif
-498     }
-499 
-500     inline JSValue::JSValue(const JSCell* ptr)
-501     {
-502         if (ptr)
-503             u.asBits.tag = CellTag;
-504         else
-505             u.asBits.tag = EmptyValueTag;
-506         u.asBits.payload = reinterpret_cast<int32_t>(const_cast<JSCell*>(ptr));
-507 #if ENABLE(JSC_ZOMBIES)
-508         ASSERT(!isZombie());
-509 #endif
-510     }
-```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
 就是你了，把int32_t改成int64_t后继续编译，编译顺利完成。
 
 这时在 "ls lib/" 查看：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 [root@jz4775dev]# ls lib/
@@ -285,7 +275,7 @@ libQtCore.la         libQtDeclarative.so    libQtMultimedia.la         libQtOpen
 libQtCore.prl        libQtDeclarative.so.4  libQtMultimedia.prl        libQtOpenVG.prl        libQtScriptTools.so.4  libQtSvg.prl               libQtTest.so.4.7.3  libQtXml.prl
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 libQtWebKit.so.4.7.3 有了，嗯...美滋滋！
 
@@ -305,7 +295,7 @@ make install
 
 编辑开发板上 /etc/profile文件，在最后一行添加如下环境变量：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 #
@@ -318,7 +308,7 @@ export QWS_SIZE=800x400
 export QWS_DISPLAY=LinuxFb:/dev/fb0(这个根据开发板而定)
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 添加完后wq保存退出，执行command：
 
@@ -393,32 +383,32 @@ make install
 
 这时qmake.conf文件修改为如下：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
- 1 #
- 2 # qmake configuration for building with arm-none-linux-gnueabi-g++
- 3 #
- 4 
- 5 include(../../common/g++.conf)
- 6 include(../../common/linux.conf)
- 7 include(../../common/qws.conf)
- 8 
- 9 # modifications to g++.conf
-10 QMAKE_CC                = aarch64-linux-gnu-gcc -lts
-11 QMAKE_CXX               = aarch64-linux-gnu-g++ -lts
-12 QMAKE_LINK              = aarch64-linux-gnu-g++ -lts
-13 QMAKE_LINK_SHLIB        = aarch64-linux-gnu-g++ -lts
-14 
-15 # modifications to linux.conf
-16 QMAKE_AR                = aarch64-linux-gnu-ar cqs 
-17 QMAKE_OBJCOPY           = aarch64-linux-gnu-objcopy
-18 QMAKE_STRIP             = aarch64-linux-gnu-strip
-19 
-20 load(qt_config)
+#
+# qmake configuration for building with arm-none-linux-gnueabi-g++
+#
+
+include(../../common/g++.conf)
+include(../../common/linux.conf)
+include(../../common/qws.conf)
+
+# modifications to g++.conf
+QMAKE_CC                = aarch64-linux-gnu-gcc -lts
+QMAKE_CXX               = aarch64-linux-gnu-g++ -lts
+QMAKE_LINK              = aarch64-linux-gnu-g++ -lts
+QMAKE_LINK_SHLIB        = aarch64-linux-gnu-g++ -lts
+
+# modifications to linux.conf
+QMAKE_AR                = aarch64-linux-gnu-ar cqs 
+QMAKE_OBJCOPY           = aarch64-linux-gnu-objcopy
+QMAKE_STRIP             = aarch64-linux-gnu-strip
+
+load(qt_config)
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 configure也要添加新的参数:
 
@@ -432,7 +422,7 @@ configure也要添加新的参数:
 
 编译好后把qt-4.7.3-arm64和tslib同时拷贝到开发板/opt下。 编辑/etc/profile添加环境变量：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 export QTDIR=/opt/qt-4.7.3-arm64
@@ -450,7 +440,7 @@ export QWS_MOUSE_PROTO=Tslib:/dev/input/event0
 export QT_QWS_FONTDIR=$QTDIR/lib/fonts
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 

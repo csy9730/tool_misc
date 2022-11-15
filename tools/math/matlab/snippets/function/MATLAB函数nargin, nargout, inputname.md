@@ -1,6 +1,6 @@
-[MATLAB函数nargin, nargout, inputname](https://www.cnblogs.com/emituofo/archive/2011/11/15/2249499.html)
+# [MATLAB函数nargin, nargout, inputname](https://www.cnblogs.com/emituofo/archive/2011/11/15/2249499.html)
 
-**1. nargin, nargout**
+## **1. nargin, nargout**
 
 　　函数功能: 返回函数参数数量
 
@@ -13,9 +13,9 @@ nargout(fun)：返回函数fun的输出参数数量。fun可以使函数名或�
 
 例子1，函数内部使用：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
-```
+
+``` matlab
 function [x0, y0] = myplot(x, y, npts, angle, subdiv)
 % MYPLOT  Plot a function.
 % MYPLOT(x, y, npts, angle, subdiv)
@@ -34,11 +34,11 @@ else
 end
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 例子2，函数内部使用：
 
-```
+``` matlab
 nargin('sqrt') % return 1
 nargout('sqrt') % return 1
 nargin('ones') % return -1
@@ -46,7 +46,7 @@ nargout('ones') % return 1
 ```
 
 
-**2. inputname**
+## **2. inputname**
 
 　　函数功能: 返回函数指定输入参数的名称字符串
 
@@ -56,14 +56,14 @@ nargout('ones') % return 1
 
 例子，先定义一个函数myfun.m：
 
-```
+``` matlab
 function c = myfun(a,b)
 fprintf('First calling variable is "%s"\n.', inputname(1))
 ```
 
 调用函数：
 
-```
+``` matlab
 x = 5;  y = 3;  myfun(x,y)
 ```
 
@@ -75,7 +75,7 @@ First calling variable is "x".
 
 但是这样调用函数：
 
-```
+``` matlab
 myfun(pi+1, pi-1)
 ```
 

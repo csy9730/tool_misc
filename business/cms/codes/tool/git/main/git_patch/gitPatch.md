@@ -1,15 +1,15 @@
 # patch
 
 
-以下有三种方法生成补丁，打补丁的方法。
-- 1 (old)
+以下有几种方法生成补丁，打补丁，仓库复制的方法。
+- 1 检验较宽松
     - diff 生成补丁
     - apply 适用补丁
-- 2 (new)
+- 2 严格校验版本哈希值 
     - format-patch 生成补丁
     - am 适用补丁
-- 3
-    - bundle 生成补丁
+- 3 打包
+    - bundle 生成打包
     - pull 适用补丁
 
 
@@ -32,7 +32,15 @@ git format-patch master~3..master # 生成 0001-.patch， 0002-.patch， 0003-.p
 ```
 
 
-推荐使用git format-patch生成git 专用PATCH，因为我们在实际使用中发现，如果使用diff生成通用PATCH，对于删除文件的操作会出现失败的情况。如果没有删除操作的情况下diff的效率及通用性会比较好。
+推荐使用`git format-patch`生成git 专用PATCH，因为我们在实际使用中发现，如果使用diff生成通用PATCH，对于删除文件的操作会出现失败的情况。如果没有删除操作的情况下diff的效率及通用性会比较好。
+
+生成的补丁有以下的头部信息：
+```
+From 792417b57e3fd370b9cf70dd97bad927952d295d Mon Sep 17 00:00:00 2001
+From: foo1230 <foo1230@users.noreply.github.com>
+Date: Mon, 14 Nov 2022 00:27:50 +0800
+Subject: [PATCH] add games/factory/
+```
 
 #### apply
 检查该PATCH信息, 如：

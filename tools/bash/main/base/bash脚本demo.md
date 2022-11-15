@@ -15,7 +15,7 @@ Linux中我们安装软件或者一些常用操作，都会接触很多命令，
 
 一般一键脚本会要求用户输入各种选项：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ``` bash
 #提示“请输入姓名”并等待30秒，把用户的输入保存入变量name中
@@ -32,7 +32,7 @@ echo -e "\n"
 echo "性别为$sex"
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ![img](https://images2018.cnblogs.com/blog/350840/201808/350840-20180808132543286-1566541324.png)
 

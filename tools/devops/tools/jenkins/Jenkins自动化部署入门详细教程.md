@@ -203,13 +203,11 @@
 
 　　其实就是我们平时在Linux上手动部署项目操作的脚本
 
-　　![img](https://img2018.cnblogs.com/blog/858186/201908/858186-20190804193320601-1274720264.png)
+![img](https://img2018.cnblogs.com/blog/858186/201908/858186-20190804193320601-1274720264.png)
 
 　　案例中给出的stop.sh脚本如下：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
-![复制代码](https://common.cnblogs.com/images/copycode.gif)
 
 ``` bash
 #!/bin/bash

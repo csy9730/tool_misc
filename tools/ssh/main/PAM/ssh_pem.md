@@ -21,11 +21,14 @@
 添加公钥到授权键：把公钥复制到`~/.ssh/authorized_keys` 文件。
 
 ### misc
-腾讯云平台不支持pem 的 ssh登录，只支持ssh密码登陆。
-android 的termux不支持ssh密码登陆。只支持pem 的 ssh登录
-windowsXp支持openssh，所以支持ssh登录，（客户端会显示乱码）
-windows7支持msys2-ssh，所以支持ssh登录
-由于windows10支持wsl（内嵌unbuntu子系统），所以支持ssh登录
+
+- 腾讯云平台不支持pem 的 ssh登录，只支持ssh密码登陆。
+- android 的termux不支持ssh密码登陆。只支持pem 的 ssh登录
+- windowsXp支持openssh，所以支持ssh登录，（客户端会显示乱码）
+- windows7支持msys2-ssh，所以支持ssh登录
+- windows10支持openssh
+- windows10支持msys2-ssh
+- windows10的wsl（内嵌unbuntu子系统）支持ssh登录
 
 
 ## expect

@@ -1,5 +1,11 @@
 # ssh-keygen
 
+``` bash
+# 1. 静默生成密钥文件
+ssh-keygen -t ed25519 -C "strawperrypi" -f pi_ed25519 -q -N ""
+```
+
+
 ## help
 ```
 $ ssh-keygen --help |clip

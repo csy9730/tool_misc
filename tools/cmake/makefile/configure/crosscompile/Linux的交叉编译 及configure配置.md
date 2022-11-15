@@ -8,7 +8,6 @@
 
 下面试build.sh的脚本内容：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
 ```
  1 #!/bin/sh
@@ -56,8 +55,6 @@ PATH: /usr/bin
 PATH: /sbin
 PATH: /bin
 ```
-
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
 在这里并没有将我们环境变量的值给读进来，
 
@@ -154,31 +151,11 @@ OK 大功告成，可以看到whether the C  compiler works .... yes 接下来�
 
 整个过程花了差不多2天时间，第一次弄交叉编译，确实是有点费劲的，也发现了一些自己的不足，之前没有看log文件的习惯，后来发现这个东西是非常好的，非常有助于我们分析问题的原因。第一次写blog，写的比较乱，希望能帮到碰到同样问题的你！
 
-
-
-[好文要顶](javascript:void(0);) [关注我](javascript:void(0);) [收藏该文](javascript:void(0);) [![img](https://common.cnblogs.com/images/icon_weibo_24.png)](javascript:void(0);) [![img](https://common.cnblogs.com/images/wechat.png)](javascript:void(0);)
-
 ![img](https://pic.cnblogs.com/face/686170/20160118205941.png)
 
 [Hello~again](https://home.cnblogs.com/u/louyihang-loves-baiyan/)
 [关注 - 1](https://home.cnblogs.com/u/louyihang-loves-baiyan/followees/)
 [粉丝 - 271](https://home.cnblogs.com/u/louyihang-loves-baiyan/followers/)
-
-
-
-
-
-[+加关注](javascript:void(0);)
-
-4
-
-0
-
-
-
-
-
-
 
 
 [» ](https://www.cnblogs.com/louyihang-loves-baiyan/p/4445249.html)下一篇： [Ubuntu 14.04 LTS Server 无法挂载光盘 启动initramfs等问题](https://www.cnblogs.com/louyihang-loves-baiyan/p/4445249.html)

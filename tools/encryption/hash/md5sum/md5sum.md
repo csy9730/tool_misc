@@ -27,8 +27,15 @@ ab81a986476bb000d47292c5ff7658b9 *CMakeLists.txt
 
 
 md5 -c: 从文件中读取MD5 的校验值并予以检查
+```
+md5sum a.txt > a.md5
+md5sum -c a.md5
+```
 
-
+显示ok表示校验成功。
+```
+.gitignore: OK
+```
 
 ## help
 

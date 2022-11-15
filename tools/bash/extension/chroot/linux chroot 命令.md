@@ -100,9 +100,9 @@ $ sudo ls -ld /proc/$pid/root
 
 下面我们尝试自己实现一个 chroot 程序，代码中涉及到两个函数，分别是 chroot() 函数和 chdir() 函数，其实真正的 chroot 命令也是通过调用它们实现的：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
-```
+
+``` cpp
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
@@ -141,7 +141,7 @@ int main(int argc, char *argv[])
 }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 把上面的代码保存到文件 mychroot.c 文件中，并执行下面的命令进行编译：
 
