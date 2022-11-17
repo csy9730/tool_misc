@@ -59,3 +59,12 @@ cmake .
 cmake --build . --config release
 cmake --install . --config release
 ```
+
+
+## misc
+
+cmakeCache.txt
+
+CMakeFiles/CMakeOutput.log
+
+CMakeFiles/CMakeError.log
