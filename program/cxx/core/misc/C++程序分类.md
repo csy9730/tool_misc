@@ -22,3 +22,24 @@
     * asm的指针分near、far、huge呢
     * char带符号不？
     * wchar_t是2字节还是4字节？
+
+
+- cpu 
+    - arch: amd/arm
+    - arch: x86/x64
+    - asm
+- os: 
+    - windows/linux/mac/android
+    - bit 32/64
+- compiler
+    - msvc, gcc,clang
+    - c99, c++, c++11, c++14
+    - cross compiler: x86_armv7
+- target
+    - target: obj, lib, dll,exe
+    - debug release 
+    - O123
+    - thread: ML,MT, MD
+    - abi call: cdecl, stdcall, fastcall
+- depend package: ...
+

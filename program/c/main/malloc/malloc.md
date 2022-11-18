@@ -39,3 +39,8 @@ C 库函数 `void *calloc(size_t nitems, size_t size)` 分配所需的内存空�
 ## realloc
 
 `void* realloc(void* ptr, unsigned newsize);`
+
+
+
+### free的sizeof计算
+一般来说，c/c++在申请内存的时候，需要new/delete、malloc/free必须配对使用。c语言调用malloc申请内存的时候，需要调用free释放内存。free是如何知道应该释放多少内存的呢？free在释放内存的时候，会根据传入的地址往前偏移4个字节，这个4个字节保存了需要释放的内存字节数。new与delete同理。当delete的时候，也是根据传入的指针，往前偏移4个字节，得到需要释放的内存字节数。陈硕说不一定是4个字节，具体需要跟具体的内存对齐相关。（通常的编译器都是把n放在前面，至少占size_t，而且按class/struct的要求对齐，因此不一定是4字节。）
