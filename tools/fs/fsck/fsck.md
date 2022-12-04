@@ -7,3 +7,5 @@ UNEXPECTED INCONSISTENCY; RUN fsck MANUALLY means there is some file system erro
 
 fsck /dev/sda6 
 ```
+
+处理硬盘的文件系统错误。

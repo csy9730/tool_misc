@@ -246,7 +246,7 @@ Input method com.baidu.input_mi/.ImeService selected
 
 ``` bash
 adb shell dumpsys window displays # 显示屏参数：
-输出示例：
+# 输出示例：
 WINDOW MANAGER DISPLAY CONTENTS (dumpsys window displays)
 Display: mDisplayId=0
 init=1080x1920 420dpi cur=1080x1920 app=1080x1794 rng=1080x1017-1810x1731
@@ -263,15 +263,15 @@ deferred=false layoutNeeded=false
 adb shell getprop ro.product.model # 查看设备信息型号命令
 
 adb shell wm size # 屏幕分辨率命令
-如果使用命令修改过，那输出可能是：
+# 如果使用命令修改过，那输出可能是：
 Physical size: 1080x1920
 Override size: 480x1024
-表明设备的屏幕分辨率原本是 1080px * 1920px，当前被修改为 480px * 1024px。
-屏幕密度命令：adb shell wm density
-如果使用命令修改过，那输出可能是：
+# 表明设备的屏幕分辨率原本是 1080px * 1920px，当前被修改为 480px * 1024px。
+# 屏幕密度命令：adb shell wm density
+# 如果使用命令修改过，那输出可能是：
 Physical density: 480
 Override density: 160
-表明设备的屏幕密度原来是 480dpi，当前被修改为 160dpi。
+# 表明设备的屏幕密度原来是 480dpi，当前被修改为 160dpi。
 
 
 adb shell settings get secure android_id # android_id查看命令
