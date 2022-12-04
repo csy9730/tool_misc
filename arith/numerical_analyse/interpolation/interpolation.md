@@ -96,3 +96,15 @@ $$
 3. periodic，周期函数，左端点的微分等于右端点的微分，左端点的二次微分等于右端点的二次微分
  
 
+
+### 三角多项式
+span{cos(it),sin(it)}
+
+### C 曲线
+span{1,t,cost,sint}
+
+span{1,t,t^{n-2}, cost,sint}
+
+### H-Bezier
+
+span{1,t,t^{n-4}, cosht,sinht, tsinht,tcosht}

@@ -293,6 +293,18 @@ $$
 ### 3
 
 > from Bernstein basis to the canonical monomial basis
+
+$$
+\begin{cases}
+B_1(t)=(1-t)^3\\
+B_2(t)=3(1-t)^2t\\
+B_3(t)=3(1-t)t^2\\
+B_4(t)=t^3\\
+\end{cases}
+$$
+
+转换成矩阵形式
+
 $$
 \begin{pmatrix}
 B_1(t)\\
@@ -314,7 +326,7 @@ t^3\\
 \end{pmatrix}
 $$
 
-
+矩阵求逆
 
 $$
 \begin{pmatrix}
