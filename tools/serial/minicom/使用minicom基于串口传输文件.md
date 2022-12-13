@@ -10,13 +10,13 @@ linux系统下，需要通过串口和板子传输文件，可以通过minicom�
 3. 运行`minicom`，确保minicom和板子成功连接
 4. pc上发送文件到板子：
    0. 运行`minicom -s`, 配置文件收发路径
-   1. minicom中，运行 `rz` 命令
-   2. minicom中，运行ctrl+a s命令。
+   1. minicom中，运行 `rz` 命令， 板子准备接收文件
+   2. minicom中，运行`ctrl+a s`命令，pc执行发送文件
    3. 在文件接收路径，确认文件传输成功
 5. 板子中发送文件到pc：
    1. 运行`minicom -s`, 配置文件收发路径
-   2. minicom中，运行 `sz foo`命令
-   3. minicom中，自动运行ctrl+a r命令。
+   2. minicom中，运行 `sz foo`命令， 板子发送文件
+   3. minicom中，自动运行`ctrl+a r`命令，pc执行接收文件。
    4. 在文件接收路径，确认文件传输成功
 
 
