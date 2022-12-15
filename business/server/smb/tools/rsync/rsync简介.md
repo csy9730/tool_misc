@@ -1,8 +1,8 @@
 # [rsync](https://www.cnblogs.com/george-guo/p/7718515.html)
 
-**一、简介**
+## **一、简介**
 
-**1、认识**
+### **1、认识**
 
 Rsync（remote synchronize）是一个远程数据同步工具，可通过LAN/WAN快速同步多台主机间的文件。Rsync使用所谓的“Rsync算法”来使本地和远 程两个主机之间的文件达到同步，这个算法只传送两个文件的不同部分，而不是每次都整份传送，因此速度相当快
 
@@ -10,115 +10,110 @@ Rsync支持大多数的类Unix系统，无论是Linux、Solaris还是BSD上都�
 
 此外，它在windows平台下也有相应的版本，如cwRsync和Sync2NAS等工具
 
-**2、原理**
+### **2、原理**
 
 Rsync本来是用于替代rcp的一个工具，目前由rsync.samba.org维护，所以rsync.conf文件的格式类似于samba的主配 置文件；Rsync可以通过rsh或ssh使用，也能以daemon模式去运行
 
 在以daemon方式运行时Rsync server会打开一个**873 端口，等待客户端去连接。连接时，Rsync server会检查口令是否相符，若通过口令查核，则可以开始进行文件传输。第一次连通完成时，会把整份文件传输一次，以后则就只需进行增量备份**
 
-**3、特点**
+### **3、特点**
 
-1、可以镜像保存整个目录树和文件系统；
+1. 可以镜像保存整个目录树和文件系统；
+2. 可以很容易做到保持原来文件的权限、时间、软硬链接等；
+3. 无须特殊权限即可安装；
+4. 优化的流程，文件传输效率高；
+5. 可以使用rsh、ssh等方式来传输文件，当然也可以通过直接的socket连接；
+6. 支持匿名传输
 
-2、可以很容易做到保持原来文件的权限、时间、软硬链接等；
+## 二、ssh模式
 
-3、无须特殊权限即可安装；
-
-4、优化的流程，文件传输效率高；
-
-5、可以使用rsh、ssh等方式来传输文件，当然也可以通过直接的socket连接；
-
-6、支持匿名传输
-
- 
-
-**二、ssh模式**
-
-**1、本地间同步**
+### **1、本地间同步**
 
 **环境： 172.16.22.12**
+``` bash
+mkdir src
+touch src/{1,2,3,4}
 
-\# mkdir src
+mkdir dest
 
-\# touch src/{1,2,3,4}
+rsync -av src/ dest/ # 将 src 目录里的所有的文件同步至 dest 目录（不包含src本身）
 
-\# mkdir dest
+rsync -av src dest/  # 将 src 目录包括自己整个同步至 dest 目录
 
-\# rsync -av src/ dest/ --将 src 目录里的所有的文件同步至 dest 目录（不包含src本身）
+rsync -avR src/ dest/  # 即使 src 后面接有 / ，效果同上
+```
 
-\# rsync -av src dest/ --将 src 目录包括自己整个同步至 dest 目录
-
-\# rsync -avR src/ dest/ --即使 src 后面接有 / ，效果同上
-
-**2、局域网间同步**
+### **2、局域网间同步**
 
 **环境： 172.16.22.11**
 
-\# mkdir src
+``` bash
+mkdir src
 
-\# touch src/{a,b,c,d}
+touch src/{a,b,c,d}
 
-\# mkdir dest
+mkdir dest
 
-\# rsync -av 172.16.22.12:/data/test/src/ dest/ --远程同步至本地，需输入root密码
+rsync -av 172.16.22.12:/data/test/src/ dest/ # --远程同步至本地，需输入root密码
 
-\# rsync -av **src/ 172.16.22.12:/data/test/dest/ --本地文件同步至远程**
+rsync -av src/ 172.16.22.12:/data/test/dest/ # --本地文件同步至远程
 
-\# rsync -av **src 172.16.22.12:/data/test/dest/ --整个目录同步过去**
+rsync -av src 172.16.22.12:/data/test/dest/ # 整个目录同步过去
 
-\# rm -rf src/d --删除一个文件 d
+rm -rf src/d # 删除一个文件 d
 
-\# rsync -av **--delete src/ 172.16.22.12:/data/test/dest/ \**--delete，从目标目录里面删除无关的文件\****
+rsync -av --delete src/ 172.16.22.12:/data/test/dest/ # --delete，从目标目录里面删除无关的文件
+```
 
-**3、局域网指定用户同步**
+### **3、局域网指定用户同步**
 
 **--172.16.22.12**
+```
+useradd george
 
-\# useradd george
+passwd george
 
-\# passwd george
+mkdir /home/george/test
 
-\# mkdir /home/george/test
-
-\# touch /home/george/test/g{1,2,3,4}
-
+touch /home/george/test/g{1,2,3,4}
+```
 **--172.16.22.11**
+``` bash
+rsync -av src '-e ssh -l george' 172.16.22.12:/home/george # 本地同步至远程
 
-\# rsync -av src '-e ssh -l george' 172.16.22.12:/home/george --本地同步至远程
-
-\# rsync -av 172.16.22.12:/home/george/test/g* '-e ssh -l george -p 22' dest/
-
+rsync -av 172.16.22.12:/home/george/test/g* '-e ssh -l george -p 22' dest/
+```
  
 
-**三、daemon模式**
+## **三、daemon模式**
 
 **环境：192.168.22.11**
 
-**1、服务启动方式**
+### **1、服务启动方式**
 
 1.1、对于负荷较重的 rsync 服务器应该使用**独立运行方式**
+```
+yum install rsync xinetd --服务安装
 
-\# yum install rsync xinetd --服务安装
-
-\# /usr/bin/rsync --daemon
-
+/usr/bin/rsync --daemon
+```
 1.2、对于负荷较轻的 rsync 服务器可以**使用 xinetd 运行方式**
+```
+yum install rsync xinetd --服务安装
 
-\# yum install rsync xinetd --服务安装
-
-\# vim /etc/xinetd.d/rsync --配置托管服务，将下项改为 no
+vim /etc/xinetd.d/rsync --配置托管服务，将下项改为 no
 
 disable = no
 
-\# /etc/init.d/xinetd start --启动托管服务 xinetd
+/etc/init.d/xinetd start --启动托管服务 xinetd
 
-\# chkconfig rsync on
+chkconfig rsync on
 
-\# netstat -ntpl | grep 873 --查看服务是否启动
+netstat -ntpl | grep 873 --查看服务是否启动
 
- 
+ ```
 
-**2、配置详解**
+### **2、配置详解**
 
 两种 rsync 服务运行方式都需要配置 rsyncd.conf，其格式类似于 samba 的主配置文件
 
@@ -240,7 +235,7 @@ log format --指定传输日志文件的字段。默认为：”%o %h [%a] %m (%
 
 **3、服务端配置**
 
-\# vim /etc/rsyncd.conf --为 rsyncd 服务编辑配置文件，默认没有，需自己编辑
+vim /etc/rsyncd.conf --为 rsyncd 服务编辑配置文件，默认没有，需自己编辑
 
 uid = root --rsync运行权限为root
 
@@ -277,34 +272,35 @@ list = yes
 auth users = web --认证此模块的用户名
 
 secrets file = /etc/web.passwd --指定存放“用户名：密码”格式的文件
+``` bash
+mkdir /data/test/src --创建基础目录
 
-\# mkdir /data/test/src --创建基础目录
+mkdir /data/test/src/george --再创建一个目录
 
-\# mkdir /data/test/src/george --再创建一个目录
+touch /data/test/src/{1,2,3}
 
-\# touch /data/test/src/{1,2,3}
+echo "web:123" > /etc/web.passwd --创建密码文件
 
-\# echo "web:123" > /etc/web.passwd --创建密码文件
+chmod 600 /etc/web.passwd
 
-\# chmod 600 /etc/web.passwd
-
-\# service xinetd restart
-
+service xinetd restart
+```
  
 
-**四、测试**
+## **四、测试**
 
-**1、客户端**
+### **1、客户端**
 
 **环境：192.168.22.12**
+``` bash
+yum -y install rsync
 
-\# yum -y install rsync
+mkdir /data/test
+```
 
-\# mkdir /data/test
-
-**2、小试参数**
-
-\# rsync **-avzP web@192.168.22.11::web1 /data/test/ --输入密码 123；将服务器 web1 模块里的文件同步至 /data/test，\**参数说明：\****
+###  2、小试参数
+```
+rsync **-avzP web@192.168.22.11::web1 /data/test/ --输入密码 123；将服务器 web1 模块里的文件同步至 /data/test，\**参数说明：\****
 
 **-a --参数，相当于-rlptgoD，** 
 
@@ -329,36 +325,39 @@ secrets file = /etc/web.passwd --指定存放“用户名：密码”格式的�
 **-P --传输进度** 
 
 **-v --传输时的进度等信息，和-P有点关系** 
+```
 
-\# rsync -avzP **--delete web@192.168.22.11::web1 /data/test/ --让客户端与服务器保持完全一致， \**--delete\****
 
-\# rsync -avzP --delete /data/test/ web@192.168.22.11::web1 --上传客户端文件至服务端
+``` bash
+rsync -avzP **--delete web@192.168.22.11::web1 /data/test/ # 让客户端与服务器保持完全一致， \**--delete\****
 
-\# rsync -avzP --delete /data/test/ web@192.168.22.11::web1/george --上传客户端文件至服务端的 george 目录
+rsync -avzP --delete /data/test/ web@192.168.22.11::web1 # 上传客户端文件至服务端
 
-\# rsync -ir --password-file=/tmp/rsync.password web@192.168.22.11::web1 --递归列出服务端 web1 模块的文件
+rsync -avzP --delete /data/test/ web@192.168.22.11::web1/george # 上传客户端文件至服务端的 george 目录
 
-\# rsync -avzP --exclude="*3*" --password-file=/tmp/rsync.password web@192.168.22.11::web1 /data/test/ --同步除了路径以及文件名中包含 “3” *的所有文件
+rsync -ir --password-file=/tmp/rsync.password web@192.168.22.11::web1 # 递归列出服务端 web1 模块的文件
 
-**3、通过密码文件同步**
+rsync -avzP --exclude="*3*" --password-file=/tmp/rsync.password web@192.168.22.11::web1 /data/test/ # 同步除了路径以及文件名中包含 “3” *的所有文件
+```
+### 3、通过密码文件同步
+``` bash
+echo "123"> /tmp/rsync.password
 
-\# echo "123"> /tmp/rsync.password
+chmod 600 /tmp/rsync.password
 
-\# chmod 600 /tmp/rsync.password
-
-\# rsync -avzP --delete **--password-file=/tmp/rsync.password web@192.168.22.11::web1 /data/test/ --调用密码文件**
-
-**4、客户端自动同步**
-
-\# crontab -e
+rsync -avzP --delete **--password-file=/tmp/rsync.password web@192.168.22.11::web1 /data/test/ # 调用密码文件
+```
+### 4、客户端自动同步
+```
+crontab -e
 
 10 0 * * * rsync -avzP --delete --password-file=/tmp/rsync.password web@192.168.22.11::web1 /data/test/
 
-\# crontab -l
-
+crontab -l
+```
  
 
-**五、数据实时同步**
+## 五、数据实时同步
 
 **环境：Rsync + Inotify-tools**
 
@@ -373,54 +372,73 @@ inotify-tools是用c编写的，除了要求内核支持 inotify 外，不依赖
 **2、安装inotify-tools** 
 
 下载地址：http://github.com/downloads/rvoicilas/inotify-tools/inotify-tools-3.14.tar.gz
+``` bash
+yum install –y gcc # 安装依赖
 
-\# yum install –y gcc --安装依赖
+mkdir /usr/local/inotify
 
-\# mkdir /usr/local/inotify
+tar -xf inotify-tools-3.14.tar.gz
 
-\# tar -xf inotify-tools-3.14.tar.gz
+cd inotify-tools-3.14
 
-\# cd inotify-tools-3.14
+./configure --prefix=/usr/local/inotify/
 
-\# ./configure --prefix=/usr/local/inotify/
-
-\# make && make install
+make && make install
+```
 
 **3、设置环境变量**
-
-\# vim /root/.bash_profile
+``` bash
+vim /root/.bash_profile
 
 export PATH=/usr/local/inotify/bin/:$PATH
 
-\# source /root/.bash_profile
+source /root/.bash_profile
 
-\# echo '/usr/local/inotify/lib' >> /etc/ld.so.conf --加载库文件
+echo '/usr/local/inotify/lib' >> /etc/ld.so.conf # 加载库文件
 
-\# ldconfig
+ldconfig
 
-\# ln -s /usr/local/inotify/include /usr/include/inotify
+ln -s /usr/local/inotify/include /usr/include/inotify
+```
+### **4、常用参数**
 
-**4、常用参数**
+- -m --始终保持监听状态，默认触发事件即退出 
+- -r --递归查询目录 
+- -q --打印出监控事件 
+- -e --定义监控的事件，可用参数： 
+    - access --访问文件 
+    - modify --修改文件 
+    - attrib --属性变更 
+    - open --打开文件 
+    - delete --删除文件 
+    - create --新建文件 
+    - move --文件移动 
+- --fromfile --从文件读取需要监视的文件或者排除的文件，一个文件一行，排除的文件以@开头 
+- --timefmt --时间格式 
+- --format --输出格式 
+- --exclude --正则匹配需要排除的文件，大小写敏感 - --excludei --正则匹配需要排除的文件，忽略大小写 
+- %y%m%d %H%M --年月日时钟 
+- %T%w%f%e --时间路径文件名状态
 
--m --始终保持监听状态，默认触发事件即退出 -r --递归查询目录 -q --打印出监控事件 -e --定义监控的事件，可用参数： access --访问文件 modify --修改文件 attrib --属性变更 open --打开文件 delete --删除文件 create --新建文件 move --文件移动 --fromfile --从文件读取需要监视的文件或者排除的文件，一个文件一行，排除的文件以@开头 --timefmt --时间格式 --format --输出格式 --exclude --正则匹配需要排除的文件，大小写敏感 --excludei --正则匹配需要排除的文件，忽略大小写 %y%m%d %H%M --年月日时钟 %T%w%f%e --时间路径文件名状态
-
-**5、测试一**
+### **5、测试一**
 
 **检测源目录中是否有如下动作：modify,create,move,delete,attrib；一旦发生则发布至目标机器；方式为 ssh**
 
 **src: 192.168.22.11(Rsync + Inotify-tools) dest: 192.168.22.12**
 
 **两台机器需要做好 ssh 免密登录**
+``` bash
+mdkir /data/test/dest/ # dest机器
 
-\# mdkir /data/test/dest/ --dest机器
+mdkir /data/test/src/ # src机器
 
-\# mdkir /data/test/src/ --src机器
+rsync -av --delete /data/test/src/ 192.168.22.12:/data/test/dest # 测试下命令
 
-\# rsync -av --delete /data/test/src/ 192.168.22.12:/data/test/dest --测试下命令
+vim /data/test/test.sh
+```
 
-\# vim /data/test/test.sh
-
-\#!/bin/bash
+``` bash
+#!/bin/bash
 
 /usr/local/inotify/bin/inotifywait -mrq -e modify,create,move,delete,attrib /data/test/src | while read events
 
@@ -431,13 +449,17 @@ rsync -a --delete /data/test/src/ 192.168.22.12:/data/test/dest
 echo "`date +'%F %T'` 出现事件：$events" >> /tmp/rsync.log 2>&1
 
 done
+```
 
-\# chmod 755 /data/test/test.sh
+```
+chmod 755 /data/test/test.sh
 
-\# /data/test/test.sh &
+/data/test/test.sh &
 
-\# echo '/data/test/test.sh &' >> /etc/rc.local --设置开机自启
+echo '/data/test/test.sh &' >> /etc/rc.local --设置开机自启
+```
+我们可以在目标机上也写一个这样的脚本： `rsync -a --delete /data/test/dest/ 192.168.22.11:/data/test/src `
 
-***\**\**\**我们可以在目标机上也写一个这样的脚本： rsync -a --delete /data/test/dest/ 192.168.22.11:/data/test/src \**；这样可以实现双向同步\****
+这样可以实现双向同步
 
 分类: [Linux](https://www.cnblogs.com/george-guo/category/887125.html)

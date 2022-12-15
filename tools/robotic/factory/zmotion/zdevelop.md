@@ -85,6 +85,17 @@ USB链接会自动生成虚拟串口，选择串口号来连接即可。
 
 ![图片4.png](http://www.zmotion.com.cn/upload/20200511/1589172620731335.png)
 
+#### demo
+
+1. new project
+2. new basic script
+3. set autorun
+4. start zsimu
+5. open wave viewer
+6. download to rom/ram
+
+
+
 ### doc
 
 
@@ -99,3 +110,7 @@ USB链接会自动生成虚拟串口，选择串口号来连接即可。
 | 正运动技术-《ZMotion PC函数库编程手册 V2.1》 | V2.1     | PDF  | 9.96M  | [Download](http://www.zmotion.com.cn/upload/正运动技术-《ZMotion%20PC函数库编程手册%20V2.1》.pdf) |
 | 正运动技术-《机械手指令说明v2.6》            | V2.6     | PDF  | 3.59MB | [Download](http://www.zmotion.com.cn/upload/正运动技术-《机械手指令说明v2.6》.pdf) |
 
+
+http://www.zmotion.com.cn/pro_list_100.html
+
+[正运动技术-《ZBasic编程手册V3.3.0》](http://www.zmotion.com.cn/pro_info_234.html)
