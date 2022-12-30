@@ -4,9 +4,9 @@
 
 - /usr/bin/sha1sum  
 - /usr/bin/sha224sum  
-- /usr/bin/sha256sum  
+- /usr/bin/sha256sum  64位16进制字符
 - /usr/bin/sha384sum  
-- /usr/bin/sha512sum
+- /usr/bin/sha512sum 128位16进制字符
 
 ## demo
 

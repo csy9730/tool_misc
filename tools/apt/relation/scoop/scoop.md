@@ -1,5 +1,9 @@
 # scoop
 
+[https://scoop.sh/](https://scoop.sh/)
+> A command-line installer for Windows
+
+
 [scoop](https://github.com/lukesampson/scoop)
 
 
@@ -21,7 +25,7 @@ scoop 高版本要求powershell>5.0
 
 ### 安装到指定目录
 安装到指定目录(D:\tool\scoop)
-```
+``` powershell
 [environment]::setEnvironmentVariable('SCOOP','D:\tool\scoop','User')
 $env:SCOOP='D:\tool\scoop'
 iex (new-object net.webclient).downloadstring('https://get.scoop.sh')
@@ -64,19 +68,20 @@ persist ,这个目录下面放的是已安装软件的配置文件, 后续更新
 scoop install sudo
 sudo scoop install 7zip git openssh --global
 scoop install aria2 curl grep sed less touch
-scoop install python ruby go perl
+scoop install python ruby go perl 
+
 
 ```
 
-```
-scoop help            #帮助
-scoop list            #查看当前已安装软件
-scoop info app        #查看软件信息
-scoop install app     #安装软件
-scoop search app      #搜索软件
-scoop uninstall app   #卸载软件
-scoop update app      #更新指定软件
-scoop update *        #更新安装的软件和scoop
+``` bash
+scoop help            # 帮助
+scoop list            # 查看当前已安装软件
+scoop info app        # 查看软件信息
+scoop install app     # 安装软件
+scoop search app      # 搜索软件
+scoop uninstall app   # 卸载软件
+scoop update app      # 更新指定软件
+scoop update *        # 更新安装的软件和scoop
 
 # 设置代理(http)
 scoop config proxy 127.0.0.1:4412
@@ -90,6 +95,15 @@ scoop bucket add extras
 scoop bucket add versions
 scoop bucket add nonportable
 ```
+
+如果出现以下问题：
+```
+Checking repo... ERROR 'https://github.com/ScoopInstaller/Versions' doesn't look like a valid git repository
+
+Error given:
+fatal: unable to access 'https://github.com/ScoopInstaller/Versions/': Failed to connect to github.com port 443: Timed out
+```
+是因为网络不好，需要使用代理才能访问。
 
 ```
 C:\>scoop bucket  known
@@ -106,7 +120,152 @@ games
 jetbrains
 ```
 
-下载地址： [nluug](https://ftp.nluug.nl/)
+- main - 默认仓库
+- extras - 默认仓库的补充超级强大
+- games - 游戏仓库
+- nerd-fonts - Nerd Fonts
+- nirsoft - A subset of the 250 Nirsoft apps
+- java - Installers for Oracle Java, OpenJDK, Zulu, ojdkbuild, AdoptOpenJDK, Amazon Corretto, BellSoft Liberica & SapMachine
+- jetbrains - Installers for all JetBrains utilities and IDEs
+- nonportable - Non-portable apps (may require UAC)
+- php - Installers for most versions of PHP
+- versions - Alternative versions of apps found in other buckets
+
+### 添加镜像仓库
+
+添加bucket本质上就是在用git复制仓库到本地。
+
+``` bash
+# main
+scoop bucket add main https://codechina.csdn.net/mirrors/ScoopInstaller/Main.git
+# extras
+scoop bucket add extras https://codechina.csdn.net/mirrors/lukesampson/scoop-extras.git
+```
+
+
+```
+scoop bucket list
+Name        Source                                        Updated             Manifests
+----        ------                                        -------             ---------
+extras      ~\scoop\buckets\extras                                                    0
+local       ~\scoop\buckets\local                                                     0
+main        https://github.com/ScoopInstaller/Main        2022/12/30 12:27:32      1136
+nonportable https://github.com/ScoopInstaller/Nonportable 2022/12/30 4:30:32        104
+versions    ~\scoop\buckets\versions                                                  0
+```
+
+#### 镜像内容
+https://github.com/ScoopInstaller/Main/-/blob/master/bucket/curl.json
+
+``` json
+{
+    "version": "7.87.0",
+    "description": "Command line tool and library for transferring data with URLs",
+    "homepage": "https://curl.haxx.se/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://curl.haxx.se/windows/dl-7.87.0/curl-7.87.0-win64-mingw.tar.xz",
+            "hash": "952308b3cf71cf178336a8026b10588f44918003d5a0ccbc1db4c704149a753e",
+            "extract_dir": "curl-7.87.0-win64-mingw"
+        },
+        "32bit": {
+            "url": "https://curl.haxx.se/windows/dl-7.87.0/curl-7.87.0-win32-mingw.tar.xz",
+            "hash": "e1b0d63024e89d6d62a9ae8b734cb1bfd4f2ab49aeb2143f6d04a29fdbae9295",
+            "extract_dir": "curl-7.87.0-win32-mingw"
+        }
+    },
+    "bin": "bin\\curl.exe",
+    "checkver": {
+        "url": "https://curl.haxx.se/windows/",
+        "regex": "Build<\\/b>:\\s+([\\d._]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://curl.haxx.se/windows/dl-$version/curl-$version-win64-mingw.tar.xz",
+                "extract_dir": "curl-$version-win64-mingw"
+            },
+            "32bit": {
+                "url": "https://curl.haxx.se/windows/dl-$version/curl-$version-win32-mingw.tar.xz",
+                "extract_dir": "curl-$version-win32-mingw"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/hashes.txt",
+            "regex": "SHA256\\($basename\\)=\\s+$sha256"
+        }
+    }
+}
+```
+
+可以看到，仓库本身不保存软件源，只保存软件源地址，和相关的配置信息。
+这样可以保持仓库的纯净性，可读性，避免大量的二进制文件污染仓库。
+缺点是，这样是分布式存储，软件源地址参差不齐，网络环境区别很大，
+
+对于国内用户，可能出现，7zip的源容易下载，而curl的源难以下载的问题。
+
+### 自定义软件
+可以看到，只要配置了bucket的json文件和文件下载地址，自己也可以设置软件发布。
+
+在本地路径创建文件夹 C:\Users\admin\scoop\buckets\local\bucket，相当于创建了一个bucket，命名为local。
+省去了从远程端使用git拉取bucket仓库的过程。
+
+准备一个压缩包文件zal_obfs.zip, 使用sha256sum命令计算校验码。
+
+启动一个文件服务，用来提供压缩包的下载。这里使用`python -m http.server 8888` 建立http服务。
+
+接着在local/bucket目录下创建一个zal_obfs.json文件
+
+``` json
+{
+    "version": "1.21.3",
+    "description": "A command-line utility ",
+    "homepage": "http://localhost:8888/zal_obfs/",
+    "license": "GPL-3.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "http://localhost:8888/zal_obfs.zip",
+            "hash": "0cba60b14295154e31443643b98635dd18ed20bd5b8eba5065d29bc5533ba792"
+        },
+        "32bit": {
+            "url": "http://localhost:8888/zal_obfs.zip",
+            "hash": "0cba60b14295154e31443643b98635dd18ed20bd5b8eba5065d29bc5533ba792"
+        }
+    },
+    "bin": ["zal_obfs.exe", "zal_deobfs.exe"]
+}
+```
+
+至此，scoop包的发布工作就完成了，现在可以是命令`scoop install zal_obfs`下载了。
+
+```
+Installing 'zal_obfs' (1.21.3) [64bit] from local bucket
+Loading zal_obfs.zip from cache
+Checking hash of zal_obfs.zip ... ok.
+Extracting zal_obfs.zip ... done.
+Linking ~\scoop\apps\zal_obfs\current => ~\scoop\apps\zal_obfs\1.21.3
+Creating shim for 'zal_obfs'.
+Creating shim for 'zal_deobfs'.
+'zal_obfs' (1.21.3) was installed successfully!
+```
+可以看到，成功地安装了程序。
+
+scoop可以自动下载压缩包，解压压缩包到安装目录，为入口程序建立快捷方式。
+
+通过以上的包的发布过程，我们也基本搞懂了scoop安装程序的原理，真的是非常简单又直接。
+
+### 常用软件
+```
+nodejs adb nginx apache putty-np cmder
+ffmpeg frp gcc llvm jenkins mingw
+
+typora
+everything
+winscp
+```
+
+
 ## help
 ```
 Usage: scoop <command> [<args>]

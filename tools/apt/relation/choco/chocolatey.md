@@ -58,7 +58,7 @@ choco info powershell
 ```
 
 ### install
-```
+``` bash
 choco install sysinternals
 choco install notepadplusplus googlechrome atom 7zip
 choco install notepadplusplus --force --force-dependencies

@@ -1,6 +1,19 @@
 # split
 
 主要有两种分割方式：默认的按行分割，按byte分割。分割成两个或多个文件，需要提供文件名前缀。
+
+## demo
+
+### split & merge
+``` bash
+# split file
+split -b 1m a.zip
+
+
+# merge file 
+cat xa* >a2.zip
+
+```
 ## help
 ```
 $ split --help

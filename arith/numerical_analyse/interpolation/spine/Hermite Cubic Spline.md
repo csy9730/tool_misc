@@ -51,7 +51,7 @@ $$
 
 
 $$
-p(t) = \begin{pmatrix} 2t^3-3t^2+1 & -2t^3+3t^2 & t^3-2t^2+t t^3-t^2 \end{pmatrix}
+p(t) = \begin{pmatrix} 2t^3-3t^2+1 & -2t^3+3t^2 & t^3-2t^2+t & t^3-t^2 \end{pmatrix}
 \begin{pmatrix} p(0)\\p(1)\\p^`(0)\\p^`(1) \end{pmatrix}
 $$
 
