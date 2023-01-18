@@ -165,6 +165,32 @@ GPT         - 将磁盘从 MBR 转更换为 GPT。
 MBR         - 将磁盘从 GPT 转更换为 MBR。
 ```
 
+
+#### exFAT转换成FAT32
+exFAT转换成FAT32
+步骤1. 在搜索框中输入cmd并以管理员身份运行命令提示符。
+
+步骤2. 依次输入以下命令，并在每一行命令后按一次Enter键执行即可将exFAT格式化成FAT32。
+`diskpart`
+
+```
+list volume
+select volume #（#指的是您想要转换的驱动器卷号）
+clean
+create partition primary size=32000
+format fs=fat32 quick（如果您想要将其转换为NTFS文件系统，也可以将fat32更改为ntfs）
+```
+
+出现错误：
+设备 \Device\Harddisk4\DR23 有一个不正确的区块。
+
+如何处理？
+
+
+
+#### FAT32转NTFS
+只限于FAT32转NTFS
+`convert F: /fs:ntfs`
 ## misc
 
 fsck（file system check）是linux工具，用来检查和维护不一致的文件系统。若系统掉电或磁盘发生问题，可利用fsck命令对文件系统进行检查. 

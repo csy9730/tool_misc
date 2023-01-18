@@ -17,11 +17,11 @@
 
 ### NVM 简介
 
-[NVM](https://links.jianshu.com/go?to=https%3A%2F%2Fgithub.com%2Fnvm-sh%2Fnvm) 全称 Node Version Manager，是一个管理 NodeJS 版本的工具。
+[NVM](https://github.com/nvm-sh/nvm) 全称 Node Version Manager，是一个管理 NodeJS 版本的工具。
 NVM 默认只支持 Linux 和 OS X，不支持 Windows，针对 Windows 操作系统有 2 个替代方案：
 
-- [nvm-windows](https://links.jianshu.com/go?to=https%3A%2F%2Fgithub.com%2Fcoreybutler%2Fnvm-windows)
-- [nodist](https://links.jianshu.com/go?to=https%3A%2F%2Fgithub.com%2Fmarcelklehr%2Fnodist)
+- [nvm-windows](https://github.com/coreybutler/nvm-windows)
+- [nodist](https://github.com/marcelklehr/nodist)
 
 本文介绍使用 nvm-windows 安装和管理多版本 NodeJS 的方法。
 
@@ -36,7 +36,7 @@ NVM 默认只支持 Linux 和 OS X，不支持 Windows，针对 Windows 操作�
 
 ### 安装步骤
 
-1. 下载 [nvm-windows](https://links.jianshu.com/go?to=https%3A%2F%2Fgithub.com%2Fcoreybutler%2Fnvm-windows%2Freleases)
+1. 下载 [nvm-windows](https://github.com/coreybutler/nvm-windows/releases)
 
 2. 解压安装，安装前首先要卸载已安装的任何版本的 NodeJS，安装过程需要设置 NVM 的安装路径和 NodeJS 的快捷方式路径，可以选择任意路径。
 
@@ -44,26 +44,14 @@ NVM 默认只支持 Linux 和 OS X，不支持 Windows，针对 Windows 操作�
 
     
 
-   ```
-   NVM_HOME
-   ```
+`NVM_HOME ` 和 `NVM_SYMLINK`
 
-    
+- `NVM_HOME` ：NVM 安装路径
+- `NVM_SYMLINK` ： NodeJS 快捷方式路径
 
-   和
+1. 使用 `cmd` 命令打开命令提示符窗口，输入 `nvm -v` 校验是否安装成功。
 
-    
-
-   ```
-   NVM_SYMLINK
-   ```
-
-   - `NVM_HOME` ：NVM 安装路径
-   - `NVM_SYMLINK` ： NodeJS 快捷方式路径
-
-4. 使用 `cmd` 命令打开命令提示符窗口，输入 `nvm -v` 校验是否安装成功。
-
-```dart
+```
 C:\>nvm -v
 
 Running version 1.1.7.
@@ -92,7 +80,7 @@ Usage:
 
 1. 进入 NVM 安装根目录，查看 `settings.txt` 文件内容
 
-```undefined
+```
 root: C:\Dev\nvm
 path: C:\Dev\nodejs
 ```
@@ -102,7 +90,7 @@ path: C:\Dev\nodejs
 
 1. 在 `settings.txt` 文件中添加以下内容
 
-```ruby
+```
 arch: 64
 proxy:
 node_mirror: http://npm.taobao.org/mirrors/node/
@@ -110,7 +98,7 @@ npm_mirror: https://npm.taobao.org/mirrors/npm/
 ```
 
 - `arch`：Windows 操作系统位数
-- `proxy`：代理，[淘宝 NodeJS 镜像和 NPM 镜像](https://links.jianshu.com/go?to=https%3A%2F%2Fnpm.taobao.org%2F)
+- `proxy`：代理，[淘宝 NodeJS 镜像和 NPM 镜像](https://npm.taobao.org/)
 
 1. 使用 `nvm install 版本号` 命令安装指定版本的 NodeJS
 
@@ -232,13 +220,15 @@ window10系统上安装nodejs版本管理工具：
 
 2、解压缩，运行nvm-setup.exe，选择nvm安装路径，下一步选择node安装路径（第一次安装我选择的默认安装路径），依次点击完成
 
-3、cmd运行nvm -v 查看是否安装成功，然后安装node版本，nvm install v7.6.0，会依次安装node和相应的npm版本，最后运行 nvm use 7.6.0，显示切换成功，但是 运行 node -v，却依旧没有切换成功
+3、cmd运行`nvm -v` 查看是否安装成功，然后安装node版本，`nvm install v7.6.0`，会依次安装node和相应的npm版本，最后运行 `nvm use 7.6.0`，显示切换成功，但是 运行 `node -v`，却依旧没有切换成功
 
 解决方案：
 
 在安装nvm之前我系统上已经安装了一版node，需要卸载node，发现还是不成功，最后在https://github.com/coreybutler/nvm-windows/issues/321 找到了答案，解决方案如下：
 
-重命名node安装目录：Renamed "C:\Program Files\nodejs" to "C:\Program Files\nodejsx",
+重命名node安装目录：
+
+Renamed "C:\Program Files\nodejs" to "C:\Program Files\nodejsx",
 
 Then from an elevated cmd called "nvm use 8.9.1" (any version you got should work..) and it started to work.
 

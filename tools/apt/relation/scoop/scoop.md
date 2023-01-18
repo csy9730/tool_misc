@@ -263,6 +263,16 @@ ffmpeg frp gcc llvm jenkins mingw
 typora
 everything
 winscp
+
+SpaceSniffer
+rufus
+FreeCommander
+frp
+filezilla
+sqliespy
+vim
+sqlite
+mobaxterm
 ```
 
 

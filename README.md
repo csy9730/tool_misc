@@ -136,3 +136,32 @@ software：
 
 
 
+### misc
+- base 基础
+- core 核心机制 内置库 脚本机制介绍
+- arch 架构
+- arith 算法
+- component 组件
+- main 命令行入口程序 ，gui入口程序
+- config
+- program
+- interface
+- lib 内置库
+- extension 外置库
+- plugin 插件
+- relational
+- service/app/tool/
+- wrap 封装
+- peripap 外设
+- project
+  - snippet
+  - gist
+  - practise
+  - tutorial
+  - docs
+
+对于软件python这种，分成python.exe 和python脚本语法。
+
+对于硬件cpu这种，分成cpu硬件和cpu硬件接口，烧录软件和烧录脚本语言。
+
+

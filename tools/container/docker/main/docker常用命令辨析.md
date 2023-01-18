@@ -35,8 +35,9 @@ https://docs.docker.com/engine/reference/commandline/stop/#options
 - SIGSTOP是暂停信号。唯一的行为是暂停进程；信号不能被捕获或忽略。Shell 使用暂停（及其对应项，通过 SIGCONT 恢复）来实现作业控制。
 
 ##### Docker exec vs attach 区别
+docker exec在容器内会起一个新的进程。
 
-
+docker attach 只会把标准输出输入连接到容器内的PID。
 
 1
 ``` bash
