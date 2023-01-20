@@ -6,7 +6,7 @@
 
 # calibre
 
-[![img](https://raw.githubusercontent.com/kovidgoyal/calibre/master/resources/images/lt.png)](https://raw.githubusercontent.com/kovidgoyal/calibre/master/resources/images/lt.png)
+[![img](https://raw.githubusercontent.com/kovidgoyal/calibre/master/resources/images/lt.png)](https://github.com/kovidgoyal/calibre/master/resources/images/lt.png)
 
 calibre is an e-book manager. It can view, convert, edit and catalog e-books in all of the major e-book formats. It can also talk to e-book reader devices. It can go out to the internet and fetch metadata for your books. It can download newspapers and convert them into e-books for convenient reading. It is cross platform, running on Linux, Windows and macOS.
 

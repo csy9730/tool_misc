@@ -13,7 +13,12 @@ Welcome to git's documentation!
 
    ssh/ssh.rst
 
+.. .. toctree::
+..    :maxdepth: 1
+..    :caption: Apt:
+..    :numbered:
 
+..    apt/readme.md
 
 .. .. toctree::
 ..    :maxdepth: 1
@@ -22,6 +27,13 @@ Welcome to git's documentation!
 
 ..    git/index.rst
 
+.. .. toctree::
+..    :maxdepth: 1
+..    :caption: cmake:
+..    :numbered:
+
+..    cmake/readme.md
+
 
 .. .. toctree::
 ..    :maxdepth: 1
@@ -29,6 +41,14 @@ Welcome to git's documentation!
 ..    :numbered:
 
 ..    chrome/chrome.rst
+
+.. .. toctree::
+..    :maxdepth: 1
+..    :caption: bash:
+..    :numbered:
+
+..    bash/bash.rst
+
 
 .. .. toctree::
 ..    :maxdepth: 1

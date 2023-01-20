@@ -5,7 +5,6 @@
 - latex
 
 
-
 ### sphinx_quickstart
 
 sphinx_quickstart 可以通过交互方式生成makefile和命令行。
@@ -243,4 +242,32 @@ Project templating:
                         template directory for template files
 
 For more information, visit <http://sphinx-doc.org/>.
+```
+
+
+### make target
+```
+(root) D:\Project\mylib\tool_misc\tools>make
+Sphinx v1.6.3
+Please use `make target' where target is one of
+  html        to make standalone HTML files
+  dirhtml     to make HTML files named index.html in directories
+  singlehtml  to make a single large HTML file
+  pickle      to make pickle files
+  json        to make JSON files
+  htmlhelp    to make HTML files and an HTML help project
+  qthelp      to make HTML files and a qthelp project
+  devhelp     to make HTML files and a Devhelp project
+  epub        to make an epub
+  latex       to make LaTeX files, you can set PAPER=a4 or PAPER=letter
+  text        to make text files
+  man         to make manual pages
+  texinfo     to make Texinfo files
+  gettext     to make PO message catalogs
+  changes     to make an overview of all changed/added/deprecated items
+  xml         to make Docutils-native XML files
+  pseudoxml   to make pseudoxml-XML files for display purposes
+  linkcheck   to check all external links for integrity
+  doctest     to run all doctests embedded in the documentation (if enabled)
+  coverage    to run coverage check of the documentation (if enabled)
 ```

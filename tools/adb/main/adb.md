@@ -121,8 +121,8 @@ Android 提供了大多数常见的 Unix 命令行工具。如需查看可用工
 许多 shell 命令由 toybox/busybox 提供
 
 ### am
-调起 Activity命令格式：adb shell am start [options]
-调起 Service命令格式：adb shell am startservice [options]
+调起 Activity命令格式：`adb shell am start [options]`
+调起 Service命令格式：`adb shell am startservice [options]`
 例如：`adb shell am startservice -n com.tencent.mm/.plugin.accountsync.model.AccountAuthenticatorService` 表示调起微信的某 Service。
 
 ``` bash 
@@ -207,21 +207,27 @@ uiautomator
 runtest：executes UI automation tests RunTestCommand.java
 
 dump：获取控件信息，DumpCommand.java
-
+```
 [admin:~]$ adb shell uiautomator dump   
 UI hierchary dumped to: /storage/emulated/legacy/window_dump.xml
+```
 
 #### ime
 ime
 输入法，Ime.java
 
+```
 [admin:~]$ adb shell ime list -s                           
 com.google.android.inputmethod.pinyin/.PinyinIME
 com.baidu.input_mi/.ImeService
+```
 列出设备上的输入法
 
+
+```
 [admin:~]$ adb shell ime set com.baidu.input_mi/.ImeService
-Input method com.baidu.input_mi/.ImeService selected    
+Input method com.baidu.input_mi/.ImeService selected   
+``` 
 选择输入法
 
 
