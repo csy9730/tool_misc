@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to git's documentation!
+Welcome to csy's documentation!
 ===============================
 
 .. toctree::
@@ -13,57 +13,53 @@ Welcome to git's documentation!
 
    ssh/ssh.rst
 
-.. .. toctree::
-..    :maxdepth: 1
-..    :caption: Apt:
-..    :numbered:
+.. toctree::
+   :maxdepth: 1
+   :caption: Apt:
+   :numbered:
 
-..    apt/readme.md
+   apt/readme.md
 
-.. .. toctree::
-..    :maxdepth: 1
-..    :caption: Git:
-..    :numbered:
+.. toctree::
+    :maxdepth: 1
+    :caption: Git:
+    :numbered:
 
-..    git/index.rst
+    git/index.rst
 
-.. .. toctree::
-..    :maxdepth: 1
-..    :caption: cmake:
-..    :numbered:
+.. toctree::
+   :maxdepth: 1
+   :caption: cmake:
+   :numbered:
 
-..    cmake/readme.md
+   cmake/cmake.rst
+   cmake/readme.md
 
+.. toctree::
+   :maxdepth: 1
+   :caption: chrome:
+   :numbered:
+   chrome/chrome.rst
 
-.. .. toctree::
-..    :maxdepth: 1
-..    :caption: chrome:
-..    :numbered:
-
-..    chrome/chrome.rst
-
-.. .. toctree::
-..    :maxdepth: 1
-..    :caption: bash:
-..    :numbered:
-
-..    bash/bash.rst
+.. toctree::
+   :maxdepth: 1
+   :caption: bash:
+   :numbered:
+   bash/bash.rst
 
 
-.. .. toctree::
-..    :maxdepth: 1
-..    :caption: batch:
-..    :numbered:
+.. toctree::
+   :maxdepth: 1
+   :caption: batch:
+   :numbered:
+   batch/batch.rst
 
-..    batch/batch.rst
 
-
-.. .. toctree::
-..    :maxdepth: 1
-..    :caption: termux:
-..    :numbered:
-
-..    termux/termux.rst
+.. toctree::
+   :maxdepth: 1
+   :caption: termux:
+   :numbered:
+   termux/termux.rst
 
 
 Indices and tables
