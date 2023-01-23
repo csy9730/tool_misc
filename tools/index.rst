@@ -6,19 +6,21 @@
 Welcome to csy's documentation!
 ===============================
 
+
+
 .. toctree::
    :maxdepth: 1
-   :caption: SSH:
+   :caption: Adb:
    :numbered:
 
-   ssh/ssh.rst
+   adb/readme.md
 
 .. toctree::
    :maxdepth: 1
    :caption: Apt:
    :numbered:
 
-   apt/readme.md
+   apt/readme.rst  
 
 .. toctree::
     :maxdepth: 1
@@ -54,6 +56,13 @@ Welcome to csy's documentation!
    :numbered:
    batch/batch.rst
 
+
+.. toctree::
+   :maxdepth: 1
+   :caption: SSH:
+   :numbered:
+
+   ssh/ssh.rst
 
 .. toctree::
    :maxdepth: 1
