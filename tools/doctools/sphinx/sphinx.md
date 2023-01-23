@@ -117,3 +117,19 @@ sphinx_rtd_theme is no longer a hard dependency since version 1.4.0. Please inst
 pip install recommonmark sphinx_rtd_theme
 
 ```
+
+
+### sphinx error
+
+```
+Exception occurred:
+  File "C:\ProgramData\Anaconda3\lib\site-packages\recommonmark\parser.py", line 211, in visit_image
+    img_node['alt'] = ''.join(content)
+TypeError: sequence item 2: expected str instance, NoneType found
+The full traceback has been saved in C:\Users\AC~1\AppData\Local\Temp\sphinx-err-3fs3hgka.log, if you want to report the issue to the developers.
+Please also report this if it was a user error, so that a better error message can be provided next time.
+A bug report can be filed in the tracker at <https://github.com/sphinx-doc/sphinx/issues>. Thanks!
+```
+
+报错信息不充分，难以寻找出错文件，只能使用二分法寻找出错文件，移除出错文件即可。
+
