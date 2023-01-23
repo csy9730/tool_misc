@@ -1,4 +1,4 @@
-[**WIDI，Miracast，投屏 WIDI和Miracast的区别**](https://www.bijienetworks.com/)
+# [**WIDI，Miracast，投屏 WIDI和Miracast的区别**](https://www.bijienetworks.com/)
 
 WIDI在[**Miracast的协议**](https://www.bijienetworks.com/)之上，有更多其它的一些功能。比如说，WIDI的发射端和接收端之间的时延是最小的，基本上WIDI 4.5代的时延可以做到66个纳秒。当时延达到这个数值的时候，用户玩游戏的体验基本上可以保证。当然玩一些非常大型的动作游戏，可能还差一点。另外，WIDI还有更好的画面质量，因为它是更好的实现1080P的，同时有5.1的环绕立体声，同时可实现对3D的支持。只有WIDI和WIDI的设备连接后，才能支持以上的功能。
 
@@ -14,4 +14,8 @@ WIDI在[**Miracast的协议**](https://www.bijienetworks.com/)之上，有更多
 
 此外，INTEL在发射端也可以提供一套SDK，鼓励更多的软件厂商来开发差异化的多屏互动应用。比如把发射端和接收端的屏幕显示内容可以做到镜像一样，也可以做到不一样。比如我电脑显示的是工作界面，电视界面显示的是娱乐界面，这样你可以在工作，而其它人可以通过WIDI欣赏你电脑内的视频。甚至可以在玩游戏的时候，电视机显示游戏操控界面，而电脑这边显示游戏其它视角的画面，这样可以带来更多不同的游戏体验。INTEL可以提供SDK音视频的体验可以得到充分保证，比如1080P、5.1环绕立体声，可以实现影院级的声音享受。
 
-分类： **[新闻中心](https://www.bijienetworks.com/news)****[行业资讯](https://www.bijienetworks.com/news/fields)**
+分类： 
+
+**[新闻中心](https://www.bijienetworks.com/news)**
+
+**[行业资讯](https://www.bijienetworks.com/news/fields)**

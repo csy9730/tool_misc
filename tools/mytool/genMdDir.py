@@ -66,7 +66,10 @@ Indices and tables
 * :ref:`search`
 """
 
-rstTemplate = """
+rstTemplate = """{% if title %}{{title}}
+{% else %}readme{% endif %}
+==================
+
 .. toctree::
    :maxdepth: 1
    :caption: 扩展:
@@ -77,18 +80,18 @@ rstTemplate = """
    {% endfor %}
 """
 
-mdTemplate = """
-# readme
+mdTemplate = """{% if title %}# {{title}} {% else %}# readme{% endif %}
 
 {% for txt in txt_list -%}
 - [{{ txt.name }}]({{txt.path}})
 {% endfor %}
 """
 
-def genMdfiles(pth:str):
+def genMdfiles(pth:str, ignore:list=[]):
     lst =[]
 
     for r, d, f in os.walk(pth):
+        # print(r,d,f)
         for k in f:
             if os.path.splitext(k)[-1] in [".md", ".rst"]:
                 p = os.path.join(r, k)
@@ -102,9 +105,9 @@ def genMdfiles(pth:str):
     return lst 
 
 
-def genContent(lst:list, template:str) -> str:
+def genContent(lst:list, template:str, **kwargs) -> str:
     tp = Template(template)
-    dct = {"txt_list": lst}
+    dct = {"txt_list": lst, **kwargs}
     txt = tp.render(**dct)
     return txt
 
@@ -117,7 +120,6 @@ def parse_args(cmds=None):
     parser.add_argument('--output', '-o', help='output file') 
     parser.add_argument('--output-type', '-ot', choices=['rst', 'md'], help='output file type') 
     parser.add_argument('--title', '-t', help='title') 
-
 
     args = parser.parse_args(cmds) 
     return args
@@ -137,7 +139,7 @@ def main(cmds=None):
 
     if args.verbose:
         print(lst)
-    txt = genContent(lst, temp)
+    txt = genContent(lst, temp, title=args.title)
     if args.output:
         with open(args.output, 'w') as fp:
             fp.write(txt)

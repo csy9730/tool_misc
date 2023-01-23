@@ -34,7 +34,6 @@ Welcome to csy's documentation!
    :caption: cmake:
    :numbered:
 
-   cmake/cmake.rst
    cmake/readme.md
 
 .. toctree::
@@ -56,6 +55,12 @@ Welcome to csy's documentation!
    :numbered:
    batch/batch.rst
 
+.. toctree::
+   :maxdepth: 1
+   :caption: Package:
+   :numbered:
+
+   ssh/readme.md
 
 .. toctree::
    :maxdepth: 1

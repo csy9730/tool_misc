@@ -3,7 +3,7 @@ ADB documentation!
 
 .. toctree::
    :maxdepth: 1
-   :caption: À©Õ¹:
+   :caption: æ‰©å±•:
    :numbered:
 
    readme.md
@@ -13,16 +13,16 @@ ADB documentation!
    main/adb_help.md
    main/file_arch.md
    main/fastboot/fastboot.md
-   main/tools/adb%20shellÖĞµÄam%20pmÃüÁî.md
+   main/tools/adb%20shellä¸­çš„am%20pmå‘½ä»¤.md
    main/tools/adb_dumpsys.md
    main/tools/adb_Input.md
    main/tools/adb_pm.md
-   main/tools/AndroidÖĞAM¡¢PM¡¢dumpsysÃüÁîÊ¹ÓÃ×Ü½á.md
-   main/tools/Androidµ¼³öÒÑ°²×°Ó¦ÓÃ³ÌĞòapkÎÄ¼şµÄ·½°¸.md
-   misc/´´Î¬µçÊÓÈçºÎ´ò¿ªADB.md
+   main/tools/Androidä¸­AMã€PMã€dumpsyså‘½ä»¤ä½¿ç”¨æ€»ç»“.md
+   main/tools/Androidå¯¼å‡ºå·²å®‰è£…åº”ç”¨ç¨‹åºapkæ–‡ä»¶çš„æ–¹æ¡ˆ.md
+   misc/åˆ›ç»´ç”µè§†å¦‚ä½•æ‰“å¼€ADB.md
    relational/appium/appium.md
-   relational/appium/Appium¹¤×÷Ô­Àí¡¾×ª¡¿.md
+   relational/appium/Appiumå·¥ä½œåŸç†ã€è½¬ã€‘.md
    relational/idb/idb.md
-   relational/Scrcpy/¡°¶àÆÁĞ­Í¬¡±Ó¦ÓÃÖ®QtScrcpy.md
-   relational/Scrcpy/¿ªÔ´¡¢¿çÆ½Ì¨Í¶ÆÁÈí¼ş%20Scrcpy%20ÖĞÎÄÊ¹ÓÃÖ¸ÄÏ.md
+   relational/Scrcpy/â€œå¤šå±ååŒâ€åº”ç”¨ä¹‹QtScrcpy.md
+   relational/Scrcpy/å¼€æºã€è·¨å¹³å°æŠ•å±è½¯ä»¶%20Scrcpy%20ä¸­æ–‡ä½¿ç”¨æŒ‡å—.md
    

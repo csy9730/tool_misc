@@ -3,7 +3,7 @@ APT documentation!
 
 .. toctree::
    :maxdepth: 1
-   :caption: À©Õ¹:
+   :caption: æ‰©å±•:
    :numbered:
 
    read.rst
@@ -11,26 +11,26 @@ APT documentation!
    apt/apt.md
    apt/apt_dpkg.md
    apt/ubuntuSource.md
-   apt/½â¾ölinux¸üĞÂaptÈí¼şÔ´Ê±±¨³öGPG´íÎó.md
+   apt/è§£å†³linuxæ›´æ–°aptè½¯ä»¶æºæ—¶æŠ¥å‡ºGPGé”™è¯¯.md
    conan/conan.md
    dpkg/dpkg.md
    misc/apk_mirror.md
    pacman/pacman.md
    relation/nlugg.md
-   relation/Èí¼ş°ü¹ÜÀí¹¤¾ßÑ¡Scoop»¹ÊÇChocolatey£¿¿´ÍêÕâÆª¾ÍÖªµÀÁË.md
+   relation/è½¯ä»¶åŒ…ç®¡ç†å·¥å…·é€‰Scoopè¿˜æ˜¯Chocolateyï¼Ÿçœ‹å®Œè¿™ç¯‡å°±çŸ¥é“äº†.md
    relation/Brew/Brew.md
    relation/choco/chocolatey.md
    relation/conda/conda.md
    relation/nuget/nuget_help.md
-   relation/pkg-config/linux%20°²×°±¨´í£ºpkg-config%20not%20found.md
-   relation/pkg-config/pkg-config%20Ïê½â.md
+   relation/pkg-config/linux%20å®‰è£…æŠ¥é”™ï¼špkg-config%20not%20found.md
+   relation/pkg-config/pkg-config%20è¯¦è§£.md
    relation/scoop/scoop.md
-   relation/scoop/´î½¨%20Windows%20Í³Ò»¿ª·¢»·¾³£¨Scoop£©.md
+   relation/scoop/æ­å»º%20Windows%20ç»Ÿä¸€å¼€å‘ç¯å¢ƒï¼ˆScoopï¼‰.md
    relation/snap/snap.md
    relation/vcpkg/vcpkg.md
    relation/vcpkg/vcpkg_misc.md
-   relation/vcpkg/window10%20visual%20studio%202019%20Ê¹ÓÃ%20vcpkg%20°²×°%20opencv%20½Ì³Ì%20(window10%20visual%20studio%202019%20use%20vcpkg%20install%20opencv).md
-   relation/vcpkg/½â¾övcpkg±àÒëcurl³ö´í.md
+   relation/vcpkg/window10%20visual%20studio%202019%20ä½¿ç”¨%20vcpkg%20å®‰è£…%20opencv%20æ•™ç¨‹%20(window10%20visual%20studio%202019%20use%20vcpkg%20install%20opencv).md
+   relation/vcpkg/è§£å†³vcpkgç¼–è¯‘curlå‡ºé”™.md
    relation/winget/winget.md
    yum/centosSource.md
    yum/yum.md
