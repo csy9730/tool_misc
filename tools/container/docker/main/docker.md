@@ -74,6 +74,13 @@ echo 'int main(void){printf("hello\\n");return 0;}'>>a.cpp
 docker run --rm -v `pwd`:/usr/src/myapp -w /usr/src/myapp rikorose/gcc-cmake gcc a.cpp
 ```
 
+
+``` bash
+# 在命令行中执行构建脚本
+docker run -it -v `pwd`:/tmp/myapp -w /tmp/myapp rikorose/gcc-cmake  bash
+./build.sh
+```
+
 ### 运行python
 在容器中运行python脚本，由于做了路径映射，也是在当前目录下运行。
 ``` bash

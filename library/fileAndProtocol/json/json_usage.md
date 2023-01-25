@@ -1,3 +1,7 @@
+# nlohmann json
+
+### nlohmann_json
+[https://github.com/nlohmann/json](https://github.com/nlohmann/json)
 
 ### 仅支持整型的区间迭代器
 Read from iterator range
@@ -6,6 +10,8 @@ an integral type of 1, 2 or 4 bytes,
 std::vector<std::uint8_t> v = {'t', 'r', 'u', 'e'};
 json j = json::parse(v);
 ```
+
+
 ### STL-like access
 ``` cpp
 json j;
@@ -152,3 +158,10 @@ The library uses a SAX-like interface with the following functions:
 ### Specializing enum conversion
 ### Binary formats (BSON, CBOR, MessagePack, UBJSON, and BJData)
 Though JSON is a ubiquitous data format, it is not a very compact format suitable for data exchange, for instance over a network. Hence, the library supports BSON (Binary JSON), CBOR (Concise Binary Object Representation), MessagePack, UBJSON (Universal Binary JSON Specification) and BJData (Binary JData) to efficiently encode JSON values to byte vectors and to decode such vectors.
+
+
+#### 缺省值
+
+``` cpp
+
+```

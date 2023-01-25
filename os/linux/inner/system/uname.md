@@ -1,6 +1,38 @@
 # uname
 
 uname可以查看kernel版本，平台，设备名
+## help
+
+
+- -s 内核名  MINGW64_NT-10.0  Linux  
+- -r 内核版本版本
+- -v 内核版本发布日期
+- -m 设备硬件名 例如：x86_64, armv7l
+- -o 操作系统  GNU/Linux, MSys
+
+
+```
+csy@DESKTOP-C7E5VH2:/mnt/c/Project/mylib/tool_misc$ uname --help
+Usage: uname [OPTION]...
+Print certain system information.  With no OPTION, same as -s.
+
+  -a, --all                print all information, in the following order,
+                             except omit -p and -i if unknown:
+  -s, --kernel-name        print the kernel name
+  -n, --nodename           print the network node hostname
+  -r, --kernel-release     print the kernel release
+  -v, --kernel-version     print the kernel version
+  -m, --machine            print the machine hardware name
+  -p, --processor          print the processor type (non-portable)
+  -i, --hardware-platform  print the hardware platform (non-portable)
+  -o, --operating-system   print the operating system
+      --help     display this help and exit
+      --version  output version information and exit
+
+GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
+Full documentation <https://www.gnu.org/software/coreutils/uname>
+or available locally via: info '(coreutils) uname invocation'
+```
 
 ## windows7 
 ### MINGW64
@@ -200,6 +232,12 @@ root@2b3b2ee838c1:/#
 ```
 cat /etc/issue         
 Ubuntu 20.04 LTS \n \l    
+```
+## linux
+##### uname
+```
+[root@Foo tmp]# uname -a
+Linux Foo 5.4.119-gb50b3e1ccde3-dirty #25 Thu Jan 25 10:59:35 CST 2020 armv7l GNU/Linux
 ```
 
 ## system
