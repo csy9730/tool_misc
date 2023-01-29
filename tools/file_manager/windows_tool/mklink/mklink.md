@@ -1,6 +1,7 @@
 # mklink
 
 
+## help
 ```
 C:\Users\admin>mklink /?
 创建符号链接。
@@ -16,15 +17,15 @@ MKLINK [[/D] | [/H] | [/J]] Link Target
                 (相对或绝对)。
 ```
 
-## demo
+## usage
 
-
+#### demo
 ``` batch
-rem 为D:\sourceDir 创建符号链接C:\destDir
+rem 为旧目录D:\sourceDir 创建新目录（符号链接）C:\destDir
 mklink /d "C:\destDir" "D:\sourceDir"
 ```
 
-
+#### demo2
 ```
 robocopy C:\Users\admin\.insightface D:\Documents\.insightface /MOVE
 mklink /d C:\Users\admin\.insightface D:\Documents\.insightface

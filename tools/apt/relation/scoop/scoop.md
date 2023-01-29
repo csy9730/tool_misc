@@ -6,6 +6,7 @@
 
 [scoop](https://github.com/lukesampson/scoop)
 
+本文将简单介绍scoop的使用，并包含设计原理的分析推断。
 
 ## install
 要求powershell3或以上版本， .NET Framework 4.5或以上版本。
@@ -39,20 +40,61 @@ scoop install -g app
 ```
 
 ## core
+
+### 用户级安装
 默认安装路径`C:\Users\<user>\scoop`
 
 ```
 C:\Users\admin\scoop
 - apps
     - scoop
+    - sudo
+    - ...
 - buckets
-    - main
-- cache
+    - main/
+        .git/
+    - extra/
+        .git/
+- cache/
+    - *.zip, *.7z, *.exe
 - shims
+    - scoop
+    - scoop.cmd
+    - scoop.ps1
+    - wget.exe
+    - wget.shims
 
 ```
 
+- apps/ 目录放所有安装的应用文件夹
+- apps/scoop 安装的scoop文件夹
+- apps/scoop/current 真实安装的scoop文件夹
+- apps/wget/current 指向真实安装的wget文件夹
+- apps/wget/1.21.3 安装的1.21.3版本的wget文件夹
+- buckets/ 目录放所有软件桶的git仓库
+- buckets/main 主软件桶的git仓库
+- buckets/extra extra软件桶的git仓库
+- cache/  从软件桶下载的软件安装包
+- shims/ 安装软件的快捷方式文件夹
+- shims/scoop 基于scoop.ps1的封装
+- shims/scoop.cmd 基于scoop.ps1的cmd封装
+- shims/scoop.ps1 scoop的全局入口，指向scoop的真实入口
+- apps/scoop/current/bin/scoop.ps1 scoop的真实入口
+- shims/wget.exe wget的伪入口，依赖wget.shims
+- shims/wget.shims wget的入口配置, 指向wget的真实入口
+- apps/wget/current/wget.exe  wget的真实入口
+- apps/wget/current/manifest.json 从软件桶中获得的包信息。
+- apps/wget/current/install.json 软件安装信息
+- persist/ ,这个目录下面放的是已安装软件的配置文件, 后续更新软件的时候这部分内容不会修改.
 
+### 系统级安装
+C:\ProgramData\scoop
+- apps/
+- shims/
+
+和用户级安装类似，只是调整了apps和shims文件夹的路径。
+
+#### scoop
 可执行程序路径：`C:\Users\admin\scoop\apps\scoop\current\bin\scoop.ps1`
 
 命令行调用的路径：
@@ -62,17 +104,38 @@ C:\Users\admin\scoop\shims\scoop
 C:\Users\admin\scoop\shims\scoop.cmd
 ```
 
-persist ,这个目录下面放的是已安装软件的配置文件, 后续更新软件的时候这部分内容不会修改.
-## demo
+#### apps/wget/current/wget.shims
+``` ini
+path = "C:\Users\admin\scoop\apps\wget\current\wget.exe"
+
+```
+#### apps/wget/current/install.json
+``` json
+{
+    "bucket": "main",
+    "architecture": "64bit"
+}
+```
+### apps/wget/current
+
+apps/wget/current和apps/wget/1.21.3，两者的关系是符号链接。
+
+scoop安装wget时会自动生成，用以下命令也能手动生成符号链接
+``` batch
+mklink /d apps/wget/current apps/wget/1.21.3
+```
+
+## usage
+
+### 常见安装包
 ```
 scoop install sudo
 sudo scoop install 7zip git openssh --global
 scoop install aria2 curl grep sed less touch
 scoop install python ruby go perl 
-
-
 ```
 
+### 基本命令
 ``` bash
 scoop help            # 帮助
 scoop list            # 查看当前已安装软件
@@ -87,10 +150,64 @@ scoop update *        # 更新安装的软件和scoop
 scoop config proxy 127.0.0.1:4412
 ```
 
+#### scoop install
+指定安装32位的软件:
+```
+scoop install snipaste -a 32bit
+```
+
+help
+```
+
+C:\Project\mylib\tool_misc>scoop install --help
+Usage: scoop install <app> [options]
+
+Options:
+  -g, --global                    Install the app globally
+  -i, --independent               Don't install dependencies automatically
+  -k, --no-cache                  Don't use the download cache
+  -u, --no-update-scoop           Don't update Scoop before installing if it's outdated
+  -s, --skip                      Skip hash validation (use with caution!)
+  -a, --arch <32bit|64bit|arm64>  Use the specified architecture, if the app supports it
+```
+
+安装默认使用cache目录的文件，开启--no-cache可以避免使用缓存。
+
+#### scoop list
+scoop list命令可以扫描app/目录下的所有文件夹，得到所有安装的软件，根据install.json和manifest.json得到安装成功信息。
+
+```
+
+C:\Project\mylib\tool_misc>scoop list
+Installed apps:
+
+Name                Version      Source Updated             Info
+----                -------      ------ -------             ----
+7zip                22.01        main   2022-12-30 09:41:27
+adb                 33.0.3       main   2022-12-30 10:45:53
+aria2                                   2022-12-30 10:09:44 Install failed
+cacert              2022-10-11   main   2022-12-30 10:01:00
+cmder               1.3.21       main   2022-12-30 14:31:02
+cpu-z                                   2023-01-03 16:40:51 Install failed
+dvc                                     2023-01-05 23:10:08 Install failed
+graphviz            7.0.5        main   2023-01-12 13:37:34
+nodejs              19.3.0       main   2022-12-30 10:20:33
+rustdesk            1.1.9        extras 2023-01-14 11:49:15
+sudo                0.2020.01.26 main   2022-12-30 09:33:15
+vncviewer           6.22.826     extras 2023-01-14 11:45:59
+wget                1.21.3       main   2022-12-30 10:01:22
+zal_obfs            1.21.3       local  2022-12-30 13:49:01
+advanced-ip-scanner 2.5.4594.1   extras 2023-01-05 13:33:02 Global install
+cpuz_x32            1.87.0              2023-01-28 10:41:52 Global install
+innounp             0.50         main   2023-01-05 15:10:09 Global install
+sudo                0.2020.01.26 main   2023-01-28 10:03:03 Global install
+```
+
+
 ## bucket
 安装完成后，还需要添加软件源，不然会有好些软件能search到但是不能install.
 scoop拥有多个bucket，每个bucket相当于多个软件集合，scoop自带了main bucket，main bucket收集了最常用的软件，包括软件信息，软件下载地址。
-```
+``` 
 scoop bucket add extras
 scoop bucket add versions
 scoop bucket add nonportable
@@ -142,7 +259,7 @@ scoop bucket add main https://codechina.csdn.net/mirrors/ScoopInstaller/Main.git
 scoop bucket add extras https://codechina.csdn.net/mirrors/lukesampson/scoop-extras.git
 ```
 
-
+显示本地收录的仓库
 ```
 scoop bucket list
 Name        Source                                        Updated             Manifests
@@ -212,6 +329,10 @@ https://github.com/ScoopInstaller/Main/-/blob/master/bucket/curl.json
 省去了从远程端使用git拉取bucket仓库的过程。
 
 准备一个压缩包文件zal_obfs.zip, 使用sha256sum命令计算校验码。
+```
+$ sha256sum zal_obfs.zip
+84fa696e40d4c6e7a9b9cbcbedddd553fa8ac2ecb0534e9785c328c96a4a4789 *zal_obfs.zip
+```
 
 启动一个文件服务，用来提供压缩包的下载。这里使用`python -m http.server 8888` 建立http服务。
 

@@ -1,7 +1,7 @@
 import os
 import sys
 from jinja2 import Template
-
+from typing import List, Dict
 
 template = """.. git documentation master file, created by
    sphinx-quickstart on Sun Sep 13 21:16:26 2020.
@@ -87,11 +87,10 @@ mdTemplate = """{% if title %}# {{title}} {% else %}# readme{% endif %}
 {% endfor %}
 """
 
-def genMdfiles(pth:str, ignore:list=[]):
+def genMdfiles(pth:str) -> List[Dict[str, str]]:
     lst =[]
 
     for r, d, f in os.walk(pth):
-        # print(r,d,f)
         for k in f:
             if os.path.splitext(k)[-1] in [".md", ".rst"]:
                 p = os.path.join(r, k)
@@ -105,7 +104,7 @@ def genMdfiles(pth:str, ignore:list=[]):
     return lst 
 
 
-def genContent(lst:list, template:str, **kwargs) -> str:
+def genContent(lst:List[Dict[str, str]], template:str, **kwargs) -> str:
     tp = Template(template)
     dct = {"txt_list": lst, **kwargs}
     txt = tp.render(**dct)

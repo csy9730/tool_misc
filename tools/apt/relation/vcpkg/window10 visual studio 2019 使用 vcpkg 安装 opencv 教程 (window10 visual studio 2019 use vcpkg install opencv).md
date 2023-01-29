@@ -4,7 +4,7 @@
 
 电脑配置：window10, 电脑型号：HUAWEI MateBook D, 64位操作系统，基于x64的处理器。 Microsoft Visual Studio 2019
 
-早就听闻 c++ 是最不简单的编程语言，但是没想到连安装包都那么费劲，不像 python 安装完 pip 之后，只要通过 pip install package-name 就可以进行安装。
+早就听闻 c++ 是最不简单的编程语言，但是没想到连安装包都那么费劲，不像 python 安装完 pip 之后，只要通过 `pip install package-name` 就可以进行安装。
 
 想在 visual studio 上使用 opencv 包，搜索了资料，发现 c++ 有个包管理器 vcpkg，心中顿时十分欢喜，但是过程没有想象的那么顺利，心酸历程记录如下。
 
@@ -16,9 +16,9 @@
 
 （1）先想好 vcpkg 的安装目录，比如我打算放在 d:software 下面。再点击 win+r, 输入 cmd, 再输入**d:**（一定要加冒号），再输入 **cd software**
 
-（2）接下来就可以把 vcpkg 的资料 clone下来了，即输入 git clone https://github.com/Microsoft/vcpkg.git
+（2）接下来就可以把 vcpkg 的资料 clone下来了，即输入 `git clone https://github.com/Microsoft/vcpkg.git`
 
-（3）输入 .\bootstrap-vcpkg.bat  （我在运行这个的时候出现了问题，所以我就直接到 D:\software\vcpkg 下双击 bootstrap-vcpkg.bat 文件，效果是一样的）
+（3）输入 `.\bootstrap-vcpkg.bat`  （我在运行这个的时候出现了问题，所以我就直接到 D:\software\vcpkg 下双击 bootstrap-vcpkg.bat 文件，效果是一样的）
 
 
 
