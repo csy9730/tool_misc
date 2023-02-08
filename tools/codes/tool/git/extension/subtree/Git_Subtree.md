@@ -15,6 +15,9 @@
 
 如果子仓库和父仓库都没有破坏性更新，那么用什么方式都一样，无需考虑用subtree和submodule的高阶特性，考虑到破坏性更新，要求子仓库和父仓库同步更新，此时就要考虑父子仓库的依赖性。
 ### subtree
+
+
+
 subtree与submodule的作用是一样的，但是subtree出现得比submodule晚，它的出现是为了弥补submodule存在的问题：
 
 第一： submodule不能在父版本库中修改子版本库的代码，只能在子版本库中修改，是单向的；
@@ -23,6 +26,23 @@ subtree与submodule的作用是一样的，但是subtree出现得比submodule晚
 而subtree则可以实现双向数据修改。官方推荐使用subtree替代submodule。
 
 subtree的强大之处在于，它可以在父版本库中修改依赖的子版本库。
+
+#### SYNOPSIS
+```
+git subtree add   -P <prefix> <commit>
+git subtree add   -P <prefix> <repository> <ref>
+git subtree pull  -P <prefix> <repository> <ref>
+git subtree push  -P <prefix> <repository> <ref>
+git subtree merge -P <prefix> <commit>
+git subtree split -P <prefix> [OPTIONS] [<commit>]
+```
+
+- 添加子仓库
+- 分离子仓库
+- 拉取
+- 推送
+- merge
+
 
 ### Subtrees vs Submodules
 最简单理解两者的方式，subtrees在父仓库是拉取下来的一份子仓库拷贝，而submodule则是一个指针，指向一个子仓库commit。

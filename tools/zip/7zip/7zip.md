@@ -1,9 +1,26 @@
 # 7zip
 
 7zip支持以下格式：
-压缩 / 解压缩：7z, XZ, BZIP2, GZIP, TAR, ZIP 和 WIM
-仅解压缩：ARJ,CAB, CHM, CPIO, CramFS, DEB, DMG, FAT, HFS, ISO, LZH, LZMA, MBR, MSI, NSIS, NTFS, RAR, RPM, SquashFS, UDF, VHD, WIM, XAR, Z
-## demo
+- 压缩 / 解压缩：7z, XZ, BZIP2, GZIP, TAR, ZIP 和 WIM
+- 仅解压缩：ARJ,CAB, CHM, CPIO, CramFS, DEB, DMG, FAT, HFS, ISO, LZH, LZMA, MBR, MSI, NSIS, NTFS, RAR, RPM, SquashFS, UDF, VHD, WIM, XAR, Z
+
+## usage
+
+7zip 包括多个子命令，如下表所示
+
+- a : 添加文件到存档中
+- l : 列出存档的所有文件
+- rn : 重命名存档的文件名
+- d : 从存档中删除文件
+- e : 解压文件
+- x : 完整路径解压文件 
+- h : 计算文件的哈希值，默认是CRC32
+- i : Show information about supported formats
+- t : Test integrity of archive
+- b : Benchmark
+- u : Update files to archive
+
+### demo
 
 
 ``` bash
@@ -84,9 +101,12 @@ Usage: 7z <command> [<switches>...] <archive_name> [<file_names>...] [@listfile]
   ```
 
 ## misc
-7z可以解压部分exe文件：
-可以完全解压nsis安装脚本，
-可以从electron安装程序中分离出更新程序，主程序和依赖dll。
-可以从electron主程序中分出图标，data，pdata，rdata，text。
-可以从qt生成程序中分出图标，data，pdata，rdata，text。
-不能解压pyinstaller打包的程序。
+
+### 7z 与 exe文件
+
+- 7z可以解压部分exe文件：
+- 可以完全解压nsis安装脚本，
+- 可以从electron安装程序中分离出更新程序，主程序和依赖dll。
+- 可以从electron主程序中分出图标，data，pdata，rdata，text。
+- 可以从qt生成程序中分出图标，data，pdata，rdata，text。
+- 不能解压pyinstaller打包的程序。
