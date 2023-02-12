@@ -1,6 +1,16 @@
 # gpg
 
 安装git-bash，附带了 gpg工具，位于 `/usr/bin/gpg`
+
+
+## usage
+
+
+- `gpg --generate-key` / `gpg --full-generate-key`
+-  `gpg --recipient [用户ID] --output demo.en.txt --encrypt demo.txt`
+-  `gpg --sign demo.txt`
+
+
 ## help
 
 

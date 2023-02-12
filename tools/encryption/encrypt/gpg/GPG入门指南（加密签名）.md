@@ -32,7 +32,7 @@ bogon:~ XXXX$ brew install gpg
 
 安装完成后，键入命令`gpg --help`:
 
-```dart
+```
 bogon:~ XXXX$ gpg --help
 gpg (GnuPG) 1.4.20
 Copyright (C) 2015 Free Software Foundation, Inc.
@@ -123,7 +123,7 @@ Home: ~/.gnupg
 利用上边的帮助信息中`--gen-key 生成一副新的密钥对` 可以生成密钥。
 安装成功后，使用gen-ken参数生成自己的密钥。在终端中输入：
 
-```undefined
+``` bash
 gpg --gen-key
 ```
 
