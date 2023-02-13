@@ -26,17 +26,17 @@
 
    - 相关文章
 
-     ```python
-     OpenSSH supports several signing algorithms (for authentication keys) which can be divided in two groups depending on the mathematical properties they exploit:
-      
-     DSA and RSA, which rely on the practical difficulty of factoring the product of two large prime numbers,
-     ECDSA and Ed25519, which rely on the elliptic curve discrete logarithm problem. (example)
-     Elliptic curve cryptography (ECC) algorithms are a more recent addition to public key cryptosystems. One of their main advantages is their ability to provide the same level of security with smaller keys, which makes for less computationally intensive operations (i.e. faster key creation, encryption and decryption) and reduced storage and transmission requirements.
-      
-     OpenSSH 7.0 deprecated and disabled support for DSA keys due to discovered vulnerabilities, therefore the choice of cryptosystem lies within RSA or one of the two types of ECC.
-      
-     #RSA keys will give you the greatest portability, while #Ed25519 will give you the best security but requires recent versions of client & server[2]. #ECDSA is likely more compatible than Ed25519 (though still less than RSA), but suspicions exist about its security (see below).
-     ```
+```
+OpenSSH supports several signing algorithms (for authentication keys) which can be divided in two groups depending on the mathematical properties they exploit:
+
+DSA and RSA, which rely on the practical difficulty of factoring the product of two large prime numbers,
+ECDSA and Ed25519, which rely on the elliptic curve discrete logarithm problem. (example)
+Elliptic curve cryptography (ECC) algorithms are a more recent addition to public key cryptosystems. One of their main advantages is their ability to provide the same level of security with smaller keys, which makes for less computationally intensive operations (i.e. faster key creation, encryption and decryption) and reduced storage and transmission requirements.
+
+OpenSSH 7.0 deprecated and disabled support for DSA keys due to discovered vulnerabilities, therefore the choice of cryptosystem lies within RSA or one of the two types of ECC.
+
+#RSA keys will give you the greatest portability, while #Ed25519 will give you the best security but requires recent versions of client & server[2]. #ECDSA is likely more compatible than Ed25519 (though still less than RSA), but suspicions exist about its security (see below).
+```
 
 ## 结论
 
@@ -49,15 +49,11 @@
 
 ## 总结
 
-```python
-    优先选择ed25519，否则选择rsa 
-```
+
+优先选择ed25519，否则选择rsa 
 
 
-
-
-
-Reference
+### Reference
 
 - https://qastack.cn/ubuntu/363207/what-is-the-difference-between-the-rsa-dsa-and-ecdsa-keys-that-ssh-uses
 - https://segmentfault.com/a/1190000020166520
