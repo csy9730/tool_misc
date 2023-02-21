@@ -3,21 +3,23 @@
 ## install
 ### server
 
-bash-like的ssh，都是在windows系统上模拟linux环境，可以提供ssh执行依赖和环境，有以下几种： 
-[git for windows](https://git-scm.com/download/win)
+原版ssh：
+[openssh](https://www.openssh.com/)
 
-[msys2 ssh]()
 
-[cygwin-ssh]()
+bash-like的ssh，都是在windows系统上模拟linux环境，可以提供ssh执行依赖和环境，有以下几种：
+
+- [git for windows](https://git-scm.com/download/win)
+- [msys2 ssh]()
+- [cygwin-ssh]()
 
 其他ssh是windows-pty风格，有以下类型：
 
-[openssh](https://www.openssh.com/)
-[openssh](http://sshwindows.sourceforge.net/) ，[openssh371.zip](https://sourceforge.net/projects/sshwindows/files/OldFiles/setupssh371-20031015.zip/download)
 
-[powershell-Win32-OpenSSH](https://github.com/PowerShell/Win32-OpenSSH/releases)
-
-[OpenSSH-Portable source code](https://github.com/PowerShell/OpenSSH-Portable)
+- [openssh](http://sshwindows.sourceforge.net/) ，
+- [openssh371.zip](https://sourceforge.net/projects/sshwindows/files/OldFiles/setupssh371-20031015.zip/download)
+- [powershell-Win32-OpenSSH](https://github.com/PowerShell/Win32-OpenSSH/releases)
+- [OpenSSH-Portable source code](https://github.com/PowerShell/OpenSSH-Portable)
 
 openssh371.zip的版本很旧，发布于2003年，powershell-Win32-OpenSSH较新。
 
@@ -25,12 +27,18 @@ openssh371.zip的版本很旧，发布于2003年，powershell-Win32-OpenSSH较�
 客户端：
 [putty](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
 
-window10自带openssh的客户端，还需要安装服务端sshd；此外也可以使用wsl。
-windows7可以安装openssh或者git-bash套件
-windowsXp可以安装openssh。
+- window10可以安装git-bash套件；自带win32-openssh的客户端，还需要安装win32-openssh的服务端sshd；此外也可以使用wsl。
+- windows7可以安装openssh371或者git-bash套件
+- windowsXp可以安装openssh371。
 
 ## useage
-### xp使用OpenSSH
+
+
+### git bash
+推荐使用这个。
+
+
+### xp使用OpenSSH371
 
 
 1) Run sshwindows installer and click OK and OK…
@@ -50,7 +58,7 @@ netstat -an |findstr 22
 
 net stop opensshd #  关闭服务
 ```
-### powershell openssh
+### powershell openssh for win7
 
 从[powershell-Win32-OpenSSH](https://github.com/PowerShell/Win32-OpenSSH/releases)下载openssh，解压，然后执行以下程序开始安装：
 `powershell install-sshd.ps1`
@@ -99,7 +107,7 @@ New-NetFirewallRule -Name sshd -DisplayName 'OpenSSH Server (sshd)' -Enabled Tru
 ```
 
 
-### windows10
+### windows10使用 wsl
 自带openssh和wsl子系统，openssh可以很方便的通过ssh连接
 
 wsl
@@ -159,7 +167,7 @@ Host 123.123.123.123
 也可能是权限不足？
 
 
-
+#### 开机启动
 **Q**: 通过vbs设置启动项，没有一闪而过的窗口。
 
 **A**:  执行以下命令：

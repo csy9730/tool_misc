@@ -1,37 +1,48 @@
 # 在vscode上通过gdb远程调试arm开发板
 
+在vscode上通过gdb远程调试arm开发板。
 
 需要以下流程：
 1. pc机上配备交叉编译工具
    1. 编译 gcc和调试工具gdb，
    2. 交叉编译生成编译gdbserver
-2. arm 开发板上配备 gdbserver
-   1. 准备gdbserver
-   2. pc机配置网络ip，与arm开发板的ip一致
-   3. arm开发板和pc之间用ping测试能否通信
-3. 编译程序
+2. arm 开发板上配置网络
+   1. pc机配置网络ip，与arm开发板的网段一致
+   2. arm开发板和pc之间用ping测试能否通信
+3. pc机上编译程序
    1. cmake编译时配置 debug选项。
-   2. 执行编译，生成 exe文件
-4. 运行gdbserver服务
-   1. 把pc上的exe文件通过ssh复制到 arm开发板上
-   2. 通过ssh，在arm开发板上 运行 gdbserver，指定 运行exe文件和服务端口号
-5. 在vscode上配置debug配置
+   2. 执行编译，生成目标文件
+4. arm 开发板上运行gdbserver服务
+   1. 复制gdbserver到arm 开发板上
+   2. 把pc上的目标文件通过ssh复制到 arm开发板上
+   3. 在arm开发板上 运行 gdbserver，指定运行目标文件和服务端口号
+5. pc机上使用gdb
+   1. 运行gdb，指定运行目标文件和服务端口号
+6. pc机上在vscode上配置debug配置
+   0. 编辑launch.json文件
    1. 指定本地debug的exe文件
    2. 指定gdbserver的ip和端口
-6. 执行gdb调试
-   1. 点击F5开始调试
+   3. 点击F5开始调试, 执行gdb调试
 
 ## pc上配置gcc和调试工具gdb
+
+### 交叉编译工具链
 知道gcc和gdb路径，确保可以调用即可。
 
-**注意**: gdb是`aarch64-linux-gnu-gdb`
+**注意**: gdb是`aarch64-linux-gnu-gdb`, 不是系统默认的`gdb`
 
+### gdbserver
 gdbserver运行在开发板上， 所以需要交叉编译生成gdbserver。
 
 ## 开发板上配置
 
-### 配备gdbserver
-复制gdbserver到开发板上
+常见的连接方式如下：
+- usb连接，设备开启adb服务，电脑可以使用adb连接设备
+- usb转串口，电脑可以使用putty连接设备
+- 网络连接，使用网络地址，支持SSH连接
+
+这里我们要配置电脑和开发板的网络连接。
+
 ### IP配置
 gdbserver 支持串口/网口和pc相连，这里推荐网线连接。直接把pc的网口和开发板的网口用网线连接即可。
 
@@ -88,7 +99,7 @@ F:\tmp>ping 192.168.1.136
 或者在 开发板上执行`ping 192.168.1.101`
 
 
-**注意**，如果无法联通，可能需要在M1808开发板上执行语句 `io -4 -w 0xfe000900 0xffff050a`
+**注意**，如果无法联通，可能需要在M1808开发板上执行语句 `io -4 -w 0xfe000900 0xffff050a`，启用网卡设备。
 
 
 
@@ -102,7 +113,17 @@ SET(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall")
 然后执行编译生成调试程序
 
 ## 运行gdbserver服务
-可以通过ssh连接开发板, 把程序复制到开发板上，启动 gdbserver程序:
+
+
+### 安装gdbserver
+复制gdbserver到开发板上
+
+### 安装目标程序
+
+可以通过ssh连接或usb连接开发板, 把目标程序复制到开发板上。
+
+### 运行gdbserver服务
+可以通过ssh连接或usb连接开发板，启动 gdbserver程序:
 
 ```
 cd /root/project
@@ -110,12 +131,18 @@ chmod +x detect_demo
 gdbserver :8888 detect_demo 10001.png
 
 ```
+## gdb调试
+只用gdb，也可以单步调试，但是gdb只是命令行程序，代码查看不方便，更加建议使用vscode配合gdb调试。
 
-## 配置vscode
+在工程目录下，运行gdb，指定运行目标文件和服务端口号参数。
+
+## vscode调试
+
+### 配置vscode
 
 首先打开vscode，点开应用商店安装插件
 * C/C++ 插件
-* remote development 插件
+* remote development 远程插件
 
 
 在项目目录下新建`.vscode`目录，新建`launch.json`
@@ -156,7 +183,7 @@ gdbserver :8888 detect_demo 10001.png
     ]
 }
 ```
-## 执行debug
+### 执行debug
 
 点击 调试按钮，开始调试即可。
 ![img](./imgs/3.png)

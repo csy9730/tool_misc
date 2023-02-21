@@ -2,43 +2,122 @@
 
 ## main
 
-1. git init
-2. dvc init
+1. git init 初始化仓库
+2. dvc init 
 3. dvc add 
 4. dvc remote add
 5. dvc push
 6. dvc pull
 7. dvc commit
 
+## usage
+### demo
+#### git init
 
-### git init
-### dvc init
-### dvc add
+创建git文件夹
 
+#### dvc init
+```
+$ dvc init
+Initialized DVC repository.
+
+You can now commit the changes to git.
+
++---------------------------------------------------------------------+
+|                                                                     |
+|        DVC has enabled anonymous aggregate usage analytics.         |
+|     Read the analytics documentation (and how to opt-out) here:     |
+|             <https://dvc.org/doc/user-guide/analytics>              |
+|                                                                     |
++---------------------------------------------------------------------+
+
+What's next?
+------------
+- Check out the documentation: <https://dvc.org/doc>
+- Get help and share ideas: <https://dvc.org/chat>
+- Star us on GitHub: <https://github.com/iterative/dvc>
+(base)
+```
+
+生成dvc文件夹
+- tmp/
+- cache/
+- config
+- .gitignore
+
+#### dvc add
+
+添加文件到dvc仓库
 ```
 dvc add Home.pdf
+```
 
-
+当前文件下生成以下文件
+```
 Home.pdf.dvc
-
-/Home Learning Tips for Students Instagram Carousel-2.pdf
+Home.pdf
 .gitignore
 ```
 
+同时 dvc/cache 文件夹下会复制一份Home.pdf文件副本。
+
 ### dvc remote add
 ```
-dvc remote add -d myremote ssh://admin@192.168.0.113/Resource/
+dvc remote add -d myremote ssh://myserver:/Resource/repos
+```
+
+该命令会修改conf配置文件
+```ini
+[core]
+    remote = myremote
+['remote "myremote"']
+    url = ssh://myserver:/Resource/repos
+```
+
+#### dvc push
+```
+$ dvc push
+2 files pushed
+```
+
+目标仓库路径下，多了一些文件：
+/Resource/repos
+```
+a9/
+
+bf/
+
+```
+
+dvc/cache 文件夹下的Home.pdf文件副本会上传的远程仓库，同时本地副本会清除。
+
+#### git push
+
+上传git仓库内容
+```
+git commit -m "add dvc"
+git remote add origin github.com:foo/dvc_demo
+git push
 ```
 
 
+#### dvc pull
 
-dvc??cache?????????????
+准备一个空文件夹，下载git仓库
+```
+git clone github.com:foo/dvc_demo
+cd dvc_demo
+```
 
-????????????????cache???remote???
+下拉dvc文件
+```
+dvc pull
+$ dvc pull
+A       benchmark.7z
+A       Home.pdf
 
-### dvc push
-
-
+```
+可以看到，文件下载成功，至此dvc使用成功。
 
 ## misc
 

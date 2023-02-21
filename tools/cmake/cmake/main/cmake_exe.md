@@ -5,15 +5,18 @@
 
 
 常用命令：
-- cmake --build <dir>
-- cmake --install <dir>
-- cmake (generate makefile)
+- `cmake <dir>`    (generate makefile)
     - -G <generator-name>
     - -D <var>:<type>=<value>, -D <var>=<value> 设置变量
     - --toolchain <path-to-file>
-- cmake misc
-    - cmake --open <dir> 使用IDE打开项目
-    - cmake --system-information [file]  导出所有输出信息到文件/stdout
+- `cmake --build <dir>`
+- `cmake --install <dir>`
+- `cmake --open <dir>` 使用IDE打开项目
+- `cmake [-D <var>=<value>]... -P <cmake-script-file>`  执行cmake脚本
+- `cmake -E <command> [<options>]`  解释执行命令
+- `cmake --find-package [<options>]`
+- cmake --workflow
+- `cmake --system-information [file]`  导出所有输出信息到文件/stdout
 
 
 ```

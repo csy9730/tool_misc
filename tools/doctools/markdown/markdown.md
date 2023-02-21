@@ -4,6 +4,6 @@
 
 ### markdown2pdf
 - typora
-- vscode markdown extension
+- vscode extension: Markdown PDF
 - else
 
