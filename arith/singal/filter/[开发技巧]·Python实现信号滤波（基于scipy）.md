@@ -81,13 +81,33 @@ filtedData = signal.filtfilt(b, a, data)  #data为要过滤的信号
 1.函数的介绍
 
 (1).滤波函数
-
->  scipy.signal.filtfilt(b, a, x, axis=-1, padtype='odd', padlen=None, method='pad', irlen=None)  输入参数：  b: 滤波器的分子系数向量  a: 滤波器的分母系数向量  x: 要过滤的数据数组。（array型）  axis: 指定要过滤的数据数组x的轴  padtype: 必须是“奇数”、“偶数”、“常数”或“无”。这决定了用于过滤器应用的填充信号的扩展类型。{‘odd’, ‘even’, ‘constant’, None}  padlen：在应用滤波器之前在轴两端延伸X的元素数目。此值必须小于要滤波元素个数- 1。（int型或None）  method：确定处理信号边缘的方法。当method为“pad”时，填充信号；填充类型padtype和padlen决定，irlen被忽略。当method为“gust”时，使用古斯塔夫森方法，而忽略padtype和padlen。{“pad” ，“gust”}  irlen：当method为“gust”时，irlen指定滤波器的脉冲响应的长度。如果irlen是None，则脉冲响应的任何部分都被忽略。对于长信号，指定irlen可以显著改善滤波器的性能。（int型或None）  输出参数：  y:滤波后的数据数组  
-
+```
+>  scipy.signal.filtfilt(b, a, x, axis=-1, padtype='odd', padlen=None, method='pad', irlen=None)  
+输入参数：  
+    b: 滤波器的分子系数向量  
+    a: 滤波器的分母系数向量  
+    x: 要过滤的数据数组。（array型）  
+    axis: 指定要过滤的数据数组x的轴  
+    padtype: 必须是“奇数”、“偶数”、“常数”或“无”。这决定了用于过滤器应用的填充信号的扩展类型。{‘odd’, ‘even’, ‘constant’, None}  
+    padlen：在应用滤波器之前在轴两端延伸X的元素数目。此值必须小于要滤波元素个数- 1。（int型或None）  
+    method：确定处理信号边缘的方法。当method为“pad”时，填充信号；填充类型padtype和padlen决定，irlen被忽略。当method为“gust”时，使用古斯塔夫森方法，而忽略padtype和padlen。{“pad” ，“gust”}  
+    irlen：当method为“gust”时，irlen指定滤波器的脉冲响应的长度。如果irlen是None，则脉冲响应的任何部分都被忽略。对于长信号，指定irlen可以显著改善滤波器的性能。（int型或None）  
+输出参数：  
+    y:滤波后的数据数组  
+```
 （2）.滤波器构造函数(仅介绍Butterworth滤波器)
-
->  scipy.signal.butter(N, Wn, btype='low', analog=False, output='ba')  输入参数：  N:滤波器的阶数  Wn：归一化截止频率。计算公式Wn=2*截止频率/采样频率。（注意：根据采样定理，采样频率要大于两倍的信号本身最大的频率，才能还原信号。截止频率一定小于信号本身最大的频率，所以Wn一定在0和1之间）。当构造带通滤波器或者带阻滤波器时，Wn为长度为2的列表。  btype : 滤波器类型{‘lowpass’, ‘highpass’, ‘bandpass’, ‘bandstop’},  output : 输出类型{‘ba’, ‘zpk’, ‘sos’},  输出参数：  b，a: IIR滤波器的分子（b）和分母（a）多项式系数向量。output='ba'  z,p,k: IIR滤波器传递函数的零点、极点和系统增益. output= 'zpk'  sos: IIR滤波器的二阶截面表示。output= 'sos'  
-
+```
+>  scipy.signal.butter(N, Wn, btype='low', analog=False, output='ba')  
+输入参数：  
+    N:滤波器的阶数  
+    Wn：归一化截止频率。计算公式Wn=2*截止频率/采样频率。（注意：根据采样定理，采样频率要大于两倍的信号本身最大的频率，才能还原信号。截止频率一定小于信号本身最大的频率，所以Wn一定在0和1之间）。当构造带通滤波器或者带阻滤波器时，Wn为长度为2的列表。  
+    btype : 滤波器类型{‘lowpass’, ‘highpass’, ‘bandpass’, ‘bandstop’},  
+    output : 输出类型{‘ba’, ‘zpk’, ‘sos’},  
+输出参数：  
+    b，a: IIR滤波器的分子（b）和分母（a）多项式系数向量。output='ba'  
+    z,p,k: IIR滤波器传递函数的零点、极点和系统增益. output= 'zpk' 
+    sos: IIR滤波器的二阶截面表示。output= 'sos'  
+```
 ###   4.参考
 
 >  https://blog.csdn.net/weixin_37996604/article/details/82864680   https://docs.scipy.org/doc/scipy-0.18.1/reference/generated/scipy.signal.filtfilt.html  https://docs.scipy.org/doc/scipy-0.18.1/reference/generated/scipy.signal.butter.html#scipy.signal.butter    
