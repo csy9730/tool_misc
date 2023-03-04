@@ -1,6 +1,7 @@
 # msys2
 
 ## pacman-key
+#### pacman gpg signature error
 ```
 Suddenly pacman no longer trusts:
 
@@ -13,19 +14,32 @@ error: mingw-w64-x86_64-libpng: signature from "Alexey Pavlov (Alexpux) <alexpux
 Do you want to delete it? [Y/n] n
 ```
 
+应该是gpg指纹过期了，需要更新本地的gpg指纹。
+解决办法
+- 更新本地的gpg指纹
+- 关闭本地的gpg警告，
+
+更新 msys2.gpg 公钥
 ``` bash
 pacman-key --init
 pacman-key --populate msys2
+# ==> 正在从 msys2.gpg 添加密匙...
+# ==> 正在更新可信数据库...
+# gpg: 不需要检查信任度数据库
+
+
 pacman-key --refresh-keys
 ```
 
 
 解决了，具体方法是
 打开msys2的/etc/pacman.conf，在文件的中上部分找到一个叫“SigLevel”的选项（不是在下面[core]那里的）在=号的后面修改为 Never 保存，例如：
+``` ini
 SigLevel = Never
+```
 就搞定了。
 
-## pacman source
+#### pacman source
 
 利用Windows资源管理器，打开D:\msys64\etc\pacman.d。在这个路径下有3个配置文件，分别为：mirrorlist.mingw32、mirrorlist.mingw64和mirrorlist.msys。
 
@@ -49,4 +63,24 @@ Server = https://mirrors.tuna.tsinghua.edu.cn/msys2/mingw/x86_64
 重新运行D:\msys64\msys2.exe。然后再运行好的环境中输入下列命令，更新即可。现在真的是速度飞快。
 ```
 pacman -Syu
+```
+
+#### git-crypt
+
+```
+$ ldd /usr/bin/git-crypt.exe
+        ntdll.dll => /c/Windows/SYSTEM32/ntdll.dll (0x7ffa8e270000)
+        KERNEL32.DLL => /c/Windows/System32/KERNEL32.DLL (0x7ffa8c5f0000)
+        KERNELBASE.dll => /c/Windows/System32/KERNELBASE.dll (0x7ffa8ba80000)
+        msys-2.0.dll => /usr/bin/msys-2.0.dll (0x180040000)
+        msys-stdc++-6.dll => /usr/bin/msys-stdc++-6.dll (0x5e5aa0000)
+        msys-gcc_s-seh-1.dll => /usr/bin/msys-gcc_s-seh-1.dll (0x170000)
+        msys-gcc_s-seh-1.dll => /usr/bin/msys-gcc_s-seh-1.dll (0x5e8160000)
+        msys-crypto-3.dll => not found
+
+```
+
+MSYS2 自带的开发环境，安装的包叫 msys2-devel
+```
+pacman -S msys2-devel
 ```

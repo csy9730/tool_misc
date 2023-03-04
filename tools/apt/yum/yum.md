@@ -1,5 +1,10 @@
 # yum
 
+
+## usage
+``` bash
+yum list installed # centos 查看所有本机已经安装的软件包
+```
 ## help
 ```
 ➜  ~ yum --help

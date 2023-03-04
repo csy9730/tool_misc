@@ -2,9 +2,7 @@
 
 [TOC]
 
-
-
-
+[https://www.msys2.org/](https://www.msys2.org/)
 
 ## install
 windows系统下下载msys2-x86_64-20180531.exe（80MB），双击选择安装路径。
@@ -15,11 +13,137 @@ windows系统下下载msys2-x86_64-20180531.exe（80MB），双击选择安装�
 
 
 
-### msys2
+## msys2
 
+
+
+### 环境辨析
+以下概念容易混淆：mingw，mingw-w64， msys,msys2,cygwin.
+
+**mingw**包含C运行库和windows的头文件，以及编译链工具，可以生成windows的32位可执行文件。通过提供对等于	windowsSDK的头文件和库文件，可以开发原生的windows应用。
+- **Mingw-w64**是Mingw衍生而来，可以生成32位和64位的windows可执行文件。
+- **msys**是包含Mingw的集成环境，提供了命令行工具。
+- **msys2**是集成环境，从cygwin中fork而来，实现了仿gnu编译环境，提供了pacman作为包管理工具。
+- **cygwin**是中间层，在window下模拟实现了unix的类函数。linux下写的代码（支持POSIX API)可以无需修改，移植到windows下环境。 
+
+cygwin和MinGW主要核心区别在于：MinGW只支持C/C++标准库，cygwin还支持POSIX API， MinGW生成windows的原生程序，cygwin生成程序非原生，cygwin生成程的运行速度较mingw生成程序的运行速度慢。
+
+POSIX API 包括pthreads的线程库。
+
+
+**Q**: 三种环境有何区别？
+
+**A**:
+mingw64 使用了原生windows，性能较高；msys使用了cygwin，所以性能低下。mingw32已经废弃了，更推荐使用mingw64。
+
+
+**Q**: clang64，ucrt64。clang32这三种环境和mingw64有何区别？
+
+**A**:
+新版本又添加了 clang64，ucrt64。clang32， clangarm32这两个环境默认不提供。
+
+
+mingw64 与 ucrt64 都是用 gcc 编译器编译的 Windows 64 位程序，只不过它们链接到的 crt（C runtime）不同， mingw64 是链接到了 msvcrt ，而 ucrt64 则是链接到了 Windows 上新的 ucrt 上。
+
+而 clang64 很好理解，就是用 clang 而非 gcc 来编译各种库。另外它也是链接到了 ucrt 而非 msvcrt。
+
+三者是共同点是，它们都需要 mingw-w64 环境来进行编译。
+
+对于新版本，更加推荐使用ucrt64。
+### file
+
+msys2 的本目录结构
+
+总共有7套环境。
+
+
+- msys2 默认环境，使用cygwin的底层库
+    - /usr
+    - /var
+    - ...
+- mingw32 
+- mingw64
+- clang64
+- clang32 
+- clangarm64
+- ucrt64
+
+MSYS2 官方新闻：2022.10.29，将默认环境由 MINGW64 更换为 UCRT64
+
+
+``` 
+mingw32/          
+mingw64/ 
+clang64/    
+clang32/     
+clangarm64/            
+ucrt64/ 
+
+etc/                    
+bin/                
+home/ 
+opt/          
+proc/          
+installerResources/  
+tmp/           
+usr/    
+var/        
+dev/
+
+InstallationLog.txt
+autorebase.bat   
+installer.dat   
+network.xml       
+components.xml  
+
+clang32.exe
+clang32.ico   
+clang32.ini  
+
+clangarm64.exe   
+clangarm64.ini
+clangarm64.ico
+
+clang64.exe
+clang64.ini
+clang64.ico 
+
+msys2.ini
+msys2_shell.cmd
+msys2.exe 
+msys2.ico  
+
+mingw32.ini  
+mingw32.exe 
+mingw32.ico  
+
+mingw64.exe
+mingw64.ini
+mingw64.ico 
+
+ucrt64.ico
+ucrt64.exe
+ucrt64.ini
+
+uninstall.ini
+uninstall.dat   
+uninstall.exe
+```
+
+
+mingw32 &mingw64 为空文件夹
+
+home ,usr ,var ,tmp ,etc ,dev #  msys根目录，可以快速直达
+
+
+autorebase.bat 可以在cmd中快速实现msys环境。
+
+maintenancetool.exe 该文件已经废弃删除。
+
+#### 环境切换
 msys2的软件版本分为mingw32,mingw64和msys三种环境。
 
-以上三种环境可以通过一个脚本分别实现
+以上三种环境可以通过一个脚本分别实现切换
 
 ``` bash
 C:\msys64\msys2_shell.cmd -msys
@@ -27,37 +151,7 @@ C:\msys64\msys2_shell.cmd -mingw64
 C:\msys64\msys2_shell.cmd -mingw32
 ```
 
-**Q**: 三种环境有何区别？
-
-**A**:？？？
-
-### dir
-
-autorebase.bat 可以在cmd中快速实现msys环境。
-
-``` bash
-maintenancetool.exe  mingw32.exe  mingw64.exe  msys2.exe autorebase.bat msys2_shell.cmd # 可执行程序
-home ,usr ,var ,tmp ,etc ,dev ,mingw32 ,mingw64 #  msys根目录，可以快速直达
-# mingw32 &mingw64 为空文件夹
-
-
-```
-
-
-
-### 相关软件
-
-以下概念容易混淆：mingw，mingw-w64， msys,msys2,cygwin.
-
-​	**mingw**包含C运行库和windows的头文件，以及编译链工具，可以生成windows的32位可执行文件。通过提供对等于	windowsSDK的头文件和库文件，可以开发原生的windows应用。
-​	**Mingw-w64**是Mingw衍生而来，可以生成32位和64位的windows可执行文件。
-​	**msys**是包含Mingw的集成环境，提供了命令行工具。
-​	**msys2**是集成环境，从cygwin中fork而来，实现了仿gnu编译环境，提供了pacman作为包管理工具。
-​	**cygwin**是中间层，在window下模拟实现了unix的类函数。linux下写的代码（支持POSIX API)可以无需修改，移植到windows下环境。 
-
-cygwin和MinGW主要核心区别在于：MinGW只支持C/C++标准库，cygwin还支持POSIX API， MinGW生成windows的原生程序，cygwin生成程序非原生，cygwin生成程的运行速度较mingw生成程序的运行速度慢。
-
-POSIX API 包括pthreads的线程库。
+msys2_shell.cmd 支持三种终端界面： 默认界面，mintty界面，conemu界面。
 
 ## tools
 
@@ -107,91 +201,4 @@ $ pacman -S make yasm diffutils pkg-config
 ```
 
 pacman配置颜色
-
-### zsh
-
-### gcc
-
-
-
-## misc
-
-### project
-
-
-rdrand.asm
-#### msvc
-
-```
-nmake /f cryptest.nmake
-```
-#### test
-
-```
-PS D:\AlBrowserDownloads\cryptopp600> cmd
-Microsoft Windows [版本 10.0.17134.648]
-(c) 2018 Microsoft Corporation。保留所有权利。
-D:\AlBrowserDownloads\cryptopp600>cryptest.exe
-Test Driver for Crypto++(R) Library, a C++ Class Library of Cryptographic Schemes
-- To generate an RSA key
-        cryptest g
-- To encrypt and decrypt a string using RSA
-        cryptest r
-- To sign a file using RSA
-        cryptest rs privatekeyfile messagefile signaturefile
-- To verify a signature of a file using RSA
-        cryptest rv publickeyfile messagefile signaturefile
-- To digest a file using several hash functions in parallel
-        cryptest m file
-- To encrypt and decrypt a string using DES-EDE in CBC mode
-        cryptest t
-- To encrypt or decrypt a file
-        cryptest e|d input output
-- To secret share a file (shares will be named file.000, file.001, etc)
-        cryptest ss threshold number-of-shares file
-- To reconstruct a secret-shared file
-        cryptest sr file share1 share2 [....]
-        (number of shares given must be equal to threshold)
-- To information disperse a file (shares will be named file.000, file.001, etc)
-        cryptest id threshold number-of-shares file
-- To reconstruct an information-dispersed file
-        cryptest ir file share1 share2 [....]
-        (number of shares given must be equal to threshold)
-- To gzip a file
-        cryptest z compression-level input output
-- To gunzip a file
-        cryptest u input output
-- To encrypt a file with AES in CTR mode
-        cryptest ae input output
-- To base64 encode a file
-        cryptest e64 input output
-- To base64 decode a file
-        cryptest d64 input output
-- To hex encode a file
-        cryptest e16 input output
-- To hex decode a file
-        cryptest d16 input output
-- To forward a TCP connection
-        cryptest ft source-port destination-host destination-port
-- To run the FIPS 140-2 sample application
-        cryptest fips
-- To generate 100000 random files using FIPS Approved X.917 RNG
-        cryptest fips-rand
-- To run Maurer's randomness test on a file
-        cryptest mt input
-- To run a test script (available in TestVectors subdirectory)
-        cryptest tv filename
-- To run validation tests
-        cryptest v
-- To display version number
-       cryptest V
-- To run benchmarks
-        cryptest b [time allocated for each benchmark in seconds] [frequency of CPU in gigahertz]
-D:\AlBrowserDownloads\cryptopp600>cryptest.exe g
-Key length in bits: 1024
-Save private key to file: abc
-Save public key to file: abcPub
-Random Seed: ssdfsdfs
-```
-
-
+略

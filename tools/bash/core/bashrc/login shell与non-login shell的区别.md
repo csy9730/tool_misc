@@ -4,16 +4,58 @@ Bash应该是我们每天日常工作接触最多的东西了，就像我们最�
 Bash有几种不同的运行模式，login shell与non-login shell，interactive shell与non-interactive shell（比如执行shell脚本）。这两种分类方法是交叉的，也就是说一个login shell可能是一个interactive shell，也可能是个non-interactive shell。
 在下列情况下，我们可以获得一个login shell：
 
-1. 登录系统时获得的顶层shell，无论是通过本地终端登录，还是通过网络ssh登录。这种情况下获得的login shell是一个交互式shell。
-2. 在终端下使用--login选项调用bash，可以获得一个交互式login shell。
-3. 在脚本中使用--login选项调用bash（比如在shell脚本第一行做如下指定：#!/bin/bash --login），此时得到一个非交互式的login shell。
-4. 使用`su -`切换到指定用户时，获得此用户的login shell。如果不使用"-"，则获得non-login shell。
-
-
 
 login shell与non-login shell的主要区别在于它们启动时会读取不同的配置文件，从而导致环境不一样。
 
-### non-login shell
+- interactive shell 脚本模式
+- non-interactive shell 会话模式
+- login shell 登录模式 ~~使用用户配置的环境变量覆盖当前终端的环境变量~~
+- non-login shell 非登录模式, 不需要重复登录， ~~使用当前终端的环境变量~~
+
+两种模式组合：
+- login interactive shell
+    - 通过网络ssh登录
+    - 本地终端登录
+    - 在终端下使用`bash --login`
+    - `su -l user`
+- non-interactive shell
+    - 脚本中使用 `bash --login`
+- non-login interactive shell
+    - `su  user`
+- non-login non-interactive shell
+    - `bash -c “CMD”`
+    - `ssh server -- command`
+
+
+1. 登录系统时获得的顶层shell，无论是通过本地终端登录，还是通过网络ssh登录。这种情况下获得的login shell是一个交互式shell。
+2. 在终端下使用--login选项调用bash，可以获得一个交互式login shell。
+3. 在脚本中使用--login选项调用bash（比如在shell脚本第一行做如下指定：`#!/bin/bash --login`），此时得到一个非交互式的login shell。
+4. 使用`su -`切换到指定用户时，获得此用户的login shell。如果不使用"-"，则获得non-login shell。
+
+- /etc/profile 全局配置，
+- /etc/bash.bashrc
+- ~/.bashrc 
+- ~/.bash_profile , 一般~/.bash_profile 会调用~/.bashrc脚本。
+- ~/.bash_login, login shell时读取并执行
+- ~/.profile
+- ~/.bash_logout,  login shell退出时读取并执行
+- ~/.shrc
+- ~/.zshrc
+
+#### 环境变量
+
+- PS1
+    - ${debian_chroot:+($debian_chroot)}\u@\h:\w\$
+- BASH   /bin/bash
+- SHELL  /bin/bash
+- SHLVL  终端嵌套深度？
+- HOME
+- PWD
+- TERM  
+    - cygwin
+    - dumb
+
+### login shell
 
 
 
@@ -114,7 +156,7 @@ interactive shell 是交互式shell, 顾名思义就是用来和用户交互的,
 
 ###  non-interactive shell
 
-non-interactive shell 则一般是通过 bash -c “CMD” 来执行的bash.
+non-interactive shell 则一般是通过 `bash -c “CMD”` 来执行的bash.
 
 **该模式下不会执行任何的 rc 文件**
 
@@ -146,13 +188,13 @@ ssh 登入和 `su -` 是典型的 interactive login shell, 所以会有 PS1 变�
 
 
 
-##### 通过 bash -c “CMD” 或者 bash BASHFILE 命令执行的 shell
+##### 通过 `bash -c “CMD”` 或者 `bash BASHFILE` 命令执行的 shell
 
 这些命令什么都不会执行, 也就是不设置 PS1 变量, 不执行任何 RC 文件
 
 
 
-### 最特殊! 通过 “ssh server CMD” 执行的命令 或 通过程序执行远程的命令
+### 最特殊! 通过`ssh server  “CMD”` 执行的命令 或 通过程序执行远程的命令
 
 这是最特殊的一种模式, 理论上应该既是 非交互 也是 非登入的, 但是实际上他不会设置 PS1, 但是还会执行~/.bashrc
 

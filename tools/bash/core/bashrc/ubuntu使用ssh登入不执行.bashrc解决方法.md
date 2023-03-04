@@ -12,9 +12,12 @@ SEP 30TH, 2011 BY SUNTEYA
 
 首先我们来看系统中的这些文件, 一般的系统可能会有
 
-| `1 2 3 4 5 ` | `/etc/profile /etc/bashrc ~/.bashrc ~/.profile ` |
-| ------------ | ------------------------------------------------ |
-|              |                                                  |
+|  | `profile` |
+| ------------ | ----------------- |
+|       1       |   /etc/profile            |
+|     2         |   /etc/bashrc          |
+|    3          |   ~/.bashrc           |
+|     4         |    ~/.profile           |
 
 而如果系统是 ubuntu 或者 debian 的话, 就不会有 `/etc/bashrc` 而会有 `/etc/bash.bashrc` 文件.
 
@@ -32,7 +35,7 @@ SEP 30TH, 2011 BY SUNTEYA
 
 **该模式下的 shell 会去自动执行 /etc/profile 和 ~/.profile 文件, 但不会执行任何的 bashrc 文件, 所以一般再 /etc/profile 或者 ~/.profile 里我们会手动去 source bashrc 文件.**
 
-而 no-login shell 的情况是我们在终端下直接输入 bash 或者 bash -c “CMD” 来启动的 shell.
+而 no-login shell 的情况是我们在终端下直接输入 `bash` 或者 `bash -c “CMD” `来启动的 shell.
 
 **该模式下是不会自动去运行任何的 profile 文件.**
 
@@ -40,7 +43,7 @@ SEP 30TH, 2011 BY SUNTEYA
 
 interactive shell 是交互式shell, 顾名思义就是用来和用户交互的, 提供了命令提示符可以输入命令.
 
-**该模式下会存在一个叫 PS1 的环境变量, 如果还不是 login shell 的则会去 source /etc/bash.bashrc 和 ~/.bashrc 文件**
+**该模式下会存在一个叫 PS1 的环境变量, 如果还不是 login shell 的则会去 `source /etc/bash.bashrc` 和 ~/.bashrc 文件**
 
 non-interactive shell 则一般是通过 bash -c “CMD” 来执行的bash.
 
