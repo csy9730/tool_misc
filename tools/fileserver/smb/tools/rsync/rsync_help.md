@@ -6,7 +6,7 @@ rsync 可以理解为 remote sync（远程同步），但它不仅可以远程�
 rsync 支持本地文件同步，samba协议，ssh远程协议，rsync 协议。
 ## install
 
-该软件是GNU软件，linux下易于使用。windows不能直接安装使用，只能通过msys，cygwin等库才能安装rsync。
+该软件是GNU软件，linux下易于使用。windows不能直接安装使用，只能通过msys，cygwin等类linux环境才能安装rsync。
 
 #### linux
 ``` bash

@@ -1,15 +1,171 @@
 # gpg
 
+
+## install
+
+一般无需安装，bash环境基本自带了gnupg，包管理工具apt需要gpg验证安装包的签名。
 安装git-bash，附带了 gpg工具，位于 `/usr/bin/gpg`
 
+安装命令
+``` bash
+apt install gnupg
+```
+
+
+## main
+
+
+### 概念介绍
+- 公钥/私钥
+- key 密钥 包含公钥（证书）/私钥
+- 子密钥 subkey
+- uid 即 user id
+- keyserver
+- 指纹： 是公钥的后N位。
+- 签名
+- 失效日期
+- 吊销证书 revocation certificate
+
+
+- 认证 [C]
+- 身份验证 [A]
+- 签名 [S]  
+- 加密 [E]
+
+SSH 登录密钥实际上只用到了 [A] 这一项能力
+
+GPG 密钥的能力中， [C]、[S]、[A] 均属于签名方案，只有 [E] 是加密方案
+E用于加密一般文件，S 用于签名/验证一般文件。认证功能C本质上是签名公钥，生成证书，身份验证功能本质上验签证书。
+证书含有比公钥更多的附加信息。
+当然也能自己认证自己，就是自签名证书。
+
+
+
+- 公钥，相当于公司名，所有员工都隶属于公司之下。公司主营业务是给保险柜上锁和解锁。
+- 主密钥是董事长，一般不干具体事务，隐藏幕后，核心功能是主抓人事任命（认证），就是可以提权其他密钥。主密钥也可以撤销子私钥。
+- 子私钥是核心骨干，可以确认其他密钥的身份（身份验证），确认它是否是自己组织的。
+- 签名和加密是实际业务，主要是面向机密文件管理的，相当于公司的业务员，可以押送产品，并确认确实是公司押送的产品。
+- 子公钥：子密钥的公钥，相当于员工名片。gpg隐藏子公钥，推荐使用主公钥。
+
+## core
+
+
+GPG 不允许用户生成子密钥的吊销证书，而是把变更都放在唯一的公钥中，简洁且不易出错。 你只需要编辑“大”密钥，将子密钥单独吊销，然后重新发布公钥即可
+
+看到这里你可能已经明白了，一个 GPG 密钥对之所以可以有这么多能力，是因为它本质上是若干密钥对的集合，只不过它们被封装到了一起。
+所有子密钥的有效性，都来自于主密钥的认证。
+子密钥可以在没有主密钥的情况下单独使用。
 
 ## usage
 
 
-- `gpg --generate-key` / `gpg --full-generate-key`
--  `gpg --recipient [用户ID] --output demo.en.txt --encrypt demo.txt`
--  `gpg --sign demo.txt`
 
+- 密钥管理
+    - 生成公钥密钥对 `gpg --generate-key` / `gpg --full-generate-key`/`--full-gen-key`
+    - 生成吊销证书 --gen-revoke `--generate-revocation`
+    - 列出密钥 
+        - 列出密钥 `--list-keys`, `--list-secret-keys` 
+        - `--list-signatures`, 列出认证源？
+        - `--fingerprint`
+    - 导出  
+        - `--export` 
+        - `--export-secret-keys` 
+        - `--export-secret-subkeys` 
+        - `gpg --export-ssh-keys`
+    - 导入 `--import`
+    - 子钥管理
+    - 密钥修改
+        - --change-passphrase
+        - --sign-key
+        - `--edit-key`
+    - keyserver
+        - 上传公钥到公钥服务器 `--send-keys `
+        - `--receive-keys`
+        - `--search-keys`
+        - `--refresh-keys`
+- 密钥使用
+    - 加密文件 `gpg --recipient [用户ID] --output demo.en.txt --encrypt demo.txt`
+    - 解密文件 `--decrypt`
+    - 签名文件 `gpg --sign demo.txt`
+        - 签名文件 `--detach-sign`
+    - 验证签名 `--verify`  
+
+
+#### 初始化
+
+#### 生成密钥
+```
+gpg --gen-key
+```
+#### 查看
+
+```
+gpg --list-sig User1
+
+
+```
+
+- sec => 'SECret key'
+- ssb => 'Secret SuBkey'
+- pub => 'PUBlic key'
+- sub => 'public SUBkey'
+
+密钥的功能
+- C  认证
+- A 身份验证，鉴权
+- S  sign 签名
+- E 加密
+
+
+#### 导出
+
+
+`gpg --export -a  --sub`
+
+
+--export-key，导出公钥（主公钥 --- pub，全部子公钥 --- sub）；
+
+--export-secret-keys，导出私钥（主私钥 --- sec，全部子私钥 --- ssb）；这个选项导出的东西，应该找个地方藏起来，比如加密U盘、保险箱、保险库、有军队把守必须生物识别的严密机构！
+
+--export-secret-subkeys，使用自己的私钥的正确的做法，仅仅导出全部子私钥！当然，还是要加密（并且验证签名）传输到其他电脑上，再导入。
+
+``` bash
+gpg --export -o 1.pub -a  -- User1
+
+gpg --export-ssh-key -o 2c.ssh 4E157C9F0CCE6C01
+```
+
+### 子密钥管理
+
+
+
+```
+$ gpg2 --expert --edit-key <KEY ID>
+gpg> addkey
+```
+
+- addkey 添加子密钥
+- adduser 添加用户名
+
+
+
+## faq
+
+
+#### 重新发布公钥证书
+什么情况下，需要重新发布公钥证书？
+
+#### gpg-agent
+
+
+#### 导出SSH 格式的公钥
+导出 SSH 格式的公钥，并上传到服务器
+
+```
+gpg --export-ssh-keys 64810DE8 > ~/.ssh/gpg_subkey.pub
+
+ssh-copy-id -i ~/.ssh/gpg_subkey.pub 
+```
 
 ## help
 

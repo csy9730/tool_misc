@@ -5,7 +5,7 @@
 
 ## 重装原有SSH
 
-```
+``` bash
 sudo apt remove openssh-server
 sudo apt install openssh-server
 ```
@@ -41,8 +41,8 @@ sudo service ssh --full-restart
 
 ## 测试连接
 
-```
-ssh username@localhost:2222 	# username为安装WSL Ubuntu时输入的用户名
+``` bash
+ssh localhost -p 2222 	# username为安装WSL Ubuntu时输入的用户名
 ```
 
 **如果要在其它机器上访问，需要查找本机IP，把localhost换成IP，那么同一子网（wifi、路由器）下的机器也可访问Ubuntu里的服务。**
