@@ -1,3 +1,7 @@
+# haddop --help
+
+## help
+```
 Usage: hadoop [OPTIONS] SUBCOMMAND [SUBCOMMAND OPTIONS]
  or    hadoop [OPTIONS] CLASSNAME [CLASSNAME OPTIONS]
   where CLASSNAME is a user-provided Java class
@@ -53,3 +57,4 @@ kms           run KMS, the Key Management Server
 registrydns   run the registry DNS server
 
 SUBCOMMAND may print help when invoked w/o parameters or with -h.
+```

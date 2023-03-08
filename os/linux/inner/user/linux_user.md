@@ -32,7 +32,8 @@ sudo useradd username -m -s /sbin/nologin -d /home/username -g groupname
 ```
 
 ``` bash
-sudo useradd abc -m -d /home/abc  
+# 创建用户, 目录
+sudo useradd abc -m  # -d /home/abc  
 
 # 添加用户，设置密码，
 sudo useradd username -p password -d /home/username -g groupname
