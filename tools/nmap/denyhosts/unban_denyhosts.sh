@@ -18,7 +18,8 @@ fi
 
 echo "replace ${IP} ${IP2}"
 
-sed -i "s/${IP}/${IP2}/g"  /var/log/secure
+sed -i "s/${IP}/${IP2}/g"  /var/log/secure # centos sshd log
+sed -i "s/${IP}/${IP2}/g"  /var/log/auth.log # ubuntu sshd log
 sed -i "s/${IP}/${IP2}/g"  /var/log/denyhosts
 sed -i "s/${IP}/${IP2}/g"  /etc/hosts.deny
 

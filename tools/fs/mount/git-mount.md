@@ -27,11 +27,13 @@ Valid options are: acl,auto,binary,bind,cygexec,dos,exec,ihash,noacl,nosuid,note
 ### demo
 
 ``` bash
-mount -o binary,noacl,auto H:/ /mnt/h
-mount -o binary,noacl,auto G:/ /mnt/g
-mount -o binary,noacl,auto E:/ /mnt/e
-mount -o binary,noacl,auto D:/ /mnt/d
+mkdir -p /mnt
 mount -o binary,noacl,auto C:/ /mnt/c
+mount -o binary,noacl,auto D:/ /mnt/d
+mount -o binary,noacl,auto E:/ /mnt/e
+mount -o binary,noacl,auto F:/ /mnt/f
+mount -o binary,noacl,auto G:/ /mnt/g
+mount -o binary,noacl,auto H:/ /mnt/h
 # mount -o binary,noacl,auto E:/Dataset /h/tmp/mdemo
 ```
 注意： 该挂载在windows的文件系统下看不出变化，只有通过sftp这种协议转换，才能看出路径映射的变化。

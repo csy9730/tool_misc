@@ -21,6 +21,11 @@ mac 和 linux 上安装 git-crypt 都比较简单 `apt install git-crypt`
 #### git init
 
 新建一个git仓库。
+``` bash
+mkdir crypt_repo
+cd crypt_repo
+git init
+```
 #### 生成密钥
 
 进入到本地工程目录，打开Git Base Here，执行`git-crypt init`，
@@ -29,7 +34,7 @@ mac 和 linux 上安装 git-crypt 都比较简单 `apt install git-crypt`
 
 
 
-该私钥文件位于 .git/git-crypt/keys/default
+该私钥文件位于 `.git/git-crypt/keys/default`
 #### 管理加密文件
 
 创建.gitattributes，管理加密文件
@@ -42,13 +47,50 @@ secretdir/** filter=git-crypt diff=git-crypt
 *.sec filter=git-crypt diff=git-crypt
 ```
 
-#### push到服务端
+查看文件是否加密：
 
+```
+git-crypt status
+
+    encrypted: secretdir/abc.docx
+    encrypted: secretdir/def.docx
+    encrypted: secretdir/ghi.docx
+not encrypted: .git-crypt/.gitattributes
+not encrypted: .git-crypt/keys/default/0/3EE4ADBF6E9967E1F71F0042C879DBFB9764BF05.gpg
+not encrypted: .gitattributes
+not encrypted: .gitignore
+not encrypted: README.md
+```
+
+可以看到，secretdir文件夹下的文件被标记加密状态了。
+
+添加文件变更并提交
+``` bash
+git add secretdir && git commit 
+```
+#### 本地查看加密文件
+
+``` bash
+cd .. 
+git clone crypt_repo crypt_repo2
+cd crypt_repo2
+```
+打开secretdir文件夹，可以看到文件确实是加密状态，无法打开。
+
+#### 云端查看加密文件
 将仓库 push到服务端
+```
+git remote add origin master github.com:foo/crypt_repo
+git push -u origin master
+```
 
-#### pull
+
 新建文件夹，拉取这个仓库。
-
+```
+cd /tmp
+git clone github.com:foo/crypt_repo crypt_repo3
+cd crypt_repo3
+```
 可以发现，文件被加密了，无法查看。
 
 #### 导出密钥
@@ -83,7 +125,8 @@ gpg --export -o pubfile  you<you@email.com>
 ``` bash
 git-crypt add-gpg-user --trusted you<you@email.com>
 # 该操作将会把对称密钥加密，保存到仓库
-git commit && git push
+# git commit && git push
+# git ls-files
 ```
 
 对方解密操作：
@@ -111,8 +154,15 @@ Git-crypt和Transcrypt都提供复杂的密码作为对称密钥。 操作上的
 以下是我们的对称密钥兼容工具Git-crypt和Transcrypt之间的一些区别：
 
 Git-crypt与GPG和对称密钥加密兼容
+
 Git-crypt不支持对称密钥旋转，因此，如果将其与对称密钥一起使用，则无法完成第5步
+
 Transcrypt提供了方便的--rekey命令来旋转密钥
+
+Git-crypt和git-secret 功能相似，都调用gpg的加密功能。
+
+区别在于：Git-crypt 使用对称密钥加密, 加密解密效率高; git-secret 使用gpg的密钥(非对称密钥机制), 加密解密效率低
+
 ## 总结
 
 利用该方式进行文件管理可以保证安全性，只有团队内相关人员才能看到文明文内容，解密只需要第一次进行，之后就没什么改变，直接改文件，git push会自动加密，git pull 会自动解密。

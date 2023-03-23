@@ -17,6 +17,7 @@
 从/etc/hosts.deny移除指定IP
 
 此外还有其他denyhosts的记录文件，位于`/var/lib/denyhosts `或`/usr/share/denyhosts/data`
+
 文件如下
 - /var/lib/denyhosts/hosts
 - /var/lib/denyhosts/hosts-restricted
@@ -36,6 +37,7 @@
 如果不在乎上面的记录文件, 推荐清空上面几个Linux系统日志然后重新开启DennyHosts. 清空上面几个Linux系统日志很简单, 在SSH中敲入下面的命令:`cat /dev/null > /var/log/secure`
 
 不过我不想清空系统日志，所以做了一个简单的ip地址替换。
+
 以下脚本可以一键替换被禁止的ip地址，附带系统服务停止和重启，适用于centos7.
 ``` bash
 systemctl stop rsyslog
@@ -44,7 +46,8 @@ systemctl stop denyhosts
 
 export IP=123.34.56.78 # IP to remove
 export IP2=123.34.56.79 # IP to add
-sed -i "s/${IP}/${IP2}/g"  /var/log/secure
+sed -i "s/${IP}/${IP2}/g"  /var/log/secure # centos sshd log
+sed -i "s/${IP}/${IP2}/g"  /var/log/auth.log # ubuntu sshd log
 sed -i "s/${IP}/${IP2}/g"  /etc/hosts.deny
 
 sed -i "s/${IP}/${IP2}/g"  /var/lib/denyhosts/hosts

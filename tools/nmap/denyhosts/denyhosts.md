@@ -3,7 +3,13 @@
 [https://github.com/denyhosts/denyhosts](https://github.com/denyhosts/denyhosts)
 
 denyhosts是基于python2的包，可以检查失败登录的log的内容，添加ip到denyhost文件中。
+
+denyhosts2.6 支持python2.
+
+denyhosts3.1 支持python3.
+
 ## quickstart
+
 ### install & run
 下载软件，安装，自启动一键脚本,适用于centos7脚本。
 
@@ -51,9 +57,8 @@ systemctl status denyhosts
 ```
 
 
-## misc
 
-### start
+### install DenyHosts-2.6
 
 ``` bash
 #!/bin/bash
@@ -64,8 +69,14 @@ tar -zxvf DenyHosts-2.6.tar.gz
 cd DenyHosts-2.6
 
 pip2 install ipaddr 
-$ python2 setup.py install  --record denyhostsInstall.log
+python2 setup.py install  --record denyhostsInstall.log
 
+# 卸载的时候使用日志文件
+# cat denyhostsInstall.log | xargs rm -rf
+```
+
+```
+$ python2 setup.py install  --record denyhostsInstall.log
 running install_scripts
 copying build/scripts-2.7/denyhosts.py -> /usr/bin
 copying build/scripts-2.7/daemon-control-dist -> /usr/bin
@@ -79,47 +90,48 @@ Writing /usr/lib/python2.7/site-packages/DenyHosts-3.0-py2.7.egg-info
 writing list of installed files to 'denyhostsInstall.log'
 
 
-# 卸载的时候使用日志文件logName
-# cat denyhostsInstall.log | xargs rm -rf
 ```
+## arch
 
-
+### file
 程序入口文件是 `/usr/bin/denyhosts.py` ,需要配合程序解释器使用
+
 程序解释器：`/usr/bin/env python`
+
 配置文件时`/etc/denyhosts.conf`，入口文件会自动读取该配置文件
 
 服务入口是`/usr/bin/daemon-control-dist`
+
 服务入口文件自动调用程序解释器，入口文件，和配置文件执行。
 
 程序的安装目录是：`/usr/lib/python2.7/site-packages/DenyHosts`，提供程序后台，被入口文件调用。
+
 共享文档目录 `/usr/share/denyhosts`  ，完全不影响程序使用。
 
-``` bash
-# /usr/bin/daemon-control-dist
-cp  /usr/bin/daemon-control-dist /usr/bin/daemon-control
-
-#  /usr/bin/daemon-control-dist start的内容等价于执行 /usr/bin/env python /usr/local/bin/denyhosts --config /etc/denyhosts.conf --daemon
-# 修改/usr/bin/daemon-control
-daemon-control start
-# /usr/bin/daemon-control start等价于执行 /usr/bin/env python2 /usr/bin/denyhosts.py --config /etc/denyhosts.conf --daemon
-```
-
-/usr/bin/daemon-control文件中,可以修改守护进程的调用方法
-
-/etc/denyhosts.conf文件中,可以修改配置:
-``` ini
-SECURE_LOG = /var/log/secure
-
-```
-ubuntu使用/var/log/auth.log 文件
-centos使用/var/log/secure文件
+denyhosts日志文件：/var/log/denyhosts 
 
 
+### core
 
-### conf
+核心机制是读取sshd登录日志，把暴力破解的ip地址加到sshd黑名单。
+- sshd登录日志
+  - ubuntu使用/var/log/auth.log 文件
+  - centos使用/var/log/secure文件
+- /etc/hosts.deny sshd禁止登录的ip，黑名单
+- /etc/hosts.allow sshd允许登录的ip，白名单
+- /var/log/denyhosts denyhosts日志文件
 
-* SECURE_LOG
-* BLOCK_SERVICE
+支持防火墙，可以把ip添加到防火墙黑名单
+
+
+#### /etc/denyhosts.conf
+
+/etc/denyhosts.conf文件中,可以修改配置
+
+* SECURE_LOG sshd日志文件
+    - ubuntu使用/var/log/auth.log 文件
+    - centos使用/var/log/secure文件
+* BLOCK_SERVICE 禁止的服务名，可以只限制不允许访问ssh服务，也可以选择ALL
 
 
 ``` ini
@@ -151,7 +163,23 @@ HOSTNAME_LOOKUP=NO
 DAEMON_LOG = /var/log/denyhosts
 ```
 
+
+#### /usr/bin/daemon-control
+``` bash
+# /usr/bin/daemon-control-dist
+cp  /usr/bin/daemon-control-dist /usr/bin/daemon-control
+
+#  /usr/bin/daemon-control-dist start的内容等价于执行 /usr/bin/env python /usr/local/bin/denyhosts --config /etc/denyhosts.conf --daemon
+
+# 修改/usr/bin/daemon-control
+daemon-control start
+# /usr/bin/daemon-control start等价于执行 /usr/bin/env python2 /usr/bin/denyhosts.py --config /etc/denyhosts.conf --daemon
+```
+
+/usr/bin/daemon-control文件中,可以修改守护进程的调用方法
+
 ### daemon-control-dist
+
 ``` python
 #!/usr/bin/python2
 # denyhosts     Bring up/down the DenyHosts daemon
@@ -311,6 +339,7 @@ if __name__ == '__main__':
 ```
 
 ### daemon
+
 ``` bash
 chown root daemon-control
 chmod 700 daemon-control
@@ -334,6 +363,8 @@ cat /workspace/denyhost.txt<</usr/share/denyhosts/denyhosts.cfg
 ```
 
 ### /var/log/denyhosts
+
+denyhosts日志文件
 ```
 2020-10-27 14:33:31,588 - prefs       : INFO        PLUGIN_PURGE: [None]
 2020-10-27 14:33:31,588 - prefs       : INFO        PURGE_DENY: [None]

@@ -103,8 +103,16 @@ pip install --no-index -f target_dir -r requirements.txt
 pip install package_name -t python_modules
 ```
 ### docker切换root用户登录
+
+切换root用户登录bash，该命令不会创建容器
 ``` bash
 docker exec -it --user root <container id> /bin/bash
+```
+-it 命令不能省略，非常重要。
+
+### attach
+```
+docker attach -it container_id
 ```
 ### 启动服务
 
