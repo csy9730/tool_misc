@@ -272,7 +272,7 @@ H e l l o   W o r l d
 - insert()
 - erase()
 
-**（1）push_back()**
+### **（1）push_back()**
 
 ```cpp
 void std::vector<int>::push_back(const int &__x)
@@ -303,7 +303,7 @@ int main(){
 
 以前还要为定长数组内存分配而苦恼时，现在只需要无脑push_back()就好了。
 
-**（2）pop_back()**
+### **（2）pop_back()**
 
 ```cpp
 void std::vector<int>::pop_back()
@@ -354,7 +354,7 @@ pop_back后:
 0 1 2 3
 ```
 
-**（3）size()**
+### （3）size()
 
 ```cpp
 std::size_t std::vector<int>::size()
@@ -386,7 +386,7 @@ int main(){
 5
 ```
 
-**（4）clear()**
+### （4）clear()
 
 ```cpp
 void std::vector<int>::clear()
@@ -425,7 +425,7 @@ int main(){
 size = 0
 ```
 
-**（5）insert()**
+### （5）insert()
 
 ```cpp
 insert(__position,__x);
@@ -472,7 +472,7 @@ int main(){
 0 1 -1 2 3 4
 ```
 
-**（6）erase()**
+### **（6）erase()**
 
 ```cpp
 erase(__position);

@@ -47,7 +47,7 @@ Both constructors (other than [copy](https://en.cppreference.com/w/cpp/language/
 
 Run this code
 
-```
+``` cpp
 struct A
 {
     A(int) { }      // converting constructor

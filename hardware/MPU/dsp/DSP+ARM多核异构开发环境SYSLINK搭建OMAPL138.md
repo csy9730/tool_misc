@@ -46,8 +46,7 @@ OMAPL138属于多核异构平台（DSP+ARM），多核通信是多核异构平�
 
 Qt版本使用的是Qt4,Qt5还没有实验，等着实验完Qt5会过来更新。
 
-参考我的博客：(Linux编译Qt4的环境_OMAPL138
-)[https://www.cnblogs.com/sigma0/p/8168313.html]
+参考我的博客：(Linux编译Qt4的环境_OMAPL138)[https://www.cnblogs.com/sigma0/p/8168313.html]
 
 最后我之前设定的Qt make install的路径室/opt/qt-arm-4.8.3 （后面会用到）
 
@@ -135,7 +134,9 @@ cd /opt/ti/mcsdk_1_01_00_02/`
 - 启动tftp下载内核镜像，n
 - installing linux devkit Y
 - 最后看到TI SDK SETUP COMPLETED配置已经完成。
-  ![ 在安装完之后TI路径下就该有这些东西](https://images2018.cnblogs.com/blog/810200/201806/810200-20180608100543416-1196605590.png)
+
+
+![ 在安装完之后TI路径下就该有这些东西](https://images2018.cnblogs.com/blog/810200/201806/810200-20180608100543416-1196605590.png)
 
 ### SYSLINK的配置和安装
 
@@ -144,7 +145,7 @@ cd /opt/ti/mcsdk_1_01_00_02/`
 `sudo vim products.mak`
 要改的内容在下面
 
-```shell
+```ini
 DEVICE	=	OMAPL1XX
 SDK	=	NONE
 EXEC_DIR	= /media/delvis/rootfs  // host root文件系统路径 可以在SD卡上(需要挂载)，也可以暂时存储到你电脑临时文件夹上，到时候拷贝到SD卡上

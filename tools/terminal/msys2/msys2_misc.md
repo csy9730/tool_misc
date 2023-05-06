@@ -39,6 +39,9 @@ SigLevel = Never
 ```
 就搞定了。
 
+
+以上方法还是太麻烦，建议直接重装最新版的msys2，新版本的直接内置最新版本仓库的gpg指纹。
+
 #### pacman source
 
 利用Windows资源管理器，打开D:\msys64\etc\pacman.d。在这个路径下有3个配置文件，分别为：mirrorlist.mingw32、mirrorlist.mingw64和mirrorlist.msys。
@@ -68,6 +71,10 @@ pacman -Syu
 #### git-crypt
 
 ```
+pacman -S git-crypt
+```
+
+```
 $ ldd /usr/bin/git-crypt.exe
         ntdll.dll => /c/Windows/SYSTEM32/ntdll.dll (0x7ffa8e270000)
         KERNEL32.DLL => /c/Windows/System32/KERNEL32.DLL (0x7ffa8c5f0000)
@@ -80,7 +87,21 @@ $ ldd /usr/bin/git-crypt.exe
 
 ```
 
+#### msys-crypto-3.dll
+msys-crypto-3.dll 对应 openssl，属于系统的基础依赖，老版本是1.1，2.0，20年后来更新到3.0版本。
+
+```
+pacman -Syu openssl
+```
+#### msys2-devel
 MSYS2 自带的开发环境，安装的包叫 msys2-devel
 ```
 pacman -S msys2-devel
+```
+
+
+结果安装了gcc
+```
+gcc 11.3.0-3
+cmake 3.23.2-1
 ```

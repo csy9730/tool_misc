@@ -131,3 +131,7 @@ C++11
 2 条评论
 
 分享
+
+[C++11](https://www.zhihu.com/topic/19726035)
+
+[线程安全](https://www.zhihu.com/topic/19826094)

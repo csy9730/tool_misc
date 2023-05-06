@@ -22,7 +22,7 @@ Tommesani.com Docs
 
 Intel® 64 and IA-32 Architectures Software Developer Manuals
 
-背景
+## 背景
 1. 什么是指令集
 所谓指令集，就是CPU中用来计算和控制计算机系统的一套指令的集合，而每一种新型的CPU在设计时就规定了一系列与其他硬件电路相配合的指令系统。而指令集的先进与否，也关系到CPU的性能发挥，它也是CPU性能体现的一个重要标志。
 通俗的理解，指令集就是CPU能认识的语言，指令集运行于一定的微架构之上，不同的微架构可以支持相同的指令集，比如Intel和AMD的CPU的微架构是不同的，但是同样支持X86指令集，这很容易理解，指令集只是一套指令集合，一套指令规范，具体的实现，仍然依赖于CPU的翻译和执行。指令集一般分为RISC（精简指令集 Reduced Instruction Set Computer）和CISC（复杂指令集Complex Instruction Set Computer）。Intel X86的第一个CPU定义了第一套指令集，后来一些公司发现很多指令并不常用，所以决定设计一套简洁高效的指令集，称之为RICS指令集，从而将原来的Intel X86指令集定义为CISC指令集。两者的使用场合不一样，对于复杂的系统，CISC更合适，否则，RICS更合适，且低功耗。
@@ -86,7 +86,7 @@ MMX	SSE	SSE2	AVX	AVX2
 整型	64bit		128bit	128bit	256bit
 数据结构
 由于通常没有内建的128bit和256bit数据类型，SIMD指令使用自己构建的数据类型，这些类型以union实现，这些数据类型可以称作向量，一般来说，MMX指令是__m64 类型的数据，SSE是__m128类型的数据等等。
-
+``` cpp
 typedef union __declspec(intrin_type) _CRT_ALIGN(8) __m64
 {
     unsigned __int64    m64_u64;
@@ -99,18 +99,9 @@ typedef union __declspec(intrin_type) _CRT_ALIGN(8) __m64
     unsigned __int16    m64_u16[4];
     unsigned __int32    m64_u32[2];
 } __m64;
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
+```
+
+``` cpp
 typedef union __declspec(intrin_type) _CRT_ALIGN(16) __m128 {
      float               m128_f32[4];
      unsigned __int64    m128_u64[2];
@@ -122,17 +113,9 @@ typedef union __declspec(intrin_type) _CRT_ALIGN(16) __m128 {
      unsigned __int16    m128_u16[8];
      unsigned __int32    m128_u32[4];
  } __m128;
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
+``` 
+
+``` cpp
 typedef union __declspec(intrin_type) _CRT_ALIGN(16) __m128i {
     __int8              m128i_i8[16];
     __int16             m128i_i16[8];
@@ -147,20 +130,9 @@ typedef union __declspec(intrin_type) _CRT_ALIGN(16) __m128i {
 typedef struct __declspec(intrin_type) _CRT_ALIGN(16) __m128d {
     double              m128d_f64[2];
 } __m128d;
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
+```
+
+
 数据类型	描述
 __m128	包含4个float类型数字的向量
 __m128d	包含2个double类型数字的向量
@@ -222,11 +194,8 @@ __declspec(align(16)) float input[4] = {1.0, 2.0, 3.0, 4.0};
 
 ```C
 _MM_ALIGN16 float input[4] = {1.0, 2.0, 3.0, 4.0};
-1
-2
-3
-4
-5
+```
+
 动态数组（dynamic array）可由_aligned_malloc函数为其分配空间：
 
  input = (float*) _aligned_malloc(ARRAY_SIZE * sizeof(float), 16);
@@ -246,20 +215,17 @@ Packed指令是一次对XMM寄存器中的四个数（即DATA0 ~ DATA3）均进�
 
 定址方式
 SIMD指令和一般的x86 指令很类似，基本上包括两种定址方式：寄存器-寄存器方式(reg-reg)和寄存器-内存方式(reg-mem)：
-
+```
 addps xmm0, xmm1 ; reg-reg
 addps xmm0, [ebx] ; reg-mem
-1
-2
+```
 大小端
 
 
-
+```
 float input[4] = { 1.0f, 2.0f, 3.0f, 4.0f };
 __m128 a = _mm_load_ps(input);
-1
-2
-3
+```
 由于x86的little-endian特性，位址较低的byte会放在寄存器的右边。也就是说，在载入到XMM寄存器后，寄存器中的DATA0会是1.0，而DATA1是2.0，DATA2是3.0，DATA3是4.0。如果需要以相反的顺序载入的话，可以用_mm_loadr_ps 这个intrinsic。
 
 
@@ -294,6 +260,8 @@ nmmintrin.h	__SSE4_2__	-msse4.2
 xmmintrin.h	__SSE__	-msse
 mmintrin.h	__MMX__	-mmmx
 头文件设置
+
+``` cpp
 #include <mmintrin.h> //MMX
 #include <xmmintrin.h> //SSE(include mmintrin.h)
 #include <emmintrin.h> //SSE2(include xmmintrin.h)
@@ -304,16 +272,8 @@ mmintrin.h	__MMX__	-mmmx
 #include <wmmintrin.h>//AES(include nmmintrin.h)
 #include <immintrin.h>//AVX(include wmmintrin.h)
 #include <intrin.h>//(include immintrin.h)
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
+``` 
+
 上述头文件中，下一个头文件包含上一个头文件中内容，例如xmmintrin.h为SSE 头文件，此头文件里包含MMX头文件，emmintrin.h为SSE2头文件，此头文件里包含SSE头文件。
 
 VC引入<intrin.h>会自动引入当前编译器所支持的所有Intrinsic头文件。GCC引入<x86intrin.h>.

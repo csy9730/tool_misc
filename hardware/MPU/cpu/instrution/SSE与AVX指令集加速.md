@@ -62,74 +62,74 @@ SSE架构
 
    1. 相加的简例
 
+
+
+```c
+/* 对于变量v1与v2各有x、y、z、w四个属性，vec_res的结果便是v1、v2对应的属性相加 */
+
+// 标量版本
+vec_res.x = v1.x + v2.x;
+vec_res.y = v1.y + v2.y;
+vec_res.z = v1.z + v2.z;
+vec_res.w = v1.w + v2.w;
+
+// VALU版本
+movaps xmm0, [v1];                    // 将要移动v1变量到xmm0寄存器中
+xmm0 = v1.w | v1.z | v1.y | v1.x ;    // 将4个值加载到寄存器中
+addps xmm0, [v2];                     // 将要对xmm0和v2变量进行相加
+xmm0 = v1.w + v2.w | v1.z + v2.z | v1.y + v2.y | v1.x + v2.x ;  // 相加
+movaps [vec_res], xmm0;               // 将寄存器的值赋给vec_res
+```
+
+2. C++矢量相乘简例
+
+**注意**：在编译时必须使用`g++`编译器，同时，SSE指令集有`SSE`、`SSE2`、`SSE3`、`SSE4`几种，越新的版本功能就越多，可以通过在使用`g++`编译链接时，加上`-msse4`使用`SSE4`指令集，其他以此类推。
+
       
 
-      ```c
-      /* 对于变量v1与v2各有x、y、z、w四个属性，vec_res的结果便是v1、v2对应的属性相加 */
-      
-      // 标量版本
-      vec_res.x = v1.x + v2.x;
-      vec_res.y = v1.y + v2.y;
-      vec_res.z = v1.z + v2.z;
-      vec_res.w = v1.w + v2.w;
-      
-      // VALU版本
-      movaps xmm0, [v1];                    // 将要移动v1变量到xmm0寄存器中
-      xmm0 = v1.w | v1.z | v1.y | v1.x ;    // 将4个值加载到寄存器中
-      addps xmm0, [v2];                     // 将要对xmm0和v2变量进行相加
-      xmm0 = v1.w + v2.w | v1.z + v2.z | v1.y + v2.y | v1.x + v2.x ;  // 相加
-      movaps [vec_res], xmm0;               // 将寄存器的值赋给vec_res
-      ```
+```c
+/* 使用SSE指令进行矢量相乘加速 */
 
-   2. C++矢量相乘简例
+#include<iostream>
+// 使用SSE指令集需要的头文件
+#include<xmmintrin.h>
+using namespace std;
 
-      **注意**：在编译时必须使用`g++`编译器，同时，SSE指令集有`SSE`、`SSE2`、`SSE3`、`SSE4`几种，越新的版本功能就越多，可以通过在使用`g++`编译链接时，加上`-msse4`使用`SSE4`指令集，其他以此类推。
+int main()
+{
+      // VALU加速版本: 0m0.004s
+      __m128 a, b;
 
-      
+      a = _mm_set_ps(1, 2, 3, 4);
+      b = _mm_set_ps(1, 2, 3, 4);
 
-      ```c
-      /* 使用SSE指令进行矢量相乘加速 */
+      __m128 c = _mm_add_ps(a, b);
       
-      #include<iostream>
-      // 使用SSE指令集需要的头文件
-      #include<xmmintrin.h>
-      using namespace std;
-      
-      int main()
+      for(int i=0; i<4; i++)
       {
-          // VALU加速版本: 0m0.004s
-          __m128 a, b;
-      
-          a = _mm_set_ps(1, 2, 3, 4);
-          b = _mm_set_ps(1, 2, 3, 4);
-      
-          __m128 c = _mm_add_ps(a, b);
-          
-          for(int i=0; i<4; i++)
-          {
-              cout << a[i] << endl;
-          }
-          
-          return 0;
+         cout << a[i] << endl;
       }
-      ```
+      
+      return 0;
+}
+```
 
 #### 3. 扩展后的AVX指令集
 
 1. **新增特性**
 
-   - 将 128 位 SIMD 寄存器扩展至 256 位。
-   - 添加了 3 操作数非破坏性运算。之前在 A = A + B 类运算中执行的是 2 操作数指令，它将覆盖源操作数，而**新的操作数可以执行 A = B + C 类运算，且保持原始源操作数不变**。
+- 将 128 位 SIMD 寄存器扩展至 256 位。
+- 添加了 3 操作数非破坏性运算。之前在 A = A + B 类运算中执行的是 2 操作数指令，它将覆盖源操作数，而**新的操作数可以执行 A = B + C 类运算，且保持原始源操作数不变**。
 
-   **需要启用AVX指令时，编译必须加上 `-mvax`，否则会报错。头文件中包含的所有函数在 [此处](https://links.jianshu.com/go?to=https%3A%2F%2Fblog.csdn.net%2Ffuxiaoxiaoyue%2Farticle%2Fdetails%2F83153667) 可以查看。**
+**需要启用AVX指令时，编译必须加上 `-mvax`，否则会报错。头文件中包含的所有函数在 [此处](https://links.jianshu.com/go?to=https%3A%2F%2Fblog.csdn.net%2Ffuxiaoxiaoyue%2Farticle%2Fdetails%2F83153667) 可以查看。**
 
 1. 编译语句：
 
    
 
-   ```shell
-   g++ -mavx filename.cpp
-   ```
+```shell
+g++ -mavx filename.cpp
+```
 
 1. YMM寄存区
 
@@ -151,35 +151,35 @@ YMM寄存器
 
    
 
-   ```c
-   #include<iostream>
-   #include<immintrin.h>   // avx
-   using namespace std;
-   
-   int main()
-   {
-       __m256 a, b;
-       
-       /*
-       Note:
-       随着位数的变化，寄存器可以存放的同一类型数据的个数也发生了翻倍，
-       在128位的SSE中，_mm_set_ps()可以计算4个float型数据，而到了
-       256位的AVX中，_mm256_set_ps()可以计算8个float型数据。
-       */
-       
-       a =  _mm256_set_ps(1, 2, 3, 4, 5, 6, 7, 8);
-       b =  _mm256_set_ps(1, 2, 3, 4, 5, 6, 7, 8);
-   
-       __m256 c = _mm256_add_ps(a, b);
-   
-       for(int i=0; i<8; i++)
-       {
-           cout << c[i] << endl;
-       }
-   
-       return 0;
-   }
-   ```
+```c
+#include<iostream>
+#include<immintrin.h>   // avx
+using namespace std;
+
+int main()
+{
+      __m256 a, b;
+      
+      /*
+      Note:
+      随着位数的变化，寄存器可以存放的同一类型数据的个数也发生了翻倍，
+      在128位的SSE中，_mm_set_ps()可以计算4个float型数据，而到了
+      256位的AVX中，_mm256_set_ps()可以计算8个float型数据。
+      */
+      
+      a =  _mm256_set_ps(1, 2, 3, 4, 5, 6, 7, 8);
+      b =  _mm256_set_ps(1, 2, 3, 4, 5, 6, 7, 8);
+
+      __m256 c = _mm256_add_ps(a, b);
+
+      for(int i=0; i<8; i++)
+      {
+         cout << c[i] << endl;
+      }
+
+      return 0;
+}
+```
 
 
 

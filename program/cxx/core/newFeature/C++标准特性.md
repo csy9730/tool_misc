@@ -29,19 +29,39 @@
 ### C++11
 C++11包括大量的新特性：包括lambda表达式，类型推导关键字auto、decltype，和模板的大量改进。
 
+#### auto
 auto的自动类型推导，用于从初始化表达式中推断出变量的数据类型。通过**auto的自动类型推导**
-
+#### decltype
 **decltype实际上有点像auto的反函数，auto可以让你声明一个变量，而decltype则可以从一个变量或表达式中得到类型**
 
-**序列for循环**
+#### 序列for循环
 
-**Lambda表达式**
+#### Lambda表达式
 lambda表达式类似Javascript中的闭包，它可以用于创建并定义匿名的函数对象，
+#### std::function
+#### std::bind
+#### 右值引用
 
-右值引用
+#### move constructors
+move constructors and move assignment operators
+#### 初始化表达式
 
+#### Parameter list
+变长参数
 
+#### std::array
+
+#### nullptr
+
+#### final and override
 显式 override 和 final,编译器不会为标记了final的函数生成虚表.
+
+#### thread-local storage
+#### Unicode string literals
+
+#### static_assert
+
+#### noexcept 
 
 ### C++14
 C++14，C++17的新特性较少，都是一些不痛不痒的特性

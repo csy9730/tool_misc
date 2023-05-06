@@ -125,7 +125,7 @@ List 由双向链表（doubly linked list）实现而成，元素也存放在堆
 > 缺点：不支持随机访问。
 > 适用场景：适用于经常进行插入和删除操作并且不经常随机访问的场景。
 
-**5) forward_list**
+### **5) forward_list**
 
 `std::forward_list` 是一个列表容器，使用方法和 `std::list` 基本类似。
 
@@ -235,20 +235,20 @@ std::cout << std::get<3>(t) << std::endl;
 
 除了以上基本容器类别，为满足特殊需求，STL还提供了一些特别的（并且预先定义好的）容器配接器，根据基本容器类别实现而成。包括：
 
-**1) stack**
+### **1) stack**
 
 stack 容器对元素采取 LIFO（后进先出）的管理策略。
 
-**2) queue**
+### **2) queue**
 
 queue 容器对元素采取 FIFO（先进先出）的管理策略。也就是说，它是个普通的缓冲区（buffer）。
 
-**3) priority_queue**
+### **3) priority_queue**
 
 priority_queue 容器中的元素可以拥有不同的优先权。所谓优先权，乃是基于程序员提供的排序准则（缺省使用 operators）而定义。Priority queue 的效果相当于这样一个 buffer：“下一元素永远是queue中优先级最高的元素”。如果同时有多个元素具备最髙优先权，则其次序无明确定义。
 
 ## 6. 算法
-
+### 简单查找算法
 1) 简单查找算法，要求输入迭代器（input iterator）
 
 ```cpp
@@ -275,6 +275,15 @@ any_of(beg, end, unaryPred);
 none_of(beg, end, unaryPred);
 ```
 
+
+按如下方式使用 find_if() 来查找 numbers 中第一个大于 value 的元素
+``` cpp
+int value {5};
+auto iter1 = std::find_if(std::begin(numbers), std::end(numbers),[value](int n) { return n > value; });
+if(iter1 != std::end(numbers))
+    std::cout << *iter1 << " was found greater than " << value << ".\n";
+```
+### 查找重复值的算法
 2) 查找重复值的算法，传入向前迭代器（forward iterator）
 
 ```cpp
@@ -291,6 +300,29 @@ search_n(beg, end, count, val);
 search_n(beg, end, count, val, binaryPred);
 ```
 
+adjacent_find() 函数用于在指定范围内查找 2 个连续相等的元素. 对于 {5,20,5,30,30,20,10,10,20 }数组，第一次会发现30，第二次会发现10
+
+
+find_end() 函数定义在<algorithm>头文件中，常用于在序列 A 中查找序列 B 最后一次出现的位置。例如，有如下 2 个序列：
+序列 A：1,2,3,4,5,1,2,3,4,5
+序列 B：1,2,3
+
+通过观察不难发现，序列 B 在序列 A 中出现了 2 次，而借助 find_end() 函数，可以轻松的得到序列 A 中最后一个（也就是第 2 个） {1,2,3}。
+
+search() 函数定义在<algorithm>头文件中，其功能恰好和 find_end() 函数相反，用于在序列 A 中查找序列 B 第一次出现的位置。
+
+例如，仍以如下两个序列为例：
+序列 A：1,2,3,4,5,1,2,3,4,5
+序列 B：1,2,3
+
+可以看到，序列 B 在序列 A 中出现了 2 次。借助 find_end() 函数，我们可以找到序列 A 中最后一个（也就是第 2 个）{1,2,3}；而借助 search() 函数，我们可以找到序列 A 中第 1 个 {1,2,3}。
+
+
+在某些情境中，我们可能需要在 A 序列中查找和 B 序列中任意元素相匹配的第一个元素，这时就可以使用 find_first_of() 函数。
+
+双循环搜索。虽然是双循环搜索，但是并不会返回双指针，只会返回A序列的指针，不返回B序列的指针。
+
+### 二分搜索算法
 3) 二分搜索算法，传入前向迭代器或随机访问迭代器（random-access iterator），要求序列中的元素已经是有序的
 
 ```cpp
@@ -313,6 +345,10 @@ equal_range(beg, end, val);
 binary_search(beg, end, val); 
 ```
 
+equal_range 可以搜索有序序列中指定值，返回首个指针和尾部指针。对于序列{1,2,3,4,4,4,5,6,7}，查询4，返回左指针3和右指针6
+
+
+### 排序算法
 4) 排序算法，要求随机访问迭代器（random-access iterator）
 
 ```cpp

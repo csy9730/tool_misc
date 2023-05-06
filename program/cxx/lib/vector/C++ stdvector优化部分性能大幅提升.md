@@ -40,7 +40,7 @@ erase（） / insert（） 等函数内部实现有很多处需要移动T&&对�
 
 下面是测试代码：
 
-```text
+```cpp
 #include <iostream>
 #include  <vector>
 
@@ -224,8 +224,9 @@ int main()
     test3();
     return 0;
 }
+```
 
- 
+```
 guo@guo-desktop2:/mnt/guo/cpp/test_vector/bin/Release$ ./test_vector
 n=10000000
 haisql::vector<unsigned int>  push_back() use_microseconds=34025
@@ -258,7 +259,7 @@ guo@guo-desktop2:/mnt/guo/cpp/test_vector/bin/Release$
 
 并且对于标准库的对象, static bool 默认的判断代码就可以满足要求;
 
-```text
+```cpp
     {
         std::list<unsigned int>  list1;
         const size_t *ptr_size_t_tmp = reinterpret_cast<size_t*>( &list1 );
@@ -280,8 +281,9 @@ guo@guo-desktop2:/mnt/guo/cpp/test_vector/bin/Release$
         }
         std::cout << std::endl;
     }
+```
 
-
+```
 list1  ptr_size_t_tmp[0]=140723878045216, this=140723878045216
 list1  ptr_size_t_tmp[1]=140723878045216, this=140723878045216
 list1  ptr_size_t_tmp[2]=0, this=140723878045216
@@ -295,11 +297,11 @@ string1  ptr_size_t_tmp[3]=4208509, this=140723878045248
 
 
 对于非std标准的一些用户库, 如果一定要设计成无法在空对象中识别的T对象, 确实也是有这种可能性的, 一种办法是使用模板特化定义, 直接定义类型 USER_CLASS1 的特化版本, 也可以关闭掉优化, 来适应各种情况
-
+```
 template<>
 
 bool vector<USER_CLASS1>::d_bool_use_memmove = false;
-
+```
 编辑于 2019-06-30 16:40
 
 C++

@@ -5,16 +5,43 @@
 ## install
 
 安装git-crypt  
-
+### windows
 下载地址：[https://github.com/oholovko/git-crypt-windows/releases](https://github.com/oholovko/git-crypt-windows/releases)
 
 将git-crypt.exe copy到Git的安装名录：XXX\Git\cmd
+### msys
 
+```
+pacman -S openssl git-crypt git
+```
+### linux & mac
 mac 和 linux 上安装 git-crypt 都比较简单 `apt install git-crypt`
 
 ## usage
 
+git-crypt 设计密码，使用有严格的顺序
+
 使用方法：
+
+0. 准备git仓库
+1. 密钥准备
+   1. 生成密钥 `git init`
+   2. 导出密钥 `git-crypt export-key my-crypt-key`
+1. 执行加密
+   1. 配置加密文件过滤器：`.gitattributes`
+   2. 添加加密文件 `git add `
+   3. 提交变更并推送仓库
+2. 加密状态查看仓库文件
+   1. 克隆仓库
+   2. 查看文件，确认是加密状态
+3. 解密仓库
+   1. 克隆仓库
+   2. 获取密钥并解密文件 `git-crypt unlock my-crypt-key`
+4. 基于gpg的加解密
+   1. 对方从gpg导出公钥 `gpg --export -o pubfile  you<you@email.com>`
+   2. 导入对方的公钥文件, `git-crypt add-gpg-user --trusted you<you@email.com>`
+   3. 导出公钥加密的密钥，由于是非对称加密状态，可以直接放到仓库中
+   4. 对方解密操作 `git-crypt unlock`
 
 ### demo
 使用git-crypt加密敏感内容

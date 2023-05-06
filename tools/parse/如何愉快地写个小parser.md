@@ -12,7 +12,7 @@
 
 1,947 人赞同了该文章
 
-（一）
+## （一）
 
 在前几日的文章『软件随想录』里，我随性写了一句：「现在似乎已经不是lex/yacc 或 bison/flex的时代了。我亲眼看见一个同事在费力地用perl一行行解析某个系统的数据文件，却压根没想到写个BNF。BNF对他来说，不是一种选择。」
 
@@ -64,7 +64,7 @@ bison使用的描述规则的语法是BNF的变体。
 
 从上面的编译过程里，你可以看到，flex/bison是一个C语言的DSL。因此，你可以在处理词法和语法的过程中嵌入C代码，处理（transform）你需要的结果。DSL和宿主语言之间必然要有一些约定俗成的接口，这也是 yytext，yyparser，yyterminate，yylex 等等变量和方法存在的原因。它们看起来很奇怪，但如果你以一颗看待DSL的心去看待它们，变不那么别扭了。
 
-（二）
+## （二）
 
 可惜，如今大部分文艺青年都已经不用C了 —— 虽说很多语言都提供了对C的FFI(Foreign Function Interface)，比如Python，你可以用flex/bison生成一个parser，然后用FFI包装。然而，这毕竟很麻烦，如果我能用我喜爱的语言做parser，该多方便？
 
@@ -147,7 +147,7 @@ instaparse的强大之处不仅仅在于简单的语法，还在于你可以使�
 
 这便是parsec所谓的 "A monadic parser combinator" 的意思。至于monad嘛…monad我们放下不表，以后的文章再讲。
 
-（三）
+## （三）
 
 这篇文章并未告诉你LALR(1)，LL(1)，LL(*)等概念，没有具体解释lexical parser，grammar parser的详细步骤，虽然举了一些BNF（及其变体）的例子，也没有触及如何撰写BNF。这些内容很重要，但在你写一个parser之前，都是不打紧的内容。你需要知道的是，除了regular expression，你还有其他的工具处理更为复杂的带格式的文本。你应该了解了parser可能的一些应用场景，你也看到了一些主要的工具是怎么使用的，有什么优缺点。
 
