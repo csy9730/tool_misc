@@ -228,7 +228,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 ## 原理
 Cron 是 *nix 系统中常见的有一个 daemon，用于定时执行任务。cron 的实现非常简单，以最常用的 vixie cron 为例，大概分为三步：
 
-    每分钟读取 crontab 配置计算需要执行的任务执行任务，主进程执行或者开启一个 worker 进程执行
+每分钟读取 crontab 配置计算需要执行的任务执行任务，主进程执行或者开启一个 worker 进程执行
 
 Cron 的实现每次都是重新加载 crontab，哪怕计算出来下次可执行时间是 30 分钟之后，也不会说 sleep(30)，这样做是为了能够在每次 crontab 变更的时候及时更新。
 

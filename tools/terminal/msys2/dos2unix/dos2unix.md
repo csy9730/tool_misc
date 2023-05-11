@@ -14,7 +14,12 @@ unix2dos可以把转换unix文本格式转换成dos文本格式，即把行尾�
 |LF (NL line feed, new line)|10,0x0A|换行键 对应转义字符\n, linux系统下默认使用这个换行|
 |CRLF Carriage Return & Linefeed|13 10, 0x0D0A|表示回车并换行, 对应转义字符\r\n, windows系统下默认使用这个换行|
 
+## install
 
+```
+apt install dox2unix
+
+```
 ## help
 ```
 $ dos2unix --help
