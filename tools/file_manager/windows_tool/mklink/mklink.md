@@ -23,6 +23,8 @@ MKLINK [[/D] | [/H] | [/J]] Link Target
 ``` batch
 rem 为旧目录D:\sourceDir 创建新目录（符号链接）C:\destDir
 mklink /d "C:\destDir" "D:\sourceDir"
+
+mklink /d C:\Users\foo\Project  H:\project
 ```
 
 #### demo2

@@ -42,6 +42,13 @@ ADB Server是运行在主机上的一个后台进程。它的作用在于检测U
 ## quickstart
 
 ``` bash
+adb devices
+```
+
+
+## connect
+
+``` bash
 adb start-server
 adb kill-server # 停止 adb server
 adb devices # 查询已连接设备/模拟器
@@ -58,7 +65,6 @@ List of devices attached 设备/模拟器未连接到 adb 或无响应
 adb root , adb remount, 只针对类似小米开发版的手机有用，可以直接已这两个命令获取管理员(root)权限，并挂载系统文件系统为可读写状态
 
 
-## connect
 
 ### USB 连接
 
@@ -80,6 +86,56 @@ adb root , adb remount, 只针对类似小米开发版的手机有用，可以�
 `adb forward `将 宿主机上的某个端口重定向到设备的某个端口
 `adb forward tcp:1314 tcp :8888`
 执行该命令后所有发往宿主机 1314 端口的消息、数据都会转发到 Android 设备的 8888 端口上，因此可以通过远程的方式控制 Android 设备。
+
+
+## file transfer
+
+### push pull
+
+
+``` bash
+file transfer:
+ push [--sync] LOCAL... REMOTE
+     copy local files/directories to device
+     --sync: only push files that are newer on the host than the device
+ pull [-a] REMOTE... LOCAL
+     copy files/dirs from device
+     -a: preserve file timestamp and mode
+ sync [all|data|odm|oem|product_services|product|system|vendor]
+     sync a local build from $ANDROID_PRODUCT_OUT to the device (default all)
+     -l: list but don't copy
+
+```
+
+## boot
+### reboot
+``` bash
+adb reboot # 重启设备，或手动重启。
+
+adb reboot recovery
+```
+
+#### Recovery模式
+
+Recovery模式选项：
+
+reboot system now
+apply update from ADB
+wipe data/factory reset
+wipe cache partition
+
+选择 wipe data/factory reset可以清楚用户数据，并且恢复出厂设置。
+
+选择 reboot system now重启机器。
+
+
+
+``` bash
+adb root
+adb remount # （重新挂载系统分区，使系统分区重新可写）。
+adb shell
+rm -r /data/ # 用户数据都在这里面，能删的都删掉，不同平台有不同。
+```
 
 
 ### install
@@ -115,9 +171,49 @@ adb shell pm clear com.taobao.taobao # 表示清除 手机淘宝数据和缓存�
 
 ```
 
+
+
+## debugging
+### logcat
+打印日志：
+Android 的日志分为如下几个优先级（priority）：
+V —— Verbose（最低，输出得最多）
+D —— Debug I —— Info
+W —— Warning
+E —— Error
+F—— Fatal
+S —— Silent（最高，啥也不输出）
+按某级别过滤日志则会将该级别及以上的日志输出。
+比如，命令：adb logcat *:W 会将 Warning、Error、Fatal 和 Silent 日志输出。
+（注： 在 macOS 下需要给 :W 这样以 作为 tag 的参数加双引号，如 adb logcat “:W”，不然会报错 no matches found: :W。）
+
+```
+adb logcat	打印当前设备上所有日志
+adb logcat *:W	过滤打印严重级别W及以上的日志
+adb logcat l findstr ***> F:\log.txt	把仅含***的日志保存到F盘的log.txt文件中
+adb logcat -c	清除屏幕上的日志记录
+adb logcat -c && adb logcat -s ActivityManager l grep "Displayed”	客户端程序启动时间获取日志
+adb logcat > F:\log.txt	打印当前设备上所有日志保存到F盘的log.txt文件中
+adb logcat l findstr ***	打印过滤仅含***的日志
+adb logcat l findstr ***> F:\log.txt	把仅含***的日志保存到F盘的log.txt文件中
+```
+
+按 tag 和级别过滤日志：命令：`adb logcat ActivityManager:I MyApp:D *:S`
+表示输出 tag ActivityManager 的 Info 以上级别日志，输出 tag MyApp 的 Debug 以上级别日志，及其它 tag 的 Silent 级别日志（即屏蔽其它 tag 日志）。
+日志格式可以用：`adb logcat -v `选项指定日志输出格式。
+日志支持按以下几种 ：默认格式brief、process、tag、raw、time、long
+指定格式可与上面的过滤同时使用。比如：`adb logcat -v long ActivityManager:I *:S`
+
+清空日志：`adb logcat -c`
+
+内核日志：`adb shell dmesg`
+
+
 ## shell
+
 Android 提供了大多数常见的 Unix 命令行工具。如需查看可用工具的列表，请使用以下命令：
 `adb shell ls /system/bin`
+
 许多 shell 命令由 toybox/busybox 提供
 
 ### am
@@ -199,7 +295,8 @@ adb shell am start -a android.intent.action.CALL tel:10086
 1. `adb shell am start -a android.intent.action.SENDTO -d sms:10086 --es sms_body  hello`  打开了短信应用程序，当前焦点在文本框
 2. `adb shell input keyevent 22`  焦点去到发送按键
 3. `adb shell input keyevent 66`  回车，就是按下发送键
-4. 
+
+
 #### uiautomator
 uiautomator
 执行 UI automation tests ， 获取当前界面的控件信息
@@ -292,7 +389,7 @@ adb shell cat /proc/meminfo # 查看内存信息命令
 设备的更多硬件与系统属性可以通过如下命令查看：
 
 `adb shell cat /system/build.prop`
-单独查看某一硬件或系统属性：adb shell getprop <属性名>
+单独查看某一硬件或系统属性：`adb shell getprop <属性名>`
 
 | 属性名                      | 含义                   |
 | --------------------------- | ---------------------- |
@@ -307,23 +404,31 @@ adb shell cat /proc/meminfo # 查看内存信息命令
 | ro.sf.lcd_density           | 屏幕密度               |
 |   rro.build.version.security_patch	|Android 安全补丁程序级别|
 
-### setting
+### wm
 
 修改设置之后，运行恢复命令有可能显示仍然不太正常，可以运行 `adb reboot` 重启设备，或手动重启。
 修改设置的原理主要是通过 settings 命令修改 /data/data/com.android.providers.settings/databases/settings.db 里存放的设置值。
 修改分辨率命令：`adb shell wm size 480x1024` 恢复原分辨率命令：adb shell wm size reset
 修改屏幕密度命令：`adb shell wm density 160` 表示将屏幕密度修改为 160dpi；恢复原屏幕密度命令：adb shell wm density reset
-修改显示区域命令：`adb shell wm overscan 0,0,0,200` 四个数字分别表示距离左、上、右、下边缘的留白像素，以上命令表示将屏幕底部 200px 留白。恢复原显示区域命令：adb shell wm overscan reset
+修改显示区域命令：`adb shell wm overscan 0,0,0,200` 四个数字分别表示距离左、上、右、下边缘的留白像素，以上命令表示将屏幕底部 200px 留白。恢复原显示区域命令：`adb shell wm overscan reset`
+
+
+### setting
 关闭 USB 调试模式命令：`adb shell settings put global adb_enabled 0` 需要手动恢复：「设置」-「开发者选项」-「Android 调试」
 
 **恢复正常模式**：`adb shell settings put global policy_control null`
 
 设置熄屏时间为30分钟`adb shell settings put system screen_off_timeout 180000`;
 
-##  output
 
-实用功能：
-截图保存到电脑：adb exec-out screencap -p > sc.png
+
+
+
+
+## 实用功能
+
+
+截图保存到电脑：`adb exec-out screencap -p > sc.png`
 然后将 png 文件导出到电脑：`adb pull /sdcard/sc.png`
 录制屏幕：录制屏幕以 mp4 格式保存到 /sdcard：
 
@@ -334,88 +439,6 @@ adb shell cat /proc/meminfo # 查看内存信息命令
 
 挂载、查看连接过的 WiFi 密码、开启/关闭 WiFi、设置系统日期和时间都需要root权限，不做多说。
 
-
-## debugging
-
-打印日志：
-Android 的日志分为如下几个优先级（priority）：
-V —— Verbose（最低，输出得最多）
-D —— Debug I —— Info
-W —— Warning
-E —— Error
-F—— Fatal
-S —— Silent（最高，啥也不输出）
-按某级别过滤日志则会将该级别及以上的日志输出。
-比如，命令：adb logcat *:W 会将 Warning、Error、Fatal 和 Silent 日志输出。
-（注： 在 macOS 下需要给 :W 这样以 作为 tag 的参数加双引号，如 adb logcat “:W”，不然会报错 no matches found: :W。）
-
-adb logcat	打印当前设备上所有日志
-adb logcat *:W	过滤打印严重级别W及以上的日志
-adb logcat l findstr ***> F:\log.txt	把仅含***的日志保存到F盘的log.txt文件中
-adb logcat -c	清除屏幕上的日志记录
-adb logcat -c && adb logcat -s ActivityManager l grep "Displayed”	客户端程序启动时间获取日志
-adb logcat > F:\log.txt	打印当前设备上所有日志保存到F盘的log.txt文件中
-adb logcat l findstr ***	打印过滤仅含***的日志
-adb logcat l findstr ***> F:\log.txt	把仅含***的日志保存到F盘的log.txt文件中
-
-按 tag 和级别过滤日志：命令：adb logcat ActivityManager:I MyApp:D *:S
-表示输出 tag ActivityManager 的 Info 以上级别日志，输出 tag MyApp 的 Debug 以上级别日志，及其它 tag 的 Silent 级别日志（即屏蔽其它 tag 日志）。
-日志格式可以用：adb logcat -v 选项指定日志输出格式。
-日志支持按以下几种 ：默认格式brief、process、tag、raw、time、long
-指定格式可与上面的过滤同时使用。比如：adb logcat -v long ActivityManager:I *:S
-清空日志：adb logcat -c
-内核日志：adb shell dmesg
-
-## file transfer
-
-
-
-``` bash
-file transfer:
- push [--sync] LOCAL... REMOTE
-     copy local files/directories to device
-     --sync: only push files that are newer on the host than the device
- pull [-a] REMOTE... LOCAL
-     copy files/dirs from device
-     -a: preserve file timestamp and mode
- sync [all|data|odm|oem|product_services|product|system|vendor]
-     sync a local build from $ANDROID_PRODUCT_OUT to the device (default all)
-     -l: list but don't copy
-
-```
-
-## boot
-
-adb reboot # 重启设备，或手动重启。
-
-adb reboot recovery
-
-#### Recovery模式
-
-Recovery模式选项：
-
-reboot system now
-apply update from ADB
-wipe data/factory reset
-wipe cache partition
-
-选择 wipe data/factory reset可以清楚用户数据，并且恢复出厂设置。
-
-选择 reboot system now重启机器。
-
-
-
-``` bash
-adb root
-adb remount # （重新挂载系统分区，使系统分区重新可写）。
-adb shell
-rm -r /data/ # 用户数据都在这里面，能删的都删掉，不同平台有不同。
-```
-
-
-
-
 ## misc
 
 schemas
-

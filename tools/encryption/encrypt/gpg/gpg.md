@@ -22,6 +22,7 @@ apt install gnupg
 - uid 即 user id
 - keyserver
 - 指纹： 是公钥的后N位。
+- 私钥key id： 私钥指纹的后16位hex字符
 - 签名
 - 失效日期
 - 吊销证书 revocation certificate
@@ -64,14 +65,15 @@ GPG 不允许用户生成子密钥的吊销证书，而是把变更都放在唯�
     - 生成公钥密钥对 `gpg --generate-key` / `gpg --full-generate-key`/`--full-gen-key`
     - 生成吊销证书 --gen-revoke `--generate-revocation`
     - 列出密钥 
-        - 列出密钥 `--list-keys`, `--list-secret-keys` 
-        - `--list-signatures`, 列出认证源？
-        - `--fingerprint`
+        - 列出密钥 `-k`, `--list-keys`, `--list-secret-keys`  列出所有账户的主公钥签名
+        - `gpg --list-signatures`, 列出所有账户的主公钥签名？
+        - `gpg --fingerprint`
+        - `gpg --edit-keys <user-id>` 列出账户的子密钥签名
     - 导出  
-        - `--export` 
-        - `--export-secret-keys` 
-        - `--export-secret-subkeys` 
-        - `gpg --export-ssh-keys`
+        - `gpg --export`  导出公钥
+        - `gpg --export-secret-keys`  导出私钥
+        - `gpg --export-secret-subkeys`  导出子私钥
+        - `gpg --export-ssh-key <user-id>`
     - 导入 `--import`
     - 子钥管理
     - 密钥修改
@@ -123,15 +125,18 @@ gpg --list-sig User1
 `gpg --export -a  --sub`
 
 
---export-key，导出公钥（主公钥 --- pub，全部子公钥 --- sub）；
+--export-key，导出公钥；
 
---export-secret-keys，导出私钥（主私钥 --- sec，全部子私钥 --- ssb）；这个选项导出的东西，应该找个地方藏起来，比如加密U盘、保险箱、保险库、有军队把守必须生物识别的严密机构！
+--export-secret-keys，导出私钥， 包含主私钥和子私钥；这个选项导出的东西，应该找个地方藏起来，比如加密U盘、保险箱、保险库、有军队把守必须生物识别的严密机构！
 
 --export-secret-subkeys，使用自己的私钥的正确的做法，仅仅导出全部子私钥！当然，还是要加密（并且验证签名）传输到其他电脑上，再导入。
 
-``` bash
-gpg --export -o 1.pub -a  -- User1
+-a --armor   ascii 
 
+
+``` bash
+gpg --export -o 1.pub -a  -- User1 # 导出User1的公钥
+gpg --export -o all.pub -a # 导出全部账户的公钥
 gpg --export-ssh-key -o 2c.ssh 4E157C9F0CCE6C01
 ```
 
@@ -162,7 +167,7 @@ gpg> addkey
 导出 SSH 格式的公钥，并上传到服务器
 
 ```
-gpg --export-ssh-keys 64810DE8 > ~/.ssh/gpg_subkey.pub
+gpg --export-ssh-key 64810DE8 > ~/.ssh/gpg_subkey.pub
 
 ssh-copy-id -i ~/.ssh/gpg_subkey.pub 
 ```
