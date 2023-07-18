@@ -55,7 +55,7 @@ HTML记述的内容加入<data …/>。
 ※注意事项：intent-filter的内容【android.intent.action.MAIN】和 【android.intent.category.LAUNCHER】这2个，不能与这次追加的内容混合。
  所以，如果加入了同一个Activity，请按以下这样做，否则会导致应用图标在桌面消失等问题。
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 <intent-filter>  
@@ -70,13 +70,13 @@ HTML记述的内容加入<data …/>。
 </intent-filter> 
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 这样的话，没有问题。
 
  接下来在Activity中需要取值的地方添加以下代码，我是直接写在OnCreate函数里的：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 
@@ -98,7 +98,7 @@ if(Intent.ACTION_VIEW.equals(action)){
 
 }      
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 这样就能获取到URL传递过来的值了。
 
@@ -140,7 +140,7 @@ iOS平台格式如下：appid://openwebview/?ret=0，appid要替换成实际的�
 
 3、在工程中实现如下方法
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
@@ -152,7 +152,7 @@ iOS平台格式如下：appid://openwebview/?ret=0，appid要替换成实际的�
  }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 

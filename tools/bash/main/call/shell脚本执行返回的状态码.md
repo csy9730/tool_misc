@@ -11,7 +11,7 @@ Linux下一条命令或一个进程执行完成会返回一个一个状态码。
 
  $? 可以查看 最后一条命令的返回值 该变量可以在shell 脚本中的任何地方使用.
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 #! /bin/bash
@@ -27,7 +27,7 @@ do
 done
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 
 

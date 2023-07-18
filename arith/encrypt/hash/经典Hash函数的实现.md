@@ -35,7 +35,7 @@ Hash函数应用的主要对象是数组（比如，字符串），而其目标�
 
 所谓的加法Hash就是把输入元素一个一个的加起来构成最后的结果。标准的加法Hash的构造如下：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 1  static int additiveHash(String key, int prime)
@@ -47,7 +47,7 @@ Hash函数应用的主要对象是数组（比如，字符串），而其目标�
 7  }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 
@@ -57,7 +57,7 @@ Hash函数应用的主要对象是数组（比如，字符串），而其目标�
 
 这类型Hash函数通过利用各种位运算（常见的是移位和异或）来充分的混合输入元素。比如，标准的旋转Hash的构造如下：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 1  static int rotatingHash(String key, int prime)
@@ -69,11 +69,11 @@ Hash函数应用的主要对象是数组（比如，字符串），而其目标�
 7  }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 先移位，然后再进行各种位运算是这种类型Hash函数的主要特点。比如，以上的那段计算hash的代码还可以有如下几种变形：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 1.     hash = (hash<<5)^(hash>>27)^key.charAt(i);
@@ -93,7 +93,7 @@ Hash函数应用的主要对象是数组（比如，字符串），而其目标�
 6.     hash ^= ((hash<<5) + key.charAt(i) + (hash>>2));
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 
@@ -101,7 +101,7 @@ Hash函数应用的主要对象是数组（比如，字符串），而其目标�
 
 这种类型的Hash函数利用了乘法的不相关性（乘法的这种性质，最有名的莫过于平方取头尾的随机数生成算法，虽然这种算法效果并不好）。比如，
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 1  static int bernstein(String key)
@@ -113,7 +113,7 @@ Hash函数应用的主要对象是数组（比如，字符串），而其目标�
 7  }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 
@@ -121,7 +121,7 @@ jdk5.0里面的String类的hashCode()方法也使用乘法Hash。不过，它使
 
 使用这种方式的著名Hash函数还有：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
  1  //  32位FNV算法
@@ -137,13 +137,13 @@ jdk5.0里面的String类的hashCode()方法也使用乘法Hash。不过，它使
 11 }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 
 以及改进的FNV算法：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
  1 public static int FNVHash1(String data)
@@ -161,13 +161,13 @@ jdk5.0里面的String类的hashCode()方法也使用乘法Hash。不过，它使
 13 }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 
 除了乘以一个固定的数，常见的还有乘以一个不断改变的数，比如：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
  1 static int RSHash(String str)
@@ -185,7 +185,7 @@ jdk5.0里面的String类的hashCode()方法也使用乘法Hash。不过，它使
 13 }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 
@@ -205,7 +205,7 @@ jdk5.0里面的String类的hashCode()方法也使用乘法Hash。不过，它使
 
 **７、数组hash**
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 1 inline int hashcode(const int *v)
@@ -219,7 +219,7 @@ jdk5.0里面的String类的hashCode()方法也使用乘法Hash。不过，它使
 9 }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 

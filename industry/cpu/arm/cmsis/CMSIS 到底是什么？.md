@@ -146,7 +146,7 @@ Peripherals that provide similar functionality (Simple Timer, Complex Timer) can
 
 On each level, the tag *description* provides verbose information about the respective element. The description field plays an important part in improving the software development productivity as it gives instant access to information that otherwise would need to be looked up in the device documentation.
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 <?xml version="1.0" encoding="utf-8"?>
@@ -913,7 +913,7 @@ On each level, the tag *description* provides verbose information about the resp
 </device>
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 

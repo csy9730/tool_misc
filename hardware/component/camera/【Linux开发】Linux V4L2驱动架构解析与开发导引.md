@@ -96,7 +96,7 @@ V4L2 驱动核心
 
 V4L2 的驱动源码在drivers/media/video目录下，主要核心代码有：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ![复制代码](https://common.cnblogs.com/images/copycode.gif)
 
@@ -114,13 +114,13 @@ v4l2-mem2mem.c              //内存到内存为Linux和videobuf视频设备的�
 
 ![复制代码](https://common.cnblogs.com/images/copycode.gif)
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 V4l2相关结构体
 
  1.V4l2_device
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ![复制代码](https://common.cnblogs.com/images/copycode.gif)
 
@@ -143,7 +143,7 @@ V4l2相关结构体
 
 ![复制代码](https://common.cnblogs.com/images/copycode.gif)
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 v4l2_device注册和注销     
 
@@ -165,7 +165,7 @@ v4l2_device_unregister(struct v4l2_device *v4l2_dev);
 
 ​      在/dev目录下的设备节点使用的 struct video_device（v4l2_dev.h）创建。
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ![复制代码](https://common.cnblogs.com/images/copycode.gif)
 
@@ -205,7 +205,7 @@ struct video_device
 
 ![复制代码](https://common.cnblogs.com/images/copycode.gif)
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
    动态分配：
 
@@ -259,7 +259,7 @@ struct video_device
 
 ​          每个子设备驱动程序必须有一个v4l2_subdev结构。这个结构可以独立简单的设备或者如果需要存储更多的状态信息它可能被嵌入在一个更大的结构。由于子设备可以做很多不同的东西，你不想结束一个巨大的OPS结构其中只有少数的OPS通常执行，函数指针进行排序按类别，每个类别都有其自己的OPS结构。顶层OPS结构包含的类别OPS结构，这可能是NULL如果在subdev驱动程序不支持任何从该类别指针。
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ![复制代码](https://common.cnblogs.com/images/copycode.gif)
 
@@ -295,11 +295,11 @@ struct v4l2_subdev {
 
 ![复制代码](https://common.cnblogs.com/images/copycode.gif)
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  4.v4l2_buffer 缓冲区结构体
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ![复制代码](https://common.cnblogs.com/images/copycode.gif)
 
@@ -328,7 +328,7 @@ struct v4l2_buffer {
 
 ![复制代码](https://common.cnblogs.com/images/copycode.gif)
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
    V4L2核心API提供了一套标准方法的用于处理视频缓冲器（称为“videobuf”）。这些方法允许驱动程序以一致的方式来实现read()，mmap()和overlay()。目前使用的设备上的视频缓冲器，支持scatter/gather方法（videobuf-dma-SG），线性存取的DMA的（videobuf-DMA-contig），vmalloc分配的缓冲区，主要用于在USB驱动程序（DMA缓冲区的方法videobuf-vmalloc）。
 
@@ -342,7 +342,7 @@ Sample驱动源码分析：vivi.c 虚拟视频驱动程序
 
 ​                      ----- 此代码模拟一个真正的视频设备V4L2 API (位于drivers/media/video目录下)
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ![复制代码](https://common.cnblogs.com/images/copycode.gif)
 
@@ -454,6 +454,6 @@ Sample驱动源码分析：vivi.c 虚拟视频驱动程序
 
 ![复制代码](https://common.cnblogs.com/images/copycode.gif)
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 注* 本文撰写主要参考了linux公社的文章《Android设备驱动之——V4L2》

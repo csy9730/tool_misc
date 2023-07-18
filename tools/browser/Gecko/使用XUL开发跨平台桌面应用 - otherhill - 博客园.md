@@ -20,7 +20,7 @@
 
    1、创建XUL应用程序所需目录及文件，结构如下:
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
       -HelloXUL
@@ -34,13 +34,13 @@
                     HelloXUL.xul
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
    2、编辑application.ini
 
 ​     application.ini中包含此应用程序的基本信息，Gecko的版本信息，也是应用程序启动的入口;HelloXUL的信息如下:
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
      [App]
@@ -55,7 +55,7 @@
      [XRE]
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
    3、编辑chrome.manifest
 
@@ -69,7 +69,7 @@
 
 ​      此文件主要包括应用程序的配置信息;HelloXUL配置如下：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 pref("toolkit.defaultChromeURI", "chrome://HelloXUL/content/HelloXUL.xul");
@@ -86,13 +86,13 @@ pref("network.protocol-handler.expose.http", false);
 pref("network.protocol-handler.warn-external.http", false);
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
    5、编辑HelloXUL.xul
 
 ​     以下代码创建一个窗口，一个按钮，点击按钮弹出提示框，显示HelloXUL。
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 <?xml version="1.0"?>
@@ -104,7 +104,7 @@ pref("network.protocol-handler.warn-external.http", false);
 </window>
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
    6、运行应用程序
 

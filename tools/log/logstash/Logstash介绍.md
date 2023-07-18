@@ -93,7 +93,7 @@ bin/logstash -e 'input { stdin {} } output { stdout {} }'
 
 ### 第1步：配置filebeat.yml
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 filebeat.inputs:
@@ -105,7 +105,7 @@ output.logstash:
   hosts: ["localhost:5044"]
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ### 第2步：在logstash安装目录下新建一个文件first-pipeline.conf
 
@@ -271,7 +271,7 @@ curl -X GET 'localhost:9200/logstash-2018.08.11/_search?pretty&q=response=200'
 
 （画外音：由于输出太长了，这里截取部分）
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 {
@@ -335,7 +335,7 @@ curl -X GET 'localhost:9200/logstash-2018.08.11/_search?pretty&q=response=200'
   }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 再来一个
 
@@ -347,7 +347,7 @@ curl -XGET 'localhost:9200/logstash-2018.08.11/_search?pretty&q=geoip.city_name=
 
 响应：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 {
@@ -426,7 +426,7 @@ curl -XGET 'localhost:9200/logstash-2018.08.11/_search?pretty&q=geoip.city_name=
 。。。
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 （画外音：关于Elasticsearch可以查看另外一篇《[Elasticsearch 快速开始](https://www.cnblogs.com/cjsblog/p/9439331.html)》）
 

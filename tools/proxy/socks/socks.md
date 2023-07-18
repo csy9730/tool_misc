@@ -78,7 +78,7 @@ curl www.google.com # success
 ### wget
 curl 支持 http、https、socks4、socks5
 
-wget 支持 http、https
+wget 支持 http、https，不支持 socks4、socks5
 
 
 ```
@@ -152,5 +152,7 @@ Privoxy is an associated project of Software in the Public Interest (SPI).
 
 
 ## misc
+
 **Q**: SSH和SOCKS5有何关系？
+
 **A**: ssh 是一种加密的安全传输协议，socket5是代理协议，并没有加密。两者没有关系。

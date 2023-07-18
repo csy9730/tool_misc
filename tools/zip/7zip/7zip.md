@@ -4,6 +4,10 @@
 - 压缩 / 解压缩：7z, XZ, BZIP2, GZIP, TAR, ZIP 和 WIM
 - 仅解压缩：ARJ,CAB, CHM, CPIO, CramFS, DEB, DMG, FAT, HFS, ISO, LZH, LZMA, MBR, MSI, NSIS, NTFS, RAR, RPM, SquashFS, UDF, VHD, WIM, XAR, Z
 
+## install
+```
+sudo apt install p7zip-full
+```
 ## usage
 
 7zip 包括多个子命令，如下表所示

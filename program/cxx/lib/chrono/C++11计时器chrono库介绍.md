@@ -37,7 +37,7 @@ system_clock除了now()函数外，还提供了to_time_t()静态成员函数。�
 
 得到了time_t类型的值，在使用ctime()函数将时间转换成字符串格式，就可以很方便地打印当前时间了。
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 #include<iostream>
@@ -63,7 +63,7 @@ int main()
 }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 
@@ -123,7 +123,7 @@ duration_cast用于将duration进行转换成另一个类型的duration。
 
 duration还有一个成员函数count(),用来表示这一段时间的长度
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 #include<iostream>
@@ -145,7 +145,7 @@ int main()
 }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 

@@ -63,7 +63,7 @@ c.assign(n,num)      将n个num拷贝赋值给链表c。
 
 c.assign(beg,end)      将[beg,end)区间的元素拷贝赋值给链表c。
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
  1     int a[5] = {1,2,3,4,5};
@@ -81,7 +81,7 @@ c.assign(beg,end)      将[beg,end)区间的元素拷贝赋值给链表c。
 13     cout << endl;
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 c.front()      返回链表c的第一个元素。
 
@@ -121,7 +121,7 @@ c.max_size()      返回链表c可能容纳的最大元素数量。
 
 c.clear()      清除链表c中的所有元素。
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
  1     list<int> a1{1,2,3,4,5};
@@ -139,7 +139,7 @@ c.clear()      清除链表c中的所有元素。
 13     cout << endl;
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 c.insert(pos,num)      在pos位置插入元素num。
 
@@ -147,7 +147,7 @@ c.insert(pos,n,num)      在pos位置插入n个元素num。
 
 c.insert(pos,beg,end)      在pos位置插入区间为[beg,end)的元素。
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
  1     list<int> a1{1,2,3,4,5};
@@ -181,11 +181,11 @@ c.insert(pos,beg,end)      在pos位置插入区间为[beg,end)的元素。
 29     cout << endl;
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 c.erase(pos)　　　　删除pos位置的元素。
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
  1     list<int> a1{1,2,3,4,5};
@@ -203,7 +203,7 @@ c.erase(pos)　　　　删除pos位置的元素。
 13     cout << endl;
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 c.push_back(num)      在末尾增加一个元素。
 
@@ -213,7 +213,7 @@ c.push_front(num)      在开始位置增加一个元素。
 
 c.pop_front()      删除第一个元素。
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
  1     list<int> a1{1,2,3,4,5};
@@ -247,13 +247,13 @@ c.pop_front()      删除第一个元素。
 29     cout << endl;
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 resize(n)      从新定义链表的长度,超出原始长度部分用0代替,小于原始部分删除。
 
 resize(n,num)            从新定义链表的长度,超出原始长度部分用num代替。
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
  1     list<int> a1{1,2,3,4,5};
@@ -273,13 +273,13 @@ resize(n,num)            从新定义链表的长度,超出原始长度部分用
 15     cout << endl;
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 c1.swap(c2);      将c1和c2交换。
 
 swap(c1,c2);      同上。
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
  1     list<int> a1{1,2,3,4,5},a2,a3;
@@ -299,13 +299,13 @@ swap(c1,c2);      同上。
 15     return 0;
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 c1.merge(c2)      合并2个有序的链表并使之有序,从新放到c1里,释放c2。
 
 c1.merge(c2,comp)      合并2个有序的链表并使之按照自定义规则排序之后从新放到c1中,释放c2。
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
  1     list<int> a1{1,2,3},a2{4,5,6};
@@ -325,11 +325,11 @@ c1.merge(c2,comp)      合并2个有序的链表并使之按照自定义规则�
 15     cout << endl;
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 c1.splice(c1.beg,c2)      将c2连接在c1的beg位置,释放c2
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 1     list<int> a1{1,2,3},a2{4,5,6};
@@ -342,11 +342,11 @@ c1.splice(c1.beg,c2)      将c2连接在c1的beg位置,释放c2
 8     cout << endl;
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 c1.splice(c1.beg,c2,c2.beg)      将c2的beg位置的元素连接到c1的beg位置，并且在c2中施放掉beg位置的元素
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 1     list<int> a1{1,2,3},a2{4,5,6};
@@ -360,11 +360,11 @@ c1.splice(c1.beg,c2,c2.beg)      将c2的beg位置的元素连接到c1的beg位�
 9     return 0;
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 c1.splice(c1.beg,c2,c2.beg,c2.end)      将c2的[beg,end)位置的元素连接到c1的beg位置并且释放c2的[beg,end)位置的元素
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 1     list<int> a1{1,2,3},a2{4,5,6};
@@ -378,11 +378,11 @@ c1.splice(c1.beg,c2,c2.beg,c2.end)      将c2的[beg,end)位置的元素连接�
 9     return 0;
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 remove(num)             删除链表中匹配num的元素。
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 1     list<int> a1{1,2,3,4,5};
@@ -395,11 +395,11 @@ remove(num)             删除链表中匹配num的元素。
 8     cout << endl;
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 remove_if(comp)       删除条件满足的元素,参数为自定义的回调函数。
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 1     list<int> a1{1,2,3,4,5};
@@ -412,11 +412,11 @@ remove_if(comp)       删除条件满足的元素,参数为自定义的回调函
 8     cout << endl;
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 reverse()       反转链表
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 1     list<int> a1{1,2,3,4,5};
@@ -429,11 +429,11 @@ reverse()       反转链表
 8     cout << endl;
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 unique()       删除相邻的元素
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 1     list<int> a1{1,1,3,3,5};
@@ -447,13 +447,13 @@ unique()       删除相邻的元素
 9     return 0;
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 c.sort()       将链表排序，默认升序
 
 c.sort(comp)       自定义回调函数实现自定义排序
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
  1     list<int> a1{1,3,2,5,4};
@@ -473,7 +473,7 @@ c.sort(comp)       自定义回调函数实现自定义排序
 15     cout << endl;
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 重载运算符
 

@@ -14,7 +14,7 @@
 
  
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
      document.ready = function (callback) {
@@ -40,11 +40,11 @@
         }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 document.ready这个函数是实现了。我们再来验证一下最上面所说的“ready要比onload先执行”：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
    window.onload = function () {
@@ -58,7 +58,7 @@ document.ready这个函数是实现了。我们再来验证一下最上面所说
         });
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 执行这段代码之后，你会看到浏览器里面会先弹出“ready”,在弹出onload。
 

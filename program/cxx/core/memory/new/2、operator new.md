@@ -147,7 +147,7 @@ inline void operator delete[](void*, void*) _GLIBCXX_USE_NOEXCEPT { }
 //@}
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 可以看到实际上它就返回了传进来的地址，根据operator的第二个例子，通过重载全局的operator new之后，new函数的操作就被改变了。也就能猜出，在调用new的时候参数需要加上一个地址，placement new的功能就是在这个地址之上进行构造。
 

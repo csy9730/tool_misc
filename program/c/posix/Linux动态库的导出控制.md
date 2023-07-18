@@ -4,7 +4,7 @@
 
 和Visual C++不同，GCC编译器默认会导出所有符号。假设我们需要导出两个全局函数test和test2，以及一个C++类foo，此类有两个public成员函数a和b，声明文件so.h如下：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
  1 #ifndef __SO_H__
@@ -34,13 +34,13 @@
 25 #endif
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 
 实现文件so.cpp如下：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
  1 #include <stdio.h>
@@ -71,7 +71,7 @@
 26 }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 
@@ -83,7 +83,7 @@ $ g++ -shared -o test.so -fPIC so.cpp
 
 然后使用nm命令查看动态符号表：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 $ nm -D test.so
@@ -102,13 +102,13 @@ $ nm -D test.so
 000000000000062e T test2
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 可见，test、test2、foo::a、foo::b都被导出了（注意带有大写T的项）。
 
 接着我们再写一个客户程序main.cpp，来实现此动态库，代码如下：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
  1 #include <stdio.h>
@@ -127,7 +127,7 @@ $ nm -D test.so
 14 }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 
@@ -150,7 +150,7 @@ foo::b: 4
 
 现在，假设我们要只导出全局函数test和foo类的成员函数a，怎么办呢？有好几种方法，最方便的是使用GCC编译器特性。首先，将so.h修改如下：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
  1 #ifndef __SO_H__
@@ -182,7 +182,7 @@ foo::b: 4
 27 #endif
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 so.cpp不变。接着，使用以下命令编译test.so：
 
@@ -192,7 +192,7 @@ $ g++ -shared -o test.so -fPIC -fvisibility=hidden so.cpp
 
 其中，__attribute__ ((visibility("default")))是默认可见标签，还有一个是__attribute__ ((visibility("hidden")))。-fvisibility=hidden，意思是将动态库中的符号设置为默认不导出。这样一来，只有添加了DLL_PUBLIC，也就是__attribute__ ((visibility("default")))标签的符号才会被导出。我们可以用nm命令来检验：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 $ nm -D test.so
@@ -209,7 +209,7 @@ $ nm -D test.so
 00000000000005cc T test
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 可见，只留下了test和foo::a，其他两个符号已经看不到了。
 

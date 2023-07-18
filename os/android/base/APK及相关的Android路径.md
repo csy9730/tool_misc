@@ -257,7 +257,7 @@ Environment.getRootDirectory(); // 返回/system目录
 
 注2：Android设备一般都有内置 SD 卡，有一些设备同时也提供外置 SD 卡接口（用于插入的外置内存卡，其对应的路径形如：/storage/AFE0-2E94）
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 Environment.getExternalStorageDirectory();  //  返回/storage/emulated/0目录
@@ -273,7 +273,7 @@ Environment.getExternalStoragePublicDirectory(DIRECTORY_PODCASTS);  //  返回/s
 Environment.getExternalStoragePublicDirectory(DIRECTORY_RINGTONES);  //  返回/storage/emulated/0/Ringtones目录
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 
@@ -356,7 +356,7 @@ apk在安装的时候，会将app的依赖的第三方动态链接库拷贝到/d
 
 这些信息主要通apk的AndroidManifest.xml解析获取，解析完apk后将更新信息写入这个文件并保存，下次开机直接从里面读取相关信息添加到内存相关列表中。当有apk升级，安装或删除时会更新这个文件。
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 <package name="com.tencent.mf.test1" codePath="/data/app/com.tencent.mf.test1-S72Tv4IGEow5LtbwxPQHpQ==" nativeLibraryPath="/data/app/com.tencent.mf.test1-S72Tv4IGEow5LtbwxPQHpQ==/lib" primaryCpuAbi="arm64-v8a" publicFlags="940097094" privateFlags="0" ft="173e7953470" it="173e795b2e4" ut="173e795b2e4" version="1" userId="10815" installer="com.miui.packageinstaller">
@@ -379,7 +379,7 @@ apk在安装的时候，会将app的依赖的第三方动态链接库拷贝到/d
 </package>
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 \4. 显示icon图标
 
@@ -401,7 +401,7 @@ SIM卡即电话芯片卡，对应某个手机号，上面也能存放一些个�
 
 C:\Users\kekec\Downloads>E:\NVPACK\android-sdk-windows\build-tools\27.0.3\aapt.exe dump badging UAGame-arm64-es2_v0.1.0.7294.0_469833.apk
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 package: name='com.tencent.mf.uam' versionCode='469833' versionName='0.1.0.7294' platformBuildVersionName=''
@@ -595,7 +595,7 @@ densities: '120' '160' '213' '240' '320' '480' '640' '65535'
 native-code: 'arm64-v8a'
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 

@@ -4,7 +4,7 @@
 
 **1. js仿后台的字符串的StringFormat方法**
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 function StringFormat() {
@@ -19,13 +19,13 @@ function StringFormat() {
 }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 使用方法与后台的StringFormat方法一样，StringFormat("abc{0}def","123");输出结果为"abc123def"。
 
 **2. js实现日期格式化**
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 function Format(now,mask)
@@ -78,7 +78,7 @@ function Format(now,mask)
     };
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 使用时候直接调用方法 Format(date,"yyyy-MM-dd HH:mm");输出格式为 "2015-10-14 16:50"；第一个参数为时间，第二个参数为输出格式。
 

@@ -20,7 +20,7 @@
 
  解n后问题的回溯算法描述如下：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```c
 #include <iostream>
@@ -78,7 +78,7 @@ int main()
 }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ## 三、位运算优化
 
@@ -92,7 +92,7 @@ int main()
 
 我们先来看程序代码：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 void test(int row, int ld, int rd)  
@@ -114,7 +114,7 @@ void test(int row, int ld, int rd)
      
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 初始化：
 
@@ -180,7 +180,7 @@ row = 101010 棕色线代表纵列上不能放置皇后的占位
 
  
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```c
 #include<cstdio>
@@ -246,7 +246,7 @@ int main()
 }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 

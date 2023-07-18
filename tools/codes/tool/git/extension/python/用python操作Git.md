@@ -14,7 +14,7 @@ pip install gitpython
 使用
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 from git import Repo
@@ -59,13 +59,13 @@ r.remote().push('master')
 r.remote().pull()
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 
 #### 执行Git原生语句的方法
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 from git import Git
@@ -83,6 +83,6 @@ r.commit('-m 提交记录')
 r.checkout('master')
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  

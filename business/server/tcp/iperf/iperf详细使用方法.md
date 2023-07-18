@@ -14,7 +14,7 @@ Iperf使用方法与参数说明
 
 通用参数 
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 -f [k|m|K|M] 分别表示以Kbits, Mbits, KBytes, MBytes显示报告，默认以Mbits为单位,eg:iperf -c 222.35.11.23 -f K 
@@ -39,7 +39,7 @@ client端专用参数
 -T 指定ttl值 
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 
@@ -67,7 +67,7 @@ iperf -u -s -i1 -w4m
 
 几个命令参数： 
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 #iperf -c 10.1.1.1        //客户端命令 
@@ -85,7 +85,7 @@ iperf -u -s -i1 -w4m
 -h                              //帮助   
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 

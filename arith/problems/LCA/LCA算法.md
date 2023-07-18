@@ -190,7 +190,7 @@ Tarjan算法是基于并查集的，利用并查集优越的时空复杂度，�
 
 　　　　下面上伪代码：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ![复制代码](https://common.cnblogs.com/images/copycode.gif)
 
@@ -213,7 +213,7 @@ Tarjan算法是基于并查集的，利用并查集优越的时空复杂度，�
 
 ![复制代码](https://common.cnblogs.com/images/copycode.gif)
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 　　　　个人感觉这样还是有很多人不太理解，所以我打算模拟一遍给大家看。
 

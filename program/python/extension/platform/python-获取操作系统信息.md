@@ -1,6 +1,6 @@
 # [python-获取操作系统信息](https://www.cnblogs.com/black-mamba/p/7061352.html)
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 
 
@@ -176,7 +176,7 @@ if __name__ == '__main__':
     main()
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 

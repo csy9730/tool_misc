@@ -18,7 +18,7 @@ conda install sqlparse
 
 　　使用官网示例快速入门，使用sqlparse的三大常用功能：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```python
 # -*- coding:UTF-8 -*-
@@ -35,11 +35,11 @@ for stmt in stmts:
     print(stmt_parsed[0].tokens)
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 　　输出如下：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 SELECT id,
@@ -54,7 +54,7 @@ FROM actor;
 [<DML 'select' at 0x20A7A0F3B88>, <Whitespace ' ' at 0x20A7A0F3BE8>, <IdentifierList 'id,'18...' at 0x20A7A0FA7C8>, <Whitespace ' ' at 0x20A7A0F3E28>, <Keyword 'from' at 0x20A7A0F3E88>, <Whitespace ' ' at 0x20A7A0F3EE8>, <Identifier 'actor' at 0x20A7A0FA0C0>, <Punctuation ';' at 0x20A7A0F36A8>]
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 3.实例
 

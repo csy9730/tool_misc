@@ -25,7 +25,7 @@
 13 make install
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 对脚本的内容进行分析：
 
@@ -45,7 +45,7 @@
 
 可以看到脚本中还有一句PATH=$PATH:/usr/local/arm/arm-hik_v7a-linux-uclibcgnueabi/bin 这是对当前脚本执行的环境加上环境变量，不知道为什么在系统中添加环境变量后还是脚本运行时不能检索到编译器位置，一直报错，可以看config.log的输出日志。
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 PATH: /usr/local/sbin

@@ -177,6 +177,8 @@ ORDER BY 关键字用于对结果集进行排序。
 SELECT * FROM Websites
 ORDER BY alexa;
 ```
+
+#### DESC
 下面的 SQL 语句从 "Websites" 表中选取所有网站，并按照 "alexa" 列降序排序：
 ``` sql
 SELECT * FROM Websites
@@ -244,7 +246,18 @@ SELECT TOP 子句对于拥有数千条记录的大型表来说，是非常有用
 下面的 SQL 语句从 "Websites" 表中选取头两条记录：
 
 实例
+```
 SELECT * FROM Websites LIMIT 2;
+```
+
+参数必须是一个整数常量。如果给定两个参数，第一个参数指定第一个返回记录行的偏移量，第二个参数指定返回记录行的最大数目
+
+`SELECT * FROM table LIMIT 5,10; // 检索记录行 6-15  `
+
+
+为了与 PostgreSQL 兼容，MySQL 也支持句法：
+` LIMIT # OFFSET #`
+
 
 #### As 别名
 AS alias_name

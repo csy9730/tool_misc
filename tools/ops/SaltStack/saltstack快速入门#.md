@@ -21,7 +21,7 @@ Salt，一种全新的基础设施管理方式，部署轻松，在几分钟内�
 
 - **Request Server** （端口4506）`Salt minios`根据需要连接到请求服务器，将结果发送给`Salt master`，并安全地获取请求的文件或特定`minion`相关的数据值（称为`Salt pillar`）。连接到这个端口的连接在`Salt master`和`Salt minion`之间是1:1（不是异步）。
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 [root@salt-master ~]# lsof -i:4505
@@ -32,13 +32,13 @@ salt-mast 81121 root   19u  IPv4 307610      0t0  TCP salt-master:4505->salt-min
 salt-mast 81121 root   20u  IPv4 307611      0t0  TCP salt-master:4505->salt-minion02:58594 (ESTABLISHED)
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ## 快速安装[#](https://www.cnblogs.com/yanjieli/p/10864648.html#快速安装)
 
 1.1 配置 yum 仓库
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 # 使用官方自带yum
@@ -50,7 +50,7 @@ salt-mast 81121 root   20u  IPv4 307611      0t0  TCP salt-master:4505->salt-min
 [root@salt-master ~]# yum makecache
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 1.2 安装Master，并启动服务
 
@@ -62,7 +62,7 @@ salt-mast 81121 root   20u  IPv4 307611      0t0  TCP salt-master:4505->salt-min
 
 1.3 安装 Salt-Minion 指向 Salt-Master 网络地址
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 [root@salt-minion01 ~]# yum -y install salt-minion
@@ -73,7 +73,7 @@ salt-mast 81121 root   20u  IPv4 307611      0t0  TCP salt-master:4505->salt-min
 [root@salt-minion01 ~]# systemctl start salt-minion
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ## SaltStack认证方式[#](https://www.cnblogs.com/yanjieli/p/10864648.html#SaltStack认证方式)
 
@@ -96,7 +96,7 @@ master认证后再将自己的公钥也发送给minion端
 
 1）根据上面提到的认证原理，先看下未认证前的`master`和`minion`的`pki`目录
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 # master上查看
@@ -122,11 +122,11 @@ master认证后再将自己的公钥也发送给minion端
     └── minion.pub
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 `2）salt-key`命令解释：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 [root@salt-master ~]# salt-key -L 
@@ -147,11 +147,11 @@ Rejected Keys:        #吊销的key
 auto_accept: True
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 `3）salt-key`认证
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 #列出当前所有的key
@@ -179,11 +179,11 @@ Unaccepted Keys:
 Rejected Keys:
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 4）上面认证完成后再次查看`master`和`minion`的`pki`目录
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 # master上
@@ -210,7 +210,7 @@ Rejected Keys:
     └── minion.pub
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ## Saltstack远程执行[#](https://www.cnblogs.com/yanjieli/p/10864648.html#Saltstack远程执行)
 
@@ -218,7 +218,7 @@ Rejected Keys:
 
 1、判断 `salt` 的 `minion` 主机是否存活
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 [root@salt-master ~]# salt '*' test.ping
@@ -234,7 +234,7 @@ salt-minion01:
 # test.ping test是saltstack中的一个模块，ping则是这个模块下面的一个方法
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 2、`saltstack`使用 `cmd.run`模块远程执行shell命令
 
@@ -266,7 +266,7 @@ remove vim:
 
  2、配置`sals` ,定义环境 [参考文档](https://github.com/watermelonbig/SaltStack-Chinese-ManualBook/blob/master/chapter02/02-3.Configuration-Management-配置管理.md)
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 # 定义环境目录
@@ -284,11 +284,11 @@ file_roots:
 [root@salt-master ~]# systemctl restart salt-master
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 3、编写第一个`sls`文件
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 # 在base环境下编写第一个安装apache的sls文件
@@ -316,11 +316,11 @@ vsftpd-service:
     - enable: True
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 4、使用`salt`命令的`state`状态模块让`minion`应用配置
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 # 让所有的minion都安装apache（由于salt默认的环境就是base，所以可以直接在后面指定调用的apache.sls文件，不要后缀sls）
@@ -330,11 +330,11 @@ vsftpd-service:
 [root@salt-master ~]# salt '*' state.sls vsftpd saltenv=dev
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 5、使用`salt`的高级状态使不同主机应用不同的配置
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 # topfile入口文件只能放在base环境
@@ -351,7 +351,7 @@ dev:
     - vsftpd
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 6、使用`salt`命令执行高级状态，会将`top.sls`当做入口文件，进行调用
 
@@ -365,7 +365,7 @@ dev:
 1、**Salt Master配置**
 `Salt Master`端的配置文件`/etc/salt/master`，常用配置如下：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 interface:     //指定bind 的地址(默认为0.0.0.0)
@@ -388,11 +388,11 @@ log_level: //日志级别
 支持的日志级别有'garbage', 'trace', 'debug', info', 'warning', 'error', ‘critical ’ ( 默认为’warning’)
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 2、`Salt Minion`端的配置文件`/etc/salt/minion`，常用配置如下：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 master: //指定master 主机(默认为salt)
@@ -408,7 +408,7 @@ loglevel: //指定日志级别(默认为warning)
 tcp_keepalive : //minion 是否与master 保持keepalive 检查, zeromq3(默认为True)
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 

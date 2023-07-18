@@ -1,6 +1,6 @@
 # [linux查看硬件配置命令](https://www.cnblogs.com/nineep/p/7011059.html)
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 系统
@@ -92,7 +92,7 @@
 备注： proc – process information pseudo-filesystem 进程信息伪装文件系统
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 

@@ -31,7 +31,7 @@ struct A* i1 = new A();
 
 看new的原型：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 void* operator new(std::size_t) _GLIBCXX_THROW (std::bad_alloc)
@@ -52,7 +52,7 @@ void operator delete[](void*, const std::nothrow_t&) _GLIBCXX_USE_NOEXCEPT
   __attribute__((__externally_visible__));
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 发现它有一个参数，size_t，表示前面调用placement new分配的内存大小，new接下来会在这块内存中调用构造函数，new的操作也是c++来保证的。
 
@@ -76,7 +76,7 @@ void* i = operator new (8);
 
 比如下面的例子中，在A重载了operator new打印出tag，返回全局的opereator new，然后在main函数中调用A的重载版本。
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 struct A{
@@ -97,7 +97,7 @@ int main()
 }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 最终结果即分配了内存，又打印出了tag的值
 
@@ -105,7 +105,7 @@ int main()
 
 如果我们重载全局的operator new函数，然后调用new，则new的操作也会被更改，比如下面的例子(这个例子的operator new只有一个参数)
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 struct A{
@@ -127,7 +127,7 @@ int main()
 }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 最终的结果是
 
@@ -147,7 +147,7 @@ A* i = new(1) A ;
 
 placement new是c++实现的operator new版本，它的实现如下
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 // Default placement versions of operator new.
@@ -162,7 +162,7 @@ inline void operator delete[](void*, void*) _GLIBCXX_USE_NOEXCEPT { }
 //@}
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 可以看到实际上它就返回了传进来的地址，根据operator的第二个例子，通过重载全局的operator new之后，new函数的操作就被改变了。也就能猜出，在调用new的时候参数需要加上一个地址，placement new的功能就是在这个地址之上进行构造。
 

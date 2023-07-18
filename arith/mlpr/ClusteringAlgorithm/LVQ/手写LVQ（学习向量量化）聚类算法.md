@@ -16,7 +16,7 @@ LVQ聚类与k-means不同之处在于，它是**有标记**的聚类。
 
 ## 1，算法部分
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 # 学习向量量化LVQ：有标记的聚类
@@ -83,7 +83,7 @@ def lvq(data,labels,k=4,lr=0.01,epochs=1000,delta=1e-3):
     
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ## 2，验证、测试
 
@@ -91,7 +91,7 @@ def lvq(data,labels,k=4,lr=0.01,epochs=1000,delta=1e-3):
 
 先看看原始数据分布：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 x=np.random.randint(-50,50,size=100)
@@ -104,7 +104,7 @@ import matplotlib.pyplot as plt
 plt.plot([item[0] for item in x],[item[1] for item in x],'ro')
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ![img](https://img2018.cnblogs.com/blog/1254945/201910/1254945-20191013143746016-771616703.png)
 
@@ -121,7 +121,7 @@ data=np.concatenate((x,y),axis=1).astype(np.float32)
 
 ### 训练，显示结果
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 q,categoried_data=lvq(data,np.array([0.,1.]),k=4)
@@ -134,7 +134,7 @@ plt.plot([item[0] for item in q],[item[1] for item in q],color[-1])
 plt.show()
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 这里执行了2次，可以看出与k-means一样，对初值敏感
 

@@ -53,7 +53,7 @@ if i<j , 那么左孩子维护着区间[i, (i+j)/2] 的信息，右孩子维护�
 
 M[i]:维护着被分配给该节点(编号:i 线段树根节点编号:1)的区间的最小值元素的下标。 该数组初始状态为-1.
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ``` cpp
 #include<iostream>
@@ -126,7 +126,7 @@ int main()
 }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 ### ST算法
 **ST算法**（Sparse Table）:它是一种动态规划的方法。
 

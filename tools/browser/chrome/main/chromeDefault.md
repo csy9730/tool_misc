@@ -3,30 +3,39 @@
 主要大文件夹Media Cache，Cache，重要文件夹Extension，重要文件History，Bookmarks，Cookies，`Login Data`
 
 
+|文件名|格式|描述|
+|--|--|--|
+|Network/Cookies		|sqlite3| 网址和加密通信信息|
+|Extension Cookies|sqlite3|扩展访问的网址和加密通信信息|
+|Bookmarks	|json| 书签文件|
+|History 	|sqlite3|网站访问历史记录|
+|"Top Sites" 	|sqlite3         |一个经常访问网站统计|
+|Favicons |sqlite3格式|保存网址，图标blob信息|
+|Preferences |json||
+|Visited Links|VLnk?||
+|Web Data	|sqlite3|保存搜索引擎信息|
+|"Network Action Predictor" |sqlite3||
+|"Last Session"	|snss||
+|"Last Tabs"	|snss||
+|tab_referer_url ||？|
+|QuotaManager	|sqlite3||
+|"Login Data"	|sqlite3 |登录信息，包含网址，账户，加密密码，统计登录次数|
+|History-journal	||???|
+|TransportSecurity	|json||
+|Origin Bound Certs	|sqlite3||
+|Shortcuts	|sqlite3| 搜索相关关键字|
+|000021.log||类似hisotry.download内容|
+|Secure Preferences	|json||
+|heavy_ad_intervention_opt_out.db|||
+|Translate Ranker Model|||
+|LOG.old |log文件||
 
-Cookies		qlite3格式
-Bookmarks	json
-History 	sqlite3
-"Top Sites" 	sqlite3         一个经常访问网站统计，相比History是快捷冗余入口
-Favicons sqlite3格式，保存网址图标
-Preferences json格式，
-VLnk		VLnk格式?
-Web Data	sqlite3格式         保存搜索引擎信息
-"Network Action Predictor" qlite3格式
-"Last Session"	snss格式？
-"Last Tabs"	snss格式？
-tab_referer_url是什么意思？
-QuotaManager	sqlite3		
-"Login Data"	sqlite3 
-History-journal	???
-TransportSecurity	json
-Origin Bound Certs	sqlite3
-Shortcuts	sqlite3
-000021.log	???		类似hisotry.download内容
-Secure Preferences	json
-heavy_ad_intervention_opt_out.db
-Translate Ranker Model
-LOG.old log文件
+
+- databases\a.db
+- \Local Storage\leveldb\001297.ldb
+- Extension State\000023.ldb
+
+ldb 文件为leveldb文件？
 
 后缀为journal的文件保存当日信息？
 

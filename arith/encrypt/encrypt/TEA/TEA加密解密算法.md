@@ -4,7 +4,7 @@
 TEA加密算法不但比较简单，而且有很强的抗差分分析能力，加密速度也比较快。可以根据项目需求设置加密轮数来增加加密强度。
 1.加密核心函数
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
  1 void EncryptTEA(unsigned int *firstChunk, unsigned int *secondChunk, unsigned int* key)
@@ -27,11 +27,11 @@ TEA加密算法不但比较简单，而且有很强的抗差分分析能力，�
 18 }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 2.解密核心函数
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
  1 void DecryptTEA(unsigned int *firstChunk, unsigned int *secondChunk, unsigned int* key)
@@ -55,11 +55,11 @@ TEA加密算法不但比较简单，而且有很强的抗差分分析能力，�
 19 }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 3.封装对输入数据进行加密函数
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
  1 //buffer：输入的待加密数据buffer，在函数中直接对元数据buffer进行加密；size：buffer长度；key是密钥；
@@ -80,11 +80,11 @@ TEA加密算法不但比较简单，而且有很强的抗差分分析能力，�
 16 }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 4.封装对加密数据进行解密函数
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
  1 //buffer：输入的待解密数据buffer，在函数中直接对元数据buffer进行解密；size：buffer长度；key是密钥；
@@ -105,11 +105,11 @@ TEA加密算法不但比较简单，而且有很强的抗差分分析能力，�
 16 }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 5.测试加密/解密文件例子(windows下)
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
  1 //-----设置密钥，必须需要16个字符或以上（这里的长度错误由评论#3楼legion提出修正，表示感谢。）
@@ -141,7 +141,7 @@ TEA加密算法不但比较简单，而且有很强的抗差分分析能力，�
 27 delete[]pBuffer;
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 

@@ -1,0 +1,1 @@
+g++ demo.cpp -o demo.exe -std=c++11

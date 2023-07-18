@@ -16,7 +16,7 @@ html代码
 
 js代码
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
             $('#cover').on('change',function(){  
@@ -34,7 +34,7 @@ js代码
             });
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 以上是上传一张图片并预览
 
@@ -46,7 +46,7 @@ js也很简单就是当其图片改变时转成本地预览格式，并判断图
 
 html代码
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```html
             <div>
@@ -57,11 +57,11 @@ html代码
             </div>
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 js代码
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```js
             $('#picture').on('change', function(){
@@ -84,6 +84,6 @@ js代码
             })
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 多张类似，只是多了个div，用for循环展示多张图

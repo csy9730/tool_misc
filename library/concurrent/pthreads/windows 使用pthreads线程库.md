@@ -16,7 +16,7 @@
 
 写两个个脚本 容易实现的：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 [![复制代码](https://common.cnblogs.com/images/copycode.gif)](http://www.cnblogs.com/ayanmw/archive/2012/08/06/2625275.html)
 
@@ -42,9 +42,9 @@ ping -n 2 127.1>nul
 
 [![复制代码](https://common.cnblogs.com/images/copycode.gif)](http://www.cnblogs.com/ayanmw/archive/2012/08/06/2625275.html)
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
+
 
 [![复制代码](https://common.cnblogs.com/images/copycode.gif)](http://www.cnblogs.com/ayanmw/archive/2012/08/06/2625275.html)
 
@@ -70,13 +70,13 @@ ping -n 2 127.1>nul
 
 [![复制代码](https://common.cnblogs.com/images/copycode.gif)](http://www.cnblogs.com/ayanmw/archive/2012/08/06/2625275.html)
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 以上 路径 可能不一样，请自行更正。
 
 3.测试 windows下的pthread库
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 [![复制代码](https://common.cnblogs.com/images/copycode.gif)](http://www.cnblogs.com/ayanmw/archive/2012/08/06/2625275.html)
 
@@ -113,7 +113,7 @@ int main()
 
 [![复制代码](https://common.cnblogs.com/images/copycode.gif)](http://www.cnblogs.com/ayanmw/archive/2012/08/06/2625275.html)
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 这个是直接copy网友的，例子不是特别的好，仅仅使用到了pthread_create.
 
@@ -123,7 +123,7 @@ int main()
 
 编译 这个 测试文件 我也写个 批处理，以后 直接看到批处理，就什么都明白了。
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 [![复制代码](https://common.cnblogs.com/images/copycode.gif)](http://www.cnblogs.com/ayanmw/archive/2012/08/06/2625275.html)
 
@@ -150,7 +150,7 @@ cmd
 
 [![复制代码](https://common.cnblogs.com/images/copycode.gif)](http://www.cnblogs.com/ayanmw/archive/2012/08/06/2625275.html)
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 链接 lib库 ，在cl.exe编译器下 可以通过  #pragma comment(lib, "pthreadVC2.lib") 或者 加入 到cl.exe 的参数中去 都可以。
 

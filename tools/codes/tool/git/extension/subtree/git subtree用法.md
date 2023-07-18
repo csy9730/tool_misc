@@ -6,7 +6,7 @@
 
 git subtree的主要命令有：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 $ git subtree add   --prefix=<prefix> <commit>
@@ -17,7 +17,7 @@ $ git subtree merge --prefix=<prefix> <commit>
 $ git subtree split --prefix=<prefix> [OPTIONS] [<commit>]
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 git subtree用法
 
@@ -26,7 +26,7 @@ git subtree用法
 我们先准备一个仓库叫photoshop，一个仓库叫libpng，然后我们希望把libpng作为photoshop的子仓库。
 photoshop的路径为`https://github.com/test/photoshop.git`，仓库里的文件有：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 photoshop
@@ -37,11 +37,11 @@ photoshop
     \-- README.md
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 libPNG的路径为`https://github.com/test/libpng.git`，仓库里的文件有：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 libpng
@@ -51,11 +51,11 @@ libpng
     \-- README.md
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  添加之后的父仓库文件结构：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 photoshop
@@ -72,7 +72,7 @@ photoshop
     \-- README.md
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 

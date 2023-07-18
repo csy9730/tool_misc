@@ -77,7 +77,7 @@ l src/test/java 测试程序
 
 root package结构：com.example.myproject
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 com
@@ -97,7 +97,7 @@ com
       |
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 1、Application.java 建议放到跟目录下面,主要用于做一些框架配置
 
@@ -136,7 +136,7 @@ spring-boot-starter-test：测试模块，包括JUnit、Hamcrest、Mockito。
 
 2、编写controller内容
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 @RestController
@@ -148,7 +148,7 @@ public class HelloWorldController {
 }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 @RestController的意思就是controller里面的方法都以json格式输出，不用再写什么jackjson配置的了！
 
@@ -162,7 +162,7 @@ public class HelloWorldController {
 
 打开的src/test/下的测试入口，编写简单的http请求来测试；使用mockmvc进行，利用MockMvcResultHandlers.print()打印出执行结果。
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 
@@ -188,13 +188,13 @@ public class HelloWorldControlerTests {
 }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ***\*开发环境的调试\****
 
 热启动在正常开发项目中已经很常见了吧，虽然平时开发 web 项目过程中，改动项目启重启总是报错；但 Spring Boot 对调试支持很好，修改之后可以实时生效，需要添加以下的配置：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 <dependencies>
 
@@ -232,7 +232,7 @@ public class HelloWorldControlerTests {
 
 </build>
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 该模块在完整的打包环境下运行的时候会被禁用。如果你使用java -jar启动应用或者用一个特定的classloader启动，它会认为这是一个“生产环境”。
 

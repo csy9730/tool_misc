@@ -12,7 +12,7 @@
 
 　　从最简单的单生产者单消费者说起，假设我们现在有一个正常的队列，写线程往这个队列的head处push数据，读线程往这个队列的tail处pop数据。试想，如果head和tail不相同，也就是两个线程操作的数据不是同一个，这个时候是不会产生冲突的，这意味着我们只需要在head == tail的时候做处理。这时候可以发现，head == tail的时候，正是队列空的时候，也就是说这个时候读线程是读不到数据的，因此，读线程和写线程是不会产生冲突的，所以实现参考如下伪代码
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```cpp
 bool push(T &data) {
@@ -36,7 +36,7 @@ bool pop(T &data) {
 }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ## 多生产者单消费者/单生成者多消费者
 

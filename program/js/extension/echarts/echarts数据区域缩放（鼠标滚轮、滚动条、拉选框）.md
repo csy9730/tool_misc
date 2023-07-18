@@ -8,7 +8,7 @@
 
  
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
  1 var arr = [];
@@ -39,7 +39,7 @@
 26 　　})
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 
@@ -49,7 +49,7 @@
 
 **滚动条缩放：**　
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
  1 myCharts.setOption({
@@ -81,7 +81,7 @@
 27 　　})
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 //效果如下，可以拖动底下滚动条来减小查看数据的范围或者拖动滚动条来确认查看哪里的数据
 
@@ -91,7 +91,7 @@
 
 　　
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
  1 myCharts.setOption({
@@ -126,7 +126,7 @@
 30 　　})
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 //效果如下：可以在折线图上拉取选框来确定查看哪里的数据
 

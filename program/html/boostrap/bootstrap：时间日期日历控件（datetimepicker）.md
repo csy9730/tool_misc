@@ -35,7 +35,7 @@
 
 ### 涉及的样式及js:
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 <!DOCTYPE html>
@@ -135,7 +135,7 @@ $(function () {
 </html>
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 

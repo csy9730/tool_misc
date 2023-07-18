@@ -35,7 +35,7 @@ parallel_for(range, body, partitioner)提供了并行迭代的泛型形式。它
 
 例子：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
  1 #include <iostream>
@@ -71,7 +71,7 @@ parallel_for(range, body, partitioner)提供了并行迭代的泛型形式。它
 31 }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ​    ②parallel_reduce
 
@@ -81,7 +81,7 @@ parallel_for(range, body, partitioner)提供了并行迭代的泛型形式。它
 
 parallel_reduce使用分割构造函数来为每个线程生成一个或多个body的拷贝。当它拷贝body的时候，也许body的operator()或者join（）正在并发运行。要确保这种并发运行下的安全。典型应用中，这种安全要求不会消耗你太多的精力。 
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
  1 #include <iostream>
@@ -116,7 +116,7 @@ parallel_reduce使用分割构造函数来为每个线程生成一个或多个bo
 30 }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ​    ③parallel_scan 
 
@@ -128,7 +128,7 @@ parallel_reduce使用分割构造函数来为每个线程生成一个或多个bo
 
  例子：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
  1 #include <tbb/parallel_scan.h>
@@ -187,7 +187,7 @@ parallel_reduce使用分割构造函数来为每个线程生成一个或多个bo
 54 }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 　　④parallel_do 
 　　并行处理工作项的模板函数。
@@ -202,7 +202,7 @@ parallel_reduce使用分割构造函数来为每个线程生成一个或多个bo
 
    例子：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
  1 #include <tbb/parallel_do.h>
@@ -250,7 +250,7 @@ parallel_reduce使用分割构造函数来为每个线程生成一个或多个bo
 43 }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 　　2）流的并行算法 
 
@@ -258,7 +258,7 @@ parallel_reduce使用分割构造函数来为每个线程生成一个或多个bo
 
 ​    其定义：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
  1 class pipeline
@@ -273,7 +273,7 @@ parallel_reduce使用分割构造函数来为每个线程生成一个或多个bo
 10 };
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 可按以下步骤使用pipeline类：
     1、从filter继承类f，f的构造函数传递给基类filter的构造函数一个参数，来指定它的模式
@@ -284,7 +284,7 @@ parallel_reduce使用分割构造函数来为每个线程生成一个或多个bo
 
 　　 ② 过滤器基类 filter 
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
  1 class filter
@@ -306,14 +306,14 @@ parallel_reduce使用分割构造函数来为每个线程生成一个或多个bo
 17 };
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  ![img](https://img-blog.csdn.net/20150327171415086?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2V6dW5oYWk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
     由于parallel过滤器支持并行加速，所以推荐使用。如果必须使用serial过滤器，那么serial_out_of_order类型的过滤器是优先考虑的，因为他在处理顺序上的约束较少。
 
 　　③ 线程绑定过滤器thread_bound_filter
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
  1 classthread_bound_filter: public filter
@@ -332,11 +332,11 @@ parallel_reduce使用分割构造函数来为每个线程生成一个或多个bo
 14 };
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 管道中过滤器的抽象基类，线程必须显式为其提供服务。当一个过滤器必须由某个指定线程执行的时候会派上用场。服务于thread_bound_filter的线程不能是调用pipeline::run()的线程。例如：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
  1 #include<iostream>
@@ -400,7 +400,7 @@ parallel_reduce使用分割构造函数来为每个线程生成一个或多个bo
 59 }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ​    ⑤ parallel_pipeline
 

@@ -60,7 +60,7 @@ scores = cat(3, s_vec{2}(:,:,1:end-1), s_vec{1});
 
 **14-'center'** **这个点是由 2,3,12,13四个位置坐标取平均得到的！！！！！！！**
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 else if(np == 43){
@@ -86,7 +86,7 @@ else if(np == 43){
   }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 

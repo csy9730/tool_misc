@@ -98,7 +98,7 @@ Linux内核中将framebuffer的驱动框架实现为模块的形式。framebuffe
 
 fbmem_init()函数的主要工作是通过register_chrdev接口向内核注册一个主设备号位29的字符设备。通过class_create在/sys/class下创建graphics设备类，配合mdev机制生成供用户访问的设备文件（位于/dev目录）。
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 static int __init
@@ -126,13 +126,13 @@ subsys_initcall(fbmem_init);
 #endif
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 **（2）fb_fops**
 
  在framebuffer的初始化函数fbmem_init()中，调用register_chrdev(FB_MAJOR,"fb",&fb_fops)向内核注册一个主设备号位FB_MAJOR = 29的字符设备，其中fb_fops为fb设备的操作集。
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 static const struct file_operations fb_fops = 
@@ -148,7 +148,7 @@ static const struct file_operations fb_fops =
 };
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 我们着重分析一下fb_fops->fb_open。
 
@@ -162,7 +162,7 @@ Open(“/dev/input/fb0”)
 
 3）进入到fb_fops->open, 即fb_open()。从fb_open()函数中可以看出，最终调用的是fb0设备下的fb_ops来对fb0设备进行访问，即fb_info->fb_ops->fb_open。
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 static int fb_open(struct inode *inode, struct file *file)
@@ -190,7 +190,7 @@ __releases(&info->lock)
 }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 **（3）framebuffer设备注册/注销接口**
 
@@ -198,7 +198,7 @@ framebuffer驱动加载初始化时需要通过register_framebuffer接口向fram
 
 数组struct fb_info *registered_fb[FB_MAX]，是fb驱动框架维护的一个用来管理记录fb设备的数组，里面的元素就是 fb_info 指针，一个fb_info就代表一个fb设备。由此可知，Linux内核最多支持FB_MAX = 32个fb设备。
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 int register_framebuffer(struct fb_info *fb_info)
@@ -254,7 +254,7 @@ int register_framebuffer(struct fb_info *fb_info)
 }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  相应的fb设备的注销接口为unregister_framebuffer()函数。
 
@@ -276,7 +276,7 @@ int unregister_framebuffer(struct fb_info *fb_info);
 
 2）fb_ops.mmap = fb_mmap，此处的fb_fops为framebuffer驱动框架的操作集；从fb_mmap()函数中可以看出，最终调用的是fb设备的fb_ops中的fb_mmap，即fb_info->fb_fops->fb_mmap。
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 static int fb_mmap(struct file *file, struct vm_area_struct * vma)
@@ -297,7 +297,7 @@ static int fb_mmap(struct file *file, struct vm_area_struct * vma)
 }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 [回到顶部](https://www.cnblogs.com/linfeng-learning/p/9478048.html#_labelTop)
 
@@ -321,7 +321,7 @@ static int fb_mmap(struct file *file, struct vm_area_struct * vma)
 
 应用示例：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 #include <stdio.h>
@@ -419,7 +419,7 @@ int main(void)
 }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 \5. LCD驱动程序分析
 

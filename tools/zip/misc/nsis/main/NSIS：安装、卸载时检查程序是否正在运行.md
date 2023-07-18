@@ -17,7 +17,7 @@
 
 开始安装时检查flighty.exe是否正在运行：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 Function .onInit
@@ -40,13 +40,13 @@ Function .onInit
 FunctionEnd
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 开始卸载时检查flighty.exe是否正在运行：
 
  
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 Function un.onInit
@@ -62,7 +62,7 @@ Function un.onInit
 FunctionEnd
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 

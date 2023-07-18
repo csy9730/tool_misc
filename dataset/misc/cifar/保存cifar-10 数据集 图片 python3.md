@@ -1,6 +1,6 @@
 保存cifar-10 数据集 图片 python3
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```python
 #用于将cifar10的数据可视化
@@ -54,7 +54,7 @@ if __name__ == "__main__":
     print("保存完毕.")
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 cifar-10下载链接：http://www.cs.toronto.edu/~kriz/cifar.html
 

@@ -16,7 +16,7 @@
 
 　　安装anaconda的命令如下所示：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 #安装anaconda包
@@ -33,7 +33,7 @@ conda install faiss-cpu -c pytorch
 python -c "import faiss”
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 　　备注：mkl全称Intel Math Kernel Library，提供经过高度优化和大量线程化处理的数学例程，面向性能要求极高的科学、工程及金融等领域的应用。MKL是一款商用函数库（考虑版权问题，后续可以替换为OpenBLAS），在Intel CPU上，MKL的性能要远高于Eigen, OpenBLAS和其性能差距不是太大，但OpenBLAS提供的函数相对较少，另外OpenBLAS的编译依赖系统环境。
 
@@ -93,7 +93,7 @@ index = faiss.index_factory(d,"PCA32,IVF100,PQ8 ")
 
 ​      示例：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 import numpy as np
@@ -148,7 +148,7 @@ print(I[-5:]) # neighbors of the 5 last queries
 # print(index.reconstruct(381))
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ####  3.3.1.2索引选择
 

@@ -64,7 +64,7 @@ SSM，即 SpringMVC、Spring 与 MyBatis 三个框架
 - - 配置别名：用于批量扫描Pojo包
   - 不需要配置mappers标签，但一定要保证`mapper.java`文件与`mapper.xml`文件同名。
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 <?xml version="1.0" encoding="UTF-8" ?>  
@@ -78,7 +78,7 @@ SSM，即 SpringMVC、Spring 与 MyBatis 三个框架
     </configuration>
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ##### Spring配置文件 `applicationContext-dao.xml`
 
@@ -88,7 +88,7 @@ SSM，即 SpringMVC、Spring 与 MyBatis 三个框架
     - mapper扫描器 
       - 这里使用`sqlSessionFactoryBeanName`属性是因为如果配置的是`sqlSessionFactory`属性，将不会先加载数据库配置文件及数据源配置
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 <beans xmlns="http://www.springframework.org/schema/beans"
@@ -137,7 +137,7 @@ SSM，即 SpringMVC、Spring 与 MyBatis 三个框架
 </beans>
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ##### 创建所需的Mapper.java
 
@@ -184,7 +184,7 @@ SSM，即 SpringMVC、Spring 与 MyBatis 三个框架
 
 - 因为在`applicationContext-dao.xml`中已经使用了mapper扫描器，这里可以直接通过注解的方式将itemsMapperCustom自动注入。
 
-  [![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+  
 
   ```
   public class ItemsServiceImpl implements ItemsService{
@@ -199,7 +199,7 @@ SSM，即 SpringMVC、Spring 与 MyBatis 三个框架
   }
   ```
 
-  [![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+  
 
    
 
@@ -223,7 +223,7 @@ SSM，即 SpringMVC、Spring 与 MyBatis 三个框架
 
 - 定义了切面
 
-  [![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+  
 
   ```
   <beans xmlns="http://www.springframework.org/schema/beans"
@@ -268,7 +268,7 @@ SSM，即 SpringMVC、Spring 与 MyBatis 三个框架
   </beans>
   ```
 
-  [![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+  
 
    
 
@@ -276,7 +276,7 @@ SSM，即 SpringMVC、Spring 与 MyBatis 三个框架
 
 - 创建`springmvc.xml`文件，配置处理器映射器 、 适配器、视图解析器
 
-  [![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+  
 
   ```
   <context:component-scan base-package="cn.itcast.ssm.controller"></context:component-scan>
@@ -294,7 +294,7 @@ SSM，即 SpringMVC、Spring 与 MyBatis 三个框架
   </bean>
   ```
 
-  [![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+  
 
    
 
@@ -307,7 +307,7 @@ SSM，即 SpringMVC、Spring 与 MyBatis 三个框架
     - 填入`*.action`，表示访问以.action结尾 由DispatcherServlet进行解析
     - 填入`/`，所有访问的地址都由DispatcherServlet进行解析，对于静态文件的解析需要配置不让DispatcherServlet进行解析，使用此种方式可以实现RESTful风格的url
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 <!-- springmvc前端控制器 -->
@@ -327,11 +327,11 @@ SSM，即 SpringMVC、Spring 与 MyBatis 三个框架
 </servlet-mapping>
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 #### 编写Controller（Handler）
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 @Congtroller
@@ -357,11 +357,11 @@ public class ItemsController {
 }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 #### 编写JSP页面
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 <c:forEach items="${itemsList }" var="item">
@@ -377,13 +377,13 @@ public class ItemsController {
 </c:forEach>
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 #### 加载spring容器
 
 - 在`web.xml`中，添加spring容器监听器，加载spring容器
 
-  [![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+  
 
   ```
   <context-param>
@@ -396,7 +396,7 @@ public class ItemsController {
   <listener>
   ```
 
-  [![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+  
 
    
 

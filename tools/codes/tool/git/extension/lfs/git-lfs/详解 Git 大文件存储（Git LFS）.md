@@ -71,7 +71,7 @@ Git LFS initialized.
 
 要创建一个新的支持 Git LFS 的仓库，你需要在创建仓库后运行 git lfs install：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 # initialize Git
@@ -85,7 +85,7 @@ Updated pre-push hook.
 Git LFS initialized.
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 
@@ -101,7 +101,7 @@ Git LFS initialized.
 
 安装 Git LFS 后，你可以像往常一样使用 git clone 命令来克隆 Git LFS 仓库。在克隆过程的结尾，Git 将检出默认分支（通常是 master），并且将自动为你下载完成检出过程所需的所有 Git LFS 文件。例如：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 $ git clone git@bitbucket.org:tpettersen/Atlasteroids.gitCloning into 'Atlasteroids'...
@@ -118,7 +118,7 @@ Downloading Assets/Sprites/space1.png (1.11 MB)
 Checking out files: 100% (81/81), done
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 
@@ -128,7 +128,7 @@ Checking out files: 100% (81/81), done
 
 如果你正在克隆包含大量 LFS 文件的仓库，显式使用 git lfs clone 命令可提供更好的性能：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 $ git lfs clone git@bitbucket.org:tpettersen/Atlasteroids.git
@@ -142,7 +142,7 @@ Checking connectivity... done.
 Git LFS: (4 of 4 files) 1.14 MB / 1.15 MB
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 
@@ -152,7 +152,7 @@ git lfs clone 命令不会一次下载一个 Git LFS 文件，而是等到检出
 
 就像克隆一样，你可以使用常规的 git pull 命令拉取 Git LFS 仓库。拉取完成后，所有需要的 Git LFS 文件都会作为自动检出过程的一部分而被下载。
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 $ git pull
@@ -166,7 +166,7 @@ create mode 100644 Assets/Sprites/projectiles-spritesheet.png
 create mode 100644 Assets/Sprites/projectiles-spritesheet.png.meta
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 
@@ -225,7 +225,7 @@ Tracking phaser.ogg
 
 Git LFS 支持的模式与.gitignore 支持的模式相同，例如：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 # track all .ogg files in any directory
@@ -244,7 +244,7 @@ $ git lfs track "**/Music/*.ogg"
 $ git lfs track "*xxhdpi*.png
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 
@@ -252,7 +252,7 @@ $ git lfs track "*xxhdpi*.png
 
 运行 git lfs track 后，你会在你的运行命令的仓库中发现名为.gitattributes 的新文件。.gitattributes 是一种 Git 机制，用于将特殊行为绑定到某些文件模式。Git LFS 自动创建或更新.gitattributes 文件，以将跟踪的文件模式绑定到 Git LFS 过滤器。但是，你需要将对.gitattributes 文件的任何更改自己提交到仓库：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 $ git lfs track "*.ogg"
@@ -269,7 +269,7 @@ index 0000000..b6dd0bb
 $ git commit -m "Track ogg files with Git LFS"
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 
@@ -287,7 +287,7 @@ Listing tracked paths
 
 你可以通过从.gitattributes 文件中删除相应的行，或者通过运行 git lfs untrack 命令来停止使用 Git LFS 跟踪特定模式：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 $ git lfs untrack "*.ogg"
@@ -301,7 +301,7 @@ index b6dd0bb..e69de29 100644
 -*.ogg filter=lfs diff=lfs merge=lfs -text
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 
@@ -311,7 +311,7 @@ index b6dd0bb..e69de29 100644
 
 你可以按常规方式提交并推送到包含 Git LFS 内容的仓库。如果你已经提交了被 Git LFS 跟踪的文件的变更，则当 Git LFS 内容传输到服务器时，你会从 git push 中看到一些其他输出：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 $ git push
@@ -325,7 +325,7 @@ To git@bitbucket.org:tpettersen/atlasteroids.git
 7039f0a..b3684d3 master -> master
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 
@@ -337,7 +337,7 @@ To git@bitbucket.org:tpettersen/atlasteroids.git
 
 例如，要将所有 Git 和 Git LFS 仓库从名为`github`的远端移动到名为`bitbucket` 的远端：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 # create a bare clone of the GitHub repository
@@ -353,7 +353,7 @@ $ git push --mirror bitbucket
 $ git lfs push --all bitbucket
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 
@@ -361,7 +361,7 @@ $ git lfs push --all bitbucket
 
 Git LFS 通常仅下载你实际在本地检出的提交所需的文件。但是，你可以使用 git lfs fetch --recent 命令强制 Git LFS 为其他最近修改的分支下载额外的内容：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 $ git lfs fetch --recent
@@ -373,7 +373,7 @@ Fetching origin/more-music
 Git LFS: (1 of 1 files, 14 skipped) 1.68 MB / 1.68 MB, 2.83 MB skipped
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 
@@ -468,7 +468,7 @@ $ git lfs prune --dry-run
 
 以及使用 git lfs prune --verbose --dry-run 命令精确查看哪些 Git LFS 对象将被修剪：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 $ git lfs prune --dry-run --verbose
@@ -480,7 +480,7 @@ $ git lfs prune --dry-run --verbose
 * a1d7f7cdd6dba7307b2bac2bcfa0973244688361a48d2cebe3f3bc30babcf1ab (615.7 KB)
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 
@@ -526,7 +526,7 @@ Git LFS 命令行客户端不支持删除服务器上的文件，因此如何删
 
 如果你有一个 Git LFS SHA-256 OID，你可以使用 git log --all -p -S 命令确定哪些提交引用了它：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 $ git log --all -p -S 3b6124b8b01d601fa20b47f5be14e1be3ea7759838c1aac8f36df4859164e4cc
@@ -545,7 +545,7 @@ index 0000000..49d7baf
 +size 21647
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 

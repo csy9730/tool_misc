@@ -24,7 +24,7 @@ ifstream 是针对文件读取的流  ofstream 是针对文件写入的流  fstr
 
 打开文件
 
-```javascript
+```cpp
 void open(const std::string& __s, ios_base::openmode __mode );
 ```
 
@@ -38,7 +38,7 @@ open 有 2 个参数，第一个参数代表要打开的文件的地址。  第�
 
 ifstream 和 ofstream 打开文件都是调用的 open 方法，但是这两个类默认的模型不一样。
 
-```javascript
+```cpp
 ifstream ifs;
 
 ifs.open("hello.txt");
@@ -46,14 +46,14 @@ ifs.open("hello.txt");
 
 我们还有一种更加简单的方法，那就是直接创建对象，创建对象的过程自动调用了 open 方法。
 
-```javascript
+```cpp
 ifstream ifs("hello.txt");
 ofstream ofs("world.txt");
 ```
 
 关闭文件，调用流对象的 close 方法就好了。
 
-```javascript
+```cpp
 fis.close();
 ```
 
@@ -61,7 +61,7 @@ fis.close();
 
 和 iostream 中的读写操作一样方便
 
-```javascript
+```cpp
 >>  用来读取
 A >> B  将 B 的内容读取到 A
 
@@ -77,7 +77,7 @@ C << A  将 A 的内容写入到 C
 
 **用法1：直接调用 getline() 函数**
 
-```javascript
+```cpp
 ifstream getline(ifstream is,string s)
 ```
 
@@ -85,7 +85,7 @@ ifstream getline(ifstream is,string s)
 
 **用法2：调用 ifstream 流对象的 getline() 方法**
 
-```javascript
+```cpp
 ifstream getline(char* s,size_t n);
 ```
 
@@ -108,7 +108,7 @@ kerry
 
 代码如下：
 
-```javascript
+```cpp
 #include <iostream>
 #include <fstream>
 #include <stdlib.h>
@@ -155,7 +155,7 @@ int main(int argc,char** argv)
 
 假设源码文件为 test.cpp,编译后运行
 
-```javascript
+```bash
 g++ test.cpp
 
 ./a.out

@@ -52,7 +52,7 @@ hollo
 
 1.编辑内容调用写法：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 echo 在这里调用 
@@ -75,11 +75,11 @@ echo 这里是source
 source liqiang-4.sh
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 2.输出结果：特点在于执行了第一个exec之后下面的就再也不执行了。 
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 [root@localhost ~]# ./liqiang-2.sh
@@ -91,7 +91,7 @@ hollo
 调用一次就对了
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 第三种：sourcesource特点不会生成子PID也就是子进程，他就行把被用的脚本拷贝到当前shell脚本中执行，可以重复被调用。
 
@@ -99,7 +99,7 @@ hollo
 
 1.编辑内容调用写法：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 echo 在这里调用
@@ -122,11 +122,11 @@ echo 这里是source
 source liqiang-4.sh 
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ♦2.执行结果：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 [root@localhost ~]# ./liqiang-2.sh
@@ -150,7 +150,7 @@ hollo
 这里是exec函数调用#之后的没被调用了
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 注意：
 

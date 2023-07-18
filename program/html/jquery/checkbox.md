@@ -1,6 +1,6 @@
 # [jQuery对checkbox的各种操作](https://www.cnblogs.com/junjieok/p/4107066.html)
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```js
  //注意： 操作checkbox的checked,disabled属性时jquery1.6以前版本用attr,1.6以上（包含）建议用prop
@@ -132,7 +132,7 @@
 </script>
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 

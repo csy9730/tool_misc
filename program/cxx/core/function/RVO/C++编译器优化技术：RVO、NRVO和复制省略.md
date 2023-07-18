@@ -12,7 +12,7 @@
 
 **RVO**
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```cpp
 #include <stdio.h>
@@ -48,7 +48,7 @@ int main()
 }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 在g++和vc6、vs中，上述代码仅仅只会调用一次构造函数和析构函数 ，输出结果如下：
 
@@ -72,7 +72,7 @@ int main()
 
 下面用c++代码模拟一下其优化行为：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```cpp
 #include <new>
@@ -98,7 +98,7 @@ int main()
 }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 
@@ -147,7 +147,7 @@ g++加上-fno-elide-constructors选项关闭优化后，和上述结果一样
 
 下面用c++代码模拟一下vc6、vs2005以下、vs2005+ Debug上的行为：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```cpp
 #include <new>
@@ -174,7 +174,7 @@ int main()
 }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 注：与g++、vs2005+ Release相比，vc6、vs2005以下、vs2005+ Debug只优化掉了返回值到变量a的拷贝，命名局部变量o没有被优化掉，所以最后一共有2次构造和析构的调用
 
@@ -184,7 +184,7 @@ int main()
 
 典型情况是：调用构造函数进行值类型传参
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```cpp
 void Func(A a) 
@@ -201,7 +201,7 @@ int main()
 }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 在g++和vc6、vs中，上述代码仅仅只会调用一次构造函数和析构函数 ，输出结果如下：
 
@@ -221,7 +221,7 @@ int main()
 
 下面用c++代码模拟一下其优化行为：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```cpp
 void Func(const A& a) 
@@ -238,7 +238,7 @@ int main()
 }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 
@@ -248,7 +248,7 @@ int main()
 
 （1）根据不同的条件分支，返回不同变量
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```cpp
 A GetA(bool bflag)
@@ -267,7 +267,7 @@ int main()
 }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 0x7ffc3cca324f construct

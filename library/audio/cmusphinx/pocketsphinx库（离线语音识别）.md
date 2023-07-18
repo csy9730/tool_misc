@@ -86,7 +86,7 @@ config.set_float('-kws_threshold', 1e+20)
 
 **测试代码**
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 import os
@@ -109,9 +109,9 @@ for phrase in speech:
     print(phrase.segments(detailed=True))
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
+
 
 ```
 import os
@@ -141,7 +141,7 @@ for phrase in audio:
     print(phrase)
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 
 
@@ -165,7 +165,7 @@ for phrase in audio:
 
 放代码：没有变化，只是加载的目录文件变了。
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 import os
@@ -189,9 +189,9 @@ for phrase in speech:
     print(phrase.segments(detailed=True))
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
+
 
 ```
 import os
@@ -221,7 +221,7 @@ for phrase in audio:
     print(phrase)
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 [回到顶部](https://www.cnblogs.com/us-wjz/articles/11480260.html#_labelTop)
 
@@ -263,7 +263,7 @@ config.set_string('-dict', os.path.join(MODELDIR, 'en-us/new_dic.dic')) # 词典
 以小贝为例，则keyword.txt中的内容如下：
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 小贝
@@ -281,7 +281,7 @@ config.set_string('-dict', os.path.join(MODELDIR, 'en-us/new_dic.dic')) # 词典
 么么哒
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 
@@ -303,7 +303,7 @@ config.set_string('-dict', os.path.join(MODELDIR, 'en-us/new_dic.dic')) # 词典
 例如：
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 小贝 x i ao b ei
@@ -321,11 +321,11 @@ config.set_string('-dict', os.path.join(MODELDIR, 'en-us/new_dic.dic')) # 词典
 .
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 在代码中，替换掉对应的lm和dic路径。
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 import os
@@ -351,7 +351,7 @@ for phrase in speech:
     print("正确识别唤醒词")
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 
 

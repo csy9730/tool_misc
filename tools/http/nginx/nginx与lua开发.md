@@ -90,7 +90,7 @@ ldconfig
 执行此 命令后,nginx -V 看下参数
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 #### 测试Lua
 

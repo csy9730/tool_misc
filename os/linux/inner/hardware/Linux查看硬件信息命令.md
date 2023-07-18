@@ -15,7 +15,7 @@
 
  （3）查看BIOS信息
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 [root@Master ~]# dmidecode -t bios
@@ -57,11 +57,11 @@ BIOS Information
         Firmware Revision: 2.40
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  （3）查看内存槽及内存条
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 [root@Master ~]# dmidecode -t memory | head -45 | tail -23
@@ -91,11 +91,11 @@ Memory Device
 [root@Master ~]#
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  （4）查看网卡信息
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 [root@Master ~]# dmesg | grep -i Ethernet
@@ -108,11 +108,11 @@ igb 0000:02:00.0: Intel(R) Gigabit Ethernet Network Connection
 igb 0000:02:00.1: Intel(R) Gigabit Ethernet Network Connection 
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 （5） 查看pci信息，即主板所有硬件槽信息
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 [root@Master ~]# lspci | head -10
@@ -128,7 +128,7 @@ igb 0000:02:00.1: Intel(R) Gigabit Ethernet Network Connection
 00:03.2 PCI bridge: Intel Corporation Xeon E7 v3/Xeon E5 v3/Core i7 PCI Express Root Port 3 (rev 02)
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 
@@ -174,7 +174,7 @@ cpu MHz         : 1200.000
 
 （6）查看CPU的详细信息
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 [root@Master ~]# cat /proc/cpuinfo | head -20
@@ -200,11 +200,11 @@ wp              : yes
 flags           : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good xtopology nonstop_tsc aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 fma cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm ida arat epb xsaveopt pln pts dtherm tpr_shadow vnmi flexpriority ept vpid fsgsbase bmi1 avx2 smep bmi2 erms invpcid cqm cqm_llc cqm_occup_llc
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  （7）查看CPU的相关信息
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 [root@Master ~]# lscpu
@@ -234,7 +234,7 @@ NUMA node1 CPU(s):     10-19,30-39
 [root@Master ~]# 
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  （8）查看cpu运行模式
 
@@ -256,7 +256,7 @@ NUMA node1 CPU(s):     10-19,30-39
 ## 三**、查看内存信息
 **（1）查看内存硬件信息
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 root@Master ~]# dmidecode -t memory | head -45 | tail -24
@@ -285,7 +285,7 @@ Memory Device
         Configured Voltage:  1.2 V
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  （2）最大支持多少内存
 [root@Master ~]# dmidecode|grep -P 'Maximum\s+Capacity'
@@ -301,7 +301,7 @@ Memory Device
 
  （5）Linux 查看内存的详细信息：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 [root@Master ~]# cat /proc/meminfo |head -20
@@ -327,7 +327,7 @@ Mapped:           149020 kB
 Shmem:               172 kB
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 （6）Linux 查看内存的使用情况
 
@@ -348,7 +348,7 @@ Swap:        16383         38      16345
 
 （2）查看硬盘和分区分布
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 [root@Master ~]# lsblk
@@ -365,11 +365,11 @@ sdb      8:16   0  83.7T  0 disk
 └─sdb1   8:17   0  83.7T  0 part /PureDisk
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  （3）查看硬盘和分区的详细信息
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 [root@Master ~]# fdisk -l           
@@ -406,11 +406,11 @@ Disk identifier: 0x00000000
 Partition 1 does not start on physical sector boundary.
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  （4）查看挂接的分区状态
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 [root@Master ~]# mount | column -t
@@ -427,7 +427,7 @@ tmpfs      on  /dev/shm                  type  tmpfs        (rw)
 none       on  /proc/sys/fs/binfmt_misc  type  binfmt_misc  (rw
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  （5）查看挂接的分区状态
 
@@ -439,7 +439,7 @@ Filename                                Type            Size    Used    Priority
 
  （6）查看硬盘使用情况
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 [root@Master ~]# df -hT
@@ -453,11 +453,11 @@ tmpfs          tmpfs   63G   76K   63G   1% /dev/shm
 /dev/sdb1      ext4    84T   41T   40T  51% /PureDisk
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  （7） 硬盘检测命令smartctl
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 [root@Master ~]# smartctl -a /dev/sda
@@ -481,7 +481,7 @@ Error Counter logging not supported
 Device does not support Self Test logging
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 
@@ -501,7 +501,7 @@ Device does not support Self Test logging
 
   (3)查看某个网络接口的详细信息，例如eth0的详细参数和指标
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 [root@Master ~]# ethtool eth0
@@ -526,11 +526,11 @@ Settings for eth0:
         Link detected: yes
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
   (4)查看所有网卡的链路状态
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 [root@Master ~]# for i in `seq 0 9`;do ethtool eth${i} | egrep 'eth|Link';done
@@ -556,14 +556,14 @@ Settings for eth9:
         Link detected: no
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 
 ## 六、列出所有PCI设备信息
 
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 [root@Master ~]# lspci -tv | more
@@ -590,7 +590,7 @@ Settings for eth9:
  |           +-0f.3  Intel Corporation Xeon E7 v3/Xeon E5 v3/Core i7 Buffered Ring Agent
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 https://www.cnblogs.com/cloudos/
 

@@ -4,52 +4,70 @@
 
 windows常用工具：
 
-* explorer.exe
+* explorer.exe 文件浏览器
+* notepad.exe 笔记本工具
+* taskmgr.exe 任务管理器
+* regedit.exe 注册表工具
 
-* notepad.exe
 
-* taskmgr.exe
 
-  
-
-windows高级常用工具（带GUI）
+### windows高级常用工具（带GUI）
 
 msinfo32.exe:系统信息
 
 compmgmt.msc：计算机管理界面，包含：任务计划，事件查看器，共享文件夹，本地用户和组，寻能，设备管理器，磁盘管理，服务管理
 
-regedit.exe
-
-msconfig.exe:
-
 services.msc：服务管理器
+
+sc 是用来与服务控制管理器和服务进行通信的命令行程序。
 
 devmgmt：设备管理器
 
-virtmgmt.msc: hyper-V虚拟工具
+taskmgr.exe 任务管理器
 
-DevModeRunAsUserConfig:看起来像组策略编辑器
+tasklist.exe 任务列表，命令行
+
+taskkill 杀死任务，命令行
+
+regedit.exe 注册表工具
+
+reg 注册表命令行
+
+gpedit.msc：组策略编辑器
+
+taskschd.msc：任务计划管理器
+
+schtasks.exe：任务计划管理的命令行工具
+
+at.exe 老版本的任务计划管理的命令行工具
+
+msconfig.exe: 系统配置器
 
 diskmgmt:磁盘管理。
 
-taskschd：任务计划管理器
+virtmgmt.msc: hyper-V虚拟工具
+
+DevModeRunAsUserConfig.msc: 看起来像组策略编辑器
+
+fsmgmt.msc 共享文件夹
+
+control 控制面版
+
+appwiz.cpl  控制面板\程序\程序和功能
 
 eventvwr：事件查看器
 
 WF.msc：防火墙 windows defender
 
-gpedit：组策略编辑器
-
 perfmon.exe: 性能监视器
 
 %windir%\system32\perfmon.exe /res : 资源监视器
 
+resmon.exe  资源监视器
 
+tpm.msc 版权保护相关，可以保护版权音乐视频播放
 
-
-
-
-
+### *.msc
 ``` bash
 
 C:\Users\admin>where *.msc
@@ -77,6 +95,7 @@ C:\Windows\System32\WF.msc
 C:\Windows\System32\WmiMgmt.msc
 ```
 
+### *.exe
 
 
 ``` bash

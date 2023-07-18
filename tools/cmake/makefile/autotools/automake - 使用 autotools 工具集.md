@@ -36,7 +36,7 @@ $ sudo apt-get install automake
 
 入口代码  int_arithmetic.c
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ``` cpp
 #include <stdio.h>

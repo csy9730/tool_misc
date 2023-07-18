@@ -41,7 +41,7 @@ display:none ---不为被隐藏的对象保留其物理空间，即该对象在�
 
 visible:hidden--- 使对象在网页上不可见，但该对象在网页上所占的空间没有改变，即它仍然具有高度、宽度等属性，通俗来说就是看不见但摸得到。
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 //第1种方法 ,给元素设置style属性  
@@ -55,7 +55,7 @@ $("#hidediv").show();//显示div
 $("#blockdiv").hide();//隐藏div 
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
  
 
