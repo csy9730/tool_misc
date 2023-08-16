@@ -127,7 +127,7 @@ std::vector<std::string> stringSplit(const std::string& str, char delim) {
 
 关于C++学习推荐这个资料库，有很多硬核C++文章：
 
-[https://github.com/fightingwangzq/cpp-learninggithub.com/fightingwangzq/cpp-learning](https://link.zhihu.com/?target=https%3A//github.com/fightingwangzq/cpp-learning)
+[https://github.com/fightingwangzq/cpp-learninggithub.com/fightingwangzq/cpp-learning](https://
 
 
 

@@ -33,7 +33,7 @@ C++中的模板，就好比英语作文的模板，**只换主题，不换句式
 
 STL封装了很多实用的容器，省时省力，能够让你将更多心思放到解决问题的步骤上，而非费力去实现数据结构诸多细节上，**像极了用python时候的酣畅淋漓**。
 
-P.S. 如果你对STL源码颇有兴趣，那你不妨拜读C++大师[侯捷](https://link.zhihu.com/?target=https%3A//baike.baidu.com/item/%E4%BE%AF%E6%8D%B7/1760197%3Ffr%3Daladdin)的杰作《**STL源码剖析**》。
+P.S. 如果你对STL源码颇有兴趣，那你不妨拜读C++大师[侯捷](https://baike.baidu.com/item/%E4%BE%AF%E6%8D%B7/1760197%3Ffr%3Daladdin)的杰作《**STL源码剖析**》。
 
 ![img](https://pic1.zhimg.com/80/v2-a51e894ba7ab3b87eea0747d818d4534_1440w.jpg)
 

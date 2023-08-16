@@ -151,7 +151,7 @@ shared_ptr<Rect> p6(&rect_6); // !!!
 
 这种写法将`p6`指向一块**栈内存**，相当于局部变量`rect_6`和`p6`管理了同一内存空间，而栈内存中的对象是编译器负责创建和销毁的，而且不能析构一个指向非动态分配的内存的智能指针，因此是不合理的。
 
-**【修改】**创建智能指针时**传递一个空的删除器函数**或者**直接使用raw指针**，详见[stackoverflow](https://link.zhihu.com/?target=https%3A//stackoverflow.com/questions/24049155/set-shared-ptr-to-point-existing-object)。正如回答中说的：*There is not much point in using a `shared_ptr` for an automatically allocated object.*
+**【修改】**创建智能指针时**传递一个空的删除器函数**或者**直接使用raw指针**，详见[stackoverflow](https://stackoverflow.com/questions/24049155/set-shared-ptr-to-point-existing-object)。正如回答中说的：*There is not much point in using a `shared_ptr` for an automatically allocated object.*
 
 ```cpp
 Rect rect_6(r_points, r_width, r_height);
@@ -255,13 +255,13 @@ cout << "polygon_ptrs.back() shape: " << circle->shape() << " area: " << circle-
 
 ## [Github] 代码
 
-项目实例均在vs2017上测试，并上传至[GitHub](https://link.zhihu.com/?target=https%3A//github.com/lyandut/MyCppPitfalls)。
+项目实例均在vs2017上测试，并上传至[GitHub](https://github.com/lyandut/MyCppPitfalls)。
 
 ## [Reference] 参考
 
-[Stack Overflow: Set shared_ptr to point existing objectstackoverflow.com/questions/24049155/set-shared-ptr-to-point-existing-object](https://link.zhihu.com/?target=https%3A//stackoverflow.com/questions/24049155/set-shared-ptr-to-point-existing-object)
+[Stack Overflow: Set shared_ptr to point existing objectstackoverflow.com/questions/24049155/set-shared-ptr-to-point-existing-object](https://stackoverflow.com/questions/24049155/set-shared-ptr-to-point-existing-object)
 
-[C++11 shared_ptr（智能指针）详解www.cnblogs.com/liushui-sky/p/13632028.html](https://link.zhihu.com/?target=https%3A//www.cnblogs.com/liushui-sky/p/13632028.html)
+[C++11 shared_ptr（智能指针）详解www.cnblogs.com/liushui-sky/p/13632028.html](https://
 
 
 

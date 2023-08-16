@@ -32,7 +32,7 @@
 
 ![img](https://pic3.zhimg.com/50/v2-0975ff62ac2a353367cdf96df2419584_720w.jpg?source=1940ef5c)![img](https://pic3.zhimg.com/80/v2-0975ff62ac2a353367cdf96df2419584_720w.jpg?source=1940ef5c)上图整个图形界面就是基于GNOME实现的
 
-用C写面向对象程序，虽然门槛较高，但也会有一些额外的好处。初学者可参考：[C 语言实现面向对象编程_onlyshi的专栏-CSDN博客_c语言面向对象编程](https://link.zhihu.com/?target=https%3A//blog.csdn.net/onlyshi/article/details/81672279)
+用C写面向对象程序，虽然门槛较高，但也会有一些额外的好处。初学者可参考：[C 语言实现面向对象编程_onlyshi的专栏-CSDN博客_c语言面向对象编程](https://blog.csdn.net/onlyshi/article/details/81672279)
 
 ## **误区3：C是C++的子集，C支持的语法C++都支持。不对。**
 

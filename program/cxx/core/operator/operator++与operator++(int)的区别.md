@@ -164,7 +164,7 @@ i++++; // same as i.operator++(0).operator++(0);
 
 
 
-本文借鉴与引用作者[[operator++()和operator++(int)的区别_cjluxuwei的专栏-CSDN博客\]](https://link.zhihu.com/?target=https%3A//blog.csdn.net/cjluxuwei/article/details/41810867%3Futm_medium%3Ddistribute.pc_relevant.none-task-blog-baidujs_title-1%26spm%3D1001.2101.3001.4242)
+本文借鉴与引用作者[[operator++()和operator++(int)的区别_cjluxuwei的专栏-CSDN博客\]](https://blog.csdn.net/cjluxuwei/article/details/41810867%3Futm_medium%3Ddistribute.pc_relevant.none-task-blog-baidujs_title-1%26spm%3D1001.2101.3001.4242)
 
 
 

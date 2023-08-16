@@ -22,17 +22,48 @@
 
 ###### **1.1 简单的type_traits（以定义结构体/类中的常量为例）**
 
+``` cpp
+// 定义一个编译期常量
+template<typename T>
+struct GetLeftSize{
+    //使用静态常量
+    static const int value = 1;//或者使用 enum    
+    enum{value = 1};
+}; 
+
+// 在c++11中直接继承 std::integral_constant即可。
+template<typename T>
+struct GetLeftSize : std::integral_constant < int, 1 >{};
+
+int main(){
+    cout << GetLeftSize<float>::value << endl;
+    return 0;
+} 
 ```
-`定义一个编译期常量``template<typename T>``struct` `GetLeftSize{``    ``//使用静态常量``    ``static` `const` `int` `value = 1;``    ``//或者使用 enum``    ``enum``{value = 1};``};` `在c++11中直接继承 std::integral_constant即可。``template<typename T>``struct` `GetLeftSize : std::integral_constant < ``int``, 1 >``{``};``int` `main(){``    ``cout << GetLeftSize<``float``>::value << endl;``    ``return` `0;``}` `std::integral_constant的实现:``    ``// TEMPLATE CLASS integral_constant``template<``class` `_Ty,``    ``_Ty _Val>``    ``struct` `integral_constant``    ``{   ``// convenient template for integral constant types``    ``static` `const` `_Ty value = _Val;` `    ``typedef _Ty value_type;``    ``typedef integral_constant<_Ty, _Val> type;` `    ``operator` `value_type() ``const``        ``{   ``// return stored value``        ``return` `(value);``        ``}``    ``};`
+
+
+std::integral_constant的实现:
+``` cpp
+// TEMPLATE CLASS integral_constant
+template<class _Ty,_Ty _Val>
+struct integral_constant{   // convenient template for integral constant types
+    static const _Ty value = _Val;     
+    typedef _Ty value_type;
+    typedef integral_constant<_Ty, _Val> type;     
+    operator value_type() const {   // return stored value        
+        return (value);        
+    }
+};
 ```
 
  
 
-​    这样，在想要在结构体或类中定义一个整型常量，则可以使该结构体或类继承自 std::integral_constant< int/unsigned int/short/uint8_t/....等整型类型, 想要的值>，则该结构体内部就有了一个 static const的value，访问该value即可。 
-​    std::true_type, std::false_type分别定义了编译期的true和false类型。
+这样，在想要在结构体或类中定义一个整型常量，则可以使该结构体或类继承自 std::integral_constant< int/unsigned int/short/uint8_t/....等整型类型, 想要的值>，则该结构体内部就有了一个 static const的value，访问该value即可。 
+std::true_type, std::false_type分别定义了编译期的true和false类型。
 
-```
-`typedef integral_constant<``bool``, ``true``> true_type;``typedef integral_constant<``bool``, ``false``> false_type;`
+``` cpp
+typedef integral_constant<bool, true> true_type;
+typedef integral_constant<bool, false> false_type;`
 ```
 
  
@@ -41,8 +72,14 @@
 
 ​    这些类型判断的type_traits从std::integral_constant派生，用来检查模板类型是否为某种类型，通过这些traits可以获取编译期检查的bool值结果。
 
-```
-`template<typename T>``struct` `is_integral; ``//用来检查T是否为bool、char、char16t_t、char32_t、short、long、long long或者这些类型的无符号整数类型。如果T是这些类型中的某一类型，则std::is_integral::value 为true， 否则为false。``其他的一些类型判断type_traits``template<typename T>``struct` `is_void; ``//是否为void类型``template<typename T>``struct` `is_floating_point; ``//是否为浮点类型``is_const, is_function, is_pointer, is_compound....``std::is_const<``int``>::value ``//false``std::is_const<``const` `int``>::value ``//true`
+``` cpp
+template<typename T>struct is_integral; // 用来检查T是否为bool、char、char16t_t、char32_t、short、long、long long或者这些类型的无符号整数类型。如果T是这些类型中的某一类型，则std::is_integral::value 为true， 否则为false。其他的一些类型判断type_traits
+template<typename T>struct is_void; //是否为void类型
+template<typename T>struct is_floating_point; //是否为浮点类型
+// is_const, is_function, is_pointer, is_compound....
+
+std::is_const<int>::value //false
+std::is_const<const int>::value //true
 ```
 
  
@@ -75,54 +112,133 @@
 
 ​    通过 ::type来访问这些类型。
 
-```
-`std::cout << std::is_same<``const` `int``, std::add_const<``int``>::type>::value << endl; ``//结果为true``std::cout << std::is_same<``int``, std::remove_all_extent<``int``[2][2][3]>::type>::value<<endl;` `//在根据模板参数创建对象时，要注意移除引用：``template<typename T>``typename std::remove_reference<T>::type* Create(){``    ``typedef typename std::remove_reference<T>::type U;``    ``return` `new` `U();``}``//因为模板参数可能是引用类型，而创建对象时，需要原始的类型，不能用引用类型，所以需要将可能的引用移除` `//如果给的模板参数是一个带cv描述符的引用类型，要获取它的原始类型，可以使用decay``template<typename T>``typename std::decay<T>::type* Create(){``    ``typedef typename std::decay<T>::type U;``    ``return` `new` `U();``}` `decay还可以获得函数的指针类型，从而将函数指针变量保存起来，以便在后面延迟调用。``typdef std::decay<``int``(``double``)>::type F; ``//F为一个函数指针类型， int(*)(double)``template<typename F>``struct` `SimpleFunction{``    ``using` `FnTyppe = typename std::decay<F>::type;``    ``SimpleFunction(F& f): m_fn(f){};``    ``void` `Run(){``        ``m_fn();``    ``}``    ` `    ``FnType m_fn;``};`
+``` cpp
+std::cout << std::is_same<const int, std::add_const<int>::type>::value << endl; //结果为true
+std::cout << std::is_same<int, std::remove_all_extent<int[2][2][3]>::type>::value<<endl; //在根据模板参数创建对象时，要注意移除引用：
+template<typename T>
+typename std::remove_reference<T>::type* Create(){    
+    typedef typename std::remove_reference<T>::type U;    
+    return new U();
+}// 因为模板参数可能是引用类型，而创建对象时，需要原始的类型，不能用引用类型，所以需要将可能的引用移除 
+
+//如果给的模板参数是一个带cv描述符的引用类型，要获取它的原始类型，可以使用decay
+template<typename T>
+typename std::decay<T>::type* Create(){    
+    typedef typename std::decay<T>::type U;    
+    return new U();
+} 
+    // decay还可以获得函数的指针类型，从而将函数指针变量保存起来，以便在后面延迟调用。
+typdef std::decay<int(double)>::type F; //F为一个函数指针类型， int(*)(double)
+template<typename F>
+struct SimpleFunction{    
+    using FnTyppe = typename std::decay<F>::type;    
+    SimpleFunction(F& f): m_fn(f){};    
+    void Run(){        
+        m_fn();    
+    }
+    FnType m_fn;
+};`
 ```
 
  
 
 #### **2. 根据条件选择的traits**
 
-​    std::conditional在编译期根据一个判断式选择两个类型中的一个，和条件表达式的语义类似，类似于一个三元表达式：
+std::conditional在编译期根据一个判断式选择两个类型中的一个，和条件表达式的语义类似，类似于一个三元表达式：
 
-```
-`template<``bool` `B, ``class` `T, ``class` `F>``struct` `conditional;``在std::conditonal模板参数中，如果B为``true``，则conditional::type为T，否则为F。``std::conditional<``true``, ``int``, ``double``>::type ``//= int`
+``` cpp
+template<bool B, class T, class F>
+struct conditional; // 在std::conditonal模板参数中，如果B为true，则conditional::type为T，否则为F。
+std::conditional<true, int, double>::type //= int`
 ```
 
  
 
 #### **3. 获取可调用对象返回类型的traits**
 
-​    在类型推导的时候，decltype和auto可以实现模板函数的返回类型。比如
+​在类型推导的时候，decltype和auto可以实现模板函数的返回类型。比如
 
-```
-`//返回类型后置``template<typename F, typename Arg>``auto Func(F f, Arg arg)->decltype(f(arg)){``    ``return` `f(arg);``}`
+``` cpp
+//返回类型后置
+template<typename F, typename Arg>
+auto Func(F f, Arg arg)->decltype(f(arg)){    
+    return f(arg);
+}
 ```
 
  
 
-​    c++11提供了另一个traits——result_of，用来在编译期获取一个可调用对象的返回类型。
+c++11提供了另一个traits——result_of，用来在编译期获取一个可调用对象的返回类型。
 
-```
-`template<typename F, ``class``... ArgTypes>``class` `result_of<F(ArgTypes...)>;`  `int` `fn(``int``) {``return` `int``();};``typedef ``int``(&fn_ref)(``int``);``typedef ``int``(*fn_ptr)(``int``);``struct` `fn_class{``    ``int` `operator``()(``int` `i){``        ``return` `i;``    ``}``};``int` `main(){``    ``typedef std::result_of<decltype(fn)&(``int``)>::type A;  ``//int``    ``typedef std::result_of<fn_ref(``int``)>::type B;        ``//int``    ``typedef std::result_of<fn_ptr(``int``)>::type C;        ``//int``    ``typedef std::result_of<fn_class(``int``)>::type D;      ``//int``    ``return` `0;``}``需要注意 std::result_of<Fn(ArgTypes)> 要去Fn为一个可调用对象，而函数类型不是一个可调用对象，因此，不能使用``typedef std::result_of<decltype(fn)(``int``)>::type A:  ``//错误``需要先将fn转换为一个可调用对象类型，比如：``typedef std::result_of<decltype(fn)&(``int``)>::type A;``typedef std::result_of<decltype(fn)*(``int``)>::type B;``typedef std::result_of<std::decay<decltype(fn)>::type(``int``)>::type C;`
+``` cpp
+template<typename F, class... ArgTypes>
+class result_of<F(ArgTypes...)>;
+
+int fn(int) {
+    return int();
+};
+typedef int(&fn_ref)(int);
+typedef int(*fn_ptr)(int);
+struct fn_class{    
+    int operator()(int i){        
+        return i;    
+    }
+};
+int main(){    
+    typedef std::result_of<decltype(fn)&(int)>::type A;  //int    
+    typedef std::result_of<fn_ref(int)>::type B;        //int    
+    typedef std::result_of<fn_ptr(int)>::type C;        //int    
+    typedef std::result_of<fn_class(int)>::type D;      //int    
+    return 0;
+}
+
+// 需要注意 std::result_of<Fn(ArgTypes)> 要去Fn为一个可调用对象，而函数类型不是一个可调用对象，因此，不能使用
+typedef std::result_of<decltype(fn)(int)>::type A:  //错误
+
+// 需要先将fn转换为一个可调用对象类型，比如：
+typedef std::result_of<decltype(fn)&(int)>::type A;
+typedef std::result_of<decltype(fn)*(int)>::type B;
+typedef std::result_of<std::decay<decltype(fn)>::type(int)>::type C;`
 ```
 
  
 
 #### **4. 根据条件禁用或启用某种或某些类型traits**
 
-​    std::enable_if利用SFINAE实现条件选择重载函数
+std::enable_if利用SFINAE实现条件选择重载函数
 
-```
-`template< ``bool` `B, ``class` `T = ``void``>   ``//T为返回类型，常用作函数的返回类型``struct` `enable_if;````````当B为``true``的时候，返回类型T，否则编译出错。````````template<``class` `T>       ``//T只有为合法的类型，才能调用该函数，否则编译出错``typename std::enable_if<std::is_arithmetic<T>::value, T>::type foo(T t){``    ``return` `t;``}``auto r = foo(1);    ``//返回1``auto r1 = foo(1.2); ``//返回1.2``auto r2 = foo(``"hello"``); ``//编译出错`
+``` cpp
+template< bool B, class T = void>   //T为返回类型，常用作函数的返回类型
+struct enable_if;当B为true的时候，返回类型T，否则编译出错。template<class T>       
+//T只有为合法的类型，才能调用该函数，否则编译出错
+typename std::enable_if<std::is_arithmetic<T>::value, T>::type foo(T t){    
+    return t;
+}
+
+auto r = foo(1);    //返回1
+auto r1 = foo(1.2); //返回1.2
+auto r2 = foo("hello"); //编译出错`
 ```
 
  
 
-​    可以利用这一点来实现相同函数名，但不同类型参数的函数的重载：
+可以利用这一点来实现相同函数名，但不同类型参数的函数的重载：
 
-```
-`//对于arithmetic类型的入参返回0，对于非arithmetic类型返回1，通过arithmetic将所有的入参分为两大类进行处理。``template<``class` `T>``typename std::enable_if<std::is_arithmetic<T>::value, ``int``>::type foo(T t){``//函数返回类型为int``    ``cout << t << endl;``    ``return` `t;``}` `template<``class` `T>``typename std::enable_if<! std::is_arithmetic<T>::value, ``int``>::type foo(T t){``//函数返回类型为int``    ``cout << typeid(T).name() << endl;``    ``return` `1;``}`
+``` cpp
+//对于arithmetic类型的入参返回0，对于非arithmetic类型返回1，通过arithmetic将所有的入参分为两大类进行处理。
+template<class T>
+typename std::enable_if<std::is_arithmetic<T>::value, int>::type foo(T t){
+    //函数返回类型为int    
+    cout << t << endl;    
+    return t;
+} 
+
+template<class T>
+typename std::enable_if<! std::is_arithmetic<T>::value, int>::type foo(T t){
+    //函数返回类型为int    
+    cout << typeid(T).name() << endl;    
+    return 1;
+}
 ```
 
  

@@ -251,7 +251,7 @@ int main()
 
 ## 参考文献
 
-1. [Inheritance — What your mother never told you](https://link.zhihu.com/?target=https%3A//isocpp.org/wiki/faq/strange-inheritance%23calling-virtuals-from-ctors)
+1. [Inheritance — What your mother never told you](https://isocpp.org/wiki/faq/strange-inheritance%23calling-virtuals-from-ctors)
 
 发布于 2021-04-27 15:23
 

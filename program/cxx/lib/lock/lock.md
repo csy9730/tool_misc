@@ -10,7 +10,7 @@
 - 信号量 （适用于操作系统的资源分配, 资源数量可以大于1）
 - 条件变量
 - atomic 原子指令
-    - CAS 
+    - CAS (compare and swap)
 
 
 ### mutex

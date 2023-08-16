@@ -7,6 +7,11 @@ C++中，为了支持RTTI提供了两个操作符：dynamic_cast和typeid。dyna
 RTTI机制是指，typeid和typeinfo。和auto，decltype，typeof这些编译器机制不同，RTTI机制需要耗费额外的存储空间来保存类信息。
 
 ## type
+
+- typeinfo typeid 是 c++ 提供的，
+- typeof typeof 是gcc编译器提供的
+- decltype auto 是 c++11 提供的，
+
 ### typeid
 C++ 提供的 <typeinfo> 这个头文件保存了一些类型，这些类型和 typeid， dynamic_cast 操作符相关。
 

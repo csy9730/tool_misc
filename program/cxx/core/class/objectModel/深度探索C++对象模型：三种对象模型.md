@@ -87,7 +87,7 @@ Stroustrup 早期设计的 `C++` 对象模型是从简单对象模型改进而�
 
 点击链接领取资料，先到先得：
 
-[点击链接：领取新手礼包，学习资料jq.qq.com/?_wv=1027&k=uaKxXmO0](https://link.zhihu.com/?target=https%3A//jq.qq.com/%3F_wv%3D1027%26k%3DuaKxXmO0)
+[点击链接：领取新手礼包，学习资料jq.qq.com/?_wv=1027&k=uaKxXmO0](https://jq.qq.com/%3F_wv%3D1027%26k%3DuaKxXmO0)
 
 发布于 2020-07-11 16:07
 

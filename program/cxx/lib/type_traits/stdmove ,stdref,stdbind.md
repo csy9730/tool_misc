@@ -8,7 +8,7 @@
 
 ### 1. std::move
 
-[std::move - cppreference.comzh.cppreference.com/w/cpp/utility/move](https://link.zhihu.com/?target=https%3A//zh.cppreference.com/w/cpp/utility/move)
+[std::move - cppreference.comzh.cppreference.com/w/cpp/utility/move](https://
 
 std::move主要使用在以下场景：
 
@@ -24,7 +24,7 @@ std::move主要使用在以下场景：
 
 ### 2. std::ref
 
-[std::ref, std::crefzh.cppreference.com/w/cpp/utility/functional/ref](https://link.zhihu.com/?target=https%3A//zh.cppreference.com/w/cpp/utility/functional/ref)
+[std::ref, std::crefzh.cppreference.com/w/cpp/utility/functional/ref](https://zh.cppreference.com/w/cpp/utility/functional/ref)
 
 C++11 中引入 `std::ref` 用于取某个变量的引用，这个引入是为了解决一些传参问题。
 
@@ -102,12 +102,12 @@ a = 9
 
 ### 3. std::bind
 
-[std::bind - cppreference.comzh.cppreference.com/w/cpp/utility/functional/bind](https://link.zhihu.com/?target=https%3A//zh.cppreference.com/w/cpp/utility/functional/bind)
+[std::bind - cppreference.comzh.cppreference.com/w/cpp/utility/functional/bind](https://zh.cppreference.com/w/cpp/utility/functional/bind)
 
 可将std::bind函数看作一个通用的函数适配器，它接受一个可调用对象，生成一个新的可调用对象来“适应”原对象的参数列表。
 std::bind将可调用对象与其参数一起进行绑定，绑定后的结果可以使用std::function保存。
 
-到 bind 的参数被复制或移动，而且决不按引用传递，除非包装于[std::ref](https://link.zhihu.com/?target=https%3A//zh.cppreference.com/w/cpp/utility/functional/ref)或[std::cref](https://link.zhihu.com/?target=https%3A//zh.cppreference.com/w/cpp/utility/functional/ref)。
+到 bind 的参数被复制或移动，而且决不按引用传递，除非包装于[std::ref](https://zh.cppreference.com/w/cpp/utility/functional/ref)或[std::cref](https://zh.cppreference.com/w/cpp/utility/functional/ref)。
 
 std::bind主要有以下两个作用：
 

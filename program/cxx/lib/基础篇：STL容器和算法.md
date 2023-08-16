@@ -424,8 +424,8 @@ nth_element(beg, nth, end, comp);
 
 ## Reference
 
-- [[C++ STL\] 各容器简单介绍](https://link.zhihu.com/?target=https%3A//www.cnblogs.com/linuxAndMcu/p/10254542.html)
-- [欧长坤, 现代 C++ 教程：高速上手 C++ 11/14/17/20](https://link.zhihu.com/?target=https%3A//changkun.de/modern-cpp/zh-cn/04-containers/index.html)
+- [[C++ STL\] 各容器简单介绍](https://www.cnblogs.com/linuxAndMcu/p/10254542.html)
+- [欧长坤, 现代 C++ 教程：高速上手 C++ 11/14/17/20](https://changkun.de/modern-cpp/zh-cn/04-containers/index.html)
 
 编辑于 2020-07-12 01:25
 

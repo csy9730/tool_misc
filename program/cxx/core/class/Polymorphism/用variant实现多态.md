@@ -427,20 +427,20 @@ void test_param_lambda_polymorphism() {
 
 图片来源于这个链接：[http://cpptruths.blogspot.com/2018/02/inheritance-vs-stdvariant-based.html](https://link.zhihu.com/?target=http%3A//cpptruths.blogspot.com/2018/02/inheritance-vs-stdvariant-based.html)。大家感兴趣的可以直接移步哈。
 
-另外大家应该也比较感兴趣variant是如何实现的。关于如何实现variant，我找到了这篇文章，写的很不错，大家可以看看：[https://www.cnblogs.com/qicosmos/p/3416432.html](https://link.zhihu.com/?target=https%3A//www.cnblogs.com/qicosmos/p/3416432.html)
+另外大家应该也比较感兴趣variant是如何实现的。关于如何实现variant，我找到了这篇文章，写的很不错，大家可以看看：[https://www.cnblogs.com/qicosmos/p/3416432.html](https://www.cnblogs.com/qicosmos/p/3416432.html)
 
 下面是本文参考链接：
 
-- [https://www.cppstories.com/2020/04/variant-virtual-polymorphism.html/](https://link.zhihu.com/?target=https%3A//www.cppstories.com/2020/04/variant-virtual-polymorphism.html/)
-- [https://stackoverflow.com/questions/52296889/what-are-the-advantages-of-using-stdvariant-as-opposed-to-traditional-polymorp](https://link.zhihu.com/?target=https%3A//stackoverflow.com/questions/52296889/what-are-the-advantages-of-using-stdvariant-as-opposed-to-traditional-polymorp)
-- [https://www.cppstories.com/2018/06/variant/](https://link.zhihu.com/?target=https%3A//www.cppstories.com/2018/06/variant/)
+- [https://www.cppstories.com/2020/04/variant-virtual-polymorphism.html/](https://www.cppstories.com/2020/04/variant-virtual-polymorphism.html/)
+- [https://stackoverflow.com/questions/52296889/what-are-the-advantages-of-using-stdvariant-as-opposed-to-traditional-polymorp](https://stackoverflow.com/questions/52296889/what-are-the-advantages-of-using-stdvariant-as-opposed-to-traditional-polymorp)
+- [https://www.cppstories.com/2018/06/variant/](https://www.cppstories.com/2018/06/variant/)
 - [http://cpptruths.blogspot.com/2018/02/inheritance-vs-stdvariant-based.html](https://link.zhihu.com/?target=http%3A//cpptruths.blogspot.com/2018/02/inheritance-vs-stdvariant-based.html)
 
 打完收工。
 
 完整代码见：
 
-[https://github.com/chengxumiaodaren/cpp-learning/tree/master/src/variant](https://link.zhihu.com/?target=https%3A//github.com/chengxumiaodaren/cpp-learning/tree/master/src/variant)
+[https://github.com/chengxumiaodaren/cpp-learning/tree/master/src/variant](https://github.com/chengxumiaodaren/cpp-learning/tree/master/src/variant)
 
 ![img](https://pic3.zhimg.com/80/v2-55b08fe6962d25c3e7cf43d544436866_720w.jpg)
 

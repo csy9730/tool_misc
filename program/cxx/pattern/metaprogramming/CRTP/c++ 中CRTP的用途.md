@@ -12,7 +12,7 @@
 
 [creekee：c++ CRTP（奇异的递归模板模式)介绍52 赞同 · 4 评论文章![img](https://pic1.zhimg.com/v2-1ebd9dd004389a52558271764a8cc979_r.jpg?source=172ae18b)](https://zhuanlan.zhihu.com/p/136258767)
 
-1. **静态多态（Static polymorphism）。**
+### 1. **静态多态（Static polymorphism）。**
 
 下面通过一个例子来进行说明。
 
@@ -47,7 +47,7 @@ struct Derived : Base<Derived>
 
 这里等同于通过查询虚函数动态绑定以达到多态的效果，但省略了动态绑定虚函数查询的时间。
 
-**2. 轻松地实现各个子类实例创建和析构独立的计数。**
+### **2. 轻松地实现各个子类实例创建和析构独立的计数。**
 
 ```cpp
 template <typename T>
@@ -89,7 +89,7 @@ class Y : counter<Y>
 
 每次X或者Y实例化时，`counter`或者` counter`就会被调用，对应的就会增加对创建对象的计数。同样，每次X或者Y悉构后，对应的减少`objects_alive`。这里最重要的是实现了对不同子类单独的计数。
 
-**3. 多态链（Polymorphic chaining）。**
+### **3. 多态链（Polymorphic chaining）。**
 
 还是通过一个具体的例子来对此进行说明。
 
@@ -173,7 +173,7 @@ public:
 CoutPrinter().print("Hello ").SetConsoleColor(Color.red).println("Printer!");
 ```
 
-**4. 多态的复制构造体（Polymorphic copy construction）。**
+### **4. 多态的复制构造体（Polymorphic copy construction）。**
 
 当我们用到多态时，经常会需要通过基类的指针来复制子对象。通常我们可以通过在基类里面构造一个`clone()`虚函数，然后在每个子类里面定义这个`clone()`函数。使用CRTP可以让我们避免反复地在子类中去定义`clone()`函数。
 
@@ -206,9 +206,9 @@ class Square : public Shape<Square>{};
 class Circle : public Shape<Circle>{};
 ```
 
-**参考文献**
+## **参考文献**
 
-[Curiously recurring template pattern](https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Curiously_recurring_template_pattern)
+[Curiously recurring template pattern](https://en.wikipedia.org/wiki/Curiously_recurring_template_pattern)
 
 
 
