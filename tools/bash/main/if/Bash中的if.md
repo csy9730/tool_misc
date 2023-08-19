@@ -12,14 +12,14 @@
 
 [Linux 技巧：Bash的测试和比较函数（探密test，[，[[，((和if-then-else）](https://www.cnblogs.com/haivey/archive/2012/09/04/2669870.html#a5)
 
-# if语法[Linux(bash_shell)]
+#### if语法细节
 
 <http://blog.csdn.net/ycl810921/article/details/4988778>
 
 1:
 定义变量时, =号的两边不可以留空格.
 eg:
-```
+``` bash
 gender=femal------------right
 gender =femal-----------wrong
 gender= femal-----------wrong
@@ -27,7 +27,7 @@ gender= femal-----------wrong
 
 2 条件测试语句 [ 符号的两边都要留空格.
 eg:
-```
+``` d
 if [ $gender = femal ]; then-------right.
      echo "you are femal";
 fi
@@ -38,7 +38,7 @@ if [$gender...----------------------wrong.
 
 3 条件测试的内容,如果是字符串比较的话, 比较符号两边要留空格!
 eg:
-```
+```bash
 if [ $gender = femal ]; then-------right.
 if [ $gender= femal ]; then--------wrong.
 if [ $gender=femal ]; then---------wrong.
@@ -47,7 +47,7 @@ if [ $gender=femal ]; then---------wrong.
 4 如果if 和 then写在同一行, 那么,注意, then的前面要跟上 ; 号.
 如果 then 换行写, 那么也没问题.
 eg:
-```
+``` bash
 if [ $gender = femal ]; then-------right.
 if [ $gender = femal ]
      then-------------------------------right.
@@ -67,7 +67,7 @@ syntax error near unexpected token else
 
  
 
-# BASH IF  
+#### BASH IF PATH
 
 <http://lhsblog01.blog.163.com/blog/static/10200451920081118105937818/>
 
@@ -89,6 +89,19 @@ Linux SHELL if 命令参数说明
 - -w 当由pathname指定的文件或目录存在并且可执行时返回真。一个目录为了它的内容被访问必然是可执行的。
   - -o 当由pathname指定的文件或目录存在并且被子当前进程的有效用户ID所指定的用户拥有时返回真。
 
+``` bash
+#这里的-d 参数判断$myPath是否存在
+if [ ! -d "$myPath"]; then
+mkdir "$myPath"
+fi
+
+# 这里的-f参数判断$myFile是否存在
+if [ ! -f "$myFile" ]; then
+touch "$myFile"
+fi
+```
+
+#### BASH IF str
 UNIX Shell 里面比较字符写法：
 
 - -eq   等于
@@ -103,17 +116,7 @@ UNIX Shell 里面比较字符写法：
 - -n    非空串 
 
  
-``` bash
-#这里的-d 参数判断$myPath是否存在
-if [ ! -d "$myPath"]; then
-mkdir "$myPath"
-fi
 
-# 这里的-f参数判断$myFile是否存在
-if [ ! -f "$myFile" ]; then
-touch "$myFile"
-fi
-```
 
 [top](https://www.cnblogs.com/haivey/archive/2012/09/04/2669870.html#a0)
 

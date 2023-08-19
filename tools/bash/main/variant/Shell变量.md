@@ -46,7 +46,7 @@ echo $author
 
 即可，如：
 
-```
+``` bash
 author="foo"
 echo $authorecho 
 ${author}
@@ -54,7 +54,7 @@ ${author}
 
 变量名外面的花括号{ }是可选的，加不加都行，加花括号是为了帮助解释器识别变量的边界，比如下面这种情况：
 
-```
+``` bash
 skill="Java"
 echo "I am good at ${skill}Script"
 ```
@@ -67,7 +67,7 @@ echo "I am good at ${skill}Script"
 
 已定义的变量，可以被重新赋值，如：
 
-```
+``` bash
 url="http://c.biancheng.net"
 echo ${url}
 url="http://c.biancheng.net/shell/"
@@ -89,7 +89,7 @@ unset variable_name
 
 举个例子：
 
-```
+``` bash
 #!/bin/sh
 myUrl="http://c.abc.net/shell/"
 unset myUrl
@@ -104,7 +104,7 @@ echo $myUrl
 
 下面的例子尝试更改只读变量，结果报错：
 
-```
+``` bash
 #!/bin/bash
 myUrl="http://c.abc.net/shell/"
 readonly myUrl
@@ -122,7 +122,7 @@ bash: myUrl: This variable is read only.
 
 前面我们还留下一个疑问，定义变量时，变量的值可以由单引号' '包围，也可以由双引号" "包围，它们到底有什么区别呢？不妨以下面的代码为例来说明：
 
-```
+``` bash
 #!/bin/bash
 url="http://c.abc.net"
 website1='C语言：${url}'
@@ -147,7 +147,7 @@ C语言：http://c.abc.net
 
 Shell 也支持将命令的执行结果赋值给变量，常见的有以下两种方式：
 
-```
+``` bash
 variable=`command`
 variable=$(command)
 ```

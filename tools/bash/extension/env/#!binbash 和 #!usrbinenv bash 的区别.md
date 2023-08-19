@@ -29,7 +29,7 @@ zsh、bash、csh、ksh 这些解释器虽然有些我没用过，但是我知道
 而今天，刚好无事，也就想着把这个问题记录一下。
 
 ## 区别
-#!/bin/bash
+`#!/bin/bash`
 对于 #!/bin/bash 呢，我想大多数写过脚本的应该都知道，这是一个命令解释器的声明，通常位于脚本的第一行，同时，该行还有个专业的名字，叫做 Shebang 。(不知道 Shebang 的可以去查一下)
 
 作为对命令解释器的声明，#!/bin/bash 声明了 bash 程序所在的位置，如下：⬇️
@@ -38,7 +38,7 @@ zsh、bash、csh、ksh 这些解释器虽然有些我没用过，但是我知道
 
 同理，#!/bin/sh 也是一样的，包括非 Shell 脚本，如 #!/usr/bin/python 也是同理，都是声明命令解释器的位置。
 
-#!/usr/bin/env bash
+`#!/usr/bin/env bash`
 对于 #!/usr/bin/env bash ，说实话，刚开始我真不知道这是个什么写法，关键是我之前没见过。
 而在看了 !/usr/bin/python与#!/usr/bin/env python的区别 这篇文章后，我总算是弄明白了，具体如下：⬇️
 

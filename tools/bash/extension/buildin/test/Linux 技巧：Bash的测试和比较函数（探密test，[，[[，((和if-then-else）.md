@@ -12,13 +12,19 @@
 
 在许多程序设计语言中，我们都知道，在定义了变量的值或者是传递参数后，都需要测试这变量的值和参数值。shell环境下的测试命令像其它shell命令一样都会设置返回的状态，实际上，test命令是一个shell内建命令！
 
-shell内建命令test根据表达式 *expr* 的运算结果返回０（真）或者是１（假）。你也可以使用[ ]，test *expr*和[ *expr* ]是等价的。你即可以通过变量 $? 来测试测试操作的返回值；也可以把返回值直接与 &&、|| 连用；当然后面我们还会涉及到通过多个条件结构来测试返回值。
+shell内建命令test根据表达式 `*expr*` 的运算结果返回０（真）或者是１（假）。你也可以使用`[ ]`，`test *expr*`和`[ *expr* ]`是等价的。你即可以通过变量 `$?` 来测试测试操作的返回值；也可以把返回值直接与 &&、|| 连用；当然后面我们还会涉及到通过多个条件结构来测试返回值。
 
- **列表 1. 一些简单的test**
+#### **列表 1. 一些简单的test**
 
-`[ian@pinguino ~]$ test 3 -gt 4 && echo True || echo falsefalse[ian@pinguino ~]$ [ "abc" != "def" ];echo $?0[ian@pinguino ~]$ test -d "$HOME" ;echo $?0`
+``` bash
+[ian@pinguino ~]$ test 3 -gt 4 && echo True || echo false # false
+[ian@pinguino ~]$ [ "abc" != "def" ];echo $? # 0
+[ian@pinguino ~]$ test -d "$HOME" ;echo $? # 0
+```
 
-在列表１的第一个例子中，-gt操作符对两个数值进行算术比较。在第二个例子中，test的变形 [ ] 则是比较不等式两边的字符串。在最后一个例子中，是通过一元操作符 -d 来测试变量 HOME 变量的值是否是一个正常的目录。
+在列表１的第一个例子中，-gt操作符对两个数值进行算术比较。
+在第二个例子中，test的变形 [ ] 则是比较不等式两边的字符串。
+在最后一个例子中，是通过一元操作符 -d 来测试变量 HOME 变量的值是否是一个正常的目录。
 
 你可以通过-eq、-ne、-lt、-le、-gt或者是-ge来比较算术值，它们分别表示相等、不相等、小于、小于等于、大于或者是大于等于。
 
@@ -26,9 +32,16 @@ shell内建命令test根据表达式 *expr* 的运算结果返回０（真）或
 
 注意：< 和 > 这两个符号同时也是用来做shell重定向，所以你必须通过 < 和 > 来反转它的意思。列表２给出了更多的字符测试的例子。检验一下是不是你所期望样子。
 
-**列表 2. 一些字符串 tests**
+#### **列表 2. 一些字符串 tests**
 
-`[ian@pinguino ~]$ test "abc" = "def" ;echo $?1[ian@pinguino ~]$ [ "abc" != "def" ];echo $?0[ian@pinguino ~]$ [ "abc" < "def" ];echo $?0[ian@pinguino ~]$ [ "abc" > "def" ];echo $?1[ian@pinguino ~]$ [ "abc" <"abc" ];echo $?1[ian@pinguino ~]$ [ "abc" > "abc" ];echo $?1`
+``` bash
+[ian@pinguino ~]$ test "abc" = "def" ;echo $? # 1
+[ian@pinguino ~]$ [ "abc" != "def" ];echo $? # 0
+[ian@pinguino ~]$ [ "abc" < "def" ];echo $? # 0
+[ian@pinguino ~]$ [ "abc" > "def" ];echo $? # 1
+[ian@pinguino ~]$ [ "abc" <"abc" ];echo $? # 1
+[ian@pinguino ~]$ [ "abc" > "abc" ];echo $? # 1
+```
 
 下面的表１中列出一些更常用的文件测试，如果测试一个文件存在且包匹配指定的特性则返回的结果为真。
 
@@ -59,14 +72,23 @@ shell内建命令test根据表达式 *expr* 的运算结果返回０（真）或
 
 **列表 3. 测试 shell 选项**
 
-`[ian@pinguino ~]$ set +o nounset[ian@pinguino ~]$ [ -o nounset ];echo $?1[ian@pinguino ~]$ set -u[ian@pinguino ~]$ test  -o nounset; echo $?0`
+``` bash
+[ian@pinguino ~]$ set +o nounset
+[ian@pinguino ~]$ [ -o nounset ];echo $? # 1
+[ian@pinguino ~]$ set -u
+[ian@pinguino ~]$ test  -o nounset; echo $? # 0
+```
 
 
 最后，-a 和 -o 选项分别表示通过逻辑的与（AND）和（OR）把表达式连接起来，一元操作符 -a 则是用来反转一个测试的真值。你甚于可以用括号把表达式分组来改变默认的优先级。要谨记，一般情况下，shell 环境会把括号中的表达式放到子 shell 中去运行，所以你需要通过 ( 和 ) 或者把它俩放到单引号或双引号中来反转它的意思。列表４演示了对一个表达式德摩根定律的应用。
 
 **列表 4. 连接和分组tests**
 
-`[ian@pinguino ~]$ test "a" != "$HOME" -a 3 -ge 4 ; echo $?1[ian@pinguino ~]$ [ ! ( "a" = "$HOME" -o 3 -lt 4 ) ]; echo $?1[ian@pinguino ~]$ [ ! ( "a" = "$HOME" -o '(' 3 -lt 4 ')' ")" ]; echo $?1`
+``` bash
+[ian@pinguino ~]$ test "a" != "$HOME" -a 3 -ge 4 ; echo $? # 1
+[ian@pinguino ~]$ [ ! ( "a" = "$HOME" -o 3 -lt 4 ) ]; echo $? # 1
+[ian@pinguino ~]$ [ ! ( "a" = "$HOME" -o '(' 3 -lt 4 ')' ")" ]; echo $? # 1
+```
 
 ------
 
@@ -77,28 +99,44 @@ shell内建命令test根据表达式 *expr* 的运算结果返回０（真）或
 复合命令 (( )) 计算一个算术表达式的值，并且当运算结果为０时，设置返回的状态为１，运算结果为非０的值时则设置返回状态为０。同时你也不必转义 (( 和 )) 之间的操作符号。支持整数的四则运算。被０除会导致错误，但是不会溢出。你也可以在其中运行usual C形式的算术表达式、逻辑和移位操作。let 命令也可以运行一个或多个算术表达式。它常常用来给算术变量赋值。
 
 
-**列表５. 赋值并测试算术表达式**
+#### **列表５. 赋值并测试算术表达式**
 
-`[ian@pinguino ~]$ let x=2 y=2**3 z=y*3;echo $? $x $y $z0 2 8 24[ian@pinguino ~]$ (( w=(y/x) + ( (~ ++x) & 0x0f ) )); echo $? $x $y $w0 3 8 16[ian@pinguino ~]$ (( w=(y/x) + ( (~ ++x) & 0x0f ) )); echo $? $x $y $w0 4 8 13`
+``` bash
+[ian@pinguino ~]$ let x=2 y=2**3 z=y*3;echo $? $x $y $z0 2 8 24
+[ian@pinguino ~]$ (( w=(y/x) + ( (~ ++x) & 0x0f ) )); echo $? $x $y $w0 3 8 16
+[ian@pinguino ~]$ (( w=(y/x) + ( (~ ++x) & 0x0f ) )); echo $? $x $y $w0 4 8 13
+```
 
 像 (( )) 一样复合命令 [[ ]] 允许你使用更自然的语法对文件或字符串进行测试。你也可以通过括号和逻辑操作符连接多个测试。
 
 
-**列表６.使用复合命令[[**
+#### **列表６.使用复合命令[[**
 
-`[ian@pinguino ~]$ [[ ( -d "$HOME" ) && ( -w "$HOME" ) ]] &&  >  echo "home is a writable directory"home is a writable directory`
+``` bash
+[ian@pinguino ~]$ [[ ( -d "$HOME" ) && ( -w "$HOME" ) ]] &&  >  echo "home is a writable directory"home is a writable directory
+```
 
 当使用 = 或 != 时 [[ 复合命令也可以对字符串执行模式匹配，针对通配符的匹配如列表7所示。
 
-**列表7. 通过 [[ 做匹配tests**
+#### **列表7. 通过 [[ 做匹配tests**
 
-`[ian@pinguino ~]$ [[ "abc def .d,x--" == a[abc]* ?d* ]]; echo $?0[ian@pinguino ~]$ [[ "abc def c" == a[abc]* ?d* ]]; echo $?1[ian@pinguino ~]$ [[ "abc def d,x" == a[abc]* ?d* ]]; echo $?1`
+``` bash
+[ian@pinguino ~]$ [[ "abc def .d,x--" == a[abc]* ?d* ]]; echo $?0
+[ian@pinguino ~]$ [[ "abc def c" == a[abc]* ?d* ]]; echo $?1
+[ian@pinguino ~]$ [[ "abc def d,x" == a[abc]* ?d* ]]; echo $?1
+```
 
 你甚至也可以通过 [[ 执行算术操作，但是请谨慎，只有是在 (( 复合命令中，< 和 > 操作符会把字符串作为操作对象测试其对应的次序前后。列表８中通过几个例子做了演示。
 
 **列表８.通过 [[ 做算术测试**
 
-`[ian@pinguino ~]$ [[ "abc def d,x" == a[abc]* ?d* || (( 3 > 2 )) ]]; echo $?0[ian@pinguino ~]$ [[ "abc def d,x" == a[abc]* ?d* || 3 -gt 2 ]]; echo $?0[ian@pinguino ~]$ [[ "abc def d,x" == a[abc]* ?d* || 3 > 2 ]]; echo $?0[ian@pinguino ~]$ [[ "abc def d,x" == a[abc]* ?d* || a > 2 ]]; echo $?0[ian@pinguino ~]$ [[ "abc def d,x" == a[abc]* ?d* || a -gt 2 ]]; echo $?-bash: a: unbound variable`
+``` bash
+[ian@pinguino ~]$ [[ "abc def d,x" == a[abc]* ?d* || (( 3 > 2 )) ]]; echo $?0
+[ian@pinguino ~]$ [[ "abc def d,x" == a[abc]* ?d* || 3 -gt 2 ]]; echo $?0
+[ian@pinguino ~]$ [[ "abc def d,x" == a[abc]* ?d* || 3 > 2 ]]; echo $?0
+[ian@pinguino ~]$ [[ "abc def d,x" == a[abc]* ?d* || a > 2 ]]; echo $?0
+[ian@pinguino ~]$ [[ "abc def d,x" == a[abc]* ?d* || a -gt 2 ]]; echo $?-bash: a: unbound variable
+```
 
 ------
 
@@ -116,7 +154,15 @@ bash环境下的if命令带一个then子句，这条子句包含一个命令序�
 
 **列表 9.用if，then，else来计算表达式**
 
-`[ian@pinguino ~]$ function mycalc ()> {>   local x>   if [ $# -lt 1 ]; then>     echo "This function evaluates arithmetic for you if you give it some">   elif (( $* )); then>     let x="$*">     echo "$* = $x">   else>     echo "$* = 0 or is not an arithmetic expression">   fi> }[ian@pinguino ~]$ mycalc 3 + 43 + 4 = 7[ian@pinguino ~]$ mycalc 3 + 4**33 + 4**3 = 67[ian@pinguino ~]$ mycalc 3 + (4**3 /2)-bash: syntax error near unexpected token `('[ian@pinguino ~]$ mycalc 3 + "(4**3 /2)"3 + (4**3 /2) = 35[ian@pinguino ~]$ mycalc xyzxyz = 0 or is not an arithmetic expression[ian@pinguino ~]$ mycalc xyz + 3 + "(4**3 /2)" + abcxyz + 3 + (4**3 /2) + abc = 35`
+``` bash
+[ian@pinguino ~]$ function mycalc ()> {>   local x>   if [ $# -lt 1 ]; then>     echo "This function evaluates arithmetic for you if you give it some">   elif (( $* )); then>     let x="$*">     echo "$* = $x">   else>     echo "$* = 0 or is not an arithmetic expression">   fi> }
+[ian@pinguino ~]$ mycalc 3 + 43 + 4 = 7
+[ian@pinguino ~]$ mycalc 3 + 4**33 + 4**3 = 67
+[ian@pinguino ~]$ mycalc 3 + (4**3 /2)-bash: syntax error near unexpected token `('
+[ian@pinguino ~]$ mycalc 3 + "(4**3 /2)"3 + (4**3 /2) = 35
+[ian@pinguino ~]$ mycalc xyzxyz = 0 or is not an arithmetic expression
+[ian@pinguino ~]$ mycalc xyz + 3 + "(4**3 /2)" + abcxyz + 3 + (4**3 /2) + abc = 35
+```
 
 
 这个计算器用 loca l那句声明了一个本地变量 x ，它只在 mycalc 函数的范围内有效。let 函数可以有多个选项，像 declare 函数一样，选项与函数的作用也是密切相关联。更多信息请查看bash的man手册，或者通过 help let 获得。
@@ -127,7 +173,15 @@ bash环境下的if命令带一个then子句，这条子句包含一个命令序�
 
 **列表 10. 不同基数的运算**
 
-`[ian@pinguino ~]$ mycalc 015015 = 13[ian@pinguino ~]$ mycalc 0xff0xff = 255[ian@pinguino ~]$ mycalc 29#3729#37 = 94[ian@pinguino ~]$ mycalc 64#1az64#1az = 4771[ian@pinguino ~]$ mycalc 64#1azA64#1azA = 305380[ian@pinguino ~]$ mycalc 64#1azA_@64#1azA_@ = 1250840574[ian@pinguino ~]$ mycalc 64#1az*64**3 + 64#A_@64#1az*64**3 + 64#A_@ = 1250840574`
+``` bash
+[ian@pinguino ~]$ mycalc 015015 = 13
+[ian@pinguino ~]$ mycalc 0xff0xff = 255
+[ian@pinguino ~]$ mycalc 29#3729#37 = 94
+[ian@pinguino ~]$ mycalc 64#1az64#1az = 4771
+[ian@pinguino ~]$ mycalc 64#1azA64#1azA = 305380
+[ian@pinguino ~]$ mycalc 64#1azA_@64#1azA_@ = 1250840574
+[ian@pinguino ~]$ mycalc 64#1az*64**3 + 64#A_@64#1az*64**3 + 64#A_@ = 1250840574
+```
 
 这些附加的输入已经走出了这篇文章的范围，用你的这个计算器时请谨慎使用。
 
@@ -136,7 +190,21 @@ elif 语句非常方便，它帮助你在写脚本时简单地实现的缩进。
 
 **列表 11. 打印mycalc**
 
-`[ian@pinguino ~]$ type mycalcmycalc is a functionmycalc (){    local x;    if [ $# -lt 1 ]; then        echo "This function evaluates arithmetic for you if you give it some";    else        if (( $* )); then            let x="$*";            echo "$* = $x";        else            echo "$* = 0 or is not an arithmetic expression";        fi;    fi}`
+``` bash
+[ian@pinguino ~]$ type mycalcmycalc is a functionmycalc (){    
+    local x;    
+    if [ $# -lt 1 ]; 
+    then        echo "This function evaluates arithmetic for you if you give it some";    
+    else        
+        if (( $* )); then            
+            let x="$*";            
+            echo "$* = $x";        
+        else            
+            echo "$* = 0 or is not an arithmetic expression";        
+        fi;    
+    fi
+}
+```
 
 
 当然,你可以像列表12中一样通过 $(( *expression* )) 和 echo 命令仅仅利用 shell 做算术。那种方式你不会学会任何与函数有关的东西，但提示你的是，在 (( *expression* )) 或者是 [[ *expression* ]] 中， shell 不会翻译元字符，像 * 等等。
@@ -144,8 +212,9 @@ elif 语句非常方便，它帮助你在写脚本时简单地实现的缩进。
 
 **列表 12. 直接在shell环境中通过(( ))和echo命令运算**
 
-`[ian@pinguino ~]$  echo $((3 + (4**3 /2)))35`
-
+``` bash 
+[ian@pinguino ~]$  echo $((3 + (4**3 /2)))35
+```
  
 
 [ top](https://www.cnblogs.com/haivey/archive/2012/09/04/2669870.html#a0)

@@ -2,7 +2,7 @@
 
 如果shell是Zsh，则定义变量`$ZSH_VERSION`。同样适用于Bash和`$BASH_VERSION`。
 
-```
+``` bash
 if [ -n "$ZSH_VERSION" ]; then
    # assume Zsh
 elif [ -n "$BASH_VERSION" ]; then
@@ -26,7 +26,7 @@ $SHELL
 
 环境变量(应包含用户首选shell的绝对路径)并根据该变量的值猜测shell：
 
-```
+``` bash
 case $SHELL in
 */zsh) 
    # assume Zsh
@@ -59,7 +59,7 @@ $SHELL
 
 ，实际执行一些代码会更安全：
 
-```
+``` bash
 if [ -n "`$SHELL -c 'echo $ZSH_VERSION'`" ]; then
    # assume Zsh
 elif [ -n "`$SHELL -c 'echo $BASH_VERSION'`" ]; then
