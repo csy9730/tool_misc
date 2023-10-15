@@ -1,6 +1,9 @@
 # xxd
 
 /usr/bin/xxd
+
+可以把文件转成二进制编码形式
+## help
 ```
  xxd --help
 Usage:
@@ -24,4 +27,22 @@ Options:
     -s [+][-]seek  start at <seek> bytes abs. (or +: rel.) infile offset.
     -u          use upper case hex letters.
     -v          show version: "xxd V1.10 27oct98 by Juergen Weigert".
+```
+
+
+#### demo
+
+准备一个文本文件
+```
+12345
+56789
+hello world
+XXD
+```
+
+执行转换
+``` bash
+$ ~/Project2/works/code_sharing/build# xxd 111 
+00000000: 3132 3334 350a 3536 3738 390a 6865 6c6c  12345.56789.hell
+00000010: 6f20 776f 726c 640a 5858 44              o world.XXD
 ```

@@ -1,6 +1,11 @@
 # c++filt
 
 c++filt是C++源码编译后生成二进制文件中符号表中的符号名还原工具。
+
+## usage
+``` bash
+nm a.o | c++filt
+```
 ## help
 
 ```
