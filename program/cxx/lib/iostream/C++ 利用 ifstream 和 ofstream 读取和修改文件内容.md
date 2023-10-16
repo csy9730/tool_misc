@@ -95,7 +95,7 @@ ifstream getline(char* s,size_t n);
 
 假设有 names.data 这样一个文本文件，内容如下：
 
-```javascript
+```
 frank
 joy
 jordan

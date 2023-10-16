@@ -34,7 +34,7 @@ namespace std{
 
 （1）在我们写的类T中添加一个swap成员函数，这样方便我们交换类中的私有成员，并且设置swap函数不会抛出异常，为什么？见《C++ Primer 第五版中文版》474页。
 
-```
+``` cpp
 void T::swap(T& t) noexcept;
 ```
 
