@@ -6,9 +6,9 @@
 
 std::string到底是深拷贝还是浅拷贝呢？网上两种说法都有，我的理解是：深拷贝。
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
-```
+
+``` cpp
 // copy on write
 static void TestStringCopyCase1() {
     std::string a = "Hello World";
@@ -42,7 +42,7 @@ Hello World
 hello World
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 这两个case很明确地证明std::string是深拷贝的，对副本的修改不会影响到原件。只不过，在修改副本之前，它们的c_str()指针是指向同一地址的，只有在尝试写入的时候，才会区分开来。
 
@@ -50,7 +50,7 @@ hello World
 
 那么这里就隐藏了一个空子，如果绕过引用计数，直接修改原始数据，会怎样？
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 // misuse: modify b, but a is effected.
@@ -72,13 +72,13 @@ hello World
 hello World
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 修改副本，导致原件也被修改。是一个容易引起错误的地方。
 
 如何避免呢？
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 // deep copy to avoid misuse
@@ -100,7 +100,7 @@ Hello World
 hello World
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 复制的时候，直接复制源数据，绕开写时复制。这就给人一种**错觉**，好像std::string的拷贝函数是浅拷贝，需要刻意深拷贝。
 

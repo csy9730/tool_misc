@@ -32,7 +32,7 @@
 
  如果该文件不存在则新建并写入，如果该文件存在则清除所有内容并从头开始写入；选择使用的参数：**ios::trunc | ios::out | ios::in。**
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ``` cpp
 1  fstream _file;
@@ -43,7 +43,7 @@
 6       cout<<FILENAME<<"已经存在!"<<endl;　
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
   ofstream my_samplefile ("my_saple.txt",ios::trunc|ios::out|ios::in );
@@ -53,7 +53,7 @@
 
 　　CSV文件有其特殊性，由于逗号分隔符的存在，写入文件时只需要注意不遗漏必要的逗号，即可生成格式化的CSV文件。需要注意的是在open打开或创建的文件，务必以“.csv”后缀结束。
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ``` cpp
  1 #include <iostream>
@@ -82,13 +82,13 @@
 24 }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ### 　3）其它应用
 
 　　贴一个简单的日志处理程序：
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
  1 #include <iostream>
@@ -104,7 +104,7 @@
 11 } ///< ssl 上下文
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 #  二、文件读写 & 文件格式化
 
@@ -169,7 +169,7 @@ setpxecision(int p) 设置浮点数的精度位数 输出**
 
 　这两个函数一般用于二进制文件，因为文本文件会因为系统对字符的解释而可能与预想的值不同。
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ``` cpp
 1 //指针移到文件的最前面
@@ -180,7 +180,7 @@ setpxecision(int p) 设置浮点数的精度位数 输出**
 6 seekg(0,ios::end);
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 　　考虑一个本地数据记录的文件写入格式，或一个类似log4cpp的日志写入功能如何实现。
 
@@ -218,7 +218,7 @@ setpxecision(int p) 设置浮点数的精度位数 输出**
 
 　　（1）在进行文件写的时候（非二进制），文件指针很成问题。举个例子：比如文件的内容是"100100100"，写入了三个int类型的变量，值为100。接下来我如果想改变第二个100，使其变成200，文件指针需要移动3位，因为前面有三个字符。这时候指针是一个字符一个字符的移动的。
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ``` cpp
  1 #include <iostream>
@@ -238,11 +238,11 @@ setpxecision(int p) 设置浮点数的精度位数 输出**
 15 }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 　　（2）而如果把文件换成二进制的写，那么情况就会有些变化，如果还是想改写第二个100的内容，那么文件指针就需要指向sizeof(int)。指针是一个byte一个byte地移动。 int存入的方式就是以int类型，将其原封写入文件，所以二进制的读写比较简单。
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ``` cpp
  1 #include <iostream>
@@ -265,7 +265,7 @@ setpxecision(int p) 设置浮点数的精度位数 输出**
 18 }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 　 （3）经实验表明，ios::app Mode下是不能移动文件指针的，而且这个时候tellp()是0。此模式下只能在后面追加着写。
 

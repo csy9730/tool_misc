@@ -1,10 +1,10 @@
-## [第24课 std::thread线程类及传参问题](https://www.cnblogs.com/5iedu/p/11633683.html)
+# [第24课 std::thread线程类及传参问题](https://www.cnblogs.com/5iedu/p/11633683.html)
 
 Posted on 2019-10-08 09:33 [浅墨浓香](https://www.cnblogs.com/5iedu/) 阅读(8666) 评论(0) [编辑](https://i.cnblogs.com/EditPosts.aspx?postid=11633683) [收藏](javascript:void(0)) [举报](javascript:void(0))
 
-**一. std::thread类**
+## **一. std::thread类**
 
-**（一）thread类摘要及分析**
+### **（一）thread类摘要及分析**
 
 ![img](https://images.cnblogs.com/OutliningIndicators/ExpandedBlockStart.gif)
 
@@ -153,7 +153,7 @@ private:
 
 　　5. std::thread对象不能被复制和赋值，只能被移动。
 
-**（二）线程的基本用法**
+### **（二）线程的基本用法**
 
 　　**1.** **获取当前信息**
 
@@ -171,7 +171,7 @@ private:
 
 　　（3）joinable()：检查线程是否可被联结。
 
-**（三）std::this_thread命名空间中相关辅助函数**
+### **（三）std::this_thread命名空间中相关辅助函数**
 
 　　1. get_id(); //获取线程ID：
 
@@ -283,15 +283,15 @@ t3(thread id: 2880) is running...
 
 
 
-**二. 传递参数的方式**
+## **二. 传递参数的方式**
 
-（一）传参中的陷阱：
+### （一）传参中的陷阱：
 
 　　1. 向std::thread 构造函数传参：所有参数（含第1个参数可调用对象）均**按值**并**以副本的形式保存**在std::thread对象中的tuple里。这一点的实现类似于std::bind。如果**要达到按引用传参的效果，可使用std::ref来传递**。
 
 　　2. 向线程函数的传参：由于std::thread对象里保存的是参数的副本，为了效率同时兼顾一些只移动类型的对象，**所有的副本均被std::move到线程函数，即以右值的形式传入**。
 
-**（二）注意事项**
+### **（二）注意事项**
 
 　　1. 一个实参从主线程传递到子线程的线程函数中，**需要经过两次传递**。**第1次发生在std::thread构造时，此次参数按值并以副本形式被保存**。**第2次发生在向线程函数传递时**，此次传递是由子线程发起，并将之前std::thread内部保存的副本**以右值的形式(std::move())传入线程函数**中的。
 
