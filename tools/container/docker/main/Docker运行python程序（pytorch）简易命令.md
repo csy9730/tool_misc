@@ -68,8 +68,8 @@ nvidia-docker run -it  nvcr.io/nvidia/pytorch:20.12-py3 /bin/bash
 docker run -p 80:80 -v /data:/data -d nginx:latest
 ```
 
-```
-docker start : 启动一个或多个已经被停止的容器
+``` bash
+docker start # 启动一个或多个已经被停止的容器
 docker start myrunoob ## 启动已被停止的容器myrunoob
 
 docker stop :停止一个运行中的容器

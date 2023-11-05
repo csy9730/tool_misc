@@ -36,36 +36,36 @@ select、poll 和 epoll 都是 Linux API 提供的 IO 复用方式。
 - **缓存I/O**
   缓存I/O又称为标准I/O，大多数文件系统的默认I/O操作都是缓存I/O。在Linux的缓存I/O机制中，操作系统会将I/O的数据缓存在文件系统的页缓存中，即数据会先被拷贝到操作系统内核的缓冲区中，然后才会从操作系统内核的缓冲区拷贝到应用程序的地址空间。
 
-# Select
+## Select
 
 我们先分析一下select函数
 
-```
+``` c
 int select(int maxfdp1,fd_set *readset,fd_set *writeset,fd_set *exceptset,const struct timeval *timeout);
 ```
 
 **【参数说明】**
-**int maxfdp1** 指定待测试的文件描述字个数，它的值是待测试的最大描述字加1。
-**fd_set \*readset , fd_set \*writeset , fd_set \*exceptset**
+- **int maxfdp1** 指定待测试的文件描述字个数，它的值是待测试的最大描述字加1。
+- **fd_set \*readset , fd_set \*writeset , fd_set \*exceptset**
 `fd_set`可以理解为一个集合，这个集合中存放的是文件描述符(file descriptor)，即文件句柄。中间的三个参数指定我们要让内核测试读、写和异常条件的文件描述符集合。如果对某一个的条件不感兴趣，就可以把它设为空指针。
-**const struct timeval \*timeout** `timeout`告知内核等待所指定文件描述符集合中的任何一个就绪可花多少时间。其timeval结构用于指定这段时间的秒数和微秒数。
+- **const struct timeval \*timeout** `timeout`告知内核等待所指定文件描述符集合中的任何一个就绪可花多少时间。其timeval结构用于指定这段时间的秒数和微秒数。
 
 **【返回值】**
 **int** 若有就绪描述符返回其数目，若超时则为0，若出错则为-1
 
-##### select运行机制
+#### select运行机制
 
 select()的机制中提供一种`fd_set`的数据结构，实际上是一个long类型的数组，每一个数组元素都能与一打开的文件句柄（不管是Socket句柄,还是其他文件或命名管道或设备句柄）建立联系，建立联系的工作由程序员完成，当调用select()时，由内核根据IO状态修改fd_set的内容，由此来通知执行了select()的进程哪一Socket或文件可读。
 
 从流程上来看，使用select函数进行IO请求和同步阻塞模型没有太大的区别，甚至还多了添加监视socket，以及调用select函数的额外操作，效率更差。但是，使用select以后最大的优势是用户可以在一个线程内同时处理多个socket的IO请求。用户可以注册多个socket，然后不断地调用select读取被激活的socket，即可达到在同一个线程内同时处理多个IO请求的目的。而在同步阻塞模型中，必须通过多线程的方式才能达到这个目的。
 
-##### select机制的问题
+#### select机制的问题
 
 1. 每次调用select，都需要把`fd_set`集合从用户态拷贝到内核态，如果`fd_set`集合很大时，那这个开销也很大
 2. 同时每次调用select都需要在内核遍历传递进来的所有`fd_set`，如果`fd_set`集合很大时，那这个开销也很大
 3. 为了减少数据拷贝带来的性能损坏，内核对被监控的`fd_set`集合大小做了限制，并且这个是通过宏控制的，大小不可改变(限制为1024)
 
-# Poll
+## Poll
 
 poll的机制与select类似，与select在本质上没有多大差别，管理多个描述符也是进行轮询，根据描述符的状态进行处理，但是poll没有最大文件描述符数量的限制。也就是说，poll只解决了上面的问题3，并没有解决问题1，2的性能开销问题。
 
@@ -94,7 +94,7 @@ poll改变了文件描述符集合的描述方式，使用了`pollfd`结构而�
 **【返回值】**
 **int** 函数返回fds集合中就绪的读、写，或出错的描述符数量，返回0表示超时，返回-1表示出错；
 
-# Epoll
+## Epoll
 
 epoll在Linux2.6内核正式提出，是基于事件驱动的I/O方式，相对于select来说，epoll没有描述符个数限制，使用一个文件描述符管理多个描述符，将用户关心的文件描述符的事件存放到内核的一个事件表中，这样在用户空间和内核空间的copy只需一次。
 
@@ -102,7 +102,7 @@ Linux中提供的epoll相关函数如下：
 
 
 
-```csharp
+```c
 int epoll_create(int size);
 int epoll_ctl(int epfd, int op, int fd, struct epoll_event *event);
 int epoll_wait(int epfd, struct epoll_event * events, int maxevents, int timeout);
@@ -113,7 +113,7 @@ int epoll_wait(int epfd, struct epoll_event * events, int maxevents, int timeout
 **2. epoll_ctl** 函数注册要监听的事件类型。四个参数解释如下：
 
 - `epfd` 表示epoll句柄
-- op  表示fd操作类型，有如下3种
+- `op`  表示fd操作类型，有如下3种
   - EPOLL_CTL_ADD 注册新的fd到epfd中
   - EPOLL_CTL_MOD 修改已注册的fd的监听事件
   - EPOLL_CTL_DEL 从epfd中删除一个fd

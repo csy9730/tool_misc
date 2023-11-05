@@ -70,9 +70,17 @@ template <typename T, typename = typename std::enable_if<std::is_integral<T>::va
 bool is_even(T t) {
   return !is_odd(t);
 }
-```
 
-一个通过返回值，一个通过默认模板参数，都可以实现校验模板参数是整型的功能。
+```
+一个通过返回类型，一个通过默认模板参数，都可以实现校验模板参数是整型的功能。
+
+显然，类型的整型判断是单类型，不需要额外的模板参数，这里引入了**额外的模板参数**:
+`std::enable_if< std::is_integral<T>::value >::type`
+
+判断条件是 `std::is_integral<T>::value`
+- 为真则返回 type，这里 type=void
+- 为假则不存在type，导致匹配失败。
+
 
 ## Reference
 
