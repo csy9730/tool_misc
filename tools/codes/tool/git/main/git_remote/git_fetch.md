@@ -3,15 +3,20 @@
 ## git_fetch
 
 
-## git_push
+``` bash
+# 拉取 pu 分支，拉取 maint 到本地的tmp分支
+$ git fetch origin +pu:pu maint:tmp
+
+# 直接拉取git仓库
+git fetch git://git.kernel.org/pub/scm/git/git.git maint
 ```
-git push -u origin master
-```
+
+
 ## git_pull
 
 git pull 命令用于从远程获取代码并合并本地的版本。
 
-git pull 其实就是 git fetch 和 git merge FETCH_HEAD 的简写。
+`git pull` 其实就是 `git fetch` 和 `git merge FETCH_HEAD` 的简写。
 
 命令格式如下：
 ```

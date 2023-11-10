@@ -35,7 +35,7 @@ git merge --squash dev
 feature分支使用规范：
 * 可以从develop分支发起feature分支。
 * 代码必须合并回develop分支。
-* feature分支的命名可以使用除master，develop，release-*，hotfix-*之外的任何名称。
+* feature分支的命名可以使用除master，develop，release-\*，hotfix-\*之外的任何名称。
 * feature分支（topic分支）通常在开发一项新的软件功能的时候使用，分支上的代码变更最终合并回develop分支或者干脆被抛弃掉（例如实验性且效果不好的代码变更）。
 一般而言，feature分支代码可以保存在开发者自己的代码库中而不强制提交到主代码库里。
 Feature分支开发完成后，必须合并回Develop分支，合并完分支后一般会删Feature分支，但也可以保留。
@@ -126,4 +126,5 @@ echo 继续工作
 * gitlab flow
 
 git flow策略最复杂， github flow策略简洁很多。gitlab flow侧重于master分支。
+
 不过以上策略只侧重于branch，没有使用submodule和subtree。
