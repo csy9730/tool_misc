@@ -26,7 +26,7 @@
 
 之所以命名为： Binary Indexed Tree，在论文中 Fenwick 有如下解释：
 
-In recognition of the close relationship between the tree traversal algorithms and the binary representation of an element index,the name "binar indexed tree" is proposed for the new structure.
+> In recognition of the close relationship between the tree traversal algorithms and the binary representation of an element index,the name "binar indexed tree" is proposed for the new structure.
 
 也就是考虑到：树的遍历方法与二值表示之间的紧密联系，因此将其命名为二元索引树。
 

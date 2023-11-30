@@ -75,6 +75,32 @@ git merge --abort
 -m <message>：指定新的合并提交的提交信息。
 ```
 
+
+#### git强制合并另一个分支
+New分支和Old分支都修改了同样的部分，有冲突，但是想在Old分之上合并New分支的内容，并且以New分支为主，就是不自己手动解决冲突，碰到冲突，直接以New分支为主。
+
+参考
+
+[https://git-scm.com/docs/merge-strategies](https://git-scm.com/docs/merge-strategies)
+
+[https://stackoverflow.com/questions/2763006/make-the-current-git-branch-a-master-branch](https://stackoverflow.com/questions/2763006/make-the-current-git-branch-a-master-branch)
+
+1.通过git merge实现
+git merge有一个参数strategy，用来指定合并的策略，参数中除了默认的，还有ours，顾名思义，ours就是以当前我的分支为主。
+
+具体操作可以是切换到New分之上，然后通过
+``` bash
+git checkout New
+git merge --strategy=ours Old
+```
+2.通过git reset实现
+``` bash
+git checkout Old
+git reset --hard New
+```
+
+一定要注意，这个会丢掉Old分支上的一些内容，建议创建新的分支测试后再使用
+
 ## faq
 ### 如何查看分支图
 

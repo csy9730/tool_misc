@@ -2,28 +2,27 @@
 
 
 
-# 1.11.1 Leafy TreeLeafy Tree
+# 1.11.1 Leafy Tree
 
 ### 定义
 
-> Leafy TreeLeafy Tree 是一种二叉树，其每个节点要么为叶子，要么有两个儿子。其信息完全储
-> 存在叶子上面，每个非叶节点存储的信息是其儿子的信息的合并。
+> Leafy Tree 是一种二叉树，其每个节点要么为叶子，要么有两个儿子。其信息完全储存在叶子上面，每个非叶节点存储的信息是其儿子的信息的合并。
 
-例如线段树就是一种Leafy TreeLeafy Tree，每个节点上存的信息是左右子节点的信息之和。
+例如线段树就是一种Leafy Tree，每个节点上存的信息是左右子节点的信息之和。
 
-在用Leafy TreeLeafy Tree实现重量平衡树的功能的时候，每个节点的权值为其右子节点的权值，重量为左右节点重量之和，每个叶子节点的权值为集合中的数。
+在用Leafy Tree实现重量平衡树的功能的时候，每个节点的权值为其右子节点的权值，重量为左右节点重量之和，每个叶子节点的权值为集合中的数。
 
-使用Leafy TreeLeafy Tree实现重量平衡树的方法叫WBLT(Weight Balanced Tree+Leafy Tree)WBLT(Weight Balanced Tree+Leafy Tree)。
+使用Leafy Tree实现重量平衡树的方法叫WBLT(Weight Balanced Tree+Leafy Tree)。
 
-因为只有叶子节点存储集合中的数，所以WBLTWBLT使用的节点数是别的种类的平衡树的两倍。
+因为只有叶子节点存储集合中的数，所以WBLT使用的节点数是别的种类的平衡树的两倍。
 
-但是WBLTWBLT可持久化比较方便，速度也很快，一般来讲比SplaySplay快，和替罪羊树差不多。
+但是WBLT可持久化比较方便，速度也很快，一般来讲比Splay快，和替罪羊树差不多。
 
 # 1.21.2 加权平衡树
 
 ### 定义
 
-> 加权平衡树（Weight Balanced TreeWeight Balanced Tree，也叫 BB[α]BB[α] 树，重量平衡树）是一种储存子树大小的二叉搜索树。即一个结点包含以下字段：值、左儿子、右儿子、子树大小。
+> 加权平衡树（Weight Balanced Tree，也叫 BB[α]BB[α] 树，重量平衡树）是一种储存子树大小的二叉搜索树。即一个结点包含以下字段：值、左儿子、右儿子、子树大小。
 
 > 重量平衡树中如果一个节点xx满足min(weightx.left,weightx.right)≥α×weightxmin(weightx.left,weightx.right)≥α×weightx,则称这个节点是αα加权平衡的，显然0<α≤120<α≤12。一棵含有nn个元素的加权平衡树的高度hh满足h≤log11−αn=O(logn)h≤log11−α⁡n=O(log⁡n)。
 
@@ -33,13 +32,13 @@
 
 在替罪羊树里我们通过重构整个xx节点的子树使其αα加权平衡。
 
-在WBLTWBLT中我们通过旋转或者重构的方式使其αα加权平衡。
+在WBLT中我们通过旋转或者重构的方式使其αα加权平衡。
 
-通过旋转使节点平衡的WBLTWBLT有单旋和双旋的写法，虽然单旋也挺快但是单旋的复杂度是错误的，而且一般比双旋慢。
+通过旋转使节点平衡的WBLT有单旋和双旋的写法，虽然单旋也挺快但是单旋的复杂度是错误的，而且一般比双旋慢。
 
 不过单旋倒是应该也没有人卡。
 
-# 2.12.1 Leafy TreeLeafy Tree实现二叉搜索树
+# 2.12.1 Leafy Tree实现二叉搜索树
 
 首先先来看不用加权平衡的操作。
 
@@ -54,7 +53,7 @@ void Pushup(int k)
 }
 ```
 
-按照定义进行PushupPushup即可。
+按照定义进行Pushup即可。
 
 ### RecycleRecycle和IdId
 
@@ -64,7 +63,7 @@ int Id() { return poolsize ? pool[poolsize--] : ++num; };
 void Recycle(int x) { pool[++poolsize] = x; return; }
 ```
 
-因为WBLTWBLT使用节点比较多，为了节省空间可以对删掉的节点进行回收操作。开一个栈表示可以使用的编号，每次删除时把编号丢进栈里即可。
+因为WBLT使用节点比较多，为了节省空间可以对删掉的节点进行回收操作。开一个栈表示可以使用的编号，每次删除时把编号丢进栈里即可。
 
 ### NewnodeNewnode
 
@@ -112,7 +111,7 @@ void Insert(int &k, int x)
 }
 ```
 
-WBLTWBLT里的节点不是叶子节点就一定有两个子节点，按顺序走到叶子节点然后建立一个新的节点，其儿子是新插入的节点和原来该位置上的节点。
+WBLT里的节点不是叶子节点就一定有两个子节点，按顺序走到叶子节点然后建立一个新的节点，其儿子是新插入的节点和原来该位置上的节点。
 
 ### DeleteDelete
 
@@ -129,11 +128,11 @@ void Delete(int &k, int x)
 
 一路往下走找到要删除的节点的父亲节点，然后用父亲节点的另外一个儿子代替父亲节点。
 
-其它基础操作和普通二叉搜索树的操作基本类似这里不再赘述，只需记住WBLTWBLT每个节点用于比较的权值不是该节点的权值而是该节点的左儿子的权值，因为左儿子的权值是左儿子所在子树的最大值，若最大值都没有贡献更小的值必然没有贡献。
+其它基础操作和普通二叉搜索树的操作基本类似这里不再赘述，只需记住WBLT每个节点用于比较的权值不是该节点的权值而是该节点的左儿子的权值，因为左儿子的权值是左儿子所在子树的最大值，若最大值都没有贡献更小的值必然没有贡献。
 
-# 2.22.2 WBLTWBLT
+# 2.22.2 WBLT
 
-WBLTWBLT出现的不平衡状态大致分为两种。
+WBLT出现的不平衡状态大致分为两种。
 
 ![img](https://cdn.luogu.com.cn/upload/image_hosting/s7om6vtn.png)
 
@@ -204,7 +203,7 @@ void Maintain(int k)
 
 # 参考资料
 
-我是从成都七中王思齐的IOI2018IOI2018国家集训队论文学习的WBLTWBLT，具体的复杂度证明可以去看看这篇论文。
+我是从成都七中王思齐的IOI2018国家集训队论文学习的WBLT，具体的复杂度证明可以去看看这篇论文。
 
 
 

@@ -36,3 +36,17 @@ git pull origin master:brantest
 # 如果远程分支是与当前分支合并，则冒号后面的部分可以省略。
 git pull origin master
 ```
+
+
+#### force 
+
+不关心本地的修改
+
+在这种情况下，你只是想放弃所有未提交的本地修改。也许你修改了一个文件来做实验，但你不再需要这个修改。
+``` bash
+git fetch
+git reset --hard HEAD
+
+# git merge origin/$CURRENT_BRANCH
+git merge '@{u}'
+```

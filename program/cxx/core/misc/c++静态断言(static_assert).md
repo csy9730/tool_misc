@@ -33,12 +33,14 @@ static_assert(常量表达式，提示字符串)
 
 int main(){
     static_assert(!std::is_arithmetic<int>::value, "only supports arithmetic types");
+
+    static_assert(sizeof(int)==4, "int size error");
 }
 
 //g++  -std=c++11  assert.cpp
 ```
 
-
+更多的判断条件，参考 [标准库头文件 <type_traits> (C++11)](标准库头文件 <type_traits> \(C++11\))
 
 ![img](https://pic4.zhimg.com/80/v2-2ddeef0b052a9c2c938fbd3087ed7c63_720w.webp)
 
