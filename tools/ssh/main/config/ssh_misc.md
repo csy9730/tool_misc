@@ -67,6 +67,8 @@ ssh-add /etc/ssh/
 # 添加信任的密钥
 cat /etc/ssh/ssh_host_rsa_key.pub>>$HOME/.ssh/authorized_keys 
 
+
+sudo chmod 600 /etc/ssh/ssh_host_*_key
 ```
 #### 公钥
 服务端公开公钥， 客户端可以随意获取公钥
@@ -103,7 +105,7 @@ ssh-keygen -E sha256 -lf /etc/ssh/ssh_host_ecdsa_key.pub
 ### windows下生成密钥文件
 
 openssh的默认签名目录在 C:\ProgramData\ssh\
-```
+``` bash
 ssh-keygen -t rsa -b 2048 -f C:\ProgramData\ssh\ssh_host_rsa_key
 ssh-keygen -t ecdsa -b 256 -f C:\ProgramData\ssh\ssh_host_ecdsa_key
 ssh-keygen -t ed25519 -b 256 -f C:\ProgramData\ssh\ssh_host_ed25519_key
