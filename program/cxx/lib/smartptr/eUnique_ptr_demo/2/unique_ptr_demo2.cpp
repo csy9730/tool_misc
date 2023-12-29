@@ -26,7 +26,7 @@ void* foo()
   //return move( p );         // 2
 }
 
-int main()
+int fooDemo2()
 {
   TYP* p = (TYP*) foo();
   cout << (*p).a << endl;

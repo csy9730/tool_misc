@@ -163,5 +163,10 @@ Though JSON is a ubiquitous data format, it is not a very compact format suitabl
 #### 缺省值
 
 ``` cpp
-
+    // find an entry
+    if (j.contains("credits")) {
+        cout << j["credits"] << endl;// there is an entry with key "foo"
+    }else{
+        cout << "not found [credits]" << endl;
+    }
 ```

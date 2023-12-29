@@ -700,7 +700,7 @@ int main(void){
 
 ​     C语言中的位域结构也要遵循比特序(类似字节序)。例如：
 
-```
+``` cpp
 1 struct bitfield{
 2     unsigned char a: 2;
 3     unsigned char b: 6;
@@ -717,20 +717,20 @@ int main(void){
 
 
 
-```
- 1 int main(void){
- 2     union{
- 3         unsigned char hex;
- 4         struct{
- 5             unsigned char low  : 4;
- 6             unsigned char high : 4;
- 7         };
- 8     }convert;
- 9     convert.low = 0x01;
-10     convert.high = 0x02;
-11     printf("hex = 0x%0x\n", convert.hex);
-12     return 0;
-13 }
+``` c
+int main(void){
+    union{
+        unsigned char hex;
+        struct{
+            unsigned char low  : 4;
+            unsigned char high : 4;
+        };
+    }convert;
+    convert.low = 0x01;
+    convert.high = 0x02;
+    printf("hex = 0x%0x\n", convert.hex);
+    return 0;
+}
 ```
 
 
@@ -761,7 +761,7 @@ int main(void){
 
 ​     请看下面的语句：
 
-```
+``` c
 1 printf("%c\n", *((short*)"AB") >> 8);
 ```
 
