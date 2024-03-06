@@ -8,7 +8,7 @@
 
 pkg-config是一个linux下的命令，用于获得某一个库/模块的所有编译相关的信息。
 例子：
-```
+```bash
 pkg-config opencv –libs –cflags
 ```
 结果：
@@ -30,9 +30,10 @@ pkg-config opencv –libs –cflags
 从上面的例子，可以看出，pkg-config给出了opencv的头文件和库的所有信息！
 这有什么好处？
 
-所有用opencv的其他程序，在编译时，只需要写“pkg-config opencv –libs –cflags”,而不需要自己去找opencv的头文件在哪里，要链接的库在哪里！省时省力！
-如果你写了一个库，不管是静态的还是动态的，要提供给第三方使用，那除了给人家库/头文件，最好也写一个pc文件，这样别人使用就方便很多，不用自己再手动写依赖了你哪些库，只需要敲一个”pkg-config [YOUR_LIB] –libs –cflags”。
-3 pkg-config的信息从哪里来？
+所有用opencv的其他程序，在编译时，只需要写“`pkg-config opencv –libs –cflags`”,而不需要自己去找opencv的头文件在哪里，要链接的库在哪里！省时省力！
+如果你写了一个库，不管是静态的还是动态的，要提供给第三方使用，那除了给人家库/头文件，最好也写一个pc文件，这样别人使用就方便很多，不用自己再手动写依赖了你哪些库，只需要敲一个”`pkg-config [YOUR_LIB] –libs –cflags`”。
+
+## 3 pkg-config的信息从哪里来？
 
 很简单，有2种路径：
 第一种：取系统的/usr/lib下的所有*.pc文件。
@@ -71,16 +72,19 @@ Cflags: -I${includedir_old} -I${includedir_new}
 
 
 
-一目了然，就是存了所有opencv的头文件/库的路径信息。和第一步我们敲的”pkg-config opencv –libs –cflags”的结果，是一样一样的~~~
+一目了然，就是存了所有opencv的头文件/库的路径信息。和第一步我们敲的`pkg-config opencv –libs –cflags`的结果，是一样一样的~~~
 
 ## 4 pkg-config都有哪些命令参数
 
-所有参数，可以通过pkg-config –help来查看。
+所有参数，可以通过`pkg-config –help`来查看。
 但我觉得其实就3个参数有用。
-### 4.1 “pkg-config [NAME] –cflags”，查看头文件信息。
+
+### 4.1 `pkg-config [NAME] –cflags`
+
+查看头文件信息。
 例子：
 
-​    `chenxf@chenxf-PC:~$ pkg-config opencv –cflags`
+`chenxf@chenxf-PC:~$ pkg-config opencv –cflags`
 
 结果：
 
@@ -88,11 +92,13 @@ Cflags: -I${includedir_old} -I${includedir_new}
 
 
 
-### 4.2 pkg-config [NAME] –libs，查看库信息。
+### 4.2 `pkg-config [NAME] –libs `
+查看库信息。
 
 例子：
-
-​    chenxf@chenxf-PC:~$ pkg-config opencv –libs
+```
+chenxf@chenxf-PC:~$ pkg-config opencv –libs
+```
 
 结果：
 
@@ -102,7 +108,8 @@ Cflags: -I${includedir_old} -I${includedir_new}
 
 
 
-### 4.3 pkg-config –list-all。查看pkg-config的所有模块信息。
+### 4.3 `pkg-config –list-all`
+查看pkg-config的所有模块信息。
 
 例子：
 `pkg-config –list-all`
@@ -136,21 +143,21 @@ xrandr                         Xrandr - X RandR Library
 如上文所说，有2种方式。
 
 1.  把你的pc文件，直接放到/usr/lib/…默认路径下。
-
 2.  把你的pc文件的路径写到PKG_CONFIG_PATH环境变量里。
-   比如，你可以在/etc/.bashrc或者/home/chenxf/.bashrc的文件末尾添加：
 
-    ```bash
+比如，你可以在/etc/.bashrc或者/home/chenxf/.bashrc的文件末尾添加：
+
+```bash
 PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/home/chenxf/ffmpeg_build/lib/pkgconfig
 export PKG_CONFIG_PATH
-    ```
+```
 
 
 
 那么，pkg-config就会到/home/chenxf/ffmpeg_build/lib/pkgconfig寻找*.pc文件。
 
 我猜你想问，那我这个pc文件何时生效呢？
-答案是，如果是/usr/lib下，立马生效！！！如果在环境变量里，只要先source ~/.bashrc一下，让环境变量生成，也立马生效。
+答案是，如果是/usr/lib下，立马生效！！！如果在环境变量里，只要先`source ~/.bashrc`一下，让环境变量生成，也立马生效。
 并不需要什么`pkg-config update`啥命令，让其更新信息。
 其实每次你执行pkg-config，都会去遍历所有的*.pc文件。
 
@@ -174,7 +181,7 @@ pc文件的所有参数：
 其实必须写的只有5个。Name、Description、Version、Cflags、Libs。
 
 我们举2个例子吧。一个动态库，一个静态库。
-例子1 动态库的pc文件
+#### 例子1 动态库的pc文件
 
 假设我写了libfoo.so，我的库将会被安装到/usr/local/lib/，头文件会放到/usr/local/include/foo。那么，pc文件可以这么写。
 
@@ -193,7 +200,7 @@ Libs: -L${libdir} -lfoo
 
 
 
-例子2 静态库的pc文件
+#### 例子2 静态库的pc文件
 
 正如我的另一博文所说，静态库链接动态库时，如何使用该静态库，如果我有个静态库libXXX.a，它依赖了很多其他动态库libAA.so，libBB.so，那么第三方程序DD.c要使用libXXX.a时，编译时还得链接libAA.so，libBB.so。
 如何让第三方程序，可以不用操心我这个libXXX.a到底依赖了什么？很简答，就是我的libXXX.a写一个pc文件。
