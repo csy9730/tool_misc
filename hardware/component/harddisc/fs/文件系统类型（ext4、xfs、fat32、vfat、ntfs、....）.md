@@ -16,12 +16,11 @@
  
 
 注：EXT（Extended file system）是延伸文件系统、扩展文件系统，ext1于1992年4月发表，是为linux核心所做的第一个文件系统。
+#### mkfs
+格式化命令：`mkfs -t <文件系统类型> <分区设备文件名>`
 
-格式化命令：mkfs -t <文件系统类型> <分区设备文件名>
+　　　　　　`mkfs xfs /dev/sdb1`
 
-　　　　　　mkfs.xfs /dev/sdb1
-
-man 5 fs可以取得全部文件系统的简要介绍
 
 最大支持文件等信息？
 
