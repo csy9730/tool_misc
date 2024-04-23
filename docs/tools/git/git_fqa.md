@@ -1,30 +1,47 @@
 # FQA
 
+
+
+**Q**: 如何查看远程分支的log
+**A**:
+
+``` bash
+git branch -a
+git log  remotes/origin/HEAD
+```
+
+
 **Q**:从所有版本中删除敏感文件
 **A**:
 
 ``` bash
-git filter-branch -f --tree-filter 'rm tools/abc.exe' HEAD 
+# git filter-branch -f --tree-filter 'rm tools/abc.exe' HEAD 
+# 修改所有提交
 git filter-branch --force --index-filter "git rm --cached --ignore-unmatch sensorRecogn/titanic.HDF5" --prune-empty --tag-name-filter cat -- --all
+# 强制推送更新
 git push origin --force
 ```
 注意： 每个仓库都要执行这条过滤指令。这样不同仓库合并时，不会合并错误。
 
 
+**Q**：从所有历史中搜索已经删除的文件
 
-**Q**: git clone 如何拉取部分版本，部分文件？
+**A**: `git log --all --full-history -- thefile.txt`
+
+#### bundle
+
+**Q**: `git clone` 如何拉取部分版本，部分文件？
 
 **A**: 
-适合用 git clone --depth=1 的场景：你只是想clone最新版本来使用或学习，而不是参与整个项目的开发工作
+适合用 `git clone --depth=1` 的场景：你只是想clone最新版本来使用或学习，而不是参与整个项目的开发工作
 ```
 --depth <depth>
 Create a shallow clone with a history truncated to the specified number of commits. Implies --single-branch 
 depth选项默认使用单分支。
-
-通过 ` git clone --depth=1 --branch a_br ` 可以只复制一个分支快照，没有git历史。
 ```
+通过 ` git clone --depth=1 --branch a_branch ` 可以只复制一个分支快照，没有git历史。
 
-
+#### merge
 
 **Q**: git出现Your branch and 'origin/master' have diverged解决方法
 "git pull”如何强制覆盖本地文件？
@@ -61,3 +78,4 @@ git rev-list --objects --all \
 | cut -c 1-12,41- \
 | $(command -v gnumfmt || echo numfmt) --field=2 --to=iec-i --suffix=B --padding=7 --round=nearest
 ```
+
