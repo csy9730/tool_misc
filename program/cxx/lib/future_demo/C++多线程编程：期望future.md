@@ -155,9 +155,9 @@ message pass的编程范式，我们可见多了，先来思考一下有哪几�
 
 ### std::packaged_task
 
-`std::package_task`类似于`std::functional`，特殊的是，自动会把返回值可以传递给`std::future`。
+`std::package_task`类似于`std::function`，特殊的是，自动会把返回值可以传递给`std::future`。
 
-`std::package_task`类似于`std::functional`，所以不会自动执行，需要显示的调用。
+`std::package_task`类似于`std::function`，所以不会自动执行，需要显示的调用。
 
 因为 `std::packaged_task` 对象是一个可调用对象， 可以：
 

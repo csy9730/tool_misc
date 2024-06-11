@@ -1,6 +1,20 @@
 # README
 
 
+
+#### base
+
+- future  一个容器，可以存放一个值，只能获取一次。 核心方法是`.get()`，这将阻塞主线程，直到future就绪。
+- promise 可以放入一个值( `promise::set_value`) ，供 future 访问。 
+- package_task 基于 std::function 添加了 promise 的高阶封装。核心方法 `package_task::operator()()`，需要提供参数并显式调用。 
+- `std::async` 函数， 基于 仿函数，添加了函数参数，线程，立即执行机制。
+
+
+promise future 是一体两面，一写一读，不可分离。
+`std::future`不支持拷贝，支持移动构造。
+
+
+#### demo
 ```bash
 g++ future_demo2.cpp  -std=c++11
 ```
