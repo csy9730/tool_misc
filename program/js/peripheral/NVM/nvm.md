@@ -57,6 +57,7 @@ Current Root: c:\ProgramData\nvm
 #### 安装指定版本nodejs
 安装指定版本nodejs
 ```
+nvm install 18.20.1
 nvm install 命令
 ```
 #### 显示已安装的版本
@@ -87,6 +88,56 @@ nvm uninstall 14.5.0 # 卸载14.5.0版本node
 ```
 root: h:\ProgramData\nvm
 path: C:\Program Files\nodejs
+```
+
+
+#### example
+
+查看node版本，并切换版本整个流程
+``` bash
+csy@DESKTOP MSYS ~/Project
+$ where nvm
+H:\ProgramData\nvm\nvm.exe
+
+csy@DESKTOP MSYS ~/Project
+$ where node
+C:\Program Files\nodejs\node.exe
+
+csy@DESKTOP MSYS ~/Project
+$ where npm
+C:\Program Files\nodejs\npm
+C:\Program Files\nodejs\npm.cmd
+
+csy@DESKTOP MSYS ~/Project
+$ nvm list
+
+    20.14.0
+  * 14.20.1 (Currently using 64-bit executable)
+
+csy@DESKTOP MSYS ~/Project
+$ node --version
+v14.20.1
+
+csy@DESKTOP MSYS ~/Project
+$ node -v
+v14.20.1
+
+csy@DESKTOP MSYS ~/Project
+$ nvm use 20.14.0
+Now using node v20.14.0 (64-bit)
+
+csy@DESKTOP MSYS ~/Project
+$ where node
+C:\Program Files\nodejs\node.exe
+
+csy@DESKTOP MSYS ~/Project
+$ where npm
+C:\Program Files\nodejs\npm
+C:\Program Files\nodejs\npm.cmd
+
+csy@DESKTOP MSYS ~/Project
+$ node -v
+v20.14.0
 ```
 
 ## help

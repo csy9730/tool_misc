@@ -1,0 +1,10 @@
+# Yuzu
+
+
+
+[yuzu](https://yuzu-emu.org/)
+Nintendo Switch Emulator
+
+yuzu is an experimental open-source emulator for the Nintendo Switch from the creators of Citra.
+
+It is written in C++ with portability in mind, with builds actively maintained for Windows and Linux.
